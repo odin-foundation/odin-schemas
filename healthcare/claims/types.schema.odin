@@ -29,7 +29,7 @@ source[2].url = "https://www.cms.gov/medicare/cms-forms/cms-forms/downloads/cms1
 
 source[3].authority = "CMS"
 source[3].citation = "UB-04 Claim Form Instructions"
-source[3].url = "https://www.cms.gov/medicare/cms-forms/cms-forms/cms-forms-items/cms012949"
+source[3].url = "https://www.nubc.org/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
