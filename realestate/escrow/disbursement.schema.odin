@@ -29,7 +29,7 @@ source[1].url = "https://www.consumerfinance.gov/rules-policy/regulations/1024/"
 
 source[2].authority = "State Escrow Regulations"
 source[2].citation = "Trust Account and Disbursement Requirements"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.law.cornell.edu/wex/escrow"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
