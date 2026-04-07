@@ -29,7 +29,7 @@ source[2].url = "https://www.nhtsa.gov/"
 
 source[3].authority = "Product Liability Advisory Council"
 source[3].citation = "Product Recall Insurance Guidelines"
-source[3].url = "https://www.plac.org/"
+source[3].url = "https://web.archive.org/web/20221208114319/https://plac.com/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
