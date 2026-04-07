@@ -30,7 +30,7 @@ source[3].url = "https://www.govinfo.gov/content/pkg/USCODE-2011-title49/html/US
 
 source[3].authority = "IATA"
 source[3].citation = "IATA Air Waybill Standards"
-source[3].url = "https://www.iata.org/en/publications/manuals/air-waybill-handbook/"
+source[3].url = "https://www.iata.org/en/programs/cargo/"
 
 source[4].authority = "NMFC"
 source[4].citation = "National Motor Freight Classification"
