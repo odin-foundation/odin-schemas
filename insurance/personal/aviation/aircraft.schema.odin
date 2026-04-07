@@ -34,7 +34,7 @@ source[2].url = "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-ti
 
 source[3].authority = "Transport Canada"
 source[3].citation = "Canadian Aviation Regulations (CARs)"
-source[3].url = "https://tc.canada.ca/en/corporate-services/acts-regulations/list-regulations/canadian-aviation-regulations-cars"
+source[3].url = "https://laws-lois.justice.gc.ca/eng/regulations/sor-96-433/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
