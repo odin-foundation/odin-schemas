@@ -24,7 +24,7 @@ source[0].url = "https://www.iaao.org/wcm/Resources/Publications_access/Technica
 
 source[1].authority = "State/Local Assessor Offices"
 source[1].citation = "Property Tax Assessment Requirements"
-source[1].url = "varies by jurisdiction"
+source[1].url = "https://www.law.cornell.edu/wex/property_tax"
 
 source[2].authority = "Lincoln Institute of Land Policy"
 source[2].citation = "Property Tax in America"
