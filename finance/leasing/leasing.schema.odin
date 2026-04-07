@@ -31,7 +31,7 @@ source[2].url = "https://www.uniformlaws.org/committees/community-home?community
 
 source[3].authority = "Internal Revenue Service"
 source[3].citation = "Revenue Procedure 2001-28 (Lease vs Purchase)"
-source[3].url = "https://www.irs.gov/pub/irs-drop/rp-01-28.pdf"
+source[3].url = "https://www.irs.gov/pub/irs-irbs/irb01-19.pdf"
 
 source[4].authority = "Equipment Leasing and Finance Association"
 source[4].citation = "ELFA Model Lease Documentation"
