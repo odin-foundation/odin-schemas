@@ -24,7 +24,7 @@ source[1].url = "https://www.law.cornell.edu/regulations/california/10-CCR-2632.
 
 source[2].authority = "Texas Department of Insurance"
 source[2].citation = "TX Admin Code Title 28, Chapter 5 - Statistical Plan"
-source[2].url = "https://texreg.sos.state.tx.us/public/readtac$ext.ViewTAC?tac_view=4&ti=28&pt=1&ch=5"
+source[2].url = "https://texas-sos.appianportalsgov.com/rules-and-meetings?interface=TAC_TITLE_VIEW&parameters=ti%3D28%26pt%3D1"
 
 source[3].authority = "New York Department of Financial Services"
 source[3].citation = "NY Insurance Law § 2303/2304 - Rate Standards"
