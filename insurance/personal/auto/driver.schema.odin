@@ -23,7 +23,7 @@ source[0].url = "https://www.insurance.ca.gov/0250-insurers/0800-rate-filings/"
 
 source[1].authority = "Texas Department of Insurance"
 source[1].citation = "TX Admin Code Title 28, Chapter 5 - Credit Scoring"
-source[1].url = "https://texreg.sos.state.tx.us/public/readtac$ext.ViewTAC?tac_view=4&ti=28&pt=1&ch=5"
+source[1].url = "https://texas-sos.appianportalsgov.com/rules-and-meetings?interface=TAC_TITLE_VIEW&parameters=ti%3D28%26pt%3D1"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

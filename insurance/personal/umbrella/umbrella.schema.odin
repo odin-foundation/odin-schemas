@@ -34,9 +34,9 @@ source[2].authority = "Insurance Information Institute (III)"
 source[2].citation = "Personal Umbrella Liability Policies"
 source[2].url = "https://www.iii.org/article/what-umbrella-liability"
 
-source[3].authority = "American Insurance Association"
+source[3].authority = "American Property Casualty Insurance Association"
 source[3].citation = "Personal Liability Coverage Guidelines"
-source[3].url = "https://www.aiadc.org/"
+source[3].url = "https://www.apci.org/"
 
 source[4].authority = "California Department of Insurance"
 source[4].citation = "Personal Umbrella Policy Standards"
