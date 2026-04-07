@@ -17,7 +17,7 @@ description = "Reusable type definitions for Medicare schemas"
 {$derivation}
 source[0].authority = "CMS"
 source[0].citation = "Medicare General Information, Eligibility, and Entitlement Manual (CMS Pub 100-01)"
-source[0].url = "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/Internet-Only-Manuals-IOMs-Items/CMS012274"
+source[0].url = "https://www.cms.gov/regulations-and-guidance/guidance/manuals/internet-only-manuals-ioms"
 
 source[1].authority = "CMS"
 source[1].citation = "Medicare & You 2025 Handbook"
