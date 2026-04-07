@@ -22,7 +22,7 @@ source[0].url = "https://www.fda.gov/food/food-safety-modernization-act-fsma/fsm
 
 source[1].authority = "GS1"
 source[1].citation = "GS1 Standards for Product Traceability in the Food and Agriculture Supply Chain"
-source[1].url = "https://www.gs1.org/industries/agriculture"
+source[1].url = "https://www.gs1.org/standards/traceability"
 
 source[2].authority = "Produce Traceability Initiative"
 source[2].citation = "PTI Implementation Guidelines"
