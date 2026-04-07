@@ -31,7 +31,7 @@ source[2].url = "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-V/part
 
 source[3].authority = "American Association of Motor Vehicle Administrators"
 source[3].citation = "AAMVA Vehicle Title and Registration Data Standards"
-source[3].url = "https://www.aamva.org/technology/standards"
+source[3].url = "https://www.aamva.org/technology"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
