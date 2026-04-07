@@ -24,7 +24,7 @@ source[0].url = "https://www.dol.gov/agencies/ebsa"
 
 source[1].authority = "State Insurance Departments"
 source[1].citation = "Various state insurance regulations and statutes"
-source[1].url = "https://www.usa.gov/state-insurance"
+source[1].url = "https://content.naic.org/state-insurance-departments"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

@@ -28,7 +28,7 @@ source[1].url = "https://content.naic.org/"
 
 source[2].authority = "State Insurance Departments"
 source[2].citation = "Various state auto insurance regulations"
-source[2].url = "https://www.usa.gov/state-insurance"
+source[2].url = "https://content.naic.org/state-insurance-departments"
 
 source[3].authority = "Financial Services Regulatory Authority of Ontario (FSRA)"
 source[3].citation = "Statutory Accident Benefits Schedule (SABS)"
