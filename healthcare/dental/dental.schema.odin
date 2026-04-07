@@ -17,7 +17,7 @@ description = "Dental benefit management including plans, benefits, procedures, 
 {$derivation}
 source[0].authority = "ADA"
 source[0].citation = "CDT: Code on Dental Procedures and Nomenclature"
-source[0].url = "https://www.ada.org/resources/practice/dental-standards/coding"
+source[0].url = "https://www.ada.org/publications/cdt"
 
 source[1].authority = "NADP"
 source[1].citation = "National Association of Dental Plans - Industry Standards"
@@ -25,7 +25,7 @@ source[1].url = "https://www.nadp.org/"
 
 source[2].authority = "CMS"
 source[2].citation = "Dental Benefits in Medicare Advantage and Medicaid"
-source[2].url = "https://www.cms.gov/medicare/health-drug-plans/medicare-advantage-dental-benefits"
+source[2].url = "https://www.cms.gov/medicare/coverage/dental"
 
 source[3].authority = "NAIC"
 source[3].citation = "Dental Plan Disclosure Requirements"
@@ -33,7 +33,7 @@ source[3].url = "https://content.naic.org/"
 
 source[4].authority = "State Dental Boards"
 source[4].citation = "State Dental Practice Acts and Regulations"
-source[4].url = "https://www.ada.org/resources/licensure"
+source[4].url = "https://www.ada.org/resources/practice/practice-management"
 
 source[5].authority = "GPO"
 source[5].citation = "42 CFR 440.100 - Dental Services (Medicaid)"
