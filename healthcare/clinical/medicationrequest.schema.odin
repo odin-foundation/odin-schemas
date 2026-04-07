@@ -31,7 +31,7 @@ source[2].url = "https://hl7.org/fhir/us/core/StructureDefinition-us-core-medica
 
 source[3].authority = "DEA"
 source[3].citation = "Electronic Prescriptions for Controlled Substances (EPCS)"
-source[3].url = "https://www.deadiversion.usdoj.gov/ecomm/e_rx/"
+source[3].url = "https://www.ecfr.gov/current/title-21/chapter-II/part-1311"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
