@@ -29,7 +29,7 @@ source[1].url = "https://www.fema.gov/flood-insurance/find-form"
 
 source[2].authority = "Federal Emergency Management Agency (FEMA)"
 source[2].citation = "Elevation Certificate and Instructions (FEMA Form 086-0-33)"
-source[2].url = "https://www.fema.gov/flood-maps/products-tools/elevation-certificate"
+source[2].url = "https://www.fema.gov/glossary/elevation-certificate"
 
 source[3].authority = "Federal Emergency Management Agency (FEMA)"
 source[3].citation = "Flood Zone Designations"
@@ -49,7 +49,7 @@ source[6].url = "https://www.ecfr.gov/current/title-44/chapter-I/subchapter-B"
 
 source[7].authority = "Federal Emergency Management Agency (FEMA)"
 source[7].citation = "Write Your Own (WYO) Program"
-source[7].url = "https://www.fema.gov/flood-insurance/work-with-nfip/write-your-own"
+source[7].url = "https://nfipservices.floodsmart.gov/wyo-program"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
