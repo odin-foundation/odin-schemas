@@ -35,7 +35,7 @@ source[3].url = "https://www.occ.treas.gov/publications-and-resources/publicatio
 
 source[4].authority = "Loan Syndications and Trading Association"
 source[4].citation = "LSTA Market Practice and Documentation Standards"
-source[4].url = "https://www.lsta.org/content/market-practice-standards/"
+source[4].url = "https://www.lsta.org/content/primary-market-and-agent-transfer-practices/"
 
 source[5].authority = "U.S. Small Business Administration"
 source[5].citation = "SOP 50 10 7 - Lender and Development Company Loan Programs"
