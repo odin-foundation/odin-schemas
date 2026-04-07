@@ -20,7 +20,7 @@ description = "Individual Shared Responsibility exemptions"
 {$derivation}
 source[0].authority = "GPO"
 source[0].citation = "26 CFR 1.5000A-3 - Exempt individuals"
-source[0].url = "https://www.ecfr.gov/current/title-26/chapter-I/subchapter-A/part-1/subject-group-ECFR9bd2b79cbef7186"
+source[0].url = "https://www.ecfr.gov/current/title-26/section-1.5000A-3"
 
 source[1].authority = "GPO"
 source[1].citation = "45 CFR 155.605 - Eligibility determination for exemptions"
