@@ -19,7 +19,7 @@ description = "Personal earthquake insurance policy derived from CEA, FEMA, USGS
 {$derivation}
 source[0].authority = "California Earthquake Authority (CEA)"
 source[0].citation = "CEA Residential Policy Forms and Endorsements"
-source[0].url = "https://www.earthquakeauthority.com/Policy/Policy-Forms"
+source[0].url = "https://www.earthquakeauthority.com/"
 
 source[1].authority = "California Earthquake Authority (CEA)"
 source[1].citation = "CEA Rate Filing Documentation"
@@ -47,7 +47,7 @@ source[6].url = "https://www.fema.gov/flood-maps/products-tools/hazus"
 
 source[7].authority = "Insurance Services Office (ISO)"
 source[7].citation = "Earthquake Territory Definitions (Public Filing)"
-source[7].url = "https://www.verisk.com/insurance/products/iso-products/"
+source[7].url = "https://www.verisk.com/insurance/products/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
