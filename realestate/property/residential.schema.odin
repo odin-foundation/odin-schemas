@@ -21,7 +21,7 @@ description = "Comprehensive residential property information for real estate tr
 {$derivation}
 source[0].authority = "Fannie Mae"
 source[0].citation = "Selling Guide - Property Eligibility"
-source[0].url = "https://selling-guide.fanniemae.com/Selling-Guide/Origination-thru-Closing/Subpart-B4-Underwriting-Property/"
+source[0].url = "https://www.fanniemae.com/"
 
 source[1].authority = "Freddie Mac"
 source[1].citation = "Seller/Servicer Guide - Property Requirements"
