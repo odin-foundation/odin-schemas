@@ -30,7 +30,7 @@ source[1].url = "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-G/pa
 
 source[2].authority = "U.S. Department of Transportation"
 source[2].citation = "49 U.S.C. 41112 - Air Carrier Insurance Requirements"
-source[2].url = "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title49-section41112"
+source[2].url = "https://www.law.cornell.edu/uscode/text/49/41112"
 
 source[3].authority = "Transport Canada"
 source[3].citation = "Canadian Aviation Regulations (CARs)"
