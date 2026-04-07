@@ -31,15 +31,15 @@ source[2].url = "https://www.irs.gov/publications/p15b"
 
 source[3].authority = "U.S. Department of Labor"
 source[3].citation = "Fair Labor Standards Act (FLSA), 29 USC 201 et seq."
-source[3].url = "https://www.dol.gov/agencies/whd/flsa"
+source[3].url = "https://www.law.cornell.edu/uscode/text/29/chapter-8"
 
 source[4].authority = "U.S. Department of Labor"
 source[4].citation = "Wage Garnishment, 29 CFR Part 870"
-source[4].url = "https://www.dol.gov/agencies/whd/government-contracts/garnishment"
+source[4].url = "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-870"
 
 source[5].authority = "Social Security Administration"
 source[5].citation = "Federal Insurance Contributions Act (FICA)"
-source[5].url = "https://www.ssa.gov/employer"
+source[5].url = "https://www.law.cornell.edu/uscode/text/26/subtitle-C/chapter-21"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

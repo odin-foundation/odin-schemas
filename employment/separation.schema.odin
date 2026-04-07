@@ -19,15 +19,15 @@ description = "Terminations, resignations, offboarding, final pay, and severance
 {$derivation}
 source[0].authority = "U.S. Department of Labor"
 source[0].citation = "Fair Labor Standards Act (FLSA), 29 USC 201 et seq."
-source[0].url = "https://www.dol.gov/agencies/whd/flsa"
+source[0].url = "https://www.law.cornell.edu/uscode/text/29/chapter-8"
 
 source[1].authority = "U.S. Department of Labor"
 source[1].citation = "Worker Adjustment and Retraining Notification (WARN) Act, 29 USC 2101 et seq."
-source[1].url = "https://www.dol.gov/agencies/eta/layoffs/warn"
+source[1].url = "https://www.law.cornell.edu/uscode/text/29/chapter-23"
 
 source[2].authority = "U.S. Department of Labor"
 source[2].citation = "COBRA Continuation Coverage, 29 USC 1161-1168"
-source[2].url = "https://www.dol.gov/agencies/ebsa/laws-and-regulations/laws/cobra"
+source[2].url = "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XXV/subchapter-L/part-2590"
 
 source[3].authority = "U.S. Department of Labor"
 source[3].citation = "Federal Unemployment Tax Act (FUTA), 26 USC 3301 et seq."

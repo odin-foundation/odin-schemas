@@ -19,15 +19,15 @@ description = "Requisitions, postings, applications, candidates, and hiring work
 {$derivation}
 source[0].authority = "U.S. Equal Employment Opportunity Commission"
 source[0].citation = "Uniform Guidelines on Employee Selection Procedures, 29 CFR Part 1607"
-source[0].url = "https://www.eeoc.gov/laws/guidance/uniform-guidelines-employee-selection-procedures"
+source[0].url = "https://www.law.cornell.edu/cfr/text/29/part-1607"
 
 source[1].authority = "Office of Federal Contract Compliance Programs"
 source[1].citation = "Affirmative Action Requirements, 41 CFR Part 60"
-source[1].url = "https://www.dol.gov/agencies/ofccp/compliance-assistance/41-cfr-60"
+source[1].url = "https://www.ecfr.gov/current/title-41/subtitle-B/chapter-60"
 
 source[2].authority = "U.S. Department of Labor"
 source[2].citation = "Fair Labor Standards Act (FLSA) recordkeeping requirements"
-source[2].url = "https://www.dol.gov/agencies/whd/flsa"
+source[2].url = "https://www.law.cornell.edu/uscode/text/29/chapter-8"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

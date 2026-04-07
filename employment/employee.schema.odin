@@ -19,7 +19,7 @@ description = "Core employee record with personal, employment, and compliance da
 {$derivation}
 source[0].authority = "U.S. Department of Labor"
 source[0].citation = "Fair Labor Standards Act (FLSA), 29 USC 201 et seq."
-source[0].url = "https://www.dol.gov/agencies/whd/flsa"
+source[0].url = "https://www.law.cornell.edu/uscode/text/29/chapter-8"
 
 source[1].authority = "U.S. Equal Employment Opportunity Commission"
 source[1].citation = "Title VII of the Civil Rights Act of 1964, 42 USC 2000e et seq."

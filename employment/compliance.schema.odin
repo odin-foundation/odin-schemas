@@ -19,15 +19,15 @@ description = "EEO-1, VETS-4212, AAP, OSHA, investigations, and ACA reporting"
 {$derivation}
 source[0].authority = "U.S. Equal Employment Opportunity Commission"
 source[0].citation = "EEO-1 Component 1 Report Instructions"
-source[0].url = "https://www.eeoc.gov/employers/eeo-1-data-collection"
+source[0].url = "https://www.eeoc.gov/employers/eeo-data-collections"
 
 source[1].authority = "Office of Federal Contract Compliance Programs"
 source[1].citation = "VETS-4212 Federal Contractor Veterans' Employment Report"
-source[1].url = "https://www.dol.gov/agencies/ofccp/vets-4212"
+source[1].url = "https://www.law.cornell.edu/uscode/text/38/4212"
 
 source[2].authority = "Office of Federal Contract Compliance Programs"
 source[2].citation = "Affirmative Action Program Requirements, 41 CFR Part 60-2"
-source[2].url = "https://www.dol.gov/agencies/ofccp/manual/fccm"
+source[2].url = "https://www.ecfr.gov/current/title-41/subtitle-B/chapter-60"
 
 source[3].authority = "Occupational Safety and Health Administration"
 source[3].citation = "OSHA Recordkeeping Requirements, 29 CFR Part 1904"
@@ -35,11 +35,11 @@ source[3].url = "https://www.osha.gov/recordkeeping"
 
 source[4].authority = "Internal Revenue Service"
 source[4].citation = "ACA Reporting Forms 1094-C and 1095-C"
-source[4].url = "https://www.irs.gov/affordable-care-act/employers/questions-and-answers-on-reporting-of-offers-of-health-insurance-coverage-by-employers"
+source[4].url = "https://www.irs.gov/affordable-care-act/employers/questions-and-answers-about-information-reporting-by-employers-on-form-1094-c-and-form-1095-c"
 
 source[5].authority = "U.S. Department of Labor"
 source[5].citation = "Family and Medical Leave Act (FMLA) Recordkeeping, 29 CFR 825"
-source[5].url = "https://www.dol.gov/agencies/whd/fmla"
+source[5].url = "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-C/part-825"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

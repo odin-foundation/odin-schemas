@@ -19,11 +19,11 @@ description = "Benefits enrollment, coverage, beneficiaries, and COBRA"
 {$derivation}
 source[0].authority = "U.S. Department of Labor"
 source[0].citation = "Employee Retirement Income Security Act (ERISA), 29 USC 1001 et seq."
-source[0].url = "https://www.dol.gov/agencies/ebsa/laws-and-regulations/laws/erisa"
+source[0].url = "https://www.law.cornell.edu/uscode/text/29/chapter-18"
 
 source[1].authority = "U.S. Department of Labor"
 source[1].citation = "Consolidated Omnibus Budget Reconciliation Act (COBRA), 29 USC 1161-1168"
-source[1].url = "https://www.dol.gov/agencies/ebsa/laws-and-regulations/laws/cobra"
+source[1].url = "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XXV/subchapter-L/part-2590"
 
 source[2].authority = "Internal Revenue Service"
 source[2].citation = "Health Savings Accounts (HSAs), 26 USC 223"

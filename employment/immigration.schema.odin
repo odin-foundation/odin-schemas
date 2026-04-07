@@ -27,11 +27,11 @@ source[1].url = "https://www.e-verify.gov"
 
 source[2].authority = "U.S. Department of Labor"
 source[2].citation = "PERM Labor Certification, 20 CFR Part 656"
-source[2].url = "https://www.dol.gov/agencies/eta/foreign-labor/programs/permanent"
+source[2].url = "https://www.ecfr.gov/current/title-20/chapter-V/part-656"
 
 source[3].authority = "U.S. Citizenship and Immigration Services"
 source[3].citation = "H-1B Specialty Occupation, 8 CFR 214.2(h)"
-source[3].url = "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations"
+source[3].url = "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations"
 
 source[4].authority = "U.S. Citizenship and Immigration Services"
 source[4].citation = "L-1 Intracompany Transferee, 8 CFR 214.2(l)"

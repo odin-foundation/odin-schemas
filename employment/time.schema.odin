@@ -18,7 +18,7 @@ description = "Timecards, punches, schedules, absences, and PTO tracking"
 {$derivation}
 source[0].authority = "U.S. Department of Labor"
 source[0].citation = "Fair Labor Standards Act (FLSA), 29 USC 207"
-source[0].url = "https://www.dol.gov/agencies/whd/flsa"
+source[0].url = "https://www.law.cornell.edu/uscode/text/29/chapter-8"
 
 source[1].authority = "U.S. Department of Labor"
 source[1].citation = "FLSA Recordkeeping Requirements, 29 CFR Part 516"
@@ -26,7 +26,7 @@ source[1].url = "https://www.dol.gov/agencies/whd/fact-sheets/21-flsa-recordkeep
 
 source[2].authority = "U.S. Department of Labor"
 source[2].citation = "Family and Medical Leave Act (FMLA), 29 USC 2601 et seq."
-source[2].url = "https://www.dol.gov/agencies/whd/fmla"
+source[2].url = "https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-C/part-825"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
