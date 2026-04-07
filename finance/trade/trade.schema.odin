@@ -19,11 +19,11 @@ description = "Comprehensive trade finance schema for LCs, collections, guarante
 {$derivation}
 source[0].authority = "International Chamber of Commerce"
 source[0].citation = "UCP 600 - Uniform Customs and Practice for Documentary Credits"
-source[0].url = "https://iccwbo.org/business-solutions/banking-finance/ucp-600/"
+source[0].url = "https://library.iccwbo.org/tfb/tfb-iccrules.htm"
 
 source[1].authority = "International Chamber of Commerce"
 source[1].citation = "ISP98 - International Standby Practices"
-source[1].url = "https://iccwbo.org/business-solutions/banking-finance/isp98/"
+source[1].url = "https://library.iccwbo.org/tfb/tfb-iccrules.htm"
 
 source[2].authority = "International Chamber of Commerce"
 source[2].citation = "URC 522 - Uniform Rules for Collections"
@@ -31,7 +31,7 @@ source[2].url = "https://iccwbo.org/business-solutions/banking-finance/urc-522/"
 
 source[3].authority = "International Chamber of Commerce"
 source[3].citation = "URDG 758 - Uniform Rules for Demand Guarantees"
-source[3].url = "https://iccwbo.org/business-solutions/banking-finance/urdg-758/"
+source[3].url = "https://library.iccwbo.org/tfb/tfb-iccrules.htm"
 
 source[4].authority = "International Chamber of Commerce"
 source[4].citation = "Standard Definitions for Techniques of Supply Chain Finance"
@@ -43,7 +43,7 @@ source[5].url = "https://www.uniformlaws.org/committees/community-home?community
 
 source[6].authority = "SWIFT"
 source[6].citation = "MT700 Series - Documentary Credits and Guarantees"
-source[6].url = "https://www.swift.com/standards/data-standards/mt-message-standards"
+source[6].url = "https://en.wikipedia.org/wiki/SWIFT_message_types"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
