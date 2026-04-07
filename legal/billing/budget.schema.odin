@@ -20,7 +20,7 @@ description = "Legal matter budgets and alternative fee arrangements"
 {$derivation}
 source[0].authority = "Association of Corporate Counsel"
 source[0].citation = "ACC Value Challenge - Budgeting Best Practices"
-source[0].url = "https://www.acc.com/value-challenge"
+source[0].url = "https://www.acc.com/resource-library"
 
 source[1].authority = "Legal Electronic Data Exchange Standard"
 source[1].citation = "LEDES Budget Tracking"
