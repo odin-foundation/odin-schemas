@@ -26,7 +26,7 @@ source[1].url = "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/D
 
 source[2].authority = "HHS"
 source[2].citation = "HIPAA 45 CFR 162.1102 - Retail Pharmacy Drug Claims"
-source[2].url = "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-162/subpart-I"
+source[2].url = "https://www.ecfr.gov/current/title-45/section-162.1102"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
