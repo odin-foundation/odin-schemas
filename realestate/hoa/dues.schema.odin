@@ -29,7 +29,7 @@ source[1].url = "https://www.apra-usa.com/"
 
 source[2].authority = "State HOA Statutes"
 source[2].citation = "Assessment and Collection Laws"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.law.cornell.edu/wex/homeowners_association"
 
 methodology = "industry_practice"
 proprietary_sources_consulted = ?false
