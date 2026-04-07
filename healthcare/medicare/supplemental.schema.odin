@@ -27,7 +27,7 @@ source[1].url = "https://www.medicare.gov/publications/02110-Medigap-guide-healt
 
 source[2].authority = "GPO"
 source[2].citation = "42 CFR Part 403 Subpart E - Medigap Provisions"
-source[2].url = "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-403/subpart-E"
+source[2].url = "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-403"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
