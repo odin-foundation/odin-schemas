@@ -18,7 +18,7 @@ description = "Warehouse facilities, inventory operations, ASN, and 3PL agreemen
 {$derivation}
 source[0].authority = "GS1"
 source[0].citation = "GS1 Logistics Standards - Warehouse Management"
-source[0].url = "https://www.gs1.org/standards/logistics"
+source[0].url = "https://www.gs1.org/standards"
 
 source[1].authority = "IWLA"
 source[1].citation = "International Warehouse Logistics Association Best Practices"

@@ -26,7 +26,7 @@ source[1].url = "https://www.iata.org/en/programs/cargo/"
 
 source[2].authority = "GS1"
 source[2].citation = "GS1 Logistics Standards"
-source[2].url = "https://www.gs1.org/standards/logistics"
+source[2].url = "https://www.gs1.org/standards"
 
 source[3].authority = "ICC"
 source[3].citation = "Incoterms 2020"
