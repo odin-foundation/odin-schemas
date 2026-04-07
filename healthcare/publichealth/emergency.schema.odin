@@ -25,7 +25,7 @@ source[1].url = "https://www.ecfr.gov/current/title-44/chapter-I/subchapter-D/pa
 
 source[2].authority = "ASPR"
 source[2].citation = "Public Health Emergency Declarations"
-source[2].url = "https://www.phe.gov/emergency/news/healthactions/phe/Pages/default.aspx"
+source[2].url = "https://aspr.hhs.gov/legal/PHE/Pages/default.aspx"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
