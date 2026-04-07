@@ -33,7 +33,7 @@ source[2].url = "https://www.naiop.org/"
 
 source[3].authority = "State Landlord-Tenant Laws"
 source[3].citation = "Various state landlord-tenant statutes"
-source[3].url = "https://www.nolo.com/legal-encyclopedia/landlord-tenant-law"
+source[3].url = "https://www.law.cornell.edu/wex/landlord-tenant_law"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
