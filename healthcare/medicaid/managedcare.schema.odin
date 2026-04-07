@@ -23,7 +23,7 @@ source[0].url = "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-C/p
 
 source[1].authority = "CMS"
 source[1].citation = "Medicaid Managed Care Final Rule (CMS-2390-F)"
-source[1].url = "https://www.medicaid.gov/medicaid/managed-care/index.html"
+source[1].url = "https://www.govinfo.gov/content/pkg/FR-2016-05-06/pdf/2016-09581.pdf"
 
 source[2].authority = "CMS"
 source[2].citation = "Managed Care State Directed Payment guidance"
