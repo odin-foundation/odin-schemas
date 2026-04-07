@@ -23,7 +23,7 @@ source[0].url = "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-D/p
 
 source[1].authority = "CMS"
 source[1].citation = "CHIP State Plan Template"
-source[1].url = "https://www.medicaid.gov/chip/chip-state-program-information/index.html"
+source[1].url = "https://www.medicaid.gov/chip"
 
 source[2].authority = "CMS"
 source[2].citation = "CHIPRA and ACA CHIP provisions"
