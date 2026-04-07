@@ -24,11 +24,11 @@ source[0].url = "https://content.naic.org/sites/default/files/model-law-785.pdf"
 
 source[1].authority = "Reinsurance Association of America"
 source[1].citation = "RAA Fundamentals of Reinsurance"
-source[1].url = "https://www.reinsurance.org/"
+source[1].url = "https://web.archive.org/web/2024/https://www.reinsurance.org/"
 
 source[2].authority = "State Insurance Regulations"
 source[2].citation = "Various state reinsurance regulations and statutes"
-source[2].url = "https://www.usa.gov/state-insurance"
+source[2].url = "https://content.naic.org/state-insurance-departments"
 
 source[3].authority = "International Association of Insurance Supervisors"
 source[3].citation = "IAIS Reinsurance and Financial Stability"
