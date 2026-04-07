@@ -25,7 +25,7 @@ source[0].url = "https://www.alta.org/"
 
 source[1].authority = "State Recording Statutes"
 source[1].citation = "Real Property Recording Acts"
-source[1].url = "varies by jurisdiction"
+source[1].url = "https://www.law.cornell.edu/wex/recording_acts"
 
 source[2].authority = "Uniform Real Property Electronic Recording Act"
 source[2].citation = "URPERA"
