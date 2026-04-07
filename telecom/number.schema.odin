@@ -22,7 +22,7 @@ source[0].url = "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/pa
 
 source[1].authority = "North American Numbering Plan Administration"
 source[1].citation = "NANP - North American Numbering Plan"
-source[1].url = "https://www.nationalnanpa.com/"
+source[1].url = "https://www.nanpa.com/"
 
 source[2].authority = "Alliance for Telecommunications Industry Solutions"
 source[2].citation = "ATIS-0300115 - LNP Operational and Intercarrier Guidelines"
