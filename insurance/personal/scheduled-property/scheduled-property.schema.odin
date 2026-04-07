@@ -21,7 +21,7 @@ source[0].url = "https://content.naic.org/"
 
 source[1].authority = "Insurance Services Office (ISO)"
 source[1].citation = "Personal Inland Marine Coverage Forms"
-source[1].url = "https://www.verisk.com/insurance/products/personal-lines/"
+source[1].url = "https://www.verisk.com/insurance/products/"
 
 source[2].authority = "Texas Department of Insurance"
 source[2].citation = "Personal Inland Marine Insurance Guide"
