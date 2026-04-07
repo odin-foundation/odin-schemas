@@ -24,7 +24,7 @@ source[0].accessed = 2025-12-21
 
 source[1].authority = "Federal Energy Regulatory Commission"
 source[1].citation = "FERC Order 2222 - Participation of DER Aggregations"
-source[1].url = "https://www.ferc.gov/media/order-no-2222"
+source[1].url = "https://www.ferc.gov/media/ferc-order-no-2222-fact-sheet"
 source[1].accessed = 2025-12-21
 
 source[2].authority = "North American Electric Reliability Corporation"
