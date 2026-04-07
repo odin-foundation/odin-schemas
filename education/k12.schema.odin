@@ -35,7 +35,7 @@ source[2].accessed = 2025-12-21
 
 source[3].authority = "Centers for Disease Control and Prevention"
 source[3].citation = "School Immunization Requirements"
-source[3].url = "https://www.cdc.gov/vaccines/imz-managers/laws/state-reqs.html"
+source[3].url = "https://www.cdc.gov/vaccines/php/requirements-laws/index.html"
 source[3].accessed = 2025-12-21
 
 methodology = "regulatory_derivation"
