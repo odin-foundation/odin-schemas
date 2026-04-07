@@ -29,7 +29,7 @@ source[1].url = "https://www.uniformlaws.org/committees/community-home?Community
 
 source[2].authority = "State Condominium Acts"
 source[2].citation = "State HOA/Condo Statutes"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.law.cornell.edu/wex/condominium"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
