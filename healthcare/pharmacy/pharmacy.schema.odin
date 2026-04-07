@@ -18,7 +18,7 @@ description = "Pharmacy benefit management including formulary, prior auth, pric
 {$derivation}
 source[0].authority = "CMS"
 source[0].citation = "Medicare Prescription Drug Benefit Manual (CMS Pub 100-18)"
-source[0].url = "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/Internet-Only-Manuals-IOMs-Items/CMS019193"
+source[0].url = "https://www.cms.gov/regulations-and-guidance/guidance/manuals/internet-only-manuals-ioms"
 
 source[1].authority = "GPO"
 source[1].citation = "42 CFR Part 423 - Voluntary Medicare Prescription Drug Benefit"
@@ -42,11 +42,11 @@ source[5].url = "https://www.usp.org/health-quality-safety/usp-drug-classificati
 
 source[6].authority = "CMS"
 source[6].citation = "National Average Drug Acquisition Cost (NADAC)"
-source[6].url = "https://data.medicaid.gov/nadac"
+source[6].url = "https://data.medicaid.gov/dataset/dfa2ab14-06c2-457a-9e36-5cb6d80f8d93"
 
 source[7].authority = "NCPDP"
 source[7].citation = "NCPDP Telecommunication Standard"
-source[7].url = "https://www.ncpdp.org/"
+source[7].url = "https://standards.ncpdp.org/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
