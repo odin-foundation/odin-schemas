@@ -22,7 +22,7 @@ source[0].url = "https://www.nass.usda.gov/Publications/AgCensus/"
 
 source[1].authority = "U.S. Department of Agriculture RMA"
 source[1].citation = "Crop Insurance Handbook - Common Crop Insurance Policy"
-source[1].url = "https://www.rma.usda.gov/en/Policy-and-Procedure/Insurance-Plans/Common-Crop-Insurance-Policy"
+source[1].url = "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-IV/part-457"
 
 source[2].authority = "Environmental Protection Agency"
 source[2].citation = "40 CFR Part 170 - Worker Protection Standard"
