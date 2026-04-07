@@ -25,7 +25,7 @@ source[0].url = "https://www.caionline.org/"
 
 source[1].authority = "State HOA Disclosure Laws"
 source[1].citation = "Resale Certificate Requirements"
-source[1].url = "varies by jurisdiction"
+source[1].url = "https://www.law.cornell.edu/wex/homeowners_association"
 
 source[2].authority = "Uniform Common Interest Ownership Act"
 source[2].citation = "UCIOA Disclosure Requirements"
