@@ -27,7 +27,7 @@ source[1].url = "https://www.federalreserve.gov/supervisionreg/ccar.htm"
 
 source[2].authority = "Financial Crimes Enforcement Network"
 source[2].citation = "Bank Secrecy Act Regulations (31 CFR Chapter X)"
-source[2].url = "https://www.fincen.gov/resources/statutes-and-regulations"
+source[2].url = "https://www.ecfr.gov/current/title-31/subtitle-B/chapter-X"
 
 source[3].authority = "Office of Foreign Assets Control"
 source[3].citation = "OFAC Sanctions Programs and Information"
