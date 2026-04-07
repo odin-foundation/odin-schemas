@@ -21,7 +21,7 @@ source[0].url = "https://content.naic.org/"
 
 source[1].authority = "Insurance Services Office (ISO)"
 source[1].citation = "Liquor Liability Coverage Form CG 00 34"
-source[1].url = "https://www.verisk.com/insurance/products/commercial-lines/"
+source[1].url = "https://www.verisk.com/insurance/"
 
 source[2].authority = "Alcohol and Tobacco Tax and Trade Bureau"
 source[2].citation = "Beverage Alcohol Licensing Requirements"

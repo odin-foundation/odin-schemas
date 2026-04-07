@@ -26,7 +26,7 @@ source[0].url = "https://www.americanbar.org/groups/professional_responsibility/
 
 source[1].authority = "American Institute of Certified Public Accountants"
 source[1].citation = "AICPA Professional Standards"
-source[1].url = "https://www.aicpa.org/research/standards"
+source[1].url = "https://www.aicpa-cima.com/resources/landing/standards-and-statements"
 
 source[2].authority = "State Medical Boards"
 source[2].citation = "Medical Practice Acts"

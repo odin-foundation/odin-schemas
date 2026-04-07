@@ -23,7 +23,7 @@ description = "Comprehensive equipment breakdown coverage extending universal co
 {$derivation}
 source[0].authority = "U.S. Department of Energy"
 source[0].citation = "Energy Equipment Standards and Regulations"
-source[0].url = "https://www.energy.gov/eere/buildings/standards-and-regulations"
+source[0].url = "https://www.energy.gov/eere/buildings/building-energy-codes-program"
 
 source[1].authority = "Occupational Safety and Health Administration"
 source[1].citation = "29 CFR 1910.217 - Mechanical Power Presses"
@@ -35,7 +35,7 @@ source[2].url = "https://www.nationalboard.org/"
 
 source[3].authority = "American Society of Mechanical Engineers"
 source[3].citation = "ASME Boiler and Pressure Vessel Code"
-source[3].url = "https://www.asme.org/codes-standards/find-codes-standards/bpvc-boiler-pressure-vessel-code"
+source[3].url = "https://www.asme.org/codes-standards/bpvc-standards"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

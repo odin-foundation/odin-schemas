@@ -21,7 +21,7 @@ description = "Comprehensive EPLI coverage for employment-related claims"
 {$derivation}
 source[0].authority = "U.S. Equal Employment Opportunity Commission"
 source[0].citation = "EEOC Enforcement Guidance on Harassment"
-source[0].url = "https://www.eeoc.gov/laws/guidance"
+source[0].url = "https://www.eeoc.gov/select-task-force-study-harassment-workplace"
 
 source[1].authority = "U.S. Department of Labor"
 source[1].citation = "Fair Labor Standards Act"

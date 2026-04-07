@@ -17,7 +17,7 @@ description = "Liability coverage for work on or adjacent to railroad property"
 {$derivation}
 source[0].authority = "Insurance Services Office (ISO)"
 source[0].citation = "Railroad Protective Liability Coverage Form CG 00 35"
-source[0].url = "https://www.verisk.com/insurance/products/commercial-lines/"
+source[0].url = "https://www.verisk.com/insurance/"
 
 source[1].authority = "Federal Railroad Administration"
 source[1].citation = "Railroad Safety and Liability Requirements"

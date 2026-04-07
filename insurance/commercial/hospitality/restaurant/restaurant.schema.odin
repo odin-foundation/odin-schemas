@@ -29,7 +29,7 @@ source[2].url = "https://www.fda.gov/"
 
 source[3].authority = "Insurance Services Office (ISO)"
 source[3].citation = "Commercial General Liability - Restaurant Classification"
-source[3].url = "https://www.verisk.com/insurance/products/commercial-lines/"
+source[3].url = "https://www.verisk.com/insurance/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

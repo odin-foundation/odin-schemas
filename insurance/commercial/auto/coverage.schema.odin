@@ -23,7 +23,7 @@ source[0].url = "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/su
 
 source[1].authority = "U.S. Department of Transportation"
 source[1].citation = "Motor Carrier Insurance Requirements"
-source[1].url = "https://www.fmcsa.dot.gov/registration/insurance-requirements"
+source[1].url = "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-387"
 
 source[2].authority = "National Association of Insurance Commissioners (NAIC)"
 source[2].citation = "Commercial Auto Insurance Model Laws"

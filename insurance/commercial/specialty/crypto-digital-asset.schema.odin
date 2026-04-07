@@ -32,11 +32,11 @@ source[2].url = "https://csrc.nist.gov/pubs/ir/8301/final"
 
 source[3].authority = "American Institute of CPAs"
 source[3].citation = "SOC 2 Type II Trust Services Criteria"
-source[3].url = "https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome"
+source[3].url = "https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc"
 
 source[4].authority = "Financial Crimes Enforcement Network"
 source[4].citation = "Guidance on Virtual Currency"
-source[4].url = "https://www.fincen.gov/resources/statutes-and-regulations/guidance"
+source[4].url = "https://www.fincen.gov/resources/statutes-regulations/guidance"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

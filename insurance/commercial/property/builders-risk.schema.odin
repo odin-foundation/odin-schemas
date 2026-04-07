@@ -21,7 +21,7 @@ description = "Comprehensive builders risk coverage for construction projects"
 {$derivation}
 source[0].authority = "American Institute of Architects"
 source[0].citation = "AIA Document A101-2017 Standard Form of Agreement"
-source[0].url = "https://www.aiacontracts.org/"
+source[0].url = "https://web.archive.org/web/2023/https://www.aiacontracts.org/"
 
 source[1].authority = "U.S. Department of Housing and Urban Development"
 source[1].citation = "Construction Insurance Requirements"

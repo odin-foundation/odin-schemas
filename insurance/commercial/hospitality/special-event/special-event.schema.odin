@@ -21,7 +21,7 @@ source[0].url = "https://content.naic.org/"
 
 source[1].authority = "Insurance Services Office (ISO)"
 source[1].citation = "Special Events Coverage Forms"
-source[1].url = "https://www.verisk.com/insurance/products/commercial-lines/"
+source[1].url = "https://www.verisk.com/insurance/"
 
 source[2].authority = "International Festivals & Events Association"
 source[2].citation = "Event Insurance Best Practices"

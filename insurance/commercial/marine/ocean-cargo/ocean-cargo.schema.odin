@@ -17,7 +17,7 @@ description = "Marine cargo insurance for goods transported by sea"
 {$derivation}
 source[0].authority = "Lloyd's Market Association"
 source[0].citation = "Institute Cargo Clauses (A, B, C)"
-source[0].url = "https://www.lmalloyds.com/LMA/Underwriting/Marine/JCC/JCC.aspx"
+source[0].url = "https://web.archive.org/web/2023/https://www.lmalloyds.com/LMA/Underwriting/Marine/JCC/JCC.aspx"
 
 source[1].authority = "International Maritime Organization (IMO)"
 source[1].citation = "International Maritime Conventions"

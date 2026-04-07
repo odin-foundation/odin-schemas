@@ -24,7 +24,7 @@ source[0].url = "https://www.americanbar.org/groups/business_law/committees/merg
 
 source[1].authority = "U.S. Securities and Exchange Commission"
 source[1].citation = "M&A Disclosure Requirements, Regulation S-K"
-source[1].url = "https://www.sec.gov/divisions/corpfin/guidance/mdasubstguidance.htm"
+source[1].url = "https://www.ecfr.gov/current/title-17/chapter-II/part-229"
 
 source[2].authority = "Harvard Law School Forum on Corporate Governance"
 source[2].citation = "Representations and Warranties Insurance in M&A Transactions"

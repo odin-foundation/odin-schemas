@@ -17,7 +17,7 @@ description = "Commercial marine hull insurance for vessels and watercraft"
 {$derivation}
 source[0].authority = "Lloyd's Market Association"
 source[0].citation = "Institute Time Clauses - Hulls"
-source[0].url = "https://www.lmalloyds.com/LMA/Underwriting/Marine/JCC/JCC.aspx"
+source[0].url = "https://web.archive.org/web/2023/https://www.lmalloyds.com/LMA/Underwriting/Marine/JCC/JCC.aspx"
 
 source[1].authority = "American Institute of Marine Underwriters (AIMU)"
 source[1].citation = "American Hull Insurance Syndicate Clauses"

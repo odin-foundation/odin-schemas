@@ -25,7 +25,7 @@ source[1].url = "https://www.ahla.com/"
 
 source[2].authority = "Insurance Services Office (ISO)"
 source[2].citation = "Commercial General Liability - Hotels/Motels"
-source[2].url = "https://www.verisk.com/insurance/products/commercial-lines/"
+source[2].url = "https://www.verisk.com/insurance/"
 
 source[3].authority = "State Innkeeper Liability Statutes"
 source[3].citation = "Innkeeper Rights and Responsibilities"
