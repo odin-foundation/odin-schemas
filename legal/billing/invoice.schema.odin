@@ -20,7 +20,7 @@ description = "LEDES-compliant legal billing invoices"
 {$derivation}
 source[0].authority = "Legal Electronic Data Exchange Standard"
 source[0].citation = "LEDES 1998B Specification"
-source[0].url = "https://ledes.org/ledes-1998b/"
+source[0].url = "https://ledes.org/ledes-98b-format/"
 
 source[1].authority = "Legal Electronic Data Exchange Standard"
 source[1].citation = "LEDES 2000 Specification"
@@ -28,7 +28,7 @@ source[1].url = "https://ledes.org/ledes-2000/"
 
 source[2].authority = "Legal Electronic Data Exchange Standard"
 source[2].citation = "LEDES eBilling XML Specification"
-source[2].url = "https://ledes.org/ledes-ebilling-xml/"
+source[2].url = "https://ledes.org/ledes-xml-ebilling-ver-2-2/"
 
 source[3].authority = "Uniform Task-Based Management System"
 source[3].citation = "UTBMS Code Sets"
