@@ -24,7 +24,7 @@ source[0].url = "https://www.ustia.org/"
 
 source[1].authority = "State Insurance Departments"
 source[1].citation = "Travel Insurance Regulatory Requirements"
-source[1].url = "https://www.usa.gov/state-insurance"
+source[1].url = "https://content.naic.org/state-insurance-departments"
 
 source[2].authority = "National Association of Insurance Commissioners (NAIC)"
 source[2].citation = "Travel Insurance Model Act"
