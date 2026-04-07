@@ -1,0 +1,45 @@
+{
+  "name": "@odin-foundation/schemas",
+  "version": "1.0.0",
+  "description": "ODIN Schema Library — production-ready schemas for insurance, healthcare, finance, legal, real estate, government, and more. Each schema is derived from authoritative industry sources with full provenance.",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "**/*.schema.odin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node -e \"import('./index.js').then(m => { if (!m.schemasRoot) throw new Error('schemasRoot missing'); console.log('ok:', m.schemasRoot); })\""
+  },
+  "keywords": [
+    "odin",
+    "schemas",
+    "data-interchange",
+    "insurance",
+    "healthcare",
+    "finance",
+    "legal"
+  ],
+  "homepage": "https://odin.foundation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/odin-foundation/odin-schemas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/odin-foundation/odin-schemas/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "ODIN Foundation",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
