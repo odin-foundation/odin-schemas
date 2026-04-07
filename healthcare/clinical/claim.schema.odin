@@ -27,7 +27,7 @@ source[1].url = "https://hl7.org/fhir/R5/claim.html"
 
 source[2].authority = "CMS"
 source[2].citation = "CMS-1500 and UB-04 Claim Forms"
-source[2].url = "https://www.cms.gov/medicare/cms-forms"
+source[2].url = "https://www.cms.gov/medicare/forms-notices/cms-forms-list"
 
 source[3].authority = "X12"
 source[3].citation = "ASC X12 837 Health Care Claim Transaction"
