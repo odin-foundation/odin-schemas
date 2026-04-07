@@ -24,7 +24,7 @@ source[0].url = "https://content.naic.org/sites/default/files/model-law-275.pdf"
 
 source[1].authority = "NAIC"
 source[1].citation = "Fixed Indexed Annuity Buyer's Guide"
-source[1].url = "https://content.naic.org/sites/default/files/publication-anb-fia-lp.pdf"
+source[1].url = "https://content.naic.org/insurance-topics/annuities"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
