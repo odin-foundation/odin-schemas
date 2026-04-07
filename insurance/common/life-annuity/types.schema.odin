@@ -20,7 +20,7 @@ description = "Reusable type definitions for life insurance and annuity products
 {$derivation}
 source[0].authority = "NAIC"
 source[0].citation = "NAIC Life Insurance Buyer's Guide"
-source[0].url = "https://content.naic.org/sites/default/files/publication-lbg-lp.pdf"
+source[0].url = "https://content.naic.org/insurance-topics/life-insurance"
 
 methodology = "industry_practice"
 proprietary_sources_consulted = ?false
