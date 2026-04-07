@@ -21,7 +21,7 @@ source[0].url = "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-B/p
 
 source[1].authority = "CMS"
 source[1].citation = "HealthCare.gov Application Instructions"
-source[1].url = "https://www.healthcare.gov/apply-and-enroll/"
+source[1].url = "https://www.healthcare.gov/quick-guide/"
 
 source[2].authority = "CMS"
 source[2].citation = "Federally-facilitated Exchange Operations Manual"
