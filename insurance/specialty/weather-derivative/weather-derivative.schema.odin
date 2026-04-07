@@ -17,7 +17,7 @@ description = "Parametric coverage for weather-related business impacts"
 {$derivation}
 source[0].authority = "Weather Risk Management Association"
 source[0].citation = "Weather Derivative Standards and Documentation"
-source[0].url = "https://www.wrma.org/"
+source[0].url = "https://web.archive.org/web/20201111205411/https://wrma.org/"
 
 source[1].authority = "Chicago Mercantile Exchange"
 source[1].citation = "Weather Derivative Contract Specifications"
