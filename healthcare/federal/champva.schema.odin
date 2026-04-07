@@ -21,7 +21,7 @@ source[0].url = "https://www.law.cornell.edu/uscode/text/38/1781"
 
 source[1].authority = "GPO"
 source[1].citation = "38 CFR 17.270-17.278 - CHAMPVA"
-source[1].url = "https://www.ecfr.gov/current/title-38/chapter-I/part-17/subject-group-ECFR6e7cde6f3ef9147"
+source[1].url = "https://www.ecfr.gov/current/title-38/chapter-I/part-17"
 
 source[2].authority = "VA"
 source[2].citation = "CHAMPVA Policy Manual"
