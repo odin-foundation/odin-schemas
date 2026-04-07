@@ -19,7 +19,7 @@ description = "Medicare prescription drug coverage (Part D) plan data"
 {$derivation}
 source[0].authority = "CMS"
 source[0].citation = "Medicare Prescription Drug Benefit Manual (CMS Pub 100-18)"
-source[0].url = "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/Internet-Only-Manuals-IOMs-Items/CMS019193"
+source[0].url = "https://www.cms.gov/regulations-and-guidance/guidance/manuals/internet-only-manuals-ioms"
 
 source[1].authority = "GPO"
 source[1].citation = "42 CFR Part 423 - Voluntary Medicare Prescription Drug Benefit"
