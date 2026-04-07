@@ -19,11 +19,11 @@ description = "Farm machinery, telematics, maintenance, and precision agricultur
 {$derivation}
 source[0].authority = "Agricultural Industry Electronics Foundation (AEF)"
 source[0].citation = "ISOBUS Standards (ISO 11783)"
-source[0].url = "https://www.aef-online.org/about-aef/aef-isobus-database.html"
+source[0].url = "https://www.iso.org/standard/57556.html"
 
 source[1].authority = "AgGateway"
 source[1].citation = "ADAPT Framework - Agricultural Data Application Programming Toolkit"
-source[1].url = "https://www.aggateway.org/ADAPT"
+source[1].url = "https://adaptframework.org/"
 
 source[2].authority = "Association of Equipment Manufacturers"
 source[2].citation = "Equipment Data Dictionary and Telemetry Standards"
