@@ -28,7 +28,7 @@ source[1].url = "https://www.irs.gov/businesses/small-businesses-self-employed/u
 
 source[2].authority = "State Mechanics Lien Statutes"
 source[2].citation = "Construction Lien Laws"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.law.cornell.edu/wex/mechanic%27s_lien"
 
 source[3].authority = "American Land Title Association"
 source[3].citation = "Lien Priority and Title Examination"
