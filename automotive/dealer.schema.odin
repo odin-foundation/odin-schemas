@@ -27,7 +27,7 @@ source[1].url = "https://www.aamva.org/"
 
 source[2].authority = "Federal Trade Commission"
 source[2].citation = "FTC Dealer Advertising Guidelines"
-source[2].url = "https://www.ftc.gov/business-guidance/resources/advertising-leasing-consumer-guide-dealers"
+source[2].url = "https://www.ftc.gov/business-guidance/resources/dealers-guide-used-car-rule"
 
 source[3].authority = "Uniform Commercial Code"
 source[3].citation = "UCC Article 9 - Secured Transactions (Floor Plan Financing)"
