@@ -23,9 +23,9 @@ source[1].authority = "Producers Guild of America"
 source[1].citation = "Production Best Practices and Insurance"
 source[1].url = "https://producersguild.org/"
 
-source[2].authority = "Entertainment Industry Insurance Specialists"
-source[2].citation = "Production Insurance Coverage Standards"
-source[2].url = "https://www.entertainmentinsurancespecialists.com/"
+source[2].authority = "Contract Services Administration Trust Fund"
+source[2].citation = "Industry-Wide Labor-Management Safety Committee Safety Bulletins"
+source[2].url = "https://www.csatf.org/production-affairs-safety/safety-bulletins/"
 
 source[3].authority = "California Film Commission"
 source[3].citation = "Film Production Insurance and Permit Requirements"
