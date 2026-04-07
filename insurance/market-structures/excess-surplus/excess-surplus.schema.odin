@@ -34,7 +34,7 @@ source[2].url = "https://content.naic.org/sites/default/files/publication-qls-as
 
 source[3].authority = "Wholesale & Specialty Insurance Association"
 source[3].citation = "Surplus Lines Manual and Reference Guide"
-source[3].url = "https://www.wsia.org/wcm/About/What_is_Surplus_Lines.aspx"
+source[3].url = "https://web.archive.org/web/2024/https://www.wsia.org/wcm/About/What_is_Surplus_Lines.aspx"
 
 source[4].authority = "Surplus Lines Stamping Office of Texas"
 source[4].citation = "Filing Requirements and Tax Guidelines"
