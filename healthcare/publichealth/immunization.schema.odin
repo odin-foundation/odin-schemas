@@ -17,15 +17,15 @@ description = "Immunization records and registry structures"
 {$derivation}
 source[0].authority = "CDC"
 source[0].citation = "ACIP Immunization Schedule"
-source[0].url = "https://www.cdc.gov/vaccines/schedules/"
+source[0].url = "https://www.cdc.gov/vaccines/hcp/imz-schedules/index.html"
 
 source[1].authority = "CDC"
 source[1].citation = "Immunization Information System (IIS) Functional Standards"
-source[1].url = "https://www.cdc.gov/vaccines/programs/iis/functional-standards.html"
+source[1].url = "https://www.cdc.gov/iis/about/index.html"
 
 source[2].authority = "HL7"
 source[2].citation = "HL7 Implementation Guide for Immunization Messaging"
-source[2].url = "https://www.cdc.gov/vaccines/programs/iis/technical-guidance/hl7.html"
+source[2].url = "https://repository.immregistries.org/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
