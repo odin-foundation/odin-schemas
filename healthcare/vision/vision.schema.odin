@@ -30,11 +30,11 @@ source[2].url = "https://content.naic.org/"
 
 source[3].authority = "State Optometry Boards"
 source[3].citation = "State Optometry Practice Acts"
-source[3].url = "https://www.arbo.org/state-boards"
+source[3].url = "https://www.arbo.org/"
 
 source[4].authority = "American Academy of Ophthalmology"
 source[4].citation = "Preferred Practice Patterns"
-source[4].url = "https://www.aao.org/preferred-practice-pattern"
+source[4].url = "https://www.aao.org/guidelines-browse"
 
 source[5].authority = "GPO"
 source[5].citation = "42 CFR 440.120 - Clinic Services (Medicaid Vision)"
