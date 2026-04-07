@@ -25,7 +25,7 @@ source[0].url = "https://www.consumerfinance.gov/rules-policy/regulations/1026/3
 
 source[1].authority = "HUD"
 source[1].citation = "Real Estate Settlement Procedures Act (RESPA)"
-source[1].url = "https://www.hud.gov/program_offices/housing/rmra/res/respa_hm"
+source[1].url = "https://www.consumerfinance.gov/compliance/compliance-resources/mortgage-resources/respa/"
 
 source[2].authority = "American Land Title Association"
 source[2].citation = "ALTA Settlement Statement Best Practices"
