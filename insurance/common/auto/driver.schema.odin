@@ -17,7 +17,7 @@ description = "Base driver fields shared by personal and commercial auto"
 {$derivation}
 source[0].authority = "American Association of Motor Vehicle Administrators"
 source[0].citation = "Driver License Agreement (DLA)"
-source[0].url = "https://www.aamva.org/technology/systems/driver-license-data-verification"
+source[0].url = "https://en.wikipedia.org/wiki/Driver_License_Compact"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
