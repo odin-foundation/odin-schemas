@@ -28,7 +28,7 @@ source[0].url = "https://content.naic.org/"
 
 source[1].authority = "State Insurance Departments"
 source[1].citation = "Personal Umbrella Filing Requirements"
-source[1].url = "https://www.usa.gov/state-insurance"
+source[1].url = "https://content.naic.org/state-insurance-departments"
 
 source[2].authority = "Insurance Information Institute (III)"
 source[2].citation = "Personal Umbrella Liability Policies"
