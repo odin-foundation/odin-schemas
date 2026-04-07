@@ -22,7 +22,7 @@ source[0].url = "https://www.consumerfinance.gov/rules-policy/regulations/1026/"
 
 source[1].authority = "Fannie Mae"
 source[1].citation = "Selling Guide - B2 Eligibility"
-source[1].url = "https://selling-guide.fanniemae.com/Selling-Guide/Origination-thru-Closing/Subpart-B2-Eligibility/"
+source[1].url = "https://singlefamily.fanniemae.com/originating-underwriting"
 
 source[2].authority = "Freddie Mac"
 source[2].citation = "Seller/Servicer Guide Chapter 4301"
