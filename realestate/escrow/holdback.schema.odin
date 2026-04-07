@@ -29,7 +29,7 @@ source[1].url = "https://selling-guide.fanniemae.com/"
 
 source[2].authority = "State Escrow Regulations"
 source[2].citation = "Escrow and Trust Account Requirements"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.law.cornell.edu/wex/escrow"
 
 methodology = "industry_practice"
 proprietary_sources_consulted = ?false
