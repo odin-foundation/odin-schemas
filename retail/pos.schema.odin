@@ -15,7 +15,7 @@ description = "Point of sale transactions and register operations"
 {$derivation}
 source[0].authority = "NRF"
 source[0].citation = "NRF ARTS XML Standards"
-source[0].url = "https://nrf.com/resources/retail-library/arts-xml"
+source[0].url = "https://nrf.com/research-insights"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
