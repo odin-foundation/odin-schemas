@@ -23,7 +23,7 @@ source[0].url = "https://www.iso20022.org/catalogue-messages/iso-20022-messages-
 
 source[1].authority = "SWIFT"
 source[1].citation = "MT9XX Series - Balance and Transaction Reports"
-source[1].url = "https://www.swift.com/standards/data-standards/mt-message-standards"
+source[1].url = "https://en.wikipedia.org/wiki/SWIFT_message_types"
 
 source[2].authority = "Bank Administration Institute"
 source[2].citation = "BAI2 Cash Management Balance Reporting"
