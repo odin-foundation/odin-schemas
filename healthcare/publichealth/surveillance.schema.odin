@@ -21,11 +21,11 @@ source[0].url = "https://www.cdc.gov/nssp/"
 
 source[1].authority = "CDC"
 source[1].citation = "NSSP ESSENCE Guide"
-source[1].url = "https://www.cdc.gov/nssp/documents/guides/"
+source[1].url = "https://www.cdc.gov/nssp/php/about/index.html"
 
 source[2].authority = "CDC"
 source[2].citation = "BioSense Platform Technical Guidance"
-source[2].url = "https://www.cdc.gov/nssp/biosense-platform.html"
+source[2].url = "https://www.cdc.gov/nssp/php/about/index.html"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
