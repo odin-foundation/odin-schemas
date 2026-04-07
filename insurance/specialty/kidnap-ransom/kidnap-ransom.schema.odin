@@ -21,7 +21,7 @@ source[0].url = "https://www.lloyds.com/"
 
 source[1].authority = "Overseas Security Advisory Council (OSAC)"
 source[1].citation = "Kidnapping and Extortion Prevention Guidelines"
-source[1].url = "https://www.osac.gov/"
+source[1].url = "https://www.state.gov/bureaus-offices/under-secretary-for-management/bureau-of-diplomatic-security/overseas-security-advisory-council/"
 
 source[2].authority = "International Risk Management Institute (IRMI)"
 source[2].citation = "Kidnap and Ransom Insurance Coverage"
