@@ -25,7 +25,7 @@ source[1].url = "https://content.naic.org/"
 
 source[2].authority = "Insurance Information Institute"
 source[2].citation = "Identity Theft Insurance Consumer Information"
-source[2].url = "https://www.iii.org/article/what-identity-theft-insurance"
+source[2].url = "https://www.iii.org/article/identity-theft-insurance"
 
 source[3].authority = "Consumer Financial Protection Bureau (CFPB)"
 source[3].citation = "Identity Theft and Credit Reporting Guidelines"
