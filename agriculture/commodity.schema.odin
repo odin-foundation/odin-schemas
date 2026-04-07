@@ -18,7 +18,7 @@ description = "Commodity marketing with grain, livestock, futures, and contracts
 {$derivation}
 source[0].authority = "U.S. Department of Agriculture Grain Inspection, Packers and Stockyards Administration"
 source[0].citation = "GIPSA Official Grain Standards (7 CFR Part 810)"
-source[0].url = "https://www.ams.usda.gov/about-ams/programs-offices/fgis-office"
+source[0].url = "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-VIII/subchapter-A/part-810"
 
 source[1].authority = "Chicago Mercantile Exchange"
 source[1].citation = "CME Agricultural Commodity Futures and Options Contract Specifications"
