@@ -28,7 +28,7 @@ source[1].url = "https://pacer.uscourts.gov/"
 
 source[2].authority = "State Court Administration"
 source[2].citation = "Case Management Standards"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.ncsc.org/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

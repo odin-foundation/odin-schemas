@@ -28,7 +28,7 @@ source[1].url = "https://www.uscourts.gov/rules-policies/current-rules-practice-
 
 source[2].authority = "State Court Rules"
 source[2].citation = "Time Computation Rules"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.ncsc.org/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
