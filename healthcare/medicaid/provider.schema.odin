@@ -23,7 +23,7 @@ source[0].url = "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-C/p
 
 source[1].authority = "CMS"
 source[1].citation = "Medicaid Provider Enrollment Compendium"
-source[1].url = "https://www.medicaid.gov/medicaid/program-integrity/provider-enrollment/index.html"
+source[1].url = "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-C/part-455/subpart-E"
 
 source[2].authority = "GPO"
 source[2].citation = "42 CFR 431.107 - Required provider agreements"
