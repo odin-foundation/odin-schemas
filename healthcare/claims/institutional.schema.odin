@@ -18,7 +18,7 @@ description = "Institutional healthcare claims derived from UB-04 structure"
 {$derivation}
 source[0].authority = "CMS"
 source[0].citation = "UB-04 Data Specifications Manual - Public Form Instructions"
-source[0].url = "https://www.cms.gov/medicare/cms-forms/cms-forms/cms-forms-items/cms012949"
+source[0].url = "https://www.nubc.org/"
 
 source[1].authority = "CMS"
 source[1].citation = "Medicare Claims Processing Manual Chapter 25 - Completing and Processing UB-04"
