@@ -24,7 +24,7 @@ source[0].url = "https://www.alta.org/policy-forms/"
 
 source[1].authority = "State Insurance Departments"
 source[1].citation = "Title Insurance Regulations"
-source[1].url = "varies by jurisdiction"
+source[1].url = "https://content.naic.org/insurance-topics/title-insurance"
 
 source[2].authority = "CFPB"
 source[2].citation = "TRID Title Insurance Disclosure"
