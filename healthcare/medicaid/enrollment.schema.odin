@@ -19,7 +19,7 @@ description = "Medicaid application and enrollment processes"
 {$derivation}
 source[0].authority = "CMS"
 source[0].citation = "CMS-10114 Single Streamlined Application"
-source[0].url = "https://www.medicaid.gov/medicaid/eligibility/downloads/application-instructions.pdf"
+source[0].url = "https://www.cms.gov/cciio/programs-and-initiatives/health-insurance-marketplaces"
 
 source[1].authority = "GPO"
 source[1].citation = "42 CFR 435.907 - Application"
