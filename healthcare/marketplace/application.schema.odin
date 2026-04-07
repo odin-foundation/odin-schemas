@@ -19,7 +19,7 @@ description = "Marketplace application structures"
 {$derivation}
 source[0].authority = "CMS"
 source[0].citation = "CMS-10440 Single Streamlined Application"
-source[0].url = "https://www.cms.gov/cciio/Programs-and-Initiatives/Health-Insurance-Marketplaces/Downloads/SBMModelApplication.pdf"
+source[0].url = "https://www.cms.gov/cciio/programs-and-initiatives/health-insurance-marketplaces"
 
 source[1].authority = "GPO"
 source[1].citation = "45 CFR 155.405 - Single streamlined application"
@@ -27,7 +27,7 @@ source[1].url = "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-B/p
 
 source[2].authority = "CMS"
 source[2].citation = "HealthCare.gov Application"
-source[2].url = "https://www.healthcare.gov/apply-and-enroll/"
+source[2].url = "https://www.healthcare.gov/quick-guide/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
