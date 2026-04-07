@@ -25,7 +25,7 @@ source[1].url = "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subc
 
 source[2].authority = "DHA"
 source[2].citation = "TRICARE Policy Manual 6010.57-M"
-source[2].url = "https://www.health.mil/Military-Health-Topics/Access-Cost-Quality-and-Safety/TRICARE-Health-Plan"
+source[2].url = "https://manuals.health.mil/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
