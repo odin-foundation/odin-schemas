@@ -20,15 +20,15 @@ description = "Medicare provider enrollment and certification"
 {$derivation}
 source[0].authority = "CMS"
 source[0].citation = "CMS-855A Medicare Enrollment Application - Institutional Providers"
-source[0].url = "https://www.cms.gov/medicare/cms-forms/cms-forms/cms-forms-items/cms023066"
+source[0].url = "https://www.cms.gov/medicare/forms-notices/cms-forms-list"
 
 source[1].authority = "CMS"
 source[1].citation = "CMS-855B Medicare Enrollment Application - Clinics/Group Practices"
-source[1].url = "https://www.cms.gov/medicare/cms-forms/cms-forms/cms-forms-items/cms023065"
+source[1].url = "https://www.cms.gov/medicare/forms-notices/cms-forms-list"
 
 source[2].authority = "CMS"
 source[2].citation = "CMS-855I Medicare Enrollment Application - Individual Practitioners"
-source[2].url = "https://www.cms.gov/medicare/cms-forms/cms-forms/cms-forms-items/cms023064"
+source[2].url = "https://www.cms.gov/medicare/forms-notices/cms-forms-list"
 
 source[3].authority = "GPO"
 source[3].citation = "42 CFR Part 424 Subpart P - Requirements for Establishing and Maintaining Medicare Billing Privileges"
