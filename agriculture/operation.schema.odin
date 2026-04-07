@@ -18,11 +18,11 @@ description = "Farm and ranch operation with land management and FSA registratio
 {$derivation}
 source[0].authority = "U.S. Department of Agriculture Farm Service Agency"
 source[0].citation = "FSA Handbook 2-CM, Common Land Unit (CLU) Handbook"
-source[0].url = "https://www.fsa.usda.gov/programs-and-services/common-land-unit/index"
+source[0].url = "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-VII/subchapter-B/part-718"
 
 source[1].authority = "U.S. Department of Agriculture Farm Service Agency"
 source[1].citation = "FSA-578, Report of Acreage"
-source[1].url = "https://www.fsa.usda.gov/programs-and-services/acreage-reporting/index"
+source[1].url = "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-VII/subchapter-B/part-718"
 
 source[2].authority = "U.S. Department of Agriculture NASS"
 source[2].citation = "NASS Farm Operation Classifications"
