@@ -17,15 +17,15 @@ description = "Birth and death certificate structures"
 {$derivation}
 source[0].authority = "CDC/NCHS"
 source[0].citation = "U.S. Standard Certificate of Live Birth"
-source[0].url = "https://www.cdc.gov/nchs/nvss/vital-certificate-revisions.htm"
+source[0].url = "https://www.cdc.gov/nchs/nvss/vital_certificate_revisions.htm"
 
 source[1].authority = "CDC/NCHS"
 source[1].citation = "U.S. Standard Certificate of Death"
-source[1].url = "https://www.cdc.gov/nchs/nvss/vital-certificate-revisions.htm"
+source[1].url = "https://www.cdc.gov/nchs/nvss/vital_certificate_revisions.htm"
 
 source[2].authority = "NCHS"
 source[2].citation = "Model State Vital Statistics Act and Regulations"
-source[2].url = "https://www.cdc.gov/nchs/nvss/model-vital-statistics-act.htm"
+source[2].url = "https://www.cdc.gov/nchs/data/misc/mvsact92b.pdf"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
