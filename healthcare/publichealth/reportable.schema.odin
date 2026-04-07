@@ -25,7 +25,7 @@ source[1].url = "https://ndc.services.cdc.gov/"
 
 source[2].authority = "CDC"
 source[2].citation = "Electronic Case Reporting (eCR) Implementation Guide"
-source[2].url = "https://www.cdc.gov/ecr/"
+source[2].url = "https://www.cdc.gov/ecr/php/about/index.html"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
