@@ -20,7 +20,7 @@ description = "Business formation, registration, annual reports, and operating p
 {$derivation}
 source[0].authority = "Secretary of State Offices"
 source[0].citation = "Business Entity Filing Requirements"
-source[0].url = "https://www.nass.org/business-services"
+source[0].url = "https://www.nass.org/"
 source[0].accessed = 2025-12-21
 
 source[1].authority = "Internal Revenue Service"
