@@ -22,7 +22,7 @@ source[0].url = "https://www.ecfr.gov/current/title-19"
 
 source[1].authority = "CBP"
 source[1].citation = "CBP Form 7501 - Entry Summary"
-source[1].url = "https://www.cbp.gov/trade/ace"
+source[1].url = "https://www.cbp.gov/trade/automated"
 
 source[2].authority = "USITC"
 source[2].citation = "Harmonized Tariff Schedule of the United States (HTSUS)"
