@@ -33,11 +33,11 @@ source[3].url = "https://www.asam.org/asam-criteria"
 
 source[4].authority = "SAMHSA"
 source[4].citation = "National Guidelines for Behavioral Health Crisis Care"
-source[4].url = "https://www.samhsa.gov/sites/default/files/national-guidelines-for-behavioral-health-crisis-care.pdf"
+source[4].url = "https://www.samhsa.gov/find-help/implementing-behavioral-health-crisis-care"
 
 source[5].authority = "DOL"
 source[5].citation = "Mental Health Parity Final Rules"
-source[5].url = "https://www.dol.gov/agencies/ebsa/laws-and-regulations/laws/mental-health-parity"
+source[5].url = "https://www.law.cornell.edu/uscode/text/29/1185a"
 
 source[6].authority = "BACB"
 source[6].citation = "Behavior Analyst Certification Board - Professional Standards"
