@@ -24,7 +24,7 @@ source[0].url = "https://www.alta.org/policy-forms/"
 
 source[1].authority = "State Bar Title Standards"
 source[1].citation = "Title Examination Standards"
-source[1].url = "varies by jurisdiction"
+source[1].url = "https://www.law.cornell.edu/wex/title_search"
 
 methodology = "industry_practice"
 proprietary_sources_consulted = ?false
