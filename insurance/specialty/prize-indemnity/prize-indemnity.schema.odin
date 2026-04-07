@@ -17,7 +17,7 @@ description = "Coverage for promotional contest prize obligations"
 {$derivation}
 source[0].authority = "Insurance Services Office (ISO)"
 source[0].citation = "Prize Indemnification Coverage"
-source[0].url = "https://www.verisk.com/insurance/products/commercial-lines/"
+source[0].url = "https://www.verisk.com/insurance/"
 
 source[1].authority = "Hole In One International"
 source[1].citation = "Golf Prize Insurance Standards"

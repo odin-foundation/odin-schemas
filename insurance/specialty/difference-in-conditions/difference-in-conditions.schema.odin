@@ -17,7 +17,7 @@ description = "Gap coverage for perils excluded from primary property policies"
 {$derivation}
 source[0].authority = "Insurance Services Office (ISO)"
 source[0].citation = "Difference in Conditions Coverage Form"
-source[0].url = "https://www.verisk.com/insurance/products/commercial-lines/"
+source[0].url = "https://www.verisk.com/insurance/"
 
 source[1].authority = "National Association of Insurance Commissioners (NAIC)"
 source[1].citation = "Specialty Property Insurance - DIC"
