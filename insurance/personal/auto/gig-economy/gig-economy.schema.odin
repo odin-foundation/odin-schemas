@@ -30,7 +30,7 @@ source[1].url = "https://www.tdlr.texas.gov/tnc/operations.htm"
 
 source[2].authority = "New York Department of Financial Services"
 source[2].citation = "NY Vehicle and Traffic Law Article 44-B Section 1693"
-source[2].url = "https://law.justia.com/codes/new-york/vat/title-8/article-44-b/1693/"
+source[2].url = "https://www.nysenate.gov/legislation/laws/VAT/1693"
 
 source[3].authority = "Virginia Department of Motor Vehicles"
 source[3].citation = "TNC Insurance Requirements"
