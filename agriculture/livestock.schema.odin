@@ -18,7 +18,7 @@ description = "Livestock records with identification, health, production, and mo
 {$derivation}
 source[0].authority = "U.S. Department of Agriculture APHIS"
 source[0].citation = "Animal Disease Traceability Requirements (9 CFR Part 86)"
-source[0].url = "https://www.aphis.usda.gov/animal-disease-traceability"
+source[0].url = "https://www.ecfr.gov/current/title-9/chapter-I/subchapter-C/part-86"
 
 source[1].authority = "U.S. Department of Agriculture APHIS"
 source[1].citation = "National Animal Identification System (NAIS) Guidelines"
