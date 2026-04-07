@@ -30,7 +30,7 @@ source[1].url = "https://ledes.org/"
 
 source[2].authority = "State Bar Associations"
 source[2].citation = "Client Trust Account Regulations"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_15_safekeeping_property/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
