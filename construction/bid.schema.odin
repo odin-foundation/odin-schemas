@@ -15,7 +15,7 @@ description = "Bids, bid packages, and procurement"
 {$derivation}
 source[0].authority = "AIA"
 source[0].citation = "AIA A701 Instructions to Bidders"
-source[0].url = "https://www.aiacontracts.org/"
+source[0].url = "https://aiacontracts.com/"
 
 source[1].authority = "ConsensusDocs"
 source[1].citation = "ConsensusDocs 200"

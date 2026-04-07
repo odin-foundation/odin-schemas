@@ -15,7 +15,7 @@ description = "Lien waivers, mechanics liens, and notices"
 {$derivation}
 source[0].authority = "AIA"
 source[0].citation = "AIA G706 Lien Waivers"
-source[0].url = "https://www.aiacontracts.org/"
+source[0].url = "https://aiacontracts.com/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false

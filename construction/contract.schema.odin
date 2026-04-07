@@ -15,7 +15,7 @@ description = "Contracts, change orders, and amendments"
 {$derivation}
 source[0].authority = "AIA"
 source[0].citation = "AIA A101/A201 Contract Documents"
-source[0].url = "https://www.aiacontracts.org/"
+source[0].url = "https://aiacontracts.com/"
 
 source[1].authority = "ConsensusDocs"
 source[1].citation = "ConsensusDocs 200 Standard Agreement"

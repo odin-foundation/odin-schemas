@@ -15,7 +15,7 @@ description = "Project closeout, punch lists, and warranties"
 {$derivation}
 source[0].authority = "AIA"
 source[0].citation = "AIA A201 General Conditions - Closeout"
-source[0].url = "https://www.aiacontracts.org/"
+source[0].url = "https://aiacontracts.com/"
 
 source[1].authority = "CSI"
 source[1].citation = "CSI Division 01 7800 Closeout Submittals"

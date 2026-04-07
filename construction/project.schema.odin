@@ -15,7 +15,7 @@ description = "Construction projects and project management"
 {$derivation}
 source[0].authority = "AIA"
 source[0].citation = "AIA Contract Documents"
-source[0].url = "https://www.aiacontracts.org/"
+source[0].url = "https://aiacontracts.com/"
 
 source[1].authority = "CSI"
 source[1].citation = "Construction Specifications Institute"
