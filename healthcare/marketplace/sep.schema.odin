@@ -23,7 +23,7 @@ source[0].url = "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-B/p
 
 source[1].authority = "CMS"
 source[1].citation = "Special Enrollment Period Reference Chart"
-source[1].url = "https://www.cms.gov/CCIIO/Programs-and-Initiatives/Health-Insurance-Marketplaces/SEP"
+source[1].url = "https://www.healthcare.gov/help/special-enrollment-period/"
 
 source[2].authority = "CMS"
 source[2].citation = "SEP Verification Process"
