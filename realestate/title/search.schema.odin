@@ -25,11 +25,11 @@ source[0].url = "https://www.alta.org/"
 
 source[1].authority = "State Bar Title Standards"
 source[1].citation = "Title Examination Standards"
-source[1].url = "varies by jurisdiction"
+source[1].url = "https://www.law.cornell.edu/wex/title_search"
 
 source[2].authority = "County Recorder Offices"
 source[2].citation = "Recording and Indexing Standards"
-source[2].url = "varies by jurisdiction"
+source[2].url = "https://www.law.cornell.edu/wex/recording_acts"
 
 methodology = "industry_practice"
 proprietary_sources_consulted = ?false
