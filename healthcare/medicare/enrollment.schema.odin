@@ -27,7 +27,7 @@ source[1].url = "https://www.cms.gov/medicare/cms-forms/cms-forms/cms-forms-item
 
 source[2].authority = "CMS"
 source[2].citation = "Medicare Managed Care Manual (CMS Pub 100-16) Chapter 2 - Enrollment/Disenrollment"
-source[2].url = "https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/Downloads/mc86c02.pdf"
+source[2].url = "https://www.cms.gov/regulations-and-guidance/guidance/manuals/internet-only-manuals-ioms"
 
 source[3].authority = "GPO"
 source[3].citation = "42 CFR Part 406 - Hospital Insurance Eligibility and Entitlement"
