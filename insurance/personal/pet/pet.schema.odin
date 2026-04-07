@@ -29,7 +29,7 @@ source[1].url = "https://content.naic.org/insurance-topics/pet-insurance"
 
 source[2].authority = "State Insurance Departments"
 source[2].citation = "Various state pet insurance regulations and consumer disclosures"
-source[2].url = "https://www.usa.gov/state-insurance"
+source[2].url = "https://content.naic.org/state-insurance-departments"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
