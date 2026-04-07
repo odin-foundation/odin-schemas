@@ -27,7 +27,7 @@ source[1].url = "https://hl7.org/fhir/R5/device.html"
 
 source[2].authority = "FDA"
 source[2].citation = "Unique Device Identification (UDI) System"
-source[2].url = "https://www.fda.gov/medical-devices/unique-device-identification-system-udi-system"
+source[2].url = "https://www.fda.gov/medical-devices/device-advice-comprehensive-regulatory-assistance/unique-device-identification-system-udi-system"
 
 source[3].authority = "HL7"
 source[3].citation = "US Core Implantable Device Profile"
