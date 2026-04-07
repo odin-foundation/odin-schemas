@@ -27,7 +27,7 @@ source[0].url = "https://www.americanbar.org/groups/professional_responsibility/
 
 source[1].authority = "Legal Electronic Data Exchange Standard"
 source[1].citation = "LEDES 1998B/2000/eBilling Formats"
-source[1].url = "https://ledes.org/ledes-formats/"
+source[1].url = "https://ledes.org/ledes-98b-format/"
 
 source[2].authority = "Uniform Task-Based Management System"
 source[2].citation = "UTBMS Litigation and Counseling Codes"
