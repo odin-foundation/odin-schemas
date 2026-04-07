@@ -30,7 +30,7 @@ source[1].url = "https://www.consumerfinance.gov/rules-policy/regulations/1026/"
 
 source[2].authority = "State Real Estate Commissions"
 source[2].citation = "State-mandated contract disclosures and requirements"
-source[2].url = "https://www.arello.org/"
+source[2].url = "https://web.archive.org/web/20250101041308/https://www.arello.org/"
 
 methodology = "regulatory_derivation"
 proprietary_sources_consulted = ?false
