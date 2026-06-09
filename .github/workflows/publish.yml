@@ -25,6 +25,11 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
+      # OIDC-to-registry credential exchange needs npm >= 11.5.1; the npm
+      # bundled with Node 20 is too old and publishes unauthenticated.
+      - name: Use npm that supports OIDC trusted publishing
+        run: npm install -g npm@latest
+
       - name: Verify package version matches tag
         run: |
           PKG_VERSION=$(node -p "require('./package.json').version")
