@@ -6,6 +6,8 @@
 ; comprehensive, personal effects, and full-timer coverage.
 ; ===================================================================================
 
+@import "../../coverages/lines/auto.schema.odin" as auto
+
 {$}
 odin = "1.0.0"
 schema = "1.0.0"
@@ -226,13 +228,10 @@ vacation_liability_limit = #$:(0..):if vacation_liability = true
 ; UM/UIM coverage options.
 
 {@rv_um_coverage}
-; Optional (not required in all states)
-bodily_injury_per_person = #$:(0..)           ; UM BI per person
-bodily_injury_per_accident = #$:(0..)         ; UM BI per accident
-property_damage = #$:(0..)                    ; UMPD limit
-stacked = ?                                   ; Stacked coverage
-underinsured_bodily_injury_per_person = #$:(0..)
-underinsured_bodily_injury_per_accident = #$:(0..)
+= @auto.um_coverage :override
+
+; UM/UIM not required in all states; limits and stacking inherit from the
+; shared shape. Stacked motorhome/trailer units may stack across the fleet.
 
 ; ===================================================================================
 ; RV Medical Payments
@@ -240,7 +239,9 @@ underinsured_bodily_injury_per_accident = #$:(0..)
 ; Medical payments coverage.
 
 {@rv_medical_payments}
-limit_per_person = #$:(0..)                   ; Per person limit
+= @auto.medpay_coverage :override
+
+limit_per_person = #$:(0..)                   ; Per person limit (RV occupants)
 included = ?                                  ; Coverage included
 
 ; ===================================================================================
@@ -249,24 +250,18 @@ included = ?                                  ; Coverage included
 ; Comprehensive and collision coverage for the RV.
 
 {@rv_physical_damage}
-; Required fields first
-coverage_type = (comprehensive, collision)    ; Coverage type
+= @auto.auto_pd_coverage :override
 
-; Optional fields
-actual_cash_value = #$:(0..)                  ; ACV valuation
-agreed_value = #$:(0..)                       ; Agreed value amount
+; RV physical damage line (valuation inherits from the shared shape)
+coverage_type = (comprehensive, collision)    ; Coverage type
 deductible = #$:(0..)                         ; Deductible amount
+
+; RV-specific options
+agreed_value = #$:(0..)                       ; Agreed value amount
 diminishing_deductible = ?                    ; Decreasing deductible
 full_replacement = ?                          ; Full replacement coverage
 full_replacement_years = ##:if full_replacement = true
 glass_deductible = #$:(0..)                   ; Separate glass deductible
-stated_amount = #$:(0..)                      ; Stated value
-valuation = (
-    actual_cash_value,                        ; Depreciated value
-    agreed_value,                             ; Pre-agreed amount
-    replacement_cost,                         ; New equivalent
-    stated_amount                             ; Declared value
-)
 
 ; ===================================================================================
 ; RV Personal Effects Coverage

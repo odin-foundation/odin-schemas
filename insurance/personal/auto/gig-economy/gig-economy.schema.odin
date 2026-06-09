@@ -7,7 +7,6 @@
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 @import "../../../coverages/coverage.schema.odin" as cov
-@import "../../../coverages/lines/liability.schema.odin" as liability
 @import "../../../coverages/lines/auto.schema.odin" as auto
 @import "../../../common/types.schema.odin" as types
 
@@ -371,10 +370,10 @@ platform_comprehensive_deductible = #$:(0..)       ; Platform comprehensive dedu
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; GIG LIABILITY COVERAGE
 ; ═══════════════════════════════════════════════════════════════════════════════
-; Liability coverage extending the universal liability primitive
+; Auto liability coverage specialized for gig (TNC) period structure
 
 {@gig_liability_coverage}
-= @liability_coverage                              ; Inherit from liability line
+= @auto.auto_liability_coverage :override          ; Specialize shared auto liability
 
 coverage_type_ref = "GIG_LIABILITY"                ; Reference to gig liability coverage type
 
@@ -383,28 +382,6 @@ coverage_type_ref = "GIG_LIABILITY"                ; Reference to gig liability 
 ; ───────────────────────────────────────────────────────────────────────────────
 gig_type = (both, delivery, rideshare)             ; Type of gig work covered
 applies_to_periods = (all, period_1, period_1_2_3, period_2_3)  ; Which TNC periods are covered
-
-; Liability limits
-{.limits}
-bi_per_person = #$:(0..)                           ; Bodily injury limit per person
-bi_per_accident = #$:(0..)                         ; Bodily injury limit per accident
-pd_limit = #$:(0..)                                ; Property damage limit
-combined_single_limit = #$:(0..)                   ; Combined single limit
-use_csl = ?                                        ; Using CSL instead of split limits
-
-{@gig_liability_coverage}
-
-; UM/UIM
-{.um_uim}
-um_selected = ?                                    ; Uninsured motorist coverage selected
-um_per_person = #$:(0..)                           ; UM limit per person
-um_per_accident = #$:(0..)                         ; UM limit per accident
-uim_selected = ?                                   ; Underinsured motorist coverage selected
-uim_per_person = #$:(0..)                          ; UIM limit per person
-uim_per_accident = #$:(0..)                        ; UIM limit per accident
-stacked = ?                                        ; Stacked UM/UIM coverage
-
-{@gig_liability_coverage}
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; RIDESHARE-SPECIFIC COVERAGE
@@ -611,7 +588,7 @@ covers_electrical = ?                              ; Covers electrical damage
 ; Coverage that bridges gaps between personal and platform coverage
 
 {@gig_gap_coverage}
-= @coverage                                        ; Inherit from universal coverage
+= @auto.gap_coverage :override                     ; Specialize shared auto gap coverage
 
 coverage_type_ref = "GIG_GAP"                      ; Reference to gig gap coverage type
 

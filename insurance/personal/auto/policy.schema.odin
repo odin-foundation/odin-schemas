@@ -15,7 +15,7 @@
 @import "../../common/carrier.schema.odin" as carrier
 @import "../../common/documents.schema.odin" as docs
 @import "../types.schema.odin" as pc
-@import "../../common/auto/coverage.schema.odin" as cov
+@import "./coverage.schema.odin" as cov
 @import "../../common/auto/rating.schema.odin" as rating
 @import "../../common/auto/claim.schema.odin" as claim
 @import "../../common/auto/endorsement.schema.odin" as endorse
@@ -214,19 +214,19 @@ quote_date = date                              ; Date quote generated
 ; Uses coverage types from coverage.schema.odin
 
 {@policy.coverage.liability}
-= @cov.liability_coverage
+= @cov.personal_auto_liability
 
 {@policy.coverage.um}
-= @cov.um_coverage
+= @cov.personal_auto_um
 
 {@policy.coverage.pip}
-= @cov.pip_coverage
+= @cov.personal_auto_pip
 
 {@policy.coverage.med_pay}
-= @cov.med_pay_coverage
+= @cov.personal_auto_medpay
 
 {@policy.coverage.vehicles[]}
-= @cov.physical_damage_coverage
+= @cov.personal_auto_physical_damage
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; RATING & PREMIUM

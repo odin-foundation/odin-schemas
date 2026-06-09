@@ -131,9 +131,8 @@ endorsement_number = :
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_liability}
-= @personal_auto_coverage
+= @auto.auto_liability_coverage :override
 
-coverage_type_ref = "BI"                          ; or "PD" or "CSL"
 coverage_category = "liability"
 
 ; Split limits (BI/PD) - extends universal limits array with convenience fields
@@ -172,44 +171,9 @@ state_province = :(2)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_um}
-= @personal_auto_coverage
+= @auto.um_coverage :override
 
-coverage_type_ref = "UM"                          ; or "UIM"
 coverage_category = "liability"
-
-; Selection & Offer/Rejection (required in most states)
-{.um_selection}
-offered = ?                                       ; Coverage was offered to insured
-selected = ?
-rejected = ?
-rejection_signed = ?                              ; Written rejection obtained
-rejection_date = date
-
-{@personal_auto_um}
-{.uim_selection}
-offered = ?
-selected = ?
-rejected = ?
-rejection_signed = ?
-rejection_date = date
-
-; UM Limits
-{.um}
-bi_per_person = #$:(0..)
-bi_per_accident = #$:(0..)
-pd_limit = #$:(0..)
-pd_deductible = #$:(0..)
-
-{@personal_auto_um}
-; UIM Limits
-{.uim}
-bi_per_person = #$:(0..)
-bi_per_accident = #$:(0..)
-
-{@personal_auto_um}
-
-; Stacking (inherits from @auto_coverage.um_uim.stacked)
-stacking_factor = ##
 
 ; Premium breakdown
 {.premium_breakdown}
@@ -224,54 +188,15 @@ total = #$:(0..)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_pip}
-= @personal_auto_coverage
+= @auto.pip_coverage :override
 
-coverage_type_ref = "PIP"
 coverage_category = "no_fault"
 
-; Selection & Offer/Rejection
-offered = ?
-rejected = ?
-rejection_signed = ?
-rejection_date = date
+; Jurisdiction-coupled waiver
+waived = ?
 waived_reason = (health_insurance, medicaid, medicare, other):if waived = true
 
-; Limits - PIP total (components inherit from @auto_coverage.pip)
-limit = #$:(0..)                               ; Total PIP limit
-
-; Component limits (varies by state) - extends @auto_coverage.pip structure
-{.medical}
-limit = #$:(0..)
-deductible = #$:(0..)
-
-{@personal_auto_pip}
-{.income_loss}
-limit = #$:(0..)
-percent = ##:(0..100)                          ; % of income covered
-waived = ?
-exclusion = ?                                  ; Work loss exclusion elected
-
-{@personal_auto_pip}
-{.funeral}
-limit = #$:(0..)
-
-{@personal_auto_pip}
-{.essential_services}
-limit = #$:(0..)
-
-{@personal_auto_pip}
-{.survivor_loss}
-limit = #$:(0..)
-
-{@personal_auto_pip}
-; Attendant care (MI specific)
-{.attendant_care}
-selected = ?
-limit = #$:(0..)
-
-{@personal_auto_pip}
 ; Coordination of benefits
-coordinated_with = (excess, none, primary)
 health_insurance_carrier = :
 health_insurance_type = (employer, individual, medicaid, medicare, other)
 
@@ -288,36 +213,22 @@ per_person = #$:(0..)
 ; Michigan specific (post-7/2020)
 mi_pip_option = (50000, 250000, 500000, opt_out, unlimited):if state = MI
 
-; Additional/Extended PIP (optional enhanced coverage)
-{.additional_pip}
-selected = ?
-limit = #$:(0..)
-
-{@personal_auto_pip}
-
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Personal Auto Medical Payments Coverage
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_medpay}
-= @personal_auto_coverage
+= @auto.medpay_coverage :override
 
-coverage_type_ref = "MEDPAY"
 coverage_category = "no_fault"
-
-limit = #$:(0..)
-expense_type = (any_occupant, household, insured_only)
-
-{@personal_auto_medpay}
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Personal Auto Physical Damage Coverage (Comp/Coll)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_physical_damage}
-= @personal_auto_coverage
+= @auto.auto_pd_coverage :override
 
-coverage_type_ref = "COLL"                        ; or "COMP"
 coverage_category = "physical_damage"
 
 ; Comprehensive
@@ -361,54 +272,27 @@ premium = #$:(0..)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_towing}
-= @personal_auto_coverage
+= @auto.towing_coverage :override
 
-coverage_type_ref = "TOWING"
 coverage_category = "optional"
-
-limit = #$:(0..)                                  ; Per occurrence
-limit_type = (per_disablement, per_occurrence, unlimited)
-includes_roadside = ?
-includes_lockout = ?
-includes_fuel_delivery = ?
-includes_battery_jump = ?
-includes_flat_tire = ?
-
-{@personal_auto_towing}
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Personal Auto Rental Reimbursement Coverage
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_rental}
-= @personal_auto_coverage
+= @auto.rental_coverage :override
 
-coverage_type_ref = "RENTAL"
 coverage_category = "optional"
-
-daily_limit = #$:(0..)                            ; Per day amount
-max_days = ##                            ; Maximum days
-max_total = #$:(0..)                              ; Maximum total amount
-waiting_period_days = ##
-
-{@personal_auto_rental}
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Personal Auto Gap Coverage
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@personal_auto_gap}
-= @personal_auto_coverage
+= @auto.gap_coverage :override
 
-coverage_type_ref = "GAP"
 coverage_category = "optional"
-
-gap_type = (loan_lease, new_car_replacement, standard)
-max_gap_percent = ##:(0..200)                     ; Max % over ACV
-max_gap_amount = #$:(0..)                         ; Max $ amount
-includes_deductible = ?                           ; Pays deductible too
-
-{@personal_auto_gap}
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Personal Auto Custom Equipment Coverage

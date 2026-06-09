@@ -6,6 +6,8 @@
 ; storage requirements, and spare parts/automobilia coverage.
 ; ===================================================================================
 
+@import "../../coverages/lines/auto.schema.odin" as auto
+
 {$}
 odin = "1.0.0"
 schema = "1.0.0"
@@ -343,13 +345,14 @@ touring = ?                                   ; Extended touring
 ; Standard liability coverage.
 
 {@ca_liability}
-; Required fields first
+= @auto.auto_liability_coverage :override
+
+; Classic split limits (required for collector policies)
 bodily_injury_per_accident = #$:(0..)        ; BI per accident
 bodily_injury_per_person = #$:(0..)          ; BI per person
 property_damage = #$:(0..)                   ; PD limit
 
-; Optional fields
-combined_single_limit = #$:(0..)              ; CSL if used
+; Limit structure selection
 liability_form = (combined_single_limit, split_limits)
 
 ; ===================================================================================
@@ -358,11 +361,13 @@ liability_form = (combined_single_limit, split_limits)
 ; Agreed value comprehensive and collision.
 
 {@ca_physical_damage}
-; Required fields first
+= @auto.auto_pd_coverage :override
+
+; Agreed value as a required stated amount (collector valuation)
 agreed_value = #$:(0..)                      ; Agreed value amount
 coverage_type = (collision, comprehensive)   ; Coverage type
 
-; Optional fields
+; Collector deductible options
 deductible = #$:(0..)                         ; Deductible amount
 disappearing_deductible = ?                   ; Diminishing deductible
 inflation_guard = ?                           ; Automatic value increase

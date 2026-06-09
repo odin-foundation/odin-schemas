@@ -6,7 +6,7 @@
 ; liability, and commercial physical damage.
 ; ═══════════════════════════════════════════════════════════════════════════════
 
-@import "../../common/auto/coverage.schema.odin" as auto
+@import "../../coverages/lines/auto.schema.odin" as auto
 
 {$}
 odin = "1.0.0"
@@ -48,7 +48,7 @@ changelog[0].rationale = "DOT/FMCSA insurance requirements for commercial motor 
 ; Primary liability for commercial motor carriers per FMCSA requirements
 
 {@commercial_liability}
-= @auto.liability_coverage                    ; Inherit base liability structure
+= @auto.auto_liability_coverage :override      ; Inherit base liability structure
 
 coverage_id = :
 
@@ -472,6 +472,8 @@ amount = #$:(0..)                              ; Premium amount
 ; Physical damage for commercial vehicles (higher values, specialized options)
 
 {@commercial_physical_damage}
+= @auto.auto_pd_coverage :override
+
 coverage_id = :
 vehicle_number = ##
 
@@ -742,7 +744,7 @@ amount = #$:(0..)                              ; Premium amount
 ; UM/UIM for commercial operations
 
 {@commercial_um_coverage}
-= @auto.um_coverage                           ; Inherit base UM structure
+= @auto.um_coverage :override                 ; Inherit base UM structure
 
 coverage_id = :
 

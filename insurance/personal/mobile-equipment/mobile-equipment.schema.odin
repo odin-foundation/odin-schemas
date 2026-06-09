@@ -6,6 +6,8 @@
 ; passenger coverage, and accessories/custom parts.
 ; ===================================================================================
 
+@import "../../coverages/lines/auto.schema.odin" as auto
+
 {$}
 odin = "1.0.0"
 schema = "1.0.0"
@@ -213,6 +215,8 @@ products_liability = ?                        ; Products if applicable
 ; Medical payments coverage.
 
 {@me_medical_payments}
+= @auto.medpay_coverage :override
+
 included = ?                                  ; Coverage included
 limit_per_person = #$:(0..)                   ; Per person limit
 passengers_covered = ?                        ; Covers passengers
@@ -223,6 +227,8 @@ passengers_covered = ?                        ; Covers passengers
 ; Equipment physical damage coverage.
 
 {@me_physical_damage}
+= @auto.auto_pd_coverage :override
+
 ; Required fields first
 coverage_type = (collision, comprehensive)   ; Coverage type
 

@@ -6,6 +6,8 @@
 ; custom parts/equipment, and accessory coverage.
 ; ===================================================================================
 
+@import "../../coverages/lines/auto.schema.odin" as auto
+
 {$}
 odin = "1.0.0"
 schema = "1.0.0"
@@ -258,51 +260,40 @@ liability_form = (combined_single_limit, split_limits)
 ; ===================================================================================
 ; Uninsured/Underinsured Motorist
 ; ===================================================================================
-; UM/UIM coverage for motorcycle.
+; UM/UIM coverage for motorcycle. Overrides shared auto UM coverage.
 
 {@mc_um_coverage}
-bodily_injury_per_accident = #$:(0..)         ; UM BI per accident
-bodily_injury_per_person = #$:(0..)           ; UM BI per person
-property_damage = #$:(0..)                    ; UMPD
-stacked = ?                                   ; Stacked coverage
+= @auto.um_coverage :override
+
+; Motorcycle-specific additions
 underinsured_included = ?                     ; UIM included
-underinsured_per_accident = #$:(0..)          ; UIM per accident
-underinsured_per_person = #$:(0..)            ; UIM per person
+passenger_um = ?                              ; Passenger UM coverage
 
 ; ===================================================================================
 ; Medical Payments
 ; ===================================================================================
-; Medical payments coverage.
+; Medical payments coverage. Overrides shared auto medical payments.
 
 {@mc_medical_payments}
+= @auto.medpay_coverage :override
+
+; Motorcycle-specific additions
 included = ?                                  ; Coverage included
-limit_per_person = #$:(0..)                   ; Per person limit
 passenger_medical = ?                         ; Passengers covered
 
 ; ===================================================================================
 ; Physical Damage Coverage
 ; ===================================================================================
-; Comprehensive and collision coverage.
+; Comprehensive and collision coverage. Overrides shared auto physical damage.
 
 {@mc_physical_damage}
-; Required fields first
-coverage_type = (collision, comprehensive)   ; Coverage type
+= @auto.auto_pd_coverage :override
 
-; Optional fields
-actual_cash_value = #$:(0..)                  ; ACV
-agreed_value = #$:(0..)                       ; Agreed value
-deductible = #$:(0..)                         ; Deductible amount
+; Motorcycle-specific additions
+coverage_type = (collision, comprehensive)   ; Coverage type
 disappearing_deductible = ?                   ; Diminishing deductible
 lay_up_period = ?                             ; Seasonal lay-up
 lay_up_months[] = ##:(1..12):if lay_up_period = true
-original_equipment = ?                        ; OEM parts only
-stated_amount = #$:(0..)                      ; Stated value
-valuation = (
-    actual_cash_value,
-    agreed_value,
-    replacement_cost,
-    stated_amount
-)
 
 ; ===================================================================================
 ; Accessory Coverage

@@ -7,7 +7,8 @@
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 @import "../policy.schema.odin" as pol
-@import "../../../common/auto/coverage.schema.odin" as cov
+@import "../coverage.schema.odin" as cov
+@import "../../../coverages/lines/auto.schema.odin" as auto
 
 {$}
 odin = "1.0.0"
@@ -83,11 +84,14 @@ limit = #$:(25000..)                          ; TX minimum $25K property damage
 ; - If not rejected, limits default to liability limits
 
 {@tx_um}
-= @cov.personal_auto_um :override
+= @auto.um_coverage :override
 
 ; TX requires documented offer
+{.um_selection}
 offered = ?                                   ; Must document offer (override: was optional)
 rejection_signed = ?:if rejected = true       ; Signed rejection required
+
+{@tx_um}
 
 ; Override UM limits with TX minimums (if not rejected)
 {.um}
@@ -110,7 +114,7 @@ bi_per_person = #$:(30000..):if selected = true    ; TX minimum $30K per person
 ; This type exists for documentation and potential future TX-specific PIP rules.
 
 {@tx_pip}
-= @cov.personal_auto_pip
+= @auto.pip_coverage
 
 ; TX PIP is optional - no minimum required (inherits base as-is)
 ; Typical TX PIP options: $2,500, $5,000, $10,000

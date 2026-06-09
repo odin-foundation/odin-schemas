@@ -193,6 +193,185 @@ amount = #$:if type = agreed_value || type = stated_amount
 loss_payee_ref = :                                ; Reference to lienholder
 
 ; ═══════════════════════════════════════════════════════════════════════════════
+; Uninsured/Underinsured Motorist Coverage
+; ═══════════════════════════════════════════════════════════════════════════════
+; Product-neutral UM/UIM shape. Reuses the @auto_coverage.um_uim subsection for
+; stacking flags. All fields optional; products add offer/rejection presence and
+; minimum-limit floors in their own override.
+
+{@um_coverage}
+= @auto_coverage
+
+coverage_type_ref = "UM"                          ; or "UIM"
+category = "liability"
+
+; Selection & Offer/Rejection
+{.um_selection}
+offered = ?                                        ; Coverage was offered to insured
+selected = ?
+rejected = ?
+rejection_signed = ?                              ; Written rejection obtained
+rejection_date = date
+
+{@um_coverage}
+{.uim_selection}
+offered = ?
+selected = ?
+rejected = ?
+rejection_signed = ?
+rejection_date = date
+
+; UM Limits
+{.um}
+bi_per_person = #$:(0..)
+bi_per_accident = #$:(0..)
+pd_limit = #$:(0..)
+pd_deductible = #$:(0..)
+
+{@um_coverage}
+; UIM Limits
+{.uim}
+bi_per_person = #$:(0..)
+bi_per_accident = #$:(0..)
+
+{@um_coverage}
+
+; Stacking factor (stacked flag inherits from @auto_coverage.um_uim)
+stacking_factor = ##
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; PIP / No-Fault Coverage
+; ═══════════════════════════════════════════════════════════════════════════════
+; Product-neutral no-fault shape. Reuses the @auto_coverage.pip subsection for
+; the component limits. Jurisdiction-coupled fields stay in product overrides.
+; All fields optional.
+
+{@pip_coverage}
+= @auto_coverage
+
+coverage_type_ref = "PIP"
+category = "no_fault"
+
+; Selection & Offer/Rejection
+offered = ?
+rejected = ?
+rejection_signed = ?
+rejection_date = date
+
+; Total PIP limit (components inherit from @auto_coverage.pip)
+limit = #$:(0..)
+
+; Component limits (varies by jurisdiction)
+{.medical}
+limit = #$:(0..)
+deductible = #$:(0..)
+
+{@pip_coverage}
+{.income_loss}
+limit = #$:(0..)
+percent = ##:(0..100)                             ; % of income covered
+waived = ?
+exclusion = ?                                     ; Work loss exclusion elected
+
+{@pip_coverage}
+{.funeral}
+limit = #$:(0..)
+
+{@pip_coverage}
+{.essential_services}
+limit = #$:(0..)
+
+{@pip_coverage}
+{.survivor_loss}
+limit = #$:(0..)
+
+{@pip_coverage}
+{.attendant_care}
+selected = ?
+limit = #$:(0..)
+
+{@pip_coverage}
+{.additional_pip}
+selected = ?
+limit = #$:(0..)
+
+{@pip_coverage}
+
+; Coordination of benefits
+coordinated_with = (excess, none, primary)
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Medical Payments Coverage
+; ═══════════════════════════════════════════════════════════════════════════════
+
+{@medpay_coverage}
+= @auto_coverage
+
+coverage_type_ref = "MEDPAY"
+category = "no_fault"
+
+limit = #$:(0..)
+expense_type = (any_occupant, household, insured_only)
+
+{@medpay_coverage}
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Towing & Roadside Coverage
+; ═══════════════════════════════════════════════════════════════════════════════
+; Reuses the @auto_coverage.towing subsection. All fields optional.
+
+{@towing_coverage}
+= @auto_coverage
+
+coverage_type_ref = "TOWING"
+category = "optional"
+
+limit = #$:(0..)
+limit_type = (per_disablement, per_occurrence, unlimited)
+includes_roadside = ?
+includes_lockout = ?
+includes_fuel_delivery = ?
+includes_battery_jump = ?
+includes_flat_tire = ?
+
+{@towing_coverage}
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Rental Reimbursement Coverage
+; ═══════════════════════════════════════════════════════════════════════════════
+; Reuses the @auto_coverage.rental subsection. All fields optional.
+
+{@rental_coverage}
+= @auto_coverage
+
+coverage_type_ref = "RENTAL"
+category = "optional"
+
+daily_limit = #$:(0..)                            ; Per day amount
+max_days = ##                                     ; Maximum days
+max_total = #$:(0..)                              ; Maximum total amount
+waiting_period_days = ##
+
+{@rental_coverage}
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Gap Coverage
+; ═══════════════════════════════════════════════════════════════════════════════
+
+{@gap_coverage}
+= @auto_coverage
+
+coverage_type_ref = "GAP"
+category = "optional"
+
+gap_type = (loan_lease, new_car_replacement, standard)
+max_gap_percent = ##:(0..200)                     ; Max % over ACV
+max_gap_amount = #$:(0..)                          ; Max $ amount
+includes_deductible = ?                           ; Pays deductible too
+
+{@gap_coverage}
+
+; ═══════════════════════════════════════════════════════════════════════════════
 ; Commercial Auto Specific Extensions
 ; ═══════════════════════════════════════════════════════════════════════════════
 

@@ -14,7 +14,7 @@
 @import "../../common/agency.schema.odin" as agency
 @import "../../common/carrier.schema.odin" as carrier
 @import "../../common/documents.schema.odin" as docs
-@import "../../common/types.schema.odin" as types
+@import "../../personal/types.schema.odin" as pc
 @import "../../common/auto/claim.schema.odin" as claim
 @import "../../common/auto/endorsement.schema.odin" as endorsement
 @import "../../common/auto/rating.schema.odin" as rating
@@ -279,7 +279,7 @@ years_in_business = ##:(0..200)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {policy.excluded_drivers[]}
-= @types.excluded_driver
+= @pc.excluded_driver
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; COVERAGES
@@ -415,7 +415,7 @@ years_in_business = ##:(0..200)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {policy.loss_history[]}
-= @types.loss_history
+= @pc.loss_history
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; POLICY HISTORY
