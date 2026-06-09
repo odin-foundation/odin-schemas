@@ -41,23 +41,23 @@ changelog[0].rationale = "Cash management types derived from ISO 20022 camt mess
 
 {@statement}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Statement identification
-statement_id = !:                             ; Statement identifier
+statement_id = :                             ; Statement identifier
 sequence_number = ##:(1..)                    ; Statement sequence number
 legal_sequence_number = ##:(1..)              ; Legal sequence number
-created = !timestamp                          ; Statement creation date/time
+created = timestamp                          ; Statement creation date/time
 
 ; Account information
-account = !@fin.account                       ; Account being reported
+account = @fin.account                       ; Account being reported
 account_owner = @fin.party                    ; Account owner
 account_servicer = @fin.financial_institution ; Servicing institution
 
 ; Statement period
 {.period}
-from = !timestamp                             ; Period start
-to = !timestamp                               ; Period end
+from = timestamp                             ; Period start
+to = timestamp                               ; Period end
 
 {@statement}
 
@@ -83,10 +83,10 @@ total_debit_amount = @fin.amount              ; Sum of debits
 ; ISO 20022: CashBalance
 
 {@balance}
-type = !(clav, clbd, fwav, info, itav, itbd, opav, opbd, prcd, xpcd)
-amount = !@fin.amount                         ; Balance amount
-credit_debit = !(crdt, dbit)                  ; Credit or debit balance
-date = !date                                  ; Balance date
+type = (clav, clbd, fwav, info, itav, itbd, opav, opbd, prcd, xpcd)
+amount = @fin.amount                         ; Balance amount
+credit_debit = (crdt, dbit)                  ; Credit or debit balance
+date = date                                  ; Balance date
 date_time = timestamp                         ; Balance date/time (if intraday)
 
 ; Balance type codes:
@@ -108,10 +108,10 @@ date_time = timestamp                         ; Balance date/time (if intraday)
 
 {@statement_entry}
 ; Required fields
-entry_reference = !:                          ; Entry reference
-amount = !@fin.amount                         ; Entry amount
-credit_debit = !(crdt, dbit)                  ; Credit or debit
-status = !(book, info, pdng)                  ; Entry status
+entry_reference = :                          ; Entry reference
+amount = @fin.amount                         ; Entry amount
+credit_debit = (crdt, dbit)                  ; Credit or debit
+status = (book, info, pdng)                  ; Entry status
 
 ; Dates
 booking_date = date                           ; Booking date
@@ -177,15 +177,15 @@ reason_info = :                               ; Return reason information
 
 {@account_report}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Report identification
-report_id = !:                                ; Report identifier
+report_id = :                                ; Report identifier
 sequence_number = ##:(1..)                    ; Report sequence
-created = !timestamp                          ; Report creation time
+created = timestamp                          ; Report creation time
 
 ; Account
-account = !@fin.account                       ; Account being reported
+account = @fin.account                       ; Account being reported
 account_owner = @fin.party                    ; Account owner
 account_servicer = @fin.financial_institution ; Servicing institution
 
@@ -209,14 +209,14 @@ entries[] = @statement_entry                  ; Recent entries
 
 {@notification}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Notification identification
-notification_id = !:                          ; Notification identifier
-created = !timestamp                          ; Notification creation time
+notification_id = :                          ; Notification identifier
+created = timestamp                          ; Notification creation time
 
 ; Account
-account = !@fin.account                       ; Account being notified
+account = @fin.account                       ; Account being notified
 account_owner = @fin.party                    ; Account owner
 
 ; Notification entries (typically single transaction alerts)
@@ -229,13 +229,13 @@ entries[] = @statement_entry                  ; Notified transactions
 
 {@balance_inquiry}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Request identification
-request_id = !:                               ; Request identifier
+request_id = :                               ; Request identifier
 
 ; Account to query
-account = !@fin.account                       ; Account identifier
+account = @fin.account                       ; Account identifier
 account_owner = @fin.party                    ; Account owner
 
 ; Query criteria
@@ -253,13 +253,13 @@ as_of_time = timestamp                        ; Balance as of time
 
 {@transaction_inquiry}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Request identification
-request_id = !:                               ; Request identifier
+request_id = :                               ; Request identifier
 
 ; Account to query
-account = !@fin.account                       ; Account identifier
+account = @fin.account                       ; Account identifier
 
 ; Search criteria
 {.criteria}

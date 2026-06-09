@@ -47,9 +47,9 @@ changelog[0].rationale = "Standard service request and work order structures per
 = @types.audit_info
 
 ; Required fields first
-request_number = !:                                ; Unique request identifier
+request_number = :                                ; Unique request identifier
 request_type = (connect, disconnect, investigation, meter_exchange, start, stop, transfer)
-request_date = !timestamp                          ; Request submission timestamp
+request_date = timestamp                          ; Request submission timestamp
 status = (cancelled, completed, in_progress, pending, scheduled)
 
 ; Account and service information
@@ -165,16 +165,16 @@ corrective_action = :                              ; Corrective action taken
 
 ; Materials used
 {.materials[]}
-material_code = !:                                 ; Material identifier
+material_code = :                                 ; Material identifier
 description = :                                    ; Material description
-quantity = !#:(0..)                                ; Quantity used
+quantity = #:(0..)                                ; Quantity used
 uom = :                                            ; Unit of measure
 cost = #$:(0..)                                    ; Material cost
 
 {@work_order}
 ; Equipment
 {.equipment[]}
-equipment_id = !:                                  ; Equipment identifier
+equipment_id = :                                  ; Equipment identifier
 equipment_type = :                                 ; Equipment type
 usage_hours = #:(0..)                              ; Hours used
 cost = #$:(0..)                                    ; Equipment cost
@@ -184,7 +184,7 @@ cost = #$:(0..)                                    ; Equipment cost
 {.labor[]}
 employee_id = :                                    ; Employee identifier
 employee_name = :                                  ; Employee name
-labor_hours = !#:(0..)                             ; Hours worked
+labor_hours = #:(0..)                             ; Hours worked
 labor_rate = #$:(0..)                              ; Hourly rate
 labor_cost = #$:(0..)                              ; Total labor cost
 overtime = ?                                       ; Overtime hours flag
@@ -220,13 +220,13 @@ notes = :                                          ; Work order notes
 
 {@connect_disconnect_order}
 ; Required fields first
-order_number = !:                                  ; Order identifier
+order_number = :                                  ; Order identifier
 order_type = (connect, disconnect, reconnect)     ; Order type
-order_date = !timestamp                            ; Order timestamp
+order_date = timestamp                            ; Order timestamp
 status = (cancelled, completed, pending, scheduled)
 
 ; Account and location
-account_number = !*:                                ; Account number
+account_number = *:                                ; Account number
 meter_number = :                                   ; Meter number
 service_address = @address                         ; Service location
 
@@ -350,13 +350,13 @@ root_cause_analysis = :                            ; Root cause findings
 
 {@service_investigation}
 ; Required fields first
-investigation_number = !:                          ; Investigation identifier
+investigation_number = :                          ; Investigation identifier
 investigation_type = (billing_dispute, high_bill, low_voltage, meter_accuracy, power_quality, service_quality, voltage_fluctuation)
 status = (assigned, cancelled, closed, completed, pending)
-request_date = !timestamp                          ; Investigation requested
+request_date = timestamp                          ; Investigation requested
 
 ; Account and location
-account_number = !*:                                ; Account number
+account_number = *:                                ; Account number
 customer_name = :                                  ; Customer name
 service_address = @address                         ; Service location
 meter_number = :                                   ; Meter number
@@ -374,10 +374,10 @@ priority = (high, routine, urgent)                 ; Investigation priority
 
 ; Investigation activities
 {.activities[]}
-activity_date = !timestamp                         ; Activity timestamp
+activity_date = timestamp                         ; Activity timestamp
 activity_type = (field_visit, meter_test, monitoring, voltage_test)
 performed_by = :                                   ; Who performed
-description = !:                                   ; Activity description
+description = :                                   ; Activity description
 findings = :                                       ; Findings
 
 {@service_investigation}
@@ -427,9 +427,9 @@ resolution_notes = :                               ; Resolution details
 
 {@customer_complaint}
 ; Required fields first
-complaint_number = !:                              ; Complaint identifier
+complaint_number = :                              ; Complaint identifier
 complaint_type = (billing, communication, outage_response, power_quality, service_quality, tree_trimming)
-received_date = !timestamp                         ; Received timestamp
+received_date = timestamp                         ; Received timestamp
 status = (closed, escalated, in_progress, pending, resolved)
 
 ; Customer information
@@ -439,7 +439,7 @@ contact_phone = *@phone                            ; Contact phone
 contact_email = *@email                            ; Contact email
 
 ; Complaint details
-description = !:                                   ; Complaint description
+description = :                                   ; Complaint description
 impact = :                                         ; Impact to customer
 requested_resolution = :                           ; What customer wants
 
@@ -457,7 +457,7 @@ escalation_date = timestamp                        ; Escalation timestamp
 
 ; Response
 {.responses[]}
-response_date = !timestamp                         ; Response timestamp
+response_date = timestamp                         ; Response timestamp
 responded_by = :                                   ; Who responded
 response_method = (email, phone, written)          ; Response method
 response_text = :                                  ; Response content

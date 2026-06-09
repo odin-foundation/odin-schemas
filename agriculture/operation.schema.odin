@@ -49,8 +49,8 @@ changelog[0].rationale = "Farm structure derived from FSA CLU, tract, and field 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-operation_id = !:                                ; Unique operation identifier
-operation_name = !:                              ; Farm or ranch name
+operation_id = :                                ; Unique operation identifier
+operation_name = :                              ; Farm or ranch name
 dba_name = :                                     ; Doing business as name
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -81,9 +81,9 @@ state_incorporation = :(2)                       ; State of incorporation
 ; FSA Registration
 ; ───────────────────────────────────────────────────────────────────────────────
 {.fsa}
-farm_number = !:                                 ; FSA farm number
-state_code = !:(2)                               ; FSA state code
-county_code = !:(3)                              ; FSA county code
+farm_number = :                                 ; FSA farm number
+state_code = :(2)                               ; FSA state code
+county_code = :(3)                              ; FSA county code
 tract_count = ##:(0..)                           ; Number of tracts
 total_acres = #:(0..)                            ; Total farm acres (decimal allowed)
 cropland_acres = #:(0..)                         ; Cropland acres
@@ -161,7 +161,7 @@ fencing_miles = #:(0..)                          ; Miles of fencing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.operators[]}
 :(1..)                                           ; At least one operator required
-name = !@types.person_name                       ; Operator name
+name = @types.person_name                       ; Operator name
 role = (managing_partner, operator, owner, senior_partner)
 ownership_percent = #:(0..100)                   ; Ownership percentage
 primary_operator = ?                             ; Primary operator flag
@@ -207,10 +207,10 @@ tracts[] = @tract                                ; Farm tracts
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-tract_number = !:                                ; FSA tract number
-farm_number = !:                                 ; FSA farm number
-state_code = !:(2)                               ; FSA state code
-county_code = !:(3)                              ; FSA county code
+tract_number = :                                ; FSA tract number
+farm_number = :                                 ; FSA farm number
+state_code = :(2)                               ; FSA state code
+county_code = :(3)                              ; FSA county code
 tract_name = :                                   ; Tract name
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -242,7 +242,7 @@ address = @types.address                         ; Physical address
 ; Acreage
 ; ───────────────────────────────────────────────────────────────────────────────
 {.acreage}
-total_acres = !#:(0..)                           ; Total tract acres
+total_acres = #:(0..)                           ; Total tract acres
 cropland_acres = #:(0..)                         ; Cropland acres
 pasture_acres = #:(0..)                          ; Pasture acres
 woodland_acres = #:(0..)                         ; Woodland acres
@@ -267,7 +267,7 @@ clus[] = @common_land_unit                       ; Common Land Units
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-field_number = !:                                ; Field number within farm
+field_number = :                                ; Field number within farm
 field_name = :                                   ; Field name
 tract_number = :                                 ; Parent tract number
 
@@ -275,7 +275,7 @@ tract_number = :                                 ; Parent tract number
 ; Acreage
 ; ───────────────────────────────────────────────────────────────────────────────
 {.acreage}
-total_acres = !#:(0..)                           ; Total field acres
+total_acres = #:(0..)                           ; Total field acres
 planted_acres = #:(0..)                          ; Planted acres
 harvested_acres = #:(0..)                        ; Harvested acres
 prevented_plant_acres = #:(0..)                  ; Prevented plant acres
@@ -346,9 +346,9 @@ boundary_coordinates[] = @geo_coordinate         ; Field boundary polygon
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-clu_number = !:                                  ; FSA CLU identifier
-state_code = !:(2)                               ; State FIPS code
-county_code = !:(3)                              ; County FIPS code
+clu_number = :                                  ; FSA CLU identifier
+state_code = :(2)                               ; State FIPS code
+county_code = :(3)                              ; County FIPS code
 farm_number = :                                  ; FSA farm number
 tract_number = :                                 ; FSA tract number
 
@@ -356,7 +356,7 @@ tract_number = :                                 ; FSA tract number
 ; Acreage & Classification
 ; ───────────────────────────────────────────────────────────────────────────────
 {.acreage}
-calculated_acres = !#:(0..)                      ; GIS calculated acres
+calculated_acres = #:(0..)                      ; GIS calculated acres
 reported_acres = #:(0..)                         ; Reported acres
 land_use = (barren, cropland, forest, idle, orchard, other, pasture, range, urban, water, wetland)
 hel = ?                                          ; Highly erodible land
@@ -387,7 +387,7 @@ crop_year = ##:(1900..2100)                      ; Crop year
 ; Geographic coordinate for boundaries.
 
 {@geo_coordinate}
-latitude = !#:(-90..90)                          ; Latitude
-longitude = !#:(-180..180)                       ; Longitude
+latitude = #:(-90..90)                          ; Latitude
+longitude = #:(-180..180)                       ; Longitude
 elevation_ft = ##                                ; Elevation in feet
 sequence = ##:(1..)                              ; Point sequence in polygon

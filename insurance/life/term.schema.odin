@@ -32,8 +32,8 @@ changelog[0].rationale = "Term-specific fields extending base life policy"
 = @life.policy                                ; Inherit all base life policy fields
 
 ; Required term-specific fields
-term_type = !(annual_renewable, decreasing, level, return_of_premium)  ; Term type
-term_years = !##                              ; Term length in years
+term_type = (annual_renewable, decreasing, level, return_of_premium)  ; Term type
+term_years = ##                              ; Term length in years
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term Expiration
@@ -76,7 +76,7 @@ partial_allowed = ?                           ; Partial conversion allowed
 = @policy
 
 ; Set term type
-term_type = !(level)
+term_type = (level)
 
 ; Level term specific
 {.level}
@@ -94,7 +94,7 @@ post_level_premium = #$:(0..)                 ; Premium after level period ends
 = @policy
 
 ; Set term type
-term_type = !(decreasing)
+term_type = (decreasing)
 
 ; Decreasing term specific
 {.decreasing}
@@ -118,7 +118,7 @@ mortgage_interest_rate = #                    ; Mortgage interest rate
 = @policy
 
 ; Set term type
-term_type = !(annual_renewable)
+term_type = (annual_renewable)
 
 ; ART specific
 {.art}
@@ -131,8 +131,8 @@ premium_schedule[] = @art_premium_year        ; Multi-year premium schedule
 {@annual_renewable_term}
 
 {@art_premium_year}
-age = !##:(18..100)                           ; Attained age
-premium = !#$:(0..)                           ; Premium for that age
+age = ##:(18..100)                           ; Attained age
+premium = #$:(0..)                           ; Premium for that age
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Return of Premium Term
@@ -143,7 +143,7 @@ premium = !#$:(0..)                           ; Premium for that age
 = @policy
 
 ; Set term type
-term_type = !(return_of_premium)
+term_type = (return_of_premium)
 
 ; ROP specific
 {.rop}
@@ -155,8 +155,8 @@ return_schedule[] = @rop_schedule             ; Graduated return schedule
 {@return_of_premium}
 
 {@rop_schedule}
-year = !##                                    ; Policy year
-return_percent = !#:(0..100)                  ; Percentage of premiums returned
+year = ##                                    ; Policy year
+return_percent = #:(0..100)                  ; Percentage of premiums returned
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Group Term Life
@@ -168,13 +168,13 @@ return_percent = !#:(0..100)                  ; Percentage of premiums returned
 
 ; Group-specific fields
 {.group}
-certificate_number = !:                       ; Individual certificate number
+certificate_number = :                       ; Individual certificate number
 class = :                                     ; Employee class
 coverage_multiple = #:(0..10)                 ; Multiple of salary
 dependent_coverage = ?                        ; Includes dependent coverage
 employer_name = :                             ; Employer name
 employer_paid = ?                             ; Employer pays premium
-master_policy = !:                            ; Master policy number
+master_policy = :                            ; Master policy number
 portability = ?                               ; Coverage can be ported
 salary_used = #$:(0..)                        ; Salary used for coverage calculation
 supplement_amount = #$:(0..)                  ; Supplemental coverage amount

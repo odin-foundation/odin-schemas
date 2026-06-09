@@ -41,7 +41,7 @@ changelog[0].rationale = "Structure derived from NAIC Model Regulation and CMS M
 ; Per NAIC Model Regulation standardized plans
 
 {@plan_type}
-plan_letter = !(a, b, c, d, f, f_hd, g, g_hd, k, l, m, n)
+plan_letter = (a, b, c, d, f, f_hd, g, g_hd, k, l, m, n)
 
 ; Plan availability
 {.availability}
@@ -115,15 +115,15 @@ after_limit_coverage = #:(0..100)            ; Coverage after limit reached
 
 {@policy}
 ; Policy identification
-policy_number = !:                           ; Policy number
+policy_number = :                           ; Policy number
 id = :                                       ; Unique identifier
 
 ; Plan type
-plan_type = !@plan_type                      ; Standardized plan type
+plan_type = @plan_type                      ; Standardized plan type
 
 ; Insurer information
 {.insurer}
-company_name = !:                            ; Insurance company name
+company_name = :                            ; Insurance company name
 naic_number = :                              ; NAIC company code
 state_of_domicile = :(2)                     ; Company domicile state
 
@@ -131,10 +131,10 @@ state_of_domicile = :(2)                     ; Company domicile state
 
 ; Policyholder
 {.policyholder}
-name_first = !:                              ; First name
-name_last = !:                               ; Last name
-date_of_birth = !*date                       ; Date of birth
-gender = !(female, male)                     ; Sex
+name_first = :                              ; First name
+name_last = :                               ; Last name
+date_of_birth = *date                       ; Date of birth
+gender = (female, male)                     ; Sex
 address = @address                           ; Mailing address
 mbi = *:                                     ; Medicare Beneficiary Identifier
 
@@ -142,7 +142,7 @@ mbi = *:                                     ; Medicare Beneficiary Identifier
 
 ; Policy dates
 {.dates}
-effective = !date                            ; Policy effective date
+effective = date                            ; Policy effective date
 application = date                           ; Application date
 issue = date                                 ; Issue date
 termination = date                           ; Termination date (if applicable)
@@ -151,7 +151,7 @@ renewal = date                               ; Next renewal date
 {@policy}
 
 ; State of issue
-issue_state = !:(2)                          ; State where policy issued
+issue_state = :(2)                          ; State where policy issued
 
 ; Premium information
 {.premium}
@@ -176,7 +176,7 @@ pre_existing_months = ##:(0..6)              ; Waiting period months
 {@policy}
 
 ; Policy status
-status = !(active, cancelled, lapsed, pending, terminated)
+status = (active, cancelled, lapsed, pending, terminated)
 
 ; Cancellation/termination
 {.termination}
@@ -192,12 +192,12 @@ notice_date = date                           ; Notice date
 ; Per 42 CFR 403.240 - Medigap Open Enrollment Period
 
 {@open_enrollment}
-beneficiary_mbi = !*:                        ; Beneficiary MBI
+beneficiary_mbi = *:                        ; Beneficiary MBI
 
 ; Open enrollment period - Per NAIC Model Regulation
 {.period}
-start_date = !date                           ; OEP start date (Part B effective)
-end_date = !date                             ; OEP end date (6 months from start)
+start_date = date                           ; OEP start date (Part B effective)
+end_date = date                             ; OEP end date (6 months from start)
 part_b_effective = date                      ; Part B effective date
 age_at_start = ##:(0..100)                   ; Age at OEP start
 
@@ -227,11 +227,11 @@ gap_days = ##:(0..63)                        ; Days gap in coverage
 ; Per 42 CFR 403.240 and NAIC Model Regulation
 
 {@guaranteed_issue}
-beneficiary_mbi = !*:                        ; Beneficiary MBI
-qualifying_event = !:                        ; Event triggering GI rights
+beneficiary_mbi = *:                        ; Beneficiary MBI
+qualifying_event = :                        ; Event triggering GI rights
 
 ; Qualifying situations - Per NAIC Model
-situation = !(
+situation = (
     employer_coverage_loss,
     enrollment_violation,
     first_medicare_advantage,
@@ -244,7 +244,7 @@ situation = !(
 
 ; Event details
 {.event}
-event_date = !date                           ; Date of qualifying event
+event_date = date                           ; Date of qualifying event
 documentation_type = :                       ; Required documentation
 gi_start_date = date                         ; GI period start
 gi_end_date = date                           ; GI period end (63 days)
@@ -277,12 +277,12 @@ prior_plan_type = :                          ; Prior Medigap plan type
 ; Medigap claim processing
 
 {@claim}
-claim_number = !:                            ; Claim number
-policy_number = !:                           ; Policy number
+claim_number = :                            ; Claim number
+policy_number = :                           ; Policy number
 
 ; Service information
 {.service}
-service_date = !date                         ; Date of service
+service_date = date                         ; Date of service
 provider_name = :                            ; Provider name
 provider_npi = :                             ; Provider NPI
 service_description = :                      ; Service description
@@ -308,7 +308,7 @@ payment_date = date                          ; Payment date
 {@claim}
 
 ; Claim status
-status = !(denied, paid, pending)
+status = (denied, paid, pending)
 denial_reason = ::if status = denied         ; Reason if denied
 
 ; ═══════════════════════════════════════════════════════════════════════════════

@@ -43,14 +43,14 @@ changelog[0].rationale = "Goal resource derived from FHIR R4/R5 specification"
 
 {@goal}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Goal.identifier
 identifiers[] = @fhir.identifier              ; External identifiers
 
 ; Lifecycle status - FHIR: Goal.lifecycleStatus (required)
-lifecycle_status = !(accepted, active, cancelled, completed, entered_in_error, on_hold, planned, proposed, rejected)
+lifecycle_status = (accepted, active, cancelled, completed, entered_in_error, on_hold, planned, proposed, rejected)
 
 ; Achievement status - FHIR: Goal.achievementStatus
 achievement_status = @fhir.codeable_concept   ; in-progress | improving | worsening | no-change | achieved | sustaining | not-achieved | no-progress | not-attainable
@@ -62,10 +62,10 @@ categories[] = @fhir.codeable_concept         ; E.g., Treatment, dietary, behavi
 priority = @fhir.codeable_concept             ; high-priority | medium-priority | low-priority
 
 ; Description - FHIR: Goal.description (required)
-description = !@fhir.codeable_concept         ; Code or text describing goal
+description = @fhir.codeable_concept         ; Code or text describing goal
 
 ; Subject - FHIR: Goal.subject (required)
-subject = !@fhir.reference                    ; Who this goal is intended for
+subject = @fhir.reference                    ; Who this goal is intended for
 
 ; Start - FHIR: Goal.start[x] (polymorphic)
 start_date = date                             ; When goal pursuit begins

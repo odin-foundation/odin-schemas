@@ -41,29 +41,29 @@ changelog[0].rationale = "Structure derived from 45 CFR 155.400 and 156.265"
 ; Per 45 CFR 155.400
 
 {@enrollment}
-enrollment_id = !:                          ; Enrollment ID (Exchange assigned ID)
-subscriber_id = !:                          ; Subscriber ID
-application_id = !:                         ; Associated application
-exchange_id = !:                            ; Exchange identifier
+enrollment_id = :                          ; Enrollment ID (Exchange assigned ID)
+subscriber_id = :                          ; Subscriber ID
+application_id = :                         ; Associated application
+exchange_id = :                            ; Exchange identifier
 
 ; Plan
 {.plan}
-plan_id = !:                                ; HIOS plan ID
+plan_id = :                                ; HIOS plan ID
 plan_name = :                               ; Plan name
-issuer_id = !:                              ; Issuer ID
-metal_level = !(bronze, catastrophic, gold, platinum, silver)
+issuer_id = :                              ; Issuer ID
+metal_level = (bronze, catastrophic, gold, platinum, silver)
 plan_type = (epo, hmo, pos, ppo)            ; Network type
 csr_variant = :                             ; CSR variant if applicable
 
 {@enrollment}
 
 ; Enrollment type
-enrollment_type = !(change, initial, reinstatement, renewal, sep, termination)
+enrollment_type = (change, initial, reinstatement, renewal, sep, termination)
 enrollment_reason = :                       ; Detailed reason
 
 ; Enrollment period - Per 45 CFR 155.410
 {.period}
-period_type = !(initial, oep, sep)          ; Period type
+period_type = (initial, oep, sep)          ; Period type
 sep_type = :                                ; SEP type if applicable
 sep_verification_required = ?               ; SEP verification needed
 
@@ -81,7 +81,7 @@ substatus = :                               ; Detailed substatus
 {@enrollment}
 
 ; Members
-subscriber = !@enrollment_member            ; Subscriber
+subscriber = @enrollment_member            ; Subscriber
 dependents[] = @enrollment_member           ; Enrolled dependents
 
 ; Premium - Per 45 CFR 156.425
@@ -93,9 +93,9 @@ premium = @enrollment_premium               ; Premium information
 ; Per 45 CFR 155.400
 
 {@enrollment_member}
-member_id = !:                              ; Member ID
-applicant = !@marketplace.applicant         ; Applicant info
-relationship = !(child, dependent, domestic_partner, self, spouse)
+member_id = :                              ; Member ID
+applicant = @marketplace.applicant         ; Applicant info
+relationship = (child, dependent, domestic_partner, self, spouse)
 
 ; Coverage status
 coverage_period = @enrollment_period        ; Member coverage period
@@ -116,8 +116,8 @@ percent_of_household_aptc = #:(0..100)      ; Percent of household APTC
 ; Per 45 CFR 156.425
 
 {@enrollment_premium}
-enrollment_id = !:                          ; Enrollment ID
-effective_date = !date                      ; Premium effective date
+enrollment_id = :                          ; Enrollment ID
+effective_date = date                      ; Premium effective date
 
 ; Premium amounts
 {.amounts}
@@ -138,7 +138,7 @@ binder_payment.due_date = date              ; First payment due date
 {@enrollment_premium}
 
 {@member_premium}
-member_id = !:                              ; Member ID
+member_id = :                              ; Member ID
 age = ##:(0..64)                            ; Age for rating
 tobacco_user = ?                            ; Tobacco user
 premium = #$:(0..)                          ; Individual premium
@@ -150,16 +150,16 @@ rating_area = :                             ; Rating area
 ; Per 45 CFR 155.410
 
 {@plan_selection}
-selection_id = !:                           ; Selection ID
-application_id = !:                         ; Application
-selection_date = !date                      ; Selection date
+selection_id = :                           ; Selection ID
+application_id = :                         ; Application
+selection_date = date                      ; Selection date
 
 ; Selected plan
 {.plan}
-plan_id = !:                                ; Selected plan HIOS ID
+plan_id = :                                ; Selected plan HIOS ID
 plan_name = :                               ; Plan name
-issuer_id = !:                              ; Issuer
-metal_level = !(bronze, catastrophic, gold, platinum, silver)
+issuer_id = :                              ; Issuer
+metal_level = (bronze, catastrophic, gold, platinum, silver)
 
 {@plan_selection}
 
@@ -183,7 +183,7 @@ monthly_payment = #$:(0..)                  ; Monthly payment amount
 covered_members[] = :                       ; Members to be covered
 
 ; Status
-selection_status = !(cancelled, confirmed, pending)
+selection_status = (cancelled, confirmed, pending)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; ENROLLMENT TRANSACTION (834)
@@ -191,24 +191,24 @@ selection_status = !(cancelled, confirmed, pending)
 ; Per CMS 834 Technical Guidance
 
 {@enrollment_transaction}
-transaction_id = !:                         ; Transaction ID
-enrollment_id = !:                          ; Enrollment ID
-transaction_date = !date                    ; Transaction date
+transaction_id = :                         ; Transaction ID
+enrollment_id = :                          ; Enrollment ID
+transaction_date = date                    ; Transaction date
 
 ; Transaction type - Per ASC X12 834
-maintenance_type = !(addition, audit, cancellation, change, reinstatement, termination)
+maintenance_type = (addition, audit, cancellation, change, reinstatement, termination)
 maintenance_reason = :                      ; Reason code
 
 ; Direction
 {.direction}
-source = !(exchange, issuer)                ; Transaction source
+source = (exchange, issuer)                ; Transaction source
 destination = :(exchange, issuer)           ; Destination
 
 {@enrollment_transaction}
 
 ; Transaction status
 status = @status_record                     ; Status tracking with reason
-status.status = !(accepted, acknowledged, pending, rejected)
+status.status = (accepted, acknowledged, pending, rejected)
 
 {@enrollment_transaction}
 
@@ -226,8 +226,8 @@ subscriber_id = :                           ; Subscriber ID
 ; Per 45 CFR 156.265
 
 {@effectuation}
-enrollment_id = !:                          ; Enrollment ID
-effectuation_date = !date                   ; Effectuation date
+enrollment_id = :                          ; Enrollment ID
+effectuation_date = date                   ; Effectuation date
 
 ; Payment status - Per 45 CFR 156.270
 payment = @payment                          ; Premium payment tracking
@@ -256,15 +256,15 @@ card_issue_date = date                      ; Cards issued date
 ; Per 45 CFR 155.430
 
 {@termination}
-enrollment_id = !:                          ; Enrollment ID
-termination_date = !date                    ; Termination effective date
+enrollment_id = :                          ; Enrollment ID
+termination_date = date                    ; Termination effective date
 termination_request_date = date             ; Date termination requested
 
 ; Termination type - Per 45 CFR 155.430(b)
-termination_type = !(exchange_initiated, issuer_initiated, subscriber_initiated)
+termination_type = (exchange_initiated, issuer_initiated, subscriber_initiated)
 
 ; Reason - Per 45 CFR 155.430
-termination_reason = !(death, eligibility_loss, fraud, incarceration, move_out_of_area, new_coverage, non_payment, request, rescission, verification_failure)
+termination_reason = (death, eligibility_loss, fraud, incarceration, move_out_of_area, new_coverage, non_payment, request, rescission, verification_failure)
 reason_description = :                      ; Detailed description
 
 ; Notice - Per 45 CFR 155.430(d)
@@ -297,13 +297,13 @@ continuation_elected = ?                    ; Continuation elected
 ; Per 45 CFR 156.270(f)
 
 {@reinstatement}
-original_enrollment_id = !:                 ; Original enrollment
-reinstatement_date = !date                  ; Reinstatement effective date
+original_enrollment_id = :                 ; Original enrollment
+reinstatement_date = date                  ; Reinstatement effective date
 request_date = date                         ; Reinstatement request date
 
 ; Reason
 {.reason}
-reinstatement_reason = !(appeal_decision, grace_period_payment, retroactive_medicaid, technical_error)
+reinstatement_reason = (appeal_decision, grace_period_payment, retroactive_medicaid, technical_error)
 documentation = :                           ; Supporting documentation
 
 {@reinstatement}
@@ -329,8 +329,8 @@ retroactive_coverage = ?                    ; Retroactive coverage provided
 ; Per IRC 36B and Form 8962
 
 {@aptc_reconciliation}
-tax_year = !##:(2014..)                     ; Tax year
-household_id = !:                           ; Tax household
+tax_year = ##:(2014..)                     ; Tax year
+household_id = :                           ; Tax household
 
 ; APTC paid
 {.aptc_paid}
@@ -367,9 +367,9 @@ repayment_cap = #$:(0..)                    ; Repayment limitation amount
 ; Per 45 CFR 156.270
 
 {@payment}
-payment_id = !:                             ; Payment ID
-enrollment_id = !:                          ; Enrollment
-payment_date = !date                        ; Payment date
+payment_id = :                             ; Payment ID
+enrollment_id = :                          ; Enrollment
+payment_date = date                        ; Payment date
 
 ; Payment details
 {.details}
@@ -382,7 +382,7 @@ payment_method = (ach, card, check, external)
 
 ; Status
 status = @status_record                     ; Payment status tracking
-status.status = !(applied, failed, pending, refunded)
+status.status = (applied, failed, pending, refunded)
 
 {@payment}
 

@@ -45,7 +45,7 @@ changelog[0].rationale = "Personal lines coverage for mobile equipment and small
 ; Classifications for personal mobile equipment.
 
 {@me_category}
-category = !(
+category = (
     aerial_lift,                              ; Personal aerial work platform
     chainsaw,                                 ; Chainsaws and pole saws
     chipper_shredder,                         ; Chippers and shredders
@@ -93,10 +93,10 @@ street_legal = ?                              ; Registered for road use
 
 {@me_equipment}
 ; Required fields first
-category = !@me_category                      ; Equipment category
-make = !:                                     ; Manufacturer
-model = !:                                    ; Model name/number
-model_year = !##:(1950..2100)                 ; Model year
+category = @me_category                      ; Equipment category
+make = :                                     ; Manufacturer
+model = :                                    ; Model name/number
+model_year = ##:(1950..2100)                 ; Model year
 
 ; Optional fields
 acquisition_date = date                       ; Date acquired
@@ -169,7 +169,7 @@ value = #$:(0..)                              ; Attachment value
 
 {@me_usage}
 ; Required fields first
-primary_use = !(
+primary_use = (
     hobby_farming,                            ; Personal hobby farm
     home_maintenance,                         ; Residential maintenance
     neighborhood_transport,                   ; Golf cart transportation
@@ -197,9 +197,9 @@ storage_months[] = ##:(1..12)                 ; Storage months
 
 {@me_liability}
 ; Required fields first
-bodily_injury_per_accident = !#$:(0..)        ; BI per accident
-bodily_injury_per_person = !#$:(0..)          ; BI per person
-property_damage = !#$:(0..)                   ; PD limit
+bodily_injury_per_accident = #$:(0..)        ; BI per accident
+bodily_injury_per_person = #$:(0..)          ; BI per person
+property_damage = #$:(0..)                   ; PD limit
 
 ; Optional fields
 combined_single_limit = #$:(0..)              ; CSL if used
@@ -224,7 +224,7 @@ passengers_covered = ?                        ; Covers passengers
 
 {@me_physical_damage}
 ; Required fields first
-coverage_type = !(collision, comprehensive)   ; Coverage type
+coverage_type = (collision, comprehensive)   ; Coverage type
 
 ; Optional fields
 actual_cash_value = #$:(0..)                  ; ACV valuation
@@ -252,9 +252,9 @@ per_item_limit = #$:(0..)                     ; Per-item sublimit
 ; Scheduled attachments
 {.scheduled_items[]}
 attachment_type = :                           ; Type
-description = !:                              ; Description
+description = :                              ; Description
 serial_number = :                             ; Serial number
-value = !#$:(0..)                             ; Value
+value = #$:(0..)                             ; Value
 
 {@me_attachments_coverage}
 
@@ -318,7 +318,7 @@ transit = ?                                   ; In transit
 
 {@me_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total annual premium
+total_premium = #$:(0..)                     ; Total annual premium
 
 ; Optional fields
 attachments_premium = #$:(0..)                ; Attachments coverage
@@ -354,9 +354,9 @@ seasonal_lay_up = ?                           ; Seasonal storage
 
 {@me_operator}
 ; Required fields first
-date_of_birth = !*date                        ; Operator DOB
-name = !@person_name                          ; Operator name
-relationship = !(
+date_of_birth = *date                        ; Operator DOB
+name = @person_name                          ; Operator name
+relationship = (
     child,                                    ; Minor child
     domestic_partner,                         ; Domestic partner
     employee,                                 ; Household employee
@@ -385,8 +385,8 @@ violations_3_years = ##:(0..10)               ; Violations
 
 {@me_prior_claim}
 ; Required fields first
-claim_date = !date                            ; Date of loss
-claim_type = !(
+claim_date = date                            ; Date of loss
+claim_type = (
     collision,                                ; Collision damage
     comprehensive,                            ; Comp loss
     fire,                                     ; Fire damage
@@ -430,8 +430,8 @@ unlicensed_operator = ?                       ; Unlicensed operation
 
 {@me_endorsement}
 ; Required fields first
-effective_date = !date                        ; Effective date
-endorsement_type = !(
+effective_date = date                        ; Effective date
+endorsement_type = (
     agreed_value,                             ; Agreed value
     attachments,                              ; Attachments coverage
     debris_removal,                           ; Debris removal
@@ -455,10 +455,10 @@ premium = #$:(0..)                            ; Endorsement premium
 
 {@mobile_equipment_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-equipment[] = !@me_equipment                  ; Covered equipment
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Policy effective date
+equipment[] = @me_equipment                  ; Covered equipment
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

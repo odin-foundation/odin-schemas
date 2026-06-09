@@ -47,11 +47,11 @@ changelog[0].rationale = "Structure derived from UB-04 form layout and CMS instr
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Claim Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-claim_id = !:                                 ; Unique claim identifier
+claim_id = :                                 ; Unique claim identifier
 original_claim_id = :                         ; Original claim (for adjustments)
 
 ; Type of bill (FL 4) - 3 or 4 digits
-type_of_bill = !:/^\d{3,4}$/                  ; Type of bill code
+type_of_bill = :/^\d{3,4}$/                  ; Type of bill code
 ; First digit: Facility type
 ; Second digit: Bill classification
 ; Third digit: Frequency
@@ -59,7 +59,7 @@ type_of_bill = !:/^\d{3,4}$/                  ; Type of bill code
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Provider Information (FL 1-5)
 ; ───────────────────────────────────────────────────────────────────────────────
-billing_provider = !@claims.provider          ; Billing provider (FL 1)
+billing_provider = @claims.provider          ; Billing provider (FL 1)
 federal_tax_id = *:                           ; Federal tax number (FL 5)
 
 ; Pay-to provider (if different)
@@ -76,26 +76,26 @@ zip = :/^\d{5}(\d{4})?$/
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Patient Information (FL 8-17)
 ; ───────────────────────────────────────────────────────────────────────────────
-patient = !@claims.subscriber                 ; Patient information
+patient = @claims.subscriber                 ; Patient information
 
 ; Patient control number (FL 3a)
-patient_control_number = !:                   ; Patient account number
+patient_control_number = :                   ; Patient account number
 
 ; Medical record number (FL 3b)
 medical_record_number = :                     ; Medical record number
 
 ; Birth date and sex (FL 10, 11)
-patient_birth_date = !*date                   ; Patient date of birth
-patient_sex = !(female, male, unknown)        ; Administrative sex
+patient_birth_date = *date                   ; Patient date of birth
+patient_sex = (female, male, unknown)        ; Administrative sex
 
 ; Admission/discharge (FL 12-17)
 {.admission}
-date = !date                                  ; Admission date (FL 12)
+date = date                                  ; Admission date (FL 12)
 hour = :(2)                                   ; Admission hour (FL 13)
 type = :(1)                                   ; Admission type code (FL 14)
 source = :(1)                                 ; Admission source code (FL 15)
 discharge_hour = :(2)                         ; Discharge hour (FL 16)
-status = !:(2)                                ; Patient status code (FL 17)
+status = :(2)                                ; Patient status code (FL 17)
 
 {@claim}
 
@@ -110,8 +110,8 @@ condition_codes[] = :(2)                      ; Condition codes (up to 11)
 occurrences[] = @occurrence                   ; Occurrence codes with dates
 
 {@occurrence}
-code = !:(2)                                  ; Occurrence code
-date = !date                                  ; Occurrence date
+code = :(2)                                  ; Occurrence code
+date = date                                  ; Occurrence date
 
 {@claim}
 
@@ -121,9 +121,9 @@ date = !date                                  ; Occurrence date
 occurrence_spans[] = @occurrence_span         ; Occurrence span codes
 
 {@occurrence_span}
-code = !:(2)                                  ; Occurrence span code
-from_date = !date                             ; From date
-through_date = !date                          ; Through date
+code = :(2)                                  ; Occurrence span code
+from_date = date                             ; From date
+through_date = date                          ; Through date
 
 {@claim}
 
@@ -133,8 +133,8 @@ through_date = !date                          ; Through date
 value_codes[] = @value_code                   ; Value codes with amounts
 
 {@value_code}
-code = !:(2)                                  ; Value code
-amount = !#$                                  ; Value amount
+code = :(2)                                  ; Value code
+amount = #$                                  ; Value amount
 
 {@claim}
 
@@ -149,8 +149,8 @@ revenue_lines[] = @revenue_line               ; Revenue code lines
 payers[] = @institutional_payer               ; Payer information (up to 3)
 
 {@institutional_payer}
-payer = !@claims.payer                        ; Payer details
-payer_sequence = !(primary, secondary, tertiary)
+payer = @claims.payer                        ; Payer details
+payer_sequence = (primary, secondary, tertiary)
 health_plan_id = :                            ; Health plan ID (FL 51)
 release_of_info = (informed_consent, no, yes) ; Release of info (FL 52)
 assignment_of_benefits = (no, yes)            ; Assignment of benefits (FL 53)
@@ -176,7 +176,7 @@ authorization_codes[] = :                     ; Treatment authorization codes (F
 ; Diagnosis and Procedure Codes (FL 66-74)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Principal diagnosis (FL 67)
-principal_diagnosis = !@claims.diagnosis      ; Principal diagnosis
+principal_diagnosis = @claims.diagnosis      ; Principal diagnosis
 
 ; Other diagnoses (FL 67A-Q)
 other_diagnoses[] = @claims.diagnosis         ; Secondary diagnoses (up to 17)
@@ -197,8 +197,8 @@ principal_procedure = @institutional_procedure ; Principal procedure
 other_procedures[] = @institutional_procedure ; Other procedures (up to 5)
 
 {@institutional_procedure}
-code = !:/^[A-Z0-9]{7}$/                      ; ICD-10-PCS code
-date = !date                                  ; Procedure date
+code = :/^[A-Z0-9]{7}$/                      ; ICD-10-PCS code
+date = date                                  ; Procedure date
 description = :                               ; Procedure description
 
 {@claim}
@@ -206,7 +206,7 @@ description = :                               ; Procedure description
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Attending and Other Providers (FL 76-79)
 ; ───────────────────────────────────────────────────────────────────────────────
-attending_provider = !@claims.provider        ; Attending physician (FL 76)
+attending_provider = @claims.provider        ; Attending physician (FL 76)
 operating_provider = @claims.provider         ; Operating physician (FL 77)
 other_providers[] = @claims.provider          ; Other providers (FL 78-79)
 
@@ -230,7 +230,7 @@ code = :                                      ; Code value
 ; Totals (FL 47)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.totals}
-total_charges = !#$:(0..)                     ; Total charges
+total_charges = #$:(0..)                     ; Total charges
 non_covered_charges = #$:(0..)                ; Total non-covered charges
 
 {@claim}
@@ -247,10 +247,10 @@ status_history[] = @claims.claim_status       ; Status history
 ; Per UB-04 FL 42-49 structure
 
 {@revenue_line}
-line_number = !##:(1..)                       ; Line number
+line_number = ##:(1..)                       ; Line number
 
 ; Revenue code (FL 42)
-revenue_code = !:/^\d{4}$/                    ; 4-digit revenue code
+revenue_code = :/^\d{4}$/                    ; 4-digit revenue code
 revenue_description = :                       ; Revenue code description
 
 ; HCPCS/Rates (FL 44)
@@ -264,7 +264,7 @@ service_date = date                           ; Date of service
 units = ##:(0..)                              ; Service units
 
 ; Total charges (FL 47)
-total_charges = !#$:(0..)                     ; Total charges for line
+total_charges = #$:(0..)                     ; Total charges for line
 
 ; Non-covered charges (FL 48)
 non_covered_charges = #$:(0..)                ; Non-covered charges
@@ -286,7 +286,7 @@ ndc_quantity = #:(0..)                        ; NDC quantity
 ; Diagnosis Related Group for inpatient
 
 {@drg}
-code = !:                                     ; DRG code
+code = :                                     ; DRG code
 type = (ap_drg, apr_drg, cms_drg, ms_drg)     ; DRG type
 description = :                               ; DRG description
 weight = #:(0..)                              ; DRG relative weight
@@ -299,15 +299,15 @@ mortality = ##:(1..4)                         ; Risk of mortality (APR-DRG)
 ; Remittance advice for institutional claims
 
 {@remittance}
-remittance_id = !:                            ; Unique remittance identifier
+remittance_id = :                            ; Unique remittance identifier
 check_number = :                              ; Check/EFT number
-remittance_date = !date                       ; Remittance date
+remittance_date = date                       ; Remittance date
 
 ; Payer
-payer = !@claims.payer                        ; Payer issuing remittance
+payer = @claims.payer                        ; Payer issuing remittance
 
 ; Provider (payee)
-payee = !@claims.provider                     ; Provider receiving payment
+payee = @claims.provider                     ; Provider receiving payment
 
 ; Totals
 {.totals}
@@ -323,12 +323,12 @@ total_contractual = #$:(0..)                  ; Total contractual adjustments
 claim_payments[] = @institutional_claim_payment
 
 {@institutional_claim_payment}
-claim_id = !:                                 ; Original claim ID
+claim_id = :                                 ; Original claim ID
 patient_control_number = :                    ; Patient control number
-patient = !@claims.subscriber                 ; Patient
+patient = @claims.subscriber                 ; Patient
 
 ; Claim status
-claim_status = !(denied, paid, primary_forwarded)
+claim_status = (denied, paid, primary_forwarded)
 drg = @drg                                    ; DRG information (inpatient)
 
 ; Amounts
@@ -347,7 +347,7 @@ adjustments[] = @claims.adjustment            ; Claim-level adjustments
 revenue_line_payments[] = @revenue_line_payment
 
 {@revenue_line_payment}
-revenue_code = !:/^\d{4}$/                    ; Revenue code
+revenue_code = :/^\d{4}$/                    ; Revenue code
 service_date = date                           ; Date of service
 hcpcs_code = :                                ; HCPCS code if applicable
 

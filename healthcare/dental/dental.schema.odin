@@ -54,16 +54,16 @@ changelog[0].rationale = "Comprehensive dental benefit coverage for all plan typ
 
 {@dental_plan}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-plan_name = !:                               ; Plan name
-effective_date = !date                       ; Plan effective date
-expiration_date = !date                      ; Plan expiration date
+plan_id = :                                 ; Plan identifier
+plan_name = :                               ; Plan name
+effective_date = date                       ; Plan effective date
+expiration_date = date                      ; Plan expiration date
 
 ; Invariants
 :invariant expiration_date > effective_date
 
 ; Plan type
-plan_type = !(dhmo, discount, dppo, epo, indemnity, ppo)
+plan_type = (dhmo, discount, dppo, epo, indemnity, ppo)
 funding_type = (fully_insured, level_funded, self_funded)
 payer_type = (commercial, exchange, medicaid, medicare_advantage, self_funded)
 
@@ -171,10 +171,10 @@ posterior_composite = ?                      ; Posterior composite covered
 
 {@dental_benefit}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-category = !(basic, diagnostic, endodontic, major, oral_surgery, orthodontia, periodontic, preventive, prosthodontic)
-coinsurance_in = !#:(0..100)                 ; In-network coinsurance
-coinsurance_out = !#:(0..100)                ; Out-of-network coinsurance
+plan_id = :                                 ; Plan identifier
+category = (basic, diagnostic, endodontic, major, oral_surgery, orthodontia, periodontic, preventive, prosthodontic)
+coinsurance_in = #:(0..100)                 ; In-network coinsurance
+coinsurance_out = #:(0..100)                ; Out-of-network coinsurance
 
 ; Category mapping to CDT codes
 {.coverage}
@@ -232,9 +232,9 @@ sealant_permanent_only = ?                   ; Permanent teeth only
 
 {@dental_procedure}
 ; Required fields first
-cdt_code = !:/^D\d{4}$/                      ; CDT procedure code
-procedure_name = !:                          ; Procedure name
-category = !(adjunctive, basic, diagnostic, endodontic, implant, major, oral_surgery, orthodontia, periodontic, preventive, prosthodontic_fixed, prosthodontic_removable)
+cdt_code = :/^D\d{4}$/                      ; CDT procedure code
+procedure_name = :                          ; Procedure name
+category = (adjunctive, basic, diagnostic, endodontic, implant, major, oral_surgery, orthodontia, periodontic, preventive, prosthodontic_fixed, prosthodontic_removable)
 
 ; Procedure details
 {.details}
@@ -303,8 +303,8 @@ alternate_benefit = :                        ; Alternate benefit code
 
 {@dental_ortho}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-covered = !?                                 ; Orthodontia covered
+plan_id = :                                 ; Plan identifier
+covered = ?                                 ; Orthodontia covered
 
 ; Coverage details
 lifetime_maximum = #$:(0..):if covered = true ; Lifetime maximum
@@ -384,9 +384,9 @@ hhi_criteria = ?                             ; Handicapping malocclusion index
 
 {@dental_waiting}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-category = !(basic, diagnostic, endodontic, major, oral_surgery, orthodontia, periodontic, preventive, prosthodontic)
-waiting_months = !##:(0..24)                 ; Waiting period in months
+plan_id = :                                 ; Plan identifier
+category = (basic, diagnostic, endodontic, major, oral_surgery, orthodontia, periodontic, preventive, prosthodontic)
+waiting_months = ##:(0..24)                 ; Waiting period in months
 
 ; Waiting period details
 {.details}
@@ -427,9 +427,9 @@ exception_procedures[] = :                   ; CDT codes exempt
 
 {@dental_provider}
 ; Required fields first
-provider_id = !:                             ; Provider identifier
-npi = !:/^\d{10}$/                           ; National Provider Identifier
-provider_type = !(dental_hygienist, dentist, denturist, orthodontist, specialist)
+provider_id = :                             ; Provider identifier
+npi = :/^\d{10}$/                           ; National Provider Identifier
+provider_type = (dental_hygienist, dentist, denturist, orthodontist, specialist)
 
 ; Provider identification
 {.identification}
@@ -524,10 +524,10 @@ background_checked = ?                       ; Background verified
 
 {@dental_claim}
 ; Required fields first
-claim_id = !:                                ; Claim identifier
-service_date = !date                         ; Date of service
-member_id = !*:                              ; Member identifier
-provider_npi = !:/^\d{10}$/                  ; Rendering provider NPI
+claim_id = :                                ; Claim identifier
+service_date = date                         ; Date of service
+member_id = *:                              ; Member identifier
+provider_npi = :/^\d{10}$/                  ; Rendering provider NPI
 
 ; Patient information
 {.patient}

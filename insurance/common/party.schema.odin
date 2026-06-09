@@ -113,7 +113,7 @@ party_id = :                                  ; Unique party identifier
 ; -------------------------------------------------------------------------------
 ; Legal Identity
 ; -------------------------------------------------------------------------------
-legal_name = !:                               ; Legal company name
+legal_name = :                               ; Legal company name
 business_type = (corporation, estate, government, llc, nonprofit, partnership, sole_prop, trust)
 dba_name = :                                  ; Doing Business As name
 naic_code = :(5..6)                           ; NAIC company code
@@ -150,8 +150,8 @@ website = :                                   ; Company website URL
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Required Fields
 ; ───────────────────────────────────────────────────────────────────────────────
-insured_type = !(additional, primary, secondary)  ; Insured classification
-party_ref = !@person|@organization            ; Reference to person or organization
+insured_type = (additional, primary, secondary)  ; Insured classification
+party_ref = @person|@organization            ; Reference to person or organization
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Addresses
@@ -174,8 +174,8 @@ preferred_contact = (email, mail, phone)      ; Preferred contact method
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Required Fields
 ; ───────────────────────────────────────────────────────────────────────────────
-interest_type = !(additional_insured, certificate_holder, lessor, loss_payee, mortgagee)
-party_ref = !@person|@organization            ; Reference to person or organization
+interest_type = (additional_insured, certificate_holder, lessor, loss_payee, mortgagee)
+party_ref = @person|@organization            ; Reference to person or organization
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Relationship
@@ -197,12 +197,12 @@ specific_items = :                            ; Comma-separated item references 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Required Fields
 ; ───────────────────────────────────────────────────────────────────────────────
-name = !:                                     ; Lienholder company name
+name = :                                     ; Lienholder company name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Classification
 ; ───────────────────────────────────────────────────────────────────────────────
-type = !(lease, lien, loan, loss_payee, mortgagee) ; Type of lien (alphabetical)
+type = (lease, lien, loan, loss_payee, mortgagee) ; Type of lien (alphabetical)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identifiers
@@ -239,8 +239,8 @@ min_comp_ded = ##                             ; Minimum comprehensive deductible
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Required Fields
 ; ───────────────────────────────────────────────────────────────────────────────
-name = !:                                     ; Mortgagee company name
-type = !(first, second, third)                ; Mortgage priority position
+name = :                                     ; Mortgagee company name
+type = (first, second, third)                ; Mortgage priority position
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identifiers

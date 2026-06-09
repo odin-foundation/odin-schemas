@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial energy coverage for renewable projects"
 ; ===================================================================================
 
 {@re_energy_type}
-technology = !(
+technology = (
     battery_storage,                          ; Battery storage
     biomass,                                  ; Biomass/biogas
     fuel_cell,                                ; Fuel cell
@@ -72,9 +72,9 @@ project_phase = (
 
 {@re_facility}
 ; Required fields first
-capacity_mw = !#:(0..)                        ; Nameplate capacity MW
-energy_type = !@re_energy_type                ; Technology type
-facility_name = !:                            ; Facility name
+capacity_mw = #:(0..)                        ; Nameplate capacity MW
+energy_type = @re_energy_type                ; Technology type
+facility_name = :                            ; Facility name
 
 ; Optional fields
 address = @address                            ; Location
@@ -143,7 +143,7 @@ storage_capacity_mwh = #:if energy_type.technology = battery_storage
 
 {@re_property}
 ; Required fields first
-total_insured_value = !#$:(0..)               ; TIV
+total_insured_value = #$:(0..)               ; TIV
 
 ; Optional fields
 all_risk = ?                                  ; All-risk coverage
@@ -187,7 +187,7 @@ testing_coverage = ?:if included = true       ; Testing phase
 
 {@re_liability}
 ; Required fields first
-general_liability = !#$:(0..)                 ; GL limit per occ
+general_liability = #$:(0..)                 ; GL limit per occ
 
 ; Optional fields
 aggregate = #$:(0..)                          ; Annual aggregate
@@ -230,7 +230,7 @@ resource_assessment = ::if included = true    ; Resource study
 
 {@re_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 bi_premium = #$:(0..)                         ; BI premium
@@ -248,8 +248,8 @@ taxes_and_fees = #$:(0..)                     ; Taxes/fees
 
 {@re_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     blade_damage,                             ; Wind blade
     bodily_injury,                            ; BI claim
     business_interruption,                    ; BI loss
@@ -288,10 +288,10 @@ reserve = #$:(0..)                            ; Reserve
 
 {@renewable_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-facilities[] = !@re_facility                  ; Covered facilities
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+facilities[] = @re_facility                  ; Covered facilities
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date
@@ -301,7 +301,7 @@ agency = @agency                              ; Issuing agency
 claims[] = @re_claim                          ; Claims history
 dsu = @re_dsu                                 ; DSU coverage
 id = :                                        ; Internal identifier
-insured_name = !:                             ; Named insured
+insured_name = :                             ; Named insured
 insured_address = @address                    ; Insured address
 liability = @re_liability                     ; Liability coverage
 policy_form = (

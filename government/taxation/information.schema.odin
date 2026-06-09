@@ -42,26 +42,26 @@ changelog[0].rationale = "Comprehensive information reporting per IRS specificat
 {@w2}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 corrected = ?
 void = ?
 
 ; Employer Information
 {.employer}
-name = !:
-eins[] = !:format ein                           ; EINs (multi-subsidiary, acquired entities)
-address = !@types.address
+name = :
+eins[] = :format ein                           ; EINs (multi-subsidiary, acquired entities)
+address = @types.address
 
 ; Employee Information
 {.employee}
-ssn = !*:format ssn
-first_name = !:
-last_name = !:
-address = !@types.address
+ssn = *:format ssn
+first_name = :
+last_name = :
+address = @types.address
 
 {@w2}
 ; Wages and Compensation
-wages_tips_compensation = !#$:(0..)
+wages_tips_compensation = #$:(0..)
 federal_income_tax_withheld = #$:(0..)
 social_security_wages = #$:(0..)
 social_security_tax_withheld = #$:(0..)
@@ -103,22 +103,22 @@ amount = #$
 {@form_1099_misc}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 corrected = ?
 void = ?
 
 ; Payer Information
 {.payer}
-name = !:
-tin = !:                                             ; TIN (EIN or SSN)
-address = !@types.address
+name = :
+tin = :                                             ; TIN (EIN or SSN)
+address = @types.address
 phone = *@types.phone
 
 ; Recipient Information
 {.recipient}
-tin = !*:                                            ; TIN (SSN, EIN, ITIN)
-name = !:
-address = !@types.address
+tin = *:                                            ; TIN (SSN, EIN, ITIN)
+name = :
+address = @types.address
 account_number = *:
 
 {@form_1099_misc}
@@ -149,27 +149,27 @@ income = #$                                          ; State income
 {@form_1099_nec}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 corrected = ?
 void = ?
 
 ; Payer Information
 {.payer}
-name = !:
-tin = !:
-address = !@types.address
+name = :
+tin = :
+address = @types.address
 phone = *@types.phone
 
 ; Recipient Information
 {.recipient}
-tin = !*:
-name = !:
-address = !@types.address
+tin = *:
+name = :
+address = @types.address
 account_number = *:
 
 {@form_1099_nec}
 ; Amounts
-nonemployee_compensation = !#$:(0..)
+nonemployee_compensation = #$:(0..)
 federal_income_tax_withheld = #$:(0..)
 
 ; State Reporting (multi-state income)
@@ -186,25 +186,25 @@ income = #$                                          ; State income
 {@form_1099_int}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 corrected = ?
 
 ; Payer Information
 {.payer}
-name = !:
-tin = !:
-address = !@types.address
+name = :
+tin = :
+address = @types.address
 
 ; Recipient Information
 {.recipient}
-tin = !*:
-name = !:
-address = !@types.address
+tin = *:
+name = :
+address = @types.address
 account_number = *:
 
 {@form_1099_int}
 ; Interest Amounts
-interest_income = !#$:(0..)
+interest_income = #$:(0..)
 early_withdrawal_penalty = #$:(0..)
 interest_us_savings_bonds = #$:(0..)
 federal_income_tax_withheld = #$:(0..)
@@ -232,25 +232,25 @@ income = #$                                          ; State income
 {@form_1099_div}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 corrected = ?
 
 ; Payer Information
 {.payer}
-name = !:
-tin = !:
-address = !@types.address
+name = :
+tin = :
+address = @types.address
 
 ; Recipient Information
 {.recipient}
-tin = !*:
-name = !:
-address = !@types.address
+tin = *:
+name = :
+address = @types.address
 account_number = *:
 
 {@form_1099_div}
 ; Dividend Amounts
-total_ordinary_dividends = !#$:(0..)
+total_ordinary_dividends = #$:(0..)
 qualified_dividends = #$:(0..)
 total_capital_gain_distributions = #$:(0..)
 unrecaptured_section_1250_gain = #$:(0..)
@@ -281,30 +281,30 @@ income = #$                                          ; State income
 {@form_1099_b}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 corrected = ?
 
 ; Payer Information
 {.payer}
-name = !:
-tin = !:
-address = !@types.address
+name = :
+tin = :
+address = @types.address
 phone = *@types.phone
 
 ; Recipient Information
 {.recipient}
-tin = !*:
-name = !:
-address = !@types.address
+tin = *:
+name = :
+address = @types.address
 account_number = *:
 
 {@form_1099_b}
 ; Transaction Details
 {.transaction[]}
 cusip_number = :
-date_sold = !date
+date_sold = date
 date_acquired = date
-proceeds = !#$
+proceeds = #$
 cost_basis = #$
 wash_sale_loss_disallowed = #$
 realized_gain_loss = #$
@@ -329,25 +329,25 @@ unrealized_profit_loss_open_contracts = #$
 {@form_1099_r}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 corrected = ?
 
 ; Payer Information
 {.payer}
-name = !:
-tin = !:
-address = !@types.address
+name = :
+tin = :
+address = @types.address
 phone = *@types.phone
 
 ; Recipient Information
 {.recipient}
-tin = !*:
-name = !:
-address = !@address
+tin = *:
+name = :
+address = @address
 
 {@form_1099_r}
 ; Distribution Amounts
-gross_distribution = !#$:(0..)
+gross_distribution = #$:(0..)
 taxable_amount = #$
 taxable_amount_not_determined = ?
 total_distribution = ?
@@ -355,7 +355,7 @@ capital_gain = #$:(0..)
 federal_income_tax_withheld = #$:(0..)
 employee_contributions = #$:(0..)
 net_unrealized_appreciation = #$:(0..)
-distribution_codes[] = !:                            ; Codes 1-9, A-W (up to 2 per IRS)
+distribution_codes[] = :                            ; Codes 1-9, A-W (up to 2 per IRS)
 ira_sep_simple = ?
 first_year_roth_conversion = ##:(2000..2100)
 
@@ -377,17 +377,17 @@ date_of_birth = *date
 {@form_1099_s}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-gross_proceeds = !#$:(0..)
+tax_year = ##:(2020..)
+gross_proceeds = #$:(0..)
 buyer_address = @types.address
-date_of_closing = !date
+date_of_closing = date
 property_address = @types.address
 
 {@form_1099_k}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-gross_amount_payment_transactions = !#$:(0..)
+tax_year = ##:(2020..)
+gross_amount_payment_transactions = #$:(0..)
 card_not_present_transactions = #$:(0..)
 number_payment_transactions = ##:(0..)
 federal_income_tax_withheld = #$:(0..)
@@ -396,7 +396,7 @@ merchant_category_codes[] = ##:(1000..9999)          ; MCCs (multiple business t
 {@form_1099_g}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 unemployment_compensation = #$:(0..)
 state_local_income_tax_refunds = #$:(0..)
 taxable_grants = #$:(0..)
@@ -408,9 +408,9 @@ market_gain = #$:(0..)
 {@form_1099_c}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-date_canceled = !date
-amount_debt_canceled = !#$:(0..)
+tax_year = ##:(2020..)
+date_canceled = date
+amount_debt_canceled = #$:(0..)
 interest_included = #$:(0..)
 debt_descriptions[] = :                              ; Debt descriptions (multiple debts consolidated)
 personally_liable = ?
@@ -419,8 +419,8 @@ identifiable_event_codes[] = :(1)                    ; Event codes A-H (multiple
 {@form_1099_a}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-date_acquisition = !date
+tax_year = ##:(2020..)
+date_acquisition = date
 balance_principal_outstanding = #$:(0..)
 fair_market_value = #$:(0..)
 property_descriptions[] = :                          ; Property descriptions (multiple parcels)
@@ -429,7 +429,7 @@ personally_liable = ?
 {@form_1099_q}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 gross_distribution = #$:(0..)
 earnings = #$:(0..)
 basis = #$:(0..)
@@ -438,7 +438,7 @@ trustee_to_trustee_transfer = ?
 {@form_1099_sa}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 gross_distribution = #$:(0..)
 earnings = #$:(0..)
 distribution_code = (1, 2, 3, 4, 5, 6)              ; HSA, Archer MSA, Medicare
@@ -451,8 +451,8 @@ fair_market_value = #$:(0..)
 {@form_1098}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-mortgage_interest_received = !#$:(0..)
+tax_year = ##:(2020..)
+mortgage_interest_received = #$:(0..)
 outstanding_mortgage_principal = #$:(0..)
 mortgage_origination_date = date
 refund_overpaid_interest = #$:(0..)
@@ -465,7 +465,7 @@ other_informations[] = :                             ; Other information items
 {@form_1098_t}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 payments_qualified_tuition = #$:(0..)
 adjustments_qualified_tuition = #$
 scholarships_grants = #$:(0..)
@@ -478,12 +478,12 @@ box_1_includes_prior_year = ?
 {@form_1098_e}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 student_loan_interests[] = {@student_loan_interest}  ; Interests by loan (multiple loans)
 
 {@student_loan_interest}
 loan_id = :                                          ; Loan identifier
-interest_paid = !#$:(0..)                            ; Interest paid on loan
+interest_paid = #$:(0..)                            ; Interest paid on loan
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; 1095 Series - Health Coverage
@@ -492,11 +492,11 @@ interest_paid = !#$:(0..)                            ; Interest paid on loan
 {@form_1095_a}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 marketplace_identifier = :
 marketplace_assigned_policy_number = :
 {.covered_individuals[]}
-name = !:
+name = :
 ssn = *:format ssn
 covered_all_year = ?
 coverage_start_date = date
@@ -512,11 +512,11 @@ advance_payment_premium_tax_credit = #$:(0..)
 {@form_1095_b}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-responsible_individual_name = !:
+tax_year = ##:(2020..)
+responsible_individual_name = :
 responsible_individual_ssn = *:format ssn
 {.covered_individuals[]}
-name = !:
+name = :
 ssn = *:format ssn
 covered_all_year = ?
 {.coverage_months[]}
@@ -527,8 +527,8 @@ covered = ?
 {@form_1095_c}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-employee_name = !:
+tax_year = ##:(2020..)
+employee_name = :
 employee_ssn = *:format ssn
 {.monthly_coverage[]}
 month = (January, February, March, April, May, June, July, August, September, October, November, December)
@@ -544,8 +544,8 @@ safe_harbor_code = :(2)
 {@form_5498}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-participant_ssn = !*:format ssn
+tax_year = ##:(2020..)
+participant_ssn = *:format ssn
 ira_contributions = #$:(0..)
 rollover_contributions = #$:(0..)
 roth_ira_conversion = #$:(0..)

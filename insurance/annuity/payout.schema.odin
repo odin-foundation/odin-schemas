@@ -39,7 +39,7 @@ changelog[0].rationale = "Income annuity and payout phase data structures"
 
 {@payout_option}
 ; Required fields
-option_type = !(cash_refund, installment_refund, joint_100, joint_50, joint_66, joint_75, life_only, life_with_period, period_certain, temporary)  ; Payout type
+option_type = (cash_refund, installment_refund, joint_100, joint_50, joint_66, joint_75, life_only, life_with_period, period_certain, temporary)  ; Payout type
 
 ; Option details
 {.details}
@@ -86,13 +86,13 @@ inflation_indexed = ?                         ; Indexed to inflation
 
 {@spia}
 ; Required fields
-annuitant = !@la.life_party                   ; Annuitant
-first_payment = !date                         ; First payment date
-number = !:                                   ; Contract number
-owner = !@la.life_party                       ; Contract owner
-payout_option = !@payout_option               ; Selected payout option
-premium = !#$:(0..)                           ; Single premium paid
-status = !(active, completed, terminated)     ; Contract status
+annuitant = @la.life_party                   ; Annuitant
+first_payment = date                         ; First payment date
+number = :                                   ; Contract number
+owner = @la.life_party                       ; Contract owner
+payout_option = @payout_option               ; Selected payout option
+premium = #$:(0..)                           ; Single premium paid
+status = (active, completed, terminated)     ; Contract status
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Identification
@@ -158,12 +158,12 @@ max_commutation_percent = #:(0..100)          ; Maximum commutable
 
 {@dia}
 ; Required fields
-annuitant = !@la.life_party                   ; Annuitant
-income_start_date = !date                     ; Date income begins
-number = !:                                   ; Contract number
-owner = !@la.life_party                       ; Contract owner
-premium = !#$:(0..)                           ; Purchase payment(s)
-status = !(active, deferred, terminated)      ; Contract status
+annuitant = @la.life_party                   ; Annuitant
+income_start_date = date                     ; Date income begins
+number = :                                   ; Contract number
+owner = @la.life_party                       ; Contract owner
+premium = #$:(0..)                           ; Purchase payment(s)
+status = (active, deferred, terminated)      ; Contract status
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Identification
@@ -261,10 +261,10 @@ rmd_exempt_amount = #$:(0..)                  ; Amount exempt from RMD calculati
 
 {@annuitization}
 ; Required fields
-annuitization_date = !date                    ; Date of annuitization
-contract_number = !:                          ; Original contract number
-contract_value_annuitized = !#$:(0..)         ; Amount annuitized
-payout_option = !@payout_option               ; Selected payout option
+annuitization_date = date                    ; Date of annuitization
+contract_number = :                          ; Original contract number
+contract_value_annuitized = #$:(0..)         ; Amount annuitized
+payout_option = @payout_option               ; Selected payout option
 
 ; Optional fields
 annuitization_rates_used = :                  ; Rate basis used
@@ -295,8 +295,8 @@ total_payments_expected = ##                  ; Total payments expected
 
 {@payment}
 ; Required fields
-amount = !#$:(0..)                            ; Payment amount
-date = !date                                  ; Payment date
+amount = #$:(0..)                            ; Payment amount
+date = date                                  ; Payment date
 
 ; Optional fields
 account_last_four = *:(4)                     ; Last 4 digits of deposit account
@@ -320,7 +320,7 @@ taxable_portion = #$:(0..)                    ; Taxable portion
 
 {@payout_factors}
 ; Required fields
-effective = !date                             ; Factor effective date
+effective = date                             ; Factor effective date
 
 ; Factor details
 age = ##:(0..120)                             ; Annuitant age

@@ -41,9 +41,9 @@ changelog[0].rationale = "ALTA-compliant commitment structure"
 
 {@title_commitment}
 ; Required fields first
-commitment_date = !date                              ; Commitment date
-effective_date = !date                               ; Effective date
-property_address = !@address                         ; Property address
+commitment_date = date                              ; Commitment date
+effective_date = date                               ; Effective date
+property_address = @address                         ; Property address
 
 ; Commitment identification
 commitment_id = :                                    ; Unique commitment identifier
@@ -195,8 +195,8 @@ policy_issued_date = date:if status = policy_issued  ; Date policy issued
 
 {@commitment_requirement}
 ; Required fields first
-requirement_number = !##:(1..)                       ; Requirement number
-requirement_text = !:                                ; Requirement text
+requirement_number = ##:(1..)                       ; Requirement number
+requirement_text = :                                ; Requirement text
 
 ; Requirement identification
 requirement_id = :                                   ; Unique requirement identifier
@@ -245,8 +245,8 @@ waived_by = ::if status = waived                     ; Waived by
 
 {@commitment_exception}
 ; Required fields first
-exception_number = !##:(1..)                         ; Exception number
-exception_text = !:                                  ; Exception text
+exception_number = ##:(1..)                         ; Exception number
+exception_text = :                                  ; Exception text
 
 ; Exception identification
 exception_id = :                                     ; Unique exception identifier
@@ -295,8 +295,8 @@ endorsement_issued = ::if status = insured_over      ; Endorsement number
 
 {@closing_protection_letter}
 ; Required fields first
-cpl_date = !date                                     ; CPL date
-property_address = !@address                         ; Property address
+cpl_date = date                                     ; CPL date
+property_address = @address                         ; Property address
 
 ; CPL identification
 cpl_id = :                                           ; Unique CPL identifier

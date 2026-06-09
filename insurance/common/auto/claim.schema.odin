@@ -27,14 +27,14 @@ changelog[0].rationale = "Standard auto insurance claim data structures"
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@claim}
-number = !:
+number = :
 id = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Reference
 ; ───────────────────────────────────────────────────────────────────────────────
 {.policy}
-number = !:
+number = :
 effective = date
 expiration = date
 insured_name = :
@@ -44,7 +44,7 @@ insured_name = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Claim Status & Type
 ; ───────────────────────────────────────────────────────────────────────────────
-status = !(
+status = (
     fnol,                                      ; First Notice of Loss
     open,                                      ; Open/Active
     pending,                                   ; Pending investigation/info
@@ -59,7 +59,7 @@ status = !(
     reopened,                                  ; Reopened
     voided                                     ; Voided
 )
-type = !(
+type = (
     collision,
     comprehensive,
     glass,
@@ -213,7 +213,7 @@ salvage_value = #$:(0..):if total_loss = true
 ; ───────────────────────────────────────────────────────────────────────────────
 {@claim.parties[]}
 = @person                                     ; Inherit person fields (name, dob, identifiers, contact)
-type = !(
+type = (
     attorney,
     claimant,
     driver,
@@ -291,7 +291,7 @@ updated = timestamp
 ; Payments
 ; ───────────────────────────────────────────────────────────────────────────────
 {@claim.payments[]}
-type = !(
+type = (
     death_benefit,
     deductible_recovery,
     expense,
@@ -307,8 +307,8 @@ type = !(
     vehicle_total_loss,
     wage_loss
 )
-amount = !#$:(0..)
-date = !date
+amount = #$:(0..)
+date = date
 id = :
 sequence = ##
 coverage_code = :
@@ -319,7 +319,7 @@ cleared_date = date
 
 ; Payee - uses shared @address type (US and Canada)
 {.payee}
-name = !:
+name = :
 type = (attorney, claimant, insured, lienholder, medical_provider, other, vendor)
 address = @address
 
@@ -416,7 +416,7 @@ expenses = #$:(0..)
 ; Activity/Notes
 ; ───────────────────────────────────────────────────────────────────────────────
 {@claim.activities[]}
-date = !timestamp
+date = timestamp
 id = :
 sequence = ##
 type = (
@@ -477,7 +477,7 @@ uploaded_by = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Timestamps
 ; ───────────────────────────────────────────────────────────────────────────────
-created = !timestamp
+created = timestamp
 created_by = :
 modified = timestamp
 modified_by = :
@@ -515,20 +515,20 @@ description = :
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@fnol}
-policy_number = !:
-reported_date = !timestamp
+policy_number = :
+reported_date = timestamp
 id = :
 {.reported_by}
-name = !:
+name = :
 phone = *@phone
 relation = (agent, claimant, driver, insured, other, passenger, witness)
 
 {@fnol}
 ; Loss summary
-loss_date = !date
+loss_date = date
 loss_time = time
 loss_type = (collision, comprehensive, liability, med_pay, other, pip, um_uim)
-loss_description = !:
+loss_description = :
 
 ; Location - uses shared @address type (US and Canada)
 {.location}

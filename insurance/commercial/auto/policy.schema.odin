@@ -53,7 +53,7 @@ changelog[0].rationale = "Commercial auto insurance requirements for motor carri
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-number = !:(1..50)                             ; Display number
+number = :(1..50)                             ; Display number
 id = :                                   ; Internal system ID
 quote_number = :                         ; Original quote reference
 application_number = :
@@ -76,9 +76,9 @@ type = (
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
 {.term}
-effective = !date                              ; Coverage start date
+effective = date                              ; Coverage start date
 effective_time = time                          ; Start time if not midnight
-expiration = !date                             ; Coverage end date
+expiration = date                             ; Coverage end date
 expiration_time = time                         ; End time if not midnight
 months = ##:(1..24)                            ; Term length in months
 type = (annual, continuous, monthly, quarterly, semi_annual)  ; Term type
@@ -92,7 +92,7 @@ original_effective = date                      ; Original policy effective date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Status
 ; ───────────────────────────────────────────────────────────────────────────────
-status = !(
+status = (
     active,
     application,
     bound,
@@ -112,7 +112,7 @@ status_reason = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; State & Jurisdiction
 ; ───────────────────────────────────────────────────────────────────────────────
-state = !:(2)                                  ; Primary state (domicile)
+state = :(2)                                  ; Primary state (domicile)
 garaging_states[] = :(2)                       ; States where vehicles garaged
 operating_states[] = :(2)                      ; States of operation
 
@@ -139,7 +139,7 @@ endorsement_count = ##:(0..)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Timestamps
 ; ───────────────────────────────────────────────────────────────────────────────
-created = !timestamp                           ; Record creation timestamp
+created = timestamp                           ; Record creation timestamp
 created_by = :                                 ; User who created record
 modified = timestamp                           ; Last modification timestamp
 modified_by = :                                ; User who last modified

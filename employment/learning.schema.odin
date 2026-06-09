@@ -39,10 +39,10 @@ changelog[0].rationale = "Course tracking, compliance training, certifications, 
 {@course}
 = @types.audit_info
 
-course_id = !:                                   ; Unique course identifier
+course_id = :                                   ; Unique course identifier
 course_code = :                                  ; Course code
-course_title = !:                                ; Course title
-course_description = !:                          ; Course description
+course_title = :                                ; Course title
+course_description = :                          ; Course description
 course_category = (compliance, leadership, onboarding, professional_development, safety, skills, technical)
 
 ; Course details
@@ -88,12 +88,12 @@ expiration_date = date                           ; Course expiration date
 {@course_enrollment}
 = @types.audit_info
 
-enrollment_id = !:                               ; Unique enrollment identifier
-employee_id = !:                                 ; Associated employee
-course_id = !:                                   ; Associated course
+enrollment_id = :                               ; Unique enrollment identifier
+employee_id = :                                 ; Associated employee
+course_id = :                                   ; Associated course
 session_id = :                                   ; Course session ID
 
-enrollment_date = !date                          ; Date enrolled
+enrollment_date = date                          ; Date enrolled
 enrollment_type = (assigned, self_enrolled, waitlist)
 assigned_by = :if enrollment_type = assigned     ; Who assigned the course
 
@@ -141,16 +141,16 @@ instructor_notes = :                             ; Instructor notes
 {@certification}
 = @types.audit_info
 
-certification_id = !:                            ; Unique certification identifier
-employee_id = !:                                 ; Associated employee
+certification_id = :                            ; Unique certification identifier
+employee_id = :                                 ; Associated employee
 
-certification_name = !:                          ; Certification name
+certification_name = :                          ; Certification name
 certification_type = (industry, internal, license, professional)
-certifying_body = !:                             ; Issuing organization
+certifying_body = :                             ; Issuing organization
 certification_number = *:                        ; Certification number (confidential)
 
 ; Dates
-issued_date = !date                              ; Issue date
+issued_date = date                              ; Issue date
 expiration_date = date                           ; Expiration date (if applicable)
 renewal_date = date                              ; Renewal date
 last_verified_date = date                        ; Last verification date
@@ -184,19 +184,19 @@ job_critical = ?                                 ; Critical for job performance
 {@compliance_training_record}
 = @types.audit_info
 
-record_id = !:                                   ; Unique record identifier
-employee_id = !:                                 ; Associated employee
-course_id = !:                                   ; Associated compliance course
+record_id = :                                   ; Unique record identifier
+employee_id = :                                 ; Associated employee
+course_id = :                                   ; Associated compliance course
 enrollment_id = :                                ; Associated enrollment
 
 ; Compliance details
 compliance_category = (anti_harassment, code_of_conduct, cybersecurity, data_privacy, ethics, export_control, safety, security)
-regulatory_authority = !:                        ; Regulatory body (OSHA, DOT, etc.)
+regulatory_authority = :                        ; Regulatory body (OSHA, DOT, etc.)
 regulation_citation = :                          ; Regulation reference
-mandate = !:                                     ; Specific mandate/requirement
+mandate = :                                     ; Specific mandate/requirement
 
 ; Training completion
-initial_training_date = !date                    ; Initial training completion
+initial_training_date = date                    ; Initial training completion
 initial_training_score = ##:(0..100)             ; Initial score
 initial_training_passed = ?                      ; Passed initial training
 
@@ -225,9 +225,9 @@ audit_trail_notes = :                            ; Audit notes
 {@learning_path}
 = @types.audit_info
 
-path_id = !:                                     ; Unique path identifier
-path_name = !:                                   ; Learning path name
-path_description = !:                            ; Path description
+path_id = :                                     ; Unique path identifier
+path_name = :                                   ; Learning path name
+path_description = :                            ; Path description
 path_category = (career_development, compliance, leadership, onboarding, role_transition, skills)
 
 target_audience = :                              ; Intended audience
@@ -236,8 +236,8 @@ required_for_position[] = :                      ; Positions requiring path
 ; Path courses
 {.path_courses[]}
 :(1..)                                           ; At least one course
-sequence = !##:(1..)                             ; Course sequence number
-course_id = !:                                   ; Course identifier
+sequence = ##:(1..)                             ; Course sequence number
+course_id = :                                   ; Course identifier
 course_name = :                                  ; Course name
 required = ?                                     ; Required or optional
 
@@ -256,17 +256,17 @@ effective_date = date                            ; Path effective date
 {@learning_path_enrollment}
 = @types.audit_info
 
-enrollment_id = !:                               ; Unique enrollment identifier
-employee_id = !:                                 ; Associated employee
-path_id = !:                                     ; Associated learning path
+enrollment_id = :                               ; Unique enrollment identifier
+employee_id = :                                 ; Associated employee
+path_id = :                                     ; Associated learning path
 
-enrollment_date = !date                          ; Date enrolled
+enrollment_date = date                          ; Date enrolled
 target_completion_date = date                    ; Target completion
 actual_completion_date = date                    ; Actual completion
 
 ; Progress tracking
 {.course_progress[]}
-course_id = !:                                   ; Course identifier
+course_id = :                                   ; Course identifier
 enrollment_id = :                                ; Course enrollment ID
 completed = ?                                    ; Course completed
 completion_date = date                           ; Completion date
@@ -275,7 +275,7 @@ score = ##:(0..100)                              ; Score if applicable
 {@learning_path_enrollment}
 
 courses_completed = ##:(0..)                     ; Courses completed count
-courses_total = !##:(1..)                        ; Total courses in path
+courses_total = ##:(1..)                        ; Total courses in path
 progress_percent = ##:(0..100)                   ; Overall progress
 
 status = (completed, in_progress, not_started)   ; Path status
@@ -287,36 +287,36 @@ status = (completed, in_progress, not_started)   ; Path status
 {@tuition_assistance}
 = @types.audit_info
 
-assistance_id = !:                               ; Unique assistance identifier
-employee_id = !:                                 ; Associated employee
+assistance_id = :                               ; Unique assistance identifier
+employee_id = :                                 ; Associated employee
 
-application_date = !date                         ; Date applied
-academic_year = !:                               ; Academic year
+application_date = date                         ; Date applied
+academic_year = :                               ; Academic year
 semester = (fall, spring, summer, year_round)    ; Semester/term
 
 ; Program details
-institution_name = !:                            ; Educational institution
+institution_name = :                            ; Educational institution
 institution_type = (college_university, graduate_school, trade_school, vocational)
-degree_program = !:                              ; Degree/program
+degree_program = :                              ; Degree/program
 major = :                                        ; Field of study
 course_name[] = :                                ; Course names
 credit_hours = #:(0..)                           ; Credit hours
 
 ; Job relevance
-job_related = !?                                 ; Related to current/future job
-relevance_explanation = !:                       ; How program is job-related
+job_related = ?                                 ; Related to current/future job
+relevance_explanation = :                       ; How program is job-related
 
 ; Costs
-tuition = !#$:(0..)                              ; Tuition cost
+tuition = #$:(0..)                              ; Tuition cost
 fees = #$:(0..)                                  ; Fees
 books = #$:(0..)                                 ; Books and materials
 other_costs = #$:(0..)                           ; Other costs
-total_cost = !#$:(0..)                           ; Total cost
+total_cost = #$:(0..)                           ; Total cost
 
 :invariant total_cost = tuition + fees + books + other_costs
 
 ; Assistance requested
-amount_requested = !#$:(0..)                     ; Assistance requested
+amount_requested = #$:(0..)                     ; Assistance requested
 amount_approved = #$:(0..)                       ; Assistance approved
 amount_paid = #$:(0..)                           ; Amount paid to date
 

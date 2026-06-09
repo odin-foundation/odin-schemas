@@ -49,8 +49,8 @@ changelog[0].rationale = "Comprehensive property structure for land transactions
 
 {@land_property}
 ; Required fields first
-address = !@address                               ; Property address (may be general)
-land_type = !(agricultural, commercial_land, development, industrial_land, ranch, recreational, residential_land, timber, transitional)
+address = @address                               ; Property address (may be general)
+land_type = (agricultural, commercial_land, development, industrial_land, ranch, recreational, residential_land, timber, transitional)
 
 ; Property identification
 property_id = :                                   ; Unique property identifier
@@ -68,7 +68,7 @@ parcel = @re_parcel_identifiers                   ; Tax and recording identifier
 ; Land Size
 ; ───────────────────────────────────────────────────────────────────────────────
 {.size}
-total_acres = !#:(0..)                            ; Total acreage
+total_acres = #:(0..)                            ; Total acreage
 deeded_acres = #:(0..)                            ; Deeded acres
 leased_acres = #:(0..)                            ; Leased acres (grazing rights, etc.)
 surveyed = ?                                      ; Property has been surveyed

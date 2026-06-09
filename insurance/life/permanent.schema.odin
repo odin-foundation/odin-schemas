@@ -71,7 +71,7 @@ surrender_charge = #$:(0..)                   ; Current surrender charge
 = @policy
 
 ; Whole life type
-whole_life_type = !(limited_pay, ordinary, single_premium)  ; Whole life variant
+whole_life_type = (limited_pay, ordinary, single_premium)  ; Whole life variant
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Participation Status (Dividends)
@@ -107,8 +107,8 @@ pay_period_years = ##:(5..30)                 ; Number of years to pay premiums
 {@whole_life}
 
 {@dividend_payment}
-amount = !#$                                  ; Dividend amount
-date = !date                                  ; Payment date
+amount = #$                                  ; Dividend amount
+date = date                                  ; Payment date
 disposition = (accumulated, cash, paid_up_addition, premium_reduction, term)  ; How dividend was used
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -120,7 +120,7 @@ disposition = (accumulated, cash, paid_up_addition, premium_reduction, term)  ; 
 = @policy
 
 ; UL product type discriminator
-ul_type = !(indexed, traditional, variable)   ; Universal life variant
+ul_type = (indexed, traditional, variable)   ; Universal life variant
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Flexible Premium
@@ -141,7 +141,7 @@ target_premium = #$                           ; Target premium amount
 ; Death Benefit Options
 ; ───────────────────────────────────────────────────────────────────────────────
 {.db_option}
-current_option = !(increasing, level)         ; Current death benefit option
+current_option = (increasing, level)         ; Current death benefit option
 changes_allowed = ?                           ; Can change DB option
 option_change_date = date                     ; Date of last option change
 
@@ -209,8 +209,8 @@ projection_rate = #:(0..15)                   ; Assumed interest rate
 {@universal_life}
 
 {@projection_year}
-age = !##:(0..121)                            ; Attained age
-year = !##:(1..)                              ; Policy year
+age = ##:(0..121)                            ; Attained age
+year = ##:(1..)                              ; Policy year
 cash_value = #$                               ; Projected cash value
 death_benefit = #$                            ; Projected death benefit
 premium = #$                                  ; Annual premium
@@ -224,7 +224,7 @@ premium = #$                                  ; Annual premium
 = @universal_life
 
 ; Set UL type
-ul_type = !(indexed)
+ul_type = (indexed)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Index Strategies
@@ -242,7 +242,7 @@ strategies[] = @la.index_strategy             ; Available index strategies
 = @universal_life
 
 ; Set UL type
-ul_type = !(variable)
+ul_type = (variable)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Separate Account
@@ -285,8 +285,8 @@ to_allocations[] = @dca_allocation            ; Target allocations
 {@variable_universal_life}
 
 {@dca_allocation}
-subaccount = !:                               ; Target subaccount name
-percent = !#:(0..100)                         ; Allocation percentage
+subaccount = :                               ; Target subaccount name
+percent = #:(0..100)                         ; Allocation percentage
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Model Portfolios

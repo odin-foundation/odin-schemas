@@ -39,14 +39,14 @@ changelog[0].rationale = "Structure derived from 38 USC 1781 and 38 CFR 17.270-1
 ; Per 38 CFR 17.271
 
 {@beneficiary}
-beneficiary_id = !:                         ; CHAMPVA beneficiary ID
+beneficiary_id = :                         ; CHAMPVA beneficiary ID
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
-dob = !*date                                ; Date of birth
+last_name = :                              ; Last name
+dob = *date                                ; Date of birth
 gender = (female, male)                     ; Gender
 ssn = *:                                    ; SSN
 
@@ -56,8 +56,8 @@ ssn = *:                                    ; SSN
 {.sponsor}
 sponsor_name = :                            ; Sponsor name
 sponsor_ssn = *:                            ; Sponsor SSN
-relationship = !(child, spouse, surviving_spouse)
-sponsor_status = !(deceased, permanently_disabled)
+relationship = (child, spouse, surviving_spouse)
+sponsor_status = (deceased, permanently_disabled)
 combined_rating = ##:(0..100)               ; Sponsor's combined rating (if P&T)
 date_of_death = date                        ; Sponsor date of death (if deceased)
 
@@ -66,7 +66,7 @@ date_of_death = date                        ; Sponsor date of death (if deceased
 ; Eligibility - Per 38 CFR 17.271
 {.eligibility}
 eligible = ?                                ; CHAMPVA eligible
-eligibility_basis = !(child_of_pt, child_of_deceased, spouse_of_pt, surviving_spouse)
+eligibility_basis = (child_of_pt, child_of_deceased, spouse_of_pt, surviving_spouse)
 ; pt = Permanently and totally disabled
 eligibility_date = date                     ; Eligibility date
 ineligibility_reason = :                    ; Reason if not eligible
@@ -97,9 +97,9 @@ champva_is_secondary = ?                    ; CHAMPVA is secondary
 ; Per 38 CFR 17.271
 
 {@enrollment}
-enrollment_id = !:                          ; Enrollment ID
-beneficiary_id = !:                         ; Beneficiary ID
-application_date = !date                    ; Application date (VA Form 10-10d)
+enrollment_id = :                          ; Enrollment ID
+beneficiary_id = :                         ; Beneficiary ID
+application_date = date                    ; Application date (VA Form 10-10d)
 
 ; Enrollment status
 enrollment_status = @enrollment_period      ; Enrollment period with status
@@ -128,8 +128,8 @@ enrollment_date = date                      ; Enrollment date
 ; Per 38 CFR 17.275
 
 {@cost_sharing}
-calendar_year = !##:(1973..)                ; Calendar year
-beneficiary_id = !:                         ; Beneficiary ID
+calendar_year = ##:(1973..)                ; Calendar year
+beneficiary_id = :                         ; Beneficiary ID
 
 ; Annual deductible - Per 38 CFR 17.275
 {.deductible}
@@ -162,13 +162,13 @@ cap_met = ?                                 ; Cap met
 ; Per 38 CFR 17.273
 
 {@claim}
-claim_id = !:                               ; Claim ID
-beneficiary_id = !:                         ; Beneficiary ID
-claim_type = !(dental, dme, inpatient, outpatient, pharmacy)
+claim_id = :                               ; Claim ID
+beneficiary_id = :                         ; Beneficiary ID
+claim_type = (dental, dme, inpatient, outpatient, pharmacy)
 
 ; Service dates
 {.dates}
-service_date = !date                        ; Date of service
+service_date = date                        ; Date of service
 service_end_date = date                     ; End date (if span)
 received_date = date                        ; Date claim received
 
@@ -212,7 +212,7 @@ ohi_eob_attached = ?                        ; OHI EOB attached
 
 ; Status
 {.status}
-status = !(denied, paid, pending)
+status = (denied, paid, pending)
 processed_date = date                       ; Date processed
 payment_date = date                         ; Payment date
 denial_reason = :                           ; Denial reason
@@ -225,13 +225,13 @@ denial_reason = :                           ; Denial reason
 ; Per 38 CFR 17.273
 
 {@preauthorization}
-auth_id = !:                                ; Authorization ID
-beneficiary_id = !:                         ; Beneficiary ID
-request_date = !date                        ; Request date
+auth_id = :                                ; Authorization ID
+beneficiary_id = :                         ; Beneficiary ID
+request_date = date                        ; Request date
 
 ; Services requiring authorization - Per 38 CFR 17.272
 {.services}
-service_type = !(dental, dme, hospice, inpatient, mental_health_inpatient, organ_transplant, snf)
+service_type = (dental, dme, hospice, inpatient, mental_health_inpatient, organ_transplant, snf)
 procedure_codes[] = :                       ; Procedure codes
 description = :                             ; Service description
 
@@ -250,7 +250,7 @@ authorized_days = ##:(0..)                  ; Authorized days (inpatient)
 
 ; Status
 {.status}
-status = !(approved, denied, pending)
+status = (approved, denied, pending)
 decision_date = date                        ; Decision date
 denial_reason = :                           ; Denial reason
 
@@ -262,8 +262,8 @@ denial_reason = :                           ; Denial reason
 ; Per 38 CFR 17.274
 
 {@meds_by_mail}
-rx_id = !:                                  ; Prescription ID
-beneficiary_id = !:                         ; Beneficiary ID
+rx_id = :                                  ; Prescription ID
+beneficiary_id = :                         ; Beneficiary ID
 
 ; Prescription
 {.prescription}
@@ -306,9 +306,9 @@ champva_pays = #$:(0..)                     ; CHAMPVA pays
 ; Per VA community care partnership
 
 {@citi}
-enrollment_id = !:                          ; CITI enrollment ID
-beneficiary_id = !:                         ; Beneficiary ID
-effective_date = !date                      ; Effective date
+enrollment_id = :                          ; CITI enrollment ID
+beneficiary_id = :                         ; Beneficiary ID
+effective_date = date                      ; Effective date
 
 ; Provider
 {.provider}

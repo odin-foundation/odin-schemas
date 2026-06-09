@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial entertainment coverage for media companies"
 ; ===================================================================================
 
 {@media_type}
-company_type = !(
+company_type = (
     advertising_agency,                       ; Ad agency
     book_publisher,                           ; Book publishing
     broadcaster_radio,                        ; Radio broadcaster
@@ -95,9 +95,9 @@ distribution = (
 
 {@media_company}
 ; Required fields first
-annual_revenue = !#$:(0..)                    ; Annual revenue
-company_name = !:                             ; Company name
-media_type = !@media_type                     ; Company classification
+annual_revenue = #$:(0..)                    ; Annual revenue
+company_name = :                             ; Company name
+media_type = @media_type                     ; Company classification
 
 ; Optional fields
 address = @address                            ; Business address
@@ -127,8 +127,8 @@ years_in_business = ##                        ; Years operating
 
 {@media_eo}
 ; Required fields first
-each_claim = !#$:(0..)                        ; Per claim limit
-aggregate = !#$:(0..)                         ; Aggregate limit
+each_claim = #$:(0..)                        ; Per claim limit
+aggregate = #$:(0..)                         ; Aggregate limit
 
 ; Optional fields
 consent_to_settle = ?                         ; Hammer clause
@@ -251,8 +251,8 @@ trademark = ?:if included = true              ; Trademark
 
 {@media_gl}
 ; Required fields first
-each_occurrence = !#$:(0..)                   ; Per occurrence limit
-general_aggregate = !#$:(0..)                 ; Aggregate limit
+each_occurrence = #$:(0..)                   ; Per occurrence limit
+general_aggregate = #$:(0..)                 ; Aggregate limit
 
 ; Optional fields
 damage_to_premises = #$:(0..)                 ; Fire legal
@@ -271,7 +271,7 @@ products_completed = ?                        ; Products/completed ops
 
 {@media_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 broadcasters_premium = #$:(0..)               ; Broadcasters premium
@@ -303,8 +303,8 @@ ugc_factor = #                                ; User content factor
 
 {@media_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     breach_of_contract,                       ; Contract breach
     copyright,                                ; Copyright claim
     cyber_breach,                             ; Data breach
@@ -350,11 +350,11 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@media_policy}
 ; Required fields first
-company = !@media_company                     ; Insured company
-effective_date = !date                        ; Policy effective date
-eo = !@media_eo                               ; E&O coverage
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
+company = @media_company                     ; Insured company
+effective_date = date                        ; Policy effective date
+eo = @media_eo                               ; E&O coverage
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

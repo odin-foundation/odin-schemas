@@ -48,7 +48,7 @@ changelog[0].rationale = "Location-level detail for commercial underwriting"
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Location Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-location_type = !(administrative_office, assembly_facility, branch_office, call_center, clinic, construction_site, data_center, dental_office, distribution_center, farm, headquarters, hospital, hotel, job_site, laboratory, manufacturing_plant, medical_office, mine, mobile_operations, oil_gas_facility, other, parking_garage, processing_facility, quarry, ranch, repair_shop, research_facility, restaurant, retail_store, sales_office, service_center, solar_facility, storage_facility, temporary, vehicle_garaging, warehouse, wind_farm, work_from_home)
+location_type = (administrative_office, assembly_facility, branch_office, call_center, clinic, construction_site, data_center, dental_office, distribution_center, farm, headquarters, hospital, hotel, job_site, laboratory, manufacturing_plant, medical_office, mine, mobile_operations, oil_gas_facility, other, parking_garage, processing_facility, quarry, ranch, repair_shop, research_facility, restaurant, retail_store, sales_office, service_center, solar_facility, storage_facility, temporary, vehicle_garaging, warehouse, wind_farm, work_from_home)
 
 location_id = :
 location_number = ##:(1..)                     ; Location sequence
@@ -110,7 +110,7 @@ tenant_occupied = ?
 ; Construction Classification
 ; ───────────────────────────────────────────────────────────────────────────────
 {.construction}
-construction_class = !(
+construction_class = (
     class_1_frame,                             ; Wood frame
     class_2_joisted_masonry,                   ; Masonry walls, wood floors/roof
     class_3_noncombustible,                    ; Metal/steel frame
@@ -330,8 +330,8 @@ removed_reason = :
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@business_location.wc_classes[]}
-class_code = !:                          ; State class code
-payroll = !#$
+class_code = :                          ; State class code
+payroll = #$
 
 class_description = :
 governing_class = ?                            ; Is this the governing class?
@@ -344,9 +344,9 @@ base_premium = #$
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@business_location.gl_classes[]}
-class_code = !:                         ; GL class code
-exposure_basis = !(admissions, area, gross_receipts, other, payroll, sales, units)
-exposure_amount = !#$
+class_code = :                         ; GL class code
+exposure_basis = (admissions, area, gross_receipts, other, payroll, sales, units)
+exposure_amount = #$
 
 class_description = :
 rate = #:(0..999.999999)

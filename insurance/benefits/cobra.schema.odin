@@ -40,14 +40,14 @@ changelog[0].rationale = "Structure derived from COBRA statute and DOL regulatio
 ; Per 29 USC 1163
 
 {@qualifying_event}
-event_id = !:                               ; Event ID
-employer_id = !:                            ; Employer
-employee_id = !:                            ; Employee
+event_id = :                               ; Event ID
+employer_id = :                            ; Employer
+employee_id = :                            ; Employee
 
 ; Event type - Per 29 USC 1163
 {.event}
-event_type = !(death_of_covered_employee, dependent_ceases_to_qualify, divorce_or_legal_separation, entitlement_to_medicare, reduction_of_hours, termination_of_employment)
-event_date = !date                          ; Date of qualifying event
+event_type = (death_of_covered_employee, dependent_ceases_to_qualify, divorce_or_legal_separation, entitlement_to_medicare, reduction_of_hours, termination_of_employment)
+event_date = date                          ; Date of qualifying event
 gross_misconduct = ?                        ; Gross misconduct (disqualifies)
 
 {@qualifying_event}
@@ -89,14 +89,14 @@ plan_notification_due = date                ; Due date (14 days after employer n
 ; Per 29 USC 1165
 
 {@election}
-election_id = !:                            ; Election ID
-event_id = !:                               ; Qualifying event ID
-beneficiary_id = !:                         ; Qualified beneficiary ID
-beneficiary_type = !(dependent_child, employee, spouse)
+election_id = :                            ; Election ID
+event_id = :                               ; Qualifying event ID
+beneficiary_id = :                         ; Qualified beneficiary ID
+beneficiary_type = (dependent_child, employee, spouse)
 
 ; Election decision
 {.decision}
-election = !(declined, elected, no_response)
+election = (declined, elected, no_response)
 election_date = date                        ; Date of election
 election_due_date = date                    ; Due date (60 days from notice)
 retroactive_coverage = ?                    ; Retroactive to loss date
@@ -125,16 +125,16 @@ initial_payment_grace_days = ##:(45..45)    ; 45-day grace for initial
 {@election}
 
 ; Status
-status = !(active, cancelled, declined, exhausted, expired, pending)
+status = (active, cancelled, declined, exhausted, expired, pending)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; COBRA PAYMENT
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@payment}
-payment_id = !:                             ; Payment ID
-election_id = !:                            ; Election ID
-beneficiary_id = !:                         ; Beneficiary ID
+payment_id = :                             ; Payment ID
+election_id = :                            ; Election ID
+beneficiary_id = :                         ; Beneficiary ID
 
 ; Payment details
 {.details}
@@ -157,20 +157,20 @@ shortfall_notice_sent = ?                   ; Insignificant shortfall notice
 {@payment}
 
 ; Status
-status = !(cancelled, late, overdue, paid, pending)
+status = (cancelled, late, overdue, paid, pending)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; COBRA COVERAGE
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@coverage}
-coverage_id = !:                            ; Coverage ID
-election_id = !:                            ; Election ID
-beneficiary_id = !:                         ; Beneficiary ID
+coverage_id = :                            ; Coverage ID
+election_id = :                            ; Election ID
+beneficiary_id = :                         ; Beneficiary ID
 
 ; Plan information
 {.plan}
-plan_id = !:                                ; Plan ID
+plan_id = :                                ; Plan ID
 plan_name = :                               ; Plan name
 plan_type = (dental, health, rx, vision)    ; Coverage type
 carrier_name = :                            ; Carrier name
@@ -180,7 +180,7 @@ group_number = :                            ; Group number
 
 ; Coverage period
 {.period}
-effective_date = !date                      ; Coverage effective date
+effective_date = date                      ; Coverage effective date
 termination_date = date                     ; Termination date
 maximum_end_date = date                     ; Maximum coverage end date
 
@@ -195,7 +195,7 @@ participant_portion = #$:(0..)              ; Participant pays
 {@coverage}
 
 ; Status
-status = !(active, cancelled, terminated)
+status = (active, cancelled, terminated)
 termination_reason = (coverage_exhausted, death, eligibility_lost, employer_plan_terminated, failure_to_pay, other_coverage, request, retiree_coverage)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -204,9 +204,9 @@ termination_reason = (coverage_exhausted, death, eligibility_lost, employer_plan
 ; Per 29 USC 1166
 
 {@notice}
-notice_id = !:                              ; Notice ID
-employer_id = !:                            ; Employer
-notice_type = !(conversion_rights, early_termination, election, general_rights, initial_notice, insufficient_payment, premium_change, unavailability)
+notice_id = :                              ; Notice ID
+employer_id = :                            ; Employer
+notice_type = (conversion_rights, early_termination, election, general_rights, initial_notice, insufficient_payment, premium_change, unavailability)
 
 ; Recipient
 {.recipient}
@@ -219,7 +219,7 @@ recipient_address = @address                ; Address
 
 ; Notice content - Per DOL model notices
 {.content}
-notice_date = !date                         ; Date of notice
+notice_date = date                         ; Date of notice
 due_date = date                             ; Response due date
 delivery_method = (certified_mail, electronic, first_class, hand_delivery)
 tracking_number = :                         ; Tracking (if certified)
@@ -239,9 +239,9 @@ return_receipt = ?                          ; Return receipt received
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@administration}
-admin_id = !:                               ; Administration record ID
-employer_id = !:                            ; Employer
-plan_year = !##:(2000..)                    ; Plan year
+admin_id = :                               ; Administration record ID
+employer_id = :                            ; Employer
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Administrator
 {.administrator}
@@ -273,9 +273,9 @@ model_notices_used = ?                      ; Using DOL model notices
 ; Mini-COBRA for small employers (varies by state)
 
 {@state_continuation}
-state = !:(2)                               ; State code
-employer_id = !:                            ; Employer
-employee_id = !:                            ; Employee
+state = :(2)                               ; State code
+employer_id = :                            ; Employer
+employee_id = :                            ; Employee
 
 ; State program
 {.program}
@@ -317,7 +317,7 @@ election_date = date                        ; Election date
 {@state_continuation}
 
 ; Status
-status = !(active, exhausted, terminated)
+status = (active, exhausted, terminated)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; COBRA SUBSIDY (ARPA 2021 model)
@@ -325,9 +325,9 @@ status = !(active, exhausted, terminated)
 ; Template for future subsidy programs
 
 {@subsidy}
-subsidy_id = !:                             ; Subsidy ID
-election_id = !:                            ; Election ID
-beneficiary_id = !:                         ; Beneficiary ID
+subsidy_id = :                             ; Subsidy ID
+election_id = :                            ; Election ID
+beneficiary_id = :                         ; Beneficiary ID
 
 ; Subsidy program
 {.program}
@@ -365,9 +365,9 @@ end_reason = :                              ; Reason subsidy ended
 ; Per group policy conversion provisions
 
 {@conversion}
-conversion_id = !:                          ; Conversion ID
-election_id = !:                            ; COBRA election ID
-beneficiary_id = !:                         ; Beneficiary ID
+conversion_id = :                          ; Conversion ID
+election_id = :                            ; COBRA election ID
+beneficiary_id = :                         ; Beneficiary ID
 
 ; Conversion offer
 {.offer}

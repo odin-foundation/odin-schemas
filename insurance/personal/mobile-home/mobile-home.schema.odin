@@ -59,7 +59,7 @@ changelog[0].rationale = "HO-7 coverage for manufactured housing with HUD Code c
 
 {@mobile_home_classification}
 ; Classification determines regulatory requirements and coverage eligibility
-home_classification = !(
+home_classification = (
     manufactured_home,                              ; Built after June 15, 1976 (HUD Code)
     mobile_home,                                    ; Built before June 15, 1976
     modular_home                                    ; Site-built to local codes, transported in sections
@@ -70,13 +70,13 @@ hud_code_compliant = ?                          ; Whether home meets HUD Code st
 hud_certification_date = date:if hud_code_compliant = true ; Date of HUD certification
 
 ; Size classification
-size_type = !(
+size_type = (
     double_wide,                                    ; Two sections joined, typically 20+ feet wide
     single_wide,                                    ; Single section, typically 14-18 feet wide
     triple_wide                                     ; Three sections joined
 )
 
-section_count = !##:(1..5)                          ; Number of sections joined together
+section_count = ##:(1..5)                          ; Number of sections joined together
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Manufactured Home Identification
@@ -94,19 +94,19 @@ label_verification_letter = ?:if hud_label = false ; IBTS letter if label missin
 
 ; Serial Number / VIN (Housing Identification Number - HIN)
 {.serial_number}
-hin = !:                                      ; Stamped on foremost cross member
+hin = :                                      ; Stamped on foremost cross member
 section_identifier = (A, B, C):if section_count > 1 ; A/B for double, A/B/C for triple
 hin_location = (data_plate, frame_cross_member, tow_bar) ; Where HIN is stamped/located
 
 {@manufactured_home_identification}
 
 ; Manufacturer Information
-manufacturer_name = !:                              ; Name of manufacturing company
+manufacturer_name = :                              ; Name of manufacturing company
 manufacturer_code = :(3)                            ; First 3 digits of HIN
 brand_name = :                                      ; Brand/trade name if different from manufacturer
 model_name = :                                      ; Model name designation
 model_number = :                                    ; Model number designation
-year_manufactured = !##:(1950..)                    ; Year the home was manufactured
+year_manufactured = ##:(1950..)                    ; Year the home was manufactured
 state_manufactured = :(2)                           ; US state code from HIN
 
 ; Data Plate Location (inside home)
@@ -130,9 +130,9 @@ identification = @manufactured_home_identification  ; Serial numbers and manufac
 ; Dimensions and Size
 ; ───────────────────────────────────────────────────────────────────────────────
 {.dimensions}
-total_length_feet = !##:(20..100)                   ; Total length of home in feet
-total_width_feet = !##:(8..40)                      ; Total width of home in feet
-total_square_feet = !##:(320..)                     ; HUD minimum 320 sq ft
+total_length_feet = ##:(20..100)                   ; Total length of home in feet
+total_width_feet = ##:(8..40)                      ; Total width of home in feet
+total_square_feet = ##:(320..)                     ; HUD minimum 320 sq ft
 living_square_feet = ##:(0..)                       ; Heated/finished living space in square feet
 bedroom_count = ##:(0..10)                          ; Number of bedrooms
 bathroom_count = #:(0..10)                          ; Number of bathrooms (can be fractional)
@@ -145,7 +145,7 @@ room_count = ##:(0..)                               ; Total number of rooms
 ; ───────────────────────────────────────────────────────────────────────────────
 {.construction}
 ; Mobile home specific exterior materials
-exterior_material = !(aluminum_siding, fiber_cement, hardboard, metal, steel, stucco, vinyl_siding, wood_siding) ; Primary exterior siding material
+exterior_material = (aluminum_siding, fiber_cement, hardboard, metal, steel, stucco, vinyl_siding, wood_siding) ; Primary exterior siding material
 siding_condition = (excellent, fair, good, poor)    ; Condition of exterior siding
 
 {@manufactured_home}
@@ -168,7 +168,7 @@ skirting_condition = (excellent, fair, good, poor):if skirted = true ; Condition
 
 ; Frame and chassis
 {.frame}
-permanent_chassis = !?                              ; Required for manufactured homes
+permanent_chassis = ?                              ; Required for manufactured homes
 frame_material = (galvanized_steel, steel)          ; Material of main frame structure
 tongue_hitch_attached = ?                           ; Indicates mobility capability
 axles_removed = ?                                   ; Whether axles have been removed
@@ -179,7 +179,7 @@ wheels_removed = ?                                  ; Whether wheels have been r
 ; ───────────────────────────────────────────────────────────────────────────────
 {@manufactured_home}
 {.foundation}
-foundation_type = !(
+foundation_type = (
     basement,                                       ; Full basement (permanent)
     crawl_space,                                    ; Permanent crawl space
     permanent_slab,                                 ; Concrete slab (permanent)
@@ -202,7 +202,7 @@ pier_spacing_feet = ##:(0..):if foundation_type = pier_and_beam ; Distance betwe
 
 ; Anchoring/Tie-Down System (critical for wind resistance)
 {.anchoring}
-anchored = !?
+anchored = ?
 tiedown_system_type = (
     diagonal_and_vertical,                          ; Single-wide homes
     diagonal_only,                                  ; Double-wide homes
@@ -280,7 +280,7 @@ sewer_type = (municipal, park_system, septic_tank)  ; Type of sewer/waste dispos
 ; Mobile Home Park / Land Ownership
 ; ───────────────────────────────────────────────────────────────────────────────
 {.land_status}
-land_ownership = !(
+land_ownership = (
     leased_lot,                                     ; Rent lot in mobile home park
     owned_land                                      ; Own land beneath home
 )
@@ -420,7 +420,7 @@ account_number = *:                                 ; Loan account number (confi
 
 
 ; Loan details specific to manufactured homes
-loan_type = !(chattel_loan, conventional_mortgage, fha_loan, personal_loan, seller_financing, va_loan) ; Type of loan/financing
+loan_type = (chattel_loan, conventional_mortgage, fha_loan, personal_loan, seller_financing, va_loan) ; Type of loan/financing
 
 loan_date = date                                    ; Date loan was originated
 loan_amount = #$:(0..)                              ; Original loan amount
@@ -452,14 +452,14 @@ coverage_type = "dwelling"                          ; Type of coverage
 coverage_letter = "A"                               ; Coverage letter designation
 
 ; Coverage basis
-valuation_method = !(
+valuation_method = (
     actual_cash_value,                              ; Depreciated value (common for older mobile homes)
     functional_replacement_cost,                    ; Cost to replace with similar quality
     replacement_cost,                               ; Full replacement cost
     stated_amount                                   ; Agreed value
 )
 
-coverage_limit = !#$:(0..)                          ; Maximum coverage limit
+coverage_limit = #$:(0..)                          ; Maximum coverage limit
 deductible = #$:(0..)                               ; Deductible amount
 
 ; Mobile home specific inclusions
@@ -602,7 +602,7 @@ transport_liability_limit = #$:(0..)                ; Liability limit during tra
 = @res.res_endorsement
 
 ; Mobile/manufactured home specific endorsement types
-endorsement_type = !(debris_removal_increased, earthquake, equipment_breakdown, extended_replacement_cost, flood, guaranteed_replacement_cost, identity_theft, inflation_guard, loss_assessment, mold_coverage_enhanced, ordinance_law, outbuilding_coverage, personal_property_replacement_cost, replacement_cost_mobile_home, scheduled_personal_property, service_line, sinkhole, tie_down_coverage, transportation_trip, water_backup, wind_hail_exclusion_buyback, windstorm_enhanced)
+endorsement_type = (debris_removal_increased, earthquake, equipment_breakdown, extended_replacement_cost, flood, guaranteed_replacement_cost, identity_theft, inflation_guard, loss_assessment, mold_coverage_enhanced, ordinance_law, outbuilding_coverage, personal_property_replacement_cost, replacement_cost_mobile_home, scheduled_personal_property, service_line, sinkhole, tie_down_coverage, transportation_trip, water_backup, wind_hail_exclusion_buyback, windstorm_enhanced)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Protection Devices (Mobile Home Specific)
@@ -698,7 +698,7 @@ claims_surcharge_amount = #$:(0..):if claims_surcharge_applied = true ; Amount o
 
 {@mobile_home_policy}
 id = :                                              ; Unique identifier for policy
-number = !:                                         ; Policy number
+number = :                                         ; Policy number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Form
@@ -711,9 +711,9 @@ policy_version = :                                  ; Version of policy
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date                              ; Policy effective date
+effective_date = date                              ; Policy effective date
 effective_time = time "12:01 AM"                    ; Policy effective time
-expiration_date = !date                             ; Policy expiration date
+expiration_date = date                             ; Policy expiration date
 expiration_time = time "12:01 AM"                   ; Policy expiration time
 :invariant expiration_date > effective_date         ; Expiration must be after effective date
 
@@ -759,7 +759,7 @@ transportation_coverage = @ho7_transportation_coverage ; Transportation/Trip Cov
 ; Coverage Limits Summary
 ; ───────────────────────────────────────────────────────────────────────────────
 {.coverage_summary}
-coverage_a_limit = !#$:(0..)                        ; Coverage A limit amount
+coverage_a_limit = #$:(0..)                        ; Coverage A limit amount
 coverage_b_limit = #$:(0..)                         ; Coverage B limit amount
 coverage_c_limit = #$:(0..)                         ; Coverage C limit amount
 coverage_d_limit = #$:(0..)                         ; Coverage D limit amount
@@ -773,7 +773,7 @@ transportation_limit = #$:(0..)                     ; Transportation coverage li
 ; Deductibles
 ; ───────────────────────────────────────────────────────────────────────────────
 {.deductibles}
-standard_deductible = !#$:(0..)                     ; Standard deductible amount
+standard_deductible = #$:(0..)                     ; Standard deductible amount
 wind_hail_deductible = #$:(0..)                     ; Wind/hail deductible amount
 wind_hail_deductible_percent = #:(0..100)           ; Wind/hail deductible as percentage
 hurricane_deductible = #$:(0..)                     ; Hurricane deductible amount

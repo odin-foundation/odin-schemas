@@ -39,13 +39,13 @@ changelog[0].rationale = "Structure derived from CDC and HL7 immunization standa
 ; Per CDC IIS standards
 
 {@record}
-record_id = !:                              ; Record identifier
-patient_id = !:                             ; Patient identifier
-administration_date = !date                 ; Date administered
+record_id = :                              ; Record identifier
+patient_id = :                             ; Patient identifier
+administration_date = date                 ; Date administered
 
 ; Vaccine
 {.vaccine}
-cvx_code = !:                               ; CVX code
+cvx_code = :                               ; CVX code
 vaccine_name = :                            ; Vaccine name
 mvx_code = :                                ; MVX manufacturer code
 manufacturer_name = :                       ; Manufacturer name
@@ -95,7 +95,7 @@ entry_date = date                           ; Date entered
 {@record}
 
 ; Status
-status = !(administered, historical, refused)
+status = (administered, historical, refused)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; PATIENT
@@ -103,14 +103,14 @@ status = !(administered, historical, refused)
 ; Per CDC IIS functional standards
 
 {@patient}
-patient_id = !:                             ; Patient identifier (registry assigned)
+patient_id = :                             ; Patient identifier (registry assigned)
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
-dob = !*date                                ; Date of birth
+last_name = :                              ; Last name
+dob = *date                                ; Date of birth
 gender = (female, male, other, unknown)     ; Gender
 birth_state = :(2)                          ; State of birth
 mothers_maiden_name = :                     ; Mother's maiden name
@@ -158,13 +158,13 @@ protection_indicator = ?                    ; Protected from disclosure
 ; Per ACIP recommendations
 
 {@series}
-series_id = !:                              ; Series identifier
-patient_id = !:                             ; Patient
-vaccine_group = !:                          ; Vaccine group (e.g., DTaP, MMR)
+series_id = :                              ; Series identifier
+patient_id = :                             ; Patient
+vaccine_group = :                          ; Vaccine group (e.g., DTaP, MMR)
 
 ; Series status
 {.status}
-series_status = !(complete, in_progress, not_started, overdue)
+series_status = (complete, in_progress, not_started, overdue)
 doses_administered = ##:(0..)               ; Doses given
 doses_required = ##:(1..10)                 ; Total doses needed
 next_dose_due = date                        ; Next dose due date
@@ -189,9 +189,9 @@ forecast_overdue_date = date                ; Overdue date
 ; Per ACIP contraindication guidelines
 
 {@contraindication}
-contraindication_id = !:                    ; Contraindication ID
-patient_id = !:                             ; Patient
-documented_date = !date                     ; Date documented
+contraindication_id = :                    ; Contraindication ID
+patient_id = :                             ; Patient
+documented_date = date                     ; Date documented
 
 ; Vaccine affected
 vaccine_group = :                           ; Affected vaccine group
@@ -199,7 +199,7 @@ cvx_code = :                                ; Specific CVX if applicable
 
 ; Type
 {.type}
-type = !(contraindication, exemption, precaution)
+type = (contraindication, exemption, precaution)
 permanent = ?                               ; Permanent vs temporary
 review_date = date                          ; Review date (if temporary)
 
@@ -236,12 +236,12 @@ facility = :                                ; Facility
 
 {@adverse_event}
 vaers_id = :                                ; VAERS ID (if submitted)
-patient_id = !:                             ; Patient
-report_date = !date                         ; Date of report
+patient_id = :                             ; Patient
+report_date = date                         ; Date of report
 
 ; Event
 {.event}
-event_date = !date                          ; Date of adverse event
+event_date = date                          ; Date of adverse event
 description = :                             ; Event description
 outcome = (death, disability, ed_visit, hospitalization, life_threatening, other, recovered)
 hospitalized = ?                            ; Hospitalized
@@ -284,8 +284,8 @@ administration_date = date                  ; Administration date
 ; Per VFC program requirements
 
 {@vfc_eligibility}
-patient_id = !:                             ; Patient
-determination_date = !date                  ; Determination date
+patient_id = :                             ; Patient
+determination_date = date                  ; Determination date
 
 ; Age eligibility
 {.age}
@@ -314,15 +314,15 @@ screening_location = :                      ; Location
 ; Per VFC accountability requirements
 
 {@inventory}
-inventory_id = !:                           ; Inventory ID
-facility_id = !:                            ; Facility
+inventory_id = :                           ; Inventory ID
+facility_id = :                            ; Facility
 
 ; Vaccine
 {.vaccine}
-cvx_code = !:                               ; CVX code
+cvx_code = :                               ; CVX code
 mvx_code = :                                ; Manufacturer code
-lot_number = !:                             ; Lot number
-expiration_date = !date                     ; Expiration date
+lot_number = :                             ; Lot number
+expiration_date = date                     ; Expiration date
 ndc = :                                     ; NDC code
 
 {@inventory}
@@ -338,7 +338,7 @@ quantity_expired = ##:(0..)                 ; Doses expired
 {@inventory}
 
 ; Funding
-funding_source = !(federal_317, private, state, vfc)
+funding_source = (federal_317, private, state, vfc)
 
 ; Storage
 {.storage}

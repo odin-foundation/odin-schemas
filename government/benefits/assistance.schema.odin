@@ -46,16 +46,16 @@ changelog[0].rationale = "Public benefit programs per federal regulations"
 {@snap_application}
 = @types.audit_info
 
-application_date = !date
-state = !:(2)
+application_date = date
+state = :(2)
 case_number = :
 
 ; Household Information
 {.household}
-household_size = !##:(1..)
+household_size = ##:(1..)
 {.members[]}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 ssn = *:format ssn
 date_of_birth = *date
 relationship = (applicant, child, other, parent, spouse)
@@ -65,20 +65,20 @@ elderly = ?
 
 {@snap_application}
 ; Address
-residence_address = !@types.address
+residence_address = @types.address
 mailing_address = @types.address
 homeless = ?
 
 ; Income
 {.income}
 {.earned[]}
-source = !:
-monthly_amount = !#$:(0..)
+source = :
+monthly_amount = #$:(0..)
 frequency = (biweekly, monthly, weekly)
 {@snap_application}
 {.unearned[]}
-source = !:
-monthly_amount = !#$:(0..)
+source = :
+monthly_amount = #$:(0..)
 {@snap_application}
 total_gross_monthly_income = #$:(0..)
 total_net_monthly_income = #$:(0..)
@@ -123,27 +123,27 @@ issue_date = date
 {@tanf_case}
 = @types.audit_info
 
-case_number = !:
-state = !:(2)
-open_date = !date
+case_number = :
+state = :(2)
+open_date = date
 close_date = date
 
 ; Family Composition
 {.family_members[]}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 ssn = *:format ssn
 date_of_birth = *date
-relationship = !:
+relationship = :
 minor_child = ?
 
 {@tanf_case}
 ; Case Head
 {.case_head}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 ssn = *:format ssn
-address = !@types.address
+address = @types.address
 phone = *@types.phone
 
 {@tanf_case}
@@ -184,15 +184,15 @@ closure_reason = :
 {@wic_enrollment}
 = @types.audit_info
 
-participant_id = !:
-state = !:(2)
-enrollment_date = !date
+participant_id = :
+state = :(2)
+enrollment_date = date
 
 ; Participant Information
 {.participant}
-first_name = !:
-last_name = !:
-date_of_birth = !*date
+first_name = :
+last_name = :
+date_of_birth = *date
 category = (child, infant, postpartum_woman, pregnant_woman)
 pregnant_due_date = date:if category = pregnant_woman
 
@@ -229,8 +229,8 @@ assessment_date = date
 {@wic_enrollment}
 ; Benefits
 {.benefits}
-certification_period_start = !date
-certification_period_end = !date
+certification_period_start = date
+certification_period_end = date
 food_package_type = :
 breastfeeding_support = ?
 
@@ -248,13 +248,13 @@ next_appointment = date
 = @types.audit_info
 
 program = (liheap, public_housing, section_8_voucher)
-state = !:(2)
+state = :(2)
 application_date = date
 
 ; Applicant/Participant
 {.head_of_household}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 ssn = *:format ssn
 date_of_birth = *date
 address = @types.address
@@ -264,10 +264,10 @@ email = *@types.email
 {@housing_assistance}
 ; Household Composition
 {.household_members[]}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 date_of_birth = *date
-relationship = !:
+relationship = :
 ssn = *:format ssn
 disabled = ?
 
@@ -276,7 +276,7 @@ total_household_size = ##:(1..)
 
 ; Income
 {.income}
-annual_gross_income = !#$:(0..)
+annual_gross_income = #$:(0..)
 adjusted_annual_income = #$:(0..)
 percent_area_median_income = #:(0..)
 extremely_low_income = ?
@@ -318,22 +318,22 @@ termination_reason = :
 {@liheap_assistance}
 = @types.audit_info
 
-application_date = !date
-state = !:(2)
+application_date = date
+state = :(2)
 program_year = ##:(2020..)
 
 ; Applicant
 {.applicant}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 ssn = *:format ssn
-address = !@types.address
+address = @types.address
 phone = *@types.phone
 
 {@liheap_assistance}
 ; Household
-household_size = !##:(1..)
-annual_income = !#$:(0..)
+household_size = ##:(1..)
+annual_income = #$:(0..)
 percent_poverty_level = #:(0..)
 
 ; Heating/Cooling Need

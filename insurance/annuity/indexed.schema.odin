@@ -42,7 +42,7 @@ changelog[0].rationale = "Separated from fixed for cleaner organization"
 = @annuity.contract                           ; Inherit base contract fields
 
 ; Set product type
-product_type = !(indexed)
+product_type = (indexed)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Principal Protection

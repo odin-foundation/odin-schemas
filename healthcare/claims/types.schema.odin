@@ -44,7 +44,7 @@ changelog[0].rationale = "Base types derived from HIPAA and CMS public documenta
 
 {@provider}
 ; National Provider Identifier - Required per 45 CFR 162.410
-npi = !:/^\d{10}$/                            ; 10-digit NPI
+npi = :/^\d{10}$/                            ; 10-digit NPI
 npi_type = (individual, organization)         ; NPI entity type (Type 1 or 2)
 
 ; Legacy identifiers (still used in some contexts)
@@ -87,19 +87,19 @@ fax = *@phone                                 ; Fax number
 = @person                                     ; Inherits person fields (name, ssn, dob, contact)
 
 ; Identification
-member_id = !:                                ; Subscriber/member ID
+member_id = :                                ; Subscriber/member ID
 group_number = :                              ; Group/policy number
 
 ; Override required fields per CMS requirements
 {.name}
-first = !:                                    ; First name (required)
-last = !:                                     ; Last name (required)
+first = :                                    ; First name (required)
+last = :                                     ; Last name (required)
 
 {@subscriber}
 
 ; Override required demographics
-date_of_birth = !*date                        ; Date of birth (required, confidential)
-gender = !(female, male, unknown)             ; Administrative gender (required)
+date_of_birth = *date                        ; Date of birth (required, confidential)
+gender = (female, male, unknown)             ; Administrative gender (required)
 
 ; Relationship to insured - Per CMS relationship codes
 relationship_to_insured = (cadaver_donor, child, employee, life_partner, organ_donor, other, self, spouse, unknown)
@@ -111,8 +111,8 @@ relationship_to_insured = (cadaver_donor, child, employee, life_partner, organ_d
 
 {@payer}
 ; Identification
-payer_id = !:                                 ; Payer ID
-name = !:                                     ; Payer name
+payer_id = :                                 ; Payer ID
+name = :                                     ; Payer name
 payer_type = (commercial, medicaid, medicare_advantage, medicare_ffs, other_government, tricare, workers_comp)
 
 ; Contact
@@ -128,7 +128,7 @@ claims_address = @address                     ; Claims submission address
 ; Per ICD-10-CM coding requirements
 
 {@diagnosis}
-code = !:/^[A-Z]\d{2}\.?\d{0,4}$/             ; ICD-10-CM code
+code = :/^[A-Z]\d{2}\.?\d{0,4}$/             ; ICD-10-CM code
 description = :                               ; Code description
 code_type = : "icd10"                         ; Code set (default ICD-10)
 qualifier = (admitting, other, principal)     ; Diagnosis type
@@ -140,8 +140,8 @@ present_on_admission = (exempt, no, unknown, yes)  ; POA indicator
 ; Per CPT/HCPCS coding requirements (concepts, not proprietary codes)
 
 {@procedure}
-code = !:                                     ; Procedure code
-code_type = !(cpt, hcpcs, icd10_pcs)          ; Code set
+code = :                                     ; Procedure code
+code_type = (cpt, hcpcs, icd10_pcs)          ; Code set
 description = :                               ; Code description
 modifiers[] = :(2)                            ; Modifier codes (up to 4)
 date = date                                   ; Procedure date
@@ -152,26 +152,26 @@ date = date                                   ; Procedure date
 ; Per CMS-1500/UB-04 service line requirements
 
 {@service_line}
-line_number = !##:(1..)                       ; Line item number
+line_number = ##:(1..)                       ; Line item number
 
 ; Service identification
-procedure = !@procedure                       ; Procedure code
+procedure = @procedure                       ; Procedure code
 revenue_code = :/^\d{4}$/                     ; Revenue code (institutional)
 ndc = :/^\d{11}$/                             ; NDC code (drugs)
 
 ; Dates
-service_date_from = !date                     ; Service start date
+service_date_from = date                     ; Service start date
 service_date_to = date                        ; Service end date (if range)
 
 ; Place of service - Per CMS place of service codes
 place_of_service = :(2)                       ; 2-digit POS code
 
 ; Quantity and units
-units = !#:(0..)                              ; Service units
+units = #:(0..)                              ; Service units
 unit_type = (days, miles, minutes, services, units, visits)
 
 ; Charges
-charge_amount = !#$:(0..)                     ; Billed charges
+charge_amount = #$:(0..)                     ; Billed charges
 allowed_amount = #$:(0..)                     ; Allowed amount
 paid_amount = #$:(0..)                        ; Payment amount
 
@@ -191,7 +191,7 @@ prior_auth_number = :                         ; Prior authorization number
 ; Healthcare monetary amount
 
 {@amount}
-value = !#$:(0..)                             ; Dollar amount
+value = #$:(0..)                             ; Dollar amount
 currency = :(3) "USD"                         ; Currency (default USD)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -200,9 +200,9 @@ currency = :(3) "USD"                         ; Currency (default USD)
 ; Per CMS claim status code categories
 
 {@claim_status}
-category = !(accepted, additional_info_requested, adjudicated, denied, finalized, forwarded, pending, received, rejected)
+category = (accepted, additional_info_requested, adjudicated, denied, finalized, forwarded, pending, received, rejected)
 status_code = :                               ; Detailed status code
-status_date = !date                           ; Status effective date
+status_date = date                           ; Status effective date
 message = :                                   ; Status message/description
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -211,9 +211,9 @@ message = :                                   ; Status message/description
 ; Per CMS CARC/RARC adjustment reason code concepts
 
 {@adjustment}
-group = !(contractual_obligation, correction, other_adjustment, patient_responsibility, payer_initiated)
+group = (contractual_obligation, correction, other_adjustment, patient_responsibility, payer_initiated)
 reason_code = :                               ; Adjustment reason code
-amount = !#$:(0..)                            ; Adjustment amount
+amount = #$:(0..)                            ; Adjustment amount
 quantity = #:(0..)                            ; Affected quantity
 remark_codes[] = :                            ; Remark codes
 
@@ -230,8 +230,8 @@ remark_codes[] = :                            ; Remark codes
 ; Per CMS COB requirements
 
 {@cob_payer}
-payer = !@payer                               ; Other payer
-payer_sequence = !(primary, secondary, tertiary)
+payer = @payer                               ; Other payer
+payer_sequence = (primary, secondary, tertiary)
 claim_filing_indicator = :                    ; Claim filing indicator code
 paid_amount = #$:(0..)                        ; Amount paid by payer
 adjusted_amount = #$:(0..)                    ; Amount adjusted

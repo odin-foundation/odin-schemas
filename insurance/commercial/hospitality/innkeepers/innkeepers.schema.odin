@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial hospitality coverage for lodging establishm
 ; ===================================================================================
 
 {@ik_lodging_type}
-property_class = !(
+property_class = (
     bed_breakfast,                            ; B&B/inn
     boutique_hotel,                           ; Boutique property
     casino_hotel,                             ; Casino resort
@@ -81,9 +81,9 @@ affiliation = (
 
 {@ik_property}
 ; Required fields first
-lodging_type = !@ik_lodging_type              ; Property classification
-property_name = !:                            ; Hotel/property name
-room_count = !##                              ; Total rooms
+lodging_type = @ik_lodging_type              ; Property classification
+property_name = :                            ; Hotel/property name
+room_count = ##                              ; Total rooms
 
 ; Optional fields
 address = @address                            ; Physical location
@@ -138,7 +138,7 @@ water_park = ?                                ; Water park
 
 {@ik_liability}
 ; Required fields first
-general_liability = !#$:(0..)                 ; GL per occurrence
+general_liability = #$:(0..)                 ; GL per occurrence
 
 ; Optional fields
 aggregate = #$:(0..)                          ; Annual aggregate
@@ -188,8 +188,8 @@ valet_parking = ?:if bailment = true          ; Valet parking
 
 {@ik_property_insurance}
 ; Required fields first
-building_limit = !#$:(0..)                    ; Building coverage
-contents_limit = !#$:(0..)                    ; Contents/FF&E
+building_limit = #$:(0..)                    ; Building coverage
+contents_limit = #$:(0..)                    ; Contents/FF&E
 
 ; Optional fields
 all_risk = ?                                  ; All-risk form
@@ -224,7 +224,7 @@ robbery = #$:(0..):if included = true         ; Robbery limit
 
 {@ik_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 crime_premium = #$:(0..)                      ; Crime coverage
@@ -255,8 +255,8 @@ room_count_factor = #                         ; Size factor
 
 {@ik_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     assault,                                  ; Assault on property
     auto_valet,                               ; Valet damage
     bed_bug,                                  ; Bed bug claims
@@ -303,11 +303,11 @@ room_number = :                               ; Room number
 
 {@innkeeper_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@ik_liability                    ; Liability coverage
-policy_number = !:                            ; Policy number
-property = !@ik_property                      ; Insured property
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @ik_liability                    ; Liability coverage
+policy_number = :                            ; Policy number
+property = @ik_property                      ; Insured property
 
 ; Invariants
 :invariant expiration_date > effective_date

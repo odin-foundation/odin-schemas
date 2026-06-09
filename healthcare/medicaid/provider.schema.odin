@@ -41,13 +41,13 @@ changelog[0].rationale = "Structure derived from 42 CFR Part 455 Subpart E and s
 ; Per 42 CFR 455.410
 
 {@enrollment}
-enrollment_id = !:                          ; Enrollment ID
-state = !:(2)                               ; State
-provider_type = !(atypical, facility, group, individual)
+enrollment_id = :                          ; Enrollment ID
+state = :(2)                               ; State
+provider_type = (atypical, facility, group, individual)
 
 ; Provider identification
 {.identification}
-npi = !:                                    ; National Provider Identifier
+npi = :                                    ; National Provider Identifier
 tax_id = *:                                 ; Tax ID (EIN or SSN)
 medicaid_id = :                             ; State Medicaid provider ID
 legacy_id = :                               ; Legacy provider number
@@ -56,8 +56,8 @@ legacy_id = :                               ; Legacy provider number
 
 ; Organization/individual info
 {.entity}
-entity_type = !(individual, organization)
-legal_name = !:                             ; Legal name
+entity_type = (individual, organization)
+legal_name = :                             ; Legal name
 dba_name = :                                ; Doing business as
 contact_name = :                            ; Contact person
 contact_phone = *@phone                     ; Contact phone
@@ -67,8 +67,8 @@ contact_email = *@email                     ; Contact email
 
 ; Application - Per 42 CFR 455.414
 {.application}
-application_date = !date                    ; Application date
-application_type = !(change, initial, reactivation, revalidation)
+application_date = date                    ; Application date
+application_type = (change, initial, reactivation, revalidation)
 fee_paid = ?                                ; Application fee paid
 fee_amount = #$:(0..)                       ; Fee amount
 
@@ -76,7 +76,7 @@ fee_amount = #$:(0..)                       ; Fee amount
 
 ; Screening - Per 42 CFR 455.450
 {.screening}
-risk_level = !(high, limited, moderate)     ; Categorical risk level
+risk_level = (high, limited, moderate)     ; Categorical risk level
 screening_type = :                          ; Screening performed
 fingerprint_required = ?                    ; Fingerprints required (high risk)
 site_visit_required = ?                     ; Site visit required (high/moderate)
@@ -98,7 +98,7 @@ state_exclusion_checked = ?                 ; State exclusion list checked
 
 ; Enrollment status
 status = @status_record                     ; Status tracking with date and reason
-status.status = !(active, denied, inactive, pending, terminated)
+status.status = (active, denied, inactive, pending, terminated)
 denial_reason = :                           ; Reason if denied
 
 {@enrollment}
@@ -117,13 +117,13 @@ revalidation_cycle = ##:(3..5)              ; Revalidation cycle (years)
 ; Per 42 CFR 431.107
 
 {@agreement}
-agreement_id = !:                           ; Agreement ID
-provider_id = !:                            ; Provider enrollment ID
-state = !:(2)                               ; State
+agreement_id = :                           ; Agreement ID
+provider_id = :                            ; Provider enrollment ID
+state = :(2)                               ; State
 
 ; Agreement terms - Per 42 CFR 431.107
 {.terms}
-effective_date = !date                      ; Agreement effective date
+effective_date = date                      ; Agreement effective date
 expiration_date = date                      ; Expiration date
 auto_renewal = ?                            ; Auto-renewal
 signed_date = date                          ; Date signed
@@ -157,17 +157,17 @@ programs[] = :                              ; Programs (Medicaid, CHIP, etc.)
 ; Per 42 CFR 455.410(b)
 
 {@practice_location}
-location_id = !:                            ; Location ID
-provider_id = !:                            ; Provider enrollment ID
-location_type = !(administrative, mobile, primary, satellite)
+location_id = :                            ; Location ID
+provider_id = :                            ; Provider enrollment ID
+location_type = (administrative, mobile, primary, satellite)
 
 ; Address
 {.address}
-address_1 = !:                              ; Street address
+address_1 = :                              ; Street address
 address_2 = :                               ; Suite/unit
-city = !:                                   ; City
-state = !:(2)                               ; State
-zip = !:(5..10)                             ; ZIP code
+city = :                                   ; City
+state = :(2)                               ; State
+zip = :(5..10)                             ; ZIP code
 county = :                                  ; County FIPS
 
 {@practice_location}
@@ -199,8 +199,8 @@ languages[] = :                             ; Languages spoken
 ; Per state taxonomy requirements
 
 {@specialty}
-provider_id = !:                            ; Provider enrollment ID
-taxonomy_code = !:                          ; NUCC taxonomy code
+provider_id = :                            ; Provider enrollment ID
+taxonomy_code = :                          ; NUCC taxonomy code
 taxonomy_description = :                    ; Taxonomy description
 specialty_type = (primary, secondary)       ; Primary or secondary
 board_certified = ?                         ; Board certified
@@ -214,9 +214,9 @@ end_date = date                             ; End date
 ; Per 42 CFR 455.412
 
 {@license}
-provider_id = !:                            ; Provider enrollment ID
+provider_id = :                            ; Provider enrollment ID
 = @license_credential                       ; Inherits license credential fields
-license_type = !:                           ; License type (MD, DO, RN, etc.)
+license_type = :                           ; License type (MD, DO, RN, etc.)
 restrictions = :                            ; Any restrictions
 
 ; DEA information (if applicable)
@@ -233,8 +233,8 @@ dea_expiration = date                       ; DEA expiration
 ; Per 42 CFR 455.104
 
 {@ownership}
-provider_id = !:                            ; Provider enrollment ID
-disclosure_date = !date                     ; Disclosure date
+provider_id = :                            ; Provider enrollment ID
+disclosure_date = date                     ; Disclosure date
 
 ; Owners - Per 42 CFR 455.104(b)
 owners[] = @owner_info                      ; Ownership interests
@@ -256,8 +256,8 @@ common_ownership[] = :                      ; Common ownership entities
 {@ownership}
 
 {@owner_info}
-name = !:                                   ; Owner name
-type = !(entity, individual)                ; Owner type
+name = :                                   ; Owner name
+type = (entity, individual)                ; Owner type
 ownership_percent = #:(0..100)              ; Ownership percentage
 ownership_type = (direct, indirect)         ; Ownership type
 ssn = *:                                    ; SSN (individuals)
@@ -274,7 +274,7 @@ exclusion = ?                               ; Excluded from program
 {@owner_info}
 
 {@managing_employee}
-name = !:                                   ; Name
+name = :                                   ; Name
 title = :                                   ; Title
 ssn = *:                                    ; SSN
 dob = *date                                 ; Date of birth
@@ -289,16 +289,16 @@ exclusion = ?                               ; Excluded from program
 {@managing_employee}
 
 {@agent_info}
-name = !:                                   ; Agent name
-type = !(entity, individual)                ; Agent type
+name = :                                   ; Agent name
+type = (entity, individual)                ; Agent type
 ein_ssn = *:                                ; EIN or SSN
 npi = :                                     ; NPI if applicable
 services = :                                ; Services provided
 compensation = :                            ; Compensation arrangement
 
 {@subcontractor_info}
-name = !:                                   ; Subcontractor name
-type = !(entity, individual)                ; Type
+name = :                                   ; Subcontractor name
+type = (entity, individual)                ; Type
 ein_ssn = *:                                ; EIN or SSN
 npi = :                                     ; NPI if applicable
 services = :                                ; Services subcontracted
@@ -309,8 +309,8 @@ services = :                                ; Services subcontracted
 ; Per 42 CFR 438.206
 
 {@mco_participation}
-provider_id = !:                            ; Provider enrollment ID
-mco_plan_id = !:                            ; MCO plan ID
+provider_id = :                            ; Provider enrollment ID
+mco_plan_id = :                            ; MCO plan ID
 contract_id = :                             ; Contract number
 
 ; Participation status
@@ -342,16 +342,16 @@ delegated_credentialing = ?                 ; Uses delegated credentialing
 ; Per 42 CFR 455.416 and 1002
 
 {@sanction}
-sanction_id = !:                            ; Sanction ID
-provider_id = !:                            ; Provider ID
+sanction_id = :                            ; Sanction ID
+provider_id = :                            ; Provider ID
 state = :(2)                                ; State (if state sanction)
 
 ; Sanction type
-sanction_type = !(civil_monetary_penalty, exclusion, payment_suspension, termination)
+sanction_type = (civil_monetary_penalty, exclusion, payment_suspension, termination)
 
 ; Dates
 {.dates}
-effective_date = !date                      ; Effective date
+effective_date = date                      ; Effective date
 end_date = date                             ; End date (if not permanent)
 reinstatement_date = date                   ; Reinstatement date
 
@@ -359,7 +359,7 @@ reinstatement_date = date                   ; Reinstatement date
 
 ; Basis - Per 42 CFR 1001
 {.basis}
-basis = !(conviction, fraud, license_action, other, patient_abuse, quality)
+basis = (conviction, fraud, license_action, other, patient_abuse, quality)
 description = :                             ; Description
 citation = :                                ; Regulatory citation
 
@@ -388,14 +388,14 @@ appeal_outcome = (affirmed, dismissed, reversed)
 ; Per 42 CFR 455.23
 
 {@payment_suspension}
-suspension_id = !:                          ; Suspension ID
-provider_id = !:                            ; Provider ID
-state = !:(2)                               ; State
+suspension_id = :                          ; Suspension ID
+provider_id = :                            ; Provider ID
+state = :(2)                               ; State
 
 ; Suspension details
 {.suspension}
-suspension_type = !(fraud_investigation, other, overpayment)
-effective_date = !date                      ; Effective date
+suspension_type = (fraud_investigation, other, overpayment)
+effective_date = date                      ; Effective date
 end_date = date                             ; End date
 amount_withheld = #$:(0..)                  ; Amount withheld
 
@@ -423,12 +423,12 @@ exception_reason = :                        ; Reason for exception
 ; Per state provider manuals and 42 CFR
 
 {@provider_type}
-type_code = !:                              ; State provider type code
-type_name = !:                              ; Provider type name
+type_code = :                              ; State provider type code
+type_name = :                              ; Provider type name
 description = :                             ; Description
 
 ; Category
-category = !(atypical, facility, group, individual)
+category = (atypical, facility, group, individual)
 
 ; Requirements
 {.requirements}

@@ -44,7 +44,7 @@ changelog[0].rationale = "Growing product category with unique characteristics"
 = @annuity.contract                           ; Inherit base contract fields
 
 ; Set product type
-product_type = !(structured)
+product_type = (structured)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; SEC Registration
@@ -59,7 +59,7 @@ sec_registered = ?true                        ; SEC-registered security
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Downside Protection Type
 ; ───────────────────────────────────────────────────────────────────────────────
-protection_type = !(buffer, dual, floor)      ; Type of downside protection
+protection_type = (buffer, dual, floor)      ; Type of downside protection
 
 ; Buffer: Carrier absorbs first X% of loss (e.g., 10% buffer means carrier takes 0-10% loss)
 ; Floor: Client only loses up to floor (e.g., -10% floor means max loss is 10%)
@@ -101,15 +101,15 @@ max_allocation_percent = #:(0..100)           ; Maximum allowed in fixed
 
 {@structured_strategy}
 ; Required fields
-index = !:                                    ; Tracked index (S&P 500, etc.)
-name = !:                                     ; Strategy name
-term_years = !##:(1..6)                       ; Strategy term in years
+index = :                                    ; Tracked index (S&P 500, etc.)
+name = :                                     ; Strategy name
+term_years = ##:(1..6)                       ; Strategy term in years
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Protection Mechanism
 ; ───────────────────────────────────────────────────────────────────────────────
 {.protection}
-type = !(buffer, dual, floor, none)           ; Protection type
+type = (buffer, dual, floor, none)           ; Protection type
 
 ; Buffer protection
 buffer_percent = #:(0..30)                    ; Carrier absorbs first X% of loss
@@ -124,8 +124,8 @@ step_buffer_schedule[] = @step_buffer         ; Step buffer by year
 {@structured_strategy}
 
 {@step_buffer}
-year = !##:(1..6)                             ; Term year
-buffer_percent = !#:(0..30)                   ; Buffer for that year
+year = ##:(1..6)                             ; Term year
+buffer_percent = #:(0..30)                   ; Buffer for that year
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Upside Limits
@@ -168,8 +168,8 @@ protected_amount = #$:(0..)                   ; Amount protected by buffer/floor
 history[] = @strategy_result                  ; Completed segment history
 
 {@strategy_result}
-segment_effective = !date                     ; Segment start date
-segment_expiration = !date                    ; Segment end date
+segment_effective = date                     ; Segment start date
+segment_expiration = date                    ; Segment end date
 
 buffer_used = #:(0..100)                      ; Percent of buffer used
 credited_return = #:(-100..1000)              ; Actual credited return
@@ -208,7 +208,7 @@ annual_max = #$:(0..)                         ; Maximum annual withdrawal
 ; Death benefits for structured annuities
 
 {@rila_death_benefit}
-type = !(accumulated_value, greater_of, highest_anniversary, protected_value, return_of_premium)  ; DB type
+type = (accumulated_value, greater_of, highest_anniversary, protected_value, return_of_premium)  ; DB type
 
 ; Protected value (unique to RILA - DB may include buffer protection)
 {.protected}
@@ -230,8 +230,8 @@ highest_value = #$:(0..)                      ; Highest stepped-up value
 
 {@suitability}
 ; Required fields
-determination = !:                            ; Suitability determination
-determination_date = !date                    ; Date of determination
+determination = :                            ; Suitability determination
+determination_date = date                    ; Date of determination
 
 ; Risk acknowledgment (unique to structured)
 {.risk_acknowledgment}

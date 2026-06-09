@@ -184,7 +184,7 @@ category = "physical_damage"
 
 ; Physical damage specific
 {.valuation}
-type = !(actual_cash_value, agreed_value, replacement_cost, stated_amount)
+type = (actual_cash_value, agreed_value, replacement_cost, stated_amount)
 amount = #$:if type = agreed_value || type = stated_amount
 
 {@auto_pd_coverage}
@@ -357,7 +357,7 @@ loss_of_use = ?                                  ; Rental/loss of use
 province = "QC"
 
 ; Public vs Private component
-coverage_component = !(public_saaq, private)
+coverage_component = (public_saaq, private)
 
 {@quebec_auto_coverage}
 
@@ -419,14 +419,14 @@ all_perils_deductible = #$
 = @auto_coverage
 
 ; Which government insurer
-government_insurer = !(
+government_insurer = (
     ICBC,                                        ; Insurance Corporation of British Columbia
     MPI,                                         ; Manitoba Public Insurance
     SGI                                          ; Saskatchewan Government Insurance
 )
 
 ; Basic vs Optional
-coverage_tier = !(basic, enhanced, optional)
+coverage_tier = (basic, enhanced, optional)
 
 {@government_auto_coverage}
 

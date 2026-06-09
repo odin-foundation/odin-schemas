@@ -54,7 +54,7 @@ professional_id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Professional Category
 ; ───────────────────────────────────────────────────────────────────────────────
-profession_category = !(
+profession_category = (
     ; Technology
     accounting_firms,
     allied_health,
@@ -118,7 +118,7 @@ profession_description = ::if profession_category = other
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Professional Services Rendered
 ; ───────────────────────────────────────────────────────────────────────────────
-services_description = !:
+services_description = :
 services_primary[] = :
 services_secondary[] = :
 
@@ -156,7 +156,7 @@ subcontractors_used = ?
 ; Revenue and Billing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.revenue}
-annual_gross = !#$
+annual_gross = #$
 professional_fees = #$
 fee_structure = (contingency, fixed_fee, hourly, mixed, retainer, subscription)
 
@@ -501,7 +501,7 @@ license_revocations = ##
 
 {@pl_endorsement}
 id = :
-number = !:
+number = :
 title = :
 effective_date = date
 
@@ -531,21 +531,21 @@ premium_impact = #$
 
 {@pl_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Type
 ; ───────────────────────────────────────────────────────────────────────────────
-policy_form = !(claims_made, occurrence)
+policy_form = (claims_made, occurrence)
 type = (
     excess,
     primary,

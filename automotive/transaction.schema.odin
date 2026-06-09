@@ -49,15 +49,15 @@ changelog[0].rationale = "Structures derived from FTC Used Car Rule and TILA/Reg
 
 {@vehicle_sale}
 ; Required fields first
-transaction_id = !:                              ; Unique transaction ID
-transaction_type = !(dealer_new, dealer_used, private_party)
-transaction_date = !date                         ; Sale date
-vin = !*:format vin                              ; Vehicle VIN
+transaction_id = :                              ; Unique transaction ID
+transaction_type = (dealer_new, dealer_used, private_party)
+transaction_date = date                         ; Sale date
+vin = *:format vin                              ; Vehicle VIN
 
 ; Parties
 {.seller}
-seller_type = !(dealer, individual, organization)
-seller_name = !:                                 ; Seller name
+seller_type = (dealer, individual, organization)
+seller_name = :                                 ; Seller name
 seller_address = @address                        ; Seller address
 seller_phone = *@phone                           ; Seller phone
 dealer_license = ::if seller_type = dealer       ; Dealer license number
@@ -66,8 +66,8 @@ dealer_state = :(2):if seller_type = dealer      ; Dealer state
 {@vehicle_sale}
 
 {.buyer}
-buyer_type = !(individual, organization)
-buyer_name = !:                                  ; Buyer name
+buyer_type = (individual, organization)
+buyer_name = :                                  ; Buyer name
 buyer_address = @address                         ; Buyer address
 buyer_phone = *@phone                            ; Buyer phone
 buyer_email = *@email                            ; Buyer email
@@ -81,15 +81,15 @@ vehicle = @vehicle_identification                ; Vehicle details
 
 ; Odometer
 {.odometer}
-reading = !##:(0..)                              ; Odometer at sale
-reading_type = !(actual, discrepancy, exempt, not_actual)
+reading = ##:(0..)                              ; Odometer at sale
+reading_type = (actual, discrepancy, exempt, not_actual)
 disclosure_date = date                           ; Disclosure date
 
 {@vehicle_sale}
 
 ; Pricing
 {.pricing}
-vehicle_price = !#$:(0..)                        ; Base vehicle price
+vehicle_price = #$:(0..)                        ; Base vehicle price
 msrp = #$:(0..):if transaction_type = dealer_new ; MSRP for new
 invoice = #$:(0..):if transaction_type = dealer_new ; Invoice for new
 dealer_addons = #$:(0..)                         ; Dealer add-ons
@@ -143,7 +143,7 @@ total_sale = #$:(0..)                            ; Total sale amount
 
 ; Payment
 {.payment}
-payment_type = !(cash, financing, outside_financing)
+payment_type = (cash, financing, outside_financing)
 down_payment = #$:(0..)                          ; Down payment
 deposit = #$:(0..)                               ; Deposit amount
 balance_due = #$:(0..)                           ; Balance due at delivery
@@ -158,7 +158,7 @@ financing = @auto_financing:if payment.payment_type = financing
 ; FTC Buyers Guide (Used Car Rule)
 {.buyers_guide}
 required = ?:if transaction_type = dealer_used   ; Buyers Guide required
-warranty = !(as_is, dealer_warranty, implied, limited, manufacturer):if transaction_type = dealer_used
+warranty = (as_is, dealer_warranty, implied, limited, manufacturer):if transaction_type = dealer_used
 warranty_duration_months = ##:if warranty = dealer_warranty|limited
 warranty_duration_miles = ##:if warranty = dealer_warranty|limited
 warranty_coverage = ::if warranty = dealer_warranty|limited
@@ -179,7 +179,7 @@ keys_provided = ##:(1..)                         ; Number of keys
 {@vehicle_sale}
 
 ; Status
-status = !(cancelled, completed, pending, unwound)
+status = (cancelled, completed, pending, unwound)
 cancellation_date = date:if status = cancelled
 cancellation_reason = ::if status = cancelled
 unwind_date = date:if status = unwound
@@ -197,7 +197,7 @@ finance_manager = :                              ; F&I manager
 
 {@sale_product}
 ; Required fields first
-product_type = !(
+product_type = (
     anti_theft,
     appearance_protection,
     credit_insurance,
@@ -212,8 +212,8 @@ product_type = !(
     tire_wheel,
     windshield
 )
-product_name = !:                                ; Product name
-price = !#$:(0..)                                ; Retail price
+product_name = :                                ; Product name
+price = #$:(0..)                                ; Retail price
 
 ; Product details
 provider = :                                     ; Provider name
@@ -240,15 +240,15 @@ pro_rata_refund = ?                              ; Pro-rata refund available
 
 {@trade_in}
 ; Required fields first
-vin = !*:format vin                              ; Trade VIN
-trade_date = !date                               ; Trade date
+vin = *:format vin                              ; Trade VIN
+trade_date = date                               ; Trade date
 
 ; Vehicle information
 vehicle = @vehicle_identification                ; Vehicle details
 
 ; Condition
 {.condition}
-overall = !(excellent, fair, good, poor, rough)
+overall = (excellent, fair, good, poor, rough)
 interior = (excellent, fair, good, poor)
 exterior = (excellent, fair, good, poor)
 mechanical = (excellent, fair, good, poor)
@@ -264,8 +264,8 @@ accident_history = ?                             ; Accident history disclosed
 
 ; Odometer
 {.odometer}
-reading = !##:(0..)                              ; Odometer reading
-reading_type = !(actual, discrepancy, exempt, not_actual)
+reading = ##:(0..)                              ; Odometer reading
+reading_type = (actual, discrepancy, exempt, not_actual)
 disclosure_date = date                           ; Disclosure date
 
 {@trade_in}
@@ -284,7 +284,7 @@ auction_estimate = #$:(0..)                      ; Expected auction value
 
 ; Allowance
 {.allowance}
-gross_allowance = !#$:(0..)                      ; Gross trade allowance
+gross_allowance = #$:(0..)                      ; Gross trade allowance
 over_allowance = #$:(0..)                        ; Over allowance (bump)
 acv_allowance = #$:(0..)                         ; ACV-based allowance
 total_allowance = #$:(0..)                       ; Total allowance
@@ -338,20 +338,20 @@ window_sticker = ?                               ; Window sticker
 
 {@vehicle_lease}
 ; Required fields first
-lease_id = !:                                    ; Lease identifier
-vin = !*:format vin                              ; Vehicle VIN
-lease_type = !(closed_end, open_end)             ; Lease type
+lease_id = :                                    ; Lease identifier
+vin = *:format vin                              ; Vehicle VIN
+lease_type = (closed_end, open_end)             ; Lease type
 
 ; Parties
 {.lessor}
-lessor_name = !:                                 ; Lessor (finance company)
+lessor_name = :                                 ; Lessor (finance company)
 lessor_address = @address                        ; Lessor address
 lessor_phone = *@phone                           ; Lessor phone
 
 {@vehicle_lease}
 
 {.lessee}
-lessee_name = !:                                 ; Lessee name
+lessee_name = :                                 ; Lessee name
 lessee_address = @address                        ; Lessee address
 lessee_phone = *@phone                           ; Lessee phone
 lessee_email = *@email                           ; Lessee email
@@ -372,9 +372,9 @@ vehicle = @vehicle_identification                ; Vehicle details
 
 ; Term
 {.term}
-term_months = !##:(1..)                          ; Lease term (months)
-inception_date = !date                           ; Lease inception
-expiration_date = !date                          ; Lease expiration
+term_months = ##:(1..)                          ; Lease term (months)
+inception_date = date                           ; Lease inception
+expiration_date = date                          ; Lease expiration
 first_payment_date = date                        ; First payment due
 
 {@vehicle_lease}
@@ -479,7 +479,7 @@ gap_included = ?                                 ; GAP coverage included
 {@vehicle_lease}
 
 ; Status
-status = !(active, charged_off, early_terminated, extended, expired, matured)
+status = (active, charged_off, early_terminated, extended, expired, matured)
 termination_date = date:if status = early_terminated
 termination_reason = ::if status = early_terminated
 
@@ -490,13 +490,13 @@ termination_reason = ::if status = early_terminated
 
 {@auto_financing}
 ; Required fields first
-loan_id = !:                                     ; Loan identifier
-vin = !*:format vin                              ; Vehicle VIN
-loan_type = !(direct, indirect)                  ; Direct lender vs dealer arranged
+loan_id = :                                     ; Loan identifier
+vin = *:format vin                              ; Vehicle VIN
+loan_type = (direct, indirect)                  ; Direct lender vs dealer arranged
 
 ; Lender
 {.lender}
-lender_name = !:                                 ; Lender name
+lender_name = :                                 ; Lender name
 lender_address = @address                        ; Lender address
 lender_phone = *@phone                           ; Lender phone
 nmls_id = :                                      ; NMLS ID if applicable
@@ -505,7 +505,7 @@ nmls_id = :                                      ; NMLS ID if applicable
 
 ; Borrower
 {.borrower}
-borrower_name = !:                               ; Borrower name
+borrower_name = :                               ; Borrower name
 borrower_address = @address                      ; Borrower address
 borrower_phone = *@phone                         ; Borrower phone
 borrower_email = *@email                         ; Borrower email
@@ -528,19 +528,19 @@ vehicle = @vehicle_identification                ; Vehicle details
 
 ; Reg Z Disclosures (TILA Box)
 {.tila}
-apr = !#.4                                       ; Annual Percentage Rate
-finance_charge = !#$:(0..)                       ; Finance Charge (total interest)
-amount_financed = !#$:(0..)                      ; Amount Financed
-total_of_payments = !#$:(0..)                    ; Total of Payments
+apr = #.4                                       ; Annual Percentage Rate
+finance_charge = #$:(0..)                       ; Finance Charge (total interest)
+amount_financed = #$:(0..)                      ; Amount Financed
+total_of_payments = #$:(0..)                    ; Total of Payments
 total_sale_price = #$:(0..)                      ; Total Sale Price
 
 {@auto_financing}
 
 ; Loan terms
 {.terms}
-term_months = !##:(1..)                          ; Loan term (months)
-first_payment_date = !date                       ; First payment due
-payment_amount = !#$:(0..)                       ; Monthly payment
+term_months = ##:(1..)                          ; Loan term (months)
+first_payment_date = date                       ; First payment due
+payment_amount = #$:(0..)                       ; Monthly payment
 payment_day = ##:(1..31)                         ; Due day of month
 final_payment_date = date                        ; Final payment date
 final_payment_amount = #$:(0..)                  ; Final payment if different
@@ -550,7 +550,7 @@ final_payment_amount = #$:(0..)                  ; Final payment if different
 ; Interest
 {.interest}
 interest_rate = #.4                              ; Note rate
-rate_type = !(fixed, variable)                   ; Fixed or variable
+rate_type = (fixed, variable)                   ; Fixed or variable
 index = ::if rate_type = variable               ; Index if variable
 margin = #.4:if rate_type = variable            ; Margin if variable
 rate_cap = #.4:if rate_type = variable          ; Rate cap if variable
@@ -591,7 +591,7 @@ late_fee_max = #$:(0..)                          ; Maximum late fee
 
 ; Security interest
 {.security}
-secured = !?true                                 ; Secured loan (always true for auto)
+secured = ?true                                 ; Secured loan (always true for auto)
 lien_position = ##:(1..3)                        ; Lien position
 lien_filed = ?                                   ; Lien filed
 lien_state = :(2)                                ; Lien filing state
@@ -602,7 +602,7 @@ filing_number = :                                ; Filing reference
 
 ; Current status
 {.status}
-status = !(active, charged_off, closed, delinquent, paid_off, repossessed)
+status = (active, charged_off, closed, delinquent, paid_off, repossessed)
 current_balance = #$:(0..)                       ; Current balance
 principal_balance = #$:(0..)                     ; Principal balance
 accrued_interest = #$:(0..)                      ; Accrued interest
@@ -641,13 +641,13 @@ reported_date = date                             ; Last report date
 
 {@bill_of_sale}
 ; Required fields first
-document_id = !:                                 ; Document identifier
-sale_date = !date                                ; Date of sale
-vin = !*:format vin                              ; Vehicle VIN
+document_id = :                                 ; Document identifier
+sale_date = date                                ; Date of sale
+vin = *:format vin                              ; Vehicle VIN
 
 ; Seller
 {.seller}
-name = !:                                        ; Seller name
+name = :                                        ; Seller name
 address = @address                               ; Seller address
 phone = *@phone                                  ; Seller phone
 
@@ -655,7 +655,7 @@ phone = *@phone                                  ; Seller phone
 
 ; Buyer
 {.buyer}
-name = !:                                        ; Buyer name
+name = :                                        ; Buyer name
 address = @address                               ; Buyer address
 phone = *@phone                                  ; Buyer phone
 
@@ -663,9 +663,9 @@ phone = *@phone                                  ; Buyer phone
 
 ; Vehicle
 {.vehicle}
-year = !##:(1900..2100)                          ; Model year
-make = !:                                        ; Make
-model = !:                                       ; Model
+year = ##:(1900..2100)                          ; Model year
+make = :                                        ; Make
+model = :                                       ; Model
 color = :                                        ; Color
 body_type = :                                    ; Body type
 
@@ -673,13 +673,13 @@ body_type = :                                    ; Body type
 
 ; Odometer
 {.odometer}
-reading = !##:(0..)                              ; Odometer reading
-reading_type = !(actual, discrepancy, exempt, not_actual)
+reading = ##:(0..)                              ; Odometer reading
+reading_type = (actual, discrepancy, exempt, not_actual)
 
 {@bill_of_sale}
 
 ; Sale amount
-sale_price = !#$:(0..)                           ; Sale price
+sale_price = #$:(0..)                           ; Sale price
 payment_method = (cash, cashiers_check, check, financing)
 down_payment = #$:(0..)                          ; Down payment if financed
 
@@ -703,16 +703,16 @@ notary_state = :(2):if notarized = true
 
 {@purchase_order}
 ; Required fields first
-order_number = !:                                ; Purchase order number
-order_date = !date                               ; Order date
+order_number = :                                ; Purchase order number
+order_date = date                               ; Order date
 vin = *:format vin                               ; Vehicle VIN (if stock unit)
 
 ; Status
-status = !(cancelled, completed, delivered, pending, rejected)
+status = (cancelled, completed, delivered, pending, rejected)
 
 ; Dealer
 {.dealer}
-dealer_name = !:                                 ; Dealer name
+dealer_name = :                                 ; Dealer name
 dealer_address = @address                        ; Dealer address
 dealer_license = :                               ; Dealer license number
 salesperson = :                                  ; Salesperson name
@@ -721,7 +721,7 @@ salesperson = :                                  ; Salesperson name
 
 ; Customer
 {.customer}
-customer_name = !:                               ; Customer name
+customer_name = :                               ; Customer name
 customer_address = @address                      ; Customer address
 customer_phone = *@phone                         ; Customer phone
 customer_email = *@email                         ; Customer email
@@ -730,7 +730,7 @@ customer_email = *@email                         ; Customer email
 
 ; Vehicle ordered
 {.vehicle}
-new_used = !(new, used)                          ; New or used
+new_used = (new, used)                          ; New or used
 year = ##:(1900..2100)                           ; Model year
 make = :                                         ; Make
 model = :                                        ; Model

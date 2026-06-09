@@ -56,8 +56,8 @@ changelog[0].rationale = "Institutional profile and compliance per IPEDS and Tit
 
 {@institution}
 ; Required fields first
-institution_id = !:                                  ; Institution identifier
-name = !:                                            ; Institution name
+institution_id = :                                  ; Institution identifier
+name = :                                            ; Institution name
 
 ; Optional fields
 legal_name = :                                       ; Legal name
@@ -118,7 +118,7 @@ locale_code = :                                      ; NCES locale code
 
 {@accreditation}
 ; Required fields first
-accreditor_name = !:                                 ; Accrediting agency name
+accreditor_name = :                                 ; Accrediting agency name
 accreditation_type = (national, programmatic, regional, specialized)
 status = (accredited, candidate, preaccredited, probation, show_cause, unaccredited, warning)
 
@@ -153,8 +153,8 @@ doe_recognized = ?                                   ; US Department of Educatio
 
 {@academic_program}
 ; Required fields first
-program_id = !:                                      ; Program identifier
-program_name = !:                                    ; Program name
+program_id = :                                      ; Program identifier
+program_name = :                                    ; Program name
 
 ; Optional fields
 program_description = :                              ; Program description
@@ -198,8 +198,8 @@ completions_last_year = ##:(0..)                     ; Last year completions
 
 {@title_iv_eligibility}
 ; Required fields first
-institution_id = !:                                  ; Institution identifier
-eligible = !?                                        ; Eligible for Title IV programs
+institution_id = :                                  ; Institution identifier
+eligible = ?                                        ; Eligible for Title IV programs
 
 ; Optional fields
 eligibility_date = date                              ; Date of eligibility
@@ -252,9 +252,9 @@ limitation_suspension_termination = ?                ; LST action
 
 {@campus}
 ; Required fields first
-campus_id = !:                                       ; Campus identifier
-institution_id = !:                                  ; Parent institution ID
-campus_name = !:                                     ; Campus name
+campus_id = :                                       ; Campus identifier
+institution_id = :                                  ; Parent institution ID
+campus_name = :                                     ; Campus name
 
 ; Optional fields
 campus_type = (additional_location, branch_campus, main_campus, online)
@@ -289,8 +289,8 @@ closed = date                                        ; Campus closed date
 
 {@enrollment_statistics}
 ; Required fields first
-institution_id = !:                                  ; Institution identifier
-academic_year = !:                                   ; Academic year
+institution_id = :                                  ; Institution identifier
+academic_year = :                                   ; Academic year
 
 ; Optional fields
 fall_enrollment = ##:(0..)                           ; Fall enrollment
@@ -336,8 +336,8 @@ first_time_first_year = ##:(0..)
 
 {@completions_statistics}
 ; Required fields first
-institution_id = !:                                  ; Institution identifier
-academic_year = !:                                   ; Academic year
+institution_id = :                                  ; Institution identifier
+academic_year = :                                   ; Academic year
 
 ; Optional fields
 total_completions = ##:(0..)                         ; Total completions/awards

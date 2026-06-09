@@ -39,8 +39,8 @@ changelog[0].rationale = "Structure derived from ERISA and IRS requirements"
 {@employer}
 = @organization                             ; Inherits organization fields
 
-employer_id = !:                            ; Employer identifier
-ein = !*:                                   ; Employer Identification Number (overrides tax_id)
+employer_id = :                            ; Employer identifier
+ein = *:                                   ; Employer Identification Number (overrides tax_id)
 
 ; Classification
 {.classification}
@@ -69,17 +69,17 @@ plan_administrator = :                      ; Plan administrator
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@employee}
-employee_id = !:                            ; Employee ID
-employer_id = !:                            ; Employer ID
+employee_id = :                            ; Employee ID
+employer_id = :                            ; Employer ID
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
+last_name = :                              ; Last name
 suffix = :                                  ; Suffix
-ssn = !*:                                   ; SSN
-dob = !*date                                ; Date of birth
+ssn = *:                                   ; SSN
+dob = *date                                ; Date of birth
 gender = (female, male, other)              ; Gender
 marital_status = (divorced, married, single, widowed)
 
@@ -87,9 +87,9 @@ marital_status = (divorced, married, single, widowed)
 
 ; Employment
 {.employment}
-hire_date = !date                           ; Hire date
+hire_date = date                           ; Hire date
 termination_date = date                     ; Termination date
-employment_status = !(active, leave, terminated)
+employment_status = (active, leave, terminated)
 employment_type = (full_time, part_time, seasonal, temporary)
 job_title = :                               ; Job title
 department = :                              ; Department
@@ -122,23 +122,23 @@ work_email = *@email                        ; Work email
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@dependent}
-dependent_id = !:                           ; Dependent ID
-employee_id = !:                            ; Employee ID
+dependent_id = :                           ; Dependent ID
+employee_id = :                            ; Employee ID
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
+last_name = :                              ; Last name
 ssn = *:                                    ; SSN
-dob = !*date                                ; Date of birth
+dob = *date                                ; Date of birth
 gender = (female, male, other)              ; Gender
 
 {@dependent}
 
 ; Relationship - Per IRS and plan definitions
 {.relationship}
-relationship = !(child, domestic_partner, parent, spouse, step_child)
+relationship = (child, domestic_partner, parent, spouse, step_child)
 spouse = ?                                  ; Spouse relationship
 child = ?                                   ; Child relationship
 disabled = ?                                ; Disabled dependent
@@ -167,14 +167,14 @@ address = @address                          ; Physical address (if different)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@beneficiary}
-beneficiary_id = !:                         ; Beneficiary ID
-employee_id = !:                            ; Employee ID
-benefit_type = !:                           ; Which benefit (life, 401k, etc.)
+beneficiary_id = :                         ; Beneficiary ID
+employee_id = :                            ; Employee ID
+benefit_type = :                           ; Which benefit (life, 401k, etc.)
 
 ; Beneficiary info
 {.info}
-beneficiary_type = !(charity, estate, individual, trust)
-name = !:                                   ; Name (person, trust, or entity)
+beneficiary_type = (charity, estate, individual, trust)
+name = :                                   ; Name (person, trust, or entity)
 ssn_tin = *:                                ; SSN or TIN
 dob = *date                                 ; Date of birth (if individual)
 relationship = :                            ; Relationship to employee
@@ -183,8 +183,8 @@ relationship = :                            ; Relationship to employee
 
 ; Designation
 {.designation}
-designation_type = !(contingent, per_stirpes, primary)
-percentage = !#:(0..100)                    ; Percentage share
+designation_type = (contingent, per_stirpes, primary)
+percentage = #:(0..100)                    ; Percentage share
 effective_date = date                       ; Designation date
 
 {@beneficiary}
@@ -200,15 +200,15 @@ phone = *@phone                             ; Phone number
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@benefit_plan}
-plan_id = !:                                ; Plan identifier
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
-plan_type = !:                              ; Type code
-plan_year = !##:(2000..)                    ; Plan year
+plan_id = :                                ; Plan identifier
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
+plan_type = :                              ; Type code
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Plan category
 {.category}
-category = !(dental, disability, health, life, retirement, vision, voluntary)
+category = (dental, disability, health, life, retirement, vision, voluntary)
 erisa_plan = ?                              ; Subject to ERISA
 welfare_plan = ?                            ; ERISA welfare benefit plan
 pension_plan = ?                            ; ERISA pension plan
@@ -217,7 +217,7 @@ pension_plan = ?                            ; ERISA pension plan
 
 ; Dates
 {.dates}
-effective_date = !date                      ; Plan effective date
+effective_date = date                      ; Plan effective date
 termination_date = date                     ; Plan termination date
 plan_year_start = date                      ; Plan year start
 plan_year_end = date                        ; Plan year end
@@ -248,22 +248,22 @@ erisa_bond = ?                              ; Fidelity bond in place
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@enrollment}
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee
-plan_id = !:                                ; Plan
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee
+plan_id = :                                ; Plan
 
 ; Enrollment type
 {.type}
-enrollment_type = !(initial, open_enrollment, qle, termination)
-election = !(decline, elect)
+enrollment_type = (initial, open_enrollment, qle, termination)
+election = (decline, elect)
 coverage_level = :                          ; ee, ee+sp, ee+ch, family, etc.
 
 {@enrollment}
 
 ; Dates
 {.dates}
-enrollment_date = !date                     ; Enrollment date
-effective_date = !date                      ; Coverage effective date
+enrollment_date = date                     ; Enrollment date
+effective_date = date                      ; Coverage effective date
 termination_date = date                     ; Coverage termination date
 qle_date = date                             ; QLE date if applicable
 qle_type = :                                ; QLE type if applicable
@@ -288,7 +288,7 @@ deduction_frequency = (biweekly, monthly, semi_monthly, weekly)
 {@enrollment}
 
 ; Status
-status = !(active, pending, terminated, waived)
+status = (active, pending, terminated, waived)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; QUALIFYING LIFE EVENT
@@ -296,13 +296,13 @@ status = !(active, pending, terminated, waived)
 ; Per IRC Section 125
 
 {@qle}
-qle_id = !:                                 ; QLE ID
-employee_id = !:                            ; Employee
-event_date = !date                          ; Event date
+qle_id = :                                 ; QLE ID
+employee_id = :                            ; Employee
+event_date = date                          ; Event date
 
 ; Event type - Per Section 125 regulations
 {.event}
-event_type = !(birth_adoption, change_residence, death, divorce, employment_change, legal_separation, loss_coverage, marriage, medicare_medicaid, other)
+event_type = (birth_adoption, change_residence, death, divorce, employment_change, legal_separation, loss_coverage, marriage, medicare_medicaid, other)
 event_description = :                       ; Description
 court_order = ?                             ; Court-ordered change
 
@@ -327,7 +327,7 @@ days_from_event = ##:(30..60)               ; Days allowed
 
 ; Status
 {.status}
-status = !(approved, denied, pending)
+status = (approved, denied, pending)
 approval_date = date                        ; Approval date
 denial_reason = :                           ; Denial reason
 
@@ -338,15 +338,15 @@ denial_reason = :                           ; Denial reason
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@open_enrollment}
-oe_id = !:                                  ; Open enrollment ID
-employer_id = !:                            ; Employer
-plan_year = !##:(2000..)                    ; Plan year
+oe_id = :                                  ; Open enrollment ID
+employer_id = :                            ; Employer
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Period
 {.period}
-start_date = !date                          ; OE start date
-end_date = !date                            ; OE end date
-effective_date = !date                      ; Coverage effective date
+start_date = date                          ; OE start date
+end_date = date                            ; OE end date
+effective_date = date                      ; Coverage effective date
 
 {@open_enrollment}
 
@@ -374,9 +374,9 @@ participation_rate = #:(0..100)             ; Participation rate
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@deduction}
-deduction_id = !:                           ; Deduction ID
-employee_id = !:                            ; Employee
-benefit_type = !:                           ; Benefit type
+deduction_id = :                           ; Deduction ID
+employee_id = :                            ; Employee
+benefit_type = :                           ; Benefit type
 
 ; Amount
 {.amount}
@@ -407,9 +407,9 @@ end_date = date                             ; End date
 ; Per IRC Section 125
 
 {@cafeteria_plan}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_year = !##:(2000..)                    ; Plan year
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Plan document
 {.document}

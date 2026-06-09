@@ -125,7 +125,7 @@ coverage_type_ref = "HO6_LOSS_ASSESSMENT"
 
 ; Loss assessment coverage protects against special assessments from HOA
 ; when master policy limits are exceeded or deductibles are high
-loss_assessment_limit = !#$:(0..)                   ; Common: $1,000 to $50,000
+loss_assessment_limit = #$:(0..)                   ; Common: $1,000 to $50,000
 standard_limit = #$:(0..)                           ; Base coverage (typically $1,000)
 additional_limit_purchased = #$:(0..)               ; Additional coverage purchased
 
@@ -160,7 +160,7 @@ coverage_section = "C"
 coverage_type_ref = "HO6_C"
 
 ; Personal property limit (this is the primary coverage for most condo owners)
-personal_property_limit = !#$:(0..)
+personal_property_limit = #$:(0..)
 
 ; Loss settlement
 loss_settlement = (actual_cash_value, replacement_cost)
@@ -227,7 +227,7 @@ prior_insurance = @res.res_prior_insurance
 
 {@condo_unit}
 unit_id = :                                          ; Unique identifier for the unit
-unit_number = !:                                     ; Unit number
+unit_number = :                                     ; Unit number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Address - uses shared @address type (US and Canada)
@@ -252,7 +252,7 @@ legal_description = :                                ; Legal property descriptio
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Ownership Type
 ; ───────────────────────────────────────────────────────────────────────────────
-ownership_type = !(cooperative, fee_simple, leasehold, timeshare) ; Type of unit ownership
+ownership_type = (cooperative, fee_simple, leasehold, timeshare) ; Type of unit ownership
 
 ; Occupancy
 occupancy = @res.res_occupancy                       ; Occupancy details
@@ -263,7 +263,7 @@ occupancy = @res.res_occupancy                       ; Occupancy details
 ; Unit Characteristics
 ; ───────────────────────────────────────────────────────────────────────────────
 {.unit_characteristics}
-total_square_feet = !##:(0..)                        ; Total square footage of unit
+total_square_feet = ##:(0..)                        ; Total square footage of unit
 living_square_feet = ##:(0..)                        ; Living square footage
 room_count = ##:(0..)                                ; Total number of rooms
 bedroom_count = ##:(0..)                             ; Number of bedrooms
@@ -290,8 +290,8 @@ storage_unit_square_feet = ##:(0..):if storage_unit_included = true ; Square foo
 ; Building Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.building}
-year_built = !##:(1600..)                            ; Year building was built
-construction_type = !(brick, concrete, concrete_block, fire_resistive, frame, masonry, mixed, steel_frame, superior_construction) ; Type of building construction
+year_built = ##:(1600..)                            ; Year building was built
+construction_type = (brick, concrete, concrete_block, fire_resistive, frame, masonry, mixed, steel_frame, superior_construction) ; Type of building construction
 
 total_floors_in_building = ##:(1..)                  ; Total number of floors in building
 total_units_in_building = ##:(1..)                   ; Total number of units in building
@@ -364,7 +364,7 @@ improvements_value = #$:(0..)                        ; Value of improvements/bet
 association_id = :                                   ; Unique identifier for association
 
 ; Association details
-association_name = !:                                ; Name of condominium association
+association_name = :                                ; Name of condominium association
 association_type = (condominium, cooperative, planned_unit_development) ; Type of association
 
 ; Management
@@ -411,14 +411,14 @@ reserve_fund = ?                                     ; Whether HOA fees include 
 ; Master Insurance Policy Information (CRITICAL FOR COORDINATION)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.master_policy}
-carrier_name = !:                                    ; Name of master policy insurance carrier
+carrier_name = :                                    ; Name of master policy insurance carrier
 policy_number = :                                    ; Master policy number
 effective_date = date                                ; Master policy effective date
 expiration_date = date                               ; Master policy expiration date
 coverage_amount = #$:(0..)                           ; Master policy coverage amount
 
 ; Master policy type (determines what unit owner must insure)
-master_policy_type = !(all_in, bare_walls, single_entity) ; Type of master policy
+master_policy_type = (all_in, bare_walls, single_entity) ; Type of master policy
 
 ; What master policy covers (depends on type)
 {.master_covers}
@@ -491,7 +491,7 @@ fannie_mae_approved = ?                              ; Whether building is Fanni
 
 {@condo_policy}
 id = :                                               ; Unique policy identifier
-number = !:(1..50)                                   ; Policy number
+number = :(1..50)                                   ; Policy number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Form
@@ -502,9 +502,9 @@ policy_form_edition = :                              ; Edition of policy form
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date                               ; Policy effective date
+effective_date = date                               ; Policy effective date
 effective_time = time                                ; Policy effective time
-expiration_date = !date                              ; Policy expiration date
+expiration_date = date                              ; Policy expiration date
 expiration_time = time                               ; Policy expiration time
 :invariant expiration_date > effective_date
 
@@ -542,19 +542,19 @@ coverage_a = @ho6_dwelling_coverage                  ; Coverage A details
 ; Coverage B - NOT APPLICABLE for HO-6 (other structures covered by HOA)
 
 ; Coverage C - Personal Property (PRIMARY COVERAGE)
-coverage_c = !@ho6_personal_property_coverage        ; Coverage C details
+coverage_c = @ho6_personal_property_coverage        ; Coverage C details
 
 ; Coverage D - Loss of Use
 coverage_d = @ho6_loss_of_use_coverage               ; Coverage D details
 
 ; Coverage E - Personal Liability
-coverage_e = !@ho6_personal_liability_coverage       ; Coverage E details
+coverage_e = @ho6_personal_liability_coverage       ; Coverage E details
 
 ; Coverage F - Medical Payments
 coverage_f = @ho6_medical_payments_coverage          ; Coverage F details
 
 ; Loss Assessment Coverage (CRITICAL for HO-6)
-loss_assessment_coverage = !@ho6_loss_assessment_coverage ; Loss assessment coverage details
+loss_assessment_coverage = @ho6_loss_assessment_coverage ; Loss assessment coverage details
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Summary
@@ -601,7 +601,7 @@ endorsements[] = @ho6_endorsement                    ; Policy endorsements
 = @res.res_endorsement
 
 ; HO-6 specific endorsement types
-endorsement_type = !(additional_loss_assessment, building_code_upgrade, earthquake, equipment_breakdown, extended_replacement_cost, flood, home_sharing, identity_theft, increased_coverage_c, increased_liability, mold_coverage, ordinance_law, other, personal_injury, personal_property_replacement_cost, scheduled_personal_property, service_line, special_computer, unit_improvements_betterments, water_backup, watercraft) ; Type of endorsement
+endorsement_type = (additional_loss_assessment, building_code_upgrade, earthquake, equipment_breakdown, extended_replacement_cost, flood, home_sharing, identity_theft, increased_coverage_c, increased_liability, mold_coverage, ordinance_law, other, personal_injury, personal_property_replacement_cost, scheduled_personal_property, service_line, special_computer, unit_improvements_betterments, water_backup, watercraft) ; Type of endorsement
 
 {@condo_policy}
 

@@ -39,13 +39,13 @@ changelog[0].rationale = "Structure derived from FMLA, USERRA, and state leave l
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@pto_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
-policy_name = !:                            ; Policy name
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
+policy_name = :                            ; Policy name
 
 ; Policy type
 {.type}
-pto_type = !(combined, separate, unlimited)
+pto_type = (combined, separate, unlimited)
 ; combined = single PTO bank
 ; separate = separate vacation, sick, personal
 ; unlimited = unlimited PTO
@@ -118,8 +118,8 @@ involuntary_termination_payout = ?          ; Payout for involuntary term
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@vacation_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
 
 ; Accrual by tenure
 {@vacation_policy.tiers[]}
@@ -151,8 +151,8 @@ use_by_date = date                          ; Use-by date
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@sick_leave_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
 
 ; Accrual
 {.accrual}
@@ -198,9 +198,9 @@ state_law_compliance[] = :(2)               ; State codes
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@parental_leave_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
-policy_name = !:                            ; Policy name
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
+policy_name = :                            ; Policy name
 
 ; Leave types
 {.types}
@@ -277,8 +277,8 @@ pto_accrues = ?                             ; PTO accrues during leave
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@bereavement_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
 
 ; Immediate family
 {.immediate_family}
@@ -319,8 +319,8 @@ acceptable_documentation[] = :              ; Acceptable documentation types
 ; Per USERRA (38 USC Chapter 43)
 
 {@military_leave_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
 
 ; Basic military leave
 {.basic}
@@ -370,8 +370,8 @@ orders_required = ?                         ; Military orders required
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@jury_duty_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
 
 ; Pay
 {.pay}
@@ -396,8 +396,8 @@ advance_notice_days = ##:(0..7)             ; Advance notice required
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@voting_leave_policy}
-policy_id = !:                              ; Policy ID
-employer_id = !:                            ; Employer
+policy_id = :                              ; Policy ID
+employer_id = :                            ; Employer
 
 ; Leave allowed
 {.leave}
@@ -415,10 +415,10 @@ compliance_states[] = :(2)                  ; State codes
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@leave_balance}
-balance_id = !:                             ; Balance ID
-employee_id = !:                            ; Employee
-policy_id = !:                              ; Policy ID
-leave_type = !(bereavement, floating_holiday, jury_duty, military, parental, personal, pto, sick, vacation)
+balance_id = :                             ; Balance ID
+employee_id = :                            ; Employee
+policy_id = :                              ; Policy ID
+leave_type = (bereavement, floating_holiday, jury_duty, military, parental, personal, pto, sick, vacation)
 
 ; Current balance
 {.balance}
@@ -446,15 +446,15 @@ as_of_date = date                           ; Balance as of date
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@leave_request}
-request_id = !:                             ; Request ID
-employee_id = !:                            ; Employee
-policy_id = !:                              ; Policy ID
-leave_type = !(bereavement, floating_holiday, jury_duty, military, parental, personal, pto, sick, vacation)
+request_id = :                             ; Request ID
+employee_id = :                            ; Employee
+policy_id = :                              ; Policy ID
+leave_type = (bereavement, floating_holiday, jury_duty, military, parental, personal, pto, sick, vacation)
 
 ; Request details
 {.details}
-start_date = !date                          ; Start date
-end_date = !date                            ; End date
+start_date = date                          ; Start date
+end_date = date                            ; End date
 start_time = time                           ; Start time (if partial day)
 end_time = time                             ; End time (if partial day)
 hours_requested = #:(0..)                   ; Total hours requested
@@ -486,7 +486,7 @@ documentation_received = ?                  ; Documentation received
 submitted_date = date                       ; Date submitted
 manager_id = :                              ; Approving manager
 approval_date = date                        ; Approval date
-status = !(approved, cancelled, denied, pending)
+status = (approved, cancelled, denied, pending)
 denial_reason = :                           ; Denial reason (if denied)
 
 {@leave_request}
@@ -497,9 +497,9 @@ denial_reason = :                           ; Denial reason (if denied)
 ; State-mandated paid family and medical leave programs
 
 {@state_paid_leave}
-state = !:(2)                               ; State code
-employer_id = !:                            ; Employer
-plan_year = !##:(2000..)                    ; Plan year
+state = :(2)                               ; State code
+employer_id = :                            ; Employer
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Program info
 {.program}
@@ -557,13 +557,13 @@ concurrent_with_employer_leave = ?          ; Runs concurrent
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@state_leave_claim}
-claim_id = !:                               ; Claim ID
-employee_id = !:                            ; Employee
-state = !:(2)                               ; State
+claim_id = :                               ; Claim ID
+employee_id = :                            ; Employee
+state = :(2)                               ; State
 
 ; Claim type
 {.type}
-leave_type = !(family_care, medical, military_exigency, new_child_bonding)
+leave_type = (family_care, medical, military_exigency, new_child_bonding)
 family_member = :                           ; Family member (if family care)
 relationship = :                            ; Relationship
 
@@ -571,7 +571,7 @@ relationship = :                            ; Relationship
 
 ; Leave period
 {.period}
-start_date = !date                          ; Start date
+start_date = date                          ; Start date
 end_date = date                             ; End date (or ongoing)
 intermittent = ?                            ; Intermittent leave
 reduced_schedule = ?                        ; Reduced schedule
@@ -588,7 +588,7 @@ total_weekly_benefit = #$:(0..)             ; Total weekly
 
 ; Status
 {.status}
-status = !(approved, denied, paid, pending)
+status = (approved, denied, paid, pending)
 determination_date = date                   ; Determination date
 denial_reason = :                           ; Denial reason
 

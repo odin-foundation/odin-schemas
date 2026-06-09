@@ -50,10 +50,10 @@ changelog[0].rationale = "Comprehensive litigation tracking structure"
 
 {@litigation_matter}
 ; Required fields first
-case_type = !(antitrust, breach_of_contract, class_action, commercial, construction, employment, environmental, insurance, intellectual_property, personal_injury, product_liability, professional_liability, real_property, securities, tort, trust_estate)
-client_position = !(cross_claimant, cross_defendant, defendant, intervenor, petitioner, plaintiff, respondent, third_party_defendant)
-matter_name = !:                                  ; Matter name/caption
-open_date = !date                                 ; Date matter opened
+case_type = (antitrust, breach_of_contract, class_action, commercial, construction, employment, environmental, insurance, intellectual_property, personal_injury, product_liability, professional_liability, real_property, securities, tort, trust_estate)
+client_position = (cross_claimant, cross_defendant, defendant, intervenor, petitioner, plaintiff, respondent, third_party_defendant)
+matter_name = :                                  ; Matter name/caption
+open_date = date                                 ; Date matter opened
 
 ; Matter identification
 matter_id = :                                     ; Internal matter identifier
@@ -313,8 +313,8 @@ status = @legal_matter_status                     ; Matter status
 
 {@litigation_claim}
 ; Required fields first
-claim_number = !##:(1..)                          ; Claim number in complaint
-claim_type = !:                                   ; Type of claim (e.g., "Breach of Contract")
+claim_number = ##:(1..)                          ; Claim number in complaint
+claim_type = :                                   ; Type of claim (e.g., "Breach of Contract")
 
 ; Claim details
 {.details}
@@ -345,7 +345,7 @@ dismissal_basis = ::if claim_status = dismissed   ; Basis for dismissal
 
 {@litigation_phase}
 ; Current phase (UTBMS Litigation Phases L100-L590)
-current_phase = !(L100_case_assessment, L110_development_strategy, L120_fact_investigation, L130_development_themes, L140_case_management, L200_pretrial_pleadings, L210_written_discovery, L220_document_production, L230_depositions, L240_experts, L250_discovery_motions, L300_dispositive_motions, L400_trial_prep, L410_trial, L500_appeal, L590_post_trial)
+current_phase = (L100_case_assessment, L110_development_strategy, L120_fact_investigation, L130_development_themes, L140_case_management, L200_pretrial_pleadings, L210_written_discovery, L220_document_production, L230_depositions, L240_experts, L250_discovery_motions, L300_dispositive_motions, L400_trial_prep, L410_trial, L500_appeal, L590_post_trial)
 
 ; Phase details
 phase_start_date = date                           ; When phase started
@@ -362,8 +362,8 @@ phase_notes = :                                   ; Notes about current phase
 
 {@litigation_arbitration}
 ; Required fields first
-arbitration_forum = !(aaa, finra, icc, icsid, jams, private, uncitral)
-arbitration_type = !(binding, non_binding)
+arbitration_forum = (aaa, finra, icc, icsid, jams, private, uncitral)
+arbitration_type = (binding, non_binding)
 
 ; Arbitration identification
 case_number = :                                   ; Arbitration case number
@@ -439,7 +439,7 @@ status = (award_issued, closed, discovery, hearing, pending, preliminary)
 
 {@litigation_mediation}
 ; Required fields first
-mediation_type = !(court_ordered, mandatory, voluntary)
+mediation_type = (court_ordered, mandatory, voluntary)
 
 ; Mediation identification
 matter_ref = @litigation_matter                   ; Related litigation matter

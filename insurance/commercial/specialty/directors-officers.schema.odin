@@ -52,16 +52,16 @@ person_id = :                                     ; Unique identifier for the in
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {.name}
-first = !:                                        ; Required first name
-last = !:                                         ; Required last name
+first = :                                        ; Required first name
+last = :                                         ; Required last name
 
 {@do_insured_person}
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Position
 ; ───────────────────────────────────────────────────────────────────────────────
-title = !:                                        ; Required job title of the insured person
-position_type = !(                                ; Required classification of the person's role
+title = :                                        ; Required job title of the insured person
+position_type = (                                ; Required classification of the person's role
     committee_member,
     de_facto_director,
     director,
@@ -147,7 +147,7 @@ coverage_id = :                                   ; Unique identifier for the co
 ; Most valuable coverage - pays when company is bankrupt, derivative suits, etc.
 
 {.side_a}
-included = !?true                                 ; Whether Side A coverage is included (defaults to true)
+included = ?true                                 ; Whether Side A coverage is included (defaults to true)
 limit = #$:if side_a.included = true              ; Coverage limit for Side A
 retention = ##:if side_a.included = true          ; Deductible amount for Side A claims
 excess_of_side_b_c = ?:if side_a.included = true  ; Whether Side A limit applies excess of Side B/C
@@ -328,8 +328,8 @@ insurable_only = ?:if civil_fines.included = true ; Whether only insurable fines
 
 {@do_subsidiary}
 subsidiary_id = :                                 ; Unique identifier for the subsidiary
-legal_name = !:                                   ; Required legal name of the subsidiary
-coverage_status = !(                              ; Required coverage status of the subsidiary
+legal_name = :                                   ; Required legal name of the subsidiary
+coverage_status = (                              ; Required coverage status of the subsidiary
     automatically_covered,
     scheduled,
     excluded,
@@ -486,9 +486,9 @@ accrediting_body = ::if accreditation_required = true ; Name of accrediting orga
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@do_endorsement}
-id = !:                                           ; Required unique identifier for the endorsement
-number = !:                                       ; Required endorsement number
-type = !(                                         ; Required type of endorsement
+id = :                                           ; Required unique identifier for the endorsement
+number = :                                       ; Required endorsement number
+type = (                                         ; Required type of endorsement
     ; Coverage Extensions
     acquisition_extension,
     bodily_injury_property_damage_exclusion,
@@ -518,11 +518,11 @@ premium_impact = #$                               ; Additional premium charged f
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@do_policy}
-id = !:                                           ; Required unique policy identifier
-number = !:                                       ; Required policy number
-effective_date = !date                            ; Required policy effective date
-expiration_date = !date                           ; Required policy expiration date
-type = !(                                         ; Required type of D&O policy
+id = :                                           ; Required unique policy identifier
+number = :                                       ; Required policy number
+effective_date = date                            ; Required policy effective date
+expiration_date = date                           ; Required policy expiration date
+type = (                                         ; Required type of D&O policy
     excess_follow_form,
     excess_specific,
     nonprofit,
@@ -531,7 +531,7 @@ type = !(                                         ; Required type of D&O policy
     public_company,
     side_a_dic_only
 )
-retroactive_date = !date                          ; Required retroactive date for claims-made coverage
+retroactive_date = date                          ; Required retroactive date for claims-made coverage
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term

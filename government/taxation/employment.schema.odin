@@ -48,16 +48,16 @@ changelog[0].rationale = "Quarterly and annual employment tax reporting requirem
 = @types.audit_info
 
 ; Filing Period
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 quarter = (Q1, Q2, Q3, Q4)
-quarter_begin_date = !date
-quarter_end_date = !date
+quarter_begin_date = date
+quarter_end_date = date
 
 ; Employer Information
-employer_names[] = !:                                ; Legal names (name changes over time)
+employer_names[] = :                                ; Legal names (name changes over time)
 trade_names[] = :                                    ; DBAs (multiple trade names)
-ein = !:format ein
-addresses[] = !@types.address                        ; Business locations
+ein = :format ein
+addresses[] = @types.address                        ; Business locations
 
 ; Business Type
 business_closed = ?
@@ -66,12 +66,12 @@ seasonal_employer = ?
 final_return = ?
 
 ; Employees
-number_employees = !##:(0..)
+number_employees = ##:(0..)
 
 ; Wages and Taxes
 {.wages}
-wages_tips_compensation = !#$:(0..)
-federal_income_tax_withheld = !#$:(0..)
+wages_tips_compensation = #$:(0..)
+federal_income_tax_withheld = #$:(0..)
 taxable_social_security_wages = #$:(0..)
 social_security_tax = #$:(0..)
 taxable_social_security_tips = #$:(0..)
@@ -102,7 +102,7 @@ total_credits = #$:(0..)
 
 {@form_941}
 ; Tax Computation
-total_taxes_after_adjustments_credits = !#$
+total_taxes_after_adjustments_credits = #$
 total_deposits = #$:(0..)
 balance_due = #$
 overpayment = #$
@@ -142,13 +142,13 @@ phone = *@types.phone                                ; Contact phone
 = @types.audit_info
 
 ; Tax Year
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Employer Information
-employer_names[] = !:                                ; Legal names (name changes over time)
+employer_names[] = :                                ; Legal names (name changes over time)
 trade_names[] = :                                    ; DBAs (multiple trade names)
-ein = !:format ein
-addresses[] = !@types.address                        ; Business locations
+ein = :format ein
+addresses[] = @types.address                        ; Business locations
 
 ; Business Type
 amended_return = ?
@@ -165,7 +165,7 @@ credit_reduction_states[] = :(2)
 {@form_940}
 ; Wages
 {.wages}
-total_payments = !#$:(0..)
+total_payments = #$:(0..)
 exempt_payments[] = {@exempt_payment}                ; Exempt payments by category
 
 {@exempt_payment}
@@ -175,17 +175,17 @@ amount = #$:(0..)                                    ; Exempt amount
 {@form_940}
 excess_7000 = #$:(0..)
 subtotal = #$:(0..)
-total_taxable_futa_wages = !#$:(0..)
+total_taxable_futa_wages = #$:(0..)
 
 {@form_940}
 ; FUTA Tax Computation
 {.tax}
-futa_tax_before_adjustments = !#$:(0..)
+futa_tax_before_adjustments = #$:(0..)
 futa_tax_rate = #:(0..100) #6.0
 maximum_credit = #$:(0..)
 computation_credit = (schedule_a, worksheets)
 credit_reduction = #$
-total_futa_tax = !#$:(0..)
+total_futa_tax = #$:(0..)
 
 {@form_940}
 ; Deposits and Payments
@@ -227,13 +227,13 @@ phone = *@types.phone                                ; Contact phone
 = @types.audit_info
 
 ; Tax Year
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Employer Information
-employer_names[] = !:                                ; Legal names (name changes over time)
+employer_names[] = :                                ; Legal names (name changes over time)
 trade_names[] = :                                    ; DBAs (multiple trade names)
-ein = !:format ein
-addresses[] = !@types.address                        ; Business locations
+ein = :format ein
+addresses[] = @types.address                        ; Business locations
 
 ; Business Status
 business_closed = ?
@@ -243,8 +243,8 @@ final_return = ?
 
 ; Wages and Taxes
 {.wages}
-wages_tips_compensation = !#$:(0..)
-federal_income_tax_withheld = !#$:(0..)
+wages_tips_compensation = #$:(0..)
+federal_income_tax_withheld = #$:(0..)
 taxable_social_security_wages = #$:(0..)
 social_security_tax = #$:(0..)
 taxable_social_security_tips = #$:(0..)
@@ -259,7 +259,7 @@ total_taxes_before_adjustments = #$:(0..)
 current_year_adjustments = #$
 total_taxes_after_adjustments = #$:(0..)
 qualified_small_business_payroll_tax_credit = #$:(0..)
-total_taxes_after_credits = !#$:(0..)
+total_taxes_after_credits = #$:(0..)
 
 ; Deposits and Payments
 total_deposits = #$:(0..)
@@ -299,13 +299,13 @@ phone = *@types.phone                                ; Contact phone
 = @types.audit_info
 
 ; Tax Year
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Employer Information
-employer_names[] = !:                                ; Legal names (name changes over time)
+employer_names[] = :                                ; Legal names (name changes over time)
 trade_names[] = :                                    ; DBAs (multiple trade names)
-ein = !:format ein
-addresses[] = !@types.address                        ; Business locations
+ein = :format ein
+addresses[] = @types.address                        ; Business locations
 
 ; Business Status
 business_closed = ?
@@ -315,8 +315,8 @@ final_return = ?
 
 ; Wages and Taxes
 {.wages}
-wages_tips_compensation = !#$:(0..)
-federal_income_tax_withheld = !#$:(0..)
+wages_tips_compensation = #$:(0..)
+federal_income_tax_withheld = #$:(0..)
 taxable_social_security_wages = #$:(0..)
 social_security_tax = #$:(0..)
 taxable_medicare_wages_tips = #$:(0..)
@@ -329,7 +329,7 @@ total_taxes_before_adjustments = #$:(0..)
 current_year_adjustments = #$
 total_taxes_after_adjustments = #$:(0..)
 qualified_small_business_payroll_tax_credit = #$:(0..)
-total_taxes_after_credits = !#$:(0..)
+total_taxes_after_credits = #$:(0..)
 
 ; Deposits and Payments
 total_deposits = #$:(0..)

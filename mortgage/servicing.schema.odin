@@ -42,15 +42,15 @@ changelog[0].rationale = "Servicing structure derived from RESPA, Fannie Mae, Fr
 {@loan_status}
 = @status_record                              ; Inherits status tracking fields
 
-loan_number = !:                              ; Loan number
+loan_number = :                              ; Loan number
 
 ; Override with loan-specific status values
-status = !(active, bankruptcy, deed_in_lieu, forbearance, foreclosure, modification, paid_off, reo, short_sale)
-status_date = !date                           ; Status effective date (required)
+status = (active, bankruptcy, deed_in_lieu, forbearance, foreclosure, modification, paid_off, reo, short_sale)
+status_date = date                           ; Status effective date (required)
 
 ; Balance information
 {.balance}
-principal = !#$:(0..)                         ; Current principal balance
+principal = #$:(0..)                         ; Current principal balance
 interest_accrued = #$:(0..)                   ; Accrued interest
 escrow = #$:(0..)                             ; Escrow balance
 fees = #$:(0..)                               ; Outstanding fees
@@ -86,8 +86,8 @@ trial_period = ?                              ; In trial modification period
 = @payment                                    ; Inherits common payment fields
 
 ; Payment identification
-payment_id = !:                               ; Unique payment identifier
-loan_number = !:                              ; Loan number
+payment_id = :                               ; Unique payment identifier
+loan_number = :                              ; Loan number
 
 ; Additional payment details
 received_date = date                          ; Date payment received
@@ -124,7 +124,7 @@ reversal_reason = :                           ; Reason for reversal
 ; Per RESPA escrow requirements 12 CFR 1024.17
 
 {@escrow_account}
-loan_number = !:                              ; Loan number
+loan_number = :                              ; Loan number
 
 ; Account status
 escrow_waived = ?                             ; Escrow waiver in effect
@@ -151,7 +151,7 @@ projected_low_point = #$                      ; Projected low balance
 items[] = @escrow_item                        ; Escrow disbursement items
 
 {@escrow_item}
-type = !(county_tax, flood_insurance, hazard_insurance, hoa, mortgage_insurance, school_tax, special_assessment)
+type = (county_tax, flood_insurance, hazard_insurance, hoa, mortgage_insurance, school_tax, special_assessment)
 payee = :                                     ; Payee name
 annual_amount = #$:(0..)                      ; Annual amount
 monthly_amount = #$:(0..)                     ; Monthly accrual
@@ -165,13 +165,13 @@ last_paid_amount = #$:(0..)                   ; Last payment amount
 ; Escrow disbursement record
 
 {@escrow_disbursement}
-disbursement_id = !:                          ; Unique disbursement ID
-loan_number = !:                              ; Loan number
+disbursement_id = :                          ; Unique disbursement ID
+loan_number = :                              ; Loan number
 
 ; Disbursement details
-date = !date                                  ; Disbursement date
-amount = !#$:(0..)                            ; Disbursement amount
-type = !(county_tax, flood_insurance, hazard_insurance, hoa, mortgage_insurance, school_tax, special_assessment)
+date = date                                  ; Disbursement date
+amount = #$:(0..)                            ; Disbursement amount
+type = (county_tax, flood_insurance, hazard_insurance, hoa, mortgage_insurance, school_tax, special_assessment)
 
 ; Payee
 payee_name = :                                ; Payee name
@@ -192,15 +192,15 @@ cleared_date = date                           ; Date cleared
 ; Per RESPA 12 CFR 1026.41 periodic statement requirements
 
 {@periodic_statement}
-loan_number = !:                              ; Loan number
-statement_date = !date                        ; Statement date
-statement_period_start = !date                ; Period start
-statement_period_end = !date                  ; Period end
+loan_number = :                              ; Loan number
+statement_date = date                        ; Statement date
+statement_period_start = date                ; Period start
+statement_period_end = date                  ; Period end
 
 ; Payment due - Required per 1026.41(d)(1)
 {.payment_due}
-amount = !#$:(0..)                            ; Amount due
-due_date = !date                              ; Due date
+amount = #$:(0..)                            ; Amount due
+due_date = date                              ; Due date
 late_after = date                             ; Late if received after
 late_fee = #$:(0..)                           ; Late fee amount
 
@@ -220,8 +220,8 @@ transactions[] = @statement_transaction       ; Activity since last statement
 
 ; Account information - Required per 1026.41(d)(3)
 {.account}
-principal_balance = !#$:(0..)                 ; Outstanding principal
-current_interest_rate = !#.3:(0..100)         ; Current rate
+principal_balance = #$:(0..)                 ; Outstanding principal
+current_interest_rate = #.3:(0..100)         ; Current rate
 next_rate_adjustment = date                   ; Next rate adjustment date
 prepayment_penalty = ?                        ; Subject to prepay penalty
 late_charges = #$:(0..)                       ; Total late charges
@@ -247,10 +247,10 @@ total_paid = #$:(0..)                         ; Total paid YTD
 {@periodic_statement}
 
 {@statement_transaction}
-date = !date                                  ; Transaction date
-type = !(disbursement, fee, interest_charge, payment, reversal)
+date = date                                  ; Transaction date
+type = (disbursement, fee, interest_charge, payment, reversal)
 description = :                               ; Transaction description
-amount = !#$                                  ; Transaction amount (can be negative)
+amount = #$                                  ; Transaction amount (can be negative)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; LOSS MITIGATION
@@ -258,15 +258,15 @@ amount = !#$                                  ; Transaction amount (can be negat
 ; Per RESPA 12 CFR 1024.41 loss mitigation procedures
 
 {@loss_mitigation}
-loan_number = !:                              ; Loan number
-application_id = !:                           ; Loss mitigation application ID
+loan_number = :                              ; Loan number
+application_id = :                           ; Loss mitigation application ID
 
 ; Application status
 {.application}
-received_date = !date                         ; Application received
+received_date = date                         ; Application received
 complete = ?                                  ; Application complete
 complete_date = date                          ; Date deemed complete
-status = !(approved, denied, incomplete, pending, withdrawn)
+status = (approved, denied, incomplete, pending, withdrawn)
 
 {@loss_mitigation}
 
@@ -287,8 +287,8 @@ appeal_deadline = date                        ; Appeal deadline
 {@loss_mitigation}
 
 {@loss_mitigation_option}
-type = !(deed_in_lieu, forbearance, modification, repayment_plan, short_sale)
-status = !(approved, denied, offered, pending)
+type = (deed_in_lieu, forbearance, modification, repayment_plan, short_sale)
+status = (approved, denied, offered, pending)
 decision_date = date                          ; Option decision date
 denial_reason = :                             ; Reason if denied
 
@@ -308,20 +308,20 @@ trial_period_months = ##:(0..)                ; Trial period length
 ; Per RESPA payoff statement requirements
 
 {@payoff_statement}
-loan_number = !:                              ; Loan number
-statement_date = !date                        ; Statement date
-good_through_date = !date                     ; Payoff good through date
+loan_number = :                              ; Loan number
+statement_date = date                        ; Statement date
+good_through_date = date                     ; Payoff good through date
 
 ; Payoff amounts
 {.amounts}
-principal_balance = !#$:(0..)                 ; Unpaid principal
+principal_balance = #$:(0..)                 ; Unpaid principal
 accrued_interest = #$:(0..)                   ; Interest through good through date
 escrow_balance = #$                           ; Escrow balance (credit if positive)
 late_charges = #$:(0..)                       ; Outstanding late charges
 other_fees = #$:(0..)                         ; Other fees
 recording_fee = #$:(0..)                      ; Recording fee
 release_fee = #$:(0..)                        ; Release tracking fee
-total_payoff = !#$:(0..)                      ; Total payoff amount
+total_payoff = #$:(0..)                      ; Total payoff amount
 
 {@payoff_statement}
 

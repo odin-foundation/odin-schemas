@@ -60,13 +60,13 @@ changelog[0].rationale = "Coverage-centric architecture - WC line extension"
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Jurisdiction
 ; ───────────────────────────────────────────────────────────────────────────────
-state = !:(2)                                     ; State jurisdiction
+state = :(2)                                     ; State jurisdiction
 state_act = (federal, maritime, state, uslh)      ; Which act applies
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Class Code
 ; ───────────────────────────────────────────────────────────────────────────────
-class_code = !:                                   ; State class code
+class_code = :                                   ; State class code
 class_description = :                             ; Class code description
 governing_class = ?                               ; Is this the governing class?
 
@@ -87,7 +87,7 @@ rating_bureau = (
 ; Rating
 ; ───────────────────────────────────────────────────────────────────────────────
 {.rating}
-payroll = !#$:(0..)                               ; Estimated annual payroll
+payroll = #$:(0..)                               ; Estimated annual payroll
 employee_count = ##:(0..99999)                    ; Number of employees
 rate = #:(0..999.999999)                          ; Rate per $100 payroll
 manual_premium = #$:(0..)                         ; Manual premium before mods
@@ -156,9 +156,9 @@ category = "liability"
 
 ; Employers liability limits
 {.el_limits}
-each_accident = !#$:(0..)                         ; Bodily injury by accident
-disease_each_employee = !#$:(0..)                 ; Bodily injury by disease per employee
-disease_policy_limit = !#$:(0..)                  ; Bodily injury by disease policy limit
+each_accident = #$:(0..)                         ; Bodily injury by accident
+disease_each_employee = #$:(0..)                 ; Bodily injury by disease per employee
+disease_policy_limit = #$:(0..)                  ; Bodily injury by disease policy limit
 
 {@wc_el_coverage}
 
@@ -238,10 +238,10 @@ foreign_countries[] = :(2..3):if foreign_voluntary = true
 = @wc_coverage
 
 ; Provincial WCB jurisdiction
-province = !:(2)                                 ; Canadian province/territory code
+province = :(2)                                 ; Canadian province/territory code
 
 ; Provincial WCB Board
-wcb_board = !(
+wcb_board = (
     AWCBC,                                       ; Federal (some industries)
     CNESST,                                      ; Quebec
     NWT_WSCC,                                    ; NWT & Nunavut
@@ -474,7 +474,7 @@ coverage_type_ref = "CA_EL"
 category = "liability"
 
 ; Which province
-province = !:(2)
+province = :(2)
 
 ; Workers not covered by WCB
 {.non_covered_workers}
@@ -504,12 +504,12 @@ defense_costs = (included, outside_limits)
 coverage_type_ref = "CROSS_BORDER_WC"
 
 ; Primary jurisdiction
-primary_country = !(CA, US)
-primary_jurisdiction = !:(2)                     ; State or Province
+primary_country = (CA, US)
+primary_jurisdiction = :(2)                     ; State or Province
 
 ; Secondary coverage
 {.cross_border}
-secondary_country = !(CA, US)
+secondary_country = (CA, US)
 secondary_jurisdictions[] = :(2)                 ; States or provinces
 temporary_workers = ?                            ; Covers temporary assignments
 business_travel = ?                              ; Covers business travel

@@ -42,13 +42,13 @@ changelog[0].rationale = "Structure derived from NAIC model laws and worksite be
 ; Worksite accident insurance (voluntary)
 
 {@accident}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan structure
 {.plan}
-coverage_type = !(employee_only, employee_family, employee_spouse)
+coverage_type = (employee_only, employee_family, employee_spouse)
 portability = ?                             ; Portable if employment ends
 guaranteed_issue = ?                        ; Guaranteed issue
 rate_guarantee_years = ##:(1..5)            ; Rate guarantee period
@@ -148,13 +148,13 @@ wellness_tests_covered[] = :                ; Covered wellness tests
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@critical_illness}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan structure
 {.plan}
-coverage_type = !(employee_only, employee_family, employee_spouse)
+coverage_type = (employee_only, employee_family, employee_spouse)
 lump_sum_benefit = #$:(0..)                 ; Lump sum benefit amount
 benefit_options[] = #$:(0..)                ; Available benefit amounts
 spouse_benefit_percent = #:(0..100)         ; Spouse % of employee benefit
@@ -244,13 +244,13 @@ rate_per_1000 = #:(0..10)                   ; Rate per $1,000
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@hospital_indemnity}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan structure
 {.plan}
-coverage_type = !(employee_only, employee_family, employee_spouse)
+coverage_type = (employee_only, employee_family, employee_spouse)
 portability = ?                             ; Portable
 guaranteed_issue = ?                        ; GI available
 
@@ -330,13 +330,13 @@ family_rate = #$:(0..)                      ; Family rate
 ; Standalone cancer insurance (supplement to health)
 
 {@cancer}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan structure
 {.plan}
-coverage_type = !(employee_only, employee_family, employee_spouse)
+coverage_type = (employee_only, employee_family, employee_spouse)
 first_diagnosis_benefit = #$:(0..)          ; First diagnosis lump sum
 portability = ?                             ; Portable
 guaranteed_issue = ?                        ; GI available
@@ -418,13 +418,13 @@ wellness_annual = ?                         ; Annual wellness benefit
 ; Group legal services plan
 
 {@legal_services}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan type
 {.plan}
-plan_type = !(comprehensive, limited, prepaid)
+plan_type = (comprehensive, limited, prepaid)
 network_only = ?                            ; Network attorneys only
 out_of_network_reimbursement = ?            ; OON reimbursement
 portability = ?                             ; Portable
@@ -517,13 +517,13 @@ letter_writing = ?                          ; Letter writing
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@identity_theft}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan type
 {.plan}
-coverage_type = !(employee_only, employee_family)
+coverage_type = (employee_only, employee_family)
 expense_reimbursement_limit = #$:(0..)      ; Expense reimbursement max
 portability = ?                             ; Portable
 
@@ -600,9 +600,9 @@ child_coverage = ?                          ; Coverage for minor children
 ; References @pet and @pet_policy from personal lines pet insurance schema
 
 {@pet_benefit}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan structure
 {.plan}
@@ -658,16 +658,16 @@ qle_enrollment = ?                          ; QLE enrollment
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@voluntary_enrollment}
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee
-plan_id = !:                                ; Plan ID
-benefit_type = !(accident, cancer, critical_illness, hospital_indemnity, identity_theft, legal_services, pet)
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee
+plan_id = :                                ; Plan ID
+benefit_type = (accident, cancer, critical_illness, hospital_indemnity, identity_theft, legal_services, pet)
 
 ; Coverage elected
 {.coverage}
-coverage_level = !(employee_only, employee_child, employee_family, employee_spouse)
+coverage_level = (employee_only, employee_child, employee_family, employee_spouse)
 benefit_amount = #$:(0..)                   ; Benefit amount (if applicable)
-effective_date = !date                      ; Effective date
+effective_date = date                      ; Effective date
 termination_date = date                     ; Termination date
 
 {@voluntary_enrollment}
@@ -702,21 +702,21 @@ eoi_approved_amount = #$:(0..)              ; Approved amount
 {@voluntary_enrollment}
 
 ; Status
-status = !(active, declined, pending, terminated)
+status = (active, declined, pending, terminated)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; VOLUNTARY CLAIM
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@voluntary_claim}
-claim_id = !:                               ; Claim ID
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee
-benefit_type = !(accident, cancer, critical_illness, hospital_indemnity, pet)
+claim_id = :                               ; Claim ID
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee
+benefit_type = (accident, cancer, critical_illness, hospital_indemnity, pet)
 
 ; Claim details
 {.details}
-incident_date = !date                       ; Date of incident/diagnosis
+incident_date = date                       ; Date of incident/diagnosis
 claim_filed_date = date                     ; Claim filed date
 claim_description = :                       ; Description
 
@@ -769,7 +769,7 @@ payee = :                                   ; Payee name
 
 ; Status
 {.status}
-status = !(approved, denied, paid, pending)
+status = (approved, denied, paid, pending)
 denial_reason = :                           ; Denial reason (if denied)
 
 {@voluntary_claim}

@@ -49,8 +49,8 @@ changelog[0].rationale = "Comprehensive property structure for commercial transa
 
 {@commercial_property}
 ; Required fields first
-address = !@address                               ; Property physical address
-property_type = !(healthcare, hospitality, industrial, mixed_use, multifamily, office, retail, self_storage, special_purpose)
+address = @address                               ; Property physical address
+property_type = (healthcare, hospitality, industrial, mixed_use, multifamily, office, retail, self_storage, special_purpose)
 
 ; Property identification
 property_id = :                                   ; Unique property identifier
@@ -233,7 +233,7 @@ total_units = ##:(5..):if property_type = multifamily  ; Total units
 unit_mix = ::if property_type = multifamily       ; Unit mix summary
 
 {@commercial_property.multifamily.unit_summary[]}
-unit_type = !:                                    ; Unit type (studio, 1BR, etc.)
+unit_type = :                                    ; Unit type (studio, 1BR, etc.)
 unit_count = ##:(0..)                             ; Number of this type
 avg_sqft = ##:(0..)                               ; Average square feet
 avg_rent = #$:(0..)                               ; Average rent

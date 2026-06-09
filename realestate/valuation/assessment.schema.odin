@@ -45,9 +45,9 @@ changelog[0].rationale = "Comprehensive property tax assessment structure"
 
 {@assessment}
 ; Required fields first
-assessed_value = !#$:(0..)                           ; Assessed value
-property_address = !@address                         ; Property address
-tax_year = !##:(1900..2100)                          ; Tax/assessment year
+assessed_value = #$:(0..)                           ; Assessed value
+property_address = @address                         ; Property address
+tax_year = ##:(1900..2100)                          ; Tax/assessment year
 
 ; Assessment identification
 assessment_id = :                                    ; Unique assessment identifier
@@ -228,9 +228,9 @@ updated = date                                       ; Last update date
 
 {@tax_bill}
 ; Required fields first
-bill_amount = !#$:(0..)                              ; Total tax bill amount
-property_address = !@address                         ; Property address
-tax_year = !##:(1900..2100)                          ; Tax year
+bill_amount = #$:(0..)                              ; Total tax bill amount
+property_address = @address                         ; Property address
+tax_year = ##:(1900..2100)                          ; Tax year
 
 ; Bill identification
 bill_id = :                                          ; Unique bill identifier
@@ -331,11 +331,11 @@ balance = #$:(0..)                                   ; Remaining balance
 
 {@assessment_appeal}
 ; Required fields first
-appellant_name = !:                                  ; Appellant name
-claimed_value = !#$:(0..)                            ; Claimed/petitioned value
-filing_date = !date                                  ; Appeal filing date
-property_address = !@address                         ; Property address
-tax_year = !##:(1900..2100)                          ; Tax year under appeal
+appellant_name = :                                  ; Appellant name
+claimed_value = #$:(0..)                            ; Claimed/petitioned value
+filing_date = date                                  ; Appeal filing date
+property_address = @address                         ; Property address
+tax_year = ##:(1900..2100)                          ; Tax year under appeal
 
 ; Appeal identification
 appeal_id = :                                        ; Unique appeal identifier
@@ -455,9 +455,9 @@ withdrawal_reason = ::if status = withdrawn          ; Withdrawal reason
 
 {@tax_lien}
 ; Required fields first
-lien_amount = !#$:(0..)                              ; Original lien amount
-property_address = !@address                         ; Property address
-recording_date = !date                               ; Recording date
+lien_amount = #$:(0..)                              ; Original lien amount
+property_address = @address                         ; Property address
+recording_date = date                               ; Recording date
 
 ; Lien identification
 lien_id = :                                          ; Unique lien identifier

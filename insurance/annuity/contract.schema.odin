@@ -41,17 +41,17 @@ changelog[0].rationale = "Base type for all annuity products"
 
 {@contract}
 ; Required fields
-contract_value = !#$:(0..)                    ; Current contract value
-effective = !date                             ; Contract effective date
-number = !:                                   ; Contract number
-owner = !@la.life_party                       ; Contract owner
-status = !@la.annuity_contract_status         ; Contract status
+contract_value = #$:(0..)                    ; Current contract value
+effective = date                             ; Contract effective date
+number = :                                   ; Contract number
+owner = @la.life_party                       ; Contract owner
+status = @la.annuity_contract_status         ; Contract status
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Product Classification
 ; ───────────────────────────────────────────────────────────────────────────────
-annuity_type = !(deferred, immediate)         ; Deferred vs immediate
-product_type = !(fixed, indexed, structured, variable)  ; Product type
+annuity_type = (deferred, immediate)         ; Deferred vs immediate
+product_type = (fixed, indexed, structured, variable)  ; Product type
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Identification
@@ -164,8 +164,8 @@ illustrations[] = @la.annuity_illustration    ; Contract illustrations/projectio
 
 {@withdrawal}
 ; Required fields
-amount = !#$:(0..)                            ; Withdrawal amount
-date = !date                                  ; Withdrawal date
+amount = #$:(0..)                            ; Withdrawal amount
+date = date                                  ; Withdrawal date
 
 ; Optional fields
 account_last_four = *:(4)                     ; Last 4 digits of destination account
@@ -188,8 +188,8 @@ type = (hardship, partial, rmd, scheduled, surrender, systematic)  ; Withdrawal 
 ; Many annuities offer premium bonuses (with longer surrender periods)
 
 {@premium_bonus}
-bonus_percent = !#                            ; Bonus percentage
-effective = !date                             ; Date bonus credited
+bonus_percent = #                            ; Bonus percentage
+effective = date                             ; Date bonus credited
 
 bonus_amount = #$:(0..)                       ; Dollar amount of bonus
 recapture = ?                                 ; Subject to bonus recapture
@@ -197,8 +197,8 @@ recapture_period_years = ##:(1..15)           ; Years bonus can be recaptured
 vesting_schedule[] = @bonus_vesting           ; Vesting schedule
 
 {@bonus_vesting}
-year = !##:(1..15)                            ; Contract year
-vested_percent = !#:(0..100)                  ; Percentage vested
+year = ##:(1..15)                            ; Contract year
+vested_percent = #:(0..100)                  ; Percentage vested
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Death Benefit Options
@@ -206,7 +206,7 @@ vested_percent = !#:(0..100)                  ; Percentage vested
 ; Death benefit options for deferred annuities
 
 {@death_benefit}
-type = !(accumulated_value, greater_of, highest_anniversary, return_of_premium, stepped_up)  ; DB type
+type = (accumulated_value, greater_of, highest_anniversary, return_of_premium, stepped_up)  ; DB type
 
 ; Death benefit amounts
 amount = #$:(0..)                             ; Current death benefit
@@ -234,9 +234,9 @@ annuity_rider_type = (beneficiary_protection, confinement_waiver, death_benefit_
 
 {@claim}
 ; Required fields
-contract_number = !:                          ; Contract number
-date_of_death = !date                         ; Date of death (owner or annuitant)
-status = !@la.claim_status                    ; Claim status
+contract_number = :                          ; Contract number
+date_of_death = date                         ; Date of death (owner or annuitant)
+status = @la.claim_status                    ; Claim status
 
 ; Optional fields
 amount_paid = #$:(0..)                        ; Total amount paid
@@ -262,8 +262,8 @@ surrender_charge_waived = ?                   ; Surrender charge waived on death
 ; Claim Beneficiary Options
 ; ───────────────────────────────────────────────────────────────────────────────
 {@claim.beneficiary_elections[]}
-beneficiary_name = !:                         ; Beneficiary name
-election = !(annuitization, five_year_rule, lifetime_stretch, lump_sum, spousal_continuation)  ; Distribution election
+beneficiary_name = :                         ; Beneficiary name
+election = (annuitization, five_year_rule, lifetime_stretch, lump_sum, spousal_continuation)  ; Distribution election
 percent = #:(0..100)                          ; Percentage of benefit
 amount = #$:(0..)                             ; Dollar amount
 payment_date = date                           ; Payment/start date

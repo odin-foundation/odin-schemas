@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial hospitality coverage for alcohol establishm
 ; ===================================================================================
 
 {@ll_establishment_type}
-business_type = !(
+business_type = (
     bar,                                      ; Bar/tavern
     brewery,                                  ; Brewery with taproom
     caterer,                                  ; Catering with alcohol
@@ -72,8 +72,8 @@ service_type = (
 
 {@ll_license}
 ; Required fields first
-license_number = !*:                           ; ABC license number
-license_type = !(
+license_number = *:                           ; ABC license number
+license_type = (
     beer_only,                                ; Beer only
     beer_wine,                                ; Beer and wine
     full_liquor,                              ; Full liquor license
@@ -96,10 +96,10 @@ state = :(2)                                  ; State of license
 
 {@ll_establishment}
 ; Required fields first
-annual_alcohol_sales = !#$:(0..)              ; Annual alcohol revenue
-business_name = !:                            ; Legal business name
-establishment_type = !@ll_establishment_type  ; Business classification
-license = !@ll_license                        ; Liquor license
+annual_alcohol_sales = #$:(0..)              ; Annual alcohol revenue
+business_name = :                            ; Legal business name
+establishment_type = @ll_establishment_type  ; Business classification
+license = @ll_license                        ; Liquor license
 
 ; Optional fields
 address = @address                            ; Physical location
@@ -130,8 +130,8 @@ years_in_business = ##                        ; Years operating
 
 {@ll_coverage}
 ; Required fields first
-each_occurrence = !#$:(0..)                   ; Per occurrence limit
-general_aggregate = !#$:(0..)                 ; Aggregate limit
+each_occurrence = #$:(0..)                   ; Per occurrence limit
+general_aggregate = #$:(0..)                 ; Aggregate limit
 
 ; Optional fields
 assault_battery = ?                           ; A&B coverage
@@ -210,7 +210,7 @@ prior_insurer = :                             ; Prior carrier
 
 {@ll_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 assault_battery_premium = #$:(0..)            ; A&B premium
@@ -240,8 +240,8 @@ type_factor = #                               ; Establishment type
 
 {@ll_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     assault_battery,                          ; A&B claim
     auto_accident,                            ; DUI-related auto
     bodily_injury,                            ; Bodily injury
@@ -284,11 +284,11 @@ third_party = ?                               ; Third-party claim
 
 {@liquor_policy}
 ; Required fields first
-coverage = !@ll_coverage                      ; Coverage terms
-effective_date = !date                        ; Policy effective date
-establishment = !@ll_establishment            ; Insured establishment
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
+coverage = @ll_coverage                      ; Coverage terms
+effective_date = date                        ; Policy effective date
+establishment = @ll_establishment            ; Insured establishment
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

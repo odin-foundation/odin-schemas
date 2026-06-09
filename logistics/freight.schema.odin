@@ -49,8 +49,8 @@ changelog[0].rationale = "BOL, AWB, freight bill, claims, and rating structures"
 
 {@charge_item}
 ; Required fields first
-description = !:                                     ; Charge description
-amount = !#$                                         ; Charge amount
+description = :                                     ; Charge description
+amount = #$                                         ; Charge amount
 
 ; Optional fields
 code = :                                             ; Charge code
@@ -79,8 +79,8 @@ taxable = ?                                          ; Subject to tax
 
 {@freight_line_item}
 ; Required fields first
-description = !:                                     ; Item description
-pieces = !##:(0..)                                   ; Number of pieces
+description = :                                     ; Item description
+pieces = ##:(0..)                                   ; Number of pieces
 
 ; Optional fields
 weight = #:(0..)                                     ; Weight
@@ -133,8 +133,8 @@ declared_value = #$:(0..)                            ; Declared value
 
 {@bill_of_lading}
 ; Required fields first
-bol_number = !:                                      ; BOL number
-bol_date = !date                                     ; BOL issue date
+bol_number = :                                      ; BOL number
+bol_date = date                                     ; BOL issue date
 type = (
     express,                                         ; Express BOL
     inland,                                          ; Inland waterway
@@ -146,10 +146,10 @@ type = (
 )
 
 ; Parties
-shipper_name = !:                                    ; Shipper name
-shipper_address = !@types.address                    ; Shipper address
-consignee_name = !:                                  ; Consignee name
-consignee_address = !@types.address                  ; Consignee address
+shipper_name = :                                    ; Shipper name
+shipper_address = @types.address                    ; Shipper address
+consignee_name = :                                  ; Consignee name
+consignee_address = @types.address                  ; Consignee address
 
 ; Optional fields
 pro_number = :                                       ; Progressive number
@@ -242,19 +242,19 @@ subject_to_section_7 = ?true                         ; Subject to Section 7 (lia
 
 {@air_waybill}
 ; Required fields first
-awb_number = !:                                      ; Air waybill number (11 digits: 3-8)
+awb_number = :                                      ; Air waybill number (11 digits: 3-8)
 awb_type = (house, master)                          ; AWB type
-issue_date = !date                                   ; Issue date
+issue_date = date                                   ; Issue date
 
 ; Parties
-shipper_name = !:                                    ; Shipper name
-shipper_address = !@types.address                    ; Shipper address
+shipper_name = :                                    ; Shipper name
+shipper_address = @types.address                    ; Shipper address
 shipper_account = :                                  ; Shipper account number
-consignee_name = !:                                  ; Consignee name
-consignee_address = !@types.address                  ; Consignee address
+consignee_name = :                                  ; Consignee name
+consignee_address = @types.address                  ; Consignee address
 consignee_account = :                                ; Consignee account number
 
-issuing_carrier = !:                                 ; Issuing carrier name
+issuing_carrier = :                                 ; Issuing carrier name
 issuing_carrier_code = :(3)                          ; Issuing carrier IATA code
 
 ; Optional fields
@@ -268,8 +268,8 @@ house_awbs[] = :if awb_type = master                 ; House AWB numbers
 
 ; Routing
 {.routing}
-origin_airport = !:(3)                               ; Origin airport code (IATA)
-destination_airport = !:(3)                          ; Destination airport code
+origin_airport = :(3)                               ; Origin airport code (IATA)
+destination_airport = :(3)                          ; Destination airport code
 requested_routing = :                                ; Requested routing
 actual_routing = :                                   ; Actual routing
 flight_number = :                                    ; Flight number
@@ -278,15 +278,15 @@ flight_date = date                                   ; Flight date
 {@air_waybill}
 
 ; Shipment details
-pieces = !##:(1..)                                   ; Number of pieces
-gross_weight = !#:(0..)                              ; Gross weight
-weight_unit = !:(2)                                  ; Weight unit (KG or LB)
+pieces = ##:(1..)                                   ; Number of pieces
+gross_weight = #:(0..)                              ; Gross weight
+weight_unit = :(2)                                  ; Weight unit (KG or LB)
 chargeable_weight = #:(0..)                          ; Chargeable weight
 volume = #:(0..)                                     ; Volume
 volume_unit = (cbm, cuft)                            ; Volume unit
 
 ; Nature and quantity of goods
-commodity_description = !:                           ; Commodity description
+commodity_description = :                           ; Commodity description
 harmonized_code = :                                  ; HS code
 dimensions = :                                       ; Dimensions
 
@@ -333,8 +333,8 @@ signature_of_carrier = :                             ; Carrier signature
 
 {@freight_bill}
 ; Required fields first
-invoice_number = !:                                  ; Freight bill/invoice number
-invoice_date = !date                                 ; Invoice date
+invoice_number = :                                  ; Freight bill/invoice number
+invoice_date = date                                 ; Invoice date
 due_date = date                                      ; Payment due date
 
 ; References
@@ -344,13 +344,13 @@ shipment_id = :                                      ; Shipment identifier
 po_number = :                                        ; Purchase order number
 
 ; Parties
-bill_to_name = !:                                    ; Bill to party
+bill_to_name = :                                    ; Bill to party
 bill_to_address = @types.address                     ; Bill to address
 bill_to_account = :                                  ; Bill to account number
 
 shipper_name = :                                     ; Shipper name
 consignee_name = :                                   ; Consignee name
-carrier_name = !:                                    ; Carrier name
+carrier_name = :                                    ; Carrier name
 scac = :(4)                                          ; Carrier SCAC
 
 ; Shipment info
@@ -368,9 +368,9 @@ total_pieces = ##:(0..)                              ; Total pieces
 charges[] = @charge_item                             ; Itemized charges
 
 {.totals}
-subtotal = !#$                                       ; Subtotal before tax
+subtotal = #$                                       ; Subtotal before tax
 tax = #$                                             ; Tax amount
-total = !#$                                          ; Total amount due
+total = #$                                          ; Total amount due
 amount_paid = #$                                     ; Amount paid
 balance_due = #$                                     ; Balance due
 
@@ -415,8 +415,8 @@ audit_notes = :                                      ; Audit notes
 
 {@freight_claim}
 ; Required fields first
-claim_number = !:                                    ; Claim number
-claim_date = !date                                   ; Claim filed date
+claim_number = :                                    ; Claim number
+claim_date = date                                   ; Claim filed date
 claim_type = (damage, loss, overcharge, shortage)   ; Claim type
 
 ; Shipment reference
@@ -427,7 +427,7 @@ shipment_date = date                                 ; Shipment date
 delivery_date = date                                 ; Delivery date
 
 ; Parties
-claimant_name = !:                                   ; Claimant name
+claimant_name = :                                   ; Claimant name
 claimant_address = @types.address                    ; Claimant address
 claimant_contact = :                                 ; Claimant contact person
 claimant_phone = *@types.phone                       ; Claimant phone
@@ -437,11 +437,11 @@ carrier_name = :                                     ; Carrier name
 carrier_scac = :(4)                                  ; Carrier SCAC
 
 ; Claim details
-claimed_amount = !#$:(0..)                           ; Amount claimed
+claimed_amount = #$:(0..)                           ; Amount claimed
 currency = :(3) "USD"                                ; Currency
 
 ; Loss/Damage details
-description = !:                                     ; Description of claim
+description = :                                     ; Description of claim
 commodity_description = :                            ; Commodity description
 pieces_affected = ##:(0..)                           ; Pieces lost/damaged/short
 weight_affected = #:(0..)                            ; Weight affected
@@ -502,7 +502,7 @@ attorney = :                                         ; Attorney name
 
 {@nmfc_classification}
 ; Required fields first
-nmfc_item = !:                                       ; NMFC item number
+nmfc_item = :                                       ; NMFC item number
 class = (50, 55, 60, 65, 70, 77.5, 85, 92.5, 100, 110, 125, 150, 175, 200, 250, 300, 400, 500)
 
 ; Optional fields
@@ -521,8 +521,8 @@ max_density = #:(0..)                                ; Maximum density
 
 {@tariff_rate}
 ; Required fields first
-tariff_name = !:                                     ; Tariff name
-rate = !#$:(0..)                                     ; Rate amount
+tariff_name = :                                     ; Tariff name
+rate = #$:(0..)                                     ; Rate amount
 rate_basis = (cwt, flat, per_mile, per_shipment)    ; Rate basis
 
 ; Optional fields
@@ -558,9 +558,9 @@ deficit_weight_charge = #$                           ; Deficit weight charge
 
 {@contract_rate}
 ; Required fields first
-contract_id = !:                                     ; Contract identifier
-customer_name = !:                                   ; Customer name
-rate = !#$                                           ; Contract rate
+contract_id = :                                     ; Contract identifier
+customer_name = :                                   ; Customer name
+rate = #$                                           ; Contract rate
 rate_basis = (cwt, flat, per_mile, per_shipment)    ; Rate basis
 
 ; Optional fields
@@ -603,10 +603,10 @@ residential_charge = #$                              ; Residential delivery char
 
 {@spot_rate}
 ; Required fields first
-rate = !#$                                           ; Spot rate
+rate = #$                                           ; Spot rate
 rate_basis = (flat, per_mile)                       ; Rate basis (usually flat or per-mile)
-quote_date = !date                                   ; Quote date
-valid_until = !date                                  ; Valid until date
+quote_date = date                                   ; Quote date
+valid_until = date                                  ; Valid until date
 
 ; Optional fields
 quote_id = :                                         ; Quote identifier
@@ -614,8 +614,8 @@ carrier_name = :                                     ; Carrier name
 carrier_scac = :(4)                                  ; Carrier SCAC
 
 ; Lane
-origin = !:                                          ; Origin location
-destination = !:                                     ; Destination location
+origin = :                                          ; Origin location
+destination = :                                     ; Destination location
 miles = ##:(0..)                                     ; Lane miles
 
 ; Load details

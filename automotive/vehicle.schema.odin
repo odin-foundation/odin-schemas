@@ -99,13 +99,13 @@ assembly_state = :(2)                            ; Assembly state/province
 
 {@vehicle_title}
 ; Required fields first
-title_number = !:                                ; Title document number
-state = !:(2)                                    ; Title issuing state
-vin = !*:format vin                              ; Vehicle VIN
+title_number = :                                ; Title document number
+state = :(2)                                    ; Title issuing state
+vin = *:format vin                              ; Vehicle VIN
 
 ; Title status
 {.status}
-status = !(
+status = (
     active,                                      ; Active/current title
     cancelled,                                   ; Title cancelled
     duplicate,                                   ; Duplicate issued
@@ -159,7 +159,7 @@ gvwr_lb = ##:(0..)                               ; GVWR
 
 ; Owner information
 {.owner}
-owner_type = !(individual, organization)         ; Owner type
+owner_type = (individual, organization)         ; Owner type
 owner_name = :                                   ; Owner name (confidential on actual docs)
 owner_count = ##:(1..)                           ; Number of owners on title
 ownership_type = (and, individual, or)           ; Joint ownership type
@@ -181,7 +181,7 @@ second_lien_date = date                          ; Second lien recorded date
 ; Odometer at title
 {.odometer}
 reading = ##:(0..)                               ; Odometer at title
-reading_type = !(actual, discrepancy, exempt, not_actual)
+reading_type = (actual, discrepancy, exempt, not_actual)
 disclosure_date = date                           ; Odometer disclosure date
 
 {@vehicle_title}
@@ -201,13 +201,13 @@ issue_date = date                                ; Prior title date
 
 {@vehicle_registration}
 ; Required fields first
-registration_number = !:                         ; Registration ID/number
-state = !:(2)                                    ; Registration state
-vin = !*:format vin                              ; Vehicle VIN
+registration_number = :                         ; Registration ID/number
+state = :(2)                                    ; Registration state
+vin = *:format vin                              ; Vehicle VIN
 
 ; Registration status
 {.status}
-status = !(active, expired, pending, revoked, suspended, transferred)
+status = (active, expired, pending, revoked, suspended, transferred)
 effective_date = date                            ; Registration effective date
 expiration_date = date                           ; Registration expiration date
 renewal_eligible = ?                             ; Eligible for renewal
@@ -225,7 +225,7 @@ plate_expiration = date                          ; Plate expiration (may differ 
 
 ; Registered owner
 {.owner}
-owner_type = !(individual, organization)         ; Owner type
+owner_type = (individual, organization)         ; Owner type
 owner_name = :                                   ; Registered owner name
 owner_count = ##:(1..)                           ; Owner count
 address = @address                               ; Registration address
@@ -278,13 +278,13 @@ carrier = :                                      ; Insurance carrier
 
 {@odometer_disclosure}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-reading = !##:(0..)                              ; Odometer reading
-reading_date = !date                             ; Date of reading
-disclosure_type = !(actual, discrepancy, exempt, not_actual)
+vin = *:format vin                              ; Vehicle VIN
+reading = ##:(0..)                              ; Odometer reading
+reading_date = date                             ; Date of reading
+disclosure_type = (actual, discrepancy, exempt, not_actual)
 
 ; Disclosure context
-disclosure_purpose = !(dealer_sale, lease_end, private_sale, repossession, title_transfer, trade_in)
+disclosure_purpose = (dealer_sale, lease_end, private_sale, repossession, title_transfer, trade_in)
 
 ; Exemptions (49 CFR 580.17)
 exempt_reason = (
@@ -296,7 +296,7 @@ exempt_reason = (
 
 ; Transferor (seller)
 {.transferor}
-name = !:                                        ; Transferor name
+name = :                                        ; Transferor name
 address = @address                               ; Transferor address
 signature_date = date                            ; Date signed
 printed_name = :                                 ; Printed name
@@ -305,7 +305,7 @@ printed_name = :                                 ; Printed name
 
 ; Transferee (buyer)
 {.transferee}
-name = !:                                        ; Transferee name
+name = :                                        ; Transferee name
 address = @address                               ; Transferee address
 signature_date = date                            ; Date signed
 printed_name = :                                 ; Printed name
@@ -344,12 +344,12 @@ notary_state = :(2)                              ; Notary state
 
 {@vehicle_poa}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-poa_type = !(general, limited, secure)           ; POA type
+vin = *:format vin                              ; Vehicle VIN
+poa_type = (general, limited, secure)           ; POA type
 
 ; Grantor (vehicle owner)
 {.grantor}
-name = !:                                        ; Grantor name
+name = :                                        ; Grantor name
 address = @address                               ; Grantor address
 signature_date = date                            ; Date signed
 
@@ -357,7 +357,7 @@ signature_date = date                            ; Date signed
 
 ; Grantee (authorized party)
 {.grantee}
-name = !:                                        ; Grantee name
+name = :                                        ; Grantee name
 address = @address                               ; Grantee address
 relationship = (dealer, family, lender, other)   ; Relationship to owner
 
@@ -400,14 +400,14 @@ notary_state = :(2)                              ; Notary state
 
 {@temporary_permit}
 ; Required fields first
-permit_number = !:                               ; Permit number
-permit_type = !(dealer, in_transit, temporary_registration, trip)
-issuing_state = !:(2)                            ; Issuing state
+permit_number = :                               ; Permit number
+permit_type = (dealer, in_transit, temporary_registration, trip)
+issuing_state = :(2)                            ; Issuing state
 vin = *:format vin                               ; Vehicle VIN (if assigned)
 
 ; Validity
-effective_date = !date                           ; Permit start date
-expiration_date = !date                          ; Permit end date
+effective_date = date                           ; Permit start date
+expiration_date = date                          ; Permit end date
 valid_days = ##:(1..90)                          ; Valid duration
 
 ; Trip permit specifics
@@ -448,10 +448,10 @@ receipt_number = :                               ; Payment receipt
 
 {@vin_assignment}
 ; Required fields first
-assigned_vin = !:format vin                      ; Assigned VIN
-assignment_date = !date                          ; Date assigned
-assigning_state = !:(2)                          ; State assigning VIN
-assignment_reason = !(homemade, imported, kit_car, no_record, rebuilt, vin_destroyed, vin_missing)
+assigned_vin = :format vin                      ; Assigned VIN
+assignment_date = date                          ; Date assigned
+assigning_state = :(2)                          ; State assigning VIN
+assignment_reason = (homemade, imported, kit_car, no_record, rebuilt, vin_destroyed, vin_missing)
 
 ; Prior identification
 prior_vin = :                                    ; Prior VIN if any

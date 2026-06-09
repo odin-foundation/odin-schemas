@@ -41,23 +41,23 @@ changelog[0].rationale = "Structure derived from 45 CFR 155.420 and CMS SEP guid
 ; Per 45 CFR 155.420
 
 {@request}
-sep_id = !:                                 ; SEP request ID
-application_id = !:                         ; Associated application
-applicant_id = !:                           ; Applicant requesting SEP
-request_date = !date                        ; Date SEP requested
+sep_id = :                                 ; SEP request ID
+application_id = :                         ; Associated application
+applicant_id = :                           ; Applicant requesting SEP
+request_date = date                        ; Date SEP requested
 
 ; Qualifying event
-qualifying_event = !@qualifying_event       ; Qualifying event details
+qualifying_event = @qualifying_event       ; Qualifying event details
 
 ; SEP type - Per 45 CFR 155.420
-sep_type = !(birth_adoption, coverage_loss, error, income_change, lawful_presence, marriage_divorce, medicaid_chip_loss, move, other, permanent_move, plan_error, qle, system_error)
+sep_type = (birth_adoption, coverage_loss, error, income_change, lawful_presence, marriage_divorce, medicaid_chip_loss, move, other, permanent_move, plan_error, qle, system_error)
 
 ; Affected members
 affected_members[] = :                      ; Members eligible for SEP
 
 ; SEP period
 {.period}
-event_date = !date                          ; Date of qualifying event
+event_date = date                          ; Date of qualifying event
 sep_start = date                            ; SEP window start
 sep_end = date                              ; SEP window end
 days_from_event = ##:(60..)                 ; Days from event allowed
@@ -86,7 +86,7 @@ verification_deadline = date                ; Deadline for verification
 
 ; Status
 {.status}
-status = !(approved, denied, expired, pending, withdrawn)
+status = (approved, denied, expired, pending, withdrawn)
 denial_reason = :                           ; Reason if denied
 appeal_available = ?                        ; Appeal available
 
@@ -98,12 +98,12 @@ appeal_available = ?                        ; Appeal available
 ; Per 45 CFR 155.420(d)
 
 {@qualifying_event}
-event_type = !:                             ; Event type code
-event_date = !date                          ; Date of event
+event_type = :                             ; Event type code
+event_date = date                          ; Date of event
 description = :                             ; Event description
 
 ; Event category - Per 45 CFR 155.420(d)
-category = !(coverage, eligibility, error, life, other)
+category = (coverage, eligibility, error, life, other)
 
 ; Event specifics based on type
 coverage_loss = @coverage_loss_event        ; Loss of MEC
@@ -118,12 +118,12 @@ plan_error = @plan_error_event              ; Plan/exchange errors
 ; Per 45 CFR 155.420(d)(1)
 
 {@coverage_loss_event}
-prior_coverage_type = !(chip, cobra, employer, individual, medicaid, medicare, military, other, retiree, student)
-coverage_end_date = !date                   ; Date coverage ends/ended
+prior_coverage_type = (chip, cobra, employer, individual, medicaid, medicare, military, other, retiree, student)
+coverage_end_date = date                   ; Date coverage ends/ended
 
 ; Loss reason
 {.reason}
-reason = !(aging_out, cobra_exhaustion, cost, death_policyholder, divorce, employer_stopped, employment_change, ineligibility, job_loss, move, non_renewal, plan_discontinued, reduction_hours, voluntary)
+reason = (aging_out, cobra_exhaustion, cost, death_policyholder, divorce, employer_stopped, employment_change, ineligibility, job_loss, move, non_renewal, plan_discontinued, reduction_hours, voluntary)
 involuntary_loss = ?                        ; Involuntary loss
 
 {@coverage_loss_event}
@@ -148,8 +148,8 @@ documentation_type = (cobra_notice, employer_letter, termination_notice, other)
 ; Per 45 CFR 155.420(d)(2)
 
 {@life_event}
-event_type = !(adoption, birth, custody, death, divorce, foster_placement, marriage)
-event_date = !date                          ; Event date
+event_type = (adoption, birth, custody, death, divorce, foster_placement, marriage)
+event_date = date                          ; Event date
 
 ; Marriage - Per 45 CFR 155.420(d)(2)(i)
 {.marriage}
@@ -192,7 +192,7 @@ documentation_type = (adoption_decree, birth_certificate, court_order, death_cer
 ; Per 45 CFR 155.420(d)(7)
 
 {@move_event}
-move_date = !date                           ; Date of move
+move_date = date                           ; Date of move
 
 ; Prior address
 {.prior_address}
@@ -230,8 +230,8 @@ documentation_type = (lease, mortgage, prior_coverage_proof, utility_bill, other
 ; Per 45 CFR 155.420(d)(4)-(6)
 
 {@eligibility_change_event}
-change_type = !(aptc_change, citizenship_change, csr_change, income_change, lawful_presence, medicaid_chip_denial, medicaid_chip_loss, newly_eligible)
-change_date = !date                         ; Date of change
+change_type = (aptc_change, citizenship_change, csr_change, income_change, lawful_presence, medicaid_chip_denial, medicaid_chip_loss, newly_eligible)
+change_date = date                         ; Date of change
 
 ; Income change - Per 45 CFR 155.420(d)(6)
 {.income}
@@ -269,8 +269,8 @@ documentation_type = (denial_notice, eligibility_notice, immigration_document, i
 ; Per 45 CFR 155.420(d)(4)
 
 {@plan_error_event}
-error_type = !(exchange_error, issuer_error, navigator_error, plan_discontinuation, system_error)
-error_date = !date                          ; Date error occurred/discovered
+error_type = (exchange_error, issuer_error, navigator_error, plan_discontinuation, system_error)
+error_date = date                          ; Date error occurred/discovered
 
 ; Exchange/system error - Per 45 CFR 155.420(d)(4)
 {.system}
@@ -306,8 +306,8 @@ crosswalk_plan_id = :                       ; Crosswalk plan if any
 ; Per CMS SEP verification guidance
 
 {@verification}
-sep_id = !:                                 ; SEP request ID
-verification_type = !(post_enrollment, pre_enrollment)
+sep_id = :                                 ; SEP request ID
+verification_type = (post_enrollment, pre_enrollment)
 
 ; Required documents
 {.documents}
@@ -341,9 +341,9 @@ notice_sent = ?                             ; Notice sent
 ; Reference table for SEP types
 
 {@sep_type_definition}
-sep_code = !:                               ; SEP type code
-name = !:                                   ; SEP type name
-category = !(coverage_loss, eligibility, error, life_event, move, other)
+sep_code = :                               ; SEP type code
+name = :                                   ; SEP type name
+category = (coverage_loss, eligibility, error, life_event, move, other)
 regulation = :                              ; CFR citation
 
 ; Timing rules

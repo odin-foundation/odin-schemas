@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial energy coverage for mining operations"
 ; ===================================================================================
 
 {@mine_type}
-operation = !(
+operation = (
     aggregate,                                ; Sand/gravel/aggregate
     coal_surface,                             ; Surface coal mining
     coal_underground,                         ; Underground coal
@@ -87,9 +87,9 @@ commodity = (
 
 {@mine_site}
 ; Required fields first
-mine_name = !:                                ; Mine name
-mine_type = !@mine_type                       ; Mining classification
-tiv = !#$:(0..)                               ; Total insured value
+mine_name = :                                ; Mine name
+mine_type = @mine_type                       ; Mining classification
+tiv = #$:(0..)                               ; Total insured value
 
 ; Optional fields
 access_type = (air, rail, road, water)        ; Site access
@@ -155,7 +155,7 @@ pit_depth_feet = ##:if mine_type.operation = (metal_open_pit, coal_surface, hard
 
 {@mine_property}
 ; Required fields first
-total_insured_value = !#$:(0..)               ; TIV
+total_insured_value = #$:(0..)               ; TIV
 
 ; Optional fields
 all_risk = ?                                  ; All-risk form
@@ -209,7 +209,7 @@ waste_dump_failure = ?                        ; Waste dump failure
 
 {@mine_liability}
 ; Required fields first
-general_liability = !#$:(0..)                 ; GL per occurrence
+general_liability = #$:(0..)                 ; GL per occurrence
 
 ; Optional fields
 aggregate = #$:(0..)                          ; Annual aggregate
@@ -250,7 +250,7 @@ transportation = ?:if included = true         ; Transit pollution
 
 {@mine_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 environmental_premium = #$:(0..)              ; Environmental
@@ -266,8 +266,8 @@ taxes_and_fees = #$:(0..)                     ; Taxes/fees
 
 {@mine_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     bodily_injury,                            ; BI claim
     business_interruption,                    ; BI loss
     cave_in,                                  ; Cave-in
@@ -301,10 +301,10 @@ reserve = #$:(0..)                            ; Reserve
 
 {@mining_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-mines[] = !@mine_site                         ; Covered mines
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+mines[] = @mine_site                         ; Covered mines
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date
@@ -314,7 +314,7 @@ agency = @agency                              ; Issuing agency
 claims[] = @mine_claim                        ; Claims history
 environmental = @mine_environmental           ; Environmental coverage
 id = :                                        ; Internal identifier
-insured_name = !:                             ; Named insured
+insured_name = :                             ; Named insured
 insured_address = @address                    ; Insured address
 liability = @mine_liability                   ; Liability coverage
 perils = @mine_perils                         ; Covered perils

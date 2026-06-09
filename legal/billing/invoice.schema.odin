@@ -49,9 +49,9 @@ changelog[0].rationale = "LEDES-compliant billing structure"
 
 {@legal_invoice}
 ; Required fields first (LEDES required fields)
-invoice_date = !date                              ; Invoice date (INV_DATE)
-invoice_number = !:                               ; Invoice number (INVOICE_NUMBER)
-invoice_total = !#$:(0..)                         ; Invoice total (INVOICE_TOTAL)
+invoice_date = date                              ; Invoice date (INV_DATE)
+invoice_number = :                               ; Invoice number (INVOICE_NUMBER)
+invoice_total = #$:(0..)                         ; Invoice total (INVOICE_TOTAL)
 
 ; Invoice identification
 invoice_id = :                                    ; Internal invoice ID
@@ -214,10 +214,10 @@ write_off_amount = #$:(0..):if status = write_off ; Amount written off
 
 {@invoice_line_item}
 ; Required fields first (LEDES required)
-line_item_date = !date                            ; LINE_ITEM_DATE
-line_item_description = !:                        ; LINE_ITEM_DESCRIPTION
-line_item_total = !#$:(0..)                       ; LINE_ITEM_TOTAL
-line_item_type = !(expense, fee)                  ; Fee or expense
+line_item_date = date                            ; LINE_ITEM_DATE
+line_item_description = :                        ; LINE_ITEM_DESCRIPTION
+line_item_total = #$:(0..)                       ; LINE_ITEM_TOTAL
+line_item_type = (expense, fee)                  ; Fee or expense
 
 ; Line item identification
 line_item_number = ##:(1..)                       ; LINE_ITEM_NUMBER
@@ -289,9 +289,9 @@ adjustment_reason = :                             ; Reason for adjustment
 
 {@invoice_adjustment}
 ; Required fields first
-adjustment_date = !date                           ; Adjustment date
-adjustment_type = !(courtesy, credit, error_correction, negotiated, write_off)
-adjustment_amount = !#$                           ; Adjustment amount (+/-)
+adjustment_date = date                           ; Adjustment date
+adjustment_type = (courtesy, credit, error_correction, negotiated, write_off)
+adjustment_amount = #$                           ; Adjustment amount (+/-)
 
 ; Adjustment identification
 adjustment_id = :                                 ; Unique adjustment ID
@@ -313,9 +313,9 @@ applies_to = (all, expenses, fees, specific_items) ; What adjustment applies to
 
 {@legal_timekeeper}
 ; Required fields first (LEDES required)
-timekeeper_id = !:                                ; TIMEKEEPER_ID
-timekeeper_name = !:                              ; Timekeeper name
-timekeeper_classification = !:                    ; UTBMS classification code
+timekeeper_id = :                                ; TIMEKEEPER_ID
+timekeeper_name = :                              ; Timekeeper name
+timekeeper_classification = :                    ; UTBMS classification code
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Classification
@@ -362,9 +362,9 @@ active = ?                                        ; Currently billable
 
 {@legal_time_entry}
 ; Required fields first
-work_date = !date                                 ; Date work performed
-description = !:                                  ; Work description
-hours = !#:(0..)                                  ; Hours worked
+work_date = date                                 ; Date work performed
+description = :                                  ; Work description
+hours = #:(0..)                                  ; Hours worked
 
 ; Time entry identification
 entry_id = :                                      ; Unique entry ID
@@ -441,10 +441,10 @@ invoice_line_number = ##:(1..):if status = billed ; Line item number
 
 {@legal_expense}
 ; Required fields first
-expense_date = !date                              ; Date of expense
-expense_type = !(copies, courier, court_fees, deposition, expert, filing_fee, long_distance, meals, mileage, other, postage, printing, research, supplies, transcripts, travel)
-description = !:                                  ; Expense description
-amount = !#$:(0..)                                ; Expense amount
+expense_date = date                              ; Date of expense
+expense_type = (copies, courier, court_fees, deposition, expert, filing_fee, long_distance, meals, mileage, other, postage, printing, research, supplies, transcripts, travel)
+description = :                                  ; Expense description
+amount = #$:(0..)                                ; Expense amount
 
 ; Expense identification
 expense_id = :                                    ; Unique expense ID

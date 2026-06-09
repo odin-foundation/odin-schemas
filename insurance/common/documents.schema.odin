@@ -28,7 +28,7 @@ changelog[0].rationale = "Standard document management structures"
 id = :
 
 ; Classification
-type = !(
+type = (
     application,
     binder,
     cancellation_notice,
@@ -54,7 +54,7 @@ sub_type = :
 description = :
 
 ; File information
-filename = !:
+filename = :
 mime_type = :
 file_size = ##                                 ; Bytes
 file_hash = :                                  ; SHA-256 hash
@@ -67,7 +67,7 @@ storage_bucket = :
 storage_key = :
 
 ; Metadata
-created = !timestamp
+created = timestamp
 created_by = :
 modified = timestamp
 effective = date
@@ -90,8 +90,8 @@ id = :
 type = "binder"
 
 ; Binder details
-number = !:
-date = !date
+number = :
+date = date
 time = time
 days = ##                               ; Days binder is in effect
 expiration = date
@@ -107,7 +107,7 @@ file_data = ^                                  ; Max 10MB
 storage_url = :
 
 ; Audit
-created = !timestamp
+created = timestamp
 created_by = :
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -119,15 +119,15 @@ id = :
 type = "dec_page"
 
 ; Policy reference
-policy_number = !:
-effective_date = !date
-expiration_date = !date
+policy_number = :
+effective_date = date
+expiration_date = date
 transaction_type = (endorsement, new_business, reinstatement, renewal, rewrite)
 endorsement_number = :if transaction_type = endorsement
 
 ; Version
 version = ##
-issue_date = !date
+issue_date = date
 
 ; File
 filename = :
@@ -135,7 +135,7 @@ file_data = ^                                  ; Max 10MB
 storage_url = :
 
 ; Audit
-created = !timestamp
+created = timestamp
 created_by = :
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -147,9 +147,9 @@ id = :
 type = "id_card"
 
 ; Policy reference
-policy_number = !:
-effective_date = !date
-expiration_date = !date
+policy_number = :
+effective_date = date
+expiration_date = date
 
 ; Card specific
 card_type = (digital, fr44, sr22, standard)
@@ -168,7 +168,7 @@ storage_url = :
 digital_card_url = :                           ; Link for digital card
 
 ; Audit
-created = !timestamp
+created = timestamp
 issued_to = :
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -180,8 +180,8 @@ id = :
 type = "policy_form"
 
 ; Form identification
-number = !:
-name = !:
+number = :
+name = :
 edition = :                               ; Edition date like "01/2024"
 
 ; Classification
@@ -209,13 +209,13 @@ id = :
 type = "mvr_report"
 
 ; Subject
-driver_name = !:
+driver_name = :
 drivers_license = *!:
-license_state_province = !:(2)                ; US state or Canadian province
+license_state_province = :(2)                ; US state or Canadian province
 date_of_birth = *!date
 
 ; Report details
-order_date = !date
+order_date = date
 report_date = date
 vendor = :
 reference_number = :
@@ -238,13 +238,13 @@ id = :
 type = "clue_report"
 
 ; Subject
-subject_name = !:                            ; Subject name
+subject_name = :                            ; Subject name
 subject_ssn = *:format ssn                    ; US Social Security Number
 subject_sin = *:/^\d{3}-\d{3}-\d{3}$/         ; Canadian Social Insurance Number
 subject_address = @address                   ; Subject address
 
 ; Report details
-order_date = !date
+order_date = date
 report_date = date
 report_type = (auto, comprehensive, property)
 vendor = :

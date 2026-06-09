@@ -52,8 +52,8 @@ changelog[0].rationale = "Comprehensive treasury management for cash, netting, f
 
 {@legal_entity}
 ; Required fields first
-entity_id = !:                                  ; Entity identifier
-entity_type = !(
+entity_id = :                                  ; Entity identifier
+entity_type = (
     branch,                                     ; Branch office
     holding,                                    ; Holding company
     in_house_bank,                              ; In-house bank
@@ -63,9 +63,9 @@ entity_type = !(
     spe,                                        ; Special purpose entity
     subsidiary                                  ; Subsidiary
 )
-name = !:                                       ; Entity legal name
+name = :                                       ; Entity legal name
 parent_entity = :                               ; Parent entity ID
-country = !:(2)                                 ; Country of incorporation
+country = :(2)                                 ; Country of incorporation
 
 ; Identification
 lei = :format lei                         ; Legal Entity Identifier
@@ -90,10 +90,10 @@ base_currency = :(3)                            ; Functional currency
 
 {@bank_account}
 ; Required fields first
-account_id = !:                                 ; Internal account ID
-account_number = !*:                             ; Bank account number
-currency = !:(3)                                ; Account currency
-bank = !@fin.financial_institution              ; Account bank
+account_id = :                                 ; Internal account ID
+account_number = *:                             ; Bank account number
+currency = :(3)                                ; Account currency
+bank = @fin.financial_institution              ; Account bank
 
 ; Account identification
 iban = :format iban         ; IBAN (if applicable)
@@ -103,11 +103,11 @@ routing_number = :format routing                     ; US ABA routing
 swift_bic = :format bic
 
 ; Account holder
-entity = !@legal_entity                         ; Account owner entity
+entity = @legal_entity                         ; Account owner entity
 signatories[] = :                               ; Authorized signatories
 
 ; Account type
-account_type = !(
+account_type = (
     checking,                                   ; Operating/checking
     concentration,                              ; Concentration account
     controlled_disbursement,                    ; CD account
@@ -224,16 +224,16 @@ cutoff_time = time                              ; Payment cutoff
 
 {@cash_position}
 ; Required fields first
-position_id = !:                                ; Position identifier
-position_date = !date                           ; Position date
-position_type = !(
+position_id = :                                ; Position identifier
+position_date = date                           ; Position date
+position_type = (
     closing,                                    ; End of day closing
     current,                                    ; Current/real-time
     opening,                                    ; Opening balance
     projected                                   ; Projected/forecasted
 )
-entities[] = !@legal_entity                     ; Entities (consolidated position)
-currency = !:(3)                                ; Position currency
+entities[] = @legal_entity                     ; Entities (consolidated position)
+currency = :(3)                                ; Position currency
 
 ; Position amounts
 {.balances}
@@ -261,7 +261,7 @@ fx_rate_date = date                             ; FX rate date
 account_positions[] = @account_position         ; Per-account breakdown
 
 {@account_position}
-account = !@bank_account                        ; Bank account
+account = @bank_account                        ; Bank account
 ledger_balance = #$                             ; Ledger balance
 available_balance = #$                          ; Available balance
 collected_balance = #$                          ; Collected balance
@@ -284,9 +284,9 @@ beyond = #$                                     ; Value T+3+
 
 {@intraday_position}
 ; Required fields first
-position_id = !:                                ; Position identifier
-timestamp = !timestamp                          ; Position timestamp
-account = !@bank_account                        ; Bank account
+position_id = :                                ; Position identifier
+timestamp = timestamp                          ; Position timestamp
+account = @bank_account                        ; Bank account
 
 ; Balances
 opening_available = #$                          ; Opening available
@@ -320,22 +320,22 @@ low_time = timestamp                            ; Time of low
 
 {@netting_center}
 ; Required fields first
-center_id = !:                                  ; Netting center ID
-center_type = !(
+center_id = :                                  ; Netting center ID
+center_type = (
     bilateral,                                  ; Bilateral netting
     multilateral,                               ; Multilateral netting
     regional                                    ; Regional hub
 )
-name = !:                                       ; Center name
-base_currency = !:(3)                           ; Netting currency
+name = :                                       ; Center name
+base_currency = :(3)                           ; Netting currency
 
 ; Operating entity
-operating_entity = !@legal_entity               ; Operating entity
+operating_entity = @legal_entity               ; Operating entity
 participants[] = @netting_participant           ; Participating entities
 
 ; Netting cycle
 {.cycle}
-frequency = !(daily, monthly, weekly)           ; Netting frequency
+frequency = (daily, monthly, weekly)           ; Netting frequency
 cutoff_day = ##:(1..31)                         ; Cutoff day (monthly)
 cutoff_weekday = (friday, monday, wednesday)    ; Cutoff weekday
 cutoff_time = time                              ; Cutoff time
@@ -358,7 +358,7 @@ payment_method = (
 {@netting_center}
 
 {@netting_participant}
-entity = !@legal_entity                         ; Participating entity
+entity = @legal_entity                         ; Participating entity
 status = (active, inactive, pending)            ; Participation status
 currencies[] = :(3)                             ; Eligible currencies
 settlement_account = @bank_account              ; Entity settlement account
@@ -372,10 +372,10 @@ debit_limit = #$:(0..)                          ; Debit limit
 
 {@netting_cycle}
 ; Required fields first
-cycle_id = !:                                   ; Cycle identifier
-center_id = !:                                  ; Netting center reference
-cycle_date = !date                              ; Netting cycle date
-status = !(
+cycle_id = :                                   ; Cycle identifier
+center_id = :                                  ; Netting center reference
+cycle_date = date                              ; Netting cycle date
+status = (
     cancelled,
     completed,
     pending,
@@ -399,19 +399,19 @@ transactions[] = @netting_transaction           ; Netted transactions
 settlements[] = @netting_settlement             ; Net settlements
 
 {@netting_transaction}
-transaction_id = !:                             ; Transaction ID
-payer = !@legal_entity                          ; Paying entity
-payee = !@legal_entity                          ; Receiving entity
-amount = !#$:(0..)                              ; Transaction amount
-currency = !:(3)                                ; Currency
+transaction_id = :                             ; Transaction ID
+payer = @legal_entity                          ; Paying entity
+payee = @legal_entity                          ; Receiving entity
+amount = #$:(0..)                              ; Transaction amount
+currency = :(3)                                ; Currency
 original_due_date = date                        ; Original due date
 invoice_references[] = :                        ; Invoice references (consolidated invoices)
 
 {@netting_settlement}
-settlement_id = !:                              ; Settlement ID
-entity = !@legal_entity                         ; Settling entity
-net_amount = !#$                                ; Net amount (+/-)
-direction = !(pay, receive)                     ; Pay or receive
+settlement_id = :                              ; Settlement ID
+entity = @legal_entity                         ; Settling entity
+net_amount = #$                                ; Net amount (+/-)
+direction = (pay, receive)                     ; Pay or receive
 settlement_date = date                          ; Settlement date
 status = (failed, pending, settled)             ; Settlement status
 payment_reference = :                           ; Payment reference
@@ -423,22 +423,22 @@ payment_reference = :                           ; Payment reference
 
 {@cash_forecast}
 ; Required fields first
-forecast_id = !:                                ; Forecast identifier
-forecast_date = !date                           ; Forecast as-of date
-forecast_type = !(
+forecast_id = :                                ; Forecast identifier
+forecast_date = date                           ; Forecast as-of date
+forecast_type = (
     budget,                                     ; Budget forecast
     operational,                                ; Operational forecast
     rolling,                                    ; Rolling forecast
     strategic                                   ; Strategic/long-term
 )
-entities[] = !@legal_entity                     ; Forecasting entities (consolidated forecast)
-currency = !:(3)                                ; Forecast currency
+entities[] = @legal_entity                     ; Forecasting entities (consolidated forecast)
+currency = :(3)                                ; Forecast currency
 
 ; Forecast horizon
 {.horizon}
-start_date = !date                              ; Forecast start
-end_date = !date                                ; Forecast end
-granularity = !(daily, monthly, weekly)         ; Forecast granularity
+start_date = date                              ; Forecast start
+end_date = date                                ; Forecast end
+granularity = (daily, monthly, weekly)         ; Forecast granularity
 periods = ##:(1..)                              ; Number of periods
 
 {@cash_forecast}
@@ -459,8 +459,8 @@ maximum_balance = #$                            ; Maximum during period
 periods[] = @forecast_period                    ; Period breakdown
 
 {@forecast_period}
-period_start = !date                            ; Period start
-period_end = !date                              ; Period end
+period_start = date                            ; Period start
+period_end = date                              ; Period end
 opening_balance = #$                            ; Opening balance
 inflows = #$:(0..)                              ; Period inflows
 outflows = #$:(0..)                             ; Period outflows
@@ -504,10 +504,10 @@ other_operating = #$:(0..)                      ; Other operating
 
 {@forecast_variance}
 ; Required fields first
-variance_id = !:                                ; Variance ID
-forecast_id = !:                                ; Forecast reference
-period_start = !date                            ; Period start
-period_end = !date                              ; Period end
+variance_id = :                                ; Variance ID
+forecast_id = :                                ; Forecast reference
+period_start = date                            ; Period start
+period_end = date                              ; Period end
 
 ; Variance totals
 {.variance}
@@ -540,8 +540,8 @@ action_items[] = :                              ; Follow-up actions
 
 {@investment}
 ; Required fields first
-investment_id = !:                              ; Investment identifier
-instrument_type = !(
+investment_id = :                              ; Investment identifier
+instrument_type = (
     agency,                                     ; Agency securities
     cd,                                         ; Certificate of deposit
     commercial_paper,                           ; Commercial paper
@@ -552,15 +552,15 @@ instrument_type = !(
     tbill,                                      ; Treasury bill
     time_deposit                                ; Time deposit
 )
-entity = !@legal_entity                         ; Investing entity
-counterparty = !@fin.financial_institution      ; Counterparty/issuer
+entity = @legal_entity                         ; Investing entity
+counterparty = @fin.financial_institution      ; Counterparty/issuer
 
 ; Investment details
-face_value = !#$:(0..)                          ; Face/principal value
-currency = !:(3)                                ; Currency
-purchase_date = !date                           ; Purchase/trade date
-settlement_date = !date                         ; Settlement date
-maturity_date = !date                           ; Maturity date
+face_value = #$:(0..)                          ; Face/principal value
+currency = :(3)                                ; Currency
+purchase_date = date                           ; Purchase/trade date
+settlement_date = date                         ; Settlement date
+maturity_date = date                           ; Maturity date
 
 ; Status
 status = (
@@ -641,10 +641,10 @@ triparty_agent = @fin.financial_institution:if instrument_type = repo
 
 {@investment_portfolio}
 ; Required fields first
-portfolio_id = !:                               ; Portfolio identifier
-portfolio_date = !date                          ; Portfolio date
-entity = !@legal_entity                         ; Owning entity
-currency = !:(3)                                ; Reporting currency
+portfolio_id = :                               ; Portfolio identifier
+portfolio_date = date                          ; Portfolio date
+entity = @legal_entity                         ; Owning entity
+currency = :(3)                                ; Reporting currency
 
 ; Portfolio totals
 {.totals}
@@ -688,12 +688,12 @@ holdings[] = @investment                        ; Individual holdings
 
 {@bank_relationship}
 ; Required fields first
-relationship_id = !:                            ; Relationship ID
-bank = !@fin.financial_institution              ; Bank
-entities[] = !@legal_entity                     ; Corporate entities (shared banking)
+relationship_id = :                            ; Relationship ID
+bank = @fin.financial_institution              ; Bank
+entities[] = @legal_entity                     ; Corporate entities (shared banking)
 
 ; Relationship details
-relationship_type = !(
+relationship_type = (
     correspondent,                              ; Correspondent bank
     custody,                                    ; Custody services
     investment,                                 ; Investment services
@@ -750,17 +750,17 @@ last_analysis_date = date                       ; Last account analysis
 
 {@liquidity_buffer}
 ; Required fields first
-buffer_id = !:                                  ; Buffer identifier
-buffer_date = !date                             ; Reporting date
-buffer_type = !(
+buffer_id = :                                  ; Buffer identifier
+buffer_date = date                             ; Reporting date
+buffer_type = (
     lcr,                                        ; Liquidity Coverage Ratio
     nsfr,                                       ; Net Stable Funding Ratio
     operational,                                ; Operational buffer
     regulatory,                                 ; Regulatory requirement
     strategic                                   ; Strategic/internal
 )
-entity = !@legal_entity                         ; Reporting entity
-currency = !:(3)                                ; Reporting currency
+entity = @legal_entity                         ; Reporting entity
+currency = :(3)                                ; Reporting currency
 
 ; LCR components (if applicable)
 {.lcr}
@@ -801,20 +801,20 @@ available_facilities = #$:(0..)                 ; Available credit
 
 {@cash_pool}
 ; Required fields first
-pool_id = !:                                    ; Pool identifier
-pool_type = !(
+pool_id = :                                    ; Pool identifier
+pool_type = (
     hybrid,                                     ; Hybrid pooling
     notional,                                   ; Notional pooling
     physical,                                   ; Physical pooling
     target_balance                              ; Target balance pooling
 )
-pool_name = !:                                  ; Pool name
-pool_currency = !:(3)                           ; Pool currency
-pool_bank = !@fin.financial_institution         ; Pool bank
+pool_name = :                                  ; Pool name
+pool_currency = :(3)                           ; Pool currency
+pool_bank = @fin.financial_institution         ; Pool bank
 
 ; Header account
-header_account = !@bank_account                 ; Pool header account
-operating_entity = !@legal_entity               ; Pool operator
+header_account = @bank_account                 ; Pool header account
+operating_entity = @legal_entity               ; Pool operator
 
 ; Pool structure
 participants[] = @pool_participant              ; Pool participants
@@ -855,8 +855,8 @@ target_time = time:if pool_type = physical      ; Sweep time
 {@cash_pool}
 
 {@pool_participant}
-entity = !@legal_entity                         ; Participating entity
-account = !@bank_account                        ; Participant account
+entity = @legal_entity                         ; Participating entity
+account = @bank_account                        ; Participant account
 role = (header, participant)                    ; Pool role
 status = (active, inactive, pending)            ; Participation status
 target_balance = #$                             ; Target balance (if ZBA)
@@ -871,10 +871,10 @@ interest_allocation_pct = #:(0..100)            ; Interest allocation %
 
 {@in_house_bank}
 ; Required fields first
-ihb_id = !:                                     ; IHB identifier
-name = !:                                       ; IHB name
-operating_entity = !@legal_entity               ; Operating entity
-base_currency = !:(3)                           ; Base currency
+ihb_id = :                                     ; IHB identifier
+name = :                                       ; IHB name
+operating_entity = @legal_entity               ; Operating entity
+base_currency = :(3)                           ; Base currency
 
 ; Status
 status = (active, inactive, pending)            ; IHB status
@@ -916,7 +916,7 @@ currencies[] = :(3)                             ; Supported currencies
 {@in_house_bank}
 
 {@ihb_participant}
-entity = !@legal_entity                         ; Participating entity
+entity = @legal_entity                         ; Participating entity
 status = (active, inactive, pending)            ; Participation status
 deposit_balance = #$:(0..)                      ; Current deposits
 loan_balance = #$:(0..)                         ; Current borrowings

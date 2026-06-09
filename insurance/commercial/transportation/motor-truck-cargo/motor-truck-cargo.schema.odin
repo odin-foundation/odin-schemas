@@ -45,7 +45,7 @@ changelog[0].rationale = "FMCSA-compliant cargo coverage for motor carriers"
 ; Motor carrier operating authority classification.
 
 {@mtc_authority_type}
-authority = !(
+authority = (
     broker,                                   ; Freight broker
     common_carrier,                           ; Common carrier
     contract_carrier,                         ; Contract carrier
@@ -71,9 +71,9 @@ refrigerated = ?                              ; Reefer authority
 
 {@mtc_carrier}
 ; Required fields first
-carrier_name = !:                             ; Legal name
-mc_number = !:                                ; MC number
-usdot_number = !:                             ; USDOT number
+carrier_name = :                             ; Legal name
+mc_number = :                                ; MC number
+usdot_number = :                             ; USDOT number
 
 ; Optional fields
 address = @address                            ; Business address
@@ -100,7 +100,7 @@ years_in_business = ##                        ; Years operating
 ; Cargo commodity types covered.
 
 {@mtc_commodity}
-commodity_class = !(
+commodity_class = (
     agricultural,                             ; Farm products
     automobiles,                              ; Vehicles
     building_materials,                       ; Construction
@@ -136,14 +136,14 @@ temperature_controlled = ?:if commodity_class = (perishables, refrigerated, phar
 
 {@mtc_coverage}
 ; Required fields first
-coverage_form = !(
+coverage_form = (
     all_risk,                                 ; All-risk coverage
     broad_form,                               ; Broad named perils
     named_perils,                             ; Basic named perils
     special                                   ; Manuscript form
 )
-limit_per_occurrence = !#$:(0..)              ; Per occurrence limit
-limit_per_vehicle = !#$:(0..)                 ; Per vehicle limit
+limit_per_occurrence = #$:(0..)              ; Per occurrence limit
+limit_per_vehicle = #$:(0..)                 ; Per vehicle limit
 
 ; Optional fields
 aggregate_limit = #$:(0..)                    ; Annual aggregate
@@ -230,8 +230,8 @@ sue_and_labor = ?                             ; Sue and labor
 
 {@mtc_commodity_limit}
 ; Required fields first
-commodity = !@mtc_commodity                   ; Commodity type
-limit = !#$:(0..)                             ; Commodity limit
+commodity = @mtc_commodity                   ; Commodity type
+limit = #$:(0..)                             ; Commodity limit
 
 ; Optional fields
 deductible = #$:(0..)                         ; Commodity deductible
@@ -279,7 +279,7 @@ securities = ?true                            ; Securities
 
 {@mtc_bmc_32}
 ; Required for for-hire carriers
-required = !?                                 ; BMC-32 required
+required = ?                                 ; BMC-32 required
 
 ; Filing details
 effective_date = date:if required = true      ; Filing effective
@@ -324,7 +324,7 @@ specialized = ?:if included = true            ; Specialized
 
 {@mtc_household_goods}
 ; HHG carrier provisions
-hhg_authority = !?                            ; HHG authority
+hhg_authority = ?                            ; HHG authority
 
 ; Coverage provisions
 declared_value = ?:if hhg_authority = true    ; Declared value
@@ -347,7 +347,7 @@ storage_days = ##:if storage_in_transit = true
 
 {@mtc_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 base_premium = #$:(0..)                       ; Base premium
@@ -379,8 +379,8 @@ territory_factor = #                          ; Territory
 
 {@mtc_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     concealed_damage,                         ; Hidden damage
     contamination,                            ; Contamination
     damage,                                   ; Physical damage
@@ -430,12 +430,12 @@ subrogation = #$:(0..)                        ; Subrogation
 
 {@mtc_policy}
 ; Required fields first
-bmc_32 = !@mtc_bmc_32                         ; BMC-32 filing
-carrier = !@mtc_carrier                       ; Insured carrier
-coverage = !@mtc_coverage                     ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
+bmc_32 = @mtc_bmc_32                         ; BMC-32 filing
+carrier = @mtc_carrier                       ; Insured carrier
+coverage = @mtc_coverage                     ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

@@ -57,9 +57,9 @@ changelog[0].rationale = "Comprehensive assessment structure covering state test
 
 {@assessment}
 ; Required fields first
-assessment_id = !:                                   ; Assessment identifier
-student_id = !*:                                     ; Student identifier
-test_date = !date                                    ; Test administration date
+assessment_id = :                                   ; Assessment identifier
+student_id = *:                                     ; Student identifier
+test_date = date                                    ; Test administration date
 
 ; Optional fields
 test_name = :                                        ; Test name
@@ -98,7 +98,7 @@ invalidation_reason = :                              ; Reason for invalidation
 
 {@test_score}
 ; Required fields first
-subject = !:                                         ; Subject/section tested
+subject = :                                         ; Subject/section tested
 
 ; Optional fields
 scale_score = #                                      ; Scaled score
@@ -118,7 +118,7 @@ proficiency_cut_score = #                            ; Cut score for proficiency
 
 {@test_accommodation}
 ; Required fields first
-accommodation_type = !:                              ; Accommodation type
+accommodation_type = :                              ; Accommodation type
 
 ; Optional fields
 category = (assistive_technology, extended_time, presentation, response, scheduling, setting)
@@ -131,8 +131,8 @@ authorized_by = :                                    ; Authorization source (IEP
 
 {@sat_score}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-test_date = !date                                    ; Test date
+student_id = *:                                     ; Student identifier
+test_date = date                                    ; Test date
 
 ; Optional fields
 registration_number = *:                             ; SAT registration number
@@ -170,8 +170,8 @@ retest = ?                                           ; Retest flag
 
 {@act_score}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-test_date = !date                                    ; Test date
+student_id = *:                                     ; Student identifier
+test_date = date                                    ; Test date
 
 ; Optional fields
 registration_number = *:                             ; ACT registration number
@@ -205,9 +205,9 @@ retest = ?                                           ; Retest flag
 
 {@ap_score}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-exam_date = !date                                    ; Exam date
-subject = !:                                         ; AP subject/exam
+student_id = *:                                     ; Student identifier
+exam_date = date                                    ; Exam date
+subject = :                                         ; AP subject/exam
 
 ; Optional fields
 ap_number = *:                                       ; AP number
@@ -226,9 +226,9 @@ course_section = :                                   ; Course section identifier
 
 {@ib_score}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-exam_date = !date                                    ; Exam date
-subject = !:                                         ; IB subject
+student_id = *:                                     ; Student identifier
+exam_date = date                                    ; Exam date
+subject = :                                         ; IB subject
 
 ; Optional fields
 ib_candidate_number = *:                             ; IB candidate number
@@ -255,9 +255,9 @@ bonus_points = ##:(0..3)                             ; TOK/EE bonus points
 
 {@clep_score}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-exam_date = !date                                    ; Exam date
-exam_name = !:                                       ; CLEP exam name
+student_id = *:                                     ; Student identifier
+exam_date = date                                    ; Exam date
+exam_name = :                                       ; CLEP exam name
 
 ; Optional fields
 scaled_score = ##:(20..80)                           ; Scaled score
@@ -271,8 +271,8 @@ semester_hours_recommended = ##:(0..)                ; Recommended semester hour
 
 {@gre_score}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-test_date = !date                                    ; Test date
+student_id = *:                                     ; Student identifier
+test_date = date                                    ; Test date
 
 ; Optional fields
 registration_number = *:                             ; GRE registration number
@@ -293,8 +293,8 @@ subject_test_score = ##:(200..990):if subject_test_taken = true
 
 {@gmat_score}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-test_date = !date                                    ; Test date
+student_id = *:                                     ; Student identifier
+test_date = date                                    ; Test date
 
 ; Optional fields
 registration_number = *:                             ; GMAT registration number
@@ -319,10 +319,10 @@ total_percentile = ##:(0..99)
 
 {@state_assessment}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-test_date = !date                                    ; Test date
-subject = !:                                         ; Subject tested
-grade_level = !:                                     ; Grade level tested
+student_id = *:                                     ; Student identifier
+test_date = date                                    ; Test date
+subject = :                                         ; Subject tested
+grade_level = :                                     ; Grade level tested
 
 ; Optional fields
 state = :(2)                                         ; State (for state-specific tests)
@@ -350,9 +350,9 @@ accommodations[] = @test_accommodation
 
 {@placement_test}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-test_date = !date                                    ; Test date
-subject = !:                                         ; Subject area
+student_id = *:                                     ; Student identifier
+test_date = date                                    ; Test date
+subject = :                                         ; Subject area
 
 ; Optional fields
 test_name = :                                        ; Placement test name

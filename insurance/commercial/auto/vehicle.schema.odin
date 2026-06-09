@@ -50,7 +50,7 @@ terminal_number = ##                           ; Assigned terminal
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Commercial Vehicle Classification
 ; ───────────────────────────────────────────────────────────────────────────────
-commercial_type = !(
+commercial_type = (
     bus,                                       ; Passenger bus
     pickup_truck,                              ; Commercial pickup
     power_unit,                                ; Tractor, truck, bus
@@ -154,8 +154,8 @@ wheelchair_positions = ##
 id = :                                         ; Trailer identifier
 number = ##                                    ; Number
 year = ##:(1900..2100)                         ; Model year
-make = !:                                      ; Manufacturer name
-type = !(
+make = :                                      ; Manufacturer name
+type = (
     auto_carrier,
     container_chassis,                         ; Intermodal container
     dolly,                                     ; Converter dolly

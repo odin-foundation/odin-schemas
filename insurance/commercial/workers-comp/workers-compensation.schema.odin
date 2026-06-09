@@ -66,7 +66,7 @@ sequence = ##:(1..)
 phraseology = :                        ; Short name
 
 ; Code Type
-code_type = !(
+code_type = (
     exception,                                ; Exception to governing
     governing,                                ; Governing class for policy
     if_any,                                   ; If any operations class
@@ -76,7 +76,7 @@ code_type = !(
 )
 
 ; Bureau
-rating_bureau = !(
+rating_bureau = (
     dcrb_de,                                  ; Delaware
     ncci,
     nd_wsi,                                   ; North Dakota (monopolistic)
@@ -95,7 +95,7 @@ rating_bureau = !(
 ; ───────────────────────────────────────────────────────────────────────────────
 exposure_basis_description = ::if exposure_basis = other
 
-estimated_annual_payroll = !#$
+estimated_annual_payroll = #$
 estimated_employee_count = ##
 
 ; Actual (audit)
@@ -124,7 +124,7 @@ estimated_annual_premium = #$
 ; Location Assignment
 ; ───────────────────────────────────────────────────────────────────────────────
 location_number = ##:(1..)                    ; Which location
-state = !:(2)                                 ; State for this classification
+state = :(2)                                 ; State for this classification
 territory = :                           ; Rating territory
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -154,7 +154,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Status
 ; ───────────────────────────────────────────────────────────────────────────────
-coverage_status = !(
+coverage_status = (
     covered,
     excluded,
     if_any,                                       ; Coverage "if any" operations
@@ -246,11 +246,11 @@ id = :
 ; Modification Factor
 ; ───────────────────────────────────────────────────────────────────────────────
 modification_factor = #:(0.10..5.00)          ; The X-Mod (1.00 = unity)
-effective_date = !date
+effective_date = date
 expiration_date = date
 
 ; Rating Bureau
-rating_bureau = !(
+rating_bureau = (
     dcrb_de,
     ncci,
     njcrib,
@@ -399,7 +399,7 @@ underwriter_notes = :
 id = :
 
 ; Coverage type
-type = !(
+type = (
     dcba,                                     ; Defense Base Act
     fela,                                     ; Federal Employers Liability Act (Railroad)
     jones_act,                                ; Maritime / Seamen
@@ -434,7 +434,7 @@ status = (active, excluded, pending)
 id = :
 
 ; Covered persons
-covered_persons = !(
+covered_persons = (
     corporate_officers,
     domestic_workers,
     exempt_employees,
@@ -502,7 +502,7 @@ status = (active, excluded)
 id = :
 
 ; Deductible Type
-type = !(
+type = (
     aggregate,
     per_accident,
     per_claim_combined,
@@ -511,7 +511,7 @@ type = !(
 )
 
 ; Amount
-amount = !##
+amount = ##
 aggregate_limit = ##:if type != aggregate
 
 ; Application
@@ -534,7 +534,7 @@ collateral_type = (cash, letter_of_credit, surety_bond, trust):if collateral_req
 id = :
 
 ; Plan Type
-plan_type = !(
+plan_type = (
     combination,
     incurred_loss,
     paid_loss
@@ -571,19 +571,19 @@ id = :
 
 ; Identity
 {.name}
-first = !:
+first = :
 middle = :
-last = !:
+last = :
 suffix = :
 
 {@wc_officer_status}
 
 ; Title
-title = !:
+title = :
 ownership_percentage = #:(0..100)
 
 ; Status
-status = !(excluded, included)
+status = (excluded, included)
 status_election_date = date
 state_province = :(2)                         ; US state or Canadian province for this election
 
@@ -603,13 +603,13 @@ exclusion_form_date = date:if status = excluded
 
 {@wc_endorsement}
 id = :
-number = !:                 ; WC 00 03 01, etc.
+number = :                 ; WC 00 03 01, etc.
 title = :
 edition_date = date
 effective_date = date
 
 ; Type
-type = !(
+type = (
     ; Coverage modifications
     aircraft_exclusion,
     all_states,
@@ -646,14 +646,14 @@ premium_impact = #$
 
 {@wc_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 

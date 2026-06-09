@@ -54,7 +54,7 @@ changelog[0].rationale = "Standard auto insurance rating and premium structures 
 id = :                                         ; Unique rating identifier
 
 ; Rating timestamp
-rated_date = !timestamp                        ; Date and time when rating was performed
+rated_date = timestamp                        ; Date and time when rating was performed
 rated_by = :                                   ; User or system that performed the rating
 
 ; Company/Program
@@ -68,9 +68,9 @@ name = :                                       ; Program name
 {@rating}
 
 ; Rate basis
-rate_effective_date = !date                    ; Date when rates became effective
+rate_effective_date = date                    ; Date when rates became effective
 rate_revision = ##                             ; Rate revision number
-rate_state = !:(2)                             ; Two-letter state code for rate filing
+rate_state = :(2)                             ; Two-letter state code for rate filing
 rate_filing_number = :                         ; State filing reference number
 rate_type = (file_and_use, prior_approval, use_and_file)  ; Regulatory filing type
 actuarial_certification = ?                    ; Whether rates are actuarially certified
@@ -88,8 +88,8 @@ description = :                                ; Tier description
 {.term}
 months = ##:(1..24)                            ; Policy term length in months
 type = (annual, monthly, other, quarterly, semi_annual)  ; Term payment type
-effective_date = !date                         ; Policy effective date
-expiration_date = !date                        ; Policy expiration date
+effective_date = date                         ; Policy effective date
+expiration_date = date                        ; Policy expiration date
 :invariant expiration_date > effective_date    ; Expiration must be after effective date
 
 {@rating}
@@ -255,10 +255,10 @@ total = #$:(0..)                               ; Total tax amount
 ; Totals
 ; ───────────────────────────────────────────────────────────────────────────────
 {.total}
-premium = !#$:(0..)                            ; Total premium amount
+premium = #$:(0..)                            ; Total premium amount
 fees = #$:(0..)                                ; Total fees amount
 taxes = #$:(0..)                               ; Total taxes amount
-policy_total = !#$:(0..)                       ; Grand total (premium + fees + taxes)
+policy_total = #$:(0..)                       ; Grand total (premium + fees + taxes)
 
 {@premium}
 
@@ -272,7 +272,7 @@ per_day = #$:(0..)                             ; Daily premium amount
 
 {@discount}
 id = :                                         ; Unique discount identifier
-code = !(                                      ; Standardized discount code
+code = (                                      ; Standardized discount code
     dc-ADVANCE,
     dc-AFFINITY,
     dc-AIRBAG,
@@ -322,7 +322,7 @@ coverage_code = :if applies_to = coverage      ; Coverage code if applicable
 
 {@surcharge}
 id = :                                         ; Unique surcharge identifier
-code = !(                                      ; Standardized surcharge code
+code = (                                      ; Standardized surcharge code
     sc-ACCFAULT,
     sc-ACCMULTI,
     sc-ACCNOFLT,
@@ -365,7 +365,7 @@ reason = :                                     ; Reason for surcharge
 
 {@misc_premium}
 id = :                                         ; Unique miscellaneous premium identifier
-description = !:                               ; Description of premium item
+description = :                               ; Description of premium item
 amount = #$                                    ; Can be positive or negative (no constraint)
 premium_type = (charge, credit)                ; Whether this is a charge or credit
 applies_to = (driver, policy, vehicle)         ; What the premium applies to
@@ -382,7 +382,7 @@ percent_amount = #:(0..100):if percent_of_total = true  ; Percentage amount if a
 {@payment_plan}
 id = :                                         ; Unique payment plan identifier
 name = :                                       ; Payment plan name
-type = !(                                      ; Payment plan type
+type = (                                      ; Payment plan type
     custom,
     monthly_credit_card,
     monthly_eft,
@@ -414,8 +414,8 @@ last_payment_due = date                        ; Last payment due date
 {@payment_plan.payments[]}
 :(1..24)                                       ; Maximum 24 payments
 payment_number = ##:(1..24)                    ; Sequential payment number
-due_date = !date                               ; Payment due date
-amount = !#$:(0..)                             ; Payment amount
+due_date = date                               ; Payment due date
+amount = #$:(0..)                             ; Payment amount
 status = (late, nsf, paid, pending, scheduled, waived)  ; Payment status
 paid_date = date                               ; Actual date payment was made
 paid_amount = #$:(0..)                         ; Actual amount paid
@@ -472,7 +472,7 @@ program_name = :                               ; Insurance program name
 tier = :                                       ; Rating tier
 
 ; Premium
-total_premium = !#$:(0..)                      ; Total premium for quote
+total_premium = #$:(0..)                      ; Total premium for quote
 term_months = ##:(1..24)                       ; Term length in months
 monthly_premium = #$:(0..)                     ; Monthly premium amount
 

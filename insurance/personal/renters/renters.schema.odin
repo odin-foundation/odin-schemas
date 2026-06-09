@@ -51,14 +51,14 @@ changelog[0].rationale = "Coverage-centric architecture - renters policy composi
 coverage_type_ref = "HO4_C"
 
 ; Personal property limit (primary limit for renters)
-personal_property_limit = !#$:(0..)
+personal_property_limit = #$:(0..)
 
 ; Coverage type
 peril_type = (named_perils, open_perils)
 named_perils_count = ##:(10..20)
 
 ; Loss settlement
-loss_settlement = !(
+loss_settlement = (
     actual_cash_value,
     replacement_cost
 )
@@ -154,7 +154,7 @@ unit_number = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Unit Type
 ; ───────────────────────────────────────────────────────────────────────────────
-unit_type = !(
+unit_type = (
     apartment,
     basement_apartment,
     condominium,
@@ -244,7 +244,7 @@ swimming_pool_access = ?
 = @res.res_endorsement
 
 ; Renter-specific endorsement types
-endorsement_type = !(earthquake, flood, identity_theft, increased_liability, increased_medical, jewelry_coverage, other, personal_injury, pet_damage, replacement_cost_contents, scheduled_property, water_backup, wedding_gifts)
+endorsement_type = (earthquake, flood, identity_theft, increased_liability, increased_medical, jewelry_coverage, other, personal_injury, pet_damage, replacement_cost_contents, scheduled_property, water_backup, wedding_gifts)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Renters Policy (HO-4)
@@ -252,7 +252,7 @@ endorsement_type = !(earthquake, flood, identity_theft, increased_liability, inc
 
 {@renters_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Form
@@ -263,9 +263,9 @@ policy_form_edition = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 
@@ -293,13 +293,13 @@ rental_unit = @rental_unit
 ; Coverages (NO Coverage A or B - tenant doesn't insure building)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage C - Personal Property (PRIMARY)
-coverage_c = !@renters_personal_property_coverage
+coverage_c = @renters_personal_property_coverage
 
 ; Coverage D - Loss of Use
 coverage_d = @renters_loss_of_use_coverage
 
 ; Coverage E - Personal Liability
-coverage_e = !@renters_liability_coverage
+coverage_e = @renters_liability_coverage
 
 ; Coverage F - Medical Payments
 coverage_f = @renters_medical_payments_coverage

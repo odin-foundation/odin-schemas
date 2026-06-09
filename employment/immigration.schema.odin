@@ -51,13 +51,13 @@ changelog[0].rationale = "I-9, E-Verify, visa sponsorship derived from USCIS and
 {@i9_verification}
 = @types.audit_info
 
-i9_id = !:                                       ; Unique I-9 identifier
-employee_id = !:                                 ; Associated employee
-i9_version = !:                                  ; Form version (e.g., "11/14/2016")
+i9_id = :                                       ; Unique I-9 identifier
+employee_id = :                                 ; Associated employee
+i9_version = :                                  ; Form version (e.g., "11/14/2016")
 
 ; Section 1 - Employee Information and Attestation
 {.section_1}
-completed_date = !date                           ; Date Section 1 completed
+completed_date = date                           ; Date Section 1 completed
 citizenship_status = (citizen, lawful_permanent_resident, non_citizen_national, work_authorized_alien)
 
 ; If work authorized alien
@@ -75,39 +75,39 @@ preparer_name = :if preparer_used = true         ; Preparer name
 
 ; Section 2 - Employer Review and Verification
 {.section_2}
-verification_date = !date                        ; Date employer verified (within 3 days)
-verified_by = !:                                 ; Name of person who verified
-verified_by_title = !:                           ; Title of verifier
-verified_by_signature_date = !date               ; Signature date
+verification_date = date                        ; Date employer verified (within 3 days)
+verified_by = :                                 ; Name of person who verified
+verified_by_title = :                           ; Title of verifier
+verified_by_signature_date = date               ; Signature date
 
-first_day_of_employment = !date                  ; Employee's first day
+first_day_of_employment = date                  ; Employee's first day
 
 ; Document verification (List A OR List B + List C)
 documents_presented = (list_a, list_b_and_c)    ; Documents presented
 
 {.list_a_document}
 :if documents_presented = list_a
-document_title = !:                              ; Document type
-issuing_authority = !:                           ; Issuing authority
-document_number = !*:                            ; Document number (confidential)
+document_title = :                              ; Document type
+issuing_authority = :                           ; Issuing authority
+document_number = *:                            ; Document number (confidential)
 expiration_date = date                           ; Expiration date
 
 {@i9_verification.section_2}
 
 {.list_b_document}
 :if documents_presented = list_b_and_c
-document_title = !:                              ; Identity document type
-issuing_authority = !:                           ; Issuing authority
-document_number = !*:                            ; Document number (confidential)
+document_title = :                              ; Identity document type
+issuing_authority = :                           ; Issuing authority
+document_number = *:                            ; Document number (confidential)
 expiration_date = date                           ; Expiration date
 
 {@i9_verification.section_2}
 
 {.list_c_document}
 :if documents_presented = list_b_and_c
-document_title = !:                              ; Work authorization doc type
-issuing_authority = !:                           ; Issuing authority
-document_number = !*:                            ; Document number (confidential)
+document_title = :                              ; Work authorization doc type
+issuing_authority = :                           ; Issuing authority
+document_number = *:                            ; Document number (confidential)
 expiration_date = date                           ; Expiration date
 
 {@i9_verification}
@@ -115,9 +115,9 @@ expiration_date = date                           ; Expiration date
 ; Section 3 - Reverification and Rehires
 {.section_3_records[]}
 action_type = (rehire, reverification)          ; Action type
-action_date = !date                              ; Date of action
-verified_by = !:                                 ; Name of person
-signature_date = !date                           ; Signature date
+action_date = date                              ; Date of action
+verified_by = :                                 ; Name of person
+signature_date = date                           ; Signature date
 
 ; If reverification
 new_document_title = :if action_type = reverification
@@ -139,8 +139,8 @@ e_verify_result_date = date                      ; E-Verify result date
 
 ; Audit findings
 {.audit_findings[]}
-audit_date = !date                               ; Audit date
-auditor = !:                                     ; Auditor name
+audit_date = date                               ; Audit date
+auditor = :                                     ; Auditor name
 finding = :                                      ; Finding description
 corrected = ?                                    ; Finding corrected
 correction_date = date                           ; Correction date
@@ -155,23 +155,23 @@ correction_description = :                       ; How corrected
 {@e_verify_case}
 = @types.audit_info
 
-case_number = !:                                 ; E-Verify case number
-employee_id = !:                                 ; Associated employee
-i9_id = !:                                       ; Associated I-9 form
+case_number = :                                 ; E-Verify case number
+employee_id = :                                 ; Associated employee
+i9_id = :                                       ; Associated I-9 form
 
-case_creation_date = !date                       ; Date case created
-case_submitted_date = !date                      ; Date submitted to E-Verify
-submission_deadline = !date                      ; 3 business days after hire
+case_creation_date = date                       ; Date case created
+case_submitted_date = date                      ; Date submitted to E-Verify
+submission_deadline = date                      ; 3 business days after hire
 
 ; Employee information submitted
-ssn_submitted = !*:format ssn                    ; SSN submitted (confidential)
-name_submitted = !:                              ; Name submitted
-dob_submitted = !*date                           ; DOB submitted (confidential)
-citizenship_status_submitted = !:                ; Citizenship status submitted
+ssn_submitted = *:format ssn                    ; SSN submitted (confidential)
+name_submitted = :                              ; Name submitted
+dob_submitted = *date                           ; DOB submitted (confidential)
+citizenship_status_submitted = :                ; Citizenship status submitted
 
 ; Initial verification result
 initial_result = (case_in_continuance, employment_authorized, tentative_nonconfirmation)
-initial_result_date = !date                      ; Date of initial result
+initial_result_date = date                      ; Date of initial result
 
 ; Tentative Nonconfirmation (TNC) process
 tnc_reason = (dhs_verification, ssa_mismatch):if initial_result = tentative_nonconfirmation
@@ -203,19 +203,19 @@ notes = :                                        ; Case notes
 {@visa_petition}
 = @types.audit_info
 
-petition_id = !:                                 ; Unique petition identifier
-employee_id = !:                                 ; Associated employee (beneficiary)
+petition_id = :                                 ; Unique petition identifier
+employee_id = :                                 ; Associated employee (beneficiary)
 visa_type = (e1, e2, e3, h1b, h1b1, h2a, h2b, h3, l1a, l1b, o1, o2, p1, p2, p3, r1, tn)
 
 ; Petition details
 petition_type = (extension, initial, transfer)   ; Petition type
-receipt_number = !*:                             ; USCIS receipt number (confidential)
-petition_filed_date = !date                      ; Date filed with USCIS
+receipt_number = *:                             ; USCIS receipt number (confidential)
+petition_filed_date = date                      ; Date filed with USCIS
 priority_date = date                             ; Priority date if applicable
 
 ; Requested period
-requested_start_date = !date                     ; Requested start
-requested_end_date = !date                       ; Requested end
+requested_start_date = date                     ; Requested start
+requested_end_date = date                       ; Requested end
 requested_duration_years = #:(0..6)              ; Duration requested
 
 ; Approval/denial
@@ -263,26 +263,26 @@ notes = :                                        ; Petition notes
 {@visa_stamp}
 = @types.audit_info
 
-visa_stamp_id = !:                               ; Unique visa stamp identifier
-employee_id = !:                                 ; Associated employee
+visa_stamp_id = :                               ; Unique visa stamp identifier
+employee_id = :                                 ; Associated employee
 petition_id = :                                  ; Associated petition
 visa_type = (e1, e2, e3, h1b, h1b1, h2a, h2b, h3, l1a, l1b, o1, o2, p1, p2, p3, r1, tn)
 
 ; Consular processing
-consulate_location = !:                          ; Consulate location
-consulate_country = !:(2..3)                     ; Country
-appointment_date = !date                         ; Visa interview date
+consulate_location = :                          ; Consulate location
+consulate_country = :(2..3)                     ; Country
+appointment_date = date                         ; Visa interview date
 visa_issued_date = date                          ; Visa issuance date
 visa_denied_date = date                          ; Denial date
 denial_reason = :                                ; Denial reason (if applicable)
 
 ; Visa details
-passport_number = !*:                            ; Passport number (confidential)
-passport_country = !:(2..3)                      ; Passport country
-passport_expiration = !date                      ; Passport expiration
-visa_number = !*:                                ; Visa number (confidential)
-visa_valid_from = !date                          ; Visa valid from
-visa_valid_until = !date                         ; Visa valid until
+passport_number = *:                            ; Passport number (confidential)
+passport_country = :(2..3)                      ; Passport country
+passport_expiration = date                      ; Passport expiration
+visa_number = *:                                ; Visa number (confidential)
+visa_valid_from = date                          ; Visa valid from
+visa_valid_until = date                         ; Visa valid until
 entries_allowed = (multiple, single)             ; Entry allowance
 
 status = (active, cancelled, denied, expired, issued, pending)
@@ -296,39 +296,39 @@ notes = :                                        ; Visa stamp notes
 {@perm}
 = @types.audit_info
 
-perm_id = !:                                     ; Unique PERM identifier
-employee_id = !:                                 ; Associated employee (beneficiary)
+perm_id = :                                     ; Unique PERM identifier
+employee_id = :                                 ; Associated employee (beneficiary)
 case_number = *:                                 ; DOL case number (confidential)
 
 ; Position details
-job_title = !:                                   ; Job title
-soc_code = !:                                    ; Standard Occupational Classification
-soc_title = !:                                   ; SOC title
-prevailing_wage = !#$:(0..)                      ; Prevailing wage
-wage_source = !:                                 ; Wage determination source
-offered_wage = !#$:(0..)                         ; Offered wage
+job_title = :                                   ; Job title
+soc_code = :                                    ; Standard Occupational Classification
+soc_title = :                                   ; SOC title
+prevailing_wage = #$:(0..)                      ; Prevailing wage
+wage_source = :                                 ; Wage determination source
+offered_wage = #$:(0..)                         ; Offered wage
 wage_basis = (annual, hourly)                   ; Wage basis
 
-work_location_address = !@types.address          ; Work location
-job_requirements = !:                            ; Minimum job requirements
-job_duties = !:                                  ; Job duties
+work_location_address = @types.address          ; Work location
+job_requirements = :                            ; Minimum job requirements
+job_duties = :                                  ; Job duties
 
 ; Recruitment process
 {.recruitment}
-recruitment_start_date = !date                   ; Recruitment start
-recruitment_end_date = !date                     ; Recruitment end
+recruitment_start_date = date                   ; Recruitment start
+recruitment_end_date = date                     ; Recruitment end
 
 ; Recruitment steps (required)
-internal_posting_start = !date                   ; Internal posting start
-internal_posting_end = !date                     ; Internal posting end
-job_order_placed_date = !date                    ; State workforce agency posting
-sunday_newspaper_ad_1 = !date                    ; First Sunday ad
-sunday_newspaper_ad_2 = !date                    ; Second Sunday ad
+internal_posting_start = date                   ; Internal posting start
+internal_posting_end = date                     ; Internal posting end
+job_order_placed_date = date                    ; State workforce agency posting
+sunday_newspaper_ad_1 = date                    ; First Sunday ad
+sunday_newspaper_ad_2 = date                    ; Second Sunday ad
 
 ; Additional recruitment (3 of 10 required for professional)
 {.additional_recruitment[]}
 method = (campus_recruiting, employee_referral, internet_posting, job_fair, local_newspaper, private_employment_firm, radio_tv, trade_journal)
-method_date = !date                              ; Date of recruitment method
+method_date = date                              ; Date of recruitment method
 publication_name = :                             ; Publication/site name
 
 {@perm.recruitment}
@@ -340,7 +340,7 @@ us_workers_rejected = ##:(0..)                   ; US workers not qualified
 {@perm}
 
 ; PERM filing
-perm_filed_date = !date                          ; Date filed with DOL
+perm_filed_date = date                          ; Date filed with DOL
 priority_date = date                             ; Priority date assigned
 
 ; Audit (if selected)
@@ -374,8 +374,8 @@ notes = :                                        ; PERM notes
 {@green_card_application}
 = @types.audit_info
 
-application_id = !:                              ; Unique application identifier
-employee_id = !:                                 ; Associated employee
+application_id = :                              ; Unique application identifier
+employee_id = :                                 ; Associated employee
 perm_id = :                                      ; Associated PERM case
 i140_petition_id = :                             ; Associated I-140 petition
 

@@ -46,11 +46,11 @@ changelog[0].rationale = "TRID-compliant closing disclosure structure"
 
 {@closing_disclosure}
 ; Required fields first
-closing_date = !date                                 ; Closing/settlement date
-disbursement_date = !date                            ; Disbursement date
-loan_amount = !#$:(0..)                              ; Total loan amount
-property_address = !@address                         ; Property address
-sale_price = !#$:(0..)                               ; Contract sale price
+closing_date = date                                 ; Closing/settlement date
+disbursement_date = date                            ; Disbursement date
+loan_amount = #$:(0..)                              ; Total loan amount
+property_address = @address                         ; Property address
+sale_price = #$:(0..)                               ; Contract sale price
 
 ; CD identification
 cd_id = :                                            ; Unique CD identifier
@@ -58,7 +58,7 @@ file_number = :                                      ; Escrow/title file number
 loan_number = :                                      ; Lender loan number
 
 ; Transaction type
-transaction_type = !(purchase, refinance)
+transaction_type = (purchase, refinance)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Transaction Information (Page 1)
@@ -75,7 +75,7 @@ product = :                                          ; Loan product description
 ; Parties
 ; ───────────────────────────────────────────────────────────────────────────────
 {.borrower}
-name = !:                                            ; Borrower name
+name = :                                            ; Borrower name
 address = @address                                   ; Borrower address
 
 {@closing_disclosure}
@@ -459,16 +459,16 @@ status_date = date                                   ; Status date
 
 {@settlement_statement}
 ; Required fields first
-closing_date = !date                                 ; Closing date
-property_address = !@address                         ; Property address
-sale_price = !#$:(0..)                               ; Sale price
+closing_date = date                                 ; Closing date
+property_address = @address                         ; Property address
+sale_price = #$:(0..)                               ; Sale price
 
 ; Statement identification
 statement_id = :                                     ; Unique identifier
 file_number = :                                      ; File number
 
 ; Transaction type
-transaction_type = !(cash_purchase, commercial, exchange_1031, refinance)
+transaction_type = (cash_purchase, commercial, exchange_1031, refinance)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Parties

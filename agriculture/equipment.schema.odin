@@ -46,7 +46,7 @@ changelog[0].rationale = "Equipment structures derived from ISOBUS, ADAPT, and A
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-equipment_id = !:                                ; Unique equipment identifier
+equipment_id = :                                ; Unique equipment identifier
 equipment_number = :                             ; Equipment/unit number
 equipment_name = :                               ; Equipment name/nickname
 farm_ref = :                                     ; Farm reference
@@ -56,7 +56,7 @@ farm_ref = :                                     ; Farm reference
 ; ───────────────────────────────────────────────────────────────────────────────
 {.classification}
 equipment_category = (harvesting, haying, implement, planting, power_unit, spraying, tillage, utility)
-equipment_type = !:                              ; Specific type (tractor, combine, planter, etc.)
+equipment_type = :                              ; Specific type (tractor, combine, planter, etc.)
 self_propelled = ?                               ; Self-propelled equipment
 towed = ?                                        ; Towed implement
 mounted = ?                                      ; Mounted implement
@@ -68,8 +68,8 @@ pto_driven = ?                                   ; PTO-driven implement
 ; Manufacturer Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.manufacturer}
-make = !:                                        ; Manufacturer
-model = !:                                       ; Model
+make = :                                        ; Manufacturer
+model = :                                       ; Model
 model_year = ##:(1900..2100)                     ; Model year
 serial_number = *:                               ; Serial number (confidential)
 vin = *:format vin:if equipment_category = power_unit
@@ -168,9 +168,9 @@ precision_ag = @precision_ag
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Record Details
 ; ───────────────────────────────────────────────────────────────────────────────
-maintenance_id = !:                              ; Maintenance record ID
-maintenance_date = !date                         ; Date performed
-equipment_id = !:                                ; Equipment ID
+maintenance_id = :                              ; Maintenance record ID
+maintenance_date = date                         ; Date performed
+equipment_id = :                                ; Equipment ID
 engine_hours = #:(0..)                           ; Engine hours at maintenance
 odometer_miles = #:(0..)                         ; Odometer reading if applicable
 
@@ -180,7 +180,7 @@ odometer_miles = #:(0..)                         ; Odometer reading if applicabl
 {.maintenance_type}
 service_type = (inspection, modification, preventive, repair, safety_recall)
 category = (electrical, engine, hydraulic, mechanical, scheduled_service, tire, transmission)
-description = !:                                 ; Maintenance description
+description = :                                 ; Maintenance description
 severity = (critical, high, low, medium)
 downtime_hours = #:(0..)                         ; Equipment downtime
 
@@ -346,18 +346,18 @@ last_upload = timestamp                          ; Last data upload
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Operation Details
 ; ───────────────────────────────────────────────────────────────────────────────
-operation_id = !:                                ; Operation ID
-operation_date = !date                           ; Date performed
+operation_id = :                                ; Operation ID
+operation_date = date                           ; Date performed
 operation_type = (fertilizing, harvesting, planting, spraying, tillage)
-field_ref = !:                                   ; Field reference
-equipment_id = !:                                ; Equipment used
+field_ref = :                                   ; Field reference
+equipment_id = :                                ; Equipment used
 operator_id = :                                  ; Operator ID
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Area & Duration
 ; ───────────────────────────────────────────────────────────────────────────────
 {.work}
-acres_worked = !#:(0..)                          ; Acres worked
+acres_worked = #:(0..)                          ; Acres worked
 start_time = timestamp                           ; Operation start time
 end_time = timestamp                             ; Operation end time
 duration_hours = #:(0..)                         ; Duration in hours

@@ -43,26 +43,26 @@ changelog[0].rationale = "Business formation and registration per state requirem
 = @types.audit_info
 
 entity_type = (c_corporation, llc, nonprofit_corporation, professional_corporation, s_corporation, sole_proprietorship)
-state_of_formation = !:(2)
+state_of_formation = :(2)
 filing_date = date
 
 ; Entity Name
-entity_name = !:
+entity_name = :
 name_available = ?
 name_reservation_number = :
 
 ; Principal Office
-principal_address = !@types.address
+principal_address = @types.address
 
 ; Registered Agent
 {.registered_agent}
-name = !:
-address = !@types.address
+name = :
+address = @types.address
 consent_to_appointment = ?
 
 {@business_formation}
 ; Purpose
-business_purpose = !:
+business_purpose = :
 
 ; Capital Stock (for corporations)
 {.stock}
@@ -73,22 +73,22 @@ class_of_stock = :
 {@business_formation}
 ; LLC Members (if LLC)
 {.members[]}
-name = !:if entity_type = llc
+name = :if entity_type = llc
 address = @types.address
 ownership_percentage = #:(0..100)
 
 {@business_formation}
 ; Incorporators/Organizers
 {.incorporators[]}
-name = !:
-address = !@types.address
+name = :
+address = @types.address
 signature = :
 signature_date = date
 
 {@business_formation}
 ; Directors/Managers
 {.initial_directors[]}
-name = !:
+name = :
 address = @types.address
 
 {@business_formation}
@@ -108,33 +108,33 @@ expedited_processing = ?
 {@annual_report}
 = @types.audit_info
 
-report_year = !##:(2020..)
-state = !:(2)
+report_year = ##:(2020..)
+state = :(2)
 filing_date = date
-due_date = !date
+due_date = date
 
 ; Entity Information
-entity_name = !:
-entity_id = !:
+entity_name = :
+entity_id = :
 entity_type = (c_corporation, llc, nonprofit_corporation, professional_corporation, s_corporation)
 date_of_formation = date
 state_of_formation = :(2)
 
 ; Principal Office
-principal_address = !@types.address
+principal_address = @types.address
 principal_email = *@types.email
 principal_phone = *@types.phone
 
 ; Registered Agent
 {.registered_agent}
-name = !:
-address = !@types.address
+name = :
+address = @types.address
 
 {@annual_report}
 ; Officers/Directors/Managers
 {.officers[]}
-name = !:
-title = !:
+name = :
+title = :
 address = @types.address
 
 {@annual_report}
@@ -168,32 +168,32 @@ signature_date = date
 {@dba_registration}
 = @types.audit_info
 
-state = !:(2)
+state = :(2)
 county = :
 filing_date = date
 expiration_date = date
 
 ; Legal Entity Information
 {.legal_entity}
-legal_name = !:
+legal_name = :
 entity_type = (corporation, individual, llc, partnership)
 formation_state = :(2)
 entity_id = :
 
 {@dba_registration}
 ; DBA Name
-dba_name = !:
+dba_name = :
 name_available = ?
 
 ; Business Address
-business_address = !@types.address
+business_address = @types.address
 business_phone = *@types.phone
 business_email = *@types.email
 
 ; Owner/Registrant Information
 {.owners[]}
-name = !:
-address = !@types.address
+name = :
+address = @types.address
 ownership_percentage = #:(0..100)
 
 {@dba_registration}
@@ -218,14 +218,14 @@ signature_date = date
 = @types.audit_info
 
 ; Entity Information
-legal_name = !:
+legal_name = :
 trade_name = :
 executor_administrator_trustee_name = :
 
 ; Responsible Party
 {.responsible_party}
-name = !:
-ssn_itin_ein = !*:
+name = :
+ssn_itin_ein = *:
 title = :
 address = @types.address
 
@@ -256,8 +256,8 @@ business_start_date = date
 accounting_year_end = (December, January, February, March, April, May, June, July, August, September, October, November)
 
 ; Principal Activity
-principal_activity = !:
-principal_product_service = !:
+principal_activity = :
+principal_product_service = :
 
 ; Employees
 {.employees}
@@ -283,16 +283,16 @@ phone = :
 {@business_operating_license}
 = @types.audit_info
 
-license_type = !:
+license_type = :
 state = :(2)
 county = :
 municipality = :
 
 ; Business Information
-business_name = !:
+business_name = :
 dba_name = :
 ein = :format ein
-business_address = !@types.address
+business_address = @types.address
 mailing_address = @types.address
 phone = *@types.phone
 email = *@types.email
@@ -300,7 +300,7 @@ website = :
 
 ; Owner/Applicant
 {.applicant}
-name = !:
+name = :
 title = :
 ssn = *:format ssn
 address = @types.address
@@ -310,7 +310,7 @@ email = *@types.email
 {@business_operating_license}
 ; Business Activity
 {.business}
-description = !:
+description = :
 naics_code = ##:(100000..999999)
 start_date = date
 number_employees = ##:(0..)

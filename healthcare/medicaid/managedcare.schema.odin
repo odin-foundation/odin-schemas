@@ -41,9 +41,9 @@ changelog[0].rationale = "Structure derived from 42 CFR Part 438"
 ; Per 42 CFR 438.2 and 438.310
 
 {@mco}
-plan_id = !:                                 ; Plan identifier
-state = !:(2)                                ; State
-plan_type = !(mco, pahp, pccm, pccm_entity, pihp)
+plan_id = :                                 ; Plan identifier
+state = :(2)                                ; State
+plan_type = (mco, pahp, pccm, pccm_entity, pihp)
 
 ; Organization information - inherits from @organization
 {.organization}
@@ -55,8 +55,8 @@ naic_number = :                              ; NAIC company number (MCO-specific
 
 ; Contract information - Per 42 CFR 438.3
 {.contract}
-contract_number = !:                         ; State contract number
-contract_effective = !date                   ; Contract start date
+contract_number = :                         ; State contract number
+contract_effective = date                   ; Contract start date
 contract_end = date                          ; Contract end date
 contract_type = (comprehensive, limited, specialty)
 auto_renewal = ?                             ; Auto-renewal provisions
@@ -107,8 +107,8 @@ new_enrollment_open = ?                      ; Accepting new members
 ; Per 42 CFR 438.3(e)
 
 {@plan_benefits}
-plan_id = !:                                 ; Plan ID
-contract_year = !##:(2000..2100)             ; Contract year
+plan_id = :                                 ; Plan ID
+contract_year = ##:(2000..2100)             ; Contract year
 
 ; Covered services - Per 42 CFR 438.3(c)
 {.services}
@@ -142,7 +142,7 @@ copayment_amounts = @cost_sharing            ; Copayment schedule
 ; Per 42 CFR 438.68 and 438.206
 
 {@network}
-plan_id = !:                                 ; Plan ID
+plan_id = :                                 ; Plan ID
 network_id = :                               ; Network identifier
 
 ; Network adequacy - Per 42 CFR 438.68
@@ -184,13 +184,13 @@ appointment_behavioral = ##:(0..)            ; BH appt (days)
 ; Per 42 CFR 438.54-56
 
 {@member_enrollment}
-member_id = !:                               ; Member Medicaid ID
-plan_id = !:                                 ; Plan ID
-enrollment_type = !(auto_assigned, beneficiary_choice, default, mandatory)
+member_id = :                               ; Member Medicaid ID
+plan_id = :                                 ; Plan ID
+enrollment_type = (auto_assigned, beneficiary_choice, default, mandatory)
 
 ; Enrollment period
 {.period}
-effective_date = !date                       ; Enrollment effective date
+effective_date = date                       ; Enrollment effective date
 end_date = date                              ; Enrollment end date
 disenrollment_date = date                    ; Disenrollment date
 lock_in_start = date                         ; Lock-in start
@@ -226,9 +226,9 @@ for_cause_reason = :                         ; Reason if for-cause
 ; Per 42 CFR 438.4-6
 
 {@capitation_rate}
-plan_id = !:                                 ; Plan ID
-rate_period_start = !date                    ; Rate period start
-rate_period_end = !date                      ; Rate period end
+plan_id = :                                 ; Plan ID
+rate_period_start = date                    ; Rate period start
+rate_period_end = date                      ; Rate period end
 
 ; Rate cell
 {.rate_cell}
@@ -265,8 +265,8 @@ certification_date = date                    ; Certification date
 ; Per 42 CFR 438.330
 
 {@quality}
-plan_id = !:                                 ; Plan ID
-measurement_year = !##:(2000..2100)          ; Measurement year
+plan_id = :                                 ; Plan ID
+measurement_year = ##:(2000..2100)          ; Measurement year
 
 ; Performance measures
 measures[] = @quality_measure                ; Quality measures
@@ -288,7 +288,7 @@ overall_rating = :                           ; Overall rating
 {@quality}
 
 {@quality_measure}
-measure_id = !:                              ; Measure identifier
+measure_id = :                              ; Measure identifier
 measure_name = :                             ; Measure name
 measure_set = (cahps, hedis, other, state)   ; Measure set
 domain = :                                   ; Quality domain
@@ -309,14 +309,14 @@ met_benchmark = ?                            ; Met benchmark
 ; Per 42 CFR 438.400-424
 
 {@grievance}
-grievance_id = !:                            ; Grievance ID
-plan_id = !:                                 ; Plan ID
-member_id = !:                               ; Member ID
-grievance_type = !(grievance, appeal)        ; Type
+grievance_id = :                            ; Grievance ID
+plan_id = :                                 ; Plan ID
+member_id = :                               ; Member ID
+grievance_type = (grievance, appeal)        ; Type
 
 ; Filing
 {.filing}
-received_date = !date                        ; Date received
+received_date = date                        ; Date received
 filing_method = (mail, oral, written)
 expedited = ?                                ; Expedited request
 expedited_approved = ?                       ; Expedited approved
@@ -333,7 +333,7 @@ related_service = :                          ; Related service/claim
 
 ; Resolution - Per 42 CFR 438.408
 {.resolution}
-status = !(dismissed, pending, resolved)
+status = (dismissed, pending, resolved)
 resolution_date = date                       ; Resolution date
 resolution = :                               ; Resolution description
 upheld = ?                                   ; Plan action upheld (appeals)

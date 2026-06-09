@@ -45,7 +45,7 @@ changelog[0].rationale = "Personal lines coverage for collector and antique vehi
 ; Classifications for collector and classic vehicles.
 
 {@ca_vehicle_class}
-classification = !(
+classification = (
     antique,                                  ; 25+ years, substantially original
     barn_find,                                ; Unrestored original discovery
     classic,                                  ; 20-40 years, collectible
@@ -78,7 +78,7 @@ registration_type = (
 
 {@ca_condition}
 ; Overall condition rating (AACA scale)
-overall_rating = !(
+overall_rating = (
     concours,                                 ; 1 - Perfect, show quality
     excellent,                                ; 2 - Excellent, minor flaws
     fine,                                     ; 3 - Well above average
@@ -135,7 +135,7 @@ registry_listed = ?                           ; Listed in registry
 
 {@ca_restoration}
 ; Restoration status
-restoration_status = !(
+restoration_status = (
     barn_find,                                ; Unrestored as discovered
     body_off,                                 ; Body-off restoration
     concours,                                 ; Concours-level restoration
@@ -171,8 +171,8 @@ replacement_components[] = :                  ; List of replacements
 
 {@ca_valuation}
 ; Required fields first
-agreed_value = !#$:(0..)                      ; Agreed insurance value
-valuation_date = !date                        ; Date of valuation
+agreed_value = #$:(0..)                      ; Agreed insurance value
+valuation_date = date                        ; Date of valuation
 
 ; Optional fields
 appraiser_credentials = :                     ; Appraiser qualifications
@@ -227,12 +227,12 @@ next_appraisal = date                         ; Next required
 
 {@ca_vehicle}
 ; Required fields first
-body_style = !:                               ; Body style description
-make = !:                                     ; Manufacturer
-model = !:                                    ; Model name
-model_year = !##:(1886..2100)                 ; Model year
-vehicle_class = !@ca_vehicle_class            ; Classification
-vin = !*:                                     ; VIN or serial number
+body_style = :                               ; Body style description
+make = :                                     ; Manufacturer
+model = :                                    ; Model name
+model_year = ##:(1886..2100)                 ; Model year
+vehicle_class = @ca_vehicle_class            ; Classification
+vin = *:                                     ; VIN or serial number
 
 ; Optional fields
 body_number = :                               ; Body number (if separate)
@@ -310,7 +310,7 @@ security_system = ?                           ; General security
 
 {@ca_usage}
 ; Required restrictions
-primary_use = !(
+primary_use = (
     club_activities,                          ; Club events only
     exhibition,                               ; Shows and exhibitions
     limited_pleasure,                         ; Limited pleasure use
@@ -344,9 +344,9 @@ touring = ?                                   ; Extended touring
 
 {@ca_liability}
 ; Required fields first
-bodily_injury_per_accident = !#$:(0..)        ; BI per accident
-bodily_injury_per_person = !#$:(0..)          ; BI per person
-property_damage = !#$:(0..)                   ; PD limit
+bodily_injury_per_accident = #$:(0..)        ; BI per accident
+bodily_injury_per_person = #$:(0..)          ; BI per person
+property_damage = #$:(0..)                   ; PD limit
 
 ; Optional fields
 combined_single_limit = #$:(0..)              ; CSL if used
@@ -359,8 +359,8 @@ liability_form = (combined_single_limit, split_limits)
 
 {@ca_physical_damage}
 ; Required fields first
-agreed_value = !#$:(0..)                      ; Agreed value amount
-coverage_type = !(collision, comprehensive)   ; Coverage type
+agreed_value = #$:(0..)                      ; Agreed value amount
+coverage_type = (collision, comprehensive)   ; Coverage type
 
 ; Optional fields
 deductible = #$:(0..)                         ; Deductible amount
@@ -441,7 +441,7 @@ provider = :                                  ; Preferred provider
 
 {@ca_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total annual premium
+total_premium = #$:(0..)                     ; Total annual premium
 
 ; Optional fields
 collision_premium = #$:(0..)                  ; Collision premium
@@ -475,8 +475,8 @@ vehicle_tracking = ?                          ; GPS tracking
 
 {@ca_driver}
 ; Required fields first
-date_of_birth = !*date                        ; Driver DOB
-name = !@person_name                          ; Driver name
+date_of_birth = *date                        ; Driver DOB
+name = @person_name                          ; Driver name
 
 ; Optional fields
 collector_experience_years = ##               ; Years as collector
@@ -508,8 +508,8 @@ minor_violations_5_years = ##:(0..10)         ; Minor violations
 
 {@ca_prior_claim}
 ; Required fields first
-claim_date = !date                            ; Date of loss
-claim_type = !(
+claim_date = date                            ; Date of loss
+claim_type = (
     collision,
     comprehensive,
     diminished_value,
@@ -555,8 +555,8 @@ unlicensed_driver = ?                         ; Unlicensed driver
 
 {@ca_endorsement}
 ; Required fields first
-effective_date = !date                        ; Effective date
-endorsement_type = !(
+effective_date = date                        ; Effective date
+endorsement_type = (
     agreed_value_increase,                    ; Value increase
     diminished_value,                         ; Diminished value
     inflation_guard,                          ; Automatic increase
@@ -580,12 +580,12 @@ premium = #$:(0..)                            ; Endorsement premium
 
 {@classic_auto_policy}
 ; Required fields first
-drivers[] = !@ca_driver                       ; Covered drivers
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@ca_liability                    ; Liability coverage
-policy_number = !:                            ; Policy number
-vehicles[] = !@ca_vehicle                     ; Covered vehicles
+drivers[] = @ca_driver                       ; Covered drivers
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @ca_liability                    ; Liability coverage
+policy_number = :                            ; Policy number
+vehicles[] = @ca_vehicle                     ; Covered vehicles
 
 ; Invariants
 :invariant expiration_date > effective_date

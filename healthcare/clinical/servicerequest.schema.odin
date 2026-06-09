@@ -39,7 +39,7 @@ changelog[0].rationale = "ServiceRequest resource derived from FHIR R4/R5 specif
 
 {@service_request}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: ServiceRequest.identifier
@@ -61,10 +61,10 @@ replaces[] = @fhir.reference                  ; Request(s) this replaces
 requisition = @fhir.identifier                ; Composite request identifier
 
 ; Status - FHIR: ServiceRequest.status (required)
-status = !(active, completed, draft, entered_in_error, on_hold, revoked, unknown)
+status = (active, completed, draft, entered_in_error, on_hold, revoked, unknown)
 
 ; Intent - FHIR: ServiceRequest.intent (required)
-intent = !(directive, filler_order, instance_order, option, order, original_order, plan, proposal, reflex_order)
+intent = (directive, filler_order, instance_order, option, order, original_order, plan, proposal, reflex_order)
 
 ; Categories - FHIR: ServiceRequest.category
 categories[] = @fhir.codeable_concept         ; Classification of service
@@ -87,7 +87,7 @@ quantity_ratio = @fhir.ratio                  ; Service amount as ratio
 quantity_range = @fhir.range                  ; Service amount as range
 
 ; Subject - FHIR: ServiceRequest.subject (required)
-subject = !@fhir.reference                    ; Individual or entity the service is for
+subject = @fhir.reference                    ; Individual or entity the service is for
 
 ; Encounter - FHIR: ServiceRequest.encounter
 encounter = @fhir.reference                   ; Encounter motivating request

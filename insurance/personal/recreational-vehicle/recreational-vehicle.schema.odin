@@ -45,7 +45,7 @@ changelog[0].rationale = "Personal lines coverage for RVs, motorhomes, and trail
 ; Standard RV classifications per RVIA standards.
 
 {@rv_type}
-classification = !(
+classification = (
     class_a_diesel,                           ; Diesel pusher motorhome
     class_a_gas,                              ; Gas Class A motorhome
     class_b,                                  ; Camper van/van conversion
@@ -70,11 +70,11 @@ towable = ?                                   ; Requires tow vehicle
 
 {@rv_vehicle}
 ; Required fields first
-body_type = !@rv_type                         ; RV classification
-make = !:                                     ; Manufacturer (Thor, Winnebago, etc.)
-model = !:                                    ; Model name
-model_year = !##:(1950..2100)                 ; Model year
-vin = !*:/^[A-HJ-NPR-Z0-9]{17}$/              ; Vehicle identification number
+body_type = @rv_type                         ; RV classification
+make = :                                     ; Manufacturer (Thor, Winnebago, etc.)
+model = :                                    ; Model name
+model_year = ##:(1950..2100)                 ; Model year
+vin = *:/^[A-HJ-NPR-Z0-9]{17}$/              ; Vehicle identification number
 
 ; Optional fields
 axle_count = ##:(1..5)                        ; Number of axles
@@ -173,7 +173,7 @@ storage_type = (
 
 {@rv_usage}
 ; Required fields first
-primary_use = !(
+primary_use = (
     full_time_living,                         ; Primary residence
     occasional_vacation,                      ; Few trips per year
     part_time_living,                         ; Extended stays
@@ -208,9 +208,9 @@ towed_vehicle_value = #$:(0..):if towed_vehicle = true
 
 {@rv_liability}
 ; Required fields first
-bodily_injury_per_person = !#$:(0..)          ; BI per person limit
-bodily_injury_per_accident = !#$:(0..)        ; BI per accident limit
-property_damage = !#$:(0..)                   ; PD limit
+bodily_injury_per_person = #$:(0..)          ; BI per person limit
+bodily_injury_per_accident = #$:(0..)        ; BI per accident limit
+property_damage = #$:(0..)                   ; PD limit
 
 ; Optional fields
 combined_single_limit = #$:(0..)              ; CSL if used instead
@@ -250,7 +250,7 @@ included = ?                                  ; Coverage included
 
 {@rv_physical_damage}
 ; Required fields first
-coverage_type = !(comprehensive, collision)    ; Coverage type
+coverage_type = (comprehensive, collision)    ; Coverage type
 
 ; Optional fields
 actual_cash_value = #$:(0..)                  ; ACV valuation
@@ -346,7 +346,7 @@ max_days = ##                                 ; Maximum days covered
 
 {@rv_full_timer}
 ; Required if full-time living
-full_time_resident = !?                       ; Lives in RV full-time
+full_time_resident = ?                       ; Lives in RV full-time
 
 ; Optional coverages
 contents_replacement_cost = ?                 ; RC on contents
@@ -392,8 +392,8 @@ service_calls_per_year = ##                   ; Annual calls allowed
 
 {@rv_towed_vehicle}
 ; Required fields
-towed_vehicle_vin = !*:/^[A-HJ-NPR-Z0-9]{17}$/  ; Towed vehicle VIN
-towed_vehicle_value = !#$:(0..)               ; Towed vehicle value
+towed_vehicle_vin = *:/^[A-HJ-NPR-Z0-9]{17}$/  ; Towed vehicle VIN
+towed_vehicle_value = #$:(0..)               ; Towed vehicle value
 
 ; Optional fields
 collision_coverage = ?                        ; Collision while towed
@@ -411,8 +411,8 @@ year = ##                                     ; Towed vehicle year
 
 {@rv_driver}
 ; Required fields first
-date_of_birth = !*date                        ; Driver DOB
-name = !@person_name                          ; Driver name
+date_of_birth = *date                        ; Driver DOB
+name = @person_name                          ; Driver name
 
 ; Optional fields
 driver_id = :                                 ; Internal identifier
@@ -460,7 +460,7 @@ rv_driving_course = ?                         ; RV-specific training
 
 {@rv_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total annual premium
+total_premium = #$:(0..)                     ; Total annual premium
 
 ; Optional fields
 collision_premium = #$:(0..)                  ; Collision premium
@@ -501,8 +501,8 @@ storage = ?                                   ; Seasonal storage
 
 {@rv_prior_claim}
 ; Required fields first
-claim_date = !date                            ; Date of loss
-claim_type = !(
+claim_date = date                            ; Date of loss
+claim_type = (
     collision,                                ; Collision loss
     comprehensive,                            ; Comp loss
     liability_bi,                             ; BI claim
@@ -544,8 +544,8 @@ unlicensed_driver = ?                         ; Unlicensed driver
 
 {@rv_endorsement}
 ; Required fields first
-effective_date = !date                        ; Endorsement effective date
-endorsement_type = !(
+effective_date = date                        ; Endorsement effective date
+endorsement_type = (
     agreed_value,                             ; Agreed value coverage
     attached_accessories,                     ; Accessories coverage
     emergency_expense,                        ; Emergency expense
@@ -573,12 +573,12 @@ premium = #$:(0..)                            ; Endorsement premium
 
 {@rv_policy}
 ; Required fields first
-drivers[] = !@rv_driver                       ; Covered drivers
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@rv_liability                    ; Liability coverage
-policy_number = !:                            ; Policy number
-vehicle = !@rv_vehicle                        ; Covered RV
+drivers[] = @rv_driver                       ; Covered drivers
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @rv_liability                    ; Liability coverage
+policy_number = :                            ; Policy number
+vehicle = @rv_vehicle                        ; Covered RV
 
 ; Invariants
 :invariant expiration_date > effective_date

@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial entertainment coverage for sports organizat
 ; ===================================================================================
 
 {@sp_org_type}
-organization_class = !(
+organization_class = (
     amateur_league,                           ; Amateur sports league
     college_athletics,                        ; College/university
     event_organizer,                          ; Sports event org
@@ -103,9 +103,9 @@ level = (
 
 {@sp_organization}
 ; Required fields first
-organization_name = !:                        ; Organization name
-organization_type = !@sp_org_type             ; Organization class
-participant_count = !##                       ; Registered participants
+organization_name = :                        ; Organization name
+organization_type = @sp_org_type             ; Organization class
+participant_count = ##                       ; Registered participants
 
 ; Optional fields
 address = @address                            ; Primary address
@@ -136,8 +136,8 @@ year_established = ##                         ; Year founded
 
 {@sp_liability}
 ; Required fields first
-each_occurrence = !#$:(0..)                   ; Per occurrence limit
-general_aggregate = !#$:(0..)                 ; Aggregate limit
+each_occurrence = #$:(0..)                   ; Per occurrence limit
+general_aggregate = #$:(0..)                 ; Aggregate limit
 
 ; Optional fields
 abuse_molestation = ?                         ; Sexual abuse coverage
@@ -264,7 +264,7 @@ windstorm = ?:if included = true              ; Windstorm
 
 {@sp_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 athlete_premium = #$:(0..)                    ; Athlete coverage
@@ -296,8 +296,8 @@ sport_factor = #                              ; Sport hazard
 
 {@sp_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     abuse,                                    ; Sexual abuse
     auto,                                     ; Auto accident
     bodily_injury,                            ; BI claim
@@ -353,11 +353,11 @@ sport = :                                     ; Sport involved
 
 {@sports_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@sp_liability                    ; General liability
-organization = !@sp_organization              ; Insured organization
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @sp_liability                    ; General liability
+organization = @sp_organization              ; Insured organization
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

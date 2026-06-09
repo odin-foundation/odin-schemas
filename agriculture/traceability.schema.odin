@@ -49,7 +49,7 @@ changelog[0].rationale = "Traceability structures derived from FDA FSMA 204, GS1
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Lot Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-lot_number = !:                                  ; Internal lot number
+lot_number = :                                  ; Internal lot number
 gtin = :                                         ; GS1 Global Trade Item Number
 lot_code = :                                     ; Lot code (case label)
 traceability_lot_code = :                        ; FDA TLC (FSMA 204)
@@ -59,7 +59,7 @@ sscc = :                                         ; GS1 Serial Shipping Container
 ; Product Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.product}
-product_name = !:                                ; Product name
+product_name = :                                ; Product name
 product_description = :                          ; Product description
 commodity_code = :                               ; Commodity code
 variety = :                                      ; Variety/cultivar
@@ -74,7 +74,7 @@ pack_date = date                                 ; Pack/processing date
 ; Origin (FSMA 204 Required)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.origin}
-grower_name = !:                                 ; Grower/producer name
+grower_name = :                                 ; Grower/producer name
 farm_ref = :                                     ; Farm reference
 growing_location = @types.address                ; Growing location
 field_ref = :                                    ; Field reference
@@ -87,7 +87,7 @@ country_of_origin = :(2..3)                      ; Country of origin
 ; Quantity
 ; ───────────────────────────────────────────────────────────────────────────────
 {.quantity}
-initial_quantity = !#:(0..)                      ; Initial quantity
+initial_quantity = #:(0..)                      ; Initial quantity
 current_quantity = #:(0..)                       ; Current quantity
 quantity_unit = (boxes, bushels, cases, cwt, lbs, pallets, pounds, units)
 initial_weight_lbs = #:(0..)                     ; Initial weight
@@ -136,8 +136,8 @@ chain_of_custody[] = @chain_of_custody           ; Custody transfers
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Event Details
 ; ───────────────────────────────────────────────────────────────────────────────
-event_id = !:                                    ; Event ID
-event_date = !date                               ; Event date
+event_id = :                                    ; Event ID
+event_date = date                               ; Event date
 event_time = timestamp                           ; Event timestamp
 event_type = (
     cooling,                                     ; Initial cooling
@@ -148,13 +148,13 @@ event_type = (
     transformation,                              ; Transformation event (FSMA TTE)
     transporting                                 ; Transportation
 )
-lot_number = !:                                  ; Lot number
+lot_number = :                                  ; Lot number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Location
 ; ───────────────────────────────────────────────────────────────────────────────
 {.location}
-location_name = !:                               ; Location/facility name
+location_name = :                               ; Location/facility name
 location_address = @types.address                ; Location address
 location_gln = :                                 ; GS1 Global Location Number
 location_type = (cold_storage, distribution_center, farm, packing_house, processor, retail, warehouse)
@@ -167,9 +167,9 @@ location_type = (cold_storage, distribution_center, farm, packing_house, process
 {.harvesting}
 field_ref = :if event_type = harvesting          ; Field reference
 growing_location = @types.address:if event_type = harvesting
-harvest_date = !date:if event_type = harvesting
+harvest_date = date:if event_type = harvesting
 traceability_lot_code = :if event_type = harvesting
-commodity = !:if event_type = harvesting         ; Commodity harvested
+commodity = :if event_type = harvesting         ; Commodity harvested
 quantity = #:(0..):if event_type = harvesting    ; Quantity harvested
 quantity_unit = :if event_type = harvesting
 
@@ -205,7 +205,7 @@ quantity_packed = #:(0..):if event_type = packing
 ; Receiving Event (FSMA RTE)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.receiving}
-received_from = !:if event_type = receiving      ; Sender name
+received_from = :if event_type = receiving      ; Sender name
 sender_address = @types.address:if event_type = receiving
 traceability_lot_code = :if event_type = receiving
 quantity_received = #:(0..):if event_type = receiving
@@ -221,7 +221,7 @@ rejection_reason = :if event_type = receiving
 ; Shipping Event (FSMA STE)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.shipping}
-shipped_to = !:if event_type = shipping          ; Recipient name
+shipped_to = :if event_type = shipping          ; Recipient name
 recipient_address = @types.address:if event_type = shipping
 traceability_lot_code = :if event_type = shipping
 quantity_shipped = #:(0..):if event_type = shipping
@@ -237,8 +237,8 @@ reference_document = :if event_type = shipping   ; BOL, invoice, etc.
 ; ───────────────────────────────────────────────────────────────────────────────
 {.transformation}
 process_type = :if event_type = transformation   ; Process type
-input_lots[] = !:if event_type = transformation  ; Input lot numbers
-output_lots[] = !:if event_type = transformation ; Output lot numbers
+input_lots[] = :if event_type = transformation  ; Input lot numbers
+output_lots[] = :if event_type = transformation ; Output lot numbers
 process_date = date:if event_type = transformation
 process_description = :if event_type = transformation
 
@@ -286,16 +286,16 @@ condition_notes = :                              ; Condition observations
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Transfer Details
 ; ───────────────────────────────────────────────────────────────────────────────
-transfer_id = !:                                 ; Transfer ID
-transfer_date = !date                            ; Transfer date
+transfer_id = :                                 ; Transfer ID
+transfer_date = date                            ; Transfer date
 transfer_time = timestamp                        ; Transfer timestamp
-lot_number = !:                                  ; Lot number
+lot_number = :                                  ; Lot number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; From (Transferor)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.from}
-from_entity = !:                                 ; Transferor name
+from_entity = :                                 ; Transferor name
 from_location = @types.address                   ; Transferor location
 from_contact = :                                 ; Contact name
 relinquished_by = :                              ; Person relinquishing custody
@@ -308,7 +308,7 @@ relinquish_timestamp = timestamp                 ; Relinquish timestamp
 ; To (Transferee)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.to}
-to_entity = !:                                   ; Transferee name
+to_entity = :                                   ; Transferee name
 to_location = @types.address                     ; Transferee location
 to_contact = :                                   ; Contact name
 received_by = :                                  ; Person accepting custody
@@ -321,8 +321,8 @@ receive_timestamp = timestamp                    ; Receive timestamp
 ; Product Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.product}
-product_description = !:                         ; Product description
-quantity = !#:(0..)                              ; Quantity transferred
+product_description = :                         ; Product description
+quantity = #:(0..)                              ; Quantity transferred
 quantity_unit = :                                ; Unit of measure
 temperature_f = #                                ; Temperature at transfer
 condition = :                                    ; Product condition
@@ -347,8 +347,8 @@ special_instructions = :                         ; Special handling instructions
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Recall Details
 ; ───────────────────────────────────────────────────────────────────────────────
-recall_number = !:                               ; Recall identifier
-recall_date = !date                              ; Recall initiation date
+recall_number = :                               ; Recall identifier
+recall_date = date                              ; Recall initiation date
 recall_type = (company_initiated, fda_requested, fsis_requested, voluntary)
 recall_class = (class_i, class_ii, class_iii)   ; FDA recall classification
 recall_status = (completed, in_progress, ongoing, terminated)
@@ -357,10 +357,10 @@ recall_status = (completed, in_progress, ongoing, terminated)
 ; Product Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.product}
-product_name = !:                                ; Product name
-product_description = !:                         ; Product description
+product_name = :                                ; Product name
+product_description = :                         ; Product description
 brand = :                                        ; Brand name
-lot_numbers[] = !:                               ; Affected lot numbers
+lot_numbers[] = :                               ; Affected lot numbers
 gtin = :                                         ; GTIN
 pack_dates[] = date                              ; Pack dates affected
 upc_codes[] = :                                  ; UPC codes
@@ -371,7 +371,7 @@ upc_codes[] = :                                  ; UPC codes
 ; Reason
 ; ───────────────────────────────────────────────────────────────────────────────
 {.reason}
-reason_description = !:                          ; Recall reason
+reason_description = :                          ; Recall reason
 hazard_type = (allergen, biological, chemical, foreign_material, labeling, physical, undeclared_ingredient)
 contaminant = :                                  ; Specific contaminant/allergen
 health_hazard = (high, low, medium)             ; Health hazard evaluation
@@ -382,7 +382,7 @@ health_hazard = (high, low, medium)             ; Health hazard evaluation
 ; Scope
 ; ───────────────────────────────────────────────────────────────────────────────
 {.scope}
-quantity_affected = !#:(0..)                     ; Total quantity affected
+quantity_affected = #:(0..)                     ; Total quantity affected
 quantity_unit = :                                ; Unit of measure
 quantity_distributed = #:(0..)                   ; Quantity distributed
 quantity_recovered = #:(0..)                     ; Quantity recovered
@@ -395,7 +395,7 @@ distribution_pattern = :                         ; Geographic distribution
 ; Company Conducting Recall
 ; ───────────────────────────────────────────────────────────────────────────────
 {.company}
-company_name = !:                                ; Company name
+company_name = :                                ; Company name
 company_address = @types.address                 ; Company address
 contact_person = :                               ; Contact person
 contact_phone = *@types.phone                    ; Contact phone
@@ -470,9 +470,9 @@ final_disposition = :                            ; Final product disposition
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Exercise Details
 ; ───────────────────────────────────────────────────────────────────────────────
-exercise_id = !:                                 ; Exercise identifier
-exercise_date = !date                            ; Exercise date
-product_selected = !:                            ; Product selected for exercise
+exercise_id = :                                 ; Exercise identifier
+exercise_date = date                            ; Exercise date
+product_selected = :                            ; Product selected for exercise
 lot_selected = :                                 ; Lot selected
 reason_simulated = :                             ; Simulated recall reason
 

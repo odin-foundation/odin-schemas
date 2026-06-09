@@ -47,10 +47,10 @@ changelog[0].rationale = "Standard usage data structures per NAESB, Green Button
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
-meter_number = !:                                  ; Meter identifier
-start_date = !date                                 ; Usage period start
-end_date = !date                                   ; Usage period end
+account_number = *:                                ; Account identifier
+meter_number = :                                  ; Meter identifier
+start_date = date                                 ; Usage period start
+end_date = date                                   ; Usage period end
 
 ; Consumption
 consumption_kwh = #:(0..)                          ; Total kWh consumed
@@ -111,10 +111,10 @@ excess_generation_kwh = #:(0..)                    ; Excess sent to grid
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
-meter_number = !:                                  ; Meter identifier
-start_date = !date                                 ; Usage period start
-end_date = !date                                   ; Usage period end
+account_number = *:                                ; Account identifier
+meter_number = :                                  ; Meter identifier
+start_date = date                                 ; Usage period start
+end_date = date                                   ; Usage period end
 
 ; Consumption
 consumption_therms = #:(0..)                       ; Consumption in therms
@@ -155,10 +155,10 @@ transportation_only = ?                            ; Transportation service only
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
-meter_number = !:                                  ; Meter identifier
-start_date = !date                                 ; Usage period start
-end_date = !date                                   ; Usage period end
+account_number = *:                                ; Account identifier
+meter_number = :                                  ; Meter identifier
+start_date = date                                 ; Usage period start
+end_date = date                                   ; Usage period end
 
 ; Consumption
 consumption_gallons = #:(0..)                      ; Consumption in gallons
@@ -207,15 +207,15 @@ leak_suspected = ?                                 ; Possible leak
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
-meter_number = !:                                  ; Meter identifier
+account_number = *:                                ; Account identifier
+meter_number = :                                  ; Meter identifier
 commodity = (electric, gas, water)                ; Commodity type
-interval_minutes = !##:(1..)                       ; Interval length (15, 30, 60, etc.)
+interval_minutes = ##:(1..)                       ; Interval length (15, 30, 60, etc.)
 
 ; Interval data points
 {.intervals[]}
-start_timestamp = !timestamp                       ; Interval start
-end_timestamp = !timestamp                         ; Interval end
+start_timestamp = timestamp                       ; Interval start
+end_timestamp = timestamp                         ; Interval end
 consumption = #:(0..)                              ; Consumption for interval
 demand = #:(0..)                                   ; Demand for interval (electric)
 uom = (ccf, gallons, kva, kvar, kvah, kvarh, kw, kwh, mcf, therms)
@@ -242,10 +242,10 @@ estimated_intervals = ##:(0..)                     ; Number estimated
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
-meter_number = !:                                  ; Meter identifier
+account_number = *:                                ; Account identifier
+meter_number = :                                  ; Meter identifier
 commodity = (electric, gas, water)                ; Commodity type
-usage_date = !date                                 ; Usage date
+usage_date = date                                 ; Usage date
 
 ; Consumption
 consumption = #:(0..)                              ; Daily consumption
@@ -279,11 +279,11 @@ prior_day_consumption = #:(0..)                    ; Previous day
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
-meter_number = !:                                  ; Meter identifier
+account_number = *:                                ; Account identifier
+meter_number = :                                  ; Meter identifier
 commodity = (electric, gas, water)                ; Commodity type
-year = !##:(2000..)                                ; Year
-month = !##:(1..12)                                ; Month
+year = ##:(2000..)                                ; Year
+month = ##:(1..12)                                ; Month
 
 ; Consumption
 consumption = #:(0..)                              ; Monthly consumption
@@ -321,10 +321,10 @@ average_rate = #$:(0..)                            ; Average rate per unit
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
-meter_number = !:                                  ; Meter identifier
+account_number = *:                                ; Account identifier
+meter_number = :                                  ; Meter identifier
 commodity = (electric, gas, water)                ; Commodity type
-year = !##:(2000..)                                ; Calendar or fiscal year
+year = ##:(2000..)                                ; Calendar or fiscal year
 
 ; Consumption
 consumption = #:(0..)                              ; Annual consumption
@@ -363,12 +363,12 @@ average_monthly_bill = #$                          ; Average monthly bill
 = @types.audit_info
 
 ; Required fields first
-account_number = !*:                                ; Account identifier
+account_number = *:                                ; Account identifier
 commodity = (electric, gas, water)                ; Commodity type
-benchmark_period = !:                              ; Period description
+benchmark_period = :                              ; Period description
 
 ; Actual usage
-actual_consumption = !#:(0..)                      ; Actual usage
+actual_consumption = #:(0..)                      ; Actual usage
 uom = (ccf, gallons, kwh, mcf, therms)            ; Unit of measure
 
 ; Benchmarks

@@ -46,23 +46,23 @@ changelog[0].rationale = "Standard billing structures per NAESB, FERC, and NARUC
 = @types.audit_info
 
 ; Required fields first
-bill_number = !:                                   ; Unique bill identifier
-account_number = !*:                                ; Account number
-bill_date = !date                                  ; Bill generation date
-due_date = !date                                   ; Payment due date
+bill_number = :                                   ; Unique bill identifier
+account_number = *:                                ; Account number
+bill_date = date                                  ; Bill generation date
+due_date = date                                   ; Payment due date
 status = (adjusted, cancelled, paid, partial, pending, void)
 
 ; Service period
-service_start_date = !date                         ; Service period start
-service_end_date = !date                           ; Service period end
+service_start_date = date                         ; Service period start
+service_end_date = date                           ; Service period end
 billing_days = ##:(1..)                            ; Number of days billed
 
 ; Amounts
-current_charges = !#$:(0..)                        ; Current period charges
+current_charges = #$:(0..)                        ; Current period charges
 previous_balance = #$                              ; Prior unpaid balance (can be negative)
 payments_received = #$:(0..)                       ; Payments since last bill
 adjustments = #$                                   ; Adjustments (can be negative)
-total_amount_due = !#$                             ; Total amount due (can be negative for credit)
+total_amount_due = #$                             ; Total amount due (can be negative for credit)
 
 ; Payment terms
 minimum_due = #$:(0..)                             ; Minimum payment required
@@ -94,8 +94,8 @@ budget_message = :                                 ; Budget billing message
 {@bill.charges[]}
 ; Required fields first
 charge_type = (adjustment, commodity, credit, delivery, demand, fee, tax, transmission)
-description = !:                                   ; Charge description
-amount = !#$                                       ; Charge amount (can be negative for credits)
+description = :                                   ; Charge description
+amount = #$                                       ; Charge amount (can be negative for credits)
 
 ; Optional fields
 charge_code = :                                    ; Internal charge code
@@ -137,10 +137,10 @@ proration_factor = #:(0..1)                        ; Proration multiplier
 {@commodity_charge}
 ; Required fields first
 commodity = (electric, gas, water)                ; Commodity type
-consumption = !#:(0..)                             ; Consumption amount
+consumption = #:(0..)                             ; Consumption amount
 uom = (ccf, gallons, kwh, mcf, therms)            ; Unit of measure
-rate = !#$:(0..)                                   ; Rate per unit
-charge = !#$:(0..)                                 ; Total charge
+rate = #$:(0..)                                   ; Rate per unit
+charge = #$:(0..)                                 ; Total charge
 
 ; Optional fields
 rate_schedule = :                                  ; Rate schedule code
@@ -165,9 +165,9 @@ supplier_rate = #$:(0..)                           ; Supplier's rate
 
 {@demand_charge}
 ; Required fields first
-demand_kw = !#:(0..)                               ; Billing demand in kW
-rate = !#$:(0..)                                   ; Rate per kW
-charge = !#$:(0..)                                 ; Total demand charge
+demand_kw = #:(0..)                               ; Billing demand in kW
+rate = #$:(0..)                                   ; Rate per kW
+charge = #$:(0..)                                 ; Total demand charge
 
 ; Optional fields
 demand_type = (actual, contract, ratchet)          ; Demand basis
@@ -192,8 +192,8 @@ capacity_charge = #$:(0..)                         ; Capacity charge
 {@delivery_charge}
 ; Required fields first
 charge_type = (customer, delivery, distribution, transmission)
-description = !:                                   ; Charge description
-amount = !#$:(0..)                                 ; Charge amount
+description = :                                   ; Charge description
+amount = #$:(0..)                                 ; Charge amount
 
 ; Optional fields
 basis = (consumption, demand, fixed)               ; Charge basis
@@ -214,8 +214,8 @@ service_charge = #$:(0..)                          ; Service availability charge
 
 {@bill.taxes[]}
 ; Required fields first
-tax_type = !:                                      ; Tax type description
-amount = !#$:(0..)                                 ; Tax amount
+tax_type = :                                      ; Tax type description
+amount = #$:(0..)                                 ; Tax amount
 
 ; Optional fields
 tax_code = :                                       ; Tax jurisdiction code
@@ -227,8 +227,8 @@ state_province = :(2)                              ; State/province code
 {@bill}
 {@bill.fees[]}
 ; Required fields first
-fee_type = !:                                      ; Fee type description
-amount = !#$:(0..)                                 ; Fee amount
+fee_type = :                                      ; Fee type description
+amount = #$:(0..)                                 ; Fee amount
 
 ; Optional fields
 fee_code = :                                       ; Fee code
@@ -244,8 +244,8 @@ reason = :                                         ; Reason for fee
 {@bill.credits[]}
 ; Required fields first
 credit_type = (adjustment, grant, overpayment, rebate, refund)
-description = !:                                   ; Credit description
-amount = !#$:(0..)                                 ; Credit amount
+description = :                                   ; Credit description
+amount = #$:(0..)                                 ; Credit amount
 
 ; Optional fields
 credit_code = :                                    ; Credit code
@@ -258,8 +258,8 @@ program = :                                        ; Program name if applicable
 {@bill.adjustments[]}
 ; Required fields first
 adjustment_type = (billing_error, estimated_to_actual, meter_error, rate_change, rebill, usage_correction)
-description = !:                                   ; Adjustment description
-amount = !#$                                       ; Adjustment amount (can be negative)
+description = :                                   ; Adjustment description
+amount = #$                                       ; Adjustment amount (can be negative)
 
 ; Optional fields
 adjustment_code = :                                ; Adjustment code
@@ -278,8 +278,8 @@ approval_date = date                               ; Approval date
 = @types.payment
 
 ; Required fields first
-payment_id = !:                                    ; Unique payment identifier
-account_number = !*:                                ; Account number
+payment_id = :                                    ; Unique payment identifier
+account_number = *:                                ; Account number
 
 ; Utility-specific payment fields
 ; Payment source
@@ -291,7 +291,7 @@ card_last_four = *:(4)                             ; Last 4 digits of card
 ; Payment allocation
 {.allocations[]}
 bill_number = :                                    ; Bill being paid
-allocation_amount = !#$:(0..)                      ; Amount allocated to bill
+allocation_amount = #$:(0..)                      ; Amount allocated to bill
 charge_type = :                                    ; Charge type if specific
 
 {@payment}
@@ -321,8 +321,8 @@ reversed_date = date                               ; Date reversed if applicable
 
 {@rate_schedule}
 ; Required fields first
-rate_code = !:                                     ; Rate schedule code
-rate_name = !:                                     ; Rate schedule name
+rate_code = :                                     ; Rate schedule code
+rate_name = :                                     ; Rate schedule name
 commodity = (electric, gas, water)                ; Commodity type
 customer_type = (commercial, government, industrial, residential)
 
@@ -338,16 +338,16 @@ service_availability = #$:(0..)                    ; Service availability charge
 
 ; Energy/volume rates (tiered)
 {.tiers[]}
-tier_number = !##:(1..)                            ; Tier number
-tier_start = !#:(0..)                              ; Tier start quantity
+tier_number = ##:(1..)                            ; Tier number
+tier_start = #:(0..)                              ; Tier start quantity
 tier_end = #:(0..)                                 ; Tier end quantity (blank for unlimited)
-rate = !#$:(0..)                                   ; Rate per unit
+rate = #$:(0..)                                   ; Rate per unit
 season = (all_year, shoulder, summer, winter)      ; Applicable season
 
 {@rate_schedule}
 ; Demand rates (electric)
 {.demand_rates[]}
-rate = !#$:(0..)                                   ; Demand rate per kW
+rate = #$:(0..)                                   ; Demand rate per kW
 tou_period = (all_day, mid_peak, off_peak, on_peak)
 season = (all_year, shoulder, summer, winter)
 
@@ -356,7 +356,7 @@ season = (all_year, shoulder, summer, winter)
 {.tou_periods[]}
 period_name = (mid_peak, off_peak, on_peak, super_off_peak)
 season = (all_year, shoulder, summer, winter)
-rate = !#$:(0..)                                   ; Rate for period
+rate = #$:(0..)                                   ; Rate for period
 days_of_week = :                                   ; Applicable days
 start_time = time                                  ; Period start time
 end_time = time                                    ; Period end time
@@ -364,7 +364,7 @@ end_time = time                                    ; Period end time
 {@rate_schedule}
 ; Riders and adjustments
 {.riders[]}
-rider_code = !:                                    ; Rider code
+rider_code = :                                    ; Rider code
 rider_name = :                                     ; Rider description
 rate = #$                                          ; Rate or fee
 percent = #:(0..100)                               ; Percentage adjustment
@@ -378,8 +378,8 @@ applies_to = :                                     ; What rider applies to
 
 {@bill.history[]}
 event_type = (adjustment, generation, payment, rebill, void)
-event_date = !timestamp                            ; Event timestamp
-description = !:                                   ; Event description
+event_date = timestamp                            ; Event timestamp
+description = :                                   ; Event description
 performed_by = :                                   ; User who performed action
 prior_amount = #$                                  ; Prior amount
 new_amount = #$                                    ; New amount

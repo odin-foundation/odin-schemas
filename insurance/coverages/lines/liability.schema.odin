@@ -48,7 +48,7 @@ changelog[0].rationale = "Coverage-centric architecture - liability line extensi
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Form Type
 ; ───────────────────────────────────────────────────────────────────────────────
-form_type = !(claims_made, occurrence)
+form_type = (claims_made, occurrence)
 form_edition = :                                  ; e.g., "04 13"
 
 ; ───────────────────────────────────────────────────────────────────────────────

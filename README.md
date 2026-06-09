@@ -110,6 +110,24 @@ status = ("active", "inactive", "pending") ; Enum of allowed values
 rate = #:(0..1)                            ; Number between 0 and 1
 ```
 
+### Required Fields & Permissive Defaults
+
+Schemas in this library are **permissive**: fields declare their type and constraints but are left optional. None of the `!` required marker appears in the canonical schemas.
+
+This is deliberate. A canonical schema spans a record's entire lifecycle: an auto policy is a quote before it is bound, and the policy number does not exist until it is issued. Whether a field must be present depends on a *context* (a jurisdiction, a workflow state, a filing), not on the data model itself. The library states what a field **is** and leaves what must be **present** to the consumer.
+
+Add requirements for your context by importing a type and tightening it with `:override`:
+
+```odin
+@import "insurance/commercial/auto/policy.schema.odin" as base
+
+{@issued_policy}
+= @base.policy :override
+number = !:(1..50)              ; required once the policy is issued
+```
+
+Override only tightens (optional → required, never the reverse), so a permissive base is the one every consumer can specialize. Add `!` in your overlay, not in the shared base.
+
 ### Imports
 
 Schemas compose via imports — shared types are defined once in `common/` and referenced across sectors:

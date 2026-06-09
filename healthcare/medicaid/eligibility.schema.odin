@@ -41,12 +41,12 @@ changelog[0].rationale = "Structure derived from CMS MAGI guidance and 42 CFR Pa
 ; Per 42 CFR 435.911
 
 {@determination}
-determination_id = !:                        ; Determination ID
-member = !@medicaid.member                   ; Applicant/member
-determination_date = !date                   ; Date of determination
+determination_id = :                        ; Determination ID
+member = @medicaid.member                   ; Applicant/member
+determination_date = date                   ; Date of determination
 
 ; Overall result
-eligible = !?                                ; Eligible for Medicaid
+eligible = ?                                ; Eligible for Medicaid
 eligibility_group = @medicaid.eligibility_group:if eligible = true
 benefit_package = @medicaid.benefit_package:if eligible = true
 effective_date = date:if eligible = true     ; Coverage effective date
@@ -57,7 +57,7 @@ denial_code = :                              ; Denial reason code
 appeal_rights = ?                            ; Appeal rights apply
 
 ; Methodology used
-methodology = !(magi, non_magi)              ; Eligibility methodology
+methodology = (magi, non_magi)              ; Eligibility methodology
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; MAGI Determination - Per 42 CFR 435.603
@@ -75,21 +75,21 @@ non_magi_determination = @non_magi_determination:if methodology = non_magi
 ; Per 42 CFR 435.603 - MAGI-based financial methods
 
 {@magi_determination}
-household = !@medicaid.household             ; MAGI household
+household = @medicaid.household             ; MAGI household
 
 ; Income calculation - Per 42 CFR 435.603(e)
 {.income}
 gross_magi = #$:(0..)                        ; Gross MAGI
 standard_deduction = #$:(0..)                ; 5% disregard
 net_magi = #$:(0..)                          ; Net MAGI for comparison
-fpl_percent = !#:(0..)                       ; Income as percent of FPL
-household_size = !##:(1..)                   ; Household size used
+fpl_percent = #:(0..)                       ; Income as percent of FPL
+household_size = ##:(1..)                   ; Household size used
 
 {@magi_determination}
 
 ; FPL thresholds by group - Per state plan
 {.thresholds}
-applicable_fpl = !#:(0..400)                 ; Applicable FPL threshold
+applicable_fpl = #:(0..400)                 ; Applicable FPL threshold
 threshold_source = :                         ; Source (state plan, etc.)
 income_under_threshold = ?                   ; Income below threshold
 
@@ -111,7 +111,7 @@ former_foster_exception = ?                  ; Former foster care exception
 {@magi_determination}
 
 {@magi_category_eval}
-category = !(adult, child, chip, former_foster, parent, pregnant, targeted_low_income_child)
+category = (adult, child, chip, former_foster, parent, pregnant, targeted_low_income_child)
 fpl_limit = #:(0..400)                       ; FPL limit for category
 meets_criteria = ?                           ; Meets non-financial criteria
 income_eligible = ?                          ; Income eligible
@@ -154,7 +154,7 @@ resource_eligible = ?                        ; Resource eligible
 
 ; Categorical eligibility - Per 42 CFR 435.120-137
 {.category}
-category = !(aged, blind, disabled, medically_needy, ssi, ssi_related)
+category = (aged, blind, disabled, medically_needy, ssi, ssi_related)
 categorical_eligible = ?                     ; Meets categorical requirements
 
 ; SSI linkage
@@ -185,19 +185,19 @@ medical_expenses = #$:(0..)                  ; Medical expenses applied
 ; Per 42 CFR 435.1101-1103
 
 {@presumptive_eligibility}
-pe_id = !:                                   ; PE determination ID
-member = !@medicaid.member                   ; Member
-pe_type = !(child, hospital, pregnant, qualified_entity)
+pe_id = :                                   ; PE determination ID
+member = @medicaid.member                   ; Member
+pe_type = (child, hospital, pregnant, qualified_entity)
 
 ; Determination
-determination_date = !date                   ; PE determination date
+determination_date = date                   ; PE determination date
 qualified_entity = :                         ; Qualified entity name
 qualified_entity_id = :                      ; Entity ID
 
 ; PE period
 {.period}
-effective_date = !date                       ; PE coverage start
-end_date = !date                             ; PE coverage end
+effective_date = date                       ; PE coverage start
+end_date = date                             ; PE coverage end
 maximum_days = ##:(0..60)                    ; Maximum PE days
 
 {@presumptive_eligibility}
@@ -224,8 +224,8 @@ determination_pending = ?                    ; Awaiting determination
 ; Per 42 CFR 435.916 - Administrative renewal
 
 {@ex_parte_renewal}
-member_id = !:                               ; Member ID
-renewal_date = !date                         ; Renewal date
+member_id = :                               ; Member ID
+renewal_date = date                         ; Renewal date
 
 ; Data sources checked
 {.data_sources}
@@ -252,8 +252,8 @@ reason_form_needed = :                       ; Reason form required
 ; Per 42 CFR 435.940-965
 
 {@verification_results}
-determination_id = !:                        ; Associated determination
-verification_date = !date                    ; Verification date
+determination_id = :                        ; Associated determination
+verification_date = date                    ; Verification date
 
 ; Required verifications
 {.verifications}

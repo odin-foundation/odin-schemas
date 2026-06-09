@@ -50,15 +50,15 @@ changelog[0].rationale = "Usage structure derived from GSMA TAP/RAP standards an
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Call Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-record_id = !:                                    ; Unique CDR identifier
-call_id = !:                                      ; Unique call identifier
+record_id = :                                    ; Unique CDR identifier
+call_id = :                                      ; Unique call identifier
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Subscriber Information (CPNI)
 ; ───────────────────────────────────────────────────────────────────────────────
-calling_number = !*:                              ; Calling party number (CPNI)
-called_number = !*:                               ; Called party number (CPNI)
-subscription_ref = !:                             ; Subscription reference
+calling_number = *:                              ; Calling party number (CPNI)
+called_number = *:                               ; Called party number (CPNI)
+subscription_ref = :                             ; Subscription reference
 imsi = *:                                         ; IMSI (confidential)
 imei = *:                                         ; IMEI (confidential)
 
@@ -66,9 +66,9 @@ imei = *:                                         ; IMEI (confidential)
 ; Call Timing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.timing}
-start_time = !timestamp                           ; Call start timestamp
-end_time = !timestamp                             ; Call end timestamp
-duration_seconds = !##:(0..)                      ; Call duration in seconds
+start_time = timestamp                           ; Call start timestamp
+end_time = timestamp                             ; Call end timestamp
+duration_seconds = ##:(0..)                      ; Call duration in seconds
 ring_duration_seconds = ##:(0..)                  ; Ring duration before answer
 
 {@voice_cdr}
@@ -94,7 +94,7 @@ call_category = (
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Call Completion
 ; ───────────────────────────────────────────────────────────────────────────────
-call_completed = !?                               ; Call successfully completed
+call_completed = ?                               ; Call successfully completed
 completion_status = (answered, busy, failed, no_answer, rejected)
 disconnect_reason = :                             ; Reason for disconnect
 
@@ -142,14 +142,14 @@ free_minutes_used = ##:(0..)                      ; Free minutes applied
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Session Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-session_id = !:                                   ; Unique session identifier
-record_id = !:                                    ; Unique record identifier
+session_id = :                                   ; Unique session identifier
+record_id = :                                    ; Unique record identifier
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Subscriber Information (CPNI)
 ; ───────────────────────────────────────────────────────────────────────────────
 phone_number = *:                                 ; Phone number (CPNI)
-subscription_ref = !:                             ; Subscription reference
+subscription_ref = :                             ; Subscription reference
 imsi = *:                                         ; IMSI (confidential)
 imei = *:                                         ; IMEI (confidential)
 
@@ -157,9 +157,9 @@ imei = *:                                         ; IMEI (confidential)
 ; Session Timing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.timing}
-start_time = !timestamp                           ; Session start timestamp
-end_time = !timestamp                             ; Session end timestamp
-duration_seconds = !##:(0..)                      ; Session duration in seconds
+start_time = timestamp                           ; Session start timestamp
+end_time = timestamp                             ; Session end timestamp
+duration_seconds = ##:(0..)                      ; Session duration in seconds
 
 {@data_session}
 
@@ -167,9 +167,9 @@ duration_seconds = !##:(0..)                      ; Session duration in seconds
 ; Data Volume
 ; ───────────────────────────────────────────────────────────────────────────────
 {.volume}
-bytes_uploaded = !##:(0..)                        ; Bytes uploaded
-bytes_downloaded = !##:(0..)                      ; Bytes downloaded
-total_bytes = !##:(0..)                           ; Total bytes transferred
+bytes_uploaded = ##:(0..)                        ; Bytes uploaded
+bytes_downloaded = ##:(0..)                      ; Bytes downloaded
+total_bytes = ##:(0..)                           ; Total bytes transferred
 
 {@data_session}
 
@@ -224,8 +224,8 @@ free_data_used_mb = ##:(0..)                      ; Free data allowance used (MB
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Message Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-message_id = !:                                   ; Unique message identifier
-record_id = !:                                    ; Unique record identifier
+message_id = :                                   ; Unique message identifier
+record_id = :                                    ; Unique record identifier
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Message Type
@@ -236,9 +236,9 @@ message_direction = (incoming, outgoing)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Subscriber Information (CPNI)
 ; ───────────────────────────────────────────────────────────────────────────────
-sender_number = !*:                               ; Sender number (CPNI)
-recipient_number = !*:                            ; Recipient number (CPNI)
-subscription_ref = !:                             ; Subscription reference
+sender_number = *:                               ; Sender number (CPNI)
+recipient_number = *:                            ; Recipient number (CPNI)
+subscription_ref = :                             ; Subscription reference
 imsi = *:                                         ; IMSI (confidential)
 imei = *:                                         ; IMEI (confidential)
 
@@ -246,7 +246,7 @@ imei = *:                                         ; IMEI (confidential)
 ; Message Timing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.timing}
-sent_time = !timestamp                            ; Message sent timestamp
+sent_time = timestamp                            ; Message sent timestamp
 delivered_time = timestamp                        ; Message delivered timestamp
 
 {@message}
@@ -315,8 +315,8 @@ free_messages_used = ##:(0..)                     ; Free messages applied
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Event Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-event_id = !:                                     ; Unique event identifier
-subscription_ref = !:                             ; Subscription reference
+event_id = :                                     ; Unique event identifier
+subscription_ref = :                             ; Subscription reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Event Type
@@ -335,7 +335,7 @@ imei = *:                                         ; IMEI (confidential)
 ; Event Timing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.timing}
-start_time = !timestamp                           ; Event start timestamp
+start_time = timestamp                           ; Event start timestamp
 end_time = timestamp                              ; Event end timestamp
 duration_seconds = ##:(0..)                       ; Event duration
 
@@ -345,8 +345,8 @@ duration_seconds = ##:(0..)                       ; Event duration
 ; Roaming Network
 ; ───────────────────────────────────────────────────────────────────────────────
 {.roaming_network}
-network_operator = !:                             ; Roaming network operator
-country_code = !:(2..3)                           ; ISO country code
+network_operator = :                             ; Roaming network operator
+country_code = :(2..3)                           ; ISO country code
 country_name = :                                  ; Country name
 mcc = :/^\d{3}$/                                  ; Mobile Country Code
 mnc = :/^\d{2,3}$/                                ; Mobile Network Code
@@ -385,16 +385,16 @@ rate_plan_applied = :                             ; Roaming rate plan
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Summary Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-summary_id = !:                                   ; Unique summary identifier
-subscription_ref = !:                             ; Subscription reference
+summary_id = :                                   ; Unique summary identifier
+subscription_ref = :                             ; Subscription reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Summary Period
 ; ───────────────────────────────────────────────────────────────────────────────
 {.period}
 period_type = (billing_cycle, daily, monthly, weekly)
-period_start = !date                              ; Period start date
-period_end = !date                                ; Period end date
+period_start = date                              ; Period start date
+period_end = date                                ; Period end date
 
 {@usage_summary}
 

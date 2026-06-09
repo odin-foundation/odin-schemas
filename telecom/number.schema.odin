@@ -50,8 +50,8 @@ changelog[0].rationale = "Number and porting structure derived from FCC Part 52 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Number Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-number_id = !:                                    ; Unique number identifier
-phone_number = !*:                                ; Full phone number (CPNI)
+number_id = :                                    ; Unique number identifier
+phone_number = *:                                ; Full phone number (CPNI)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; NANP Components
@@ -101,7 +101,7 @@ assignment_type = (individual, pool, temporary)
 ; Ownership and Carrier
 ; ───────────────────────────────────────────────────────────────────────────────
 {.ownership}
-owning_carrier = !:                               ; Current owning carrier
+owning_carrier = :                               ; Current owning carrier
 carrier_type = (lec, mobile, voip, wireless)      ; Carrier type
 serving_carrier = :                               ; Serving carrier (if different)
 ocn = :/^\d{4}$/                                  ; Operating Company Number
@@ -143,7 +143,7 @@ mms_capable = ?                                   ; MMS capable
 voice_capable = ?                                 ; Voice capable
 data_capable = ?                                  ; Data capable
 fax_capable = ?                                   ; Fax capable
-e911_capable = !?                                 ; E911 capable
+e911_capable = ?                                 ; E911 capable
 
 {@telephone_number}
 
@@ -180,8 +180,8 @@ premium_number = ?                                ; Premium number (higher acqui
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Request Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-port_request_id = !:                              ; Unique port request identifier
-lsr_number = !:                                   ; Local Service Request number
+port_request_id = :                              ; Unique port request identifier
+lsr_number = :                                   ; Local Service Request number
 pon = :                                           ; Port Order Number
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -195,9 +195,9 @@ number_count = ##:(1..)                           ; Number of TNs being ported
 ; Carriers
 ; ───────────────────────────────────────────────────────────────────────────────
 {.carriers}
-old_carrier = !:                                  ; Losing carrier (donor)
+old_carrier = :                                  ; Losing carrier (donor)
 old_carrier_ocn = :/^\d{4}$/                      ; Old carrier OCN
-new_carrier = !:                                  ; Gaining carrier (recipient)
+new_carrier = :                                  ; Gaining carrier (recipient)
 new_carrier_ocn = :/^\d{4}$/                      ; New carrier OCN
 
 {@port_request}
@@ -211,8 +211,8 @@ numbers[] = @porting_number                       ; Telephone numbers in port
 ; Request Dates
 ; ───────────────────────────────────────────────────────────────────────────────
 {.dates}
-request_date = !date                              ; Port request submission date
-requested_due_date = !date                        ; Requested port due date
+request_date = date                              ; Port request submission date
+requested_due_date = date                        ; Requested port due date
 foc_date = date                                   ; Firm Order Confirmation date
 activation_date = date                            ; Actual activation date
 completion_date = date                            ; Completion date
@@ -241,7 +241,7 @@ status_reason = :                                 ; Status reason/notes
 ; ───────────────────────────────────────────────────────────────────────────────
 {.subscriber}
 account_number = *:                               ; Account number with old carrier (confidential)
-authorized_name = !:                              ; Authorized contact name
+authorized_name = :                              ; Authorized contact name
 billing_telephone_number = *:                     ; BTN (confidential)
 pin = *:                                          ; Account PIN (confidential)
 service_address = @types.address                  ; Service address
@@ -287,7 +287,7 @@ coordination_notes = :                            ; Coordination notes
 
 {@porting_number}
 ; Required fields
-phone_number = !*:                                ; Phone number being ported (CPNI)
+phone_number = *:                                ; Phone number being ported (CPNI)
 number_type = (fax, main, voice)
 status = (active, cancelled, failed, pending, ported)
 
@@ -306,16 +306,16 @@ failure_reason = :                                ; Failure reason (if failed)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Reservation Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-reservation_id = !:                               ; Unique reservation identifier
-phone_number = !*:                                ; Reserved phone number
+reservation_id = :                               ; Unique reservation identifier
+phone_number = *:                                ; Reserved phone number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Reservation Details
 ; ───────────────────────────────────────────────────────────────────────────────
 reserved_for_account = :                          ; Account reference
 reserved_for_subscription = :                     ; Subscription reference
-reservation_date = !date                          ; Reservation date
-expiration_date = !date                           ; Reservation expiration
+reservation_date = date                          ; Reservation date
+expiration_date = date                           ; Reservation expiration
 reservation_type = (customer_hold, internal, pending_port, temporary)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -333,17 +333,17 @@ status_date = date                                ; Status change date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Block Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-block_id = !:                                     ; Unique block identifier
-npa = !:/^\d{3}$/                                 ; Area code
-nxx = !:/^\d{3}$/                                 ; Exchange
+block_id = :                                     ; Unique block identifier
+npa = :/^\d{3}$/                                 ; Area code
+nxx = :/^\d{3}$/                                 ; Exchange
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Block Range
 ; ───────────────────────────────────────────────────────────────────────────────
 {.range}
-start_line = !:/^\d{4}$/                          ; Starting line number
-end_line = !:/^\d{4}$/                            ; Ending line number
-total_numbers = !##:(1..)                         ; Total numbers in block
+start_line = :/^\d{4}$/                          ; Starting line number
+end_line = :/^\d{4}$/                            ; Ending line number
+total_numbers = ##:(1..)                         ; Total numbers in block
 
 {@number_block}
 
@@ -373,7 +373,7 @@ utilization_percent = #:(0..100)                  ; Utilization percentage
 ; ───────────────────────────────────────────────────────────────────────────────
 ; NPA Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-npa = !:/^\d{3}$/                                 ; Area code (NPA)
+npa = :/^\d{3}$/                                 ; Area code (NPA)
 npa_type = (geographic, non_geographic, toll_free)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -417,15 +417,15 @@ overlay_of = :/^\d{3}$/                           ; Original NPA (if overlay)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Exchange Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-npa = !:/^\d{3}$/                                 ; Area code
-nxx = !:/^\d{3}$/                                 ; Exchange
-npanxx = !:/^\d{6}$/                              ; Combined NPA-NXX
+npa = :/^\d{3}$/                                 ; Area code
+nxx = :/^\d{3}$/                                 ; Exchange
+npanxx = :/^\d{6}$/                              ; Combined NPA-NXX
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Exchange Assignment
 ; ───────────────────────────────────────────────────────────────────────────────
 {.assignment}
-assigned_carrier = !:                             ; Assigned carrier
+assigned_carrier = :                             ; Assigned carrier
 ocn = :/^\d{4}$/                                  ; Operating Company Number
 use_type = (general, government, reserved, special)
 assignment_date = date                            ; Assignment date

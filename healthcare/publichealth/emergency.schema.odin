@@ -39,16 +39,16 @@ changelog[0].rationale = "Structure derived from HHS PHE and Stafford Act author
 ; Per 42 USC 247d (Section 319)
 
 {@declaration}
-declaration_id = !:                         ; Declaration identifier
-declaration_type = !(national_emergency, phe_section_319, stafford_declaration, state_declaration)
-jurisdiction = !:                           ; Declaring jurisdiction
+declaration_id = :                         ; Declaration identifier
+declaration_type = (national_emergency, phe_section_319, stafford_declaration, state_declaration)
+jurisdiction = :                           ; Declaring jurisdiction
 
 ; Declaration details
 {.details}
-title = !:                                  ; Declaration title
+title = :                                  ; Declaration title
 threat = :                                  ; Threat/hazard description
 legal_authority = :                         ; Legal authority cited
-effective_date = !date                      ; Effective date
+effective_date = date                      ; Effective date
 expiration_date = date                      ; Expiration date (if time-limited)
 
 {@declaration}
@@ -57,7 +57,7 @@ expiration_date = date                      ; Expiration date (if time-limited)
 {.official}
 declared_by = :                             ; Name/title of declaring official
 agency = :                                  ; Agency
-declaration_date = !date                    ; Date signed
+declaration_date = date                    ; Date signed
 
 {@declaration}
 
@@ -84,7 +84,7 @@ quarantine_authority = ?                    ; Quarantine authority
 
 ; Status
 {.status}
-status = !(active, expired, renewed, terminated)
+status = (active, expired, renewed, terminated)
 renewals[] = date                           ; Renewal dates
 termination_date = date                     ; Termination date
 
@@ -96,9 +96,9 @@ termination_date = date                     ; Termination date
 ; Per 42 USC 5121 et seq.
 
 {@stafford_declaration}
-disaster_number = !:                        ; FEMA disaster number
-declaration_type = !(emergency, major_disaster)
-incident_type = !:                          ; Type of incident
+disaster_number = :                        ; FEMA disaster number
+declaration_type = (emergency, major_disaster)
+incident_type = :                          ; Type of incident
 
 ; Request
 {.request}
@@ -118,7 +118,7 @@ declared_by = : "President"                 ; Declaring authority
 
 ; Incident period
 {.incident}
-incident_start = !date                      ; Incident period begin
+incident_start = date                      ; Incident period begin
 incident_end = date                         ; Incident period end
 
 {@stafford_declaration}
@@ -154,9 +154,9 @@ fco_appointed = date                        ; Date appointed
 ; Per ICS/NIMS standards
 
 {@response_activation}
-activation_id = !:                          ; Activation identifier
-incident_name = !:                          ; Incident name
-activation_date = !date                     ; Activation date
+activation_id = :                          ; Activation identifier
+incident_name = :                          ; Incident name
+activation_date = date                     ; Activation date
 
 ; Incident type
 {.incident}
@@ -207,9 +207,9 @@ deactivation_date = date                    ; Deactivation date
 ; Per ASPR/BARDA MCM framework
 
 {@medical_countermeasure}
-mcm_id = !:                                 ; MCM identifier
-mcm_type = !(antidote, diagnostic, ppe, therapeutic, vaccine)
-product_name = !:                           ; Product name
+mcm_id = :                                 ; MCM identifier
+mcm_type = (antidote, diagnostic, ppe, therapeutic, vaccine)
+product_name = :                           ; Product name
 
 ; Product details
 {.product}
@@ -254,9 +254,9 @@ fact_sheet_required = ?                     ; Fact sheet required
 ; Per IOM/NAM CSC framework
 
 {@crisis_standards}
-csc_id = !:                                 ; CSC activation ID
-jurisdiction = !:                           ; Jurisdiction
-activation_date = !date                     ; Activation date
+csc_id = :                                 ; CSC activation ID
+jurisdiction = :                           ; Jurisdiction
+activation_date = date                     ; Activation date
 
 ; Activation
 {.activation}
@@ -308,22 +308,22 @@ deactivation_criteria = :                   ; Criteria for deactivation
 ; Per 42 CFR Part 70-71 (federal) and state authorities
 
 {@quarantine_order}
-order_id = !:                               ; Order identifier
-order_type = !(federal, local, state)
-jurisdiction = !:                           ; Issuing jurisdiction
+order_id = :                               ; Order identifier
+order_type = (federal, local, state)
+jurisdiction = :                           ; Issuing jurisdiction
 
 ; Authority
 {.authority}
 legal_authority = :                         ; Legal authority cited
 issuing_agency = :                          ; Issuing agency
 issuing_official = :                        ; Official name/title
-order_date = !date                          ; Date issued
+order_date = date                          ; Date issued
 
 {@quarantine_order}
 
 ; Order details
 {.details}
-order_type = !(isolation, quarantine, travel_restriction)
+order_type = (isolation, quarantine, travel_restriction)
 condition = :                               ; Disease/condition
 duration_days = ##:(0..30)                  ; Duration (days)
 effective_date = date                       ; Effective date
@@ -363,9 +363,9 @@ compliance = ?                              ; Order complied with
 ; Per Section 1135 of Social Security Act
 
 {@waiver_1135}
-waiver_id = !:                              ; Waiver identifier
-emergency_declaration = !:                  ; Associated PHE/disaster
-effective_date = !date                      ; Effective date
+waiver_id = :                              ; Waiver identifier
+emergency_declaration = :                  ; Associated PHE/disaster
+effective_date = date                      ; Effective date
 
 ; Waiver scope
 {.scope}

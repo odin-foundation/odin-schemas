@@ -48,8 +48,8 @@ changelog[0].rationale = "Structures derived from NMVTIS and NHTSA requirements"
 
 {@title_history}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-report_date = !date                              ; Date of history report
+vin = *:format vin                              ; Vehicle VIN
+report_date = date                              ; Date of history report
 
 ; Title events
 events[] = @title_event                          ; Title events in chronological order
@@ -67,9 +67,9 @@ current_status = (active, cancelled, duplicate, suspended)
 
 {@title_event}
 ; Required fields first
-event_date = !date                               ; Event date
-event_type = !(brand_added, brand_removed, duplicate_issued, lien_added, lien_released, new_title, title_transfer)
-state = !:(2)                                    ; State where event occurred
+event_date = date                               ; Event date
+event_type = (brand_added, brand_removed, duplicate_issued, lien_added, lien_released, new_title, title_transfer)
+state = :(2)                                    ; State where event occurred
 
 ; Title information
 title_number = :                                 ; Title number
@@ -117,8 +117,8 @@ lien_position = ##:(1..3):if event_type = lien_added|lien_released
 
 {@accident_record}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-accident_date = !date                            ; Date of accident
+vin = *:format vin                              ; Vehicle VIN
+accident_date = date                            ; Date of accident
 
 ; Location
 {.location}
@@ -131,7 +131,7 @@ description = :                                  ; Location description
 
 ; Accident details
 {.details}
-severity = !(major, minor, moderate, total_loss)
+severity = (major, minor, moderate, total_loss)
 type = (collision, fire, flood, hail, other, rollover, theft, vandalism)
 description = :                                  ; Accident description
 police_report = ?                                ; Police report filed
@@ -185,13 +185,13 @@ source_confidence = (confirmed, estimated, reported)
 
 {@service_record}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-service_date = !date                             ; Date of service
-odometer = !##:(0..)                             ; Odometer at service
+vin = *:format vin                              ; Vehicle VIN
+service_date = date                             ; Date of service
+odometer = ##:(0..)                             ; Odometer at service
 
 ; Service provider
 {.provider}
-name = !:                                        ; Service provider name
+name = :                                        ; Service provider name
 type = (dealer, fleet, independent, owner, specialty)
 address = @address                               ; Provider address
 phone = *@phone                                  ; Contact phone
@@ -201,7 +201,7 @@ license = :                                      ; Shop license number
 
 ; Service type
 {.service}
-category = !(
+category = (
     body_repair,
     brakes,
     electrical,
@@ -217,7 +217,7 @@ category = !(
     transmission,
     warranty
 )
-description = !:                                 ; Service description
+description = :                                 ; Service description
 work_order = :                                   ; Work order number
 warranty_repair = ?                              ; Covered under warranty
 recall_repair = ?                                ; Recall-related repair
@@ -259,8 +259,8 @@ technician_certification = :                     ; ASE certification
 
 {@service_part}
 ; Required fields first
-part_number = !:                                 ; Part number
-description = !:                                 ; Part description
+part_number = :                                 ; Part number
+description = :                                 ; Part description
 quantity = ##:(1..)                              ; Quantity used
 
 ; Part details
@@ -281,13 +281,13 @@ warranty_miles = ##:(0..)                        ; Part warranty mileage
 {@recall_record}
 ; Required fields first
 vin = *:format vin                               ; Vehicle VIN (if specific)
-nhtsa_campaign_number = !:                       ; NHTSA campaign number
+nhtsa_campaign_number = :                       ; NHTSA campaign number
 manufacturer_campaign_number = :                 ; Manufacturer campaign number
 
 ; Recall information
 {.recall}
-component = !:                                   ; Component description
-summary = !:                                     ; Defect summary
+component = :                                   ; Component description
+summary = :                                     ; Defect summary
 consequence = :                                  ; Safety consequence
 remedy = :                                       ; Remedy description
 notes = :                                        ; Additional notes
@@ -338,15 +338,15 @@ related_tsb = :                                  ; Related TSB numbers
 
 {@tsb_record}
 ; Required fields first
-tsb_number = !:                                  ; TSB number
-manufacturer = !:                                ; Manufacturer
+tsb_number = :                                  ; TSB number
+manufacturer = :                                ; Manufacturer
 
 ; TSB information
 {.bulletin}
 issue_date = date                                ; TSB issue date
 revision_date = date                             ; Revision date
 revision_number = ##:(0..)                       ; Revision number
-title = !:                                       ; TSB title
+title = :                                       ; TSB title
 description = :                                  ; TSB description
 cause = :                                        ; Cause description
 correction = :                                   ; Correction procedure
@@ -392,12 +392,12 @@ extended_miles = ##:(0..)                        ; Extended miles
 
 {@lien_record}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-lien_type = !(floor_plan, lease, loan, tax)      ; Type of lien
+vin = *:format vin                              ; Vehicle VIN
+lien_type = (floor_plan, lease, loan, tax)      ; Type of lien
 
 ; Lienholder
 {.lienholder}
-name = !:                                        ; Lienholder name
+name = :                                        ; Lienholder name
 address = @address                               ; Lienholder address
 phone = *@phone                                  ; Contact phone
 ein = *:(9)                                      ; Employer ID (confidential)
@@ -406,7 +406,7 @@ ein = *:(9)                                      ; Employer ID (confidential)
 
 ; Lien details
 {.lien}
-lien_date = !date                                ; Lien origination date
+lien_date = date                                ; Lien origination date
 position = ##:(1..3)                             ; Lien position
 original_amount = #$:(0..)                       ; Original lien amount
 current_balance = #$:(0..)                       ; Current balance
@@ -426,7 +426,7 @@ expiration_date = date                           ; Filing expiration
 
 ; Status
 {.status}
-status = !(active, paid, released, transferred)
+status = (active, paid, released, transferred)
 release_date = date:if status = released|paid   ; Release date
 release_method = (elt, letter, ucc_3):if status = released|paid
 payoff_amount = #$:(0..):if status = active      ; Current payoff amount
@@ -452,9 +452,9 @@ delinquent_days = ##:(0..):if delinquent = true
 
 {@theft_record}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-theft_date = !date                               ; Date of theft
-status = !(active, recovered)                    ; Theft status
+vin = *:format vin                              ; Vehicle VIN
+theft_date = date                               ; Date of theft
+status = (active, recovered)                    ; Theft status
 
 ; Theft details
 {.theft}
@@ -499,8 +499,8 @@ payout = #$:(0..)                                ; Insurance payout
 
 {@registration_history}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-report_date = !date                              ; Report date
+vin = *:format vin                              ; Vehicle VIN
+report_date = date                              ; Report date
 
 ; Registration events
 events[] = @registration_event                   ; Registration events
@@ -518,9 +518,9 @@ current_expiration = date                        ; Current expiration
 
 {@registration_event}
 ; Required fields first
-event_date = !date                               ; Event date
-event_type = !(cancellation, expired, new, renewal, transfer)
-state = !:(2)                                    ; Registration state
+event_date = date                               ; Event date
+event_type = (cancellation, expired, new, renewal, transfer)
+state = :(2)                                    ; Registration state
 
 ; Registration details
 registration_number = :                          ; Registration number
@@ -538,9 +538,9 @@ owner_type = (commercial, individual, lease)     ; Owner type
 
 {@vehicle_history_report}
 ; Required fields first
-vin = !*:format vin                              ; Vehicle VIN
-report_date = !timestamp                         ; Report generation date
-report_id = !:                                   ; Report identifier
+vin = *:format vin                              ; Vehicle VIN
+report_date = timestamp                         ; Report generation date
+report_id = :                                   ; Report identifier
 
 ; Report source
 {.source}

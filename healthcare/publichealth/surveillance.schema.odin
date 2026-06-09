@@ -39,14 +39,14 @@ changelog[0].rationale = "Structure derived from CDC NSSP and syndromic surveill
 ; Per NSSP data architecture
 
 {@syndromic_record}
-record_id = !:                              ; Record identifier
-facility_id = !:                            ; Facility sending data
-message_date = !date                        ; Message date/time
+record_id = :                              ; Record identifier
+facility_id = :                            ; Facility sending data
+message_date = date                        ; Message date/time
 
 ; Visit information
 {.visit}
 visit_id = :                                ; Encounter/visit ID
-visit_date = !date                          ; Visit date
+visit_date = date                          ; Visit date
 visit_time = :                              ; Visit time
 facility_type = (ambulatory, ed, inpatient, urgent_care)
 discharge_date = date                       ; Discharge date
@@ -115,14 +115,14 @@ confidence = #:(0..1)                       ; Confidence score
 ; Per NSSP onboarding requirements
 
 {@facility_registration}
-facility_id = !:                            ; NSSP facility ID
+facility_id = :                            ; NSSP facility ID
 npi = :                                     ; Facility NPI
-state = !:(2)                               ; State
+state = :(2)                               ; State
 
 ; Facility info
 {.info}
-facility_name = !:                          ; Facility name
-facility_type = !(ambulatory, ed, inpatient, pharmacy, poison_center, urgent_care)
+facility_name = :                          ; Facility name
+facility_type = (ambulatory, ed, inpatient, pharmacy, poison_center, urgent_care)
 address = @address                          ; Address
 phone = *@phone                             ; Phone
 
@@ -158,13 +158,13 @@ contact_phone = *@phone                     ; Phone
 ; Per ESSENCE alerting standards
 
 {@alert}
-alert_id = !:                               ; Alert identifier
-jurisdiction = !:(2)                        ; Jurisdiction
-alert_date = !date                          ; Alert date
+alert_id = :                               ; Alert identifier
+jurisdiction = :(2)                        ; Jurisdiction
+alert_date = date                          ; Alert date
 
 ; Alert type
 {.type}
-alert_type = !(cluster, increase, outbreak, threshold)
+alert_type = (cluster, increase, outbreak, threshold)
 syndrome = :                                ; Syndrome monitored
 detection_method = :                        ; Detection algorithm
 
@@ -203,9 +203,9 @@ notes = :                                   ; Investigation notes
 ; Per NWSS (National Wastewater Surveillance System)
 
 {@wastewater}
-sample_id = !:                              ; Sample identifier
-site_id = !:                                ; Sampling site
-collection_date = !date                     ; Collection date
+sample_id = :                              ; Sample identifier
+site_id = :                                ; Sampling site
+collection_date = date                     ; Collection date
 
 ; Sampling site
 {.site}
@@ -231,7 +231,7 @@ storage_condition = :                       ; Storage condition
 {.analysis}
 lab_name = :                                ; Laboratory name
 test_method = :                             ; Testing method (RT-qPCR target)
-target_pathogen = !:                        ; Target (SARS-CoV-2, RSV, etc.)
+target_pathogen = :                        ; Target (SARS-CoV-2, RSV, etc.)
 gene_target = :                             ; Gene target (N1, N2, etc.)
 
 {@wastewater}
@@ -261,13 +261,13 @@ replicate_agreement = ?                     ; Replicate agreement
 ; Per CDC AMD/SPHERES standards
 
 {@genomic_surveillance}
-sequence_id = !:                            ; Sequence identifier
-specimen_id = !:                            ; Associated specimen
-submission_date = !date                     ; Submission date
+sequence_id = :                            ; Sequence identifier
+specimen_id = :                            ; Associated specimen
+submission_date = date                     ; Submission date
 
 ; Specimen
 {.specimen}
-collection_date = !date                     ; Collection date
+collection_date = date                     ; Collection date
 specimen_type = :                           ; Specimen type
 source = :                                  ; Source (clinical, wastewater)
 patient_age = ##:(0..150)                   ; Patient age (if clinical)
@@ -277,7 +277,7 @@ patient_gender = (female, male, unknown)    ; Gender
 
 ; Pathogen
 {.pathogen}
-pathogen_name = !:                          ; Pathogen name
+pathogen_name = :                          ; Pathogen name
 pathogen_type = (bacteria, fungus, parasite, virus)
 
 {@genomic_surveillance}
@@ -322,9 +322,9 @@ zip = :(5)                                  ; ZIP code (partial)
 ; Per ILINet and other sentinel systems
 
 {@sentinel_report}
-report_id = !:                              ; Report identifier
-site_id = !:                                ; Sentinel site ID
-week_ending = !date                         ; MMWR week ending date
+report_id = :                              ; Report identifier
+site_id = :                                ; Sentinel site ID
+week_ending = date                         ; MMWR week ending date
 
 ; Site information
 {.site}

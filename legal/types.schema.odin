@@ -58,10 +58,10 @@ changelog[0].rationale = "Base types for legal practice management"
 = @license_credential                             ; Inherits license/credential fields
 
 ; Override required fields
-number = !*:                                      ; State bar number (required, confidential)
-state_province = !:(2..50)                        ; State/jurisdiction (required)
+number = *:                                      ; State bar number (required, confidential)
+state_province = :(2..50)                        ; State/jurisdiction (required)
 type = : "bar_admission"                          ; License type
-status = !(active, deceased, disbarred, inactive, resigned, retired, suspended)
+status = (active, deceased, disbarred, inactive, resigned, retired, suspended)
 
 ; Court admissions
 {.court_admissions[]}
@@ -85,7 +85,7 @@ last_disciplinary_date = date:if disciplinary_action = true
 = @person                                         ; Inherits person fields
 
 ; Required fields first
-primary_bar = !@legal_bar_admission               ; Primary bar admission
+primary_bar = @legal_bar_admission               ; Primary bar admission
 
 ; Attorney identification
 attorney_id = :                                   ; Unique attorney identifier
@@ -159,7 +159,7 @@ practice_areas[] = :                              ; Areas of practice
 = @person                                         ; Inherits person fields
 
 ; Required fields first
-staff_type = !(case_manager, clerk, investigator, legal_assistant, legal_nurse, legal_secretary, librarian, litigation_support, paralegal, records_clerk)
+staff_type = (case_manager, clerk, investigator, legal_assistant, legal_nurse, legal_secretary, librarian, litigation_support, paralegal, records_clerk)
 
 ; Staff identification
 staff_id = :                                      ; Unique staff identifier
@@ -193,8 +193,8 @@ hourly_rate = #$:(0..):if billable = true         ; Hourly rate
 = @person                                         ; Inherits person fields
 
 ; Required fields first
-court_name = !:                                   ; Court name
-judge_type = !(administrative_law, appellate, bankruptcy, chief, circuit, district, magistrate, senior, state_court, state_supreme, supreme)
+court_name = :                                   ; Court name
+judge_type = (administrative_law, appellate, bankruptcy, chief, circuit, district, magistrate, senior, state_court, state_supreme, supreme)
 
 ; Judge identification
 judge_id = :                                      ; Unique judge identifier
@@ -237,8 +237,8 @@ trial_practices = :                               ; Trial preferences
 
 {@legal_court}
 ; Required fields first
-court_name = !:                                   ; Official court name
-court_level = !(appellate, federal_district, federal_special, state_appellate, state_supreme, state_trial, supreme, tribal)
+court_name = :                                   ; Official court name
+court_level = (appellate, federal_district, federal_special, state_appellate, state_supreme, state_trial, supreme, tribal)
 
 ; Court identification
 court_id = :                                      ; Unique court identifier
@@ -279,7 +279,7 @@ local_rules_url = :                               ; Local rules URL
 
 {@legal_matter_ref}
 ; Required fields first
-matter_id = !:                                    ; Internal matter identifier
+matter_id = :                                    ; Internal matter identifier
 
 ; Client reference
 client_id = :                                     ; Client identifier
@@ -300,7 +300,7 @@ ledes_matter_id = :                               ; LEDES matter ID
 
 {@legal_case_ref}
 ; Required fields first
-case_number = !:                                  ; Court case number
+case_number = :                                  ; Court case number
 
 ; Case details
 caption = :                                       ; Case caption/title
@@ -313,8 +313,8 @@ court_ref = @legal_court                          ; Reference to court
 
 {@legal_utbms_code}
 ; Required fields first
-code = !:                                         ; UTBMS code
-code_type = !(activity, expense, litigation_phase, litigation_task, project_phase, project_task)
+code = :                                         ; UTBMS code
+code_type = (activity, expense, litigation_phase, litigation_task, project_phase, project_task)
 
 ; Code details
 description = :                                   ; Code description
@@ -351,9 +351,9 @@ expense_code = :                                  ; UTBMS expense code
 
 {@legal_conflict_check}
 ; Required fields first
-check_date = !date                                ; Date of check
-checked_by = !:                                   ; Person who ran check
-result = !(cleared, conflict_found, potential_conflict, waiver_required)
+check_date = date                                ; Date of check
+checked_by = :                                   ; Person who ran check
+result = (cleared, conflict_found, potential_conflict, waiver_required)
 
 ; Check details
 {.details}
@@ -383,7 +383,7 @@ waiver_date = date:if waiver_obtained = true      ; Date waiver obtained
 
 {@legal_jurisdiction}
 ; Required fields first
-jurisdiction_type = !(federal, international, state, territorial, tribal)
+jurisdiction_type = (federal, international, state, territorial, tribal)
 
 ; Federal
 federal_circuit = :(2):if jurisdiction_type = federal   ; Circuit number (1-11, DC, Fed)
@@ -404,9 +404,9 @@ venue_basis = :                                         ; Basis for venue
 
 {@legal_deadline}
 ; Required fields first
-deadline_date = !date                             ; Due date
-deadline_type = !(answer, appeal, brief, complaint, discovery, filing, hearing, motion, response, statute_of_limitations, trial)
-description = !:                                  ; Deadline description
+deadline_date = date                             ; Due date
+deadline_type = (answer, appeal, brief, complaint, discovery, filing, hearing, motion, response, statute_of_limitations, trial)
+description = :                                  ; Deadline description
 
 ; Deadline identification
 deadline_id = :                                   ; Unique deadline identifier
@@ -442,7 +442,7 @@ reminder_days = ##:(0..)                          ; Days before for reminder
 
 {@legal_privilege}
 ; Required fields first
-privilege_type = !(attorney_client, common_interest, joint_defense, none, work_product, work_product_opinion)
+privilege_type = (attorney_client, common_interest, joint_defense, none, work_product, work_product_opinion)
 
 ; Privilege details
 designation_date = date                           ; Date of designation
@@ -461,7 +461,7 @@ waiver_scope = ::if waived = true                 ; Scope of waiver
 
 {@legal_document_type}
 ; Required fields first
-category = !(closing, contract, correspondence, court_filing, discovery, internal, pleading, research, transactional)
+category = (closing, contract, correspondence, court_filing, discovery, internal, pleading, research, transactional)
 
 ; Specific type
 document_type = :                                 ; Specific document type
@@ -477,8 +477,8 @@ filing_type = (answer, brief, complaint, motion, notice, order, petition, respon
 
 {@legal_retainer}
 ; Required fields first
-retainer_type = !(evergreen, flat_fee, hourly, hybrid, non_refundable, refundable)
-effective_date = !date                            ; Engagement start date
+retainer_type = (evergreen, flat_fee, hourly, hybrid, non_refundable, refundable)
+effective_date = date                            ; Engagement start date
 
 ; Retainer identification
 retainer_id = :                                   ; Unique retainer identifier
@@ -571,7 +571,7 @@ claim_status = (closed, denied, open, paid, pending):if claim_filed = true
 = @status_record                                  ; Inherits status tracking fields
 
 ; Override with legal-specific status values
-status = !(active, closed, consultation, on_hold, pending, pre_litigation, referred)
+status = (active, closed, consultation, on_hold, pending, pre_litigation, referred)
 
 ; Closure details (if closed)
 {.closure}

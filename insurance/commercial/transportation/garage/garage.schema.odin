@@ -45,7 +45,7 @@ changelog[0].rationale = "Commercial transportation coverage for automotive busi
 ; Classification of garage operations.
 
 {@gr_business_type}
-business_class = !(
+business_class = (
     auto_body_shop,                           ; Collision repair
     auto_detail,                              ; Detailing service
     auto_glass,                               ; Glass repair/replace
@@ -83,9 +83,9 @@ operation_type = (
 
 {@gr_location}
 ; Required fields first
-address = !@address                           ; Physical address
-business_type = !@gr_business_type            ; Business classification
-location_number = !##:(1..)                   ; Location sequence
+address = @address                           ; Physical address
+business_type = @gr_business_type            ; Business classification
+location_number = ##:(1..)                   ; Location sequence
 
 ; Optional fields
 annual_gross_receipts = #$:(0..)              ; Annual revenue
@@ -149,9 +149,9 @@ welding = ?                                   ; Welding services
 
 {@gr_liability}
 ; Required fields first
-bodily_injury_per_accident = !#$:(0..)        ; BI per accident
-bodily_injury_per_person = !#$:(0..)          ; BI per person
-property_damage = !#$:(0..)                   ; PD limit
+bodily_injury_per_accident = #$:(0..)        ; BI per accident
+bodily_injury_per_person = #$:(0..)          ; BI per person
+property_damage = #$:(0..)                   ; PD limit
 
 ; Optional fields
 combined_single_limit = #$:(0..)              ; CSL
@@ -173,7 +173,7 @@ products_liability = ?true                    ; Products coverage
 
 {@gr_garagekeepers}
 ; Required fields first
-included = !?                                 ; Garagekeepers coverage
+included = ?                                 ; Garagekeepers coverage
 
 ; Coverage terms
 deductible = #$:(0..):if included = true      ; Deductible
@@ -207,7 +207,7 @@ valet = ?:if included = true                  ; Valet coverage
 
 {@gr_open_lot}
 ; Required fields first
-included = !?                                 ; Open lot coverage
+included = ?                                 ; Open lot coverage
 
 ; Coverage terms
 deductible = #$:(0..):if included = true      ; Deductible
@@ -286,7 +286,7 @@ loaner_vehicle_count = ##:if loaner_coverage = true
 
 {@gr_physical_damage}
 ; Coverage type
-coverage_type = !(collision, comprehensive, specified_perils)
+coverage_type = (collision, comprehensive, specified_perils)
 
 ; Terms
 deductible = #$:(0..)                         ; Deductible
@@ -385,7 +385,7 @@ warranty_work = ?                             ; Warranty claims
 
 {@gr_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 demo_loaner_premium = #$:(0..)                ; Demo/loaner premium
@@ -420,8 +420,8 @@ vehicle_count_factor = #                      ; Vehicle count
 
 {@gr_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     bodily_injury,                            ; BI claim
     collision,                                ; Collision
     comprehensive,                            ; Comprehensive
@@ -466,11 +466,11 @@ subrogation = #$:(0..)                        ; Subrogation
 
 {@garage_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@gr_liability                    ; Garage liability
-locations[] = !@gr_location                   ; Covered locations
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @gr_liability                    ; Garage liability
+locations[] = @gr_location                   ; Covered locations
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date
@@ -485,7 +485,7 @@ exclusions = @gr_exclusions                   ; Exclusions
 false_pretense = @gr_false_pretense           ; False pretense
 garagekeepers = @gr_garagekeepers             ; Garagekeepers
 id = :                                        ; Internal identifier
-named_insured = !:                            ; Named insured
+named_insured = :                            ; Named insured
 named_insured_address = @address              ; Insured address
 open_lot = @gr_open_lot                       ; Open lot
 owned_vehicles[] = @tk_vehicle                ; Owned vehicles

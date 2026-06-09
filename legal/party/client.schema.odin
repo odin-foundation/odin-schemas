@@ -47,9 +47,9 @@ changelog[0].rationale = "Comprehensive client management structure"
 
 {@legal_client}
 ; Required fields first
-client_name = !:                                  ; Client name (individual or entity)
-client_type = !(corporation, estate, government, individual, llc, nonprofit, other_entity, partnership, trust)
-open_date = !date                                 ; Date client opened
+client_name = :                                  ; Client name (individual or entity)
+client_type = (corporation, estate, government, individual, llc, nonprofit, other_entity, partnership, trust)
+open_date = date                                 ; Date client opened
 
 ; Client identification
 client_id = :                                     ; Internal client identifier
@@ -228,8 +228,8 @@ reopen_eligible = ?:if status = closed            ; Eligible to reopen
 
 {@client_contact}
 ; Required fields first
-contact_name = !:                                 ; Contact name
-contact_type = !(billing, general, in_house_counsel, primary, secondary)
+contact_name = :                                 ; Contact name
+contact_type = (billing, general, in_house_counsel, primary, secondary)
 
 ; Contact details
 {.details}
@@ -267,7 +267,7 @@ active = ?                                        ; Contact is active
 
 {@client_billing}
 ; Required fields first
-billing_method = !(alternative_fee, blended_rate, contingency, fixed_fee, hourly, hybrid)
+billing_method = (alternative_fee, blended_rate, contingency, fixed_fee, hourly, hybrid)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Rates
@@ -371,8 +371,8 @@ suspension_reason = ::if billing_suspended = true ; Suspension reason
 
 {@legal_party}
 ; Required fields first
-party_name = !:                                   ; Party name
-party_type = !(corporation, estate, government, individual, llc, nonprofit, other, partnership, trust)
+party_name = :                                   ; Party name
+party_type = (corporation, estate, government, individual, llc, nonprofit, other, partnership, trust)
 
 ; Party identification
 party_id = :                                      ; Unique party identifier

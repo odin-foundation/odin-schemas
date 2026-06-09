@@ -31,25 +31,25 @@ changelog[0].rationale = "Goal tracking, reviews, competencies, and performance 
 {@goal}
 = @types.audit_info
 
-goal_id = !:                                     ; Unique goal identifier
-employee_id = !:                                 ; Associated employee
+goal_id = :                                     ; Unique goal identifier
+employee_id = :                                 ; Associated employee
 goal_type = (development, okr, performance, project, smart)
 goal_category = (business_objective, competency_development, individual, organizational, team)
 
-title = !:                                       ; Goal title
-description = !:                                 ; Goal description
+title = :                                       ; Goal title
+description = :                                 ; Goal description
 success_criteria = :                             ; Measurable success criteria
 
 ; Timeframe
-start_date = !date                               ; Goal start date
-target_date = !date                              ; Target completion date
+start_date = date                               ; Goal start date
+target_date = date                              ; Target completion date
 completed_date = date                            ; Actual completion date
 
 ; OKR-specific fields
 objective = :if goal_type = okr                  ; Objective statement
 {.key_results[]}
 :if goal_type = okr                              ; Key results for OKR
-key_result = !:                                  ; Key result description
+key_result = :                                  ; Key result description
 target_value = :                                 ; Target metric value
 current_value = :                                ; Current metric value
 progress_percent = ##:(0..100)                   ; Progress percentage
@@ -79,14 +79,14 @@ coaching_notes = :                               ; Manager coaching notes
 {@performance_review}
 = @types.audit_info
 
-review_id = !:                                   ; Unique review identifier
-employee_id = !:                                 ; Associated employee
+review_id = :                                   ; Unique review identifier
+employee_id = :                                 ; Associated employee
 review_type = (annual, mid_year, probationary, project, quarterly)
-review_period_start = !date                      ; Review period start
-review_period_end = !date                        ; Review period end
+review_period_start = date                      ; Review period start
+review_period_end = date                        ; Review period end
 review_date = date                               ; Date review conducted
 
-reviewer_id = !:                                 ; Primary reviewer (manager)
+reviewer_id = :                                 ; Primary reviewer (manager)
 reviewer_name = :                                ; Reviewer name
 
 ; Overall rating
@@ -98,7 +98,7 @@ competency_assessments[] = @competency_assessment
 
 ; Goal achievement
 {.goal_review[]}
-goal_id = !:                                     ; Goal identifier
+goal_id = :                                     ; Goal identifier
 goal_title = :                                   ; Goal title
 achievement_rating = ##:(1..5)                   ; Achievement rating
 achievement_percent = ##:(0..100)                ; Percent achieved
@@ -138,12 +138,12 @@ status_date = date                               ; Date of status change
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@competency_assessment}
-competency_id = !:                               ; Competency identifier
-competency_name = !:                             ; Competency name
+competency_id = :                               ; Competency identifier
+competency_name = :                             ; Competency name
 competency_category = (behavioral, functional, leadership, technical)
 competency_description = :                       ; Competency description
 
-rating = !##:(1..5)                              ; Competency rating (1-5)
+rating = ##:(1..5)                              ; Competency rating (1-5)
 required_level = ##:(1..5)                       ; Required proficiency level
 current_level = ##:(1..5)                        ; Current proficiency level
 gap = ##                                         ; Proficiency gap
@@ -159,11 +159,11 @@ development_actions = :                          ; Recommended development
 {@feedback_360}
 = @types.audit_info
 
-feedback_id = !:                                 ; Unique feedback identifier
-employee_id = !:                                 ; Employee being reviewed
-review_cycle = !:                                ; Review cycle identifier
-cycle_start_date = !date                         ; Cycle start
-cycle_end_date = !date                           ; Cycle end
+feedback_id = :                                 ; Unique feedback identifier
+employee_id = :                                 ; Employee being reviewed
+review_cycle = :                                ; Review cycle identifier
+cycle_start_date = date                         ; Cycle start
+cycle_end_date = date                           ; Cycle end
 
 ; Feedback sources
 {.feedback_sources[]}
@@ -177,7 +177,7 @@ anonymous = ?                                    ; Anonymous feedback
 
 ; Consolidated feedback
 {.consolidated_ratings[]}
-competency = !:                                  ; Competency name
+competency = :                                  ; Competency name
 self_rating = ##:(1..5)                          ; Self rating
 manager_avg = #:(1..5)                           ; Manager average
 peer_avg = #:(1..5)                              ; Peer average
@@ -200,20 +200,20 @@ acknowledgment_date = date                       ; Employee acknowledgment
 {@performance_improvement_plan}
 = @types.audit_info
 
-pip_id = !:                                      ; Unique PIP identifier
-employee_id = !:                                 ; Associated employee
-manager_id = !:                                  ; Manager overseeing PIP
+pip_id = :                                      ; Unique PIP identifier
+employee_id = :                                 ; Associated employee
+manager_id = :                                  ; Manager overseeing PIP
 
-start_date = !date                               ; PIP start date
-review_date = !date                              ; Review/checkpoint date
-end_date = !date                                 ; PIP end date
+start_date = date                               ; PIP start date
+review_date = date                              ; Review/checkpoint date
+end_date = date                                 ; PIP end date
 duration_days = ##:(1..)                         ; PIP duration
 
 ; Performance issues
 {.performance_issues[]}
 :(1..)                                           ; At least one issue
 issue_category = (attendance, behavior, communication, productivity, quality, skills)
-issue_description = !:                           ; Detailed description
+issue_description = :                           ; Detailed description
 impact = :                                       ; Impact of issue
 prior_discussions[] = date                       ; Dates of prior discussions
 prior_warnings[] = date                          ; Dates of prior warnings
@@ -223,8 +223,8 @@ prior_warnings[] = date                          ; Dates of prior warnings
 ; Improvement expectations
 {.expectations[]}
 :(1..)                                           ; At least one expectation
-expectation_description = !:                     ; What must improve
-success_criteria = !:                            ; How success is measured
+expectation_description = :                     ; What must improve
+success_criteria = :                            ; How success is measured
 target_date = date                               ; Target completion
 achieved = ?                                     ; Expectation met
 achievement_date = date                          ; Date achieved
@@ -238,7 +238,7 @@ resources_provided = :                           ; Resources/tools provided
 
 ; Check-ins
 {.checkpoints[]}
-checkpoint_date = !date                          ; Checkpoint date
+checkpoint_date = date                          ; Checkpoint date
 progress_summary = :                             ; Progress summary
 concerns = :                                     ; Ongoing concerns
 next_steps = :                                   ; Next steps
@@ -268,16 +268,16 @@ hr_signature_date = date                         ; HR signature
 {@recognition}
 = @types.audit_info
 
-recognition_id = !:                              ; Unique recognition identifier
-employee_id = !:                                 ; Employee being recognized
+recognition_id = :                              ; Unique recognition identifier
+employee_id = :                                 ; Employee being recognized
 recognition_type = (award, bonus, certificate, peer_recognition, public_acknowledgment, service_anniversary, spot_award)
-recognition_date = !date                         ; Date of recognition
+recognition_date = date                         ; Date of recognition
 
-awarded_by = !:                                  ; Who gave recognition
+awarded_by = :                                  ; Who gave recognition
 awarded_by_name = :                              ; Name of person/department
 
-title = !:                                       ; Recognition title
-description = !:                                 ; What was recognized
+title = :                                       ; Recognition title
+description = :                                 ; What was recognized
 reason = :                                       ; Reason for recognition
 accomplishment = :                               ; Specific accomplishment
 
@@ -303,9 +303,9 @@ presentation_date = date                         ; Date presented (if ceremony)
 {@succession_plan}
 = @types.audit_info
 
-succession_plan_id = !:                          ; Unique plan identifier
-position_id = !:                                 ; Critical position
-position_title = !:                              ; Position title
+succession_plan_id = :                          ; Unique plan identifier
+position_id = :                                 ; Critical position
+position_title = :                              ; Position title
 department = :                                   ; Department
 current_incumbent_id = :                         ; Current employee in position
 
@@ -315,7 +315,7 @@ risk_of_vacancy = (high, low, medium)            ; Risk of upcoming vacancy
 ; Succession candidates
 {.candidates[]}
 :(1..)                                           ; At least one candidate
-candidate_employee_id = !:                       ; Candidate employee ID
+candidate_employee_id = :                       ; Candidate employee ID
 candidate_name = :                               ; Candidate name
 current_position = :                             ; Current role
 readiness = (ready_1_2_years, ready_3_5_years, ready_now)

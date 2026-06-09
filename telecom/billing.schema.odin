@@ -50,18 +50,18 @@ changelog[0].rationale = "Billing structure derived from FCC billing rules and U
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Invoice Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-invoice_id = !:                                   ; Unique invoice identifier
-invoice_number = !:                               ; Invoice number (customer-facing)
-account_ref = !:                                  ; Account reference
+invoice_id = :                                   ; Unique invoice identifier
+invoice_number = :                               ; Invoice number (customer-facing)
+account_ref = :                                  ; Account reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Invoice Dates
 ; ───────────────────────────────────────────────────────────────────────────────
 {.dates}
-invoice_date = !date                              ; Invoice generation date
-due_date = !date                                  ; Payment due date
-period_start = !date                              ; Billing period start
-period_end = !date                                ; Billing period end
+invoice_date = date                              ; Invoice generation date
+due_date = date                                  ; Payment due date
+period_start = date                              ; Billing period start
+period_end = date                                ; Billing period end
 
 {@invoice}
 
@@ -75,14 +75,14 @@ status_date = date                                ; Status change date
 ; Invoice Totals
 ; ───────────────────────────────────────────────────────────────────────────────
 {.totals}
-subtotal = !#$:(0..)                              ; Subtotal before taxes and fees
-taxes = !#$:(0..)                                 ; Total taxes
-regulatory_fees = !#$:(0..)                       ; Total regulatory fees
-total_charges = !#$:(0..)                         ; Total charges
+subtotal = #$:(0..)                              ; Subtotal before taxes and fees
+taxes = #$:(0..)                                 ; Total taxes
+regulatory_fees = #$:(0..)                       ; Total regulatory fees
+total_charges = #$:(0..)                         ; Total charges
 total_credits = #$:(0..)                          ; Total credits/adjustments
 previous_balance = #$                             ; Previous balance carried forward
 payments_received = #$:(0..)                      ; Payments received this period
-balance_due = !#$                                 ; Current balance due
+balance_due = #$                                 ; Current balance due
 past_due_amount = #$:(0..)                        ; Past due amount
 
 {@invoice}
@@ -127,13 +127,13 @@ mailed = ?                                        ; Physical bill mailed
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Charge Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-charge_id = !:                                    ; Unique charge identifier
+charge_id = :                                    ; Unique charge identifier
 line_number = ##:(0..)                            ; Line number on invoice
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Charge Description
 ; ───────────────────────────────────────────────────────────────────────────────
-description = !:                                  ; Charge description
+description = :                                  ; Charge description
 charge_category = (
     activation,
     adjustment,
@@ -162,7 +162,7 @@ recurring_period = (annual, monthly, quarterly, weekly)
 {.amount}
 unit_price = #$:(0..)                             ; Price per unit
 quantity = #:(0..)                                ; Quantity
-amount = !#$                                      ; Total charge amount (can be negative for credits)
+amount = #$                                      ; Total charge amount (can be negative for credits)
 
 {@charge_line_item}
 
@@ -206,14 +206,14 @@ rate_per_unit = #$:(0..)                          ; Rate per unit
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Tax Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-tax_id = !*:                                       ; Unique tax identifier
+tax_id = *:                                       ; Unique tax identifier
 line_number = ##:(0..)                            ; Line number on invoice
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Tax Description
 ; ───────────────────────────────────────────────────────────────────────────────
-description = !:                                  ; Tax description
-tax_name = !:                                     ; Tax name
+description = :                                  ; Tax description
+tax_name = :                                     ; Tax name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Tax Type and Jurisdiction
@@ -226,9 +226,9 @@ tax_code = :                                      ; Tax code/identifier
 ; Tax Calculation
 ; ───────────────────────────────────────────────────────────────────────────────
 {.calculation}
-taxable_amount = !#$:(0..)                        ; Amount subject to tax
-tax_rate = !#:(0..100)                            ; Tax rate percentage
-tax_amount = !#$:(0..)                            ; Tax amount
+taxable_amount = #$:(0..)                        ; Amount subject to tax
+tax_rate = #:(0..100)                            ; Tax rate percentage
+tax_amount = #$:(0..)                            ; Tax amount
 
 {@tax_line_item}
 
@@ -247,14 +247,14 @@ charge_ref = :                                    ; Associated charge
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Fee Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-fee_id = !:                                       ; Unique fee identifier
+fee_id = :                                       ; Unique fee identifier
 line_number = ##:(0..)                            ; Line number on invoice
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Fee Description
 ; ───────────────────────────────────────────────────────────────────────────────
-description = !:                                  ; Fee description
-fee_name = !:                                     ; Fee name
+description = :                                  ; Fee description
+fee_name = :                                     ; Fee name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Fee Type
@@ -277,7 +277,7 @@ fee_type = (
 {.calculation}
 base_amount = #$:(0..)                            ; Amount subject to fee
 fee_rate = #:(0..100)                             ; Fee rate percentage (if applicable)
-fee_amount = !#$:(0..)                            ; Total fee amount
+fee_amount = #$:(0..)                            ; Total fee amount
 flat_fee = ?                                      ; Flat fee (not percentage)
 
 {@regulatory_fee_line_item}
@@ -305,8 +305,8 @@ charge_ref = :                                    ; Associated charge
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Payment Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-payment_id = !:                                   ; Unique payment identifier
-account_ref = !:                                  ; Account reference
+payment_id = :                                   ; Unique payment identifier
+account_ref = :                                  ; Account reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Payment Details (Additional telecom fields)
@@ -363,15 +363,15 @@ retry_count = ##:(0..)                            ; Number of retry attempts
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Adjustment Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-adjustment_id = !:                                ; Unique adjustment identifier
-account_ref = !:                                  ; Account reference
+adjustment_id = :                                ; Unique adjustment identifier
+account_ref = :                                  ; Account reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Adjustment Details
 ; ───────────────────────────────────────────────────────────────────────────────
-adjustment_date = !date                           ; Adjustment date
-adjustment_amount = !#$                           ; Adjustment amount (negative for credit)
-description = !:                                  ; Adjustment description
+adjustment_date = date                           ; Adjustment date
+adjustment_amount = #$                           ; Adjustment amount (negative for credit)
+description = :                                  ; Adjustment description
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Adjustment Type
@@ -391,7 +391,7 @@ adjustment_type = (
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Adjustment Reason
 ; ───────────────────────────────────────────────────────────────────────────────
-reason = !:                                       ; Reason for adjustment
+reason = :                                       ; Reason for adjustment
 reason_code = :                                   ; Standardized reason code
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -421,18 +421,18 @@ charge_ref = :                                    ; Related charge
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Arrangement Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-arrangement_id = !:                               ; Unique arrangement identifier
-account_ref = !:                                  ; Account reference
+arrangement_id = :                               ; Unique arrangement identifier
+account_ref = :                                  ; Account reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Arrangement Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.details}
-arrangement_date = !date                          ; Arrangement date
-total_amount = !#$:(0..)                          ; Total amount in arrangement
-installments = !##:(1..)                          ; Number of installments
-installment_amount = !#$:(0..)                    ; Installment amount
-start_date = !date                                ; First payment date
+arrangement_date = date                          ; Arrangement date
+total_amount = #$:(0..)                          ; Total amount in arrangement
+installments = ##:(1..)                          ; Number of installments
+installment_amount = #$:(0..)                    ; Installment amount
+start_date = date                                ; First payment date
 frequency = (biweekly, monthly, weekly)
 
 {@payment_arrangement}
@@ -476,15 +476,15 @@ default_terms = :                                 ; Terms if arrangement is brok
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Dispute Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-dispute_id = !:                                   ; Unique dispute identifier
-account_ref = !:                                  ; Account reference
+dispute_id = :                                   ; Unique dispute identifier
+account_ref = :                                  ; Account reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Dispute Details
 ; ───────────────────────────────────────────────────────────────────────────────
-dispute_date = !date                              ; Dispute filing date
-disputed_amount = !#$:(0..)                       ; Amount in dispute
-description = !:                                  ; Dispute description
+dispute_date = date                              ; Dispute filing date
+disputed_amount = #$:(0..)                       ; Amount in dispute
+description = :                                  ; Dispute description
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Dispute Type

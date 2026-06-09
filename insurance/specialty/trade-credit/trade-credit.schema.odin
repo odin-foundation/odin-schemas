@@ -45,9 +45,9 @@ changelog[0].rationale = "Specialty coverage for accounts receivable protection"
 
 {@tc_insured}
 ; Required fields first
-annual_sales = !#$:(0..)                      ; Annual sales on credit
-business_name = !:                            ; Business name
-industry = !(
+annual_sales = #$:(0..)                      ; Annual sales on credit
+business_name = :                            ; Business name
+industry = (
     agriculture,                              ; Agriculture
     automotive,                               ; Auto parts
     chemicals,                                ; Chemicals
@@ -88,8 +88,8 @@ years_in_business = ##                        ; Years operating
 
 {@tc_buyer}
 ; Required fields first
-buyer_name = !:                               ; Buyer name
-credit_limit = !#$:(0..)                      ; Credit limit requested
+buyer_name = :                               ; Buyer name
+credit_limit = #$:(0..)                      ; Credit limit requested
 
 ; Optional fields
 buyer_id = :                                  ; Internal identifier
@@ -108,8 +108,8 @@ total_exposure = #$:(0..)                     ; Current exposure
 
 {@tc_coverage}
 ; Required fields first
-coverage_percentage = !#:(0..100)             ; Indemnity percentage
-policy_limit = !#$:(0..)                      ; Maximum liability
+coverage_percentage = #:(0..100)             ; Indemnity percentage
+policy_limit = #$:(0..)                      ; Maximum liability
 
 ; Coverage type
 coverage_type = (
@@ -195,7 +195,7 @@ online_portal = ?                             ; Online limit requests
 
 {@tc_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Premium structure
 adjustment_premium = #$:(0..)                 ; End-of-period adjustment
@@ -234,9 +234,9 @@ terms_factor = #                              ; Credit terms
 
 {@tc_claim}
 ; Required fields first
-buyer_name = !:                               ; Defaulting buyer
-claim_date = !date                            ; Claim date
-claim_type = !(
+buyer_name = :                               ; Defaulting buyer
+claim_date = date                            ; Claim date
+claim_type = (
     bankruptcy,                               ; Bankruptcy
     contract_frustration,                     ; Political frustration
     expropriation,                            ; Expropriation
@@ -278,11 +278,11 @@ shipment_date = date                          ; Shipment date
 
 {@trade_credit_policy}
 ; Required fields first
-coverage = !@tc_coverage                      ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@tc_insured                        ; Insured business
-policy_number = !:                            ; Policy number
+coverage = @tc_coverage                      ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @tc_insured                        ; Insured business
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

@@ -27,7 +27,7 @@ changelog[1].change = "Remove duplicate types now in common/types.schema.odin"
 
 {@premium}
 ; Required fields first
-amount = !#$:(0..)                               ; Premium amount
+amount = #$:(0..)                               ; Premium amount
 
 ; Optional fields
 basis = (annual, monthly, quarterly, semi_annual, term)  ; Payment frequency
@@ -40,7 +40,7 @@ currency = :(3) "USD"                            ; ISO 4217 currency code
 
 {@payment}
 ; Required fields first
-amount = !#$:(0..)                               ; Payment amount
+amount = #$:(0..)                               ; Payment amount
 
 ; Optional fields
 currency = :(3) "USD"                            ; ISO 4217 currency code
@@ -84,9 +84,9 @@ years_at_address = ##                            ; Years at current residence
 
 {@policy_note}
 ; Required fields first
-content = !:                                     ; Note content text
-date = !timestamp                                ; Note creation timestamp
-type = !(audit, billing, claims, compliance, general, service, system, underwriting)
+content = :                                     ; Note content text
+date = timestamp                                ; Note creation timestamp
+type = (audit, billing, claims, compliance, general, service, system, underwriting)
 
 ; Optional fields
 attachments[] = :                                ; Document reference identifiers
@@ -115,7 +115,7 @@ required = ?                                     ; Follow-up required flag
 
 {@underwriting_decision}
 ; Required fields first
-status = !(approved, cancelled, declined, moratorium, pending, referred)
+status = (approved, cancelled, declined, moratorium, pending, referred)
 
 ; Optional fields
 decision_by = :                                  ; User who made decision
@@ -203,8 +203,8 @@ referral_type = (agent, customer, employee, none, other, partner)
 
 {@external_reference}
 ; Required fields first
-reference_value = !:                             ; Reference identifier value
-system = !:                                      ; External system name
+reference_value = :                             ; Reference identifier value
+system = :                                      ; External system name
 
 ; Optional fields
 created = timestamp                              ; Reference creation timestamp

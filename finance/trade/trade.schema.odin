@@ -60,8 +60,8 @@ changelog[0].rationale = "Comprehensive trade finance coverage for documentary t
 
 {@trade_party}
 ; Required fields first
-party_id = !:                                   ; Party identifier
-party_type = !(
+party_id = :                                   ; Party identifier
+party_type = (
     advising_bank,                              ; Advising bank
     applicant,                                  ; LC applicant (buyer)
     beneficiary,                                ; LC beneficiary (seller)
@@ -84,7 +84,7 @@ party_type = !(
     seller,                                     ; Seller/exporter
     supplier                                    ; Supplier (SCF)
 )
-name = !:                                       ; Party legal name
+name = :                                       ; Party legal name
 
 ; Financial institution details (for banks)
 bic = :format bic  ; SWIFT BIC
@@ -109,8 +109,8 @@ accounts[] = @fin.account                       ; Bank accounts (multiple curren
 
 {@letter_of_credit}
 ; Required fields first
-lc_number = !:                                  ; LC reference number
-lc_type = !(
+lc_number = :                                  ; LC reference number
+lc_type = (
     commercial,                                 ; Commercial documentary LC
     confirmed,                                  ; Confirmed LC
     deferred_payment,                           ; Deferred payment LC
@@ -123,20 +123,20 @@ lc_type = !(
     transferable,                               ; Transferable LC
     usance                                      ; Usance/time LC
 )
-amount = !#$:(0..)                              ; LC amount
-currency = !:(3)                                ; LC currency
+amount = #$:(0..)                              ; LC amount
+currency = :(3)                                ; LC currency
 
 ; Parties
-applicants[] = !@trade_party                    ; Applicants (joint importers)
-beneficiaries[] = !@trade_party                 ; Beneficiaries (transferable LC has multiple)
-issuing_bank = !@trade_party                    ; Issuing bank
+applicants[] = @trade_party                    ; Applicants (joint importers)
+beneficiaries[] = @trade_party                 ; Beneficiaries (transferable LC has multiple)
+issuing_bank = @trade_party                    ; Issuing bank
 advising_bank = @trade_party                    ; Advising bank
 confirming_bank = @trade_party                  ; Confirming bank (if confirmed)
 nominated_bank = @trade_party                   ; Nominated bank
 reimbursing_bank = @trade_party                 ; Reimbursing bank
 
 ; Governing rules
-governing_rules = !(
+governing_rules = (
     isp98,                                      ; International Standby Practices
     ucp_600,                                    ; UCP 600 (most common)
     ucp_latest,                                 ; Latest UCP version
@@ -167,7 +167,7 @@ status = (
 ; ---------------------------------------------------------------------------
 {.dates}
 issue_date = date                               ; Date of issue
-expiry_date = !date                             ; Expiry date
+expiry_date = date                             ; Expiry date
 expiry_place = :                                ; Place of expiry
 latest_shipment = date                          ; Latest shipment date
 latest_presentation = date                      ; Latest presentation date
@@ -186,7 +186,7 @@ available_with = (
     issuing_bank,
     nominated_bank
 )
-available_by = !(
+available_by = (
     acceptance,                                 ; Acceptance of draft
     deferred_payment,                           ; Deferred payment
     mixed_payment,                              ; Mixed payment terms
@@ -257,7 +257,7 @@ incoterms_place = :                             ; Incoterms named place
 ; Goods Description
 ; ---------------------------------------------------------------------------
 {.goods}
-description = !:                                ; Goods description
+description = :                                ; Goods description
 hs_codes[] = :(10)                              ; HS codes (multiple goods types)
 countries_of_origin[] = :(2)                    ; Origin countries (multi-component goods)
 quantity = :                                    ; Quantity/unit
@@ -272,7 +272,7 @@ total_value = #$:(0..)                          ; Total value
 documents[] = @required_document                ; Required documents
 
 {@required_document}
-document_type = !(
+document_type = (
     airway_bill,
     beneficiary_certificate,
     bill_of_exchange,
@@ -356,9 +356,9 @@ confirm_if_requested = ?                        ; May add confirmation
 
 {@lc_amendment}
 ; Required fields first
-amendment_number = !:                           ; Amendment sequence number
-lc_reference = !:                               ; Original LC reference
-amendment_date = !date                          ; Amendment date
+amendment_number = :                           ; Amendment sequence number
+lc_reference = :                               ; Original LC reference
+amendment_date = date                          ; Amendment date
 
 ; Amendment details
 {.changes}
@@ -390,10 +390,10 @@ mt707_reference = :                             ; Amendment message reference
 
 {@lc_drawing}
 ; Required fields first
-drawing_id = !:                                 ; Drawing identifier
-lc_reference = !:                               ; LC reference
-presentation_date = !date                       ; Presentation date
-drawing_amount = !#$:(0..)                      ; Drawing amount
+drawing_id = :                                 ; Drawing identifier
+lc_reference = :                               ; LC reference
+presentation_date = date                       ; Presentation date
+drawing_amount = #$:(0..)                      ; Drawing amount
 
 ; Documents presented
 documents_presented[] = @presented_document     ; Presented documents
@@ -438,7 +438,7 @@ net_payment = #$:(0..)                          ; Net amount paid
 {@lc_drawing}
 
 {@presented_document}
-document_type = !:                              ; Document type
+document_type = :                              ; Document type
 document_number = :                             ; Document number
 document_date = date                            ; Document date
 issuer = :                                      ; Issuer
@@ -453,21 +453,21 @@ compliant = ?                                   ; Document compliant
 
 {@collection}
 ; Required fields first
-collection_reference = !:                       ; Collection reference
-collection_type = !(
+collection_reference = :                       ; Collection reference
+collection_type = (
     cap,                                        ; Cash Against Presentation
     clean,                                      ; Clean collection (no documents)
     da,                                         ; Documents Against Acceptance
     dp                                          ; Documents Against Payment
 )
-amount = !#$:(0..)                              ; Collection amount
-currency = !:(3)                                ; Currency
+amount = #$:(0..)                              ; Collection amount
+currency = :(3)                                ; Currency
 
 ; Parties
-drawer = !@trade_party                          ; Drawer (exporter/seller)
-drawee = !@trade_party                          ; Drawee (importer/buyer)
-remitting_bank = !@trade_party                  ; Remitting bank
-collecting_bank = !@trade_party                 ; Collecting bank
+drawer = @trade_party                          ; Drawer (exporter/seller)
+drawee = @trade_party                          ; Drawee (importer/buyer)
+remitting_bank = @trade_party                  ; Remitting bank
+collecting_bank = @trade_party                 ; Collecting bank
 presenting_bank = @trade_party                  ; Presenting bank
 
 ; Governing rules
@@ -532,7 +532,7 @@ maturity_date = date:if collection_type = da    ; Maturity date
 documents[] = @collection_document              ; Documents for collection
 
 {@collection_document}
-document_type = !:                              ; Document type
+document_type = :                              ; Document type
 originals = ##:(0..)                            ; Number of originals
 copies = ##:(0..)                               ; Number of copies
 description = :                                 ; Document description
@@ -578,8 +578,8 @@ waived_if_unpaid = ?                            ; Waive charges if not paid
 
 {@guarantee}
 ; Required fields first
-guarantee_number = !:                           ; Guarantee reference
-guarantee_type = !(
+guarantee_number = :                           ; Guarantee reference
+guarantee_type = (
     advance_payment,                            ; Advance payment guarantee
     bid_bond,                                   ; Bid/tender bond
     counter_guarantee,                          ; Counter-guarantee
@@ -592,18 +592,18 @@ guarantee_type = !(
     standby_lc,                                 ; Standby LC (ISP98)
     warranty                                    ; Warranty guarantee
 )
-amount = !#$:(0..)                              ; Guarantee amount
-currency = !:(3)                                ; Currency
+amount = #$:(0..)                              ; Guarantee amount
+currency = :(3)                                ; Currency
 
 ; Parties
-principal = !@trade_party                       ; Principal (applicant)
-beneficiaries[] = !@trade_party                 ; Beneficiaries (multiple named parties)
-guarantor = !@trade_party                       ; Guarantor bank
+principal = @trade_party                       ; Principal (applicant)
+beneficiaries[] = @trade_party                 ; Beneficiaries (multiple named parties)
+guarantor = @trade_party                       ; Guarantor bank
 instructing_party = @trade_party                ; Instructing party (for counter-guarantee)
 advising_bank = @trade_party                    ; Advising bank
 
 ; Governing rules
-governing_rules = !(
+governing_rules = (
     isp98,                                      ; Standby LCs
     local_law,                                  ; Local law only
     urdg_758,                                   ; URDG 758
@@ -633,7 +633,7 @@ status = (
 {.dates}
 issue_date = date                               ; Date of issue
 effective_date = date                           ; Effective date
-expiry_date = !date                             ; Expiry date
+expiry_date = date                             ; Expiry date
 expiry_event = :                                ; Expiry event description
 claim_deadline = date                           ; Deadline for claims
 extend_or_pay = date                            ; Extend or pay deadline
@@ -664,8 +664,8 @@ reduction_trigger = :                           ; Trigger for reduction
 {@guarantee}
 
 {@reduction_event}
-reduction_date = !date                          ; Reduction date
-reduction_amount = !#$:(0..)                    ; Reduction amount
+reduction_date = date                          ; Reduction date
+reduction_amount = #$:(0..)                    ; Reduction amount
 reduction_percentage = #:(0..100)               ; Reduction %
 condition = :                                   ; Reduction condition
 document_required = :                           ; Required document
@@ -711,13 +711,13 @@ mt768_reference = :                             ; MT768 Acknowledgment
 
 {@guarantee_claim}
 ; Required fields first
-claim_id = !:                                   ; Claim identifier
-guarantee_reference = !:                        ; Guarantee reference
-claim_date = !date                              ; Claim date
-claim_amount = !#$:(0..)                        ; Claim amount
+claim_id = :                                   ; Claim identifier
+guarantee_reference = :                        ; Guarantee reference
+claim_date = date                              ; Claim date
+claim_amount = #$:(0..)                        ; Claim amount
 
 ; Claimant
-claimant = !@trade_party                        ; Claimant (beneficiary)
+claimant = @trade_party                        ; Claimant (beneficiary)
 
 ; Claim details
 claim_statement = :                             ; Claim statement
@@ -769,8 +769,8 @@ extend_or_pay_invoked = ?                       ; Extend or pay
 
 {@supply_chain_finance}
 ; Required fields first
-scf_id = !:                                     ; SCF transaction ID
-scf_type = !(
+scf_id = :                                     ; SCF transaction ID
+scf_type = (
     approved_payables_finance,                  ; Reverse factoring
     dynamic_discounting,                        ; Buyer discount program
     distributor_finance,                        ; Distributor financing
@@ -783,9 +783,9 @@ scf_type = !(
 )
 
 ; Parties
-anchor = !@trade_party                          ; Anchor company (buyer or seller)
-counterparty = !@trade_party                    ; Supplier or buyer
-finance_providers[] = !@trade_party             ; Finance providers (syndicated SCF)
+anchor = @trade_party                          ; Anchor company (buyer or seller)
+counterparty = @trade_party                    ; Supplier or buyer
+finance_providers[] = @trade_party             ; Finance providers (syndicated SCF)
 platform_provider = @trade_party                ; SCF platform if applicable
 
 ; Program details
@@ -840,19 +840,19 @@ approval_threshold = #$:(0..)                   ; Auto-approval limit
 
 {@scf_invoice}
 ; Required fields first
-invoice_id = !:                                 ; Invoice identifier
-program_id = !:                                 ; SCF program reference
-invoice_number = !:                             ; Original invoice number
-invoice_date = !date                            ; Invoice date
-invoice_amount = !#$:(0..)                      ; Invoice amount
-currency = !:(3)                                ; Invoice currency
+invoice_id = :                                 ; Invoice identifier
+program_id = :                                 ; SCF program reference
+invoice_number = :                             ; Original invoice number
+invoice_date = date                            ; Invoice date
+invoice_amount = #$:(0..)                      ; Invoice amount
+currency = :(3)                                ; Invoice currency
 
 ; Parties
-seller = !@trade_party                          ; Seller/supplier
-buyer = !@trade_party                           ; Buyer
+seller = @trade_party                          ; Seller/supplier
+buyer = @trade_party                           ; Buyer
 
 ; Due date
-original_due_date = !date                       ; Original payment due date
+original_due_date = date                       ; Original payment due date
 extended_due_date = date                        ; Extended due date (if any)
 payment_terms = :                               ; Payment terms description
 
@@ -899,8 +899,8 @@ settlement_date = date                          ; Settlement date
 
 {@forfaiting}
 ; Required fields first
-forfait_id = !:                                 ; Forfaiting transaction ID
-forfait_type = !(
+forfait_id = :                                 ; Forfaiting transaction ID
+forfait_type = (
     avalized_draft,                             ; Avalized bill of exchange
     book_debt,                                  ; Book debt
     deferred_payment_lc,                        ; Deferred payment LC
@@ -908,16 +908,16 @@ forfait_type = !(
 )
 
 ; Parties
-exporter = !@trade_party                        ; Exporter (seller of receivable)
-importer = !@trade_party                        ; Importer/obligor
-forfaiter = !@trade_party                       ; Forfaiting bank
+exporter = @trade_party                        ; Exporter (seller of receivable)
+importer = @trade_party                        ; Importer/obligor
+forfaiter = @trade_party                       ; Forfaiting bank
 guarantors[] = @trade_party                     ; Guarantors (multiple avalizing banks)
 
 ; Transaction details
-face_value = !#$:(0..)                          ; Face value of receivable
-currency = !:(3)                                ; Currency
-purchase_date = !date                           ; Date of purchase
-maturity_date = !date                           ; Maturity date
+face_value = #$:(0..)                          ; Face value of receivable
+currency = :(3)                                ; Currency
+purchase_date = date                           ; Date of purchase
+maturity_date = date                           ; Maturity date
 
 ; Status
 status = (

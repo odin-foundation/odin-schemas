@@ -42,16 +42,16 @@ changelog[0].rationale = "Structure derived from CMS Pub 100-18 and 42 CFR Part 
 
 {@plan}
 ; Plan identification - Per 42 CFR 423.50
-contract_number = !:/^[HS]\d{4}$/            ; CMS contract number (S#### PDP, H#### MA-PD)
-plan_id = !:                                 ; Plan benefit package ID
+contract_number = :/^[HS]\d{4}$/            ; CMS contract number (S#### PDP, H#### MA-PD)
+plan_id = :                                 ; Plan benefit package ID
 segment_id = :                               ; Segment ID
 
 ; Plan type
-plan_type = !(employer_pdp, ma_pd, pdp)      ; Plan type
+plan_type = (employer_pdp, ma_pd, pdp)      ; Plan type
 
 ; Sponsor information
 {.sponsor}
-legal_name = !:                              ; Sponsor legal name
+legal_name = :                              ; Sponsor legal name
 marketing_name = :                           ; Marketing name
 parent_organization = :                      ; Parent organization
 
@@ -67,8 +67,8 @@ nationwide = ?                               ; Nationwide employer plan
 
 ; Contract details
 {.contract}
-contract_year = !##:(2000..2100)             ; Contract year
-effective_date = !date                       ; Contract effective date
+contract_year = ##:(2000..2100)             ; Contract year
+effective_date = date                       ; Contract effective date
 termination_date = date                      ; Termination date
 contract_status = (active, non_renewed, terminated)
 
@@ -84,7 +84,7 @@ rating_year = ##:(2000..2100)                ; Rating year
 {@plan}
 
 ; Formulary
-formulary_id = !:                            ; Formulary ID
+formulary_id = :                            ; Formulary ID
 formulary_version = :                        ; Formulary version
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -93,12 +93,12 @@ formulary_version = :                        ; Formulary version
 ; Per 42 CFR 423.104 - Standard benefit parameters
 
 {@benefit_structure}
-contract_number = !:                         ; Contract number
-plan_id = !:                                 ; Plan ID
-benefit_year = !##:(2000..2100)              ; Benefit year
+contract_number = :                         ; Contract number
+plan_id = :                                 ; Plan ID
+benefit_year = ##:(2000..2100)              ; Benefit year
 
 ; Benefit type - Per 42 CFR 423.104
-benefit_type = !(actuarially_equivalent, basic_alternative, defined_standard, enhanced)
+benefit_type = (actuarially_equivalent, basic_alternative, defined_standard, enhanced)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Premium - Per 42 CFR 423.286
@@ -164,11 +164,11 @@ coinsurance = #:(0..100)                     ; Coinsurance (whichever is greater
 ; Per 42 CFR 423.104 and CMS formulary guidance
 
 {@tier_cost_sharing}
-tier_number = !##:(1..6)                     ; Tier number
+tier_number = ##:(1..6)                     ; Tier number
 tier_name = :                                ; Tier name/label
 
 ; Cost sharing type
-cost_sharing_type = !(coinsurance, copay)
+cost_sharing_type = (coinsurance, copay)
 
 ; Retail pharmacy (30-day supply)
 {.retail_30}
@@ -201,10 +201,10 @@ coinsurance = #:(0..100)                     ; Mail order coinsurance
 ; Per 42 CFR 423.120 and CMS formulary requirements
 
 {@formulary}
-formulary_id = !:                            ; Formulary identifier
-formulary_version = !:                       ; Version number
-effective_date = !date                       ; Effective date
-contract_year = !##:(2000..2100)             ; Contract year
+formulary_id = :                            ; Formulary identifier
+formulary_version = :                       ; Version number
+effective_date = date                       ; Effective date
+contract_year = ##:(2000..2100)             ; Contract year
 
 ; Sponsor
 sponsor_name = :                             ; Plan sponsor name
@@ -228,8 +228,8 @@ specialty_count = ##:(0..)                   ; Specialty tier count
 ; Per 42 CFR 423.120
 
 {@formulary_drug}
-formulary_id = !:                            ; Formulary ID
-ndc = !:/^\d{11}$/                           ; National Drug Code (11-digit)
+formulary_id = :                            ; Formulary ID
+ndc = :/^\d{11}$/                           ; National Drug Code (11-digit)
 
 ; Drug identification
 {.drug}
@@ -242,7 +242,7 @@ dosage_form = :                              ; Dosage form (tablet, capsule, etc
 {@formulary_drug}
 
 ; Tier placement
-tier = !##:(1..6)                            ; Formulary tier
+tier = ##:(1..6)                            ; Formulary tier
 tier_name = :                                ; Tier name
 
 ; Restrictions - Per 42 CFR 423.120(b)
@@ -275,8 +275,8 @@ brand_preferred = ?                          ; Brand preferred over generic
 ; Per 42 CFR 423.120(a)
 
 {@pharmacy_network}
-network_id = !:                              ; Network identifier
-contract_number = !:                         ; Contract number
+network_id = :                              ; Network identifier
+contract_number = :                         ; Contract number
 
 ; Network type
 {.network}
@@ -303,14 +303,14 @@ rural_access_percent = #:(0..100)            ; Rural access percentage
 ; Per 42 CFR 423.566 - Coverage Determinations
 
 {@coverage_determination}
-request_id = !:                              ; Request identifier
-beneficiary_mbi = !*:                        ; Beneficiary MBI
-contract_number = !:                         ; Plan contract number
+request_id = :                              ; Request identifier
+beneficiary_mbi = *:                        ; Beneficiary MBI
+contract_number = :                         ; Plan contract number
 
 ; Request details
 {.request}
-request_date = !date                         ; Date of request
-request_type = !(coverage, exception, tiering)
+request_date = date                         ; Date of request
+request_type = (coverage, exception, tiering)
 expedited = ?                                ; Expedited request
 prescriber_support = ?                       ; Prescriber supporting statement
 
@@ -319,7 +319,7 @@ prescriber_support = ?                       ; Prescriber supporting statement
 ; Drug requested
 {.drug}
 ndc = :                                      ; NDC if known
-drug_name = !:                               ; Drug name
+drug_name = :                               ; Drug name
 strength = :                                 ; Drug strength
 quantity = ##:(0..)                          ; Quantity requested
 days_supply = ##:(0..)                       ; Days supply
@@ -352,8 +352,8 @@ appeal_decision_date = date                  ; Appeal decision date
 ; Per 42 CFR 423.153(d)
 
 {@mtm_program}
-contract_number = !:                         ; Contract number
-program_year = !##:(2000..2100)              ; Program year
+contract_number = :                         ; Contract number
+program_year = ##:(2000..2100)              ; Program year
 
 ; Targeting criteria - Per 42 CFR 423.153(d)(2)
 {.targeting}
@@ -379,9 +379,9 @@ patient_education = ?                        ; Patient education materials
 ; Per 42 CFR 423.153(d)
 
 {@mtm_enrollment}
-beneficiary_mbi = !*:                        ; Beneficiary MBI
-contract_number = !:                         ; Contract number
-enrollment_date = !date                      ; MTM enrollment date
+beneficiary_mbi = *:                        ; Beneficiary MBI
+contract_number = :                         ; Contract number
+enrollment_date = date                      ; MTM enrollment date
 
 ; Eligibility
 {.eligibility}

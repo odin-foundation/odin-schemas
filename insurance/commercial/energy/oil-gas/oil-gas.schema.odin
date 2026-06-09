@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial energy coverage for petroleum industry"
 ; ===================================================================================
 
 {@og_segment}
-segment = !(
+segment = (
     downstream,                               ; Refining/distribution
     midstream,                                ; Transportation/storage
     oilfield_services,                        ; Service companies
@@ -56,7 +56,7 @@ segment = !(
 ; ===================================================================================
 
 {@og_operation}
-operation_type = !(
+operation_type = (
     completion,                               ; Well completion
     directional_drilling,                     ; Directional drilling
     drilling,                                 ; Drilling operations
@@ -89,8 +89,8 @@ location_type = (
 
 {@og_insured}
 ; Required fields first
-entity_name = !:                              ; Legal entity name
-entity_type = !(
+entity_name = :                              ; Legal entity name
+entity_type = (
     contractor,                               ; Oilfield contractor
     distributor,                              ; Product distributor
     joint_venture,                            ; JV/partnership
@@ -117,7 +117,7 @@ years_in_business = ##                        ; Years operating
 
 {@og_property}
 ; Required fields first
-property_type = !(
+property_type = (
     equipment,                                ; Movable equipment
     offshore_platform,                        ; Offshore structure
     onshore_facility,                         ; Onshore facilities
@@ -128,7 +128,7 @@ property_type = !(
     terminal,                                 ; Distribution terminal
     well                                      ; Wellhead/casing
 )
-total_insured_value = !#$:(0..)               ; TIV
+total_insured_value = #$:(0..)               ; TIV
 
 ; Optional fields
 business_interruption = ?                     ; BI coverage
@@ -154,7 +154,7 @@ windstorm = ?                                 ; Wind
 
 {@og_well_control}
 ; Required fields first
-included = !?                                 ; Well control coverage
+included = ?                                 ; Well control coverage
 
 ; Coverage terms
 blowout = ?:if included = true                ; Blowout coverage
@@ -193,7 +193,7 @@ underground_resources = ?:if included = true   ; UGOD
 
 {@og_liability}
 ; Required fields first
-general_liability_limit = !#$:(0..)           ; GL per occurrence
+general_liability_limit = #$:(0..)           ; GL per occurrence
 
 ; Optional fields
 aggregate = #$:(0..)                          ; Annual aggregate
@@ -215,7 +215,7 @@ professional_liability = ?                    ; Professional/E&O
 
 {@og_pollution}
 ; Required fields first
-included = !?                                 ; Pollution coverage
+included = ?                                 ; Pollution coverage
 
 ; Coverage terms
 aggregate = #$:(0..):if included = true       ; Annual aggregate
@@ -236,8 +236,8 @@ transportation = ?:if included = true         ; Transit pollution
 
 {@og_location}
 ; Required fields first
-location_id = !:                              ; Location identifier
-location_type = !@og_operation                ; Operation type
+location_id = :                              ; Location identifier
+location_type = @og_operation                ; Operation type
 
 ; Optional fields
 address = @address                            ; Physical address
@@ -264,7 +264,7 @@ working_interest = #:(0..100)                 ; WI percentage
 
 {@og_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 liability_premium = #$:(0..)                  ; Liability premium
@@ -282,8 +282,8 @@ well_control_premium = #$:(0..)               ; Well control
 
 {@og_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     blowout,                                  ; Blowout
     bodily_injury,                            ; BI claim
     business_interruption,                    ; BI loss
@@ -312,11 +312,11 @@ reserve = #$:(0..)                            ; Reserve
 
 {@oil_gas_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@og_insured                        ; Named insured
-policy_number = !:                            ; Policy number
-segment = !@og_segment                        ; Industry segment
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @og_insured                        ; Named insured
+policy_number = :                            ; Policy number
+segment = @og_segment                        ; Industry segment
 
 ; Invariants
 :invariant expiration_date > effective_date

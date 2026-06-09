@@ -43,7 +43,7 @@ changelog[0].rationale = "CarePlan resource derived from FHIR R4/R5 specificatio
 
 {@care_plan}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: CarePlan.identifier
@@ -65,10 +65,10 @@ replaces[] = @fhir.reference                  ; CarePlan replaced by this one
 part_of[] = @fhir.reference                   ; Part of referenced CarePlan
 
 ; Status - FHIR: CarePlan.status (required)
-status = !(active, completed, draft, entered_in_error, on_hold, revoked, unknown)
+status = (active, completed, draft, entered_in_error, on_hold, revoked, unknown)
 
 ; Intent - FHIR: CarePlan.intent (required)
-intent = !(option, order, plan, proposal)
+intent = (option, order, plan, proposal)
 
 ; Categories - FHIR: CarePlan.category
 categories[] = @fhir.codeable_concept         ; Type of plan
@@ -80,7 +80,7 @@ title = :                                     ; Human-friendly name for plan
 description = :                               ; Summary of nature of plan
 
 ; Subject - FHIR: CarePlan.subject (required)
-subject = !@fhir.reference                    ; Patient for whom plan is created
+subject = @fhir.reference                    ; Patient for whom plan is created
 
 ; Encounter - FHIR: CarePlan.encounter
 encounter = @fhir.reference                   ; Encounter creating plan
@@ -162,7 +162,7 @@ reason_references[] = @fhir.reference         ; Condition/Observation/etc.
 goals[] = @fhir.reference                     ; Goals this activity relates to
 
 ; Status - FHIR: CarePlan.activity.detail.status (required)
-status = !(cancelled, completed, entered_in_error, in_progress, not_started, on_hold, scheduled, stopped, unknown)
+status = (cancelled, completed, entered_in_error, in_progress, not_started, on_hold, scheduled, stopped, unknown)
 
 ; Status reason - FHIR: CarePlan.activity.detail.statusReason
 status_reason = @fhir.codeable_concept        ; Reason for current status

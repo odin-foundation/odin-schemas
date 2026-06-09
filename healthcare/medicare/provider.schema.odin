@@ -47,19 +47,19 @@ changelog[0].rationale = "Structure derived from CMS-855 forms and 42 CFR Part 4
 
 {@enrollment}
 ; Application identification
-application_id = !:                          ; Application tracking number
+application_id = :                          ; Application tracking number
 pecos_id = :                                 ; PECOS system ID
-enrollment_type = !(change_of_information, initial, reactivation, revalidation)
+enrollment_type = (change_of_information, initial, reactivation, revalidation)
 
 ; Provider type - Per 42 CFR 424.510
-provider_type = !(dme_supplier, group, individual, institutional)
-application_form = !(cms_855a, cms_855b, cms_855i, cms_855o, cms_855r, cms_855s)
+provider_type = (dme_supplier, group, individual, institutional)
+application_form = (cms_855a, cms_855b, cms_855i, cms_855o, cms_855r, cms_855s)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identifying Information - CMS-855 Section 2
 ; ───────────────────────────────────────────────────────────────────────────────
 {.identification}
-npi = !:/^\d{10}$/                           ; National Provider Identifier
+npi = :/^\d{10}$/                           ; National Provider Identifier
 legal_business_name = :                      ; Legal business name (organizations)
 doing_business_as = :                        ; DBA name
 tax_id = *:                                  ; Tax Identification Number (EIN or SSN)
@@ -91,7 +91,7 @@ location_id = :                              ; Location identifier
 primary_location = ?                         ; Primary practice location
 
 ; Location address and contact
-address = !@address                          ; Physical address
+address = @address                          ; Physical address
 phone = *@phone                              ; Phone number
 fax = *@phone                                ; Fax number
 
@@ -134,7 +134,7 @@ imaging = ?                                  ; Imaging services
 specialties[] = @provider_specialty          ; Provider specialties
 
 {@provider_specialty}
-specialty_code = !:                          ; Medicare specialty code
+specialty_code = :                          ; Medicare specialty code
 specialty_description = :                    ; Specialty description
 primary = ?                                  ; Primary specialty
 board_certified = ?                          ; Board certified
@@ -150,7 +150,7 @@ licenses[] = @provider_license               ; State licenses
 
 {@provider_license}
 = @license_credential                        ; Inherits license credential fields
-license_type = !(dea, medical, nursing, other, pharmacy, state)
+license_type = (dea, medical, nursing, other, pharmacy, state)
 
 {@enrollment}
 
@@ -180,7 +180,7 @@ resolution = :                               ; Resolution/current status
 owners[] = @owner_info                       ; Owners with 5%+ interest
 
 {@owner_info}
-entity_type = !(individual, organization)
+entity_type = (individual, organization)
 name = :                                     ; Owner name
 title = :                                    ; Title/position
 ownership_percent = #:(5..100)               ; Ownership percentage
@@ -219,7 +219,7 @@ start_date = date                            ; Employment start date
 ; Billing/Payment Information - CMS-855 Section 7
 ; ───────────────────────────────────────────────────────────────────────────────
 {.billing}
-assignment_acceptance = !(assigned, non_assigned, participating)
+assignment_acceptance = (assigned, non_assigned, participating)
 eft_authorization = ?                        ; EFT payment authorized
 
 ; EFT information
@@ -244,7 +244,7 @@ agent_address = @address                     ; Agent address
 ; Application Status
 ; ───────────────────────────────────────────────────────────────────────────────
 {.status}
-status = !(approved, denied, pending_review, returned, revoked, withdrawn)
+status = (approved, denied, pending_review, returned, revoked, withdrawn)
 submission_date = date                       ; Application submission date
 effective_date = date                        ; Enrollment effective date
 decision_date = date                         ; Decision date
@@ -267,7 +267,7 @@ revalidation_cycle = ##:(3..5)               ; Revalidation cycle (years)
 ; Provider Enrollment, Chain, and Ownership System record
 
 {@pecos_record}
-pecos_id = !:                                ; PECOS system ID
+pecos_id = :                                ; PECOS system ID
 npi = :/^\d{10}$/                            ; NPI
 ptan = :                                     ; Provider Transaction Access Number
 
@@ -290,13 +290,13 @@ reassignments[] = @reassignment              ; Reassignment relationships
 ; Per CMS-855R - Reassignment of Medicare Benefits
 
 {@reassignment}
-individual_npi = !:/^\d{10}$/                ; Individual practitioner NPI
+individual_npi = :/^\d{10}$/                ; Individual practitioner NPI
 organization_npi = :/^\d{10}$/               ; Organization NPI (reassigning to)
-effective_date = !date                       ; Reassignment effective date
+effective_date = date                       ; Reassignment effective date
 termination_date = date                      ; Termination date
 
 ; Relationship type
-relationship = !(
+relationship = (
     contractor,
     employee,
     group_member,
@@ -306,7 +306,7 @@ relationship = !(
 )
 
 ; Status
-status = !(active, pending, terminated)
+status = (active, pending, terminated)
 termination_reason = (employment_ended, individual_request, organization_request, other):if status = terminated
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -315,13 +315,13 @@ termination_reason = (employment_ended, individual_request, organization_request
 ; Per 42 CFR Part 488 - Survey and Certification
 
 {@certification}
-ccn = !:/^\d{6}$/                            ; CMS Certification Number
-provider_type = !(asc, cah, esrd, hha, hospice, hospital, icf_iid, laboratory, ltc, otp, otp_bh, outpatient_rehab, psychiatric, rnhci, snf)
-facility_name = !:                           ; Facility name
+ccn = :/^\d{6}$/                            ; CMS Certification Number
+provider_type = (asc, cah, esrd, hha, hospice, hospital, icf_iid, laboratory, ltc, otp, otp_bh, outpatient_rehab, psychiatric, rnhci, snf)
+facility_name = :                           ; Facility name
 
 ; Certification status
 {.status}
-certified = !?                               ; Currently certified
+certified = ?                               ; Currently certified
 initial_certification_date = date            ; Initial certification date
 current_certification_date = date            ; Current certification date
 termination_date = date                      ; Termination date (if applicable)
@@ -367,10 +367,10 @@ deemed_status = ?                            ; Has deemed status
 ; Per 42 CFR 424.507 - Ordering and Referring requirements
 
 {@ordering_referring}
-npi = !:/^\d{10}$/                           ; Provider NPI
+npi = :/^\d{10}$/                           ; Provider NPI
 name_first = :                               ; First name
 name_last = :                                ; Last name
-eligible = !?                                ; Eligible to order/refer
+eligible = ?                                ; Eligible to order/refer
 
 ; Eligibility requirements
 {.eligibility}

@@ -42,13 +42,13 @@ changelog[0].rationale = "Structure derived from CMS Pub 100-16 and 42 CFR Part 
 
 {@plan}
 ; Plan identification - Per 42 CFR 422.50
-contract_number = !:/^H\d{4}$/               ; CMS contract number (H####)
-plan_id = !:                                 ; Plan benefit package ID (PBP)
+contract_number = :/^H\d{4}$/               ; CMS contract number (H####)
+plan_id = :                                 ; Plan benefit package ID (PBP)
 segment_id = :                               ; Segment ID (if applicable)
 
 ; Organization - Per 42 CFR 422.500
 {.organization}
-legal_name = !:                              ; MA organization legal name
+legal_name = :                              ; MA organization legal name
 marketing_name = :                           ; Marketing/DBA name
 organization_type = (hmo, local_ccp, pso, regional_ccp)  ; Per 42 CFR 422.4
 parent_organization = :                      ; Parent organization name
@@ -56,13 +56,13 @@ parent_organization = :                      ; Parent organization name
 {@plan}
 
 ; Plan type - Per 42 CFR 422.4
-plan_type = !(hmo, hmo_pos, local_ppo, msa, pffs, regional_ppo, snp)
+plan_type = (hmo, hmo_pos, local_ppo, msa, pffs, regional_ppo, snp)
 snp_type = (c_snp, d_snp, i_snp):if plan_type = snp  ; SNP subtype
 
 ; Contract information
 {.contract}
-contract_year = !##:(2000..2100)             ; Contract year
-effective_date = !date                       ; Contract effective date
+contract_year = ##:(2000..2100)             ; Contract year
+effective_date = date                       ; Contract effective date
 termination_date = date                      ; Contract termination date (if applicable)
 contract_status = (active, non_renewed, terminated)
 
@@ -106,9 +106,9 @@ rating_year = ##:(2000..2100)                ; Rating year
 ; Per 42 CFR 422.100-422.111 and CMS Plan Benefit Package
 
 {@benefits}
-contract_number = !:                         ; Contract number
-plan_id = !:                                 ; Plan benefit package ID
-benefit_year = !##:(2000..2100)              ; Benefit year
+contract_number = :                         ; Contract number
+plan_id = :                                 ; Plan benefit package ID
+benefit_year = ##:(2000..2100)              ; Benefit year
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Premium and Cost Sharing - Per 42 CFR 422.262
@@ -130,7 +130,7 @@ combined_deductible = ?                      ; Combined medical/drug deductible
 
 ; Out-of-pocket maximum - Per 42 CFR 422.100(f)
 {.moop}
-in_network = !#$:(0..)                       ; In-network MOOP
+in_network = #$:(0..)                       ; In-network MOOP
 out_of_network = #$:(0..)                    ; Out-of-network MOOP (if applicable)
 combined = #$:(0..)                          ; Combined MOOP
 includes_drugs = ?                           ; MOOP includes Part D costs
@@ -294,12 +294,12 @@ copay = #$:(0..)                             ; Telehealth visit copay
 ; Per 42 CFR 422.112
 
 {@network}
-contract_number = !:                         ; Contract number
-plan_id = !:                                 ; Plan ID
+contract_number = :                         ; Contract number
+plan_id = :                                 ; Plan ID
 network_id = :                               ; Network identifier
 
 ; Network type
-network_type = !(closed, open, ppo)          ; Network type
+network_type = (closed, open, ppo)          ; Network type
 out_of_network_coverage = ?                  ; OON coverage available
 
 ; Provider counts
@@ -326,11 +326,11 @@ max_travel_time_hospital = ##:(0..)          ; Max travel time to hospital
 ; Per 42 CFR 422.2 and 422.101(f)
 
 {@snp}
-contract_number = !:                         ; Contract number
-plan_id = !:                                 ; Plan ID
+contract_number = :                         ; Contract number
+plan_id = :                                 ; Plan ID
 
 ; SNP type - Per 42 CFR 422.2
-snp_type = !(c_snp, d_snp, i_snp)
+snp_type = (c_snp, d_snp, i_snp)
 
 ; Dual-eligible SNP (D-SNP) - Per 42 CFR 422.107
 {.d_snp}
@@ -373,9 +373,9 @@ individualized_care_plan = ?                 ; ICP developed
 ; Per 42 CFR 422.111(d)
 
 {@anoc}
-contract_number = !:                         ; Contract number
-plan_id = !:                                 ; Plan ID
-notice_year = !##:(2000..2100)               ; Notice for year
+contract_number = :                         ; Contract number
+plan_id = :                                 ; Plan ID
+notice_year = ##:(2000..2100)               ; Notice for year
 
 ; Notice details
 {.notice}

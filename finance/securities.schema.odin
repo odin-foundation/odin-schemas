@@ -48,7 +48,7 @@ tickers[] = {@ticker_symbol}                  ; Tickers (multiple exchanges)
 other_ids[] = :                               ; Proprietary identifiers (vendor IDs)
 
 {@ticker_symbol}
-ticker = !:                                   ; Exchange ticker symbol
+ticker = :                                   ; Exchange ticker symbol
 exchange = :                                  ; Exchange MIC code
 
 ; Security details
@@ -87,7 +87,7 @@ quote_date = date                             ; Price date
 ; ISO 20022: SecuritiesAccount
 
 {@securities_account}
-id = !:                                       ; Account identifier
+id = :                                       ; Account identifier
 name = :                                      ; Account name
 type = (cash, mrgn, nomi, own, safe)          ; Account type
 owners[] = @fin.party                         ; Account owners (joint/trust accounts)
@@ -99,12 +99,12 @@ servicer = @fin.financial_institution         ; Account servicer (custodian)
 ; ISO 20022: AggregateBalanceInformation, BalanceQuantity
 
 {@holding}
-security = !@security                         ; Security held
-account = !@securities_account                ; Securities account
+security = @security                         ; Security held
+account = @securities_account                ; Securities account
 
 ; Quantity and balance
 {.balance}
-total_quantity = !#.6                         ; Total quantity held
+total_quantity = #.6                         ; Total quantity held
 available_quantity = #.6                      ; Available for settlement
 blocked_quantity = #.6                        ; Blocked quantity
 borrowed_quantity = #.6                       ; Borrowed securities
@@ -137,19 +137,19 @@ safekeeping_place = @fin.financial_institution  ; Custodian/depository
 
 {@settlement_instruction}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Instruction identification
-instruction_id = !:                           ; Instruction identifier
+instruction_id = :                           ; Instruction identifier
 transaction_id = :                            ; Transaction identifier
 
 ; Security
-security = !@security                         ; Security to settle
-quantity = !#.6                               ; Settlement quantity
+security = @security                         ; Security to settle
+quantity = #.6                               ; Settlement quantity
 
 ; Settlement details
-settlement_type = !(dvp, fop, rcv)            ; DVP, free of payment, receive
-settlement_date = !date                       ; Intended settlement date
+settlement_type = (dvp, fop, rcv)            ; DVP, free of payment, receive
+settlement_date = date                       ; Intended settlement date
 settlement_amount = @fin.amount               ; Cash settlement amount
 
 ; Accounts
@@ -196,17 +196,17 @@ matched_date = timestamp                      ; Date matched
 
 {@settlement_status}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Original instruction reference
 {.original}
-instruction_id = !:                           ; Original instruction ID
+instruction_id = :                           ; Original instruction ID
 transaction_id = :                            ; Original transaction ID
 
 {@settlement_status}
 
 ; Settlement status
-status = !(ackp, canc, cand, canp, defp, futu, pend, penf, pprc, sett)
+status = (ackp, canc, cand, canp, defp, futu, pend, penf, pprc, sett)
 reason_codes[] = :                            ; Status reason codes (multiple failure reasons)
 additional_info = :                           ; Additional information
 effective = timestamp                         ; Status effective date/time
@@ -244,15 +244,15 @@ settled_amount = @fin.amount                  ; Amount settled
 
 {@portfolio_statement}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Statement identification
-statement_id = !:                             ; Statement identifier
-statement_date = !date                        ; Statement date
+statement_id = :                             ; Statement identifier
+statement_date = date                        ; Statement date
 frequency = (dail, mnth, week, year)          ; Statement frequency
 
 ; Account
-account = !@securities_account                ; Securities account
+account = @securities_account                ; Securities account
 account_owners[] = @fin.party                 ; Account owners (joint/trust accounts)
 custodian = @fin.financial_institution        ; Custodian
 
@@ -275,11 +275,11 @@ cash_balances[] = @fin.amount                 ; Cash balances (multiple currenci
 
 {@corporate_action}
 ; Event identification
-event_id = !:                                 ; Corporate action ID
-event_type = !(bonu, capd, capg, cash, conv, decr, deti, dlst, draw, drip, dvca, dvop, dvsc, dvse, exof, exri, exwa, incr, intr, liqu, lotd, mcal, mrgr, odlt, pcal, pdef, pink, plac, ppmt, pred, prii, prwi, redo, remk, rhdi, rhts, shpr, soff, splf, splr, subs, tend, xmet)
+event_id = :                                 ; Corporate action ID
+event_type = (bonu, capd, capg, cash, conv, decr, deti, dlst, draw, drip, dvca, dvop, dvsc, dvse, exof, exri, exwa, incr, intr, liqu, lotd, mcal, mrgr, odlt, pcal, pdef, pink, plac, ppmt, pred, prii, prwi, redo, remk, rhdi, rhts, shpr, soff, splf, splr, subs, tend, xmet)
 
 ; Securities
-securities[] = !@security                     ; Affected securities (mergers affect multiple)
+securities[] = @security                     ; Affected securities (mergers affect multiple)
 
 ; Event dates
 {.dates}
@@ -308,8 +308,8 @@ currency = :(3)                               ; Currency
 options[] = @ca_option                        ; Available options
 
 {@ca_option}
-option_number = !##:(1..)                     ; Option number
-option_type = !(cash, noac, secu)             ; Option type
+option_number = ##:(1..)                     ; Option number
+option_type = (cash, noac, secu)             ; Option type
 default = ?                                   ; Default option
 rate = #.6                                    ; Option rate
 price = @fin.amount                           ; Option price

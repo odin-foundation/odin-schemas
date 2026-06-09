@@ -45,8 +45,8 @@ changelog[0].rationale = "Specialty coverage for foreign investment protection"
 
 {@pri_insured}
 ; Required fields first
-insured_name = !:                             ; Entity name
-insured_type = !(
+insured_name = :                             ; Entity name
+insured_type = (
     bank,                                     ; Commercial bank
     contractor,                               ; International contractor
     corporation,                              ; MNC
@@ -76,8 +76,8 @@ years_in_host_country = ##                    ; Operating history
 
 {@pri_investment}
 ; Required fields first
-host_country = !:                             ; Host country
-investment_type = !(
+host_country = :                             ; Host country
+investment_type = (
     bond,                                     ; Sovereign/corp bond
     branch,                                   ; Branch operation
     concession,                               ; Concession agreement
@@ -88,7 +88,7 @@ investment_type = !(
     subsidiary,                               ; Subsidiary
     supply_contract                           ; Supply/service contract
 )
-investment_value = !#$:(0..)                  ; Investment amount
+investment_value = #$:(0..)                  ; Investment amount
 
 ; Optional fields
 counterparty = :                              ; Government counterparty
@@ -120,8 +120,8 @@ sector = (
 
 {@pri_coverage}
 ; Required fields first
-insured_percentage = !#:(0..100)              ; Coverage percentage
-maximum_liability = !#$:(0..)                 ; Policy limit
+insured_percentage = #:(0..100)              ; Coverage percentage
+maximum_liability = #$:(0..)                 ; Policy limit
 
 ; Coverage term
 policy_term_years = ##                        ; Policy term
@@ -211,7 +211,7 @@ repudiation = ?:if included = true            ; Repudiation
 
 {@pri_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 boc_premium = #$:(0..)                        ; Breach of contract
@@ -248,8 +248,8 @@ term_factor = #                               ; Policy term
 
 {@pri_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     arbitral_default,                         ; Arbitral award default
     civil_war,                                ; Civil war
     confiscation,                             ; Confiscation
@@ -266,7 +266,7 @@ claim_type = !(
     war,                                      ; War
     other                                     ; Other
 )
-host_country = !:                             ; Country of loss
+host_country = :                             ; Country of loss
 
 ; Optional fields
 amount_claimed = #$:(0..)                     ; Amount claimed
@@ -296,12 +296,12 @@ subrogation_status = :                        ; Subrogation status
 
 {@pri_policy}
 ; Required fields first
-coverage = !@pri_coverage                     ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@pri_insured                       ; Insured entity
-investment = !@pri_investment                 ; Investment details
-policy_number = !:                            ; Policy number
+coverage = @pri_coverage                     ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @pri_insured                       ; Insured entity
+investment = @pri_investment                 ; Investment details
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

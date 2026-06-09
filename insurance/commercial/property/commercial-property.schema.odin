@@ -221,7 +221,7 @@ building_number = ##                              ; Building number where covera
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Form
 ; ───────────────────────────────────────────────────────────────────────────────
-coverage_form = !(
+coverage_form = (
     cp_00_30_bi_with_extra_expense,           ; BI with Extra Expense
     cp_00_32_bi_without_extra_expense,        ; BI without Extra Expense
     cp_00_50_extra_expense_only               ; Extra Expense Only
@@ -356,7 +356,7 @@ id = :                                            ; Unique identifier for causes
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Causes of Loss Form
 ; ───────────────────────────────────────────────────────────────────────────────
-form = !(
+form = (
     cp_10_10_basic,                           ; Fire, lightning, explosion, etc.
     cp_10_20_broad,                           ; Basic + more perils
     cp_10_30_special                          ; All-risk / Open Perils
@@ -500,7 +500,7 @@ building_number = ##                              ; Building number for flood co
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Type
 ; ───────────────────────────────────────────────────────────────────────────────
-coverage_type = !(
+coverage_type = (
     difference_in_conditions,                 ; Difference in Conditions coverage
     nfip,                                     ; National Flood Insurance Program
     private_excess,                           ; Excess over NFIP
@@ -626,13 +626,13 @@ premium = #$:if included = true                   ; Premium for equipment breakd
 
 {@cp_endorsement}
 id = :                                            ; Unique identifier for endorsement
-number = !:                                       ; CP 00 90, CP 12 18, etc.
+number = :                                       ; CP 00 90, CP 12 18, etc.
 title = :                                         ; Title of endorsement
 edition_date = date                               ; Edition date of endorsement form
 effective_date = date                             ; Effective date of endorsement
 
 ; Type
-category = !(
+category = (
     additional_coverage,
     coinsurance,
     conditions,
@@ -686,11 +686,11 @@ premium_impact = #$                               ; Premium impact of endorsemen
 
 {@cp_loss_payable}
 ; Required fields first
-building_number = !##                        ; Building number
-interest_type = !(building_owner, contract_of_sale, lenders_loss_payable, loss_payee, mortgagee, other, trustee)  ; Interest type
-location_number = !##                        ; Location number
-name = !:                                    ; Payee name
-sequence = !##                               ; Sequence number
+building_number = ##                        ; Building number
+interest_type = (building_owner, contract_of_sale, lenders_loss_payable, loss_payee, mortgagee, other, trustee)  ; Interest type
+location_number = ##                        ; Location number
+name = :                                    ; Payee name
+sequence = ##                               ; Sequence number
 
 ; Optional fields
 address = @address                           ; Payee address
@@ -705,9 +705,9 @@ payee_id = :                                 ; Unique payee identifier
 
 {@cp_policy}
 ; Required fields first
-effective_date = !date                       ; Policy effective date
-expiration_date = !date                      ; Policy expiration date
-number = !:                           ; Policy number
+effective_date = date                       ; Policy effective date
+expiration_date = date                      ; Policy expiration date
+number = :                           ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

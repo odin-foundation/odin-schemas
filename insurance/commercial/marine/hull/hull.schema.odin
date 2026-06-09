@@ -45,7 +45,7 @@ changelog[0].rationale = "Commercial marine hull coverage for vessel operators"
 ; Standard vessel classifications for marine hull insurance.
 
 {@hull_vessel_type}
-classification = !(
+classification = (
     barge,                                    ; Non-self-propelled barge
     bulk_carrier,                             ; Bulk cargo vessel
     cable_ship,                               ; Cable laying vessel
@@ -100,10 +100,10 @@ trading_area = (
 
 {@hull_vessel}
 ; Required fields first
-gross_tonnage = !##                           ; Gross tonnage
-imo_number = !:                               ; IMO vessel number
-vessel_name = !:                              ; Vessel name
-vessel_type = !@hull_vessel_type              ; Vessel classification
+gross_tonnage = ##                           ; Gross tonnage
+imo_number = :                               ; IMO vessel number
+vessel_name = :                              ; Vessel name
+vessel_type = @hull_vessel_type              ; Vessel classification
 
 ; Optional fields
 beam_meters = #                               ; Beam width
@@ -214,7 +214,7 @@ technical_manager = :                         ; Technical manager
 
 {@hull_valuation}
 ; Required fields first
-agreed_value = !#$:(0..)                      ; Agreed insured value
+agreed_value = #$:(0..)                      ; Agreed insured value
 
 ; Optional fields
 currency = :(3) "USD"                         ; Value currency
@@ -241,7 +241,7 @@ valuation_date = date                         ; Date of valuation
 
 {@hull_coverage}
 ; Required fields first
-clause_set = !(
+clause_set = (
     aih,                                      ; American Institute Hull
     american_yacht,                           ; American yacht form
     itc_hulls,                                ; Institute Time Clauses Hulls
@@ -372,7 +372,7 @@ breach_notification = ?                       ; Breach notice required
 
 {@hull_loss_of_hire}
 ; Required if purchased
-included = !?                                 ; LOH coverage included
+included = ?                                 ; LOH coverage included
 
 ; Coverage terms
 daily_rate = #$:(0..):if included = true      ; Daily insured rate
@@ -394,7 +394,7 @@ total_loss = ?:if included = true             ; Total loss trigger
 
 {@hull_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total annual premium
+total_premium = #$:(0..)                     ; Total annual premium
 
 ; Optional fields
 base_premium = #$:(0..)                       ; Base hull premium
@@ -434,8 +434,8 @@ vessel_type_factor = #                        ; Type factor
 
 {@hull_claim}
 ; Required fields first
-claim_date = !date                            ; Date of claim
-claim_type = !(
+claim_date = date                            ; Date of claim
+claim_type = (
     collision,                                ; Collision damage
     constructive_total_loss,                  ; CTL
     contact,                                  ; Contact damage
@@ -497,12 +497,12 @@ third_party_liability = ?                     ; Third party involved
 
 {@hull_policy}
 ; Required fields first
-coverage = !@hull_coverage                    ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
-valuation = !@hull_valuation                  ; Vessel valuation
-vessel = !@hull_vessel                        ; Insured vessel
+coverage = @hull_coverage                    ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
+valuation = @hull_valuation                  ; Vessel valuation
+vessel = @hull_vessel                        ; Insured vessel
 
 ; Invariants
 :invariant expiration_date > effective_date
@@ -512,7 +512,7 @@ agency = @agency                              ; Issuing agency
 broker = :                                    ; Insurance broker
 claims[] = @hull_claim                        ; Claims history
 id = :                                        ; Internal identifier
-insured_name = !:                             ; Named insured
+insured_name = :                             ; Named insured
 insured_address = @address                    ; Insured address
 layup_periods[] = @hull_layup                 ; Layup periods
 loss_of_hire = @hull_loss_of_hire             ; LOH coverage

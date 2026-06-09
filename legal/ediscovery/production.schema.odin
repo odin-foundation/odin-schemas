@@ -46,8 +46,8 @@ changelog[0].rationale = "EDRM-compliant production tracking"
 
 {@ediscovery_processing}
 ; Required fields first
-job_name = !:                                     ; Processing job name
-processing_date = !date                           ; Processing date
+job_name = :                                     ; Processing job name
+processing_date = date                           ; Processing date
 
 ; Job identification
 job_id = :                                        ; Unique job ID
@@ -148,8 +148,8 @@ processing_time_hours = #:(0..):if status = completed
 
 {@ediscovery_review_project}
 ; Required fields first
-project_name = !:                                 ; Project name
-review_type = !(first_pass, privilege, responsiveness, second_pass)
+project_name = :                                 ; Project name
+review_type = (first_pass, privilege, responsiveness, second_pass)
 
 ; Project identification
 project_id = :                                    ; Unique project ID
@@ -278,8 +278,8 @@ completion_date = date:if status = completed      ; Completion date
 
 {@ediscovery_production}
 ; Required fields first
-production_date = !date                           ; Production date
-production_name = !:                              ; Production name
+production_date = date                           ; Production date
+production_name = :                              ; Production name
 
 ; Production identification
 production_id = :                                 ; Unique production ID

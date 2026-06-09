@@ -45,7 +45,7 @@ changelog[0].rationale = "Commercial transportation coverage for motor carriers"
 ; Classification of motor carrier operations.
 
 {@tk_carrier_type}
-carrier_class = !(
+carrier_class = (
     common,                                   ; Common carrier (for-hire)
     contract,                                 ; Contract carrier
     exempt,                                   ; Exempt carrier
@@ -79,9 +79,9 @@ fleet_size = (
 
 {@tk_carrier}
 ; Required fields first
-carrier_name = !:                             ; Legal entity name
-mc_number = !:                                ; MC number
-usdot_number = !:                             ; USDOT number
+carrier_name = :                             ; Legal entity name
+mc_number = :                                ; MC number
+usdot_number = :                             ; USDOT number
 
 ; Optional fields
 address = @address                            ; Business address
@@ -148,7 +148,7 @@ vehicle_oos_rate = #                          ; Vehicle OOS rate
 
 {@tk_vehicle}
 ; Required fields first
-vehicle_type = !(
+vehicle_type = (
     bobtail,                                  ; Tractor only
     box_truck,                                ; Box truck
     car_hauler,                               ; Auto carrier
@@ -165,7 +165,7 @@ vehicle_type = !(
     tractor_trailer,                          ; Tractor-trailer combo
     van_trailer                               ; Dry van trailer
 )
-vin = !*:/^[A-HJ-NPR-Z0-9]{17}$/              ; VIN
+vin = *:/^[A-HJ-NPR-Z0-9]{17}$/              ; VIN
 
 ; Optional fields
 axle_count = ##                               ; Number of axles
@@ -231,11 +231,11 @@ use_class = (
 
 {@tk_driver}
 ; Required fields first
-cdl_class = !(A, B, C)                        ; CDL class
-cdl_number = !*:                              ; CDL number
-cdl_state = !:(2)                             ; CDL state
-date_of_birth = !*date                        ; Date of birth
-name = !@person_name                          ; Driver name
+cdl_class = (A, B, C)                        ; CDL class
+cdl_number = *:                              ; CDL number
+cdl_state = :(2)                             ; CDL state
+date_of_birth = *date                        ; Date of birth
+name = @person_name                          ; Driver name
 
 ; Optional fields
 cdl_expiration = date                         ; CDL expiry
@@ -271,9 +271,9 @@ suspended_license = ?                         ; Suspension history
 
 {@tk_liability}
 ; Required fields first
-bodily_injury_per_accident = !#$:(0..)        ; BI per accident
-bodily_injury_per_person = !#$:(0..)          ; BI per person
-property_damage = !#$:(0..)                   ; PD limit
+bodily_injury_per_accident = #$:(0..)        ; BI per accident
+bodily_injury_per_person = #$:(0..)          ; BI per person
+property_damage = #$:(0..)                   ; PD limit
 
 ; Optional fields
 combined_single_limit = #$:(0..)              ; CSL
@@ -305,7 +305,7 @@ non_owned_auto = ?                            ; Non-owned coverage
 
 {@tk_cargo}
 ; Required coverage for for-hire carriers
-included = !?                                 ; Cargo coverage
+included = ?                                 ; Cargo coverage
 
 ; Coverage terms
 deductible = #$:(0..):if included = true      ; Cargo deductible
@@ -366,7 +366,7 @@ repo_driving = ?:if included = true           ; Repo/delivery
 
 {@tk_physical_damage}
 ; Required fields
-coverage_type = !(collision, comprehensive, specified_perils)
+coverage_type = (collision, comprehensive, specified_perils)
 
 ; Coverage terms
 deductible = #$:(0..)                         ; Deductible
@@ -429,7 +429,7 @@ intrastate_filings[] = :(2)                   ; State filings
 
 {@tk_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 cargo_premium = #$:(0..)                      ; Cargo premium
@@ -462,8 +462,8 @@ territory_factor = #                          ; Territory factor
 
 {@tk_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     bodily_injury,                            ; BI claim
     cargo,                                    ; Cargo claim
     collision,                                ; Collision
@@ -539,12 +539,12 @@ oilfield_operations = ?                       ; Oilfield
 
 {@truckers_policy}
 ; Required fields first
-carrier = !@tk_carrier                        ; Insured carrier
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@tk_liability                    ; Liability coverage
-policy_number = !:                            ; Policy number
-vehicles[] = !@tk_vehicle                     ; Covered vehicles
+carrier = @tk_carrier                        ; Insured carrier
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @tk_liability                    ; Liability coverage
+policy_number = :                            ; Policy number
+vehicles[] = @tk_vehicle                     ; Covered vehicles
 
 ; Invariants
 :invariant expiration_date > effective_date

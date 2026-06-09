@@ -184,7 +184,7 @@ motorcycle_safety_date = date                  ; Date motorcycle safety complete
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@personal_driver.pip_claims[]}
-date = !date                                   ; Claim date
+date = date                                   ; Claim date
 amount = #$                                    ; Claim amount
 id = :                                         ; Claim identifier
 months_ago = ##                                ; Months since claim

@@ -48,7 +48,7 @@ changelog[0].rationale = "Coverage-centric architecture - umbrella line extensio
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Type Classification
 ; ───────────────────────────────────────────────────────────────────────────────
-umbrella_type = !(
+umbrella_type = (
     true_umbrella,                                ; Broad coverage, may drop down
     excess_follow_form,                           ; Follows underlying exactly
     excess_specific                               ; Excess with specific terms
@@ -58,8 +58,8 @@ umbrella_type = !(
 ; Umbrella/Excess Limits
 ; ───────────────────────────────────────────────────────────────────────────────
 {.umbrella_limits}
-each_occurrence = !#$:(0..)                       ; Per occurrence limit
-aggregate = !#$:(0..)                             ; Annual aggregate
+each_occurrence = #$:(0..)                       ; Per occurrence limit
+aggregate = #$:(0..)                             ; Annual aggregate
 products_aggregate = #$:(0..)                     ; Separate products aggregate if applicable
 
 {@umbrella_coverage}
@@ -88,7 +88,7 @@ defense_obligation = (excess_of_underlying, none, primary)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@umbrella_coverage.underlying_policies[]}
-underlying_type = !(
+underlying_type = (
     auto_liability,
     employers_liability,
     general_liability,
@@ -102,7 +102,7 @@ underlying_policy_number = :
 
 ; Required underlying limits
 {.required_limits}
-each_occurrence = !#$:(0..)
+each_occurrence = #$:(0..)
 general_aggregate = #$:(0..)
 products_aggregate = #$:(0..)
 auto_csl = #$:(0..)

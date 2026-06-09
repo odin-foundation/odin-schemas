@@ -46,9 +46,9 @@ changelog[0].rationale = "Physical damage coverage for interchanged trailers"
 
 {@ti_carrier}
 ; Required fields first
-carrier_name = !:                             ; Legal name
-mc_number = !:                                ; MC number
-usdot_number = !:                             ; USDOT number
+carrier_name = :                             ; Legal name
+mc_number = :                                ; MC number
+usdot_number = :                             ; USDOT number
 
 ; Optional fields
 address = @address                            ; Business address
@@ -67,13 +67,13 @@ trailer_count = ##                            ; Owned trailer count
 
 {@ti_agreement}
 ; Required fields first
-agreement_type = !(
+agreement_type = (
     bilateral,                                ; Two-way interchange
     intermodal,                               ; Intermodal container
     private,                                  ; Private agreement
     uiia                                      ; IANA UIIA
 )
-partner_name = !:                             ; Partner carrier name
+partner_name = :                             ; Partner carrier name
 
 ; Optional fields
 agreement_date = date                         ; Agreement effective
@@ -105,7 +105,7 @@ uiia_member = ?:if agreement_type = uiia         ; UIIA membership
 ; Types of trailers covered under interchange.
 
 {@ti_trailer_type}
-trailer_class = !(
+trailer_class = (
     chassis,                                  ; Container chassis
     container_20,                             ; 20' container
     container_40,                             ; 40' container
@@ -134,13 +134,13 @@ specialized_equipment = ?                     ; Special equipment
 
 {@ti_coverage}
 ; Required fields first
-coverage_form = !(
+coverage_form = (
     all_risk,                                 ; All-risk coverage
     collision_only,                           ; Collision only
     comprehensive_collision,                  ; Full coverage
     specified_perils                          ; Named perils
 )
-limit_per_trailer = !#$:(0..)                 ; Per trailer limit
+limit_per_trailer = #$:(0..)                 ; Per trailer limit
 
 ; Optional fields
 aggregate_limit = #$:(0..)                    ; Annual aggregate
@@ -197,8 +197,8 @@ territory = (
 
 {@ti_scheduled_trailer}
 ; Required fields first
-owner = !:                                    ; Trailer owner
-trailer_type = !@ti_trailer_type              ; Trailer classification
+owner = :                                    ; Trailer owner
+trailer_type = @ti_trailer_type              ; Trailer classification
 
 ; Optional fields
 equipment_number = :                          ; Equipment number
@@ -238,7 +238,7 @@ tire_damage_only = ?                          ; Tire-only damage
 
 {@ti_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 base_premium = #$:(0..)                       ; Base premium
@@ -268,8 +268,8 @@ trailer_type_factor = #                       ; Trailer type
 
 {@ti_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     collision,                                ; Collision damage
     comprehensive,                            ; Comp loss
     fire,                                     ; Fire damage
@@ -314,11 +314,11 @@ trailer_reference = :                         ; Trailer ID
 
 {@ti_policy}
 ; Required fields first
-carrier = !@ti_carrier                        ; Insured carrier
-coverage = !@ti_coverage                      ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
+carrier = @ti_carrier                        ; Insured carrier
+coverage = @ti_coverage                      ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

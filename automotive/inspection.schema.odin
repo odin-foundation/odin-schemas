@@ -48,15 +48,15 @@ changelog[0].rationale = "Structures derived from EPA I/M and state safety progr
 
 {@safety_inspection}
 ; Required fields first
-inspection_id = !:                               ; Inspection identifier
-vin = !*:format vin                              ; Vehicle VIN
-inspection_date = !date                          ; Inspection date
-result = !(fail, pass, conditional_pass)         ; Overall result
+inspection_id = :                               ; Inspection identifier
+vin = *:format vin                              ; Vehicle VIN
+inspection_date = date                          ; Inspection date
+result = (fail, pass, conditional_pass)         ; Overall result
 
 ; Inspection station
 {.station}
-station_id = !:                                  ; Station identifier
-station_name = !:                                ; Station name
+station_id = :                                  ; Station identifier
+station_name = :                                ; Station name
 station_address = @address                       ; Station address
 station_license = :                              ; Station license number
 station_type = (dealer, fleet, government, independent)
@@ -84,7 +84,7 @@ plate_state = :(2)                               ; Plate state
 
 ; Brakes
 {.brakes}
-result = !(fail, pass)                           ; Brake system result
+result = (fail, pass)                           ; Brake system result
 front_pads_mm = #:(0..20)                        ; Front pad thickness
 rear_pads_mm = #:(0..20)                         ; Rear pad thickness
 rotor_condition = (good, needs_attention, replace)
@@ -98,7 +98,7 @@ notes = :                                        ; Brake notes
 
 ; Steering and suspension
 {.steering}
-result = !(fail, pass)                           ; Steering result
+result = (fail, pass)                           ; Steering result
 steering_play = (excessive, normal)              ; Steering wheel play
 power_steering = (fail, na, pass)                ; Power steering
 tie_rods = (fail, pass)                          ; Tie rod ends
@@ -112,7 +112,7 @@ notes = :                                        ; Steering/suspension notes
 
 ; Tires and wheels
 {.tires}
-result = !(fail, pass)                           ; Tires result
+result = (fail, pass)                           ; Tires result
 front_left_tread_32 = ##:(0..20)                 ; FL tread depth (32nds)
 front_right_tread_32 = ##:(0..20)                ; FR tread depth
 rear_left_tread_32 = ##:(0..20)                  ; RL tread depth
@@ -129,7 +129,7 @@ notes = :                                        ; Tire notes
 
 ; Lights and electrical
 {.lights}
-result = !(fail, pass)                           ; Lighting result
+result = (fail, pass)                           ; Lighting result
 headlights_low = (fail, pass)                    ; Low beams
 headlights_high = (fail, pass)                   ; High beams
 headlight_aim = (fail, pass)                     ; Headlight aim
@@ -147,7 +147,7 @@ notes = :                                        ; Lighting notes
 
 ; Windshield and wipers
 {.glass}
-result = !(fail, pass)                           ; Glass result
+result = (fail, pass)                           ; Glass result
 windshield = (cracked, chipped, fail, pass)      ; Windshield condition
 windshield_damage_location = :                   ; Damage location if any
 wipers_front = (fail, pass)                      ; Front wipers
@@ -161,7 +161,7 @@ notes = :                                        ; Glass notes
 
 ; Body and frame
 {.body}
-result = !(fail, pass)                           ; Body result
+result = (fail, pass)                           ; Body result
 rust_damage = (excessive, minor, none)           ; Rust condition
 structural_damage = ?                            ; Structural damage
 bumpers = (fail, pass)                           ; Bumper condition
@@ -175,7 +175,7 @@ notes = :                                        ; Body notes
 
 ; Exhaust
 {.exhaust}
-result = !(fail, pass)                           ; Exhaust result
+result = (fail, pass)                           ; Exhaust result
 exhaust_leaks = ?                                ; Leaks detected
 exhaust_secure = ?                               ; Properly secured
 catalytic_converter = (fail, missing, pass)      ; Cat converter
@@ -186,7 +186,7 @@ notes = :                                        ; Exhaust notes
 
 ; Safety equipment
 {.safety_equipment}
-result = !(fail, pass)                           ; Safety equipment result
+result = (fail, pass)                           ; Safety equipment result
 seatbelts_driver = (fail, pass)                  ; Driver seatbelt
 seatbelts_passenger = (fail, pass)               ; Passenger seatbelt
 seatbelts_rear = (fail, na, pass)                ; Rear seatbelts
@@ -220,15 +220,15 @@ reinspection_fee = #$:(0..):if result = fail     ; Reinspection fee
 
 {@emissions_inspection}
 ; Required fields first
-inspection_id = !:                               ; Inspection identifier
-vin = !*:format vin                              ; Vehicle VIN
-inspection_date = !date                          ; Inspection date
-result = !(conditional_pass, fail, pass, waiver)
+inspection_id = :                               ; Inspection identifier
+vin = *:format vin                              ; Vehicle VIN
+inspection_date = date                          ; Inspection date
+result = (conditional_pass, fail, pass, waiver)
 
 ; Inspection station
 {.station}
-station_id = !:                                  ; Station identifier
-station_name = !:                                ; Station name
+station_id = :                                  ; Station identifier
+station_name = :                                ; Station name
 station_address = @address                       ; Station address
 station_type = (centralized, decentralized)      ; Station type
 analyzer_id = :                                  ; Analyzer equipment ID
@@ -258,7 +258,7 @@ gvwr_lb = ##:(0..)                               ; GVWR
 {.obd}
 test_type = (obd_ii, obd_i, na)                  ; OBD test type
 mil_commanded = (off, on)                        ; MIL (check engine) status
-mil_status = !(fail, pass)                       ; MIL result
+mil_status = (fail, pass)                       ; MIL result
 dtc_count = ##:(0..)                             ; Stored DTCs
 dtc_codes[] = :                                  ; DTC codes if any
 readiness_monitors = ##:(0..11)                  ; Monitors set
@@ -352,14 +352,14 @@ reinspection_deadline = date:if result = fail    ; Reinspection deadline
 
 {@prepurchase_inspection}
 ; Required fields first
-inspection_id = !:                               ; Inspection identifier
-vin = !*:format vin                              ; Vehicle VIN
-inspection_date = !date                          ; Inspection date
-overall_rating = !(excellent, fair, good, not_recommended, poor)
+inspection_id = :                               ; Inspection identifier
+vin = *:format vin                              ; Vehicle VIN
+inspection_date = date                          ; Inspection date
+overall_rating = (excellent, fair, good, not_recommended, poor)
 
 ; Inspector/shop
 {.inspector}
-shop_name = !:                                   ; Shop name
+shop_name = :                                   ; Shop name
 shop_address = @address                          ; Shop address
 shop_phone = *@phone                             ; Shop phone
 inspector_name = :                               ; Inspector name
@@ -368,7 +368,7 @@ ase_certifications[] = :                         ; ASE certifications
 {@prepurchase_inspection}
 
 ; Inspection type
-inspection_type = !(basic, comprehensive, specialty)
+inspection_type = (basic, comprehensive, specialty)
 specialty_type = ::if inspection_type = specialty ; e.g., "exotic", "classic", "diesel"
 
 ; Vehicle details
@@ -384,7 +384,7 @@ vin_verified = ?                                 ; VIN matches vehicle
 
 ; Engine
 {.engine}
-rating = !(excellent, fair, good, needs_repair, poor)
+rating = (excellent, fair, good, needs_repair, poor)
 starts_properly = ?                              ; Starts without issue
 idle_quality = (rough, smooth)                   ; Idle quality
 oil_condition = (clean, dark, sludge)            ; Oil condition
@@ -404,7 +404,7 @@ notes = :                                        ; Engine notes
 
 ; Transmission
 {.transmission}
-rating = !(excellent, fair, good, needs_repair, poor)
+rating = (excellent, fair, good, needs_repair, poor)
 type = (automatic, cvt, dual_clutch, manual)     ; Transmission type
 shifts_properly = ?                              ; Shifts correctly
 slipping = ?                                     ; Slipping detected
@@ -419,7 +419,7 @@ notes = :                                        ; Transmission notes
 
 ; Brakes
 {.brakes}
-rating = !(excellent, fair, good, needs_service, poor)
+rating = (excellent, fair, good, needs_service, poor)
 front_pad_percent = ##:(0..100)                  ; Front pad life %
 rear_pad_percent = ##:(0..100)                   ; Rear pad life %
 rotor_condition = (good, machined, replace, warped)
@@ -432,7 +432,7 @@ notes = :                                        ; Brake notes
 
 ; Suspension and steering
 {.suspension}
-rating = !(excellent, fair, good, needs_repair, poor)
+rating = (excellent, fair, good, needs_repair, poor)
 ride_quality = (bumpy, harsh, smooth)            ; Ride quality
 handling = (loose, normal, tight)                ; Handling feel
 alignment_needed = ?                             ; Alignment needed
@@ -448,7 +448,7 @@ notes = :                                        ; Suspension notes
 
 ; Electrical
 {.electrical}
-rating = !(excellent, fair, good, needs_repair, poor)
+rating = (excellent, fair, good, needs_repair, poor)
 battery_condition = (good, weak, replace)        ; Battery condition
 battery_age_months = ##:(0..)                    ; Battery age
 alternator = (fail, pass)                        ; Alternator test
@@ -465,7 +465,7 @@ notes = :                                        ; Electrical notes
 
 ; Tires
 {.tires}
-rating = !(excellent, fair, good, needs_replacement, poor)
+rating = (excellent, fair, good, needs_replacement, poor)
 front_left_tread_32 = ##:(0..20)                 ; FL tread (32nds)
 front_right_tread_32 = ##:(0..20)                ; FR tread
 rear_left_tread_32 = ##:(0..20)                  ; RL tread
@@ -481,7 +481,7 @@ notes = :                                        ; Tire notes
 
 ; Body and paint
 {.body}
-rating = !(excellent, fair, good, poor)
+rating = (excellent, fair, good, poor)
 paint_condition = (excellent, fair, good, poor)  ; Paint condition
 paint_meter_used = ?                             ; Paint meter used
 repaint_detected = ?                             ; Repaint detected
@@ -498,7 +498,7 @@ notes = :                                        ; Body notes
 
 ; Interior
 {.interior}
-rating = !(excellent, fair, good, poor)
+rating = (excellent, fair, good, poor)
 seat_condition = (excellent, fair, good, torn, worn)
 carpet_condition = (clean, fair, stained, worn)
 dashboard_condition = (cracked, faded, good)
@@ -526,7 +526,7 @@ notes = :                                        ; Test drive notes
 
 ; Frame/undercarriage
 {.undercarriage}
-rating = !(excellent, fair, good, poor)
+rating = (excellent, fair, good, poor)
 frame_damage = ?                                 ; Frame damage
 frame_rust = (heavy, light, moderate, none)      ; Frame rust
 exhaust_condition = (good, leaking, rusted)      ; Exhaust
@@ -554,7 +554,7 @@ near_term_concerns[] = :                         ; Near-term (6 mo) needs
 long_term_concerns[] = :                         ; Long-term (1 yr+) needs
 total_immediate_repairs = #$:(0..)               ; Immediate repair cost
 total_near_term_repairs = #$:(0..)               ; Near-term repair cost
-recommendation = !(buy_as_is, negotiate, not_recommended, recommended, walk_away)
+recommendation = (buy_as_is, negotiate, not_recommended, recommended, walk_away)
 recommendation_notes = :                         ; Recommendation details
 
 {@prepurchase_inspection}
@@ -575,14 +575,14 @@ fee = #$:(0..)                                   ; Inspection fee
 
 {@cpo_inspection}
 ; Required fields first
-inspection_id = !:                               ; Inspection identifier
-vin = !*:format vin                              ; Vehicle VIN
-inspection_date = !date                          ; Inspection date
-result = !(fail, pass)                           ; Overall result
+inspection_id = :                               ; Inspection identifier
+vin = *:format vin                              ; Vehicle VIN
+inspection_date = date                          ; Inspection date
+result = (fail, pass)                           ; Overall result
 
 ; CPO program
 {.program}
-manufacturer = !:                                ; Vehicle manufacturer
+manufacturer = :                                ; Vehicle manufacturer
 program_name = :                                 ; CPO program name
 point_count = ##:(0..)                           ; Inspection point count (e.g., 172-point)
 

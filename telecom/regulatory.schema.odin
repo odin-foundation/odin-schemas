@@ -50,14 +50,14 @@ changelog[0].rationale = "Regulatory compliance structures derived from FCC regu
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Consent Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-consent_id = !:                                   ; Unique consent identifier
-account_ref = !:                                  ; Account reference
+consent_id = :                                   ; Unique consent identifier
+account_ref = :                                  ; Account reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Consent Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.consent}
-opt_in = !?                                       ; Opt-in consent granted
+opt_in = ?                                       ; Opt-in consent granted
 opt_in_date = date                                ; Opt-in date
 opt_out_date = date                               ; Opt-out date (if withdrawn)
 consent_method = (in_person, online, phone, written)
@@ -121,8 +121,8 @@ verified_by = :                                   ; Agent who verified
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Enrollment Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-enrollment_id = !:                                ; Unique enrollment identifier
-account_ref = !:                                  ; Account reference
+enrollment_id = :                                ; Unique enrollment identifier
+account_ref = :                                  ; Account reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Program Type
@@ -133,7 +133,7 @@ program_type = (acp, lifeline, tribal_lifeline)
 ; Enrollment Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.enrollment}
-enrollment_date = !date                           ; Enrollment date
+enrollment_date = date                           ; Enrollment date
 enrollment_status = (active, de_enrolled, pending, suspended)
 status_date = date                                ; Status change date
 status_reason = :                                 ; Status reason
@@ -153,7 +153,7 @@ eligibility_basis = (
     tribal,
     veterans_pension
 )
-eligibility_verified = !?                         ; Eligibility verified
+eligibility_verified = ?                         ; Eligibility verified
 verification_date = date                          ; Verification date
 verification_method = (autopay, document, nlad)   ; Verification method
 nlad_check_date = date                            ; NLAD check date
@@ -176,7 +176,7 @@ one_per_household_certified = ?                   ; One-per-household rule certi
 ; Benefit Amount
 ; ───────────────────────────────────────────────────────────────────────────────
 {.benefit}
-monthly_discount = !#$:(0..)                      ; Monthly discount amount
+monthly_discount = #$:(0..)                      ; Monthly discount amount
 device_discount = #$:(0..)                        ; One-time device discount
 tribal_enhancement = #$:(0..)                     ; Tribal enhancement (if applicable)
 
@@ -186,7 +186,7 @@ tribal_enhancement = #$:(0..)                     ; Tribal enhancement (if appli
 ; Recertification
 ; ───────────────────────────────────────────────────────────────────────────────
 {.recertification}
-recertification_due = !date                       ; Next recertification date
+recertification_due = date                       ; Next recertification date
 recertification_completed = ?                     ; Recertification completed
 last_recertification = date                       ; Last recertification date
 recertification_method = (annual, autopay, nlad)
@@ -220,9 +220,9 @@ grace_period_end = date                           ; Grace period end date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Registration Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-registration_id = !:                              ; Unique registration identifier
-subscription_ref = !:                             ; Subscription reference
-phone_number = !*:                                ; Phone number (CPNI)
+registration_id = :                              ; Unique registration identifier
+subscription_ref = :                             ; Subscription reference
+phone_number = *:                                ; Phone number (CPNI)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Service Type
@@ -236,7 +236,7 @@ voip_provider = :                                 ; VoIP provider name (if appli
 {.registered_address}
 address = @types.address                          ; Registered E911 address
 address_type = (business, residential, temporary)
-address_verified = !?                             ; Address verified
+address_verified = ?                             ; Address verified
 verification_date = date                          ; Verification date
 verification_method = (customer_provided, geocoded, manual_validation)
 
@@ -295,14 +295,14 @@ customer_notified = ?                             ; Customer notified of update 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Call Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-call_id = !:                                      ; Unique call identifier
+call_id = :                                      ; Unique call identifier
 esrn = :                                          ; Emergency Service Routing Number
 esqk = :                                          ; Emergency Service Query Key
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Caller Information (CPNI)
 ; ───────────────────────────────────────────────────────────────────────────────
-calling_number = !*:                              ; Calling number (CPNI)
+calling_number = *:                              ; Calling number (CPNI)
 callback_number = *:                              ; Callback number
 subscription_ref = :                              ; Subscription reference
 
@@ -310,7 +310,7 @@ subscription_ref = :                              ; Subscription reference
 ; Call Timing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.timing}
-call_start = !timestamp                           ; Call start timestamp
+call_start = timestamp                           ; Call start timestamp
 call_end = timestamp                              ; Call end timestamp
 duration_seconds = ##:(0..)                       ; Call duration
 
@@ -345,7 +345,7 @@ ali_query_time = timestamp                        ; ALI query timestamp
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Call Disposition
 ; ───────────────────────────────────────────────────────────────────────────────
-call_connected = !?                               ; Call successfully connected to PSAP
+call_connected = ?                               ; Call successfully connected to PSAP
 connection_time_seconds = #:(0..)                 ; Time to connect to PSAP
 transfer_count = ##:(0..)                         ; Number of transfers
 disconnect_reason = :                             ; Disconnect reason
@@ -361,14 +361,14 @@ disconnect_reason = :                             ; Disconnect reason
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Request Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-request_id = !*:                                  ; Unique request identifier (confidential)
+request_id = *:                                  ; Unique request identifier (confidential)
 case_number = *:                                  ; Case number (confidential)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Legal Authority
 ; ───────────────────────────────────────────────────────────────────────────────
 {.authority}
-issuing_agency = !*:                              ; Law enforcement agency (confidential)
+issuing_agency = *:                              ; Law enforcement agency (confidential)
 agency_contact = *:                               ; Agency contact (confidential)
 court_order_number = *:                           ; Court order number (confidential)
 court_jurisdiction = *:                           ; Court jurisdiction (confidential)
@@ -403,8 +403,8 @@ delivery_address = *:                             ; Delivery address (confidenti
 ; Request Timing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.timing}
-received_date = !date                             ; Request received date
-activation_date = !date                           ; Intercept activation date
+received_date = date                             ; Request received date
+activation_date = date                           ; Intercept activation date
 expiration_date = date                            ; Intercept expiration date
 deactivation_date = date                          ; Deactivation date
 
@@ -438,7 +438,7 @@ delivery_success = ?                              ; Delivery successful
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Report Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-report_id = !:                                    ; Unique report identifier
+report_id = :                                    ; Unique report identifier
 fcc_filing_id = :                                 ; FCC filing ID
 report_type = (
     annual_report,
@@ -454,8 +454,8 @@ report_type = (
 ; Report Period
 ; ───────────────────────────────────────────────────────────────────────────────
 {.period}
-reporting_period_start = !date                    ; Reporting period start
-reporting_period_end = !date                      ; Reporting period end
+reporting_period_start = date                    ; Reporting period start
+reporting_period_end = date                      ; Reporting period end
 report_year = ##:(2000..)                         ; Report year
 
 {@fcc_report}
@@ -465,7 +465,7 @@ report_year = ##:(2000..)                         ; Report year
 ; ───────────────────────────────────────────────────────────────────────────────
 {.filing}
 filed_date = date                                 ; Filing date
-due_date = !date                                  ; Filing due date
+due_date = date                                  ; Filing due date
 filed_by = :                                      ; Person who filed
 filing_method = (ecfs, online_portal, paper)
 confirmation_number = :                           ; Filing confirmation number
@@ -482,7 +482,7 @@ status_date = date                                ; Status change date
 ; Filer Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.filer}
-company_name = !:                                 ; Company name
+company_name = :                                 ; Company name
 frn = :/^\d{10}$/                                 ; FCC Registration Number
 contact_name = :                                  ; Contact person
 contact_email = *@types.email                     ; Contact email
@@ -501,14 +501,14 @@ contact_phone = *@types.phone                     ; Contact phone
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Record Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-record_id = !:                                    ; Unique record identifier
+record_id = :                                    ; Unique record identifier
 compliance_area = (billing_practices, calea, cpni, e911, number_portability, privacy, robocall, universal_service)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Compliance Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.compliance}
-compliant = !?                                    ; Compliance status
+compliant = ?                                    ; Compliance status
 compliance_date = date                            ; Compliance date
 audit_date = date                                 ; Last audit date
 next_audit_date = date                            ; Next scheduled audit

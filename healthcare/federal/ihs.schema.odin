@@ -39,14 +39,14 @@ changelog[0].rationale = "Structure derived from 25 USC Chapter 18 and 42 CFR Pa
 ; Per 42 CFR 136.12
 
 {@beneficiary}
-beneficiary_id = !:                         ; IHS beneficiary ID
+beneficiary_id = :                         ; IHS beneficiary ID
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
-dob = !*date                                ; Date of birth
+last_name = :                              ; Last name
+dob = *date                                ; Date of birth
 gender = (female, male)                     ; Gender
 ssn = *:                                    ; SSN
 
@@ -69,7 +69,7 @@ additional_tribes[] = @tribal_affiliation   ; Additional tribal affiliations
 ; Eligibility - Per 42 CFR 136.12
 {.eligibility}
 eligible = ?                                ; IHS eligible
-eligibility_basis = !(community_member, descendant, other_eligible, tribal_member)
+eligibility_basis = (community_member, descendant, other_eligible, tribal_member)
 eligibility_date = date                     ; Eligibility date
 verification_status = (pending, unverified, verified)
 
@@ -87,9 +87,9 @@ relationship = :                            ; Relationship (member, descendant)
 ; Per IHS organizational structure
 
 {@facility}
-facility_id = !:                            ; Facility ID
-name = !:                                   ; Facility name
-area = !:                                   ; IHS Area
+facility_id = :                            ; Facility ID
+name = :                                   ; Facility name
+area = :                                   ; IHS Area
 service_unit = :                            ; Service unit
 
 ; Location
@@ -100,8 +100,8 @@ reservation = :                             ; Reservation (if applicable)
 
 ; Facility type - Per IHS structure
 {.type}
-facility_type = !(health_center, health_station, hospital)
-operated_by = !(ihs, tribal, urban)         ; Operating entity
+facility_type = (health_center, health_station, hospital)
+operated_by = (ihs, tribal, urban)         ; Operating entity
 ; ihs = IHS direct operated
 ; tribal = Tribal operated (638)
 ; urban = Urban Indian program
@@ -134,10 +134,10 @@ service_area_description = :                ; Service area description
 ; Per 42 CFR 136.21-136.33
 
 {@prc}
-referral_id = !:                            ; PRC referral ID
-beneficiary_id = !:                         ; Beneficiary ID
-referral_date = !date                       ; Referral date
-facility_id = !:                            ; Referring IHS facility
+referral_id = :                            ; PRC referral ID
+beneficiary_id = :                         ; Beneficiary ID
+referral_date = date                       ; Referral date
+facility_id = :                            ; Referring IHS facility
 
 ; Eligibility - Per 42 CFR 136.23
 {.eligibility}
@@ -203,9 +203,9 @@ ar_claim_filed = ?                          ; AR claim filed
 ; Per 25 USC 5381-5399 (Title V) and 25 USC 5321-5332 (Title I)
 
 {@self_governance}
-tribe_id = !:                               ; Tribe identifier
-tribe_name = !:                             ; Tribe name
-compact_type = !(title_i, title_v)          ; Self-governance type
+tribe_id = :                               ; Tribe identifier
+tribe_name = :                             ; Tribe name
+compact_type = (title_i, title_v)          ; Self-governance type
 ; title_i = Self-Determination Contract (P.L. 93-638)
 ; title_v = Self-Governance Compact
 
@@ -246,17 +246,17 @@ total_funding = #$:(0..)                    ; Total funding
 ; Per 25 USC 1651-1660h
 
 {@urban_program}
-program_id = !:                             ; Program ID
-organization_name = !:                      ; Organization name (e.g., UIH)
+program_id = :                             ; Program ID
+organization_name = :                      ; Organization name (e.g., UIH)
 
 ; Location
-address = !@address                         ; Physical address
+address = @address                         ; Physical address
 
 {@urban_program}
 
 ; Program type - Per 25 USC 1653
 {.type}
-program_type = !(limited, outreach, residential)
+program_type = (limited, outreach, residential)
 ; limited = Limited ambulatory
 ; residential = Residential treatment
 
@@ -289,8 +289,8 @@ total_budget = #$:(0..)                     ; Total budget
 ; Per 42 CFR 136.61
 
 {@alternate_resources}
-beneficiary_id = !:                         ; Beneficiary ID
-verification_date = !date                   ; Verification date
+beneficiary_id = :                         ; Beneficiary ID
+verification_date = date                   ; Verification date
 
 ; Medicare
 {.medicare}

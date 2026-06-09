@@ -39,15 +39,15 @@ changelog[0].rationale = "Structure derived from ERISA and ACA group health plan
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@medical_plan}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
-plan_year = !##:(2000..)                    ; Plan year
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Plan type
 {.type}
-funding_type = !(fully_insured, level_funded, self_funded)
-plan_type = !(epo, hdhp, hmo, indemnity, ppo)
+funding_type = (fully_insured, level_funded, self_funded)
+plan_type = (epo, hdhp, hmo, indemnity, ppo)
 network_name = :                            ; Network name
 
 {@medical_plan}
@@ -129,13 +129,13 @@ contribution_percent = #:(0..100)           ; Contribution %
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@dental_plan}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan type
 {.type}
-plan_type = !(dhmo, indemnity, ppo)
+plan_type = (dhmo, indemnity, ppo)
 network_name = :                            ; Network name
 
 {@dental_plan}
@@ -195,9 +195,9 @@ family = #$:(0..)                           ; Family
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@vision_plan}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Carrier
 {.carrier}
@@ -261,8 +261,8 @@ family = #$:(0..)                           ; Family
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@rx_plan}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
 plan_name = :                               ; Plan name
 
 ; PBM
@@ -331,9 +331,9 @@ separate_rx_oop_max = #$:(0..)              ; Separate Rx OOP max
 ; Per IRC Section 223
 
 {@hsa}
-account_id = !:                             ; Account ID
-employee_id = !:                            ; Employee
-tax_year = !##:(2004..)                     ; Tax year (HSA effective 2004)
+account_id = :                             ; Account ID
+employee_id = :                            ; Employee
+tax_year = ##:(2004..)                     ; Tax year (HSA effective 2004)
 
 ; Account custodian
 {.custodian}
@@ -381,9 +381,9 @@ investment_options[] = :                    ; Available investments
 ; Per IRC Section 125
 
 {@health_fsa}
-account_id = !:                             ; Account ID
-employee_id = !:                            ; Employee
-plan_year = !##:(2000..)                    ; Plan year
+account_id = :                             ; Account ID
+employee_id = :                            ; Employee
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Administrator
 {.administrator}
@@ -428,9 +428,9 @@ limited_purpose = ?                         ; Limited purpose FSA
 ; Per IRC Section 129
 
 {@dependent_care_fsa}
-account_id = !:                             ; Account ID
-employee_id = !:                            ; Employee
-plan_year = !##:(2000..)                    ; Plan year
+account_id = :                             ; Account ID
+employee_id = :                            ; Employee
+plan_year = ##:(2000..)                    ; Plan year
 
 ; Administrator
 {.administrator}
@@ -477,13 +477,13 @@ forfeiture_date = date                      ; Unused balance forfeiture date
 ; Per IRC Section 105
 
 {@hra}
-account_id = !:                             ; Account ID
-employee_id = !:                            ; Employee
-plan_year = !##:(2000..)                    ; Plan year
+account_id = :                             ; Account ID
+employee_id = :                            ; Employee
+plan_year = ##:(2000..)                    ; Plan year
 
 ; HRA type - Per IRS types
 {.type}
-hra_type = !(excepted, ichra, qsehra, traditional)
+hra_type = (excepted, ichra, qsehra, traditional)
 ; ichra = Individual Coverage HRA
 ; qsehra = Qualified Small Employer HRA
 ; excepted = Excepted benefit HRA

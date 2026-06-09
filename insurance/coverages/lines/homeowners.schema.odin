@@ -50,12 +50,12 @@ changelog[0].rationale = "Coverage-centric architecture - homeowners line extens
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Section Identifier
 ; ───────────────────────────────────────────────────────────────────────────────
-coverage_section = !(A, B, C, D, E, F, endorsement, extension, other)
+coverage_section = (A, B, C, D, E, F, endorsement, extension, other)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Peril Coverage Type
 ; ───────────────────────────────────────────────────────────────────────────────
-peril_type = !(
+peril_type = (
     named_perils,                                 ; Covers specific listed perils
     open_perils                                   ; All-risk except exclusions
 )
@@ -86,7 +86,7 @@ named_perils[] = (
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Loss Settlement
 ; ───────────────────────────────────────────────────────────────────────────────
-loss_settlement = !(
+loss_settlement = (
     actual_cash_value,                           ; Depreciated value
     extended_replacement_cost,                   ; RCV plus percentage
     functional_replacement_cost,                 ; Like kind and quality
@@ -125,11 +125,11 @@ coverage_section = "A"
 coverage_type_ref = "HO_A"
 
 ; Dwelling limit (the primary coverage amount)
-dwelling_limit = !#$
+dwelling_limit = #$
 replacement_cost_estimate = #$
 
 ; Loss settlement for dwelling
-dwelling_loss_settlement = !(
+dwelling_loss_settlement = (
     actual_cash_value,
     extended_replacement_cost,
     guaranteed_replacement_cost,
@@ -212,11 +212,11 @@ coverage_section = "C"
 coverage_type_ref = "HO_C"
 
 ; Personal property limit
-personal_property_limit = !#$
+personal_property_limit = #$
 percentage_of_coverage_a = #:(0..100)            ; Standard: 50%
 
 ; Loss settlement for contents
-contents_loss_settlement = !(
+contents_loss_settlement = (
     actual_cash_value,
     replacement_cost                             ; Requires endorsement on HO-3
 )
@@ -337,7 +337,7 @@ coverage_section = "E"
 coverage_type_ref = "HO_E"
 
 ; Liability limit (common: $100k, $300k, $500k)
-liability_limit = !#$:(0..)
+liability_limit = #$:(0..)
 per_occurrence = ?                               ; Per occurrence
 
 ; Defense costs
@@ -381,7 +381,7 @@ coverage_section = "F"
 coverage_type_ref = "HO_F"
 
 ; Medical payments limit (common: $1,000, $2,000, $5,000)
-medical_payments_limit = !#$:(0..)
+medical_payments_limit = #$:(0..)
 per_person = ?                                   ; Per person
 
 ; Time limit for medical expenses
@@ -407,7 +407,7 @@ persons_off_premises_by_insured_activities = ?
 scheduled_id = :
 
 ; Item details
-item_type = !(
+item_type = (
     cameras,
     coins,
     collectibles,
@@ -422,8 +422,8 @@ item_type = !(
     stamps,
     other
 )
-item_description = !:
-scheduled_amount = !#$:(0..)
+item_description = :
+scheduled_amount = #$:(0..)
 appraisal_date = date
 appraisal_value = #$:(0..)
 appraiser_name = :
@@ -497,7 +497,7 @@ communicable_disease = ?
 id = :
 
 ; Deductible type
-type = !(
+type = (
     all_other_perils,                            ; Standard AOP deductible
     hurricane,                                   ; Special hurricane/named storm
     named_storm,                                 ; Named storm (hurricane, tropical storm)

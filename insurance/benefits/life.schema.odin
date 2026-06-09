@@ -40,9 +40,9 @@ changelog[0].rationale = "Structure derived from IRC Section 79 and ERISA"
 ; Employer-paid group term life - Per IRC Section 79
 
 {@basic_life}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Carrier
 {.carrier}
@@ -54,7 +54,7 @@ group_number = :                            ; Group number
 
 ; Benefit amount
 {.benefit}
-benefit_type = !(flat_amount, multiple_of_salary)
+benefit_type = (flat_amount, multiple_of_salary)
 flat_amount = #$:(0..):if benefit_type = flat_amount
 salary_multiple = #:(0..10):if benefit_type = multiple_of_salary
 benefit_maximum = #$:(0..)                  ; Maximum benefit
@@ -104,9 +104,9 @@ terminal_illness_months = ##:(6..24)        ; Terminal illness definition
 ; Employee-paid voluntary life
 
 {@supplemental_life}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Carrier
 {.carrier}
@@ -173,9 +173,9 @@ conversion_days = ##:(31..)                 ; Days to convert
 ; Life insurance on spouse and children
 
 {@dependent_life}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Carrier
 {.carrier}
@@ -218,9 +218,9 @@ child_rate_flat = #$:(0..)                  ; Child flat rate (all children)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@add}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Carrier
 {.carrier}
@@ -231,7 +231,7 @@ policy_number = :                           ; Policy number
 
 ; AD&D type
 {.type}
-add_type = !(basic, supplemental, voluntary)
+add_type = (basic, supplemental, voluntary)
 bundled_with_life = ?                       ; Bundled with life insurance
 standalone = ?                              ; Standalone AD&D
 
@@ -289,13 +289,13 @@ child_percent = #:(0..100)                  ; Child % of principal sum
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@life_enrollment}
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee
-plan_id = !:                                ; Plan ID
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee
+plan_id = :                                ; Plan ID
 
 ; Coverage elected
 {.coverage}
-coverage_type = !(basic, supplemental, dependent)
+coverage_type = (basic, supplemental, dependent)
 benefit_amount = #$:(0..)                   ; Elected benefit amount
 effective_date = date                       ; Coverage effective date
 termination_date = date                     ; Termination date
@@ -325,17 +325,17 @@ imputed_income = #$:(0..)                   ; Imputed income (Section 79)
 beneficiaries[] = @benefits.beneficiary     ; Designated beneficiaries
 
 ; Status
-status = !(active, declined, pending_eoi, terminated)
+status = (active, declined, pending_eoi, terminated)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; LIFE CLAIM
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@life_claim}
-claim_id = !:                               ; Claim ID
-enrollment_id = !:                          ; Enrollment
-employee_id = !:                            ; Employee
-claim_type = !(accelerated, death, dismemberment)
+claim_id = :                               ; Claim ID
+enrollment_id = :                          ; Enrollment
+employee_id = :                            ; Employee
+claim_type = (accelerated, death, dismemberment)
 
 ; Claimant
 {.claimant}
@@ -375,7 +375,7 @@ autopsy_report = ?                          ; Autopsy report if applicable
 
 ; Status
 {.status}
-status = !(approved, denied, paid, pending)
+status = (approved, denied, paid, pending)
 filed_date = date                           ; Date filed
 decision_date = date                        ; Decision date
 payment_date = date                         ; Payment date

@@ -44,7 +44,7 @@ changelog[0].rationale = "Specialty crisis coverage for K&R exposures"
 ; ===================================================================================
 
 {@kr_insured_type}
-organization_type = !(
+organization_type = (
     construction,                             ; Construction company
     corporation,                              ; Multinational corp
     educational,                              ; University/school
@@ -77,9 +77,9 @@ risk_tier = (
 
 {@kr_insured}
 ; Required fields first
-annual_revenue = !#$:(0..)                    ; Annual revenue
-insured_name = !:                             ; Organization name
-insured_type = !@kr_insured_type              ; Organization class
+annual_revenue = #$:(0..)                    ; Annual revenue
+insured_name = :                             ; Organization name
+insured_type = @kr_insured_type              ; Organization class
 
 ; Optional fields
 address = @address                            ; HQ address
@@ -104,8 +104,8 @@ travel_frequency = (frequent, moderate, rare) ; Travel volume
 
 {@kr_coverage}
 ; Required fields first
-aggregate_limit = !#$:(0..)                   ; Annual aggregate
-per_insured_limit = !#$:(0..)                 ; Per insured limit
+aggregate_limit = #$:(0..)                   ; Annual aggregate
+per_insured_limit = #$:(0..)                 ; Per insured limit
 
 ; Core coverage
 accidental_death = ?                          ; AD&D benefit
@@ -208,7 +208,7 @@ third_party = ?:if included = true            ; Third-party claims
 
 {@kr_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 crisis_response_premium = #$:(0..)            ; Crisis response
@@ -239,8 +239,8 @@ type_factor = #                               ; Organization type
 
 {@kr_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     assault,                                  ; Assault
     cyber_extortion,                          ; Cyber extortion
     detention,                                ; Wrongful detention
@@ -294,11 +294,11 @@ victim_count = ##                             ; Number of victims
 
 {@kr_policy}
 ; Required fields first
-coverage = !@kr_coverage                      ; K&R coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@kr_insured                        ; Insured organization
-policy_number = !:                            ; Policy number
+coverage = @kr_coverage                      ; K&R coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @kr_insured                        ; Insured organization
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

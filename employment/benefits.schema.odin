@@ -51,12 +51,12 @@ changelog[0].rationale = "Enrollment, coverage, beneficiaries, COBRA derived fro
 {@benefit_enrollment}
 = @types.audit_info
 
-enrollment_id = !:                               ; Unique enrollment identifier
-employee_id = !:                                 ; Associated employee
-plan_year = !##:(2000..)                         ; Benefit plan year
+enrollment_id = :                               ; Unique enrollment identifier
+employee_id = :                                 ; Associated employee
+plan_year = ##:(2000..)                         ; Benefit plan year
 enrollment_event = (annual_enrollment, initial_enrollment, life_event, qualifying_event)
-enrollment_date = !date                          ; Date enrolled
-effective_date = !date                           ; Coverage effective date
+enrollment_date = date                          ; Date enrolled
+effective_date = date                           ; Coverage effective date
 
 ; Enrollment period
 enrollment_period_start = date                   ; Enrollment period start
@@ -87,9 +87,9 @@ termination_reason = :                           ; Reason for termination
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@coverage_election}
-election_id = !:                                 ; Unique election identifier
+election_id = :                                 ; Unique election identifier
 benefit_type = (dental, disability_ltd, disability_std, fsa_dependent_care, fsa_health, hsa, life_add, life_basic, life_spouse, life_child, vision, health)
-plan_id = !:                                     ; Benefit plan identifier
+plan_id = :                                     ; Benefit plan identifier
 plan_name = :                                    ; Plan name
 carrier = :                                      ; Insurance carrier
 
@@ -118,7 +118,7 @@ annual_election_amount = #$:(0..):if benefit_type = fsa_health
 annual_election_amount = #$:(0..):if benefit_type = fsa_dependent_care
 
 ; Premium
-employee_premium = !#$:(0..)                     ; Employee premium (per pay period)
+employee_premium = #$:(0..)                     ; Employee premium (per pay period)
 employer_premium = #$:(0..)                      ; Employer premium (per pay period)
 total_premium = #$:(0..)                         ; Total premium
 premium_frequency = (biweekly, monthly, semi_monthly, weekly)
@@ -129,7 +129,7 @@ dependents_covered[] = @covered_dependent        ; Dependents on this coverage
 waived = ?                                       ; Coverage waived
 waiver_reason = :if waived = true                ; Reason for waiver
 
-effective_date = !date                           ; Coverage effective date
+effective_date = date                           ; Coverage effective date
 termination_date = date                          ; Coverage termination date
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -137,10 +137,10 @@ termination_date = date                          ; Coverage termination date
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@covered_dependent}
-dependent_id = !:                                ; Unique dependent identifier
-name = !@types.person_name                       ; Dependent name
+dependent_id = :                                ; Unique dependent identifier
+name = @types.person_name                       ; Dependent name
 relationship = (child, domestic_partner, spouse)
-date_of_birth = !*date                           ; DOB (confidential)
+date_of_birth = *date                           ; DOB (confidential)
 ssn = *:format ssn                    ; SSN if applicable (confidential)
 gender = (female, male, non_binary)
 
@@ -149,7 +149,7 @@ disabled = ?                                     ; Disabled dependent
 adopted = ?                                      ; Adopted child
 court_ordered = ?                                ; Court-ordered coverage
 
-effective_date = !date                           ; Coverage effective date
+effective_date = date                           ; Coverage effective date
 termination_date = date                          ; Coverage termination date
 termination_reason = :                           ; Reason coverage ended
 
@@ -160,14 +160,14 @@ termination_reason = :                           ; Reason coverage ended
 {@beneficiary}
 = @types.audit_info
 
-beneficiary_id = !:                              ; Unique beneficiary identifier
-employee_id = !:                                 ; Associated employee
+beneficiary_id = :                              ; Unique beneficiary identifier
+employee_id = :                                 ; Associated employee
 benefit_type = (life_add, life_basic, life_child, life_spouse, retirement_401k, retirement_403b)
 
 ; Beneficiary information
 {.beneficiary_info}
-name = !@types.person_name                       ; Beneficiary name
-relationship = !:                                ; Relationship to employee
+name = @types.person_name                       ; Beneficiary name
+relationship = :                                ; Relationship to employee
 date_of_birth = *date                            ; DOB (confidential)
 ssn = *:format ssn                    ; SSN (confidential)
 address = @types.address                         ; Beneficiary address
@@ -177,11 +177,11 @@ emails[] = *@types.email                         ; Email addresses
 {@beneficiary}
 
 beneficiary_type = (contingent, primary)        ; Primary or contingent
-percentage = !#:(0..100)                         ; Percentage of benefit
+percentage = #:(0..100)                         ; Percentage of benefit
 per_stirpes = ?                                  ; Per stirpes distribution
 
-designation_date = !date                         ; Date designated
-effective_date = !date                           ; Effective date
+designation_date = date                         ; Date designated
+effective_date = date                           ; Effective date
 removed_date = date                              ; Date removed (if applicable)
 removed_reason = :                               ; Reason removed
 
@@ -192,18 +192,18 @@ removed_reason = :                               ; Reason removed
 {@cobra_enrollment}
 = @types.audit_info
 
-cobra_id = !:                                    ; Unique COBRA identifier
-employee_id = !:                                 ; Former employee ID
+cobra_id = :                                    ; Unique COBRA identifier
+employee_id = :                                 ; Former employee ID
 qualified_beneficiary_id = :                     ; Qualified beneficiary ID
 qualifying_event = (death, divorce, employment_termination, hours_reduction, medicare_entitlement, dependent_loss)
-qualifying_event_date = !date                    ; Date of qualifying event
+qualifying_event_date = date                    ; Date of qualifying event
 
 ; Notice dates (COBRA compliance)
 employer_notice_date = date                      ; Date employer notified of event
-election_notice_sent_date = !date                ; Date election notice sent
+election_notice_sent_date = date                ; Date election notice sent
 election_notice_sent_method = (certified_mail, email, hand_delivery)
 
-election_deadline = !date                        ; Election deadline (60 days)
+election_deadline = date                        ; Election deadline (60 days)
 election_received_date = date                    ; Date election received
 elected = ?                                      ; Elected COBRA
 declined = ?                                     ; Declined COBRA
@@ -214,17 +214,17 @@ coverage_type = (dental, health, vision)        ; Type of COBRA coverage
 prior_plan_id = :                                ; Original plan ID
 coverage_start_date = date:if elected = true     ; COBRA coverage start
 coverage_end_date = date                         ; COBRA coverage end
-maximum_coverage_months = !##:(18..36)           ; Max coverage period
+maximum_coverage_months = ##:(18..36)           ; Max coverage period
 
 ; Premium
-monthly_premium = !#$:(0..):if elected = true    ; Monthly COBRA premium
+monthly_premium = #$:(0..):if elected = true    ; Monthly COBRA premium
 administrative_fee = #$:(0..):if elected = true  ; Admin fee (2% max)
 total_monthly_cost = #$:(0..):if elected = true  ; Total monthly cost
 
 ; Payment tracking
 {.payments[]}
-payment_month = !date                            ; Month of coverage
-due_date = !date                                 ; Payment due date
+payment_month = date                            ; Month of coverage
+due_date = date                                 ; Payment due date
 payment_received_date = date                     ; Date payment received
 payment_amount = #$:(0..)                        ; Payment amount
 late = ?                                         ; Payment was late
@@ -244,14 +244,14 @@ final_notice_sent_date = date                    ; Final notice sent
 {@hsa_account}
 = @types.audit_info
 
-account_id = !:                                  ; Unique HSA account ID
-employee_id = !:                                 ; Associated employee
-plan_year = !##:(2000..)                         ; Plan year
-account_number = !*:                             ; HSA account number (confidential)
-custodian = !:                                   ; HSA custodian/bank
+account_id = :                                  ; Unique HSA account ID
+employee_id = :                                 ; Associated employee
+plan_year = ##:(2000..)                         ; Plan year
+account_number = *:                             ; HSA account number (confidential)
+custodian = :                                   ; HSA custodian/bank
 
 ; Contribution limits (IRS annual limits)
-annual_contribution_limit = !#$:(0..)            ; IRS annual limit
+annual_contribution_limit = #$:(0..)            ; IRS annual limit
 catch_up_contribution_limit = #$:(0..):if age_55_or_older = true
 age_55_or_older = ?                              ; Eligible for catch-up
 
@@ -280,13 +280,13 @@ non_qualified_distributions_ytd = #$:(0..)       ; Non-qualified distributions
 {@fsa_account}
 = @types.audit_info
 
-account_id = !:                                  ; Unique FSA account ID
-employee_id = !:                                 ; Associated employee
-plan_year = !##:(2000..)                         ; Plan year
+account_id = :                                  ; Unique FSA account ID
+employee_id = :                                 ; Associated employee
+plan_year = ##:(2000..)                         ; Plan year
 fsa_type = (dependent_care, health_care)        ; FSA type
 
 ; Election
-annual_election = !#$:(0..)                      ; Annual election amount
+annual_election = #$:(0..)                      ; Annual election amount
 per_pay_period = #$:(0..)                        ; Deduction per pay period
 total_contributed_ytd = #$:(0..)                 ; Total contributed YTD
 
@@ -302,7 +302,7 @@ carryover_from_prior_year = #$:(0..)             ; Carryover from prior year
 grace_period_allowed = ?                         ; Grace period allowed
 grace_period_end = date:if grace_period_allowed = true
 
-run_out_period_end = !date                       ; Run-out period end date
+run_out_period_end = date                       ; Run-out period end date
 forfeited_amount = #$:(0..)                      ; Forfeited (use-it-or-lose-it)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -312,17 +312,17 @@ forfeited_amount = #$:(0..)                      ; Forfeited (use-it-or-lose-it)
 {@fsa_claim}
 = @types.audit_info
 
-claim_id = !:                                    ; Unique claim identifier
-account_id = !:                                  ; Associated FSA account
-employee_id = !:                                 ; Associated employee
+claim_id = :                                    ; Unique claim identifier
+account_id = :                                  ; Associated FSA account
+employee_id = :                                 ; Associated employee
 
-claim_date = !date                               ; Date claim submitted
-service_date = !date                             ; Date of service
+claim_date = date                               ; Date claim submitted
+service_date = date                             ; Date of service
 service_end_date = date                          ; End date (for range)
-provider_name = !:                               ; Provider/merchant name
-amount_requested = !#$:(0..)                     ; Reimbursement requested
+provider_name = :                               ; Provider/merchant name
+amount_requested = #$:(0..)                     ; Reimbursement requested
 
-expense_type = !:                                ; Type of expense
+expense_type = :                                ; Type of expense
 description = :                                  ; Expense description
 
 ; Documentation

@@ -41,12 +41,12 @@ changelog[0].rationale = "Structure derived from 42 CFR Part 457 and CHIP state 
 ; Per 42 CFR 457.10
 
 {@program}
-state = !:(2)                                ; State code
+state = :(2)                                ; State code
 program_name = :                             ; State program name
-effective_date = !date                       ; Current state plan effective
+effective_date = date                       ; Current state plan effective
 
 ; Program type - Per 42 CFR 457.10
-program_type = !(combination, medicaid_expansion, separate_chip)
+program_type = (combination, medicaid_expansion, separate_chip)
 ; medicaid_expansion = Medicaid expansion CHIP
 ; separate_chip = Separate CHIP program
 ; combination = Both expansion and separate
@@ -72,7 +72,7 @@ target_populations[] = :                     ; Populations in separate
 ; Per 42 CFR 457.310-380
 
 {@eligibility}
-state = !:(2)                                ; State
+state = :(2)                                ; State
 
 ; Age eligibility - Per 42 CFR 457.310
 {.age}
@@ -84,7 +84,7 @@ age_out_end_of_month = ?                     ; Coverage to end of month of 19th 
 
 ; Income standards - Per 42 CFR 457.315
 {.income}
-methodology = !(magi)                        ; MAGI methodology required
+methodology = (magi)                        ; MAGI methodology required
 standard_fpl = #:(0..400)                    ; Standard FPL percentage
 infant_fpl = #:(0..400)                      ; Infant FPL (if different)
 presumptive_fpl = #:(0..400)                 ; Presumptive eligibility FPL
@@ -115,9 +115,9 @@ exceptions[] = :                             ; Exceptions to waiting period
 ; Per 42 CFR 457.340-350
 
 {@enrollment}
-enrollment_id = !:                           ; Enrollment ID
-state = !:(2)                                ; State
-child = !@medicaid.member                    ; Child information
+enrollment_id = :                           ; Enrollment ID
+state = :(2)                                ; State
+child = @medicaid.member                    ; Child information
 
 ; Application
 {.application}
@@ -168,11 +168,11 @@ ex_parte_successful = ?                      ; Renewed ex parte
 ; Per 42 CFR 457.410-496
 
 {@benefits}
-state = !:(2)                                ; State
-program_type = !(medicaid_chip, separate_chip)
+state = :(2)                                ; State
+program_type = (medicaid_chip, separate_chip)
 
 ; Benefit package type - Per 42 CFR 457.410
-package_type = !(benchmark, benchmark_equivalent, existing_comprehensive, secretary_approved)
+package_type = (benchmark, benchmark_equivalent, existing_comprehensive, secretary_approved)
 
 ; Benchmark options - Per 42 CFR 457.420
 benchmark_plan = (fehbp_standard, hmo_largest_enrollment, state_employee, other)
@@ -210,7 +210,7 @@ screening_periodicity = :                    ; Screening schedule
 ; Per 42 CFR 457.500-560
 
 {@cost_sharing}
-state = !:(2)                                ; State
+state = :(2)                                ; State
 
 ; Maximum cost sharing - Per 42 CFR 457.560
 {.limits}
@@ -257,8 +257,8 @@ below_150_fpl = ?                            ; Under 150% FPL exempt
 ; Per 42 CFR 457.600-650
 
 {@financing}
-state = !:(2)                                ; State
-fiscal_year = !##:(2000..2100)               ; Federal fiscal year
+state = :(2)                                ; State
+fiscal_year = ##:(2000..2100)               ; Federal fiscal year
 
 ; Allotment - Per 42 CFR 457.608
 {.allotment}

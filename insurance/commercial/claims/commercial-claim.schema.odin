@@ -44,7 +44,7 @@ changelog[0].rationale = "Comprehensive claims structure for all commercial line
 
 {@claim_claimant}
 ; Required fields first
-type = !(class_member, client, customer, driver, employee, first_party, other, passenger, patient, pedestrian, regulatory_agency, third_party, vendor)
+type = (class_member, client, customer, driver, employee, first_party, other, passenger, patient, pedestrian, regulatory_agency, third_party, vendor)
 number = ##:(1..)                           ; Claimant sequence number
 
 ; Optional fields
@@ -74,10 +74,10 @@ phones[] = *@phone:if represented = true     ; Attorney phones (confidential)
 
 {@claim_reserve}
 id = :
-transaction_date = !date
+transaction_date = date
 
 ; Reserve Type
-type = !(
+type = (
     defense_cost_containment,
     expense,                                  ; Defense/adjustment expenses
     indemnity,                                ; Claim payment reserves
@@ -106,11 +106,11 @@ authorized_by = :
 
 {@claim_payment}
 id = :
-transaction_date = !date
+transaction_date = date
 check_number = :
 
 ; Payment Type
-type = !(
+type = (
     adjustment_expense,
     death_benefit,
     defense_cost,
@@ -125,13 +125,13 @@ type = !(
 )
 
 ; Amounts
-gross_amount = !#$:(0..)
+gross_amount = #$:(0..)
 deductible_applied = #$:(0..)
 net_amount = #$:(0..)
 
 ; Payee
 {.payee}
-name = !:                                    ; Payee name
+name = :                                    ; Payee name
 type = (attorney, claimant, medical_provider, other, vendor)
 address = @address                           ; Payee address
 tax_id = *:                                  ; Tax ID
@@ -144,10 +144,10 @@ tax_id = *:                                  ; Tax ID
 
 {@claim_recovery}
 id = :
-transaction_date = !date
+transaction_date = date
 
 ; Recovery Type
-type = !(
+type = (
     deductible_reimbursement,
     other_recovery,
     reinsurance,
@@ -244,12 +244,12 @@ settlement_amount = #$:(0..)
 
 {@commercial_claim}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Line of Business
 ; ───────────────────────────────────────────────────────────────────────────────
-line_of_business = !(
+line_of_business = (
     builders_risk,
     commercial_auto,
     commercial_general_liability,
@@ -269,7 +269,7 @@ line_of_business = !(
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Reference
 ; ───────────────────────────────────────────────────────────────────────────────
-policy_number = !:
+policy_number = :
 policy_effective_date = date
 policy_expiration_date = date
 carrier_ref = :
@@ -281,9 +281,9 @@ coverage_part = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Dates
 ; ───────────────────────────────────────────────────────────────────────────────
-date_of_loss = !date
+date_of_loss = date
 date_reported_to_insured = date
-date_reported_to_carrier = !date
+date_reported_to_carrier = date
 date_claim_made = date                        ; For claims-made policies
 date_acknowledged = date
 date_assigned = date
@@ -309,13 +309,13 @@ cause_of_loss_description = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Claim Description
 ; ───────────────────────────────────────────────────────────────────────────────
-description = !:
+description = :
 allegations = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Claim Status
 ; ───────────────────────────────────────────────────────────────────────────────
-status = !(reported, assigned, open, pending_investigation, pending_coverage_decision, offered, settled, denied, closed_paid, closed_without_payment, pending_litigation, pending_subrogation, reopened, reserved)  ; Claim workflow status
+status = (reported, assigned, open, pending_investigation, pending_coverage_decision, offered, settled, denied, closed_paid, closed_without_payment, pending_litigation, pending_subrogation, reopened, reserved)  ; Claim workflow status
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Claimants

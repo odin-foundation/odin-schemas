@@ -46,9 +46,9 @@ changelog[0].rationale = "Comprehensive HOA/condo association structure"
 
 {@association}
 ; Required fields first
-association_name = !:                                ; Legal name of association
-association_type = !(condominium, cooperative, hoa, master, poa, pud, sub_association, townhouse)
-state = !:(2)                                        ; State of organization
+association_name = :                                ; Legal name of association
+association_type = (condominium, cooperative, hoa, master, poa, pud, sub_association, townhouse)
+state = :(2)                                        ; State of organization
 
 ; Association identification
 association_id = :                                   ; Unique association identifier
@@ -233,7 +233,7 @@ association_ref = @association                       ; Reference to association
 ; Position
 ; ───────────────────────────────────────────────────────────────────────────────
 {.position}
-title = !(director, president, secretary, treasurer, vice_president)
+title = (director, president, secretary, treasurer, vice_president)
 term_start = date                                    ; Term start date
 term_end = date                                      ; Term end date
 elected_date = date                                  ; Election date
@@ -263,8 +263,8 @@ resignation_date = date:if status = resigned         ; Resignation date
 
 {@association_unit}
 ; Required fields first
-unit_address = !@address                             ; Unit address
-unit_number = !:                                     ; Unit/lot number
+unit_address = @address                             ; Unit address
+unit_number = :                                     ; Unit/lot number
 
 ; Unit identification
 unit_id = :                                          ; Unique unit identifier

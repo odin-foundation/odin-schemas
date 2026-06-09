@@ -44,7 +44,7 @@ changelog[0].rationale = "Variable annuity with SEC/FINRA compliance fields"
 = @annuity.contract                           ; Inherit all base contract fields
 
 ; Set product type
-product_type = !(variable)
+product_type = (variable)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Separate Account (Investment Portion)
@@ -113,8 +113,8 @@ to_allocations[] = @dca_target                ; Target allocations
 {@variable_annuity}
 
 {@dca_target}
-subaccount = !:                               ; Target subaccount
-percent = !#:(0..100)                         ; Allocation percentage
+subaccount = :                               ; Target subaccount
+percent = #:(0..100)                         ; Allocation percentage
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Transfer Activity
@@ -185,7 +185,7 @@ stepped_up_basis = ?                          ; Spouse gets stepped-up basis
 = @la.rider
 
 ; Required fields
-withdrawal_type = !(for_life, for_life_joint, for_period)  ; Withdrawal guarantee type
+withdrawal_type = (for_life, for_life_joint, for_period)  ; Withdrawal guarantee type
 
 ; Status
 {.status}
@@ -363,8 +363,8 @@ final_death_benefit = #$:(0..)                ; Final death benefit amount
 
 {@suitability}
 ; Required fields
-suitability_determination = !:                ; Suitability determination
-suitability_date = !date                      ; Date of determination
+suitability_determination = :                ; Suitability determination
+suitability_date = date                      ; Date of determination
 
 ; Customer profile
 {.customer_profile}

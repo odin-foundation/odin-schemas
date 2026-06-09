@@ -52,7 +52,7 @@ changelog[0].rationale = "Standard meter and reading structures per ANSI C12 and
 = @types.audit_info
 
 ; Required fields first
-meter_number = !:                                  ; Unique meter identifier
+meter_number = :                                  ; Unique meter identifier
 meter_type = (electric, gas, water)               ; Meter commodity type
 status = (active, inactive, removed, stock, testing)
 
@@ -122,7 +122,7 @@ longitude = #:(-180..180)                          ; Meter longitude
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@meter.registers[]}
-register_number = !##:(0..)                        ; Register index (0, 1, 2, etc.)
+register_number = ##:(0..)                        ; Register index (0, 1, 2, etc.)
 register_type = (consumption, demand, energy, reactive)
 uom = (ccf, gallons, kva, kvar, kvah, kvarh, kw, kwh, mcf, therms)
 multiplier = #:(0..)                               ; Register multiplier
@@ -143,8 +143,8 @@ description = :                                    ; Register description
 = @types.audit_info
 
 ; Required fields first
-meter_number = !:                                  ; Meter identifier
-read_date = !date                                  ; Reading date
+meter_number = :                                  ; Meter identifier
+read_date = date                                  ; Reading date
 read_type = (actual, customer, estimated, off_cycle, scheduled, special)
 
 ; Optional fields
@@ -159,8 +159,8 @@ read_method = (drive_by, on_site, remote, self_reported)
 
 ; Reading values (by register)
 {.registers[]}
-register_number = !##:(0..)                        ; Register index
-reading = !#:(0..)                                 ; Register reading value
+register_number = ##:(0..)                        ; Register index
+reading = #:(0..)                                 ; Register reading value
 uom = (ccf, gallons, kva, kvar, kvah, kvarh, kw, kwh, mcf, therms)
 previous_reading = #:(0..)                         ; Prior reading value
 consumption = #:(0..)                              ; Calculated consumption
@@ -206,10 +206,10 @@ dial_image_url = :                                 ; Photo of dials/display
 
 {@interval_data}
 ; Required fields first
-meter_number = !:                                  ; Meter identifier
-interval_length = !##:(1..)                        ; Interval length in minutes
-start_timestamp = !timestamp                       ; Interval start time
-end_timestamp = !timestamp                         ; Interval end time
+meter_number = :                                  ; Meter identifier
+interval_length = ##:(1..)                        ; Interval length in minutes
+start_timestamp = timestamp                       ; Interval start time
+end_timestamp = timestamp                         ; Interval end time
 
 ; Interval values
 consumption = #:(0..)                              ; Consumption for interval
@@ -242,7 +242,7 @@ tamper_detected = ?                                ; Tamper during interval
 event_type = (alarm, communication, demand_reset, disconnect, error, outage, reconnect, tamper, test)
 event_code = :                                     ; Specific event code
 severity = (critical, high, informational, low, medium)
-event_timestamp = !timestamp                       ; When event occurred
+event_timestamp = timestamp                       ; When event occurred
 reported_timestamp = timestamp                     ; When event was reported
 cleared = ?                                        ; Event cleared flag
 cleared_timestamp = timestamp                      ; When cleared
@@ -258,17 +258,17 @@ register_number = ##                               ; Register if applicable
 
 {@meter_exchange}
 ; Required fields first
-exchange_date = !date                              ; Exchange date
+exchange_date = date                              ; Exchange date
 exchange_reason = (accuracy, damage, failure, periodic_test, upgrade)
 
 ; Old meter
-old_meter_number = !:                              ; Removed meter number
+old_meter_number = :                              ; Removed meter number
 old_final_reading = #:(0..)                        ; Final reading from old meter
 old_read_date = date                               ; Date of final reading
 old_condition = :                                  ; Condition at removal
 
 ; New meter
-new_meter_number = !:                              ; Installed meter number
+new_meter_number = :                              ; Installed meter number
 new_initial_reading = #:(0..)                      ; Initial reading of new meter
 new_read_date = date                               ; Date of initial reading
 new_install_date = date                            ; Installation date
@@ -296,8 +296,8 @@ as_left_accuracy = #:(0..100)                      ; Accuracy after adjustment
 
 {@meter_test}
 ; Required fields first
-meter_number = !:                                  ; Meter being tested
-test_date = !date                                  ; Test date
+meter_number = :                                  ; Meter being tested
+test_date = date                                  ; Test date
 test_type = (accuracy, bench, field, periodic, special)
 test_result = (failed, passed, pending)           ; Overall result
 

@@ -50,8 +50,8 @@ changelog[0].rationale = "Network structure derived from FCC spectrum and outage
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Site Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-site_id = !:                                      ; Unique site identifier
-site_name = !:                                    ; Site name
+site_id = :                                      ; Unique site identifier
+site_name = :                                    ; Site name
 cell_id = :                                       ; Cell identifier
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -65,8 +65,8 @@ ownership = (carrier_owned, leased, rooftop, tower_company)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.location}
 address = @types.address                          ; Site address
-latitude = !#:(-90..90)                           ; GPS latitude
-longitude = !#:(-180..180)                        ; GPS longitude
+latitude = #:(-90..90)                           ; GPS latitude
+longitude = #:(-180..180)                        ; GPS longitude
 altitude_meters = #:(0..)                         ; Altitude above sea level
 height_meters = #:(0..)                           ; Tower/antenna height
 
@@ -145,14 +145,14 @@ connected_users_peak = ##:(0..)                   ; Peak connected users
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Area Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-area_id = !:                                      ; Unique area identifier
-area_name = !:                                    ; Area name
+area_id = :                                      ; Unique area identifier
+area_name = :                                    ; Area name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Geographic Boundaries
 ; ───────────────────────────────────────────────────────────────────────────────
 {.geography}
-country = !:(2..3)                                ; ISO country code
+country = :(2..3)                                ; ISO country code
 state_province = :(2)                             ; State/province code
 county = :                                        ; County name
 city = :                                          ; City name
@@ -273,15 +273,15 @@ report_filed_date = date                          ; Report filing date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; License Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-license_id = !:                                   ; Unique license identifier
-call_sign = !:                                    ; FCC call sign
+license_id = :                                   ; Unique license identifier
+call_sign = :                                    ; FCC call sign
 fcc_license_number = :                            ; FCC license number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Licensee
 ; ───────────────────────────────────────────────────────────────────────────────
 {.licensee}
-licensee_name = !:                                ; Licensee name
+licensee_name = :                                ; Licensee name
 licensee_id = :                                   ; FCC Registration Number (FRN)
 licensee_type = (carrier, government, private, wireless_carrier)
 
@@ -291,10 +291,10 @@ licensee_type = (carrier, government, private, wireless_carrier)
 ; Spectrum Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.spectrum}
-frequency_band = !:                               ; Frequency band (e.g., "700 MHz", "AWS", "PCS")
-lower_frequency_mhz = !#:(0..)                    ; Lower frequency (MHz)
-upper_frequency_mhz = !#:(0..)                    ; Upper frequency (MHz)
-bandwidth_mhz = !#:(0..)                          ; Bandwidth (MHz)
+frequency_band = :                               ; Frequency band (e.g., "700 MHz", "AWS", "PCS")
+lower_frequency_mhz = #:(0..)                    ; Lower frequency (MHz)
+upper_frequency_mhz = #:(0..)                    ; Upper frequency (MHz)
+bandwidth_mhz = #:(0..)                          ; Bandwidth (MHz)
 channel_block = :                                 ; Channel block identifier
 
 {@spectrum_license}
@@ -317,7 +317,7 @@ radio_service_code = :                            ; FCC radio service code
 ; Geographic Coverage
 ; ───────────────────────────────────────────────────────────────────────────────
 {.coverage}
-license_area = !:                                 ; License area description
+license_area = :                                 ; License area description
 market_type = (bea, cma, ea, mea, mta, nationwide, rsa)
 market_code = :                                   ; Market identifier code
 states_provinces[] = :(2)                         ; States/provinces covered
@@ -329,9 +329,9 @@ population_covered = ##:(0..)                     ; Population in license area
 ; License Dates
 ; ───────────────────────────────────────────────────────────────────────────────
 {.dates}
-grant_date = !date                                ; License grant date
-effective_date = !date                            ; License effective date
-expiration_date = !date                           ; License expiration date
+grant_date = date                                ; License grant date
+effective_date = date                            ; License effective date
+expiration_date = date                           ; License expiration date
 cancellation_date = date                          ; Cancellation date (if applicable)
 
 {@spectrum_license}
@@ -362,8 +362,8 @@ coverage_requirement_percent = #:(0..100)         ; Required coverage percentage
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Metric Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-metric_id = !:                                    ; Unique metric identifier
-measurement_time = !timestamp                     ; Measurement timestamp
+metric_id = :                                    ; Unique metric identifier
+measurement_time = timestamp                     ; Measurement timestamp
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Metric Type
@@ -394,8 +394,8 @@ network_type = ("2g", "3g", "4g", "5g")           ; Network generation
 ; Metric Values
 ; ───────────────────────────────────────────────────────────────────────────────
 {.values}
-value = !#                                        ; Metric value
-unit = !:                                         ; Unit of measurement
+value = #                                        ; Metric value
+unit = :                                         ; Unit of measurement
 sample_count = ##:(0..)                           ; Number of samples
 min_value = #                                     ; Minimum value
 max_value = #                                     ; Maximum value
@@ -413,15 +413,15 @@ percentile_95 = #                                 ; 95th percentile value
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Alarm Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-alarm_id = !:                                     ; Unique alarm identifier
-alarm_code = !:                                   ; Alarm code
+alarm_id = :                                     ; Unique alarm identifier
+alarm_code = :                                   ; Alarm code
 sequence_number = ##:(0..)                        ; Alarm sequence number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Alarm Timing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.timing}
-raised_time = !timestamp                          ; Alarm raised timestamp
+raised_time = timestamp                          ; Alarm raised timestamp
 cleared_time = timestamp                          ; Alarm cleared timestamp
 acknowledged_time = timestamp                     ; Alarm acknowledged timestamp
 duration_minutes = ##:(0..)                       ; Alarm duration
@@ -433,7 +433,7 @@ duration_minutes = ##:(0..)                       ; Alarm duration
 ; ───────────────────────────────────────────────────────────────────────────────
 alarm_type = (communication, environmental, equipment, performance, processing, quality_of_service)
 severity = (critical, indeterminate, major, minor, warning)
-description = !:                                  ; Alarm description
+description = :                                  ; Alarm description
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Alarm Source

@@ -45,11 +45,11 @@ changelog[0].rationale = "ALTA-compliant policy structure"
 
 {@title_policy}
 ; Required fields first
-insured_amount = !#$:(0..)                           ; Policy amount
-insured_name = !:                                    ; Named insured
-policy_date = !date                                  ; Policy date
-policy_type = !(homeowners, lender, lender_short_form, owner, owner_short_form)
-property_address = !@address                         ; Property address
+insured_amount = #$:(0..)                           ; Policy amount
+insured_name = :                                    ; Named insured
+policy_date = date                                  ; Policy date
+policy_type = (homeowners, lender, lender_short_form, owner, owner_short_form)
+property_address = @address                         ; Property address
 
 ; Policy identification
 policy_id = :                                        ; Unique policy identifier
@@ -216,8 +216,8 @@ cancellation_reason = ::if status = cancelled        ; Reason for cancellation
 
 {@policy_exception}
 ; Required fields first
-exception_number = !##:(1..)                         ; Exception number
-exception_text = !:                                  ; Exception text
+exception_number = ##:(1..)                         ; Exception number
+exception_text = :                                  ; Exception text
 
 ; Exception identification
 exception_id = :                                     ; Unique exception identifier
@@ -254,8 +254,8 @@ grantee = :                                          ; Grantee/beneficiary
 
 {@policy_endorsement}
 ; Required fields first
-endorsement_form = !:                                ; ALTA endorsement form number
-endorsement_name = !:                                ; Endorsement name
+endorsement_form = :                                ; ALTA endorsement form number
+endorsement_name = :                                ; Endorsement name
 
 ; Endorsement identification
 endorsement_id = :                                   ; Unique endorsement identifier

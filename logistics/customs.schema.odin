@@ -53,7 +53,7 @@ changelog[0].rationale = "CBP entry, HTS, valuation, origin, PGA compliance stru
 
 {@hts_classification}
 ; Required fields first
-hts_number = !:(6..10)                               ; HTS number (6-10 digits)
+hts_number = :(6..10)                               ; HTS number (6-10 digits)
 
 ; Optional fields
 description = :                                      ; HTS description
@@ -109,7 +109,7 @@ method = (
     similar_merchandise,
     transaction_value
 )
-declared_value = !#$:(0..)                           ; Declared customs value
+declared_value = #$:(0..)                           ; Declared customs value
 currency = :(3) "USD"                                ; Currency code
 
 ; Transaction value components
@@ -152,7 +152,7 @@ value_deductions = #$                                ; Total deductions
 
 {@origin_certification}
 ; Required fields first
-country_of_origin = !:(2)                            ; ISO country code
+country_of_origin = :(2)                            ; ISO country code
 origin_criterion = (
     A,                                               ; Wholly obtained
     B,                                               ; Produced entirely
@@ -250,8 +250,8 @@ phytosanitary_certificate = :if agency = APHIS       ; Phyto certificate number
 {@customs_bond}
 ; Required fields first
 bond_type = (continuous, single_transaction)        ; Bond type
-bond_number = !:                                     ; Bond number
-bond_amount = !#$:(0..)                              ; Bond amount
+bond_number = :                                     ; Bond number
+bond_amount = #$:(0..)                              ; Bond amount
 
 ; Optional fields
 surety_company = :                                   ; Surety company name
@@ -261,7 +261,7 @@ expiration_date = date                               ; Expiration date
 termination_date = date                              ; Termination date
 
 ; Principal (importer)
-principal_name = !:                                  ; Principal/importer name
+principal_name = :                                  ; Principal/importer name
 principal_id = :                                     ; Principal ID (EIN, SSN)
 principal_address = @types.address                   ; Principal address
 
@@ -284,18 +284,18 @@ claims_amount = #$:(0..)                             ; Total claims amount
 
 {@customs_entry_line}
 ; Required fields first
-line_number = !##:(1..)                              ; Line number
-hts_number = !:(6..10)                               ; HTS classification
-description = !:                                     ; Merchandise description
+line_number = ##:(1..)                              ; Line number
+hts_number = :(6..10)                               ; HTS classification
+description = :                                     ; Merchandise description
 
 ; Quantity
-quantity = !#:(0..)                                  ; Quantity entered
+quantity = #:(0..)                                  ; Quantity entered
 unit_of_measure = :                                  ; Unit of measure
 second_quantity = #:(0..)                            ; Second quantity (if required)
 second_unit = :                                      ; Second unit of measure
 
 ; Value
-entered_value = !#$:(0..)                            ; Entered value
+entered_value = #$:(0..)                            ; Entered value
 charges = #$                                         ; Charges (freight, insurance, etc.)
 relationship = :                                     ; Relationship indicator
 dutiable_value = #$:(0..)                            ; Dutiable value
@@ -338,7 +338,7 @@ countervailing = ?                                   ; Subject to countervailing
 
 {@customs_entry}
 ; Required fields first
-entry_number = !:(11)                                ; Entry number (11 digits: XXX-XXXXXXX-X)
+entry_number = :(11)                                ; Entry number (11 digits: XXX-XXXXXXX-X)
 entry_type = (
     01,                                              ; Consumption Entry
     02,                                              ; Consumption - Quota/Visa
@@ -353,18 +353,18 @@ entry_type = (
     63,                                              ; Personal Use - ATAT
     86                                               ; Vessel Repair Entry
 )
-entry_date = !date                                   ; Entry date
+entry_date = date                                   ; Entry date
 summary_date = date                                  ; Summary date
 
 ; Filer information
-filer_code = !:                                      ; Filer code (4 characters)
+filer_code = :                                      ; Filer code (4 characters)
 filer_type = (broker, carrier, importer, service_center)
 broker_name = :if filer_type = broker                ; Customs broker name
 broker_license = :if filer_type = broker             ; Broker license number
 
 ; Importer of record
-importer_name = !:                                   ; Importer name
-importer_number = !:                                 ; Importer number (EIN, SSN, CBP-assigned)
+importer_name = :                                   ; Importer name
+importer_number = :                                 ; Importer number (EIN, SSN, CBP-assigned)
 importer_address = @types.address                    ; Importer address
 
 ; Consignee (if different)
@@ -382,7 +382,7 @@ ultimate_consignee_type = (
 )
 
 ; Shipment information
-port_of_entry = !:(4)                                ; Port of entry code
+port_of_entry = :(4)                                ; Port of entry code
 port_of_unlading = :(4)                              ; Port of unlading
 location_of_goods = :                                ; Location of goods code
 foreign_port_of_lading = :                           ; Foreign port of lading

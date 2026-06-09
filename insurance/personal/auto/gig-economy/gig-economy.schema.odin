@@ -86,7 +86,7 @@ id = :                                             ; Unique platform identifier
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Platform Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-name = !:                                          ; Platform name (Uber, Lyft, DoorDash, etc.)
+name = :                                          ; Platform name (Uber, Lyft, DoorDash, etc.)
 code = :                                           ; Short code for platform
 platform_type = (delivery, errand, logistics, multi_service, rideshare, shopping)  ; Type of gig service provided
 
@@ -723,7 +723,7 @@ covered_causes = (
 
 {@gig_policy}
 id = :                                             ; Unique policy identifier
-number = !:                                        ; Policy number
+number = :                                        ; Policy number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Term
@@ -824,7 +824,7 @@ platform_integration = ?                           ; Deducted directly by platfo
 
 {@gig_claim}
 id = :                                             ; Unique claim identifier
-number = !:                                        ; Claim number
+number = :                                        ; Claim number
 policy_ref = :                                     ; Reference to @gig_policy
 
 ; ───────────────────────────────────────────────────────────────────────────────

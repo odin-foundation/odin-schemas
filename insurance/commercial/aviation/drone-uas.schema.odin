@@ -285,9 +285,9 @@ id = :                                        ; Unique operator identifier
 ; Identity
 ; ───────────────────────────────────────────────────────────────────────────────
 {.name}
-first = !:                                    ; Operator first name (required)
+first = :                                    ; Operator first name (required)
 middle = :                                    ; Operator middle name
-last = !:                                     ; Operator last name (required)
+last = :                                     ; Operator last name (required)
 
 {@drone_operator}
 

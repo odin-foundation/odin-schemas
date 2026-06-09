@@ -57,8 +57,8 @@ traveler_number = ##:(1..)                     ; Sequential traveler number
 ; Override required name fields
 ; ───────────────────────────────────────────────────────────────────────────────
 {.name}
-first = !:                                     ; First/given name (required)
-last = !:                                      ; Last/family name (required)
+first = :                                     ; First/given name (required)
+last = :                                      ; Last/family name (required)
 
 {@traveler}
 
@@ -828,7 +828,7 @@ loss_period_days = ##:(90..365)                ; Days within which loss must occ
 ; Policy Identification
 ; ───────────────────────────────────────────────────────────────────────────────
 id = :                                         ; Unique identifier for the policy
-number = !:                                    ; Policy number (required)
+number = :                                    ; Policy number (required)
 certificate_number = :                         ; Certificate number
 quote_number = :                               ; Quote/proposal number
 
@@ -1070,8 +1070,8 @@ modified_by = :                                ; User who last modified the poli
 
 {@travel_claim}
 id = :                                         ; Unique identifier for the claim
-number = !:                                    ; Claim number (required)
-policy_number = !:                             ; Associated policy number (required)
+number = :                                    ; Claim number (required)
+policy_number = :                             ; Associated policy number (required)
 certificate_number = :                         ; Associated certificate number
 
 ; ───────────────────────────────────────────────────────────────────────────────

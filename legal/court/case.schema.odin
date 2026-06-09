@@ -45,10 +45,10 @@ changelog[0].rationale = "Comprehensive case tracking structure"
 
 {@court_case}
 ; Required fields first
-case_number = !:                                  ; Court-assigned case number
-case_type = !(administrative, appellate, bankruptcy, civil, criminal, family, probate)
-court_ref = !@legal_court                         ; Reference to court
-filed_date = !date                                ; Case filing date
+case_number = :                                  ; Court-assigned case number
+case_type = (administrative, appellate, bankruptcy, civil, criminal, family, probate)
+court_ref = @legal_court                         ; Reference to court
+filed_date = date                                ; Case filing date
 
 ; Case identification
 case_id = :                                       ; Internal case identifier
@@ -233,8 +233,8 @@ closed_date = date:if status = closed             ; Case closed date
 
 {@case_claim}
 ; Required fields first
-claim_number = !##:(1..)                          ; Claim number
-claim_description = !:                            ; Claim description
+claim_number = ##:(1..)                          ; Claim number
+claim_description = :                            ; Claim description
 
 ; Claim identification
 claim_id = :                                      ; Unique identifier
@@ -266,9 +266,9 @@ disposition_type = ::if status != pending         ; How resolved
 
 {@docket_entry}
 ; Required fields first
-entry_date = !date                                ; Entry date
-entry_number = !##:(0..)                          ; Docket number
-entry_text = !:                                   ; Entry description
+entry_date = date                                ; Entry date
+entry_number = ##:(0..)                          ; Docket number
+entry_text = :                                   ; Entry description
 
 ; Entry identification
 entry_id = :                                      ; Unique identifier
@@ -326,9 +326,9 @@ deadline_ref = @legal_deadline                    ; Reference to deadline
 
 {@court_hearing}
 ; Required fields first
-hearing_date = !date                              ; Hearing date
-hearing_time = !time                              ; Hearing time
-hearing_type = !(argument, conference, evidentiary, motion, pretrial, scheduling, settlement, status, trial)
+hearing_date = date                              ; Hearing date
+hearing_time = time                              ; Hearing time
+hearing_type = (argument, conference, evidentiary, motion, pretrial, scheduling, settlement, status, trial)
 
 ; Hearing identification
 hearing_id = :                                    ; Unique identifier

@@ -48,7 +48,7 @@ changelog[0].rationale = "Coverage-centric architecture - property line extensio
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Valuation Basis
 ; ───────────────────────────────────────────────────────────────────────────────
-valuation_basis = !(
+valuation_basis = (
     actual_cash_value,
     agreed_value,
     functional_replacement,
@@ -69,7 +69,7 @@ coinsurance_waived = ?                            ; Agreed value waives coinsura
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Causes of Loss
 ; ───────────────────────────────────────────────────────────────────────────────
-causes_of_loss = !(basic, broad, special)
+causes_of_loss = (basic, broad, special)
 
 ; Basic: Fire, lightning, explosion, smoke, windstorm, hail, riot, aircraft, vehicles, vandalism, sprinkler leakage, sinkhole, volcanic action
 ; Broad: Basic + falling objects, weight of snow/ice, water damage, collapse
@@ -116,7 +116,7 @@ inflation_guard_percent = #:(0..25):if inflation_guard = true
 coverage_type_ref = "BLDG"
 
 ; Building-specific
-building_limit = !#$
+building_limit = #$
 building_includes_fixtures = ?
 building_includes_machinery = ?
 building_includes_outdoor_fixtures = ?
@@ -139,7 +139,7 @@ combined_limit = #$
 
 coverage_type_ref = "BPP"
 
-bpp_limit = !#$
+bpp_limit = #$
 
 ; BPP includes
 {.includes}
@@ -194,7 +194,7 @@ waiting_period_hours = ##:(0..168)
 
 coverage_type_ref = "EE"
 
-extra_expense_limit = !#$
+extra_expense_limit = #$
 combined_with_bi = ?
 
 ; Monthly limits
@@ -211,7 +211,7 @@ month_3_percent = ##:(0..100)
 
 coverage_type_ref = "EQ"
 
-equipment_limit = !#$
+equipment_limit = #$
 
 ; Equipment types covered
 {.covered_equipment}

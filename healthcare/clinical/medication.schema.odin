@@ -43,7 +43,7 @@ changelog[0].rationale = "Medication resource derived from FHIR R4/R5 specificat
 
 {@medication}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Medication.identifier

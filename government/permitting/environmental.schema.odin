@@ -42,15 +42,15 @@ changelog[0].rationale = "Environmental permits per EPA and state regulations"
 {@air_permit}
 = @types.audit_info
 
-permit_number = !:
+permit_number = :
 permit_type = (major_source, minor_source, operating, psd, synthetic_minor, title_v)
-facility_name = !:
-facility_address = !@address
+facility_name = :
+facility_address = @address
 naics_code = ##:(100000..999999)
 
 ; Applicant/Permittee
 {.permittee}
-name = !:
+name = :
 contact_person = :
 address = @address
 phone = @phone
@@ -59,8 +59,8 @@ email = @email
 {@air_permit}
 ; Emission Sources
 {.emission_sources[]}
-source_id = !:
-description = !:
+source_id = :
+description = :
 fuel_type = :
 maximum_capacity = :
 control_equipment = :
@@ -68,10 +68,10 @@ control_equipment = :
 {@air_permit}
 ; Pollutants and Limits
 {.pollutant_limits[]}
-pollutant_name = !:                                  ; PM2.5, NOx, SO2, VOC, etc.
+pollutant_name = :                                  ; PM2.5, NOx, SO2, VOC, etc.
 cas_number = :
-emission_limit = !#:(0..)
-unit_of_measure = !:
+emission_limit = #:(0..)
+unit_of_measure = :
 averaging_period = :
 monitoring_method = :
 
@@ -80,7 +80,7 @@ monitoring_method = :
 application_date = date
 issue_date = date
 effective_date = date
-expiration_date = !date
+expiration_date = date
 
 ; Compliance Requirements
 {.compliance}
@@ -97,15 +97,15 @@ stack_testing_required = ?
 {@water_permit}
 = @types.audit_info
 
-permit_number = !:
+permit_number = :
 permit_type = (individual, general, stormwater)
 program = (federal_npdes, state_program)
-facility_name = !:
-facility_address = !@address
+facility_name = :
+facility_address = @address
 
 ; Permittee
 {.permittee}
-name = !:
+name = :
 contact_person = :
 address = @address
 phone = @phone
@@ -114,28 +114,28 @@ email = @email
 {@water_permit}
 ; Discharge Points
 {.outfalls[]}
-outfall_id = !:
+outfall_id = :
 latitude = #:(-90..90)
 longitude = #:(-180..180)
-receiving_water_name = !:
+receiving_water_name = :
 discharge_type = (continuous, intermittent)
 
 {@water_permit}
 ; Effluent Limitations
 {.effluent_limits[]}
-parameter = !:                                       ; BOD, TSS, pH, etc.
+parameter = :                                       ; BOD, TSS, pH, etc.
 daily_maximum = #:(0..)
 monthly_average = #:(0..)
-unit_of_measure = !:
-monitoring_frequency = !:
+unit_of_measure = :
+monitoring_frequency = :
 sample_type = (composite, grab)
 
 {@water_permit}
 ; Permit Dates
 application_date = date
 issue_date = date
-effective_date = !date
-expiration_date = !date
+effective_date = date
+expiration_date = date
 
 ; Reporting Requirements
 {.reporting}
@@ -151,15 +151,15 @@ electronic_reporting_required = ?
 {@waste_permit}
 = @types.audit_info
 
-permit_number = !:
-epa_id_number = !:
+permit_number = :
+epa_id_number = :
 permit_type = (interim_status, post_closure, research_demo, treatment_storage_disposal)
-facility_name = !:
-facility_address = !@address
+facility_name = :
+facility_address = @address
 
 ; Permittee
 {.permittee}
-name = !:
+name = :
 contact_person = :
 address = @address
 phone = @phone
@@ -177,14 +177,14 @@ capacity_unit = :
 ; Permit Conditions
 {.conditions[]}
 condition_number = :
-description = !:
+description = :
 compliance_required = ?
 
 {@waste_permit}
 ; Permit Dates
 application_date = date
 issue_date = date
-effective_date = !date
+effective_date = date
 expiration_date = date
 modification_date = date
 
@@ -195,15 +195,15 @@ modification_date = date
 {@stormwater_permit}
 = @types.audit_info
 
-permit_number = !:
+permit_number = :
 notice_of_intent_date = date
 coverage_type = (construction, industrial, municipal)
 project_name = :
-project_address = !@address
+project_address = @address
 
 ; Operator Information
 {.operator}
-name = !:
+name = :
 contact_person = :
 address = @address
 phone = @phone
@@ -212,7 +212,7 @@ email = @email
 {@stormwater_permit}
 ; Site Information
 {.site}
-disturbed_acreage = !#:(0..)
+disturbed_acreage = #:(0..)
 receiving_waters = :
 impaired_waters = ?
 tmdl_approved = ?
@@ -220,7 +220,7 @@ tmdl_approved = ?
 {@stormwater_permit}
 ; Best Management Practices
 {.bmps[]}
-bmp_type = !:
+bmp_type = :
 description = :
 installation_date = date
 maintenance_frequency = :
@@ -247,14 +247,14 @@ notice_of_termination_date = date
 {@nepa_review}
 = @types.audit_info
 
-project_name = !:
-project_location = !@address
-federal_agency = !:
+project_name = :
+project_location = @address
+federal_agency = :
 review_level = (categorical_exclusion, eis, environmental_assessment)
 
 ; Project Description
 {.project}
-description = !:
+description = :
 purpose_and_need = :
 estimated_cost = #$:(0..)
 project_type = :
@@ -285,7 +285,7 @@ finding = (finding_of_no_significant_impact, record_of_decision, significant_imp
 determination_date = date
 mitigation_required = ?
 {.mitigation_measures[]}
-measure_description = !:
+measure_description = :
 responsible_party = :
 implementation_timeline = :
 

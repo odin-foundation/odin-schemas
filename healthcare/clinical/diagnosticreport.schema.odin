@@ -43,7 +43,7 @@ changelog[0].rationale = "DiagnosticReport resource derived from FHIR R4/R5 spec
 
 {@diagnostic_report}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: DiagnosticReport.identifier
@@ -53,13 +53,13 @@ identifiers[] = @fhir.identifier              ; Business identifiers
 based_on[] = @fhir.reference                  ; What was requested
 
 ; Status - FHIR: DiagnosticReport.status (required)
-status = !(amended, appended, cancelled, corrected, entered_in_error, final, partial, preliminary, registered, unknown)
+status = (amended, appended, cancelled, corrected, entered_in_error, final, partial, preliminary, registered, unknown)
 
 ; Categories - FHIR: DiagnosticReport.category
 categories[] = @fhir.codeable_concept         ; Service category (LAB, RAD, etc.)
 
 ; Code - FHIR: DiagnosticReport.code (required)
-code = !@fhir.codeable_concept                ; Name/code for report (LOINC)
+code = @fhir.codeable_concept                ; Name/code for report (LOINC)
 
 ; Subject - FHIR: DiagnosticReport.subject
 subject = @fhir.reference                     ; Subject of report (patient)
@@ -107,5 +107,5 @@ presented_forms[] = @fhir.attachment          ; Entire report as rendered docume
 
 {@diagnostic_report_media}
 comment = :                                   ; Comment about media
-link = !@fhir.reference                       ; Reference to media
+link = @fhir.reference                       ; Reference to media
 

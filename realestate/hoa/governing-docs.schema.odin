@@ -46,9 +46,9 @@ changelog[0].rationale = "Comprehensive HOA document structure"
 
 {@governing_document}
 ; Required fields first
-document_type = !(amendment, articles, bylaws, declaration, operating_rules, policies, resolutions, rules)
-effective_date = !date                               ; Effective date
-title = !:                                           ; Document title
+document_type = (amendment, articles, bylaws, declaration, operating_rules, policies, resolutions, rules)
+effective_date = date                               ; Effective date
+title = :                                           ; Document title
 
 ; Document identification
 document_id = :                                      ; Unique document identifier
@@ -155,8 +155,8 @@ status_date = date                                   ; Status date
 
 {@amendment}
 ; Required fields first
-amendment_date = !date                               ; Amendment date
-amendment_number = !##:(1..)                         ; Amendment number
+amendment_date = date                               ; Amendment date
+amendment_number = ##:(1..)                         ; Amendment number
 
 ; Amendment identification
 amendment_id = :                                     ; Unique amendment identifier
@@ -213,9 +213,9 @@ status_date = date                                   ; Status date
 
 {@resale_certificate}
 ; Required fields first
-issue_date = !date                                   ; Issue date
-unit_address = !@address                             ; Unit address
-unit_number = !:                                     ; Unit number
+issue_date = date                                   ; Issue date
+unit_address = @address                             ; Unit address
+unit_number = :                                     ; Unit number
 
 ; Certificate identification
 certificate_id = :                                   ; Unique certificate identifier
@@ -394,8 +394,8 @@ status_date = date                                   ; Status date
 
 {@hoa_disclosure}
 ; Required fields first
-disclosure_date = !date                              ; Disclosure date
-property_address = !@address                         ; Property address
+disclosure_date = date                              ; Disclosure date
+property_address = @address                         ; Property address
 
 ; Disclosure identification
 disclosure_id = :                                    ; Unique disclosure identifier

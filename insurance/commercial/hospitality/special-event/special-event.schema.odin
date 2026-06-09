@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial hospitality coverage for special events"
 ; ===================================================================================
 
 {@se_event_type}
-event_category = !(
+event_category = (
     athletic_competition,                     ; Races, tournaments
     carnival_fair,                            ; Carnival/fair
     charity_fundraiser,                       ; Charity event
@@ -88,10 +88,10 @@ venue_type = (
 
 {@se_event}
 ; Required fields first
-event_name = !:                               ; Event name
-event_type = !@se_event_type                  ; Event classification
-expected_attendance = !##                     ; Expected attendees
-organizer_name = !:                           ; Organizer/host
+event_name = :                               ; Event name
+event_type = @se_event_type                  ; Event classification
+expected_attendance = ##                     ; Expected attendees
+organizer_name = :                           ; Organizer/host
 
 ; Optional fields
 address = @address                            ; Event address
@@ -144,8 +144,8 @@ volunteers = ##                               ; Volunteer count
 
 {@se_liability}
 ; Required fields first
-each_occurrence = !#$:(0..)                   ; Per occurrence limit
-general_aggregate = !#$:(0..)                 ; Aggregate limit
+each_occurrence = #$:(0..)                   ; Per occurrence limit
+general_aggregate = #$:(0..)                 ; Aggregate limit
 
 ; Optional fields
 assault_battery = ?                           ; A&B coverage
@@ -237,7 +237,7 @@ tents = #$:(0..):if included = true           ; Tents/structures
 
 {@se_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 cancellation_premium = #$:(0..)               ; Cancellation premium
@@ -268,8 +268,8 @@ venue_factor = #                              ; Venue type
 
 {@se_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     assault,                                  ; Assault/battery
     auto,                                     ; Auto incident
     bodily_injury,                            ; Attendee injury
@@ -322,11 +322,11 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@special_event_policy}
 ; Required fields first
-effective_date = !date                        ; Coverage start date
-event = !@se_event                            ; Event details
-expiration_date = !date                       ; Coverage end date
-liability = !@se_liability                    ; Liability coverage
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Coverage start date
+event = @se_event                            ; Event details
+expiration_date = date                       ; Coverage end date
+liability = @se_liability                    ; Liability coverage
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date >= effective_date

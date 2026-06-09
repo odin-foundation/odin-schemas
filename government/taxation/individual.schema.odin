@@ -48,16 +48,16 @@ changelog[0].rationale = "Comprehensive coverage of individual tax forms per IRS
 = @types.audit_info
 
 ; Filing Information
-tax_year = !##:(2020..)                              ; Tax year
+tax_year = ##:(2020..)                              ; Tax year
 filing_status = (head_of_household, married_filing_jointly, married_filing_separately, qualifying_surviving_spouse, single)
 amended_return = ?                                   ; Amended return indicator
 
 ; Taxpayer Information
 {.taxpayer}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 middle_initial = :
-ssn = !*:format ssn                                  ; Social Security Number
+ssn = *:format ssn                                  ; Social Security Number
 date_of_birth = *date
 occupations[] = :                                    ; Occupations (multiple jobs)
 presidential_election_campaign_fund = ?
@@ -78,13 +78,13 @@ presidential_election_campaign_fund = ?
 
 {@form_1040}
 ; Addresses
-addresses[] = !@address                              ; Addresses (primary, during year)
+addresses[] = @address                              ; Addresses (primary, during year)
 
 ; Dependents
 {.dependents[]}
-first_name = !:
-last_name = !:
-ssn = !*:format ssn
+first_name = :
+last_name = :
+ssn = *:format ssn
 relationship = (child, other, parent, sibling, spouse)
 qualifying_child_credit = ?
 qualifying_other_dependent_credit = ?
@@ -135,9 +135,9 @@ total_adjustments = #$
 
 {@form_1040}
 ; Tax Computation
-adjusted_gross_income = !#$
-taxable_income = !#$
-tax = !#$:(0..)
+adjusted_gross_income = #$
+taxable_income = #$
+tax = #$:(0..)
 
 ; Tax Credits
 {.credits}
@@ -211,7 +211,7 @@ spouse_signed_date = date:if filing_status = married_filing_jointly
 {@schedule_a}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Medical and Dental Expenses
 {.medical}
@@ -264,7 +264,7 @@ other_deductions = #$
 
 {@schedule_a}
 ; Total Itemized Deductions
-total_itemized_deductions = !#$:(0..)
+total_itemized_deductions = #$:(0..)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; SCHEDULE B - Interest and Ordinary Dividends
@@ -273,20 +273,20 @@ total_itemized_deductions = !#$:(0..)
 {@schedule_b}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Interest Income
 {.interest_income[]}
-payer_name = !:
-amount = !#$
+payer_name = :
+amount = #$
 
 {@schedule_b}
 total_interest = #$
 
 ; Dividend Income
 {.dividend_income[]}
-payer_name = !:
-ordinary_dividends = !#$
+payer_name = :
+ordinary_dividends = #$
 qualified_dividends = #$:(0..)
 
 {@schedule_b}
@@ -306,15 +306,15 @@ finCEN_114_filed = ?:if foreign_account = true
 {@schedule_c}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Business Information
-business_name = !:
+business_name = :
 business_address = @address
-principal_business_codes[] = !##:(100000..999999)    ; NAICS codes (multi-line business)
+principal_business_codes[] = ##:(100000..999999)    ; NAICS codes (multi-line business)
 ein = :format ein
-business_activity = !:
-material_participation = !?
+business_activity = :
+material_participation = ?
 started_business_year = ?
 
 ; Accounting Method
@@ -360,7 +360,7 @@ total_expenses = #$:(0..)
 
 {@schedule_c}
 ; Net Profit or Loss
-net_profit_loss = !#$
+net_profit_loss = #$
 at_risk = ?
 
 ; Vehicle Information (multiple vehicles)
@@ -385,7 +385,7 @@ home_office_deduction = #$
 {@schedule_d}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Short-term Capital Gains and Losses
 {.short_term}
@@ -414,7 +414,7 @@ net_long_term_gain_loss = #$
 
 {@schedule_d}
 ; Summary
-total_capital_gain_loss = !#$
+total_capital_gain_loss = #$
 unrecaptured_section_1250_gain = #$:(0..)
 collectibles_28_percent_gain = #$:(0..)
 
@@ -433,19 +433,19 @@ capital_gains_tax = #$:(0..)
 {@form_8949}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 parts[] = (I, II)                                    ; Parts used (short-term, long-term)
 boxes_checked[] = (A, B, C, D, E, F)                 ; Boxes checked (multiple per filing)
 
 {.transactions[]}
-description = !:                                     ; Property description
+description = :                                     ; Property description
 date_acquired = date                                 ; Acquisition date
-date_sold = !date                                    ; Sale date
-proceeds = !#$                                       ; Proceeds
-cost_basis = !#$                                     ; Cost basis
+date_sold = date                                    ; Sale date
+proceeds = #$                                       ; Proceeds
+cost_basis = #$                                     ; Cost basis
 adjustment_codes[] = :                               ; Adjustment codes (B, W, etc.)
 adjustment_amount = #$                               ; Adjustment amount
-gain_loss = !#$                                      ; Gain or loss
+gain_loss = #$                                      ; Gain or loss
 wash_sale = ?                                        ; Wash sale indicator
 
 {@form_8949}
@@ -461,7 +461,7 @@ totals_gain_loss = #$
 {@schedule_e}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Part I - Rental Real Estate and Royalty Income
 {.rental_properties[]}
@@ -501,9 +501,9 @@ total_rental_income_loss = #$
 
 ; Part II - Partnerships and S Corporations
 {.passthrough_entities[]}
-entity_name = !:
+entity_name = :
 entity_type = (partnership, s_corporation)
-ein = !:format ein
+ein = :format ein
 foreign_entity = ?
 passive_income_loss = #$
 nonpassive_income_loss = #$
@@ -514,8 +514,8 @@ total_passthrough_income_loss = #$
 
 ; Part III - Estates and Trusts
 {.estates_trusts[]}
-entity_name = !:
-ein = !:format ein
+entity_name = :
+ein = :format ein
 passive_income_loss = #$
 nonpassive_income_loss = #$
 
@@ -523,7 +523,7 @@ nonpassive_income_loss = #$
 total_estate_trust_income_loss = #$
 
 ; Summary
-total_income_loss = !#$
+total_income_loss = #$
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; SCHEDULE F - Profit or Loss from Farming
@@ -532,13 +532,13 @@ total_income_loss = !#$
 {@schedule_f}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Farm Information
-principal_products[] = !:                            ; Principal products (diversified farms)
+principal_products[] = :                            ; Principal products (diversified farms)
 employer_identification_number = :format ein
 accounting_method = (accrual, cash, crop)
-material_participation = !?
+material_participation = ?
 
 ; Income
 {.income}
@@ -585,7 +585,7 @@ total_expenses = #$:(0..)
 
 {@schedule_f}
 ; Net Farm Profit or Loss
-net_farm_profit_loss = !#$
+net_farm_profit_loss = #$
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; SCHEDULE SE - Self-Employment Tax
@@ -594,12 +594,12 @@ net_farm_profit_loss = !#$
 {@schedule_se}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 
 ; Taxpayer Information (joint returns may have multiple)
 {.taxpayers[]}
-name = !:                                            ; Taxpayer name
-ssn = !*:format ssn                                  ; SSN
+name = :                                            ; Taxpayer name
+ssn = *:format ssn                                  ; SSN
 
 {@schedule_se}
 ; Self-Employment Income
@@ -615,7 +615,7 @@ maximum_earnings_subject_to_se_tax = #$:(0..)        ; Wage base limit
 social_security_wages = #$:(0..)                     ; W-2 wages
 earnings_subject_to_se_tax = #$
 self_employment_tax_rate = #:(0..100) #15.3
-self_employment_tax = !#$:(0..)
+self_employment_tax = #$:(0..)
 deductible_part_se_tax = #$:(0..)                    ; 50% deductible
 
 {@schedule_se}

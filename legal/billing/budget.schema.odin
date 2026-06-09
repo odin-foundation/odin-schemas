@@ -45,9 +45,9 @@ changelog[0].rationale = "Comprehensive budget tracking structure"
 
 {@legal_budget}
 ; Required fields first
-budget_amount = !#$:(0..)                         ; Total budget amount
-budget_type = !(alternative_fee, cap, estimate, fixed_fee, not_to_exceed, phase_based)
-effective_date = !date                            ; Budget effective date
+budget_amount = #$:(0..)                         ; Total budget amount
+budget_type = (alternative_fee, cap, estimate, fixed_fee, not_to_exceed, phase_based)
+effective_date = date                            ; Budget effective date
 
 ; Budget identification
 budget_id = :                                     ; Unique budget ID
@@ -196,9 +196,9 @@ final_amount = #$:(0..):if status = closed        ; Final amount spent
 
 {@budget_phase}
 ; Required fields first
-phase_code = !:                                   ; UTBMS phase code
-phase_name = !:                                   ; Phase name
-phase_budget = !#$:(0..)                          ; Phase budget amount
+phase_code = :                                   ; UTBMS phase code
+phase_name = :                                   ; Phase name
+phase_budget = #$:(0..)                          ; Phase budget amount
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Budget Breakdown
@@ -256,8 +256,8 @@ status = (completed, in_progress, not_started, on_hold)
 
 {@legal_afa}
 ; Required fields first
-afa_type = !(blended_rate, cap, collar, contingency, fixed_fee, flat_fee_plus, holdback, hybrid, performance, portfolio, retainer, success_fee)
-effective_date = !date                            ; AFA effective date
+afa_type = (blended_rate, cap, collar, contingency, fixed_fee, flat_fee_plus, holdback, hybrid, performance, portfolio, retainer, success_fee)
+effective_date = date                            ; AFA effective date
 
 ; AFA identification
 afa_id = :                                        ; Unique AFA ID

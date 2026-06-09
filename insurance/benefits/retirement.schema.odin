@@ -44,15 +44,15 @@ changelog[0].rationale = "Structure derived from ERISA and IRC qualified plan re
 ; Per IRC Section 401(k)
 
 {@plan_401k}
-plan_id = !:                                ; Plan identifier
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
-ein = !*:                                   ; Employer EIN
-plan_number = !:                            ; Plan number (3-digit)
+plan_id = :                                ; Plan identifier
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
+ein = *:                                   ; Employer EIN
+plan_number = :                            ; Plan number (3-digit)
 
 ; Plan type
 {.type}
-plan_type = !(safe_harbor, safe_harbor_match, simple_401k, traditional)
+plan_type = (safe_harbor, safe_harbor_match, simple_401k, traditional)
 roth_feature = ?                            ; Roth 401(k) available
 auto_enrollment = ?                         ; Automatic enrollment
 
@@ -158,15 +158,15 @@ custodian_name = :                          ; Custodian
 ; Per ERISA Title I and IRC Section 401(a)
 
 {@pension}
-plan_id = !:                                ; Plan identifier
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
-ein = !*:                                   ; Employer EIN
-plan_number = !:                            ; Plan number
+plan_id = :                                ; Plan identifier
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
+ein = *:                                   ; Employer EIN
+plan_number = :                            ; Plan number
 
 ; Plan type
 {.type}
-plan_type = !(cash_balance, final_average_pay, flat_benefit, hybrid)
+plan_type = (cash_balance, final_average_pay, flat_benefit, hybrid)
 frozen = ?                                  ; Plan frozen to new participants
 soft_freeze = ?                             ; Soft freeze (accruals continue)
 hard_freeze = ?                             ; Hard freeze (no new accruals)
@@ -183,7 +183,7 @@ entry_dates = (first_of_month, immediate, quarterly, semi_annual)
 
 ; Benefit formula - Per plan document
 {.formula}
-formula_type = !(career_average, cash_balance, final_average, flat_dollar)
+formula_type = (career_average, cash_balance, final_average, flat_dollar)
 benefit_percent = #:(0..5)                  ; Percent per year of service
 final_average_years = ##:(3..5)             ; Years for final average pay
 integration_level = :                       ; Social Security integration
@@ -194,7 +194,7 @@ cash_balance_credit_percent = #:(0..15)    ; Cash balance pay credit %
 
 ; Vesting - Per ERISA minimum vesting
 {.vesting}
-vesting_schedule = !(cliff_3, cliff_5, graded_7)
+vesting_schedule = (cliff_3, cliff_5, graded_7)
 years_for_full_vesting = ##:(3..7)          ; Years to full vesting
 hours_per_year = ##:(1000..1000)            ; Hours for year of service
 
@@ -250,10 +250,10 @@ valuation_date = date                       ; Last valuation date
 ; Per IRC Section 401(a) - Standalone profit sharing
 
 {@profit_sharing}
-plan_id = !:                                ; Plan identifier
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
-ein = !*:                                   ; Employer EIN
+plan_id = :                                ; Plan identifier
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
+ein = *:                                   ; Employer EIN
 
 ; Contribution formula
 {.contributions}
@@ -266,7 +266,7 @@ maximum_contribution_percent = #:(0..25)    ; Maximum % of compensation
 
 ; Allocation method - Per IRS guidelines
 {.allocation}
-allocation_method = !(age_weighted, integrated, new_comparability, pro_rata)
+allocation_method = (age_weighted, integrated, new_comparability, pro_rata)
 integration_level = :                       ; Social Security taxable wage base
 permitted_disparity = #:(0..5.7)            ; Integration percentage
 
@@ -302,13 +302,13 @@ rmd_age = ##:(72..75)                       ; Required minimum distribution age
 ; Per IRC Section 409A
 
 {@nqdc}
-plan_id = !:                                ; Plan identifier
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan identifier
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Plan type
 {.type}
-plan_type = !(excess_benefit, salary_deferral, serp, sip)
+plan_type = (excess_benefit, salary_deferral, serp, sip)
 ; serp = Supplemental Executive Retirement Plan
 ; sip = Stock Incentive Plan
 rabbi_trust = ?                             ; Rabbi trust funded
@@ -375,13 +375,13 @@ compliant = ?                               ; 409A compliant
 ; Per IRC Sections 409 and 4975(e)(7)
 
 {@esop}
-plan_id = !:                                ; Plan identifier
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan identifier
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; ESOP type
 {.type}
-esop_type = !(leveraged, non_leveraged)
+esop_type = (leveraged, non_leveraged)
 s_corp_esop = ?                             ; S-corp ESOP
 c_corp_esop = ?                             ; C-corp ESOP
 ksop = ?                                    ; 401(k)/ESOP combination
@@ -436,14 +436,14 @@ put_option_period_days = ##:(60..120)       ; Put option period
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@retirement_enrollment}
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee
-plan_id = !:                                ; Plan ID
-plan_type = !(esop, nqdc, pension, profit_sharing, _401k)
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee
+plan_id = :                                ; Plan ID
+plan_type = (esop, nqdc, pension, profit_sharing, _401k)
 
 ; Enrollment details
 {.enrollment}
-enrollment_date = !date                     ; Enrollment date
+enrollment_date = date                     ; Enrollment date
 auto_enrolled = ?                           ; Auto-enrolled
 effective_date = date                       ; Participation effective date
 rehire_enrollment = ?                       ; Rehire reinstatement
@@ -473,16 +473,16 @@ self_directed_brokerage = ?                 ; Self-directed account
 beneficiaries[] = @benefits.beneficiary     ; Designated beneficiaries
 
 ; Status
-status = !(active, declined, suspended, terminated)
+status = (active, declined, suspended, terminated)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; RETIREMENT ACCOUNT
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@retirement_account}
-account_id = !:                             ; Account ID
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee
+account_id = :                             ; Account ID
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee
 
 ; Balances
 {.balances}
@@ -529,14 +529,14 @@ as_of_date = date                           ; Balance as of date
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@retirement_distribution}
-distribution_id = !:                        ; Distribution ID
-account_id = !:                             ; Account ID
-employee_id = !:                            ; Employee
+distribution_id = :                        ; Distribution ID
+account_id = :                             ; Account ID
+employee_id = :                            ; Employee
 
 ; Distribution type
 {.type}
-distribution_reason = !(death, disability, hardship, in_service, normal_retirement, rmd, separation, qdro)
-distribution_form = !(annuity, direct_rollover, installments, lump_sum)
+distribution_reason = (death, disability, hardship, in_service, normal_retirement, rmd, separation, qdro)
+distribution_form = (annuity, direct_rollover, installments, lump_sum)
 
 {@retirement_distribution}
 
@@ -583,7 +583,7 @@ alternate_payee = :                         ; Alternate payee name
 {@retirement_distribution}
 
 ; Status
-status = !(approved, denied, paid, pending)
+status = (approved, denied, paid, pending)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; RETIREMENT LOAN
@@ -591,13 +591,13 @@ status = !(approved, denied, paid, pending)
 ; Per 401(k) loan rules
 
 {@retirement_loan}
-loan_id = !:                                ; Loan ID
-account_id = !:                             ; Account ID
-employee_id = !:                            ; Employee
+loan_id = :                                ; Loan ID
+account_id = :                             ; Account ID
+employee_id = :                            ; Employee
 
 ; Loan details
 {.details}
-loan_type = !(general, principal_residence)
+loan_type = (general, principal_residence)
 original_amount = #$:(0..50000)             ; Original loan amount
 current_balance = #$:(0..)                  ; Current balance
 interest_rate = #:(0..20)                   ; Interest rate
@@ -624,6 +624,6 @@ cure_period_end = date                      ; End of cure period
 {@retirement_loan}
 
 ; Status
-status = !(active, defaulted, paid_off)
+status = (active, defaulted, paid_off)
 
 

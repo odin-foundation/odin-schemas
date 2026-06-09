@@ -39,15 +39,15 @@ changelog[0].rationale = "Structure derived from 38 USC Chapter 17 and 38 CFR Pa
 ; Per 38 CFR 17.36
 
 {@veteran}
-veteran_id = !:                             ; VA patient identifier
+veteran_id = :                             ; VA patient identifier
 edipi = :                                   ; DoD EDIPI
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
-dob = !*date                                ; Date of birth
+last_name = :                              ; Last name
+dob = *date                                ; Date of birth
 gender = (female, male)                     ; Gender
 ssn = *:                                    ; SSN
 
@@ -81,9 +81,9 @@ special_monthly_compensation = ?            ; SMC
 ; Per 38 CFR 17.36
 
 {@enrollment}
-enrollment_id = !:                          ; Enrollment ID
-veteran_id = !:                             ; Veteran ID
-application_date = !date                    ; Application date (VA Form 10-10EZ)
+enrollment_id = :                          ; Enrollment ID
+veteran_id = :                             ; Veteran ID
+application_date = date                    ; Application date (VA Form 10-10EZ)
 
 ; Enrollment status - Per 38 CFR 17.36
 enrollment_status = @enrollment_period      ; Enrollment period with status
@@ -93,7 +93,7 @@ rejection_reason = :                        ; Rejection reason
 
 ; Priority group - Per 38 CFR 17.36
 {.priority}
-priority_group = !##:(1..8)                 ; Priority group (1-8)
+priority_group = ##:(1..8)                 ; Priority group (1-8)
 subpriority = :                             ; Subpriority (a-i)
 ; Priority 1: 50%+ SC or IU
 ; Priority 2: 30-40% SC
@@ -121,8 +121,8 @@ means_test_completed = ?                    ; Means test completed
 ; Per 38 CFR 17.36(b)
 
 {@priority_assignment}
-veteran_id = !:                             ; Veteran ID
-assignment_date = !date                     ; Assignment date
+veteran_id = :                             ; Veteran ID
+assignment_date = date                     ; Assignment date
 
 ; Factors - Per 38 CFR 17.36(b)
 {.factors}
@@ -162,13 +162,13 @@ subpriority = :                             ; Subpriority
 ; Per 38 CFR 17.108-17.111
 
 {@copayment}
-copayment_id = !:                           ; Copayment ID
-veteran_id = !:                             ; Veteran ID
-service_date = !date                        ; Date of service
+copayment_id = :                           ; Copayment ID
+veteran_id = :                             ; Veteran ID
+service_date = date                        ; Date of service
 
 ; Service type
 {.service}
-service_type = !(inpatient, medication, outpatient)
+service_type = (inpatient, medication, outpatient)
 service_description = :                     ; Description
 facility_id = :                             ; VA facility
 
@@ -199,13 +199,13 @@ below_threshold = ?                         ; Below income threshold
 ; Per VHA scheduling directives
 
 {@appointment}
-appointment_id = !:                         ; Appointment ID
-veteran_id = !:                             ; Veteran ID
-facility_id = !:                            ; VA facility
+appointment_id = :                         ; Appointment ID
+veteran_id = :                             ; Veteran ID
+facility_id = :                            ; VA facility
 
 ; Appointment details
 {.details}
-appointment_date = !date                    ; Appointment date
+appointment_date = date                    ; Appointment date
 appointment_time = :                        ; Time
 appointment_type = (in_person, telehealth, telephone, video)
 clinic_name = :                             ; Clinic name
@@ -222,7 +222,7 @@ provider_type = (md, np, pa)                ; Provider type
 
 ; Status
 {.status}
-status = !(cancelled, completed, no_show, scheduled)
+status = (cancelled, completed, no_show, scheduled)
 check_in_time = :                           ; Check-in time
 cancellation_reason = :                     ; Cancellation reason
 
@@ -242,9 +242,9 @@ community_provider = :                      ; Community provider name
 ; Per 38 USC 1703 and 38 CFR 17.4000
 
 {@community_care}
-referral_id = !:                            ; Referral ID
-veteran_id = !:                             ; Veteran ID
-referral_date = !date                       ; Referral date
+referral_id = :                            ; Referral ID
+veteran_id = :                             ; Veteran ID
+referral_date = date                       ; Referral date
 
 ; Eligibility criteria - Per 38 CFR 17.4010
 {.eligibility}
@@ -289,8 +289,8 @@ in_network = ?                              ; In VA community care network
 ; Per VHA facility data
 
 {@facility}
-facility_id = !:                            ; Station number
-name = !:                                   ; Facility name
+facility_id = :                            ; Station number
+name = :                                   ; Facility name
 visn = ##:(1..23)                           ; VISN number
 
 ; Location
@@ -300,7 +300,7 @@ address = @address                          ; Physical address
 
 ; Facility type
 {.type}
-facility_type = !(cboc, domiciliary, medical_center, nursing_home, outpatient_clinic, vet_center)
+facility_type = (cboc, domiciliary, medical_center, nursing_home, outpatient_clinic, vet_center)
 complexity = (1a, 1b, 1c, 2, 3)             ; Complexity level
 teaching_facility = ?                       ; Teaching facility
 
@@ -324,9 +324,9 @@ specialties[] = :                           ; Medical specialties
 ; Per 38 CFR 70
 
 {@travel_reimbursement}
-claim_id = !:                               ; Claim ID
-veteran_id = !:                             ; Veteran ID
-travel_date = !date                         ; Date of travel
+claim_id = :                               ; Claim ID
+veteran_id = :                             ; Veteran ID
+travel_date = date                         ; Date of travel
 
 ; Trip details
 {.trip}

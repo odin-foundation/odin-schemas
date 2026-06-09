@@ -51,9 +51,9 @@ changelog[0].rationale = "Comprehensive transaction tracking structure"
 
 {@transactional_matter}
 ; Required fields first
-matter_name = !:                                  ; Matter name/description
-open_date = !date                                 ; Date matter opened
-transaction_type = !(acquisition, asset_purchase, commercial_lease, corporate_formation, corporate_governance, divestiture, equity_offering, financing, joint_venture, licensing, merger, real_estate_purchase, real_estate_sale, recapitalization, reorganization, securities_offering, spin_off, stock_purchase)
+matter_name = :                                  ; Matter name/description
+open_date = date                                 ; Date matter opened
+transaction_type = (acquisition, asset_purchase, commercial_lease, corporate_formation, corporate_governance, divestiture, equity_offering, financing, joint_venture, licensing, merger, real_estate_purchase, real_estate_sale, recapitalization, reorganization, securities_offering, spin_off, stock_purchase)
 
 ; Matter identification
 matter_id = :                                     ; Internal matter identifier
@@ -325,7 +325,7 @@ outcome_date = date:if status.status = closed     ; Date of outcome
 
 {@transaction_phase}
 ; Current phase (UTBMS Project/Counseling Phases)
-current_phase = !(P100_assessment, P110_strategy, P120_planning, P200_negotiation, P210_due_diligence, P220_documentation, P300_regulatory, P310_consents, P400_closing_prep, P410_closing, P500_post_closing)
+current_phase = (P100_assessment, P110_strategy, P120_planning, P200_negotiation, P210_due_diligence, P220_documentation, P300_regulatory, P310_consents, P400_closing_prep, P410_closing, P500_post_closing)
 
 ; Phase details
 phase_start_date = date                           ; When phase started
@@ -416,9 +416,9 @@ stream = :                                        ; Related DD stream
 
 {@transaction_milestone}
 ; Required fields first
-milestone_name = !:                               ; Milestone name
-milestone_type = !(closing, dd_completion, definitive_agreement, exclusivity, filing, financing, first_draft, loi, negotiation, regulatory_approval, signing, term_sheet)
-target_date = !date                               ; Target date
+milestone_name = :                               ; Milestone name
+milestone_type = (closing, dd_completion, definitive_agreement, exclusivity, filing, financing, first_draft, loi, negotiation, regulatory_approval, signing, term_sheet)
+target_date = date                               ; Target date
 
 ; Milestone identification
 milestone_id = :                                  ; Unique milestone identifier

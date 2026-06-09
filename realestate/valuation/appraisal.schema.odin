@@ -58,10 +58,10 @@ appraiser_id = :                                     ; Unique appraiser identifi
 ; Credentials
 ; ───────────────────────────────────────────────────────────────────────────────
 {.credentials}
-license_type = !(certified_general, certified_residential, licensed, trainee)
-license_number = !*:                                  ; State license number
-license_state = !:(2)                                ; State of licensure
-license_expiration = !date                           ; License expiration date
+license_type = (certified_general, certified_residential, licensed, trainee)
+license_number = *:                                  ; State license number
+license_state = :(2)                                ; State of licensure
+license_expiration = date                           ; License expiration date
 license_status = (active, expired, inactive, revoked, suspended)
 fha_roster = ?                                       ; On FHA appraiser roster
 fha_id = ::if fha_roster = true                      ; FHA appraiser ID
@@ -98,11 +98,11 @@ expiration = date                                    ; Policy expiration
 
 {@appraisal_assignment}
 ; Required fields first
-assignment_date = !date                              ; Date of assignment
-client_name = !:                                     ; Client name
-intended_use = !:                                    ; Intended use of appraisal
-property_address = !@address                         ; Subject property address
-purpose = !(estate, financing, legal, listing, other, purchase, refinance, relocation)
+assignment_date = date                              ; Date of assignment
+client_name = :                                     ; Client name
+intended_use = :                                    ; Intended use of appraisal
+property_address = @address                         ; Subject property address
+purpose = (estate, financing, legal, listing, other, purchase, refinance, relocation)
 
 ; Assignment identification
 assignment_id = :                                    ; Unique assignment identifier
@@ -175,10 +175,10 @@ cancellation_reason = ::if status = cancelled        ; Reason for cancellation
 
 {@appraisal}
 ; Required fields first
-appraised_value = !#$:(0..)                          ; Final appraised value
-effective_date = !date                               ; Effective date of value
-property_address = !@address                         ; Subject property address
-report_date = !date                                  ; Date of report
+appraised_value = #$:(0..)                          ; Final appraised value
+effective_date = date                               ; Effective date of value
+property_address = @address                         ; Subject property address
+report_date = date                                  ; Date of report
 
 ; Appraisal identification
 appraisal_id = :                                     ; Unique appraisal identifier

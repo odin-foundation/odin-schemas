@@ -41,7 +41,7 @@ changelog[0].rationale = "Core resources derived from FHIR R4"
 
 {@patient}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers
@@ -100,12 +100,12 @@ organization = @fhir.reference                ; Organization (if applicable)
 period = @fhir.period                         ; Period contact is valid
 
 {@patient_communication}
-language = !@fhir.codeable_concept            ; Language code (BCP-47)
+language = @fhir.codeable_concept            ; Language code (BCP-47)
 preferred = ?                                 ; Is preferred language
 
 {@patient_link}
-other = !@fhir.reference                      ; Other patient record
-type = !(refer, replaced_by, replaces, seealso)
+other = @fhir.reference                      ; Other patient record
+type = (refer, replaced_by, replaces, seealso)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; PRACTITIONER
@@ -114,7 +114,7 @@ type = !(refer, replaced_by, replaces, seealso)
 
 {@practitioner}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers
@@ -145,7 +145,7 @@ communications[] = @fhir.codeable_concept     ; Languages spoken
 
 {@practitioner_qualification}
 identifiers[] = @fhir.identifier              ; Qualification identifier
-code = !@fhir.codeable_concept                ; Coded representation
+code = @fhir.codeable_concept                ; Coded representation
 period = @fhir.period                         ; Period qualification is valid
 issuer = @fhir.reference                      ; Organization issuing qualification
 
@@ -156,7 +156,7 @@ issuer = @fhir.reference                      ; Organization issuing qualificati
 
 {@organization}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers
@@ -198,7 +198,7 @@ address = @fhir.address                       ; Contact address
 
 {@location}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers
@@ -230,8 +230,8 @@ physical_type = @fhir.codeable_concept        ; Physical form (room, bed, etc.)
 
 ; Position
 {.position}
-longitude = !#:(-180..180)                    ; Longitude
-latitude = !#:(-90..90)                       ; Latitude
+longitude = #:(-180..180)                    ; Longitude
+latitude = #:(-90..90)                       ; Latitude
 altitude = #                                  ; Altitude
 
 {@location}
@@ -264,20 +264,20 @@ closing_time = time                           ; Closing time
 
 {@encounter}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers
 identifiers[] = @fhir.identifier              ; Encounter identifiers
 
 ; Status
-status = !(arrived, cancelled, entered_in_error, finished, in_progress, onleave, planned, triaged, unknown)
+status = (arrived, cancelled, entered_in_error, finished, in_progress, onleave, planned, triaged, unknown)
 
 ; Status history
 status_history[] = @encounter_status_history  ; Past status changes
 
 ; Class
-class = !@fhir.coding                         ; Classification (inpatient, outpatient, etc.)
+class = @fhir.coding                         ; Classification (inpatient, outpatient, etc.)
 
 ; Class history
 class_history[] = @encounter_class_history    ; Past class changes
@@ -337,12 +337,12 @@ service_provider = @fhir.reference            ; Responsible organization
 part_of = @fhir.reference                     ; Another encounter this is part of
 
 {@encounter_status_history}
-status = !(arrived, cancelled, entered_in_error, finished, in_progress, onleave, planned, triaged, unknown)
-period = !@fhir.period                        ; Time period for status
+status = (arrived, cancelled, entered_in_error, finished, in_progress, onleave, planned, triaged, unknown)
+period = @fhir.period                        ; Time period for status
 
 {@encounter_class_history}
-class = !@fhir.coding                         ; Encounter class
-period = !@fhir.period                        ; Time period for class
+class = @fhir.coding                         ; Encounter class
+period = @fhir.period                        ; Time period for class
 
 {@encounter_participant}
 types[] = @fhir.codeable_concept              ; Role of participant
@@ -350,7 +350,7 @@ period = @fhir.period                         ; Period of participation
 individual = @fhir.reference                  ; Practitioner/RelatedPerson
 
 {@encounter_diagnosis}
-condition = !@fhir.reference                  ; Reference to condition
+condition = @fhir.reference                  ; Reference to condition
 use = @fhir.codeable_concept                  ; Role (admission, billing, etc.)
 rank = ##:(1..)                               ; Ranking of diagnosis
 
@@ -366,7 +366,7 @@ destination = @fhir.reference                 ; Location to which discharged
 discharge_disposition = @fhir.codeable_concept   ; Discharge category
 
 {@encounter_location}
-location = !@fhir.reference                   ; Location
+location = @fhir.reference                   ; Location
 status = (active, completed, planned, reserved)
 physical_type = @fhir.codeable_concept        ; Physical form
 period = @fhir.period                         ; Time period at location
@@ -378,7 +378,7 @@ period = @fhir.period                         ; Time period at location
 
 {@condition}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers
@@ -403,7 +403,7 @@ code = @fhir.codeable_concept                 ; Identification of condition
 body_sites[] = @fhir.codeable_concept         ; Anatomical location
 
 ; Subject
-subject = !@fhir.reference                    ; Patient who has condition
+subject = @fhir.reference                    ; Patient who has condition
 
 ; Encounter
 encounter = @fhir.reference                   ; Encounter when condition noted
@@ -456,7 +456,7 @@ details[] = @fhir.reference                   ; Supporting information
 
 {@observation}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers
@@ -469,13 +469,13 @@ based_on[] = @fhir.reference                  ; Fulfills plan/order
 part_of[] = @fhir.reference                   ; Part of larger event
 
 ; Status
-status = !(amended, cancelled, corrected, entered_in_error, final, preliminary, registered, unknown)
+status = (amended, cancelled, corrected, entered_in_error, final, preliminary, registered, unknown)
 
 ; Category
 categories[] = @fhir.codeable_concept         ; Classification of observation
 
 ; Code
-code = !@fhir.codeable_concept                ; Type of observation (LOINC, etc.)
+code = @fhir.codeable_concept                ; Type of observation (LOINC, etc.)
 
 ; Subject
 subject = @fhir.reference                     ; Patient being observed
@@ -552,7 +552,7 @@ age = @fhir.range                             ; Applicable age range
 text = :                                      ; Text description
 
 {@observation_component}
-code = !@fhir.codeable_concept                ; Type of component observation
+code = @fhir.codeable_concept                ; Type of component observation
 value_quantity = @fhir.quantity               ; Component value
 value_codeable_concept = @fhir.codeable_concept
 value_string = :

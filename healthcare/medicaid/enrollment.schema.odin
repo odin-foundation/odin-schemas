@@ -41,17 +41,17 @@ changelog[0].rationale = "Structure derived from CMS Single Streamlined Applicat
 ; Per 42 CFR 435.907 and CMS-10114
 
 {@application}
-application_id = !:                          ; Application tracking number
-state = !:(2)                                ; State of application
+application_id = :                          ; Application tracking number
+state = :(2)                                ; State of application
 
 ; Application type
-application_type = !(initial, renewal, change_report)
-application_source = !(agency, fbe, mail, marketplace, online, phone)
+application_type = (initial, renewal, change_report)
+application_source = (agency, fbe, mail, marketplace, online, phone)
 ; fbe = Federally Facilitated Exchange
 
 ; Dates
 {.dates}
-received = !date                             ; Date received
+received = date                             ; Date received
 submitted = date                             ; Date submitted by applicant
 due_date = date                              ; Decision due date (45 days standard)
 decision_date = date                         ; Date of decision
@@ -81,7 +81,7 @@ marketplace = ?                              ; Marketplace coverage requested
 
 ; Application status
 status = @status_record                      ; Status tracking with date and reason
-status.status = !(approved, denied, pending, returned, withdrawn)
+status.status = (approved, denied, pending, returned, withdrawn)
 substatus = :                                ; Detailed substatus
 
 {@application}
@@ -106,7 +106,7 @@ aptc_eligible = ?                            ; Potentially APTC eligible
 {@application}
 
 {@applicant_info}
-member = !@medicaid.member                   ; Member information
+member = @medicaid.member                   ; Member information
 applying_for = (chip, medicaid)              ; Program applying for
 relationship_to_primary = :                  ; Relationship to primary applicant
 
@@ -125,19 +125,19 @@ effective_date = date                        ; Coverage effective date
 ; Per state Medicaid case management
 
 {@case}
-case_number = !:                             ; Case number
-state = !:(2)                                ; State
-case_type = !(family, individual)            ; Case type
+case_number = :                             ; Case number
+state = :(2)                                ; State
+case_type = (family, individual)            ; Case type
 
 ; Case head
-case_head = !@medicaid.member                ; Head of case/household
+case_head = @medicaid.member                ; Head of case/household
 
 ; Members
 members[] = @case_member                     ; Members on case
 
 ; Status
 status = @status_record                      ; Status tracking with date and reason
-status.status = !(active, closed, pending, suspended)
+status.status = (active, closed, pending, suspended)
 open_date = date                             ; Case open date
 close_date = date                            ; Case close date
 
@@ -155,17 +155,17 @@ redetermination_due = date                   ; Next renewal date
 actions[] = @case_action                     ; Case action history
 
 {@case_member}
-member = !@medicaid.member                   ; Member information
+member = @medicaid.member                   ; Member information
 relationship_to_head = :                     ; Relationship to case head
-coverage_status = !(active, closed, pending)
+coverage_status = (active, closed, pending)
 eligibility_group = :                        ; Member's eligibility group
 effective_date = date                        ; Coverage effective date
 end_date = date                              ; Coverage end date
 
 {@case_action}
-action_type = !(add_member, close, eligibility_change, open, remove_member, renewal, suspend)
-action_date = !date                          ; Action date
-effective_date = !date                       ; Effective date
+action_type = (add_member, close, eligibility_change, open, remove_member, renewal, suspend)
+action_date = date                          ; Action date
+effective_date = date                       ; Effective date
 reason = :                                   ; Reason for action
 processed_by = :                             ; Worker who processed
 
@@ -175,14 +175,14 @@ processed_by = :                             ; Worker who processed
 ; Per 42 CFR 435.916
 
 {@renewal}
-case_number = !:                             ; Case number
-member_id = !:                               ; Member ID
-renewal_type = !(annual, change_circumstance)
+case_number = :                             ; Case number
+member_id = :                               ; Member ID
+renewal_type = (annual, change_circumstance)
 
 ; Renewal period
 {.period}
-current_period_end = !date                   ; Current coverage end
-renewal_due = !date                          ; Renewal due date
+current_period_end = date                   ; Current coverage end
+renewal_due = date                          ; Renewal due date
 renewal_effective = date                     ; New period effective date
 
 {@renewal}
@@ -208,7 +208,7 @@ response_required = ?                        ; Response required
 
 ; Renewal result
 result = @status_record                      ; Result status with reason
-result.status = !(closed, pending, renewed)
+result.status = (closed, pending, renewed)
 renewed_eligibility_group = :                ; New eligibility group
 procedural_closure = ?                       ; Closed for procedural reasons
 
@@ -220,12 +220,12 @@ procedural_closure = ?                       ; Closed for procedural reasons
 ; Per 42 CFR 435.916(d)
 
 {@change_report}
-report_id = !:                               ; Report ID
-case_number = !:                             ; Case number
-report_date = !date                          ; Date reported
+report_id = :                               ; Report ID
+case_number = :                             ; Case number
+report_date = date                          ; Date reported
 
 ; Change type
-change_type = !(address, contact, death, employment, household, income, insurance, other, pregnancy)
+change_type = (address, contact, death, employment, household, income, insurance, other, pregnancy)
 
 ; Change details
 {.change}
@@ -251,12 +251,12 @@ new_eligibility_group = :                    ; New group if changed
 ; Per 42 CFR 435.916
 
 {@disenrollment}
-member_id = !:                               ; Member ID
-case_number = !:                             ; Case number
-disenrollment_date = !date                   ; Disenrollment effective date
+member_id = :                               ; Member ID
+case_number = :                             ; Case number
+disenrollment_date = date                   ; Disenrollment effective date
 
 ; Reason - Per 42 CFR 435.916(f)
-reason = !(death, eligibility_change, failure_to_respond, income_increase, incarceration, moved, other_coverage, request, transfer)
+reason = (death, eligibility_change, failure_to_respond, income_increase, incarceration, moved, other_coverage, request, transfer)
 
 ; Voluntary vs involuntary
 voluntary = ?                                ; Voluntary disenrollment
@@ -285,18 +285,18 @@ continuation_end_date = date                 ; Aid continues until
 ; Per 42 CFR Part 431 Subpart E
 
 {@appeal}
-appeal_id = !:                               ; Appeal ID
-member_id = !:                               ; Member ID
+appeal_id = :                               ; Appeal ID
+member_id = :                               ; Member ID
 case_number = :                              ; Case number
 
 ; Appeal type
-appeal_type = !(action, application_denial, eligibility)
+appeal_type = (action, application_denial, eligibility)
 appealed_action = :                          ; Action being appealed
 appeal_reason = :                            ; Reason for appeal
 
 ; Filing
 {.filing}
-filed_date = !date                           ; Date appeal filed
+filed_date = date                           ; Date appeal filed
 timely_filed = ?                             ; Filed within deadline
 filing_method = (mail, online, phone, written)
 
@@ -313,7 +313,7 @@ hearing_location = :                         ; Hearing location
 
 ; Resolution
 resolution = @status_record                  ; Resolution status with reason
-resolution.status = !(affirmed, dismissed, pending, remanded, reversed, withdrawn)
+resolution.status = (affirmed, dismissed, pending, remanded, reversed, withdrawn)
 
 {@appeal}
 

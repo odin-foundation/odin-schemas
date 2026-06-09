@@ -46,9 +46,9 @@ changelog[0].rationale = "Comprehensive escrow disbursement structure"
 
 {@disbursement}
 ; Required fields first
-amount = !#$:(0..)                                   ; Disbursement amount
-disbursement_date = !date                            ; Disbursement date
-payee_name = !:                                      ; Payee name
+amount = #$:(0..)                                   ; Disbursement amount
+disbursement_date = date                            ; Disbursement date
+payee_name = :                                      ; Payee name
 
 ; Disbursement identification
 disbursement_id = :                                  ; Unique disbursement identifier
@@ -63,7 +63,7 @@ transaction_ref = :                                  ; Reference to transaction
 ; Disbursement Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.details}
-disbursement_type = !(commission, earnest_money_return, fee, lien_payoff, loan_payoff, net_proceeds, proration, recording, refund, tax, title_premium)
+disbursement_type = (commission, earnest_money_return, fee, lien_payoff, loan_payoff, net_proceeds, proration, recording, refund, tax, title_premium)
 payment_method = (ach, cashiers_check, check, wire)
 description = :                                      ; Description of disbursement
 line_item_ref = :                                    ; Reference to settlement line item
@@ -144,9 +144,9 @@ void_reason = ::if status = void                     ; Void reason
 
 {@wire_instruction}
 ; Required fields first
-beneficiary_name = !:                                ; Beneficiary name
-bank_name = !:                                       ; Bank name
-bank_routing = !:                                    ; ABA/Routing number
+beneficiary_name = :                                ; Beneficiary name
+bank_name = :                                       ; Bank name
+bank_routing = :                                    ; ABA/Routing number
 
 ; Wire instruction identification
 wire_id = :                                          ; Unique identifier
@@ -230,9 +230,9 @@ expiration_date = date                               ; Expiration date
 
 {@payoff_demand}
 ; Required fields first
-good_through_date = !date                            ; Payoff good through date
-payoff_amount = !#$:(0..)                            ; Total payoff amount
-property_address = !@address                         ; Property address
+good_through_date = date                            ; Payoff good through date
+payoff_amount = #$:(0..)                            ; Total payoff amount
+property_address = @address                         ; Property address
 
 ; Payoff identification
 payoff_id = :                                        ; Unique identifier
@@ -342,8 +342,8 @@ release_received_date = date:if status = release_received
 
 {@disbursement_ledger}
 ; Required fields first
-escrow_number = !:                                   ; Escrow/file number
-property_address = !@address                         ; Property address
+escrow_number = :                                   ; Escrow/file number
+property_address = @address                         ; Property address
 
 ; Ledger identification
 ledger_id = :                                        ; Unique ledger identifier

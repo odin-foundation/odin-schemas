@@ -45,7 +45,7 @@ changelog[0].rationale = "Complete pet health insurance coverage for personal li
 
 {@pet}
 id = :                                         ; Unique pet identifier
-name = !:                                      ; Pet's name
+name = :                                      ; Pet's name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Species Classification
@@ -277,7 +277,7 @@ brachycephalic_date = date:if brachycephalic_syndrome = true  ; Diagnosis date
 
 {@vet_provider}
 id = :                                            ; Unique provider identifier
-practice_name = !:                                ; Legal practice name
+practice_name = :                                ; Legal practice name
 dba_name = :                                      ; Doing business as name
 
 ; ───────────────────────────────────────────────────────────────────────────────

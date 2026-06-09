@@ -49,8 +49,8 @@ changelog[0].rationale = "Commodity structures derived from GIPSA, CME, AMS, and
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Delivery Details
 ; ───────────────────────────────────────────────────────────────────────────────
-delivery_id = !:                                 ; Delivery ticket number
-delivery_date = !date                            ; Delivery date
+delivery_id = :                                 ; Delivery ticket number
+delivery_date = date                            ; Delivery date
 delivery_time = time                             ; Delivery time
 farm_ref = :                                     ; Farm reference
 seller_name = :                                  ; Seller name
@@ -60,7 +60,7 @@ seller_id = :                                    ; Seller account number
 ; Elevator/Buyer
 ; ───────────────────────────────────────────────────────────────────────────────
 {.buyer}
-buyer_name = !:                                  ; Elevator/buyer name
+buyer_name = :                                  ; Elevator/buyer name
 buyer_location = @types.address                  ; Buyer location
 receiving_location = :                           ; Receiving location/bin
 
@@ -72,9 +72,9 @@ receiving_location = :                           ; Receiving location/bin
 {.grain}
 commodity = (barley, canola, corn, millet, oats, rice, rye, sorghum, soybeans, sunflower, wheat)
 crop_year = ##:(1900..2100)                      ; Crop year
-gross_weight_lbs = !#:(0..)                      ; Gross weight
+gross_weight_lbs = #:(0..)                      ; Gross weight
 tare_weight_lbs = #:(0..)                        ; Tare weight
-net_weight_lbs = !#:(0..)                        ; Net weight
+net_weight_lbs = #:(0..)                        ; Net weight
 bushels = #:(0..)                                ; Converted to bushels
 test_weight = #:(0..)                            ; Test weight (lbs/bu)
 
@@ -140,12 +140,12 @@ storage_start_date = date                        ; Storage start date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Details
 ; ───────────────────────────────────────────────────────────────────────────────
-contract_number = !:                             ; Contract number
-contract_date = !date                            ; Contract date
+contract_number = :                             ; Contract number
+contract_date = date                            ; Contract date
 contract_type = (basis, cash_forward, deferred_pricing, hedged, minimum_price)
-seller_name = !:                                 ; Seller name
+seller_name = :                                 ; Seller name
 seller_id = :                                    ; Seller account
-buyer_name = !:                                  ; Buyer name
+buyer_name = :                                  ; Buyer name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Commodity Specifications
@@ -153,7 +153,7 @@ buyer_name = !:                                  ; Buyer name
 {.commodity}
 commodity = (barley, canola, corn, oats, soybeans, sunflower, wheat)
 crop_year = ##:(1900..2100)                      ; Crop year
-quantity_bushels = !#:(0..)                      ; Contract quantity (bushels)
+quantity_bushels = #:(0..)                      ; Contract quantity (bushels)
 delivered_bushels = #:(0..)                      ; Delivered bushels
 remaining_bushels = #:(0..)                      ; Remaining bushels
 grade_specification = :                          ; Required grade
@@ -183,8 +183,8 @@ pricing_date = date                              ; Date price set
 ; Delivery Period
 ; ───────────────────────────────────────────────────────────────────────────────
 {.delivery}
-delivery_start = !date                           ; Delivery period start
-delivery_end = !date                             ; Delivery period end
+delivery_start = date                           ; Delivery period start
+delivery_end = date                             ; Delivery period end
 delivery_location = @types.address               ; Delivery location
 delivery_terms = :                               ; Delivery terms/conditions
 
@@ -223,10 +223,10 @@ deliveries[] = @grain_delivery                   ; Delivery records
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Storage Details
 ; ───────────────────────────────────────────────────────────────────────────────
-storage_id = !:                                  ; Storage account/receipt number
-owner_name = !:                                  ; Owner name
+storage_id = :                                  ; Storage account/receipt number
+owner_name = :                                  ; Owner name
 owner_id = :                                     ; Owner account
-facility_name = !:                               ; Storage facility
+facility_name = :                               ; Storage facility
 facility_location = @types.address               ; Facility address
 bin_number = :                                   ; Specific bin/location
 
@@ -234,10 +234,10 @@ bin_number = :                                   ; Specific bin/location
 ; Stored Grain
 ; ───────────────────────────────────────────────────────────────────────────────
 {.grain}
-commodity = !:                                   ; Commodity stored
+commodity = :                                   ; Commodity stored
 crop_year = ##:(1900..2100)                      ; Crop year
-storage_date = !date                             ; Date placed in storage
-quantity_bushels = !#:(0..)                      ; Bushels in storage
+storage_date = date                             ; Date placed in storage
+quantity_bushels = #:(0..)                      ; Bushels in storage
 net_weight_lbs = #:(0..)                         ; Net weight (lbs)
 grade = :                                        ; Grade at storage
 moisture_percent = #:(0..100)                    ; Moisture at storage
@@ -283,8 +283,8 @@ total_charges = #$:(0..)                         ; Total charges
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Sale Details
 ; ───────────────────────────────────────────────────────────────────────────────
-sale_id = !:                                     ; Sale ID/lot number
-sale_date = !date                                ; Sale date
+sale_id = :                                     ; Sale ID/lot number
+sale_date = date                                ; Sale date
 sale_type = (auction, direct, private_treaty, video)
 market_name = :                                  ; Market/auction name
 market_location = @types.address                 ; Market location
@@ -293,7 +293,7 @@ market_location = @types.address                 ; Market location
 ; Seller
 ; ───────────────────────────────────────────────────────────────────────────────
 {.seller}
-seller_name = !:                                 ; Seller name
+seller_name = :                                 ; Seller name
 seller_id = :                                    ; Seller account
 farm_ref = :                                     ; Farm reference
 consignment_number = :                           ; Consignment number
@@ -316,7 +316,7 @@ buyer_type = (dealer, farmer, feedlot, packer)
 {.animals}
 species = (beef_cattle, bison, dairy_cattle, goats, hogs, lambs, sheep)
 description = :                                  ; Lot description
-head_count = !##:(1..)                           ; Number of head
+head_count = ##:(1..)                           ; Number of head
 sex = (bulls, cows, heifers, mixed, steers)
 average_weight_lbs = #:(0..)                     ; Average weight
 total_weight_lbs = #:(0..)                       ; Total weight
@@ -333,7 +333,7 @@ individual_ids[] = :                             ; Individual animal IDs
 ; ───────────────────────────────────────────────────────────────────────────────
 {.pricing}
 price_basis = (per_cwt, per_head, per_pound)
-price = !#$:(0..)                                ; Price
+price = #$:(0..)                                ; Price
 gross_proceeds = #$:(0..)                        ; Gross proceeds
 commission = #$:(0..)                            ; Commission/fees
 yardage = #$:(0..)                               ; Yardage fees
@@ -363,21 +363,21 @@ check_number = :                                 ; Check number
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Details
 ; ───────────────────────────────────────────────────────────────────────────────
-contract_id = !:                                 ; Internal contract ID
+contract_id = :                                 ; Internal contract ID
 account_number = *:                               ; Brokerage account number
-trade_date = !date                               ; Trade date
+trade_date = date                               ; Trade date
 exchange = (cbot, cme, ice, kcbt, mgex)         ; Exchange
-commodity_symbol = !:                            ; Commodity symbol (ZC, ZS, ZW, etc.)
-commodity_name = !:                              ; Commodity name
+commodity_symbol = :                            ; Commodity symbol (ZC, ZS, ZW, etc.)
+commodity_name = :                              ; Commodity name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Position
 ; ───────────────────────────────────────────────────────────────────────────────
 {.position}
 position_type = (long, short)                   ; Long (buy) or short (sell)
-contract_month = !:                              ; Contract month (e.g., "Dec 2025")
+contract_month = :                              ; Contract month (e.g., "Dec 2025")
 contract_year = ##:(2000..2100)                  ; Contract year
-contract_count = !##:(1..)                       ; Number of contracts
+contract_count = ##:(1..)                       ; Number of contracts
 contract_size_bushels = ##:(0..)                 ; Contract size (bushels)
 total_bushels = #:(0..)                          ; Total bushels (contracts x size)
 
@@ -387,7 +387,7 @@ total_bushels = #:(0..)                          ; Total bushels (contracts x si
 ; Pricing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.pricing}
-entry_price = !#$                                ; Entry price per bushel
+entry_price = #$                                ; Entry price per bushel
 current_price = #$                               ; Current market price
 exit_price = #$                                  ; Exit price (if closed)
 price_change = #$                                ; Change from entry
@@ -443,22 +443,22 @@ field_refs[] = :                                 ; Fields hedged
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Details
 ; ───────────────────────────────────────────────────────────────────────────────
-contract_id = !:                                 ; Internal contract ID
+contract_id = :                                 ; Internal contract ID
 account_number = *:                               ; Brokerage account
-trade_date = !date                               ; Trade date
+trade_date = date                               ; Trade date
 exchange = (cbot, cme, ice, kcbt, mgex)
-underlying_symbol = !:                           ; Underlying futures symbol
+underlying_symbol = :                           ; Underlying futures symbol
 option_type = (call, put)                       ; Call or put option
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Option Specifications
 ; ───────────────────────────────────────────────────────────────────────────────
 {.specifications}
-strike_price = !#$                               ; Strike price
-contract_month = !:                              ; Expiration month
+strike_price = #$                               ; Strike price
+contract_month = :                              ; Expiration month
 contract_year = ##:(2000..2100)                  ; Expiration year
-expiration_date = !date                          ; Expiration date
-contract_count = !##:(1..)                       ; Number of contracts
+expiration_date = date                          ; Expiration date
+contract_count = ##:(1..)                       ; Number of contracts
 contract_size_bushels = ##:(0..)                 ; Size per contract
 
 {@options_contract}
@@ -467,7 +467,7 @@ contract_size_bushels = ##:(0..)                 ; Size per contract
 ; Pricing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.pricing}
-premium_paid = !#$:(0..)                         ; Premium paid per bushel
+premium_paid = #$:(0..)                         ; Premium paid per bushel
 total_premium = #$:(0..)                         ; Total premium cost
 current_premium = #$                             ; Current market premium
 intrinsic_value = #$                             ; Intrinsic value
@@ -504,16 +504,16 @@ realized_pnl = #$                                ; Realized profit/loss
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Details
 ; ───────────────────────────────────────────────────────────────────────────────
-contract_number = !:                             ; Contract number
-contract_date = !date                            ; Contract date
-grower_name = !:                                 ; Grower name
-buyer_name = !:                                  ; Buyer/processor name
+contract_number = :                             ; Contract number
+contract_date = date                            ; Contract date
+grower_name = :                                 ; Grower name
+buyer_name = :                                  ; Buyer/processor name
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Crop Specifications
 ; ───────────────────────────────────────────────────────────────────────────────
 {.crop}
-crop_type = !:                                   ; Crop type (vegetables, fruits, etc.)
+crop_type = :                                   ; Crop type (vegetables, fruits, etc.)
 variety = :                                      ; Specific variety required
 organic = ?                                      ; Organic production required
 gmo_status = (gmo, non_gmo, not_specified)
@@ -541,7 +541,7 @@ food_safety_cert = (gap, gfsi, organic, primus_gfs)
 ; Pricing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.pricing}
-price_per_unit = !#$:(0..)                       ; Price per unit
+price_per_unit = #$:(0..)                       ; Price per unit
 pricing_basis = :                                ; Pricing basis (field pack, FOB, delivered)
 minimum_price = #$:(0..)                         ; Minimum guaranteed price
 premium_for_organic = #$:(0..)                   ; Organic premium

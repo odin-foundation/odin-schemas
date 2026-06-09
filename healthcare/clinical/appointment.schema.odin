@@ -39,14 +39,14 @@ changelog[0].rationale = "Appointment resource derived from FHIR R4/R5 specifica
 
 {@appointment}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Appointment.identifier
 identifiers[] = @fhir.identifier              ; External identifiers
 
 ; Status - FHIR: Appointment.status (required)
-status = !(arrived, booked, cancelled, checked_in, entered_in_error, fulfilled, noshow, pending, proposed, waitlist)
+status = (arrived, booked, cancelled, checked_in, entered_in_error, fulfilled, noshow, pending, proposed, waitlist)
 
 ; Cancelation reason - FHIR: Appointment.cancelationReason
 cancelation_reason = @fhir.codeable_concept   ; Reason for cancellation
@@ -123,7 +123,7 @@ actor = @fhir.reference                       ; Person, Location, HealthcareServ
 required = (information_only, optional, required)
 
 ; Status - FHIR: Appointment.participant.status (required)
-status = !(accepted, declined, needs_action, tentative)
+status = (accepted, declined, needs_action, tentative)
 
 ; Period - FHIR: Appointment.participant.period
 period = @fhir.period                         ; Participation period

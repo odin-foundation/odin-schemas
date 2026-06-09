@@ -39,8 +39,8 @@ changelog[0].rationale = "Base types derived from ISO 20022 data dictionary"
 ; ISO 20022: ActiveCurrencyAndAmount / ActiveOrHistoricCurrencyAndAmount
 
 {@amount}
-value = !#$                                   ; Monetary value
-currency = !:(3)                              ; ISO 4217 currency code
+value = #$                                   ; Monetary value
+currency = :(3)                              ; ISO 4217 currency code
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; ACCOUNT IDENTIFICATION
@@ -62,7 +62,7 @@ type = (cacc, casa, char, cish, comm, loan, mgld, moma, nrex, odft, ondp, sacc, 
 owners[] = {@account_owner}                   ; Account owners (joint accounts)
 
 {@account_owner}
-owner_name = !:                               ; Account holder name
+owner_name = :                               ; Account holder name
 owner_id = :                                  ; Account holder identifier
 
 {@account}
@@ -91,7 +91,7 @@ addresses[] = @address                        ; Addresses (HQ, branches, operati
 branches[] = {@fi_branch}                     ; Branches (multiple locations)
 
 {@fi_branch}
-id = !:                                       ; Branch identifier
+id = :                                       ; Branch identifier
 name = :                                      ; Branch name
 address = @address                            ; Branch address
 
@@ -105,7 +105,7 @@ address = @address                            ; Branch address
 ; ISO 20022: PartyIdentification, OrganisationIdentification, PersonIdentification
 
 {@party}
-name = !:                                     ; Party name
+name = :                                     ; Party name
 
 ; Organization identifiers
 leis[] = :format lei                    ; LEIs (multi-jurisdiction)
@@ -138,8 +138,8 @@ unstructured = :                              ; Free-form remittance text
 referred_documents[] = {@referred_document}   ; Documents (multiple invoices, POs)
 
 {@referred_document}
-type = !(aroi, bold, cinv, cmcn, cnfa, cren, debn, disp, dnfa, hiri, msin, prof, puor, quot, sbin, sprr, tish)
-number = !:                                   ; Document number
+type = (aroi, bold, cinv, cmcn, cnfa, cren, debn, disp, dnfa, hiri, msin, prof, puor, quot, sbin, sprr, tish)
+number = :                                   ; Document number
 date = date                                   ; Document date
 
 {@remittance_info}
@@ -157,7 +157,7 @@ reference = :                                 ; Reference value
 ; ISO 20022: ISODate, ISODateTime
 
 {@effective_date}
-date = !date                                  ; Value date
+date = date                                  ; Value date
 time = time                                   ; Optional time component
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -166,8 +166,8 @@ time = time                                   ; Optional time component
 ; ISO 20022: GroupHeader, MessageIdentification
 
 {@message_header}
-message_id = !:                               ; Unique message identifier
-created = !timestamp                          ; Creation date/time
+message_id = :                               ; Unique message identifier
+created = timestamp                          ; Creation date/time
 
 ; Batch information
 batch = ?                                     ; Batch booking indicator
@@ -186,7 +186,7 @@ initiating_party = @party                     ; Message initiator
 = @status_record                              ; Inherits status tracking fields
 
 ; ISO 20022 transaction status codes
-status = !(accp, acsc, acsp, actc, acwc, acwp, canc, pdng, rcvd, rjct)
+status = (accp, acsc, acsp, actc, acwc, acwp, canc, pdng, rcvd, rjct)
 effective_date = timestamp                    ; Status effective date/time
 
 ; Status code meanings:
@@ -218,9 +218,9 @@ agent = @financial_institution                ; Agent levying the charge
 ; ISO 20022: ExchangeRate
 
 {@exchange_rate}
-source_currency = !:(3)                       ; Source currency (ISO 4217)
-target_currency = !:(3)                       ; Target currency (ISO 4217)
-rate = !#.6                                   ; Exchange rate (6 decimal places)
+source_currency = :(3)                       ; Source currency (ISO 4217)
+target_currency = :(3)                       ; Target currency (ISO 4217)
+rate = #.6                                   ; Exchange rate (6 decimal places)
 rate_type = (agrd, exot, sale)                ; Rate type
 contract_id = :                               ; FX contract reference
 quotation_date = date                         ; Rate quotation date

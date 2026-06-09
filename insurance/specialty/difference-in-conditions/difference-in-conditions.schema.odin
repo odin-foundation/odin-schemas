@@ -45,8 +45,8 @@ changelog[0].rationale = "Specialty coverage for property gap coverage"
 
 {@dic_insured}
 ; Required fields first
-insured_name = !:                             ; Entity name
-insured_type = !(
+insured_name = :                             ; Entity name
+insured_type = (
     commercial,                               ; Commercial owner
     condominium,                              ; Condo association
     homeowner,                                ; High-value HO
@@ -75,8 +75,8 @@ primary_policy = :                            ; Primary policy number
 
 {@dic_property}
 ; Required fields first
-location_address = !@address                  ; Property address
-property_type = !(
+location_address = @address                  ; Property address
+property_type = (
     apartment,                                ; Apartment complex
     condo,                                    ; Condominium
     educational,                              ; School/university
@@ -91,7 +91,7 @@ property_type = !(
     retail,                                   ; Retail
     special_use                               ; Special purpose
 )
-total_insured_value = !#$:(0..)               ; Total TIV
+total_insured_value = #$:(0..)               ; Total TIV
 
 ; Optional fields
 building_value = #$:(0..)                     ; Building value
@@ -145,7 +145,7 @@ volcanic_excluded = ?                         ; Volcanic excluded
 
 {@dic_coverage}
 ; Required fields first
-policy_limit = !#$:(0..)                      ; DIC limit
+policy_limit = #$:(0..)                      ; DIC limit
 
 ; Deductible
 deductible = #$:(0..)                         ; Flat deductible
@@ -229,7 +229,7 @@ waiting_period_days = ##:if included = true   ; Waiting period
 
 {@dic_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 bi_premium = #$:(0..)                         ; BI premium
@@ -263,8 +263,8 @@ tiv_factor = #                                ; TIV tier
 
 {@dic_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     business_interruption,                    ; BI loss
     earthquake,                               ; Earthquake damage
     fire_following,                           ; Fire following EQ
@@ -306,12 +306,12 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@dic_policy}
 ; Required fields first
-coverage = !@dic_coverage                     ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@dic_insured                       ; Insured entity
-policy_number = !:                            ; Policy number
-properties[] = !@dic_property                 ; Covered properties
+coverage = @dic_coverage                     ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @dic_insured                       ; Insured entity
+policy_number = :                            ; Policy number
+properties[] = @dic_property                 ; Covered properties
 
 ; Invariants
 :invariant expiration_date > effective_date

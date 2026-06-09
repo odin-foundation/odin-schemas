@@ -359,8 +359,8 @@ cis_controls = ?                              ; Whether CIS Controls implemented
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@cyber_coverage}
-coverage_id = !:                              ; Unique identifier for coverage
-policy_aggregate = !#$                        ; Policy aggregate limit
+coverage_id = :                              ; Unique identifier for coverage
+policy_aggregate = #$                        ; Policy aggregate limit
 retention_base = ##                           ; Base retention/deductible amount
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -638,8 +638,8 @@ ddos_attacks = ##                             ; Number of DDoS attacks in past 5
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@cyber_endorsement}
-id = !:                                       ; Unique identifier for endorsement
-number = !:                                   ; Endorsement number
+id = :                                       ; Unique identifier for endorsement
+number = :                                   ; Endorsement number
 title = :                                     ; Endorsement title
 effective_date = date                         ; Effective date of endorsement
 
@@ -668,11 +668,11 @@ premium_impact = #$                           ; Premium impact of endorsement
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@cyber_policy}
-id = !:                                       ; Unique identifier for policy
-number = !:                                   ; Policy number
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-retroactive_date = !date                      ; Retroactive date for claims-made coverage
+id = :                                       ; Unique identifier for policy
+number = :                                   ; Policy number
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+retroactive_date = date                      ; Retroactive date for claims-made coverage
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term

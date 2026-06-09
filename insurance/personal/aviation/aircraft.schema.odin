@@ -284,9 +284,9 @@ id = :                                            ; Unique pilot identifier
 ; Identity
 ; ───────────────────────────────────────────────────────────────────────────────
 {.name}
-first = !:                                        ; First name
+first = :                                        ; First name
 middle = :                                        ; Middle name
-last = !:                                         ; Last name
+last = :                                         ; Last name
 
 {@pilot}
 

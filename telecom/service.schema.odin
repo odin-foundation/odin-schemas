@@ -46,8 +46,8 @@ changelog[0].rationale = "Service structure derived from GSMA data models and FC
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Subscription Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-subscription_id = !:                              ; Unique subscription identifier
-account_ref = !:                                  ; Account reference
+subscription_id = :                              ; Unique subscription identifier
+account_ref = :                                  ; Account reference
 service_type = (broadband, data, messaging, video, voice, voip)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -72,7 +72,7 @@ plan = @plan                                      ; Service plan details
 ; Service Dates
 ; ───────────────────────────────────────────────────────────────────────────────
 {.dates}
-activated = !date                                 ; Service activation date
+activated = date                                 ; Service activation date
 deactivated = date                                ; Service deactivation date
 last_modified = timestamp                         ; Last modification timestamp
 contract_start = date                             ; Contract start date
@@ -136,8 +136,8 @@ unlimited_sms = ?                                 ; Unlimited SMS flag
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Plan Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-plan_id = !:                                      ; Unique plan identifier
-plan_name = !:                                    ; Plan name
+plan_id = :                                      ; Unique plan identifier
+plan_name = :                                    ; Plan name
 plan_type = (business, enterprise, family, individual, prepaid)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -150,7 +150,7 @@ contract_type = (month_to_month, prepaid, term_12, term_24, term_36)
 ; Plan Pricing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.pricing}
-monthly_rate = !#$:(0..)                          ; Monthly base rate
+monthly_rate = #$:(0..)                          ; Monthly base rate
 activation_fee = #$:(0..)                         ; Activation fee
 early_termination_fee = #$:(0..)                  ; Early termination fee
 overage_rate_per_mb = #$:(0..)                    ; Data overage rate per MB
@@ -213,8 +213,8 @@ terms_url = :                                     ; URL to plan terms and condit
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Feature Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-feature_id = !:                                   ; Unique feature identifier
-feature_name = !:                                 ; Feature name
+feature_id = :                                   ; Unique feature identifier
+feature_name = :                                 ; Feature name
 feature_type = (addon, base_included, optional, premium)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -266,8 +266,8 @@ deactivation_date = date                          ; Feature deactivation date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Bundle Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-bundle_id = !:                                    ; Unique bundle identifier
-bundle_name = !:                                  ; Bundle name
+bundle_id = :                                    ; Unique bundle identifier
+bundle_name = :                                  ; Bundle name
 bundle_type = (double_play, quad_play, single, triple_play)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -279,7 +279,7 @@ services[] = @subscription                        ; Services in bundle
 ; Bundle Pricing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.pricing}
-bundle_rate = !#$:(0..)                           ; Bundle monthly rate
+bundle_rate = #$:(0..)                           ; Bundle monthly rate
 discount_amount = #$:(0..)                        ; Discount vs individual services
 promotional_rate = #$:(0..)                       ; Promotional rate
 promotional_period_months = ##:(0..)              ; Promotional period length
@@ -302,7 +302,7 @@ early_termination_fee = #$:(0..)                  ; Early termination fee
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Service Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-subscription_ref = !:                             ; Subscription reference
+subscription_ref = :                             ; Subscription reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Broadband Technology
@@ -314,8 +314,8 @@ docsis_version = :                                ; DOCSIS version (for cable)
 ; Speed Tier
 ; ───────────────────────────────────────────────────────────────────────────────
 {.speed}
-download_mbps = !##:(0..)                         ; Download speed (Mbps)
-upload_mbps = !##:(0..)                           ; Upload speed (Mbps)
+download_mbps = ##:(0..)                         ; Download speed (Mbps)
+upload_mbps = ##:(0..)                           ; Upload speed (Mbps)
 guaranteed_minimum = ?                            ; Guaranteed minimum speed
 burst_speed_mbps = ##:(0..)                       ; Burst speed capability
 
@@ -364,14 +364,14 @@ installation_date = date                          ; Scheduled installation date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Service Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-subscription_ref = !:                             ; Subscription reference
+subscription_ref = :                             ; Subscription reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; VoIP Configuration
 ; ───────────────────────────────────────────────────────────────────────────────
 sip_uri = :                                       ; SIP URI
 codec = (g711, g722, g729, opus)                  ; Voice codec
-e911_enabled = !?                                 ; E911 emergency service enabled
+e911_enabled = ?                                 ; E911 emergency service enabled
 e911_address = @types.address                     ; E911 registered address
 
 ; ───────────────────────────────────────────────────────────────────────────────

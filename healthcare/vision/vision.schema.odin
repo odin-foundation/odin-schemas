@@ -55,16 +55,16 @@ changelog[0].rationale = "Comprehensive vision benefit coverage for all plan typ
 
 {@vision_plan}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-plan_name = !:                               ; Plan name
-effective_date = !date                       ; Plan effective date
-expiration_date = !date                      ; Plan expiration date
+plan_id = :                                 ; Plan identifier
+plan_name = :                               ; Plan name
+effective_date = date                       ; Plan effective date
+expiration_date = date                      ; Plan expiration date
 
 ; Invariants
 :invariant expiration_date > effective_date
 
 ; Plan type
-plan_type = !(discount, hmo, indemnity, ppo)
+plan_type = (discount, hmo, indemnity, ppo)
 funding_type = (fully_insured, level_funded, self_funded)
 payer_type = (commercial, exchange, medicaid, medicare_advantage, self_funded)
 standalone = ?                               ; Standalone vs. embedded
@@ -94,7 +94,7 @@ employer_contribution = #:(0..100)           ; Employer contribution %
 ; Benefit Period
 ; ---------------------------------------------------------------------------
 {.benefit_period}
-period_type = !(benefit_year, calendar_year, rolling_12_month)
+period_type = (benefit_year, calendar_year, rolling_12_month)
 start_month = ##:(1..12):if period_type = benefit_year
 benefit_frequency = (every_12_months, every_24_months, once_per_year)
 
@@ -147,8 +147,8 @@ additional_pairs_discount = ?                ; Additional pairs discount
 
 {@vision_benefit}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-benefit_type = !(comprehensive_exam, contact_lens_exam, contact_lens_materials, eyeglass_frames, eyeglass_lenses, laser_vision, lens_enhancements, low_vision)
+plan_id = :                                 ; Plan identifier
+benefit_type = (comprehensive_exam, contact_lens_exam, contact_lens_materials, eyeglass_frames, eyeglass_lenses, laser_vision, lens_enhancements, low_vision)
 
 ; ---------------------------------------------------------------------------
 ; Exam Benefits
@@ -243,8 +243,8 @@ prk_covered = ?:if covered = true            ; PRK covered
 
 {@vision_frequency}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-service_type = !(comprehensive_exam, contact_lens_exam, contact_lens_materials, frames, lenses, low_vision_exam)
+plan_id = :                                 ; Plan identifier
+service_type = (comprehensive_exam, contact_lens_exam, contact_lens_materials, frames, lenses, low_vision_exam)
 
 ; Frequency details
 {.frequency}
@@ -284,8 +284,8 @@ contact_exam_with_comprehensive = ?          ; CL fit with comprehensive
 
 {@vision_allowance}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-effective_date = !date                       ; Allowance effective date
+plan_id = :                                 ; Plan identifier
+effective_date = date                       ; Allowance effective date
 
 ; ---------------------------------------------------------------------------
 ; Frame Allowance
@@ -348,9 +348,9 @@ polycarbonate_child_free = ?                 ; Free poly for children
 
 {@vision_provider}
 ; Required fields first
-provider_id = !:                             ; Provider identifier
-npi = !:/^\d{10}$/                           ; National Provider Identifier
-provider_type = !(dispensing_optician, ophthalmologist, optician, optometrist, retail_optical)
+provider_id = :                             ; Provider identifier
+npi = :/^\d{10}$/                           ; National Provider Identifier
+provider_type = (dispensing_optician, ophthalmologist, optician, optometrist, retail_optical)
 
 ; Provider identification
 {.identification}
@@ -454,8 +454,8 @@ background_checked = ?                       ; Background verified
 
 {@vision_medical}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-coverage_type = !(medical, routine, both)
+plan_id = :                                 ; Plan identifier
+coverage_type = (medical, routine, both)
 
 ; ---------------------------------------------------------------------------
 ; Medical Vision Coverage (Typically Medical Insurance)
@@ -531,10 +531,10 @@ materials_frequency = :                      ; Materials frequency
 
 {@vision_claim}
 ; Required fields first
-claim_id = !:                                ; Claim identifier
-service_date = !date                         ; Date of service
-member_id = !*:                              ; Member identifier
-provider_npi = !:/^\d{10}$/                  ; Rendering provider NPI
+claim_id = :                                ; Claim identifier
+service_date = date                         ; Date of service
+member_id = *:                              ; Member identifier
+provider_npi = :/^\d{10}$/                  ; Rendering provider NPI
 
 ; Patient information
 {.patient}

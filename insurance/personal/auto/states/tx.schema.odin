@@ -44,7 +44,7 @@ changelog[0].rationale = "Complete TX policy inheriting base policy with coverag
 = @pol.policy :override
 
 ; Override state to TX only
-state_province = !:(2) "TX"                    ; Texas state code
+state_province = :(2) "TX"                    ; Texas state code
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Texas Liability Coverage (Overrides base limits)
@@ -63,14 +63,14 @@ state_province = !:(2) "TX"                    ; Texas state code
 
 ; Override BI limits with TX minimums
 {.bi}
-per_accident = !#$:(60000..)                   ; TX minimum $60K per accident
-per_person = !#$:(30000..)                     ; TX minimum $30K per person
+per_accident = #$:(60000..)                   ; TX minimum $60K per accident
+per_person = #$:(30000..)                     ; TX minimum $30K per person
 
 {@tx_liability}
 
 ; Override PD limit with TX minimum
 {.pd}
-limit = !#$:(25000..)                          ; TX minimum $25K property damage
+limit = #$:(25000..)                          ; TX minimum $25K property damage
 
 {@tx_liability}
 
@@ -86,8 +86,8 @@ limit = !#$:(25000..)                          ; TX minimum $25K property damage
 = @cov.personal_auto_um :override
 
 ; TX requires documented offer
-offered = !?                                   ; Must document offer (override: was optional)
-rejection_signed = !?:if rejected = true       ; Signed rejection required
+offered = ?                                   ; Must document offer (override: was optional)
+rejection_signed = ?:if rejected = true       ; Signed rejection required
 
 ; Override UM limits with TX minimums (if not rejected)
 {.um}

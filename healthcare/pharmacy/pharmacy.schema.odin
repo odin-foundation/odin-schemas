@@ -63,9 +63,9 @@ changelog[0].rationale = "Comprehensive pharmacy benefit coverage for all payer 
 
 {@rx_formulary}
 ; Required fields first
-formulary_id = !:                            ; Unique formulary identifier
-formulary_name = !:                          ; Formulary name
-effective_date = !date                       ; Effective date
+formulary_id = :                            ; Unique formulary identifier
+formulary_name = :                          ; Formulary name
+effective_date = date                       ; Effective date
 
 ; Optional fields
 end_date = date                              ; End date if terminated
@@ -121,8 +121,8 @@ duration_limits = ?                          ; Duration limits
 
 {@rx_tier}
 ; Required fields first
-tier_number = !##:(1..6)                     ; Tier number
-tier_name = !:                               ; Tier name (e.g., "Preferred Generic")
+tier_number = ##:(1..6)                     ; Tier number
+tier_name = :                               ; Tier name (e.g., "Preferred Generic")
 
 ; Cost sharing - retail 30-day
 {.retail_30}
@@ -171,9 +171,9 @@ brand_penalty = ?                            ; Brand penalty when generic availa
 
 {@rx_formulary_drug}
 ; Required fields first
-formulary_id = !:                            ; Formulary identifier
-ndc = !:/^\d{11}$/                           ; National Drug Code (11-digit)
-tier = !##:(1..6)                            ; Assigned tier
+formulary_id = :                            ; Formulary identifier
+ndc = :/^\d{11}$/                           ; National Drug Code (11-digit)
+tier = ##:(1..6)                            ; Assigned tier
 
 ; Drug identification
 {.drug}
@@ -238,10 +238,10 @@ ther_equiv_code = :                          ; Therapeutic equivalence code
 
 {@rx_prior_auth}
 ; Required fields first
-pa_id = !:                                   ; Prior authorization ID
-request_date = !date                         ; Date PA requested
-drug_name = !:                               ; Drug requested
-member_id = !*:                              ; Member identifier
+pa_id = :                                   ; Prior authorization ID
+request_date = date                         ; Date PA requested
+drug_name = :                               ; Drug requested
+member_id = *:                              ; Member identifier
 
 ; Drug details
 {.drug}
@@ -258,7 +258,7 @@ diagnosis_description = :                    ; Diagnosis description
 
 ; Request type - Per 42 CFR 423.568
 {.request}
-request_type = !(coverage, exception, tiering, quantity, step_bypass, formulary, non_formulary)
+request_type = (coverage, exception, tiering, quantity, step_bypass, formulary, non_formulary)
 urgency = (expedited, standard, urgent)      ; Request urgency
 expedited_reason = ::if urgency = expedited  ; Reason for expedited
 prescriber_support = ?                       ; Prescriber statement received
@@ -330,8 +330,8 @@ appeal_decision_date = date:if appealed = true
 
 {@rx_pricing}
 ; Required fields first
-ndc = !:/^\d{11}$/                           ; National Drug Code
-effective_date = !date                       ; Pricing effective date
+ndc = :/^\d{11}$/                           ; National Drug Code
+effective_date = date                       ; Pricing effective date
 
 ; Drug identification
 brand_name = :                               ; Brand name
@@ -409,8 +409,8 @@ update_frequency = (daily, monthly, quarterly, weekly)
 
 {@rx_pbm}
 ; Required fields first
-pbm_id = !:                                  ; PBM identifier
-pbm_name = !:                                ; PBM name
+pbm_id = :                                  ; PBM identifier
+pbm_name = :                                ; PBM name
 
 ; PBM details
 {.organization}
@@ -439,7 +439,7 @@ members_covered = ##:(0..)                   ; Members covered
 ; Pricing Model - Per state PBM transparency laws
 ; ---------------------------------------------------------------------------
 {.pricing_model}
-model_type = !(pass_through, spread, transparent)
+model_type = (pass_through, spread, transparent)
 admin_fee_pmpm = #$:(0..)                    ; Per-member-per-month admin
 claims_processing_fee = #$:(0..)             ; Per-claim processing fee
 rebate_guarantee = #$:(0..)                  ; Guaranteed rebate per script
@@ -499,11 +499,11 @@ fiduciary_standard = ?                       ; Fiduciary standard
 
 {@rx_rebate}
 ; Required fields first
-rebate_id = !:                               ; Rebate record ID
-ndc = !:/^\d{11}$/                           ; National Drug Code
-labeler_code = !:/^\d{5}$/                   ; Manufacturer labeler code
-period_start = !date                         ; Rebate period start
-period_end = !date                           ; Rebate period end
+rebate_id = :                               ; Rebate record ID
+ndc = :/^\d{11}$/                           ; National Drug Code
+labeler_code = :/^\d{5}$/                   ; Manufacturer labeler code
+period_start = date                         ; Rebate period start
+period_end = date                           ; Rebate period end
 
 ; Drug identification
 brand_name = :                               ; Brand name
@@ -513,7 +513,7 @@ generic_name = :                             ; Generic name
 ; Medicaid Rebate - Per 42 CFR 447.500-520
 ; ---------------------------------------------------------------------------
 {.medicaid}
-rebate_type = !(basic, cpi_penalty, innovator, noninnovator)
+rebate_type = (basic, cpi_penalty, innovator, noninnovator)
 ura = #$:(0..)                               ; Unit Rebate Amount
 amp = #$:(0..)                               ; Average Manufacturer Price
 best_price = #$:(0..)                        ; Best Price
@@ -579,9 +579,9 @@ dispute_reason = :                           ; Dispute reason if any
 
 {@rx_specialty}
 ; Required fields first
-specialty_id = !:                            ; Specialty record ID
-ndc = !:/^\d{11}$/                           ; National Drug Code
-drug_name = !:                               ; Drug name
+specialty_id = :                            ; Specialty record ID
+ndc = :/^\d{11}$/                           ; National Drug Code
+drug_name = :                               ; Drug name
 
 ; Drug characteristics
 {.drug}
@@ -669,16 +669,16 @@ expiration_sensitivity = ?                   ; Short expiration
 
 {@rx_benefit_plan}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-plan_name = !:                               ; Plan name
-effective_date = !date                       ; Plan effective date
-expiration_date = !date                      ; Plan expiration date
+plan_id = :                                 ; Plan identifier
+plan_name = :                               ; Plan name
+effective_date = date                       ; Plan effective date
+expiration_date = date                      ; Plan expiration date
 
 ; Invariants
 :invariant expiration_date > effective_date
 
 ; Plan type
-funding_type = !(fully_insured, level_funded, self_funded)
+funding_type = (fully_insured, level_funded, self_funded)
 payer_type = (commercial, exchange, medicaid, medicare_partd, self_funded)
 
 ; Formulary reference
@@ -769,10 +769,10 @@ drug_count = ##:(0..)                        ; Drugs on formulary
 
 {@rx_claim}
 ; Required fields first
-claim_id = !:                                ; Claim identifier
-fill_date = !date                            ; Date of fill
-ndc = !:/^\d{11}$/                           ; National Drug Code
-member_id = !*:                              ; Member identifier
+claim_id = :                                ; Claim identifier
+fill_date = date                            ; Date of fill
+ndc = :/^\d{11}$/                           ; National Drug Code
+member_id = *:                              ; Member identifier
 
 ; Drug information
 {.drug}

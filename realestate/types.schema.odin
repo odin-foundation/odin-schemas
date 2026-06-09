@@ -52,8 +52,8 @@ changelog[0].rationale = "Base types for real estate transaction processing"
 
 {@re_legal_description}
 ; Required fields first
-full_description = !:                             ; Complete legal description text
-type = !(combination, condominium, lot_and_block, metes_and_bounds, rectangular_survey)
+full_description = :                             ; Complete legal description text
+type = (combination, condominium, lot_and_block, metes_and_bounds, rectangular_survey)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Lot and Block (Platted Subdivision)
@@ -186,7 +186,7 @@ pool_type = (above_ground, in_ground, indoor):if pool = true
 
 {@re_zoning}
 ; Required fields first
-classification = !:                               ; Zoning classification code
+classification = :                               ; Zoning classification code
 
 ; Zoning details
 category = (agricultural, commercial, industrial, mixed_use, planned_unit, residential, special)
@@ -226,7 +226,7 @@ variance_description = ::if compliance_status = variance
 
 {@re_ownership}
 ; Required fields first
-vesting_type = !(community_property, community_property_survivorship, corporation, estate, joint_tenancy, life_estate, llc, partnership, sole_ownership, tenancy_by_entirety, tenancy_in_common, trust)
+vesting_type = (community_property, community_property_survivorship, corporation, estate, joint_tenancy, life_estate, llc, partnership, sole_ownership, tenancy_by_entirety, tenancy_in_common, trust)
 
 ; Owner information
 owners[] = :                                      ; Names as vested on title
@@ -244,7 +244,7 @@ deed_reference = :                                ; Recording reference for deed
 
 {@re_encumbrance}
 ; Required fields first
-type = !(assessment, cc_r, easement, encroachment, judgment, lease, lien, lis_pendens, mechanic_lien, mortgage, option, restriction, right_of_way, tax_lien, utility_easement)
+type = (assessment, cc_r, easement, encroachment, judgment, lease, lien, lis_pendens, mechanic_lien, mortgage, option, restriction, right_of_way, tax_lien, utility_easement)
 
 ; Recording information
 recording_date = date                             ; Date recorded
@@ -274,7 +274,7 @@ status = (active, expired, released, subordinated)
 = @person                                         ; Inherits person fields
 
 ; Required fields first
-role = !(appraiser, attorney, borrower, broker, buyer, closing_agent, co_borrower, escrow_officer, inspector, lender, listing_agent, property_manager, seller, selling_agent, title_officer)
+role = (appraiser, attorney, borrower, broker, buyer, closing_agent, co_borrower, escrow_officer, inspector, lender, listing_agent, property_manager, seller, selling_agent, title_officer)
 
 ; Party identification
 party_id = :                                      ; Unique party identifier
@@ -296,7 +296,7 @@ representing = (buyer, dual, lender, seller, transaction)  ; Party represented
 = @organization                                   ; Inherits organization fields
 
 ; Required fields first
-company_type = !(appraisal_management, brokerage, builder, developer, escrow, home_warranty, inspection, lender, property_management, title)
+company_type = (appraisal_management, brokerage, builder, developer, escrow, home_warranty, inspection, lender, property_management, title)
 
 ; Company identification
 company_id = :                                    ; Unique company identifier
@@ -315,14 +315,14 @@ license = @license_credential                     ; Company license
 = @person                                         ; Inherits person fields
 
 ; Required fields first
-agent_type = !(associate_broker, broker, designated_broker, real_estate_agent, salesperson)
+agent_type = (associate_broker, broker, designated_broker, real_estate_agent, salesperson)
 
 ; Agent identification
 agent_id = :                                      ; Agent MLS or system ID
 nrds_id = :                                       ; National REALTOR Database System ID
 
 ; License information
-license = !@license_credential                    ; Professional real estate license (required)
+license = @license_credential                    ; Professional real estate license (required)
 
 {@re_agent}
 
@@ -341,7 +341,7 @@ mls_id = :                                        ; MLS member ID
 
 {@re_tax_info}
 ; Required fields first
-tax_year = !##:(1900..2100)                       ; Tax year
+tax_year = ##:(1900..2100)                       ; Tax year
 
 ; Tax amounts
 assessed_land = #$:(0..)                          ; Assessed land value
@@ -401,8 +401,8 @@ sold_price = #$:(0..)                             ; Final sale price
 
 {@re_condition_report}
 ; Required fields first
-report_date = !date                               ; Date of report
-report_type = !(appraisal, disclosure, inspection, pre_listing)
+report_date = date                               ; Date of report
+report_type = (appraisal, disclosure, inspection, pre_listing)
 
 ; Reporter information
 inspector_name = :                                ; Inspector or preparer name
@@ -493,7 +493,7 @@ trash_provider = ::if trash = true                ; Trash provider name
 
 {@re_flood_zone}
 ; Required fields first
-zone = !:                                         ; FEMA flood zone designation
+zone = :                                         ; FEMA flood zone designation
 
 ; Flood determination
 determination_date = date                         ; Date of flood determination

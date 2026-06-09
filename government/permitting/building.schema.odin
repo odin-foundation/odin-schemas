@@ -37,13 +37,13 @@ changelog[0].rationale = "Building permit and inspection requirements per IBC"
 {@building_permit}
 = @types.audit_info
 
-permit_number = !:
+permit_number = :
 permit_type = (addition, alteration, demolition, new_construction, repair)
 work_type = (commercial, industrial, residential)
 
 ; Property Information
 {.property}
-address = !@address
+address = @address
 parcel_number = :
 legal_description = :
 zoning_district = :
@@ -51,7 +51,7 @@ zoning_district = :
 {@building_permit}
 ; Owner Information
 {.owner}
-name = !:
+name = :
 address = @address
 phone = @phone
 email = @email
@@ -59,8 +59,8 @@ email = @email
 {@building_permit}
 ; Contractor Information
 {.contractor}
-company_name = !:
-license_number = !*:
+company_name = :
+license_number = *:
 address = @address
 phone = @phone
 email = @email
@@ -70,7 +70,7 @@ insurance_policy = :
 {@building_permit}
 ; Project Details
 {.project}
-description = !:
+description = :
 estimated_cost = #$:(0..)
 square_footage = ##:(0..)
 story_count = ##:(1..)
@@ -98,16 +98,16 @@ total_fees = #$:(0..)
 {@building_inspection}
 = @types.audit_info
 
-permit_number = !:
+permit_number = :
 inspection_type = (electrical, final, footing, foundation, framing, mechanical, plumbing, rough)
-inspection_date = !date
+inspection_date = date
 inspector_name = :
 
 ; Inspection Result
 result = (approved, approved_with_conditions, failed, partial)
 {.deficiencies[]}
 code_section = :
-description = !:
+description = :
 correction_required = ?
 
 {@building_inspection}
@@ -126,13 +126,13 @@ inspector_comments = :
 {@certificate_of_occupancy}
 = @types.audit_info
 
-certificate_number = !:
+certificate_number = :
 permit_number = :
-property_address = !@address
+property_address = @address
 
 ; Building Information
 {.building}
-occupancy_type = !:
+occupancy_type = :
 occupancy_load = ##:(1..)
 construction_type = :
 building_area = ##:(0..)
@@ -140,15 +140,15 @@ story_count = ##:(1..)
 
 {@certificate_of_occupancy}
 ; Certificate Details
-issue_date = !date
+issue_date = date
 expiration_date = date
 certificate_type = (permanent, temporary)
 temporary_duration = :if certificate_type = temporary
 
 ; Final Inspections Completed
-all_inspections_passed = !?
+all_inspections_passed = ?
 {.final_inspections[]}
-inspection_type = !:
+inspection_type = :
 inspection_date = date
 passed = ?
 

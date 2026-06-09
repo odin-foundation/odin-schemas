@@ -41,7 +41,7 @@ changelog[0].rationale = "Federal grant programs per 2 CFR 200 and OMB requireme
 {@sf424_application}
 = @types.audit_info
 
-submission_date = !date
+submission_date = date
 type_of_submission = (application, changed_corrected_application, pre_application)
 application_identifier = :
 federal_entity_identifier = :
@@ -49,11 +49,11 @@ federal_award_identifier = :
 
 ; Applicant Information
 {.applicant}
-legal_name = !:
-employer_tin = !:format ein
+legal_name = :
+employer_tin = :format ein
 organizational_duns = :(9)
 organizational_uei = :(12)
-address = !@types.address
+address = @types.address
 organization_type = (
     city_township_government,
     county_government,
@@ -74,19 +74,19 @@ organization_type = (
 ; Applicant Contact
 {.contact}
 prefix = :
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 suffix = :
 title = :
-phone = !*@types.phone
+phone = *@types.phone
 fax = *@types.phone
-email = !*@types.email
+email = *@types.email
 
 {@sf424_application}
 ; Federal Agency and Program
 {.federal_program}
-agency_name = !:
+agency_name = :
 catalog_of_federal_domestic_assistance_number = :(5)
 catalog_of_federal_domestic_assistance_title = :
 funding_opportunity_number = :
@@ -108,40 +108,40 @@ program_project_congressional_district = :
 
 ; Project Information
 {.project}
-title = !:
-description = !:
-proposed_start_date = !date
-proposed_end_date = !date
+title = :
+description = :
+proposed_start_date = date
+proposed_end_date = date
 
 {@sf424_application}
 ; Estimated Funding
 {.funding}
-federal = !#$:(0..)
+federal = #$:(0..)
 applicant = #$:(0..)
 state = #$:(0..)
 local = #$:(0..)
 other = #$:(0..)
 program_income = #$:(0..)
-total = !#$:(0..)
+total = #$:(0..)
 
 {@sf424_application}
 ; Certifications
 {.certifications}
-delinquent_on_federal_debt = !?
+delinquent_on_federal_debt = ?
 debt_explanation = :if delinquent_on_federal_debt = true
 
 {@sf424_application}
 ; Authorized Representative
 {.authorized_representative}
 prefix = :
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 suffix = :
-title = !:
-phone = !*@types.phone
+title = :
+phone = *@types.phone
 fax = *@types.phone
-email = !*@types.email
+email = *@types.email
 signature = :
 signature_date = date
 
@@ -153,15 +153,15 @@ signature_date = date
 {@grant_award}
 = @types.audit_info
 
-federal_award_identifier = !:
-federal_award_date = !date
-recipient_uei = !:(12)
-recipient_name = !:
+federal_award_identifier = :
+federal_award_date = date
+recipient_uei = :(12)
+recipient_name = :
 recipient_duns = :(9)
 
 ; Awarding Agency
 {.awarding_agency}
-agency_name = !:
+agency_name = :
 agency_code = :
 awarding_official_name = :
 awarding_official_title = :
@@ -171,20 +171,20 @@ awarding_official_title = :
 {.award}
 cfda_number = :(5)
 cfda_title = :
-project_title = !:
+project_title = :
 project_description = :
 award_type = (cooperative_agreement, grant)
 
 {@grant_award}
 ; Period of Performance
-period_start = !date
-period_end = !date
+period_start = date
+period_end = date
 budget_period_start = date
 budget_period_end = date
 
 ; Award Amount
 {.financial}
-total_federal_funds = !#$:(0..)
+total_federal_funds = #$:(0..)
 federal_share = #$:(0..)
 non_federal_share = #$:(0..)
 total_project_cost = #$:(0..)
@@ -192,7 +192,7 @@ total_project_cost = #$:(0..)
 {@grant_award}
 ; Terms and Conditions
 {.terms}
-uniform_guidance_applies = !?
+uniform_guidance_applies = ?
 research_and_development = ?
 indirect_cost_rate = #:(0..100)
 indirect_cost_base = :
@@ -200,9 +200,9 @@ indirect_cost_base = :
 {@grant_award}
 ; Reporting Requirements
 {.reporting}
-financial_reports_required = !?
+financial_reports_required = ?
 financial_report_frequency = (annual, quarterly, semi_annual)
-performance_reports_required = !?
+performance_reports_required = ?
 performance_report_frequency = (annual, quarterly, semi_annual)
 closeout_report_due = date
 
@@ -214,17 +214,17 @@ closeout_report_due = date
 {@federal_financial_report}
 = @types.audit_info
 
-federal_agency = !:
-federal_award_number = !:
-recipient_organization = !:
+federal_agency = :
+federal_award_number = :
+recipient_organization = :
 duns_number = :(9)
 recipient_uei = :(12)
 recipient_account_number = :
 
 ; Report Information
 {.report}
-reporting_period_start = !date
-reporting_period_end = !date
+reporting_period_start = date
+reporting_period_end = date
 report_type = (annual, final, quarterly, semi_annual)
 report_number = :
 
@@ -241,8 +241,8 @@ cash_on_hand = #$:(0..)
 {@federal_financial_report}
 ; Federal Expenditures
 {.expenditures}
-total_federal_funds_authorized = !#$:(0..)
-federal_share_of_expenditures = !#$:(0..)
+total_federal_funds_authorized = #$:(0..)
+federal_share_of_expenditures = #$:(0..)
 federal_share_of_unliquidated_obligations = #$:(0..)
 total_federal_share = #$:(0..)
 unobligated_balance = #$:(0..)
@@ -289,27 +289,27 @@ signature_date = date
 {@subaward}
 = @types.audit_info
 
-prime_recipient_name = !:
-prime_recipient_uei = !:(12)
-prime_award_number = !:
+prime_recipient_name = :
+prime_recipient_uei = :(12)
+prime_award_number = :
 
 ; Subrecipient
 {.subrecipient}
-legal_name = !:
-uei = !:(12)
+legal_name = :
+uei = :(12)
 duns = :(9)
-address = !@types.address
+address = @types.address
 organization_type = :
 
 {@subaward}
 ; Subaward Information
 {.subaward_info}
-subaward_number = !:
-subaward_date = !date
-subaward_amount = !#$:(0..)
+subaward_number = :
+subaward_date = date
+subaward_amount = #$:(0..)
 project_description = :
-period_start = !date
-period_end = !date
+period_start = date
+period_end = date
 
 {@subaward}
 ; Reporting Requirements
@@ -326,20 +326,20 @@ report_frequency = :
 {@grant_closeout}
 = @types.audit_info
 
-federal_award_number = !:
-recipient_name = !:
-recipient_uei = !:(12)
+federal_award_number = :
+recipient_name = :
+recipient_uei = :(12)
 project_title = :
 
 ; Period of Performance
 period_start = date
-period_end = !date
+period_end = date
 closeout_date = date
 
 ; Final Financial Information
 {.final_financial}
-total_federal_funds_awarded = !#$:(0..)
-total_federal_expenditures = !#$:(0..)
+total_federal_funds_awarded = #$:(0..)
+total_federal_expenditures = #$:(0..)
 unliquidated_obligations = #$:(0..)
 unobligated_balance = #$:(0..)
 recipient_share_required = #$:(0..)
@@ -348,9 +348,9 @@ recipient_share_met = #$:(0..)
 {@grant_closeout}
 ; Final Reports Submitted
 {.reports}
-final_performance_report_submitted = !?
+final_performance_report_submitted = ?
 final_performance_report_date = date
-final_financial_report_submitted = !?
+final_financial_report_submitted = ?
 final_financial_report_date = date
 final_invention_report_submitted = ?
 final_invention_report_date = date

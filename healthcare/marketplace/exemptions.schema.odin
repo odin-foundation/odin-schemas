@@ -42,15 +42,15 @@ changelog[0].rationale = "Structure derived from 26 CFR 1.5000A and 45 CFR 155.6
 ; Per 45 CFR 155.610
 
 {@application}
-application_id = !:                         ; Application ID
-applicant_id = !:                           ; Applicant
-application_date = !date                    ; Date submitted
+application_id = :                         ; Application ID
+applicant_id = :                           ; Applicant
+application_date = date                    ; Date submitted
 
 ; Tax year
-tax_year = !##:(2014..)                     ; Tax year for exemption
+tax_year = ##:(2014..)                     ; Tax year for exemption
 
 ; Exemption type requested
-exemption_type = !(affordability, hardship, religious, short_gap, tribal, other)
+exemption_type = (affordability, hardship, religious, short_gap, tribal, other)
 
 ; Months requested
 {.coverage_months}
@@ -61,7 +61,7 @@ full_year = ?                               ; Full year exemption
 
 ; Status
 {.status}
-status = !(approved, denied, partial, pending, withdrawn)
+status = (approved, denied, partial, pending, withdrawn)
 decision_date = date                        ; Decision date
 denial_reason = :                           ; Reason if denied
 
@@ -81,17 +81,17 @@ valid_months[] = :                          ; Months certificate valid
 ; Per 45 CFR 155.625
 
 {@certificate}
-ecn = !:                                    ; Exemption Certificate Number
-applicant_id = !:                           ; Certificate holder
-issue_date = !date                          ; Issue date
+ecn = :                                    ; Exemption Certificate Number
+applicant_id = :                           ; Certificate holder
+issue_date = date                          ; Issue date
 
 ; Exemption type
-exemption_type = !:                         ; Type of exemption
+exemption_type = :                         ; Type of exemption
 exemption_code = :                          ; IRS exemption code
 
 ; Validity period
 {.validity}
-start_date = !date                          ; Start of exemption
+start_date = date                          ; Start of exemption
 end_date = date                             ; End of exemption
 months_covered[] = :                        ; Specific months covered
 
@@ -110,11 +110,11 @@ satisfies_mandate = ?                       ; Satisfies individual mandate
 ; Per 45 CFR 155.605(g)
 
 {@hardship}
-application_id = !:                         ; Associated application
-hardship_type = !:                          ; Hardship category
+application_id = :                         ; Associated application
+hardship_type = :                          ; Hardship category
 
 ; Hardship categories - Per 45 CFR 155.605(g)
-category = !(domestic_violence, eviction, homeless, medical_expenses, natural_disaster, other, utility_shutoff)
+category = (domestic_violence, eviction, homeless, medical_expenses, natural_disaster, other, utility_shutoff)
 
 ; Hardship details
 {.details}
@@ -176,8 +176,8 @@ supporting_documentation[] = :              ; Documentation provided
 ; Per 26 CFR 1.5000A-3(e)
 
 {@affordability}
-application_id = !:                         ; Associated application
-tax_year = !##:(2014..)                     ; Tax year
+application_id = :                         ; Associated application
+tax_year = ##:(2014..)                     ; Tax year
 
 ; Income - Per 26 CFR 1.5000A-3(e)(2)
 {.income}
@@ -210,13 +210,13 @@ qualifies = ?                               ; Qualifies for exemption
 ; Per 26 CFR 1.5000A-3(j)
 
 {@short_gap}
-tax_year = !##:(2014..)                     ; Tax year
-applicant_id = !:                           ; Applicant
+tax_year = ##:(2014..)                     ; Tax year
+applicant_id = :                           ; Applicant
 
 ; Gap period
 {.gap}
-gap_start = !date                           ; Gap start date
-gap_end = !date                             ; Gap end date
+gap_start = date                           ; Gap start date
+gap_end = date                             ; Gap end date
 gap_months = ##:(1..3)                      ; Number of months in gap
 
 {@short_gap}
@@ -244,8 +244,8 @@ after_coverage_type = :                     ; Type of subsequent coverage
 ; Per 26 CFR 1.5000A-3(a)
 
 {@religious}
-application_id = !:                         ; Application ID
-exemption_type = !(health_care_sharing, religious_sect)
+application_id = :                         ; Application ID
+exemption_type = (health_care_sharing, religious_sect)
 
 ; Religious sect - Per 26 CFR 1.5000A-3(a)
 {.sect}
@@ -269,7 +269,7 @@ meets_requirements = ?                      ; Meets IRC 5000A(d)(2)(B) requireme
 ; Per 26 CFR 1.5000A-3(c)
 
 {@tribal}
-applicant_id = !:                           ; Applicant
+applicant_id = :                           ; Applicant
 
 ; Tribal membership - Per 26 CFR 1.5000A-3(c)
 {.membership}
@@ -293,8 +293,8 @@ services_received = ?                       ; Received IHS services
 ; Per 26 CFR 1.5000A-3(f)
 
 {@below_filing_threshold}
-tax_year = !##:(2014..)                     ; Tax year
-applicant_id = !:                           ; Applicant
+tax_year = ##:(2014..)                     ; Tax year
+applicant_id = :                           ; Applicant
 
 ; Filing status
 {.filing}
@@ -318,9 +318,9 @@ qualifies = ?                               ; Qualifies for exemption
 ; For states with individual mandates (CA, DC, MA, NJ, RI, VT)
 
 {@state_exemption}
-state = !:(2)                               ; State
-tax_year = !##:(2019..)                     ; Tax year
-applicant_id = !:                           ; Applicant
+state = :(2)                               ; State
+tax_year = ##:(2019..)                     ; Tax year
+applicant_id = :                           ; Applicant
 
 ; State-specific exemption type
 {.exemption}
@@ -352,8 +352,8 @@ valid_months[] = :                          ; Months covered
 ; Per IRS instructions
 
 {@exemption_type_reference}
-code = !:                                   ; Exemption code (A-H)
-name = !:                                   ; Exemption name
+code = :                                   ; Exemption code (A-H)
+name = :                                   ; Exemption name
 cfr_citation = :                            ; CFR citation
 claimed_on_return = ?                       ; Claimed on tax return
 requires_ecn = ?                            ; Requires ECN from Exchange

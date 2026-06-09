@@ -53,16 +53,16 @@ changelog[0].rationale = "Complete auto insurance lifecycle representation"
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-number = !:                                    ; Display policy number
-state_province = !:(2)                         ; Primary US state or Canadian province
-status = !@types.policy_status                 ; Policy lifecycle status (canonical)
+number = :                                    ; Display policy number
+state_province = :(2)                         ; Primary US state or Canadian province
+status = @types.policy_status                 ; Policy lifecycle status (canonical)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.term}
-effective = !date                              ; Coverage start date
-expiration = !date                             ; Coverage end date
+effective = date                              ; Coverage start date
+expiration = date                             ; Coverage end date
 
 :invariant term.expiration > term.effective
 
@@ -129,7 +129,7 @@ version_reason = :                             ; Reason for version change
 ; ───────────────────────────────────────────────────────────────────────────────
 bound_date = date                              ; Date policy bound
 cancelled_date = date                          ; Date policy cancelled
-created = !timestamp                           ; Record creation timestamp
+created = timestamp                           ; Record creation timestamp
 created_by = :                                 ; User who created record
 expired_date = date                            ; Date policy expired
 issued_date = date                             ; Date policy issued

@@ -47,23 +47,23 @@ changelog[0].rationale = "Immunization resource derived from FHIR R4/R5 specific
 
 {@immunization}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Immunization.identifier
 identifiers[] = @fhir.identifier              ; Business identifiers
 
 ; Status - FHIR: Immunization.status (required)
-status = !(completed, entered_in_error, not_done)
+status = (completed, entered_in_error, not_done)
 
 ; Status reason - FHIR: Immunization.statusReason
 status_reason = @fhir.codeable_concept        ; Reason not done (if not_done)
 
 ; Vaccine code - FHIR: Immunization.vaccineCode (required)
-vaccine_code = !@fhir.codeable_concept        ; Vaccine product administered (CVX)
+vaccine_code = @fhir.codeable_concept        ; Vaccine product administered (CVX)
 
 ; Patient - FHIR: Immunization.patient (required)
-patient = !@fhir.reference                    ; Who was immunized
+patient = @fhir.reference                    ; Who was immunized
 
 ; Encounter - FHIR: Immunization.encounter
 encounter = @fhir.reference                   ; Encounter during which given
@@ -141,7 +141,7 @@ protocol_applied[] = @immunization_protocol   ; Protocol followed
 
 {@immunization_performer}
 function = @fhir.codeable_concept             ; Type of performance (ordering, administering)
-actor = !@fhir.reference                      ; Practitioner/Organization who performed
+actor = @fhir.reference                      ; Practitioner/Organization who performed
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Immunization Education - FHIR: Immunization.education

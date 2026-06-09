@@ -39,15 +39,15 @@ changelog[0].rationale = "Structure derived from 45 CFR Part 155 and CMS FFE gui
 ; Per 45 CFR 155.305
 
 {@applicant}
-applicant_id = !:                           ; Applicant identifier
+applicant_id = :                           ; Applicant identifier
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
+last_name = :                              ; Last name
 suffix = :                                  ; Suffix
-dob = !*date                                ; Date of birth
+dob = *date                                ; Date of birth
 gender = (female, male, other)              ; Gender
 ssn = *:                                    ; SSN (optional)
 no_ssn_reason = :                           ; Reason if no SSN
@@ -55,7 +55,7 @@ no_ssn_reason = :                           ; Reason if no SSN
 {@applicant}
 
 ; Contact
-address = !@marketplace_address             ; Residential address
+address = @marketplace_address             ; Residential address
 mailing_address = @marketplace_address      ; Mailing if different
 phone = *@phone                             ; Phone number
 email = *@email                             ; Email address
@@ -65,7 +65,7 @@ preferred_language = : "en"                 ; Preferred language
 
 ; Citizenship/immigration - Per 45 CFR 155.315
 {.immigration}
-citizenship_status = !(lawfully_present, naturalized, non_citizen, us_citizen)
+citizenship_status = (lawfully_present, naturalized, non_citizen, us_citizen)
 immigration_status = :                      ; Immigration category
 alien_number = *:                           ; Alien number (A-number)
 i94_number = *:                             ; I-94 number
@@ -93,11 +93,11 @@ tribal_id = :                               ; Tribal enrollment number
 ; Different structure from common @address.
 
 {@marketplace_address}
-address_1 = !:                              ; Street address line 1
+address_1 = :                              ; Street address line 1
 address_2 = :                               ; Street address line 2
-city = !:                                   ; City
-state = !:(2)                               ; State code
-zip = !:(5)                                 ; ZIP code
+city = :                                   ; City
+state = :(2)                               ; State code
+zip = :(5)                                 ; ZIP code
 county_fips = :(5)                          ; County FIPS code
 rating_area = :                             ; Rating area
 
@@ -107,12 +107,12 @@ rating_area = :                             ; Rating area
 ; Per 45 CFR 155.305(f) - Tax household for APTC/CSR
 
 {@household}
-household_id = !:                           ; Household identifier
-tax_year = !##:(2014..)                     ; Tax year
-filing_status = !(head_of_household, married_filing_jointly, married_filing_separately, qualifying_widow, single)
+household_id = :                           ; Household identifier
+tax_year = ##:(2014..)                     ; Tax year
+filing_status = (head_of_household, married_filing_jointly, married_filing_separately, qualifying_widow, single)
 
 ; Tax filer
-tax_filer = !@applicant                     ; Primary tax filer
+tax_filer = @applicant                     ; Primary tax filer
 spouse = @applicant                         ; Spouse if MFJ
 
 ; Dependents
@@ -120,7 +120,7 @@ dependents[] = @applicant                   ; Tax dependents
 
 ; Household size for APTC - Per 45 CFR 155.305(f)
 {.aptc_household}
-household_size = !##:(1..)                  ; Household size
+household_size = ##:(1..)                  ; Household size
 include_applicants[] = :                    ; Applicants included
 
 {@household}
@@ -131,8 +131,8 @@ include_applicants[] = :                    ; Applicants included
 ; Per 45 CFR 155.305(f) - MAGI for Marketplace
 
 {@income}
-applicant_id = !:                           ; Applicant
-tax_year = !##:(2014..)                     ; Tax year
+applicant_id = :                           ; Applicant
+tax_year = ##:(2014..)                     ; Tax year
 
 ; Projected annual income
 {.annual}
@@ -176,12 +176,12 @@ magi = #$                                   ; Modified AGI
 ; Per 45 CFR 155.305(f) - Household income for APTC
 
 {@household_income}
-household_id = !:                           ; Household
-tax_year = !##:(2014..)                     ; Tax year
+household_id = :                           ; Household
+tax_year = ##:(2014..)                     ; Tax year
 
 ; Income totals
 total_magi = #$                             ; Total household MAGI
-household_size = !##:(1..)                  ; Household size
+household_size = ##:(1..)                  ; Household size
 
 ; FPL calculation - Per annual HHS guidelines
 fpl_amount = #$:(0..)                       ; FPL for household size
@@ -199,7 +199,7 @@ above_400_fpl = ?                           ; Above 400% FPL
 ; Per 45 CFR 155.305(f)(4) - MEC and employer coverage
 
 {@coverage_info}
-applicant_id = !:                           ; Applicant
+applicant_id = :                           ; Applicant
 
 ; Current coverage
 {.current}
@@ -238,14 +238,14 @@ access_to_chip = ?                          ; Eligible for CHIP
 ; Per 45 CFR 155.315 - Verification process
 
 {@verification}
-verification_id = !:                        ; Verification ID
-applicant_id = !:                           ; Applicant
-verification_type = !(citizenship, identity, immigration, income, incarceration, mec, residency, ssn, tribal)
-verification_date = !date                   ; Date verified
+verification_id = :                        ; Verification ID
+applicant_id = :                           ; Applicant
+verification_type = (citizenship, identity, immigration, income, incarceration, mec, residency, ssn, tribal)
+verification_date = date                   ; Date verified
 
 ; Data source
 {.source}
-source_type = !(document, electronic, self_attestation)
+source_type = (document, electronic, self_attestation)
 data_source = :                             ; Specific data source
 hub_response = :                            ; Federal Data Hub response
 
@@ -275,10 +275,10 @@ resolution_date = date                      ; Date resolved
 ; Per 45 CFR 156.20
 
 {@issuer}
-issuer_id = !:                              ; HIOS issuer ID
-name = !:                                   ; Issuer name
-state = !:(2)                               ; State
-market = !(individual, shop, both)          ; Market participation
+issuer_id = :                              ; HIOS issuer ID
+name = :                                   ; Issuer name
+state = :(2)                               ; State
+market = (individual, shop, both)          ; Market participation
 
 ; Contact
 address = @marketplace_address              ; Address
@@ -301,8 +301,8 @@ certification_year = ##:(2014..)            ; Certification year
 ; Per 45 CFR 147.102
 
 {@rating_area}
-state = !:(2)                               ; State
-rating_area_id = !:                         ; Rating area identifier
+state = :(2)                               ; State
+rating_area_id = :                         ; Rating area identifier
 name = :                                    ; Rating area name
 counties[] = :                              ; Counties (FIPS)
 zip_codes[] = :                             ; ZIP codes
@@ -314,10 +314,10 @@ effective_date = date                       ; Effective date
 ; Per 45 CFR 156.235
 
 {@service_area}
-service_area_id = !:                        ; Service area ID
-issuer_id = !:                              ; Issuer
+service_area_id = :                        ; Service area ID
+issuer_id = :                              ; Issuer
 name = :                                    ; Service area name
-state = !:(2)                               ; State
+state = :(2)                               ; State
 counties[] = :                              ; Counties served (FIPS)
 zip_codes[] = :                             ; ZIP codes served
 partial_county = ?                          ; Partial county service area
@@ -328,10 +328,10 @@ partial_county = ?                          ; Partial county service area
 ; Per 45 CFR 155.410
 
 {@enrollment_period}
-period_type = !(initial, open, sep, shop_open)
-plan_year = !##:(2014..)                    ; Plan year
-start_date = !date                          ; Period start
-end_date = !date                            ; Period end
+period_type = (initial, open, sep, shop_open)
+plan_year = ##:(2014..)                    ; Plan year
+start_date = date                          ; Period start
+end_date = date                            ; Period end
 coverage_effective = date                   ; Coverage effective date
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -340,10 +340,10 @@ coverage_effective = date                   ; Coverage effective date
 ; Per 45 CFR 155.230
 
 {@notice}
-notice_id = !:                              ; Notice ID
-notice_type = !(eligibility, enrollment, redetermination, sep, termination, verification)
-applicant_id = !:                           ; Applicant/enrollee
-issue_date = !date                          ; Date issued
+notice_id = :                              ; Notice ID
+notice_type = (eligibility, enrollment, redetermination, sep, termination, verification)
+applicant_id = :                           ; Applicant/enrollee
+issue_date = date                          ; Date issued
 response_deadline = date                    ; Response deadline if applicable
 delivery_method = (electronic, mail)        ; Delivery method
 

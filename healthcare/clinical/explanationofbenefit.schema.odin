@@ -48,41 +48,41 @@ changelog[0].rationale = "ExplanationOfBenefit resource derived from FHIR R4/R5 
 
 {@explanation_of_benefit}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: ExplanationOfBenefit.identifier
 identifiers[] = @fhir.identifier              ; Business identifiers
 
 ; Status - FHIR: ExplanationOfBenefit.status (required)
-status = !(active, cancelled, draft, entered_in_error)
+status = (active, cancelled, draft, entered_in_error)
 
 ; Type - FHIR: ExplanationOfBenefit.type (required)
-type = !@fhir.codeable_concept                ; Category (institutional, oral, pharmacy, professional, vision)
+type = @fhir.codeable_concept                ; Category (institutional, oral, pharmacy, professional, vision)
 
 ; Sub type - FHIR: ExplanationOfBenefit.subType
 sub_type = @fhir.codeable_concept             ; Finer grain type
 
 ; Use - FHIR: ExplanationOfBenefit.use (required)
-use = !(claim, preauthorization, predetermination)
+use = (claim, preauthorization, predetermination)
 
 ; Patient - FHIR: ExplanationOfBenefit.patient (required)
-patient = !@fhir.reference                    ; Patient receiving services
+patient = @fhir.reference                    ; Patient receiving services
 
 ; Billable period - FHIR: ExplanationOfBenefit.billablePeriod
 billable_period = @fhir.period                ; Period for charge submission
 
 ; Created - FHIR: ExplanationOfBenefit.created (required)
-created = !timestamp                          ; Creation date
+created = timestamp                          ; Creation date
 
 ; Enterer - FHIR: ExplanationOfBenefit.enterer
 enterer = @fhir.reference                     ; Who entered data
 
 ; Insurer - FHIR: ExplanationOfBenefit.insurer (required)
-insurer = !@fhir.reference                    ; Insurer responsible for EOB
+insurer = @fhir.reference                    ; Insurer responsible for EOB
 
 ; Provider - FHIR: ExplanationOfBenefit.provider (required)
-provider = !@fhir.reference                   ; Party responsible for claim
+provider = @fhir.reference                   ; Party responsible for claim
 
 ; Priority - FHIR: ExplanationOfBenefit.priority
 priority = @fhir.codeable_concept             ; Processing priority
@@ -118,7 +118,7 @@ claim = @fhir.reference                       ; Reference to original Claim
 claim_response = @fhir.reference              ; Reference to ClaimResponse
 
 ; Outcome - FHIR: ExplanationOfBenefit.outcome (required)
-outcome = !(complete, error, partial, queued)
+outcome = (complete, error, partial, queued)
 
 ; Disposition - FHIR: ExplanationOfBenefit.disposition
 disposition = :                               ; Disposition message
@@ -202,8 +202,8 @@ party = @fhir.reference                       ; Recipient of benefits
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_care_team}
-sequence = !##:(1..)                          ; Order of care team
-provider = !@fhir.reference                   ; Practitioner or Organization
+sequence = ##:(1..)                          ; Order of care team
+provider = @fhir.reference                   ; Practitioner or Organization
 responsible = ?                               ; Clinically responsible indicator
 role = @fhir.codeable_concept                 ; Function within care team
 qualification = @fhir.codeable_concept        ; Practitioner credential/specialty
@@ -213,8 +213,8 @@ qualification = @fhir.codeable_concept        ; Practitioner credential/specialt
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_supporting_info}
-sequence = !##:(1..)                          ; Information instance identifier
-category = !@fhir.codeable_concept            ; Classification of information
+sequence = ##:(1..)                          ; Information instance identifier
+category = @fhir.codeable_concept            ; Classification of information
 code = @fhir.codeable_concept                 ; Type of information
 
 ; Timing - polymorphic
@@ -235,7 +235,7 @@ reason = @fhir.codeable_concept               ; Explanation for information
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_diagnosis}
-sequence = !##:(1..)                          ; Diagnosis instance identifier
+sequence = ##:(1..)                          ; Diagnosis instance identifier
 
 ; Diagnosis - polymorphic
 diagnosis_codeable_concept = @fhir.codeable_concept  ; ICD-10 diagnosis code
@@ -250,7 +250,7 @@ package_code = @fhir.codeable_concept         ; DRG code
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_procedure}
-sequence = !##:(1..)                          ; Procedure instance identifier
+sequence = ##:(1..)                          ; Procedure instance identifier
 types[] = @fhir.codeable_concept              ; Type of procedure
 date = timestamp                              ; When procedure performed
 
@@ -265,8 +265,8 @@ udi[] = @fhir.reference                       ; Unique device identifiers
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_insurance}
-focal = !?                                    ; Coverage for this claim
-coverage = !@fhir.reference                   ; Insurance information
+focal = ?                                    ; Coverage for this claim
+coverage = @fhir.reference                   ; Insurance information
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; EOB Accident - FHIR: ExplanationOfBenefit.accident
@@ -285,7 +285,7 @@ location_reference = @fhir.reference          ; Reference to Location
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_item}
-sequence = !##:(1..)                          ; Item instance identifier
+sequence = ##:(1..)                          ; Item instance identifier
 care_team_sequence[] = ##:(1..)               ; Care team link
 diagnosis_sequence[] = ##:(1..)               ; Diagnosis link
 procedure_sequence[] = ##:(1..)               ; Procedure link
@@ -294,7 +294,7 @@ information_sequence[] = ##:(1..)             ; Supporting info link
 revenue = @fhir.codeable_concept              ; Revenue code
 category = @fhir.codeable_concept             ; Benefit classification
 
-product_or_service = !@fhir.codeable_concept  ; CPT/HCPCS/NDC code
+product_or_service = @fhir.codeable_concept  ; CPT/HCPCS/NDC code
 modifiers[] = @fhir.codeable_concept          ; Modifier codes
 program_code[] = @fhir.codeable_concept       ; Program specific codes
 
@@ -324,7 +324,7 @@ detail[] = @eob_item_detail                   ; Detail line items
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_adjudication}
-category = !@fhir.codeable_concept            ; Type (submitted, benefit, deductible, copay)
+category = @fhir.codeable_concept            ; Type (submitted, benefit, deductible, copay)
 reason = @fhir.codeable_concept               ; Explanation of adjudication outcome
 amount = @fhir.money                          ; Monetary amount
 value = #                                     ; Non-monetary value
@@ -334,10 +334,10 @@ value = #                                     ; Non-monetary value
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_item_detail}
-sequence = !##:(1..)                          ; Detail instance identifier
+sequence = ##:(1..)                          ; Detail instance identifier
 revenue = @fhir.codeable_concept              ; Revenue code
 category = @fhir.codeable_concept             ; Benefit classification
-product_or_service = !@fhir.codeable_concept  ; Billing code
+product_or_service = @fhir.codeable_concept  ; Billing code
 modifiers[] = @fhir.codeable_concept          ; Modifier codes
 program_code[] = @fhir.codeable_concept       ; Program specific codes
 quantity = @fhir.simple_quantity              ; Count
@@ -354,10 +354,10 @@ sub_detail[] = @eob_item_sub_detail           ; Sub-detail line items
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_item_sub_detail}
-sequence = !##:(1..)                          ; Sub-detail instance identifier
+sequence = ##:(1..)                          ; Sub-detail instance identifier
 revenue = @fhir.codeable_concept              ; Revenue code
 category = @fhir.codeable_concept             ; Benefit classification
-product_or_service = !@fhir.codeable_concept  ; Billing code
+product_or_service = @fhir.codeable_concept  ; Billing code
 modifiers[] = @fhir.codeable_concept          ; Modifier codes
 program_code[] = @fhir.codeable_concept       ; Program specific codes
 quantity = @fhir.simple_quantity              ; Count
@@ -377,7 +377,7 @@ item_sequence[] = ##:(1..)                    ; Item sequence number
 detail_sequence[] = ##:(1..)                  ; Detail sequence number
 sub_detail_sequence[] = ##:(1..)              ; Sub-detail sequence number
 providers[] = @fhir.reference                 ; Authorized providers
-product_or_service = !@fhir.codeable_concept  ; Billing code
+product_or_service = @fhir.codeable_concept  ; Billing code
 modifiers[] = @fhir.codeable_concept          ; Modifier codes
 program_code[] = @fhir.codeable_concept       ; Program specific codes
 
@@ -404,8 +404,8 @@ adjudication[] = @eob_adjudication            ; Adjudication details
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_total}
-category = !@fhir.codeable_concept            ; Type of total
-amount = !@fhir.money                         ; Financial total
+category = @fhir.codeable_concept            ; Type of total
+amount = @fhir.money                         ; Financial total
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; EOB Payment - FHIR: ExplanationOfBenefit.payment
@@ -434,7 +434,7 @@ language = @fhir.codeable_concept             ; Note language
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_benefit_balance}
-category = !@fhir.codeable_concept            ; Benefit classification
+category = @fhir.codeable_concept            ; Benefit classification
 excluded = ?                                  ; Excluded from plan
 name = :                                      ; Short name for benefit
 description = :                               ; Description of benefits
@@ -448,7 +448,7 @@ financial[] = @eob_benefit_financial          ; Benefit summary
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@eob_benefit_financial}
-type = !@fhir.codeable_concept                ; Type of benefit (deductible, copay, coinsurance)
+type = @fhir.codeable_concept                ; Type of benefit (deductible, copay, coinsurance)
 
 ; Allowed - polymorphic
 allowed_unsigned_int = ##:(0..)               ; Allowed amount/units

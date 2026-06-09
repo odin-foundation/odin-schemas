@@ -37,11 +37,11 @@ changelog[0].rationale = "Base type for all life insurance products"
 
 {@policy}
 ; Required fields
-death_benefit = !#$:(0..)                     ; Face amount / death benefit
-effective = !date                             ; Policy effective date
-insured = !@la.life_party                     ; Primary insured
-number = !:                                   ; Policy number
-status = !@la.life_policy_status              ; Policy status
+death_benefit = #$:(0..)                     ; Face amount / death benefit
+effective = date                             ; Policy effective date
+insured = @la.life_party                     ; Primary insured
+number = :                                   ; Policy number
+status = @la.life_policy_status              ; Policy status
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Identification
@@ -197,9 +197,9 @@ monthly_benefit = #$:(0..)                    ; Monthly benefit amount
 
 {@claim}
 ; Required fields
-date_of_death = !date                         ; Date of death
-policy_number = !:                            ; Policy number
-status = !@la.claim_status                    ; Claim status
+date_of_death = date                         ; Date of death
+policy_number = :                            ; Policy number
+status = @la.claim_status                    ; Claim status
 
 ; Optional fields
 amount_paid = #$:(0..)                        ; Total amount paid
@@ -225,8 +225,8 @@ suicide_exclusion_applies = ?                 ; Suicide exclusion applies
 ; Claim Beneficiary Payments
 ; ───────────────────────────────────────────────────────────────────────────────
 {@claim.payments[]}
-amount = !#$:(0..)                            ; Payment amount
-beneficiary_name = !:                         ; Beneficiary name
+amount = #$:(0..)                            ; Payment amount
+beneficiary_name = :                         ; Beneficiary name
 check_number = :                              ; Check number
 date = date                                   ; Payment date
 method = (check, direct_deposit, retained_asset, wire)  ; Payment method

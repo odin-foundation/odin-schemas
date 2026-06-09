@@ -39,7 +39,7 @@ changelog[0].rationale = "MedicationAdministration resource derived from FHIR R4
 
 {@medication_administration}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: MedicationAdministration.identifier
@@ -52,7 +52,7 @@ instantiates[] = :                            ; Instantiates protocol/definition
 part_of[] = @fhir.reference                   ; Part of another event
 
 ; Status - FHIR: MedicationAdministration.status (required)
-status = !(completed, entered_in_error, in_progress, not_done, on_hold, stopped, unknown)
+status = (completed, entered_in_error, in_progress, not_done, on_hold, stopped, unknown)
 
 ; Status reason - FHIR: MedicationAdministration.statusReason
 status_reasons[] = @fhir.codeable_concept     ; Reason status is current
@@ -65,7 +65,7 @@ medication_codeable_concept = @fhir.codeable_concept  ; What was administered
 medication_reference = @fhir.reference        ; Reference to Medication resource
 
 ; Subject - FHIR: MedicationAdministration.subject (required)
-subject = !@fhir.reference                    ; Patient receiving medication
+subject = @fhir.reference                    ; Patient receiving medication
 
 ; Context - FHIR: MedicationAdministration.context
 context = @fhir.reference                     ; Encounter or episode of care
@@ -107,7 +107,7 @@ event_history[] = @fhir.reference             ; Events of interest
 
 {@medication_administration_performer}
 function = @fhir.codeable_concept             ; Type of performance
-actor = !@fhir.reference                      ; Who performed the administration
+actor = @fhir.reference                      ; Who performed the administration
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Administration Dosage - FHIR: MedicationAdministration.dosage

@@ -86,7 +86,7 @@ nearest_fault_distance_miles = #:(0..)              ; Distance to nearest fault 
 
 {@earthquake_soil}
 ; NEHRP/ASCE site class (A-F)
-site_class = !(site_class_a, site_class_b, site_class_bc, site_class_c, site_class_cd, site_class_d, site_class_de, site_class_e, site_class_f)
+site_class = (site_class_a, site_class_b, site_class_bc, site_class_c, site_class_cd, site_class_d, site_class_de, site_class_e, site_class_f)
 site_class_description = :                          ; Site class description
 ; Shear wave velocity
 vs30 = #:(0..)                                      ; Average shear wave velocity in top 30m (m/s)
@@ -106,7 +106,7 @@ geotechnical_report_date = timestamp                ; Date of geotechnical repor
 
 {@earthquake_foundation}
 ; Foundation type
-type = !(basement, crawlspace, hillside, pier_and_beam, raised, slab_on_grade)
+type = (basement, crawlspace, hillside, pier_and_beam, raised, slab_on_grade)
 ; Cripple wall (short wood-stud wall between foundation and first floor)
 cripple_wall = ?                                    ; Has cripple wall
 cripple_wall_height_inches = ##:(0..)               ; Height of cripple wall in inches
@@ -131,7 +131,7 @@ basement_finished = ?                               ; Basement is finished livin
 
 {@earthquake_frame}
 ; Primary structural system
-type = !(concrete_frame, light_metal_frame, masonry_bearing_wall, steel_frame, wood_frame)
+type = (concrete_frame, light_metal_frame, masonry_bearing_wall, steel_frame, wood_frame)
 ; Construction details
 exterior_walls = (brick_veneer, concrete, hardboard, metal, stucco, vinyl, wood)
 ; Masonry characteristics (high risk if unreinforced)
@@ -154,15 +154,15 @@ chimney_braced = ?                                  ; Chimney is braced to struc
 
 {@earthquake_property}
 ; Required property identifiers
-address = !@address                                 ; Property address
+address = @address                                 ; Property address
 ; Building characteristics
-year_built = !##:(1800..2100)                       ; Year structure was built
+year_built = ##:(1800..2100)                       ; Year structure was built
 building_code_era = (pre_1933, 1933_1948, 1949_1975, 1976_1990, 1991_2000, 2001_present)
-stories = !##:(1..)                                 ; Number of stories
-total_square_feet = !##:(1..)                       ; Total square footage
+stories = ##:(1..)                                 ; Number of stories
+total_square_feet = ##:(1..)                       ; Total square footage
 ; Construction
-frame = !@earthquake_frame                          ; Building frame details
-foundation = !@earthquake_foundation                ; Foundation details
+frame = @earthquake_frame                          ; Building frame details
+foundation = @earthquake_foundation                ; Foundation details
 ; Seismic hazard
 zone = @earthquake_zone                             ; Seismic zone information
 soil = @earthquake_soil                             ; Soil classification
@@ -239,8 +239,8 @@ inspector_certification = :                         ; Inspector certification nu
 
 {@earthquake_coverage}
 ; Coverage A - Dwelling
-coverage_a_dwelling = !#$:(0..)                     ; Dwelling limit
-coverage_a_deductible_percent = !#:(5..25)          ; Deductible as percentage of Coverage A
+coverage_a_dwelling = #$:(0..)                     ; Dwelling limit
+coverage_a_deductible_percent = #:(5..25)          ; Deductible as percentage of Coverage A
 coverage_a_deductible_amount = #$:(0..)             ; Calculated deductible amount
 ; Coverage B - Other Structures
 coverage_b_other_structures = #$:(0..)              ; Other structures limit
@@ -279,7 +279,7 @@ loss_assessment_limit = #$:(0..)                    ; Loss assessment limit
 
 {@earthquake_rating}
 ; Base rate factors
-territory_factor = !#:(0..)                         ; Territory/zone factor
+territory_factor = #:(0..)                         ; Territory/zone factor
 soil_factor = #:(0..)                               ; Soil amplification factor
 construction_factor = #:(0..)                       ; Construction type factor
 age_factor = #:(0..)                                ; Building age factor
@@ -314,10 +314,10 @@ total_premium = #$:(0..)                            ; Total premium including fe
 
 {@earthquake_claim}
 ; Claim identification
-claim_number = !:                                   ; Unique claim identifier
-policy_number = !:                                  ; Associated policy number
+claim_number = :                                   ; Unique claim identifier
+policy_number = :                                  ; Associated policy number
 ; Event information
-event_date = !timestamp                             ; Date and time of earthquake
+event_date = timestamp                             ; Date and time of earthquake
 event_magnitude = #:(0..10)                         ; Earthquake magnitude (Richter/moment)
 event_epicenter_latitude = #:(-90..90)              ; Epicenter latitude
 event_epicenter_longitude = #:(-180..180)           ; Epicenter longitude
@@ -325,12 +325,12 @@ event_epicenter_depth_km = #:(0..)                  ; Depth of earthquake in km
 event_name = :                                      ; Named earthquake event
 usgs_event_id = :                                   ; USGS earthquake event ID
 ; Claim dates
-date_of_loss = !timestamp                           ; Date loss occurred
-date_reported = !timestamp                          ; Date claim reported
+date_of_loss = timestamp                           ; Date loss occurred
+date_reported = timestamp                          ; Date claim reported
 date_inspected = timestamp                          ; Date property inspected
 date_closed = timestamp                             ; Date claim closed
 ; Claim status
-status = !(closed_no_payment, closed_paid, denied, in_review, open, reopened, under_investigation)
+status = (closed_no_payment, closed_paid, denied, in_review, open, reopened, under_investigation)
 ; Damage description
 damage_description = :                              ; Description of damage
 ; Property damage assessment
@@ -394,11 +394,11 @@ subrogation_target = :                              ; Subrogation target (if any
 
 {@earthquake_endorsement}
 ; Endorsement identification
-endorsement_number = !:                             ; Unique endorsement identifier
-endorsement_type = !(additional_coverage, coverage_change, deductible_change, exclusion, limit_change, premium_adjustment, property_change, retrofit_credit)
-effective_date = !timestamp                         ; Endorsement effective date
+endorsement_number = :                             ; Unique endorsement identifier
+endorsement_type = (additional_coverage, coverage_change, deductible_change, exclusion, limit_change, premium_adjustment, property_change, retrofit_credit)
+effective_date = timestamp                         ; Endorsement effective date
 ; Endorsement details
-description = !:                                    ; Description of change
+description = :                                    ; Description of change
 reason = :                                          ; Reason for endorsement
 ; Premium impact
 premium_change = #$                                 ; Change in premium (can be negative)
@@ -431,29 +431,29 @@ document_id = :                                     ; Reference to endorsement d
 
 {@earthquake_policy}
 ; Policy identification
-policy_number = !:                                  ; Unique policy number
+policy_number = :                                  ; Unique policy number
 quote_number = :                                    ; Original quote number
 ; Policy type
-policy_type = !(cea_basic, cea_homeowners_choice, private_market, standalone, wrap_around)
+policy_type = (cea_basic, cea_homeowners_choice, private_market, standalone, wrap_around)
 ; Policy term
-effective_date = !timestamp                         ; Policy effective date
-expiration_date = !timestamp                        ; Policy expiration date
+effective_date = timestamp                         ; Policy effective date
+expiration_date = timestamp                        ; Policy expiration date
 policy_term_months = ##:(1..36)                     ; Policy term in months
 ; Status
-status = !(active, cancelled, expired, lapsed, non_renewed, pending, reinstated, suspended)
+status = (active, cancelled, expired, lapsed, non_renewed, pending, reinstated, suspended)
 cancellation_date = timestamp                       ; Date of cancellation
 cancellation_reason = (insured_request, non_payment, underwriting, carrier_non_renewal)
 ; Parties
-insured = !@person                                  ; Primary named insured
+insured = @person                                  ; Primary named insured
 additional_insureds[] = @person                     ; Additional named insureds
 ; Property
-property = !@earthquake_property                    ; Insured property
+property = @earthquake_property                    ; Insured property
 ; Coverage
-coverage = !@earthquake_coverage                    ; Coverage structure
+coverage = @earthquake_coverage                    ; Coverage structure
 ; Rating
 rating = @earthquake_rating                         ; Rating factors and premium
 ; Premium
-annual_premium = !#$:(0..)                          ; Annual premium
+annual_premium = #$:(0..)                          ; Annual premium
 policy_fee = #$:(0..)                               ; Policy fee
 total_annual_cost = #$:(0..)                        ; Total annual cost
 payment_plan = (annual, monthly, quarterly, semi_annual)

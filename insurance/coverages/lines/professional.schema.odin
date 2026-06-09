@@ -48,7 +48,7 @@ changelog[0].rationale = "Coverage-centric architecture - professional line exte
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Form Type (Almost Always Claims-Made)
 ; ───────────────────────────────────────────────────────────────────────────────
-form_type = !(claims_made, occurrence)
+form_type = (claims_made, occurrence)
 form_type = "claims_made"                         ; Default to claims-made
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -76,8 +76,8 @@ supplemental_premium_percent = ##:(0..300)        ; % of expiring premium
 ; Professional Liability Limits
 ; ───────────────────────────────────────────────────────────────────────────────
 {.pl_limits}
-each_claim = !#$                                  ; Per claim limit
-aggregate = !#$                                   ; Annual aggregate
+each_claim = #$                                  ; Per claim limit
+aggregate = #$                                   ; Annual aggregate
 each_wrongful_act = #$                            ; Per wrongful act (if different)
 
 {@professional_coverage}

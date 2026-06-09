@@ -188,8 +188,8 @@ single_loss_limit = #$
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@fidelity_bond}
-bond_id = !:
-bond_type = !(
+bond_id = :
+bond_type = (
     blanket_position_bond,                    ; BPB - Per Position
     broker_dealer_blanket_bond,               ; FINRA requirement
     commercial_blanket_bond,                  ; CBB - Discovery Form
@@ -200,7 +200,7 @@ bond_type = !(
     non_profit_crime,
     position_schedule_bond                    ; Scheduled positions
 )
-penalty = !#$                  ; Bond penalty amount
+penalty = #$                  ; Bond penalty amount
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Bond Amount
@@ -334,11 +334,11 @@ reserves = #$
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@crime_policy}
-id = !:
-number = !:
-effective_date = !date
-expiration_date = !date
-policy_form = !(
+id = :
+number = :
+effective_date = date
+expiration_date = date
+policy_form = (
     discovery,                                ; Covers losses discovered during policy
     loss_sustained                            ; Covers losses occurring during policy
 )

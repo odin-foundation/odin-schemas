@@ -47,32 +47,32 @@ changelog[0].rationale = "Claim resource derived from FHIR R4/R5 specification"
 
 {@claim}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Claim.identifier
 identifiers[] = @fhir.identifier              ; Business identifiers
 
 ; Status - FHIR: Claim.status (required)
-status = !(active, cancelled, draft, entered_in_error)
+status = (active, cancelled, draft, entered_in_error)
 
 ; Type - FHIR: Claim.type (required)
-type = !@fhir.codeable_concept                ; Category (institutional, oral, pharmacy, professional, vision)
+type = @fhir.codeable_concept                ; Category (institutional, oral, pharmacy, professional, vision)
 
 ; Sub type - FHIR: Claim.subType
 sub_type = @fhir.codeable_concept             ; Finer grain type
 
 ; Use - FHIR: Claim.use (required)
-use = !(claim, preauthorization, predetermination)
+use = (claim, preauthorization, predetermination)
 
 ; Patient - FHIR: Claim.patient (required)
-patient = !@fhir.reference                    ; Patient receiving services
+patient = @fhir.reference                    ; Patient receiving services
 
 ; Billable period - FHIR: Claim.billablePeriod
 billable_period = @fhir.period                ; Period for charge submission
 
 ; Created - FHIR: Claim.created (required)
-created = !timestamp                          ; Creation date
+created = timestamp                          ; Creation date
 
 ; Enterer - FHIR: Claim.enterer
 enterer = @fhir.reference                     ; Who entered claim
@@ -81,10 +81,10 @@ enterer = @fhir.reference                     ; Who entered claim
 insurer = @fhir.reference                     ; Target insurer
 
 ; Provider - FHIR: Claim.provider (required)
-provider = !@fhir.reference                   ; Party responsible for claim
+provider = @fhir.reference                   ; Party responsible for claim
 
 ; Priority - FHIR: Claim.priority (required)
-priority = !@fhir.codeable_concept            ; Processing priority
+priority = @fhir.codeable_concept            ; Processing priority
 
 ; Funds reserve - FHIR: Claim.fundsReserve
 funds_reserve = @fhir.codeable_concept        ; Requested funds reserve
@@ -145,7 +145,7 @@ reference = @fhir.identifier                  ; File/case reference
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_payee}
-type = !@fhir.codeable_concept                ; Type of party (provider, patient, other)
+type = @fhir.codeable_concept                ; Type of party (provider, patient, other)
 party = @fhir.reference                       ; Recipient of benefits
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -153,8 +153,8 @@ party = @fhir.reference                       ; Recipient of benefits
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_care_team}
-sequence = !##:(1..)                          ; Order of care team
-provider = !@fhir.reference                   ; Practitioner or Organization
+sequence = ##:(1..)                          ; Order of care team
+provider = @fhir.reference                   ; Practitioner or Organization
 responsible = ?                               ; Clinically responsible indicator
 role = @fhir.codeable_concept                 ; Function within care team
 qualification = @fhir.codeable_concept        ; Practitioner credential/specialty
@@ -164,8 +164,8 @@ qualification = @fhir.codeable_concept        ; Practitioner credential/specialt
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_supporting_info}
-sequence = !##:(1..)                          ; Information instance identifier
-category = !@fhir.codeable_concept            ; Classification of information
+sequence = ##:(1..)                          ; Information instance identifier
+category = @fhir.codeable_concept            ; Classification of information
 code = @fhir.codeable_concept                 ; Type of information
 
 ; Timing - FHIR: Claim.supportingInfo.timing[x] (polymorphic)
@@ -186,7 +186,7 @@ reason = @fhir.codeable_concept               ; Explanation for information
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_diagnosis}
-sequence = !##:(1..)                          ; Diagnosis instance identifier
+sequence = ##:(1..)                          ; Diagnosis instance identifier
 
 ; Diagnosis - FHIR: Claim.diagnosis.diagnosis[x] (polymorphic)
 diagnosis_codeable_concept = @fhir.codeable_concept  ; ICD-10 diagnosis code
@@ -201,7 +201,7 @@ package_code = @fhir.codeable_concept         ; DRG code
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_procedure}
-sequence = !##:(1..)                          ; Procedure instance identifier
+sequence = ##:(1..)                          ; Procedure instance identifier
 types[] = @fhir.codeable_concept              ; Type of procedure
 date = timestamp                              ; When procedure performed
 
@@ -216,10 +216,10 @@ udi[] = @fhir.reference                       ; Unique device identifiers
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_insurance}
-sequence = !##:(1..)                          ; Insurance instance identifier
-focal = !?                                    ; Coverage for this claim
+sequence = ##:(1..)                          ; Insurance instance identifier
+focal = ?                                    ; Coverage for this claim
 identifier = @fhir.identifier                 ; Claim ID at insurer
-coverage = !@fhir.reference                   ; Insurance information
+coverage = @fhir.reference                   ; Insurance information
 business_arrangement = :                      ; Additional information
 pre_auth_ref[] = :                            ; Prior authorization reference
 claim_response = @fhir.reference              ; Adjudication results
@@ -229,7 +229,7 @@ claim_response = @fhir.reference              ; Adjudication results
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_accident}
-date = !date                                  ; When accident occurred
+date = date                                  ; When accident occurred
 type = @fhir.codeable_concept                 ; Type of accident
 
 ; Location - FHIR: Claim.accident.location[x] (polymorphic)
@@ -241,7 +241,7 @@ location_reference = @fhir.reference          ; Reference to Location
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_item}
-sequence = !##:(1..)                          ; Item instance identifier
+sequence = ##:(1..)                          ; Item instance identifier
 care_team_sequence[] = ##:(1..)               ; Care team link
 diagnosis_sequence[] = ##:(1..)               ; Diagnosis link
 procedure_sequence[] = ##:(1..)               ; Procedure link
@@ -250,7 +250,7 @@ information_sequence[] = ##:(1..)             ; Supporting info link
 revenue = @fhir.codeable_concept              ; Revenue code
 category = @fhir.codeable_concept             ; Benefit classification
 
-product_or_service = !@fhir.codeable_concept  ; CPT/HCPCS/NDC code
+product_or_service = @fhir.codeable_concept  ; CPT/HCPCS/NDC code
 modifiers[] = @fhir.codeable_concept          ; Modifier codes
 program_code[] = @fhir.codeable_concept       ; Program specific codes
 
@@ -278,10 +278,10 @@ detail[] = @claim_item_detail                 ; Detail line items
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_item_detail}
-sequence = !##:(1..)                          ; Detail instance identifier
+sequence = ##:(1..)                          ; Detail instance identifier
 revenue = @fhir.codeable_concept              ; Revenue code
 category = @fhir.codeable_concept             ; Benefit classification
-product_or_service = !@fhir.codeable_concept  ; Billing code
+product_or_service = @fhir.codeable_concept  ; Billing code
 modifiers[] = @fhir.codeable_concept          ; Modifier codes
 program_code[] = @fhir.codeable_concept       ; Program specific codes
 quantity = @fhir.simple_quantity              ; Count
@@ -296,10 +296,10 @@ sub_detail[] = @claim_item_sub_detail         ; Sub-detail line items
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@claim_item_sub_detail}
-sequence = !##:(1..)                          ; Sub-detail instance identifier
+sequence = ##:(1..)                          ; Sub-detail instance identifier
 revenue = @fhir.codeable_concept              ; Revenue code
 category = @fhir.codeable_concept             ; Benefit classification
-product_or_service = !@fhir.codeable_concept  ; Billing code
+product_or_service = @fhir.codeable_concept  ; Billing code
 modifiers[] = @fhir.codeable_concept          ; Modifier codes
 program_code[] = @fhir.codeable_concept       ; Program specific codes
 quantity = @fhir.simple_quantity              ; Count

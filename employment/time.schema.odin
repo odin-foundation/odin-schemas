@@ -42,15 +42,15 @@ changelog[0].rationale = "Timecard, schedule, absence tracking derived from FLSA
 {@timecard}
 = @types.audit_info
 
-timecard_id = !:                                 ; Unique timecard identifier
-employee_id = !:                                 ; Associated employee
-pay_period_id = !:                               ; Associated pay period
-period_start_date = !date                        ; Timecard period start
-period_end_date = !date                          ; Timecard period end
+timecard_id = :                                 ; Unique timecard identifier
+employee_id = :                                 ; Associated employee
+pay_period_id = :                               ; Associated pay period
+period_start_date = date                        ; Timecard period start
+period_end_date = date                          ; Timecard period end
 
 ; Hours summary
 {.hours}
-regular_hours = !#:(0..)                         ; Regular hours worked
+regular_hours = #:(0..)                         ; Regular hours worked
 overtime_hours = #:(0..)                         ; Overtime hours (over 40/week)
 double_time_hours = #:(0..)                      ; Double-time hours
 holiday_hours = #:(0..)                          ; Holiday hours worked
@@ -60,7 +60,7 @@ bereavement_hours = #:(0..)                      ; Bereavement hours used
 jury_duty_hours = #:(0..)                        ; Jury duty hours
 other_paid_hours = #:(0..)                       ; Other paid time
 unpaid_hours = #:(0..)                           ; Unpaid time off
-total_hours = !#:(0..)                           ; Total hours
+total_hours = #:(0..)                           ; Total hours
 
 {@timecard}
 
@@ -83,8 +83,8 @@ notes = :                                        ; Timecard notes
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@time_entry}
-entry_id = !:                                    ; Unique entry identifier
-work_date = !date                                ; Date worked
+entry_id = :                                    ; Unique entry identifier
+work_date = date                                ; Date worked
 day_of_week = (friday, monday, saturday, sunday, thursday, tuesday, wednesday)
 
 ; Time worked
@@ -95,7 +95,7 @@ break_minutes = ##:(0..)                         ; Unpaid break time (minutes)
 regular_hours = #:(0..)                          ; Regular hours
 overtime_hours = #:(0..)                         ; Overtime hours
 double_time_hours = #:(0..)                      ; Double-time hours
-total_hours = !#:(0..)                           ; Total hours for day
+total_hours = #:(0..)                           ; Total hours for day
 
 ; Labor allocation
 department = :                                   ; Department code
@@ -111,9 +111,9 @@ notes = :                                        ; Entry notes
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@punch}
-punch_id = !:                                    ; Unique punch identifier
-employee_id = !:                                 ; Associated employee
-punch_timestamp = !timestamp                     ; Punch timestamp
+punch_id = :                                    ; Unique punch identifier
+employee_id = :                                 ; Associated employee
+punch_timestamp = timestamp                     ; Punch timestamp
 punch_type = (break_end, break_start, clock_in, clock_out)
 punch_method = (badge, biometric, mobile, terminal, web)
 
@@ -136,10 +136,10 @@ original_timestamp = timestamp:if edited = true  ; Original punch time
 {@schedule}
 = @types.audit_info
 
-schedule_id = !:                                 ; Unique schedule identifier
-employee_id = !:                                 ; Associated employee
+schedule_id = :                                 ; Unique schedule identifier
+employee_id = :                                 ; Associated employee
 schedule_name = :                                ; Schedule name/description
-effective_start_date = !date                     ; Schedule start date
+effective_start_date = date                     ; Schedule start date
 effective_end_date = date                        ; Schedule end date (blank if ongoing)
 
 schedule_type = (fixed, rotating, variable)      ; Schedule type
@@ -150,9 +150,9 @@ rotation_weeks = ##:(1..):if schedule_type = rotating
 :(0..7)                                          ; Up to 7 days
 day_of_week = (friday, monday, saturday, sunday, thursday, tuesday, wednesday)
 shift_id = :                                     ; Associated shift ID
-scheduled_start = !time                          ; Scheduled start time
-scheduled_end = !time                            ; Scheduled end time
-scheduled_hours = !#:(0..24)                     ; Scheduled hours
+scheduled_start = time                          ; Scheduled start time
+scheduled_end = time                            ; Scheduled end time
+scheduled_hours = #:(0..24)                     ; Scheduled hours
 break_minutes = ##:(0..)                         ; Scheduled break (minutes)
 work_day = ?                                     ; Is a work day
 department = :                                   ; Department
@@ -167,14 +167,14 @@ status = (active, inactive, pending)             ; Schedule status
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@shift}
-shift_id = !:                                    ; Unique shift identifier
-shift_name = !:                                  ; Shift name
+shift_id = :                                    ; Unique shift identifier
+shift_name = :                                  ; Shift name
 shift_code = :                                   ; Shift code
 shift_type = (day, evening, graveyard, night, swing)
 
-start_time = !time                               ; Shift start time
-end_time = !time                                 ; Shift end time
-duration_hours = !#:(0..24)                      ; Shift duration
+start_time = time                               ; Shift start time
+end_time = time                                 ; Shift end time
+duration_hours = #:(0..24)                      ; Shift duration
 break_minutes = ##:(0..)                         ; Paid/unpaid break (minutes)
 
 shift_differential = #$:(0..)                    ; Shift differential pay
@@ -192,11 +192,11 @@ active = ?                                       ; Shift is active
 {@absence}
 = @types.audit_info
 
-absence_id = !:                                  ; Unique absence identifier
-employee_id = !:                                 ; Associated employee
+absence_id = :                                  ; Unique absence identifier
+employee_id = :                                 ; Associated employee
 absence_type = (bereavement, fmla, jury_duty, military, personal, pto, sick, unpaid)
 
-start_date = !date                               ; Absence start date
+start_date = date                               ; Absence start date
 end_date = date                                  ; Absence end date (blank if ongoing)
 total_days = #:(0..)                             ; Total absence days
 total_hours = #:(0..)                            ; Total absence hours
@@ -234,11 +234,11 @@ medical_certification = ?                        ; Medical cert required/provide
 {@pto_balance}
 = @types.audit_info
 
-employee_id = !:                                 ; Associated employee
+employee_id = :                                 ; Associated employee
 pto_type = (bereavement, floating_holiday, personal, pto, sick, vacation)
 
 ; Balances
-balance_hours = !#:(0..)                         ; Current balance (hours)
+balance_hours = #:(0..)                         ; Current balance (hours)
 accrued_hours = #:(0..)                          ; Total accrued (this year)
 used_hours = #:(0..)                             ; Total used (this year)
 scheduled_hours = #:(0..)                        ; Scheduled/pending hours
@@ -266,13 +266,13 @@ balance_year_end = date                          ; Year end date
 {@pto_transaction}
 = @types.audit_info
 
-transaction_id = !:                              ; Unique transaction ID
-employee_id = !:                                 ; Associated employee
+transaction_id = :                              ; Unique transaction ID
+employee_id = :                                 ; Associated employee
 pto_type = (bereavement, floating_holiday, personal, pto, sick, vacation)
 
-transaction_date = !date                         ; Transaction date
+transaction_date = date                         ; Transaction date
 transaction_type = (accrual, adjustment, carryover, usage)
-hours = !#                                       ; Hours (positive = add, negative = deduct)
+hours = #                                       ; Hours (positive = add, negative = deduct)
 
 reason = :                                       ; Transaction reason
 reference_id = :                                 ; Reference (timecard, absence ID)
@@ -286,13 +286,13 @@ notes = :                                        ; Transaction notes
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@overtime}
-employee_id = !:                                 ; Associated employee
-work_week_start = !date                          ; Work week start (FLSA)
-work_week_end = !date                            ; Work week end
+employee_id = :                                 ; Associated employee
+work_week_start = date                          ; Work week start (FLSA)
+work_week_end = date                            ; Work week end
 
-regular_hours = !#:(0..40)                       ; Regular hours (up to 40)
+regular_hours = #:(0..40)                       ; Regular hours (up to 40)
 overtime_hours = #:(0..)                         ; Overtime hours (over 40)
-total_hours = !#:(0..)                           ; Total hours worked
+total_hours = #:(0..)                           ; Total hours worked
 
 :invariant total_hours = regular_hours + overtime_hours
 

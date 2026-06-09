@@ -48,9 +48,9 @@ changelog[0].rationale = "Structures derived from state dealer regulations and N
 
 {@dealer_license}
 ; Required fields first
-license_number = !*:                              ; Dealer license number
-state = !:(2)                                    ; Licensing state
-license_type = !(
+license_number = *:                              ; Dealer license number
+state = :(2)                                    ; Licensing state
+license_type = (
     distributor,
     franchise_new,
     franchise_new_used,
@@ -65,7 +65,7 @@ license_type = !(
 
 ; Dealer information
 {.dealer}
-legal_name = !:                                  ; Legal business name
+legal_name = :                                  ; Legal business name
 dba_name = :                                     ; DBA/trade name
 ein = *:(9)                                      ; Employer ID Number
 business_type = (corporation, llc, partnership, sole_proprietor)
@@ -97,7 +97,7 @@ website = :                                      ; Website URL
 
 ; License status
 {.status}
-status = !(active, expired, pending, revoked, suspended)
+status = (active, expired, pending, revoked, suspended)
 issue_date = date                                ; Original issue date
 effective_date = date                            ; Current license effective
 expiration_date = date                           ; License expiration
@@ -162,14 +162,14 @@ transporter_plates = ##:(0..)                    ; Transporter plates
 
 {@dealer_principal}
 ; Required fields first
-principal_type = !(
+principal_type = (
     board_member,
     manager,
     officer,
     owner,
     partner
 )
-name = !:                                        ; Principal name
+name = :                                        ; Principal name
 title = :                                        ; Title/position
 ownership_percent = #:(0..100)                   ; Ownership percentage
 
@@ -197,13 +197,13 @@ felony_conviction = ?                            ; Felony conviction
 
 {@franchise_agreement}
 ; Required fields first
-manufacturer = !:                                ; Manufacturer name
-brand = !:                                       ; Brand/make
+manufacturer = :                                ; Manufacturer name
+brand = :                                       ; Brand/make
 agreement_number = :                             ; Agreement number
 
 ; Status
 {.status}
-status = !(active, pending, terminated)
+status = (active, pending, terminated)
 effective_date = date                            ; Agreement start
 termination_date = date                          ; If terminated
 renewal_date = date                              ; Next renewal
@@ -237,8 +237,8 @@ zip_codes[] = :                                  ; ZIP codes in territory
 
 {@dealer_inventory}
 ; Required fields first
-dealer_id = !:                                   ; Dealer identifier
-inventory_date = !date                           ; Inventory as-of date
+dealer_id = :                                   ; Dealer identifier
+inventory_date = date                           ; Inventory as-of date
 
 ; Summary counts
 {.summary}
@@ -269,9 +269,9 @@ vehicles[] = @inventory_vehicle                  ; Individual vehicles
 
 {@inventory_vehicle}
 ; Required fields first
-stock_number = !:                                ; Stock number
-vin = !*:format vin                              ; VIN
-status = !(
+stock_number = :                                ; Stock number
+vin = *:format vin                              ; VIN
+status = (
     available,
     customer_order,
     hold,
@@ -284,7 +284,7 @@ status = !(
 
 ; Vehicle details
 {.vehicle}
-new_used = !(new, used)                          ; New or used
+new_used = (new, used)                          ; New or used
 year = ##:(1900..2100)                           ; Model year
 make = :                                         ; Make
 model = :                                        ; Model
@@ -366,12 +366,12 @@ cpo_warranty_miles = ##:if cpo = true            ; CPO warranty miles
 
 {@floor_plan}
 ; Required fields first
-account_number = !*:                             ; Account number
-dealer_id = !:                                   ; Dealer identifier
+account_number = *:                             ; Account number
+dealer_id = :                                   ; Dealer identifier
 
 ; Lender
 {.lender}
-lender_name = !:                                 ; Floor plan lender
+lender_name = :                                 ; Floor plan lender
 lender_address = @address                        ; Lender address
 lender_phone = *@phone                           ; Lender phone
 account_manager = :                              ; Account manager
@@ -431,7 +431,7 @@ curtailment_3_percent = #:(0..100)               ; Third curtailment %
 
 ; Account status
 {.status}
-status = !(active, closed, default, suspended)
+status = (active, closed, default, suspended)
 last_audit_date = date                           ; Last physical audit
 audit_result = (discrepancy, pass)               ; Audit result
 payment_status = (current, delinquent)           ; Payment status
@@ -455,9 +455,9 @@ vehicles[] = @floored_vehicle                    ; Floored vehicle list
 
 {@floored_vehicle}
 ; Required fields first
-vin = !*:format vin                              ; VIN
-advance_amount = !#$:(0..)                       ; Amount advanced
-floor_date = !date                               ; Date floored
+vin = *:format vin                              ; VIN
+advance_amount = #$:(0..)                       ; Amount advanced
+floor_date = date                               ; Date floored
 
 ; Vehicle details
 {.vehicle}
@@ -470,7 +470,7 @@ model = :                                        ; Model
 
 ; Current status
 {.status}
-status = !(active, paid_off, sold)               ; Floor status
+status = (active, paid_off, sold)               ; Floor status
 days_on_floor = ##:(0..)                         ; Days floored
 current_balance = #$:(0..)                       ; Current balance
 accrued_interest = #$:(0..)                      ; Accrued interest
@@ -495,13 +495,13 @@ interest_paid = #$:(0..):if status = paid_off    ; Interest paid
 
 {@auction_transaction}
 ; Required fields first
-transaction_id = !:                              ; Transaction identifier
-auction_house = !:                               ; Auction company
-auction_date = !date                             ; Auction date
-vin = !*:format vin                              ; Vehicle VIN
+transaction_id = :                              ; Transaction identifier
+auction_house = :                               ; Auction company
+auction_date = date                             ; Auction date
+vin = *:format vin                              ; Vehicle VIN
 
 ; Transaction type
-transaction_type = !(purchase, sale)             ; Buying or selling
+transaction_type = (purchase, sale)             ; Buying or selling
 
 ; Auction location
 {.auction}
@@ -578,9 +578,9 @@ paid = ?                                         ; Paid in full
 
 {@dealer_trade}
 ; Required fields first
-trade_id = !:                                    ; Trade identifier
-trade_date = !date                               ; Trade date
-vin = !*:format vin                              ; Vehicle VIN
+trade_id = :                                    ; Trade identifier
+trade_date = date                               ; Trade date
+vin = *:format vin                              ; Vehicle VIN
 
 ; Parties
 {.sending_dealer}
@@ -624,7 +624,7 @@ return_by = date:if trade_type = borrow          ; Return date if borrow
 
 ; Status
 {.status}
-status = !(cancelled, completed, in_transit, pending)
+status = (cancelled, completed, in_transit, pending)
 shipped_date = date                              ; Ship date
 received_date = date                             ; Receipt date
 title_sent = ?                                   ; Title sent

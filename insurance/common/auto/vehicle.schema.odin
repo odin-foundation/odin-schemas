@@ -47,9 +47,9 @@ number = ##                                   ; Position on policy
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
 vin = *!:/^[A-HJ-NPR-Z0-9]{17}$/               ; ISO 3779 VIN format
-year = !##:(1900..2100)
-make = !:
-model = !:
+year = ##:(1900..2100)
+make = :
+model = :
 
 body_type = :                                 ; Sedan, Coupe, SUV, etc.
 body_type_code = :                            ; Abbreviated body type
@@ -186,7 +186,7 @@ mileage_verification_date = date
 ; Ownership
 ; ───────────────────────────────────────────────────────────────────────────────
 {.ownership}
-type = !(company, financed, leased, owned, rented)
+type = (company, financed, leased, owned, rented)
 
 {@vehicle}
 
@@ -208,8 +208,8 @@ expiration = date
 {@vehicle.lienholders[]}
 id = :
 sequence = ##
-type = !(lease, loan)
-name = !:
+type = (lease, loan)
+name = :
 
 ; Address - uses shared @address type (US and Canada)
 address = @address

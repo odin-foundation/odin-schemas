@@ -52,8 +52,8 @@ changelog[0].rationale = "Standard regulatory structures per FERC, EIA, NERC, an
 = @types.audit_info
 
 ; Required fields first
-tariff_number = !:                                 ; Tariff identifier
-tariff_name = !:                                   ; Tariff name
+tariff_number = :                                 ; Tariff identifier
+tariff_name = :                                   ; Tariff name
 commodity = (electric, gas, water)                ; Commodity type
 jurisdiction = (federal, municipal, state)        ; Regulatory jurisdiction
 status = (active, approved, draft, pending, superseded)
@@ -73,7 +73,7 @@ utility_id = :                                     ; Utility identifier
 
 ; Rate schedules
 {.rate_schedules[]}
-schedule_code = !:                                 ; Schedule identifier
+schedule_code = :                                 ; Schedule identifier
 schedule_name = :                                  ; Schedule name
 customer_class = (commercial, government, industrial, residential)
 description = :                                    ; Description
@@ -82,15 +82,15 @@ effective_date = date                              ; Schedule effective date
 {@tariff}
 ; Terms and conditions
 {.terms[]}
-section = !:                                       ; Section number
-title = !:                                         ; Section title
+section = :                                       ; Section number
+title = :                                         ; Section title
 content = :                                        ; Terms text
 effective_date = date                              ; Effective date
 
 {@tariff}
 ; Riders and surcharges
 {.riders[]}
-rider_code = !:                                    ; Rider identifier
+rider_code = :                                    ; Rider identifier
 rider_name = :                                     ; Rider description
 type = (adjustment, fuel, recovery, surcharge)     ; Rider type
 rate = #$                                          ; Rate or percentage
@@ -100,9 +100,9 @@ expiration_date = date                             ; Expiration if applicable
 {@tariff}
 ; Revisions
 {.revisions[]}
-revision_number = !##:(1..)                        ; Revision number
-revision_date = !date                              ; Revision date
-description = !:                                   ; What changed
+revision_number = ##:(1..)                        ; Revision number
+revision_date = date                              ; Revision date
+description = :                                   ; What changed
 approved_date = date                               ; Approval date
 supersedes_revision = ##                           ; Prior revision number
 
@@ -116,14 +116,14 @@ supersedes_revision = ##                           ; Prior revision number
 = @types.audit_info
 
 ; Required fields first
-case_number = !:                                   ; Case/docket number
-case_name = !:                                     ; Case title
-utility_name = !:                                  ; Utility filing
+case_number = :                                   ; Case/docket number
+case_name = :                                     ; Case title
+utility_name = :                                  ; Utility filing
 jurisdiction = (federal, state)                   ; Jurisdiction
 status = (approved, denied, pending, settled, withdrawn)
 
 ; Filing details
-filed_date = !date                                 ; Filing date
+filed_date = date                                 ; Filing date
 filing_type = (decrease, general, increase, merger, new_service)
 commodity = (electric, gas, water)                ; Commodity
 
@@ -151,7 +151,7 @@ return_amount = #$:(0..)                           ; Return on equity
 {@rate_case}
 ; Testimony and evidence
 {.testimony[]}
-witness_name = !:                                  ; Witness name
+witness_name = :                                  ; Witness name
 witness_type = (company, expert, intervenor)       ; Witness type
 filed_date = date                                  ; Testimony filed
 topic = :                                          ; Testimony topic
@@ -159,7 +159,7 @@ topic = :                                          ; Testimony topic
 {@rate_case}
 ; Hearings
 {.hearings[]}
-hearing_date = !date                               ; Hearing date
+hearing_date = date                               ; Hearing date
 hearing_type = (evidentiary, procedural, public, technical)
 location = :                                       ; Hearing location
 presiding_officer = :                              ; Who presided
@@ -167,7 +167,7 @@ presiding_officer = :                              ; Who presided
 {@rate_case}
 ; Intervenors
 {.intervenors[]}
-intervenor_name = !:                               ; Intervenor name
+intervenor_name = :                               ; Intervenor name
 intervenor_type = (advocacy, commercial, consumer, government, industrial)
 intervention_date = date                           ; Intervention date
 position = :                                       ; Position on case
@@ -198,9 +198,9 @@ appeal_status = (dismissed, pending, remanded, upheld)
 
 {@eia_form_861}
 ; Required fields first
-reporting_year = !##:(2000..)                      ; Reporting year
-utility_name = !:                                  ; Utility name
-utility_id = !##                                   ; EIA utility ID
+reporting_year = ##:(2000..)                      ; Reporting year
+utility_name = :                                  ; Utility name
+utility_id = ##                                   ; EIA utility ID
 respondent_type = (cooperative, iou, municipal, political_subdivision, retail_power_marketer)
 
 ; Sales and revenue
@@ -261,9 +261,9 @@ customers_monitored = ##:(0..)                     ; Customers in sample
 
 {@eia_form_923}
 ; Required fields first
-reporting_year = !##:(2000..)                      ; Reporting year
-plant_name = !:                                    ; Plant name
-plant_id = !##                                     ; EIA plant ID
+reporting_year = ##:(2000..)                      ; Reporting year
+plant_name = :                                    ; Plant name
+plant_id = ##                                     ; EIA plant ID
 operator_name = :                                  ; Operating company
 operator_id = ##                                   ; EIA operator ID
 
@@ -298,8 +298,8 @@ mercury_pounds = #:(0..)                           ; Mercury emissions
 
 {@reliability_metrics}
 ; Required fields first
-utility_name = !:                                  ; Utility name
-reporting_year = !##:(2000..)                      ; Reporting year
+utility_name = :                                  ; Utility name
+reporting_year = ##:(2000..)                      ; Reporting year
 reporting_month = ##:(1..12)                       ; Reporting month if monthly
 
 ; SAIDI - System Average Interruption Duration Index
@@ -322,7 +322,7 @@ caidi_without_meds = #:(0..)                       ; CAIDI without major events
 maifi_interruptions = #:(0..)                      ; MAIFI count
 
 ; Customer metrics
-customers_monitored = !##:(1..)                    ; Customers in sample
+customers_monitored = ##:(1..)                    ; Customers in sample
 total_customers = ##:(1..)                         ; Total customer count
 customer_interruptions = ##:(0..)                  ; Total interruptions
 customer_minutes_interrupted = #:(0..)             ; Total minutes
@@ -339,10 +339,10 @@ med_threshold_minutes = #:(0..)                    ; MED threshold
 
 {@service_quality}
 ; Required fields first
-utility_name = !:                                  ; Utility name
-reporting_period = !:                              ; Period description
-period_start = !date                               ; Period start
-period_end = !date                                 ; Period end
+utility_name = :                                  ; Utility name
+reporting_period = :                              ; Period description
+period_start = date                               ; Period start
+period_end = date                                 ; Period end
 
 ; Customer service
 {.customer_service}
@@ -388,15 +388,15 @@ survey_response_count = ##:(0..)                   ; Survey responses
 
 {@affiliate_transaction}
 ; Required fields first
-transaction_id = !:                                ; Transaction identifier
-transaction_date = !date                           ; Transaction date
-utility_name = !:                                  ; Reporting utility
-affiliate_name = !:                                ; Affiliate entity
+transaction_id = :                                ; Transaction identifier
+transaction_date = date                           ; Transaction date
+utility_name = :                                  ; Reporting utility
+affiliate_name = :                                ; Affiliate entity
 transaction_type = (expense, purchase, revenue, sale, service)
 
 ; Transaction details
-description = !:                                   ; Description
-amount = !#$                                       ; Transaction amount
+description = :                                   ; Description
+amount = #$                                       ; Transaction amount
 service_category = :                               ; Service category
 ferc_account = :                                   ; FERC account code
 
@@ -424,9 +424,9 @@ ferc_form = (ferc_1, ferc_2, ferc_3)               ; FERC form
 
 {@environmental_compliance}
 ; Required fields first
-facility_name = !:                                 ; Facility name
+facility_name = :                                 ; Facility name
 facility_id = :                                    ; Facility identifier
-reporting_year = !##:(2000..)                      ; Reporting year
+reporting_year = ##:(2000..)                      ; Reporting year
 compliance_program = (clean_air_act, clean_water_act, rcra, renewable_portfolio, state_program)
 
 ; Emissions reporting

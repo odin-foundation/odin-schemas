@@ -217,7 +217,7 @@ purchase_type = (cash, financed, gifted, inherited, lease) ; Method of purchase
 {@watercraft.lienholders[]}
 id = :                                       ; Lienholder ID
 sequence = ##:(1..)                          ; Sequence number
-name = !:                                    ; Lienholder name
+name = :                                    ; Lienholder name
 address = @address                           ; Lienholder address
 account_number = *:                          ; Account number
 loan_amount = #$:(0..)                       ; Loan amount
@@ -382,9 +382,9 @@ sequence = ##:(1..)                               ; Operator sequence number
 ; Identity
 ; ───────────────────────────────────────────────────────────────────────────────
 {.name}
-first = !:                                        ; First name
+first = :                                        ; First name
 middle = :                                        ; Middle name
-last = !:                                         ; Last name
+last = :                                         ; Last name
 
 {@operator}
 
@@ -646,7 +646,7 @@ premium_total = #$:(0..)                          ; Total additional coverages p
 
 {@watercraft_policy}
 id = :                                            ; Policy identifier
-number = !:                                       ; Policy number
+number = :                                       ; Policy number
 quote_number = :                                  ; Quote number
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -666,9 +666,9 @@ type = (
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
 {.term}
-effective_date = !date                            ; Policy effective date
+effective_date = date                            ; Policy effective date
 effective_time = time                             ; Policy effective time
-expiration_date = !date                           ; Policy expiration date
+expiration_date = date                           ; Policy expiration date
 expiration_time = time                            ; Policy expiration time
 months = ##:(1..)                                 ; Policy term length in months
 type = (annual, monthly, seasonal, semi_annual)   ; Policy term type
@@ -679,7 +679,7 @@ type = (annual, monthly, seasonal, semi_annual)   ; Policy term type
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Status
 ; ───────────────────────────────────────────────────────────────────────────────
-status = !(
+status = (
     active,
     application,
     bound,
@@ -697,7 +697,7 @@ status_reason = :                                 ; Reason for status
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Jurisdiction
 ; ───────────────────────────────────────────────────────────────────────────────
-state_province = !:(2)                            ; State or province code
+state_province = :(2)                            ; State or province code
 territory = :                                     ; Insurance territory code
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -712,7 +712,7 @@ endorsement_count = ##:(0..)                      ; Number of endorsements
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Timestamps
 ; ───────────────────────────────────────────────────────────────────────────────
-created = !timestamp                              ; Policy creation timestamp
+created = timestamp                              ; Policy creation timestamp
 created_by = :                                    ; User who created policy
 modified = timestamp                              ; Last modification timestamp
 modified_by = :                                   ; User who last modified policy

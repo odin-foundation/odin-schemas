@@ -58,16 +58,16 @@ changelog[0].rationale = "Comprehensive behavioral health coverage with parity c
 
 {@bh_plan}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-plan_name = !:                               ; Plan name
-effective_date = !date                       ; Plan effective date
-expiration_date = !date                      ; Plan expiration date
+plan_id = :                                 ; Plan identifier
+plan_name = :                               ; Plan name
+effective_date = date                       ; Plan effective date
+expiration_date = date                      ; Plan expiration date
 
 ; Invariants
 :invariant expiration_date > effective_date
 
 ; Plan type
-plan_type = !(carve_in, carve_out, integrated)
+plan_type = (carve_in, carve_out, integrated)
 funding_type = (fully_insured, level_funded, self_funded)
 payer_type = (commercial, exchange, medicaid, medicare_advantage, self_funded)
 
@@ -142,8 +142,8 @@ standards_same_as_ms = ?                     ; UM standards match M/S
 
 {@bh_mental_health}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-service_type = !(group_therapy, individual_therapy, inpatient, intensive_outpatient, partial_hospitalization, psychiatric_eval, psychological_testing, residential)
+plan_id = :                                 ; Plan identifier
+service_type = (group_therapy, individual_therapy, inpatient, intensive_outpatient, partial_hospitalization, psychiatric_eval, psychological_testing, residential)
 
 ; ---------------------------------------------------------------------------
 ; Outpatient Services
@@ -247,8 +247,8 @@ peer_support = ?                             ; Peer support specialist
 
 {@bh_sud}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-asam_level = !(level_0_5, level_1, level_2_1, level_2_5, level_3_1, level_3_3, level_3_5, level_3_7, level_4, otp)
+plan_id = :                                 ; Plan identifier
+asam_level = (level_0_5, level_1, level_2_1, level_2_5, level_3_1, level_3_3, level_3_5, level_3_7, level_4, otp)
 
 ; ASAM Level descriptions:
 ; 0.5 = Early Intervention
@@ -347,8 +347,8 @@ prior_auth_required = ?:if covered = true    ; PA required
 
 {@bh_aba}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-covered = !?                                 ; ABA therapy covered
+plan_id = :                                 ; Plan identifier
+covered = ?                                 ; ABA therapy covered
 
 ; ---------------------------------------------------------------------------
 ; Coverage Details
@@ -428,8 +428,8 @@ mandate_age_limit = ##:(0..26):if state_mandate_applies = true
 
 {@bh_crisis}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-service_type = !(crisis_line, crisis_stabilization, mobile_crisis, peer_respite, psychiatric_emergency, respite_care, warm_line)
+plan_id = :                                 ; Plan identifier
+service_type = (crisis_line, crisis_stabilization, mobile_crisis, peer_respite, psychiatric_emergency, respite_care, warm_line)
 
 ; ---------------------------------------------------------------------------
 ; Crisis Line Services (988)
@@ -502,8 +502,8 @@ prior_auth_required = ?:if covered = true    ; PA required
 
 {@bh_telehealth}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-covered = !?                                 ; Telehealth BH covered
+plan_id = :                                 ; Plan identifier
+covered = ?                                 ; Telehealth BH covered
 
 ; ---------------------------------------------------------------------------
 ; Service Coverage
@@ -587,9 +587,9 @@ workplace_as_originating = ?:if covered = true
 
 {@bh_parity}
 ; Required fields first
-plan_id = !:                                 ; Plan identifier
-analysis_date = !date                        ; Analysis date
-compliant = !?                               ; Overall parity compliant
+plan_id = :                                 ; Plan identifier
+analysis_date = date                        ; Analysis date
+compliant = ?                               ; Overall parity compliant
 
 ; ---------------------------------------------------------------------------
 ; Plan Classification
@@ -697,11 +697,11 @@ completion_date = date:if completed = true   ; Completion date
 
 {@bh_claim}
 ; Required fields first
-claim_id = !:                                ; Claim identifier
-service_date = !date                         ; Date of service
-member_id = !*:                              ; Member identifier
-provider_npi = !:/^\d{10}$/                  ; Rendering provider NPI
-service_category = !(aba, crisis, inpatient, iop, mat, outpatient, php, residential, sud, telehealth, testing)
+claim_id = :                                ; Claim identifier
+service_date = date                         ; Date of service
+member_id = *:                              ; Member identifier
+provider_npi = :/^\d{10}$/                  ; Rendering provider NPI
+service_category = (aba, crisis, inpatient, iop, mat, outpatient, php, residential, sud, telehealth, testing)
 
 ; Patient information
 {.patient}

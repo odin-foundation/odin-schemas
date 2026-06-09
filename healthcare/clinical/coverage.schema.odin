@@ -43,14 +43,14 @@ changelog[0].rationale = "Coverage resource derived from FHIR R4/R5 specificatio
 
 {@coverage}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Coverage.identifier
 identifiers[] = @fhir.identifier              ; Business identifiers (member ID, group number)
 
 ; Status - FHIR: Coverage.status (required)
-status = !(active, cancelled, draft, entered_in_error)
+status = (active, cancelled, draft, entered_in_error)
 
 ; Type - FHIR: Coverage.type
 type = @fhir.codeable_concept                 ; Coverage category (medical, dental, vision)
@@ -65,7 +65,7 @@ subscriber = @fhir.reference                  ; Subscriber to policy
 subscriber_id = :                             ; Subscriber ID at insurer
 
 ; Beneficiary - FHIR: Coverage.beneficiary (required)
-beneficiary = !@fhir.reference                ; Plan beneficiary (patient)
+beneficiary = @fhir.reference                ; Plan beneficiary (patient)
 
 ; Dependent - FHIR: Coverage.dependent
 dependent = :                                 ; Dependent number
@@ -103,8 +103,8 @@ contracts[] = @fhir.reference                 ; Contract details
 ; Classification structure (group, plan, class, subclass, etc.)
 
 {@coverage_class}
-type = !@fhir.codeable_concept                ; Type of class (group, plan, etc.)
-value = !:                                    ; Value of the classification
+type = @fhir.codeable_concept                ; Type of class (group, plan, etc.)
+value = :                                    ; Value of the classification
 name = :                                      ; Human readable description
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -127,6 +127,6 @@ exceptions[] = @coverage_cost_exception       ; Exceptions to cost
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@coverage_cost_exception}
-type = !@fhir.codeable_concept                ; Exception category
+type = @fhir.codeable_concept                ; Exception category
 period = @fhir.period                         ; Exception timeframe
 

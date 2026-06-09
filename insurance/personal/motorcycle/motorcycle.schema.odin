@@ -45,7 +45,7 @@ changelog[0].rationale = "Personal lines coverage for motorcycles and powersport
 ; Standard motorcycle and powersports classifications.
 
 {@mc_vehicle_type}
-category = !(
+category = (
     atv,                                      ; All-terrain vehicle
     cruiser,                                  ; Cruiser motorcycle
     dirt_bike,                                ; Off-road motorcycle
@@ -74,11 +74,11 @@ wheel_count = ##:(2..4)                       ; Number of wheels
 
 {@mc_vehicle}
 ; Required fields first
-make = !:                                     ; Manufacturer
-model = !:                                    ; Model name
-model_year = !##:(1900..2100)                 ; Model year
-vehicle_type = !@mc_vehicle_type              ; Vehicle classification
-vin = !*:/^[A-HJ-NPR-Z0-9]{17}$/              ; Vehicle identification number
+make = :                                     ; Manufacturer
+model = :                                    ; Model name
+model_year = ##:(1900..2100)                 ; Model year
+vehicle_type = @mc_vehicle_type              ; Vehicle classification
+vin = *:/^[A-HJ-NPR-Z0-9]{17}$/              ; Vehicle identification number
 
 ; Optional fields
 abs_brakes = ?                                ; Has ABS brakes
@@ -156,7 +156,7 @@ seating_capacity = ##:if vehicle_type.category = utv
 
 {@mc_usage}
 ; Required fields first
-primary_use = !(
+primary_use = (
     business,                                 ; Business use
     commuting,                                ; Daily commute
     competition,                              ; Racing/competition
@@ -184,9 +184,9 @@ track_days = ?                                ; Track day participation
 
 {@mc_rider}
 ; Required fields first
-date_of_birth = !*date                        ; Rider DOB
-name = !@person_name                          ; Rider name
-relationship = !(
+date_of_birth = *date                        ; Rider DOB
+name = @person_name                          ; Rider name
+relationship = (
     child,                                    ; Child of insured
     domestic_partner,                         ; Domestic partner
     employee,                                 ; Employee
@@ -246,9 +246,9 @@ suspended_revoked = ?                         ; License issues
 
 {@mc_liability}
 ; Required fields first
-bodily_injury_per_accident = !#$:(0..)        ; BI per accident limit
-bodily_injury_per_person = !#$:(0..)          ; BI per person limit
-property_damage = !#$:(0..)                   ; PD limit
+bodily_injury_per_accident = #$:(0..)        ; BI per accident limit
+bodily_injury_per_person = #$:(0..)          ; BI per person limit
+property_damage = #$:(0..)                   ; PD limit
 
 ; Optional fields
 combined_single_limit = #$:(0..)              ; CSL if used
@@ -286,7 +286,7 @@ passenger_medical = ?                         ; Passengers covered
 
 {@mc_physical_damage}
 ; Required fields first
-coverage_type = !(collision, comprehensive)   ; Coverage type
+coverage_type = (collision, comprehensive)   ; Coverage type
 
 ; Optional fields
 actual_cash_value = #$:(0..)                  ; ACV
@@ -329,8 +329,8 @@ safety_equipment = ?                          ; Guards, bars
 ; ---------------------------------------------------------------------------
 {.scheduled_items[]}
 accessory_type = :                            ; Type of accessory
-description = !:                              ; Description
-value = !#$:(0..)                             ; Accessory value
+description = :                              ; Description
+value = #$:(0..)                             ; Accessory value
 
 {@mc_accessory_coverage}
 
@@ -413,7 +413,7 @@ liability = ?                                 ; Trailer liability
 
 {@mc_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total annual premium
+total_premium = #$:(0..)                     ; Total annual premium
 
 ; Optional fields
 accessory_premium = #$:(0..)                  ; Accessory coverage
@@ -457,8 +457,8 @@ transfer = ?                                  ; Transfer discount
 
 {@mc_prior_claim}
 ; Required fields first
-claim_date = !date                            ; Date of loss
-claim_type = !(
+claim_date = date                            ; Date of loss
+claim_type = (
     collision,
     comprehensive,
     liability_bi,
@@ -502,8 +502,8 @@ unlicensed_rider = ?                          ; Unlicensed rider
 
 {@mc_endorsement}
 ; Required fields first
-effective_date = !date                        ; Effective date
-endorsement_type = !(
+effective_date = date                        ; Effective date
+endorsement_type = (
     accessory_coverage,                       ; Custom parts/accessories
     agreed_value,                             ; Agreed value
     laid_up,                                  ; Seasonal storage
@@ -529,12 +529,12 @@ premium = #$:(0..)                            ; Endorsement premium
 
 {@motorcycle_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@mc_liability                    ; Liability coverage
-policy_number = !:                            ; Policy number
-riders[] = !@mc_rider                         ; Covered riders
-vehicle = !@mc_vehicle                        ; Covered motorcycle
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @mc_liability                    ; Liability coverage
+policy_number = :                            ; Policy number
+riders[] = @mc_rider                         ; Covered riders
+vehicle = @mc_vehicle                        ; Covered motorcycle
 
 ; Invariants
 :invariant expiration_date > effective_date

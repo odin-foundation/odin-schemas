@@ -53,10 +53,10 @@ changelog[0].rationale = "Commercial docs, certificates, DG, export control stru
 
 {@commercial_invoice_line}
 ; Required fields first
-line_number = !##:(1..)                              ; Line number
-description = !:                                     ; Item description
-quantity = !#:(0..)                                  ; Quantity
-unit_price = !#$:(0..)                               ; Unit price
+line_number = ##:(1..)                              ; Line number
+description = :                                     ; Item description
+quantity = #:(0..)                                  ; Quantity
+unit_price = #$:(0..)                               ; Unit price
 
 ; Optional fields
 hs_code = :(6..10)                                   ; Harmonized System code
@@ -78,19 +78,19 @@ currency = :(3) "USD"                                ; Currency code
 
 {@commercial_invoice}
 ; Required fields first
-invoice_number = !:                                  ; Invoice number
-invoice_date = !date                                 ; Invoice date
+invoice_number = :                                  ; Invoice number
+invoice_date = date                                 ; Invoice date
 
 ; Seller/Exporter
-seller_name = !:                                     ; Seller name
-seller_address = !@types.address                     ; Seller address
+seller_name = :                                     ; Seller name
+seller_address = @types.address                     ; Seller address
 seller_tax_id = :                                    ; Seller tax ID/VAT number
 seller_phone = *@types.phone                         ; Seller phone
 seller_email = *@types.email                         ; Seller email
 
 ; Buyer/Importer
-buyer_name = !:                                      ; Buyer name
-buyer_address = !@types.address                      ; Buyer address
+buyer_name = :                                      ; Buyer name
+buyer_address = @types.address                      ; Buyer address
 buyer_tax_id = :                                     ; Buyer tax ID/VAT number
 buyer_phone = *@types.phone                          ; Buyer phone
 buyer_email = *@types.email                          ; Buyer email
@@ -129,14 +129,14 @@ line_items[] = @commercial_invoice_line              ; Invoice line items
 
 ; Invoice totals
 {.totals}
-subtotal = !#$:(0..)                                 ; Subtotal
+subtotal = #$:(0..)                                 ; Subtotal
 freight_charges = #$                                 ; Freight charges
 insurance_charges = #$                               ; Insurance charges
 other_charges = #$                                   ; Other charges
 discount = #$                                        ; Discount amount
 tax = #$                                             ; Tax amount
-total = !#$:(0..)                                    ; Invoice total
-currency = !:(3)                                     ; Currency code
+total = #$:(0..)                                    ; Invoice total
+currency = :(3)                                     ; Currency code
 exchange_rate = #:(0..)                              ; Exchange rate (if applicable)
 
 {@commercial_invoice}
@@ -170,9 +170,9 @@ signature_place = :                                  ; Place of signature
 
 {@packing_list_line}
 ; Required fields first
-line_number = !##:(1..)                              ; Line number
-description = !:                                     ; Item description
-quantity = !#:(0..)                                  ; Quantity
+line_number = ##:(1..)                              ; Line number
+description = :                                     ; Item description
+quantity = #:(0..)                                  ; Quantity
 unit_of_measure = :                                  ; Unit of measure
 
 ; Optional fields
@@ -197,8 +197,8 @@ volume_unit = (cbm, cuft)                            ; Volume unit
 
 {@packing_list}
 ; Required fields first
-packing_list_number = !:                             ; Packing list number
-packing_list_date = !date                            ; Packing list date
+packing_list_number = :                             ; Packing list number
+packing_list_date = date                            ; Packing list date
 
 ; References
 invoice_number = :                                   ; Related invoice number
@@ -206,12 +206,12 @@ po_number = :                                        ; Purchase order number
 shipment_id = :                                      ; Shipment identifier
 
 ; Shipper
-shipper_name = !:                                    ; Shipper name
-shipper_address = !@types.address                    ; Shipper address
+shipper_name = :                                    ; Shipper name
+shipper_address = @types.address                    ; Shipper address
 
 ; Consignee
-consignee_name = !:                                  ; Consignee name
-consignee_address = !@types.address                  ; Consignee address
+consignee_name = :                                  ; Consignee name
+consignee_address = @types.address                  ; Consignee address
 
 ; Shipment details
 {.shipment}
@@ -251,20 +251,20 @@ container_marks = :                                  ; Container marks
 
 {@shippers_letter_of_instruction}
 ; Required fields first
-sli_number = !:                                      ; SLI number
-sli_date = !date                                     ; SLI date
+sli_number = :                                      ; SLI number
+sli_date = date                                     ; SLI date
 
 ; Shipper
-shipper_name = !:                                    ; Shipper name
-shipper_address = !@types.address                    ; Shipper address
+shipper_name = :                                    ; Shipper name
+shipper_address = @types.address                    ; Shipper address
 shipper_phone = *@types.phone                        ; Shipper phone
 shipper_email = *@types.email                        ; Shipper email
 shipper_ein = :                                      ; Shipper EIN
 
 ; Consignee
-consignee_name = !:                                  ; Ultimate consignee name
-consignee_address = !@types.address                  ; Ultimate consignee address
-consignee_country = !:(2)                            ; Consignee country
+consignee_name = :                                  ; Ultimate consignee name
+consignee_address = @types.address                  ; Ultimate consignee address
+consignee_country = :(2)                            ; Consignee country
 
 ; Intermediate consignee/Freight forwarder
 forwarding_agent = :                                 ; Forwarding agent name
@@ -283,7 +283,7 @@ method_of_transport = (air, ocean, rail, truck)      ; Method of transport
 
 ; Commodity details
 {.commodities[]}
-description = !:                                     ; Commodity description
+description = :                                     ; Commodity description
 schedule_b_number = :(10)                            ; Schedule B number (export classification)
 eccn = :                                             ; Export Control Classification Number
 quantity = #:(0..)                                   ; Quantity
@@ -326,19 +326,19 @@ signature_date = date                                ; Signature date
 
 {@certificate_of_origin}
 ; Required fields first
-certificate_number = !:                              ; Certificate number
-issue_date = !date                                   ; Issue date
-exporter_name = !:                                   ; Exporter name
-exporter_address = !@types.address                   ; Exporter address
+certificate_number = :                              ; Certificate number
+issue_date = date                                   ; Issue date
+exporter_name = :                                   ; Exporter name
+exporter_address = @types.address                   ; Exporter address
 
 ; Consignee
 consignee_name = :                                   ; Consignee name
 consignee_address = @types.address                   ; Consignee address
 
 ; Commodity
-commodity_description = !:                           ; Description of goods
+commodity_description = :                           ; Description of goods
 hs_code = :(6..10)                                   ; HS code
-country_of_origin = !:(2)                            ; Country of origin
+country_of_origin = :(2)                            ; Country of origin
 invoice_number = :                                   ; Invoice number
 invoice_date = date                                  ; Invoice date
 
@@ -369,16 +369,16 @@ certificate_type = (
 
 {@certificate_of_insurance}
 ; Required fields first
-certificate_number = !:                              ; Certificate number
-issue_date = !date                                   ; Issue date
-policy_number = !:                                   ; Policy number
+certificate_number = :                              ; Certificate number
+issue_date = date                                   ; Issue date
+policy_number = :                                   ; Policy number
 
 ; Insurer
-insurance_company = !:                               ; Insurance company name
+insurance_company = :                               ; Insurance company name
 insurance_company_address = @types.address           ; Insurer address
 
 ; Insured
-insured_name = !:                                    ; Name of insured
+insured_name = :                                    ; Name of insured
 insured_address = @types.address                     ; Insured address
 
 ; Shipment
@@ -394,7 +394,7 @@ invoice_number = :                                   ; Invoice number
 
 ; Coverage
 {.coverage}
-insured_amount = !#$:(0..)                           ; Insured amount
+insured_amount = #$:(0..)                           ; Insured amount
 currency = :(3) "USD"                                ; Currency
 coverage_type = (all_risks, fpa, wpa)                ; Coverage type (Free of Particular Average, With Particular Average)
 deductible = #$:(0..)                                ; Deductible amount
@@ -418,9 +418,9 @@ signature_date = date                                ; Signature date
 
 {@inspection_certificate}
 ; Required fields first
-certificate_number = !:                              ; Certificate number
-issue_date = !date                                   ; Issue date
-inspection_date = !date                              ; Inspection date
+certificate_number = :                              ; Certificate number
+issue_date = date                                   ; Issue date
+inspection_date = date                              ; Inspection date
 inspection_type = (
     pre_shipment,
     quality,
@@ -430,7 +430,7 @@ inspection_type = (
 )
 
 ; Inspected goods
-commodity_description = !:                           ; Description of goods
+commodity_description = :                           ; Description of goods
 quantity = #:(0..)                                   ; Quantity inspected
 invoice_number = :                                   ; Invoice number
 po_number = :                                        ; PO number
@@ -447,7 +447,7 @@ weight_unit = (kg, lb, ton):if inspection_type = weight
 {@inspection_certificate}
 
 ; Inspector
-inspection_company = !:                              ; Inspection company
+inspection_company = :                              ; Inspection company
 inspector_name = :                                   ; Inspector name
 inspector_signature = :                              ; Inspector signature
 inspector_license = :                                ; Inspector license number
@@ -462,14 +462,14 @@ inspection_address = @types.address                  ; Inspection address
 
 {@phytosanitary_certificate}
 ; Required fields first
-certificate_number = !:                              ; Certificate number
-issue_date = !date                                   ; Issue date
-issuing_authority = !:                               ; Issuing authority (NPPO)
-issuing_country = !:(2)                              ; Issuing country
+certificate_number = :                              ; Certificate number
+issue_date = date                                   ; Issue date
+issuing_authority = :                               ; Issuing authority (NPPO)
+issuing_country = :(2)                              ; Issuing country
 
 ; Exporter/Consignor
-exporter_name = !:                                   ; Exporter name
-exporter_address = !@types.address                   ; Exporter address
+exporter_name = :                                   ; Exporter name
+exporter_address = @types.address                   ; Exporter address
 
 ; Consignee
 consignee_name = :                                   ; Consignee name
@@ -477,7 +477,7 @@ consignee_address = @types.address                   ; Consignee address
 
 ; Plant products
 {.products}
-description = !:                                     ; Botanical name and description
+description = :                                     ; Botanical name and description
 quantity = #:(0..)                                   ; Quantity
 country_of_origin = :(2)                             ; Country of origin
 intended_use = :                                     ; Intended use
@@ -527,9 +527,9 @@ official_seal = ^                                    ; Official seal/stamp image
 
 {@dangerous_goods_item}
 ; Required fields first
-un_number = !:(4)                                    ; UN number (4 digits)
-proper_shipping_name = !:                            ; Proper shipping name
-hazard_class = !:                                    ; Primary hazard class
+un_number = :(4)                                    ; UN number (4 digits)
+proper_shipping_name = :                            ; Proper shipping name
+hazard_class = :                                    ; Primary hazard class
 packing_group = (I, II, III)                         ; Packing group
 
 ; Optional fields
@@ -556,20 +556,20 @@ erg_guide_number = :                                 ; ERG guide number
 
 {@dangerous_goods_declaration}
 ; Required fields first
-declaration_number = !:                              ; Declaration number
-declaration_date = !date                             ; Declaration date
+declaration_number = :                              ; Declaration number
+declaration_date = date                             ; Declaration date
 mode = (air, ocean, rail, road)                     ; Mode of transport
 
 ; Shipper
-shipper_name = !:                                    ; Shipper name
-shipper_address = !@types.address                    ; Shipper address
+shipper_name = :                                    ; Shipper name
+shipper_address = @types.address                    ; Shipper address
 shipper_phone = *@types.phone                        ; Shipper phone
-shipper_emergency_contact = !:                       ; 24-hour emergency contact
-shipper_emergency_phone = !*@types.phone             ; Emergency phone
+shipper_emergency_contact = :                       ; 24-hour emergency contact
+shipper_emergency_phone = *@types.phone             ; Emergency phone
 
 ; Consignee
-consignee_name = !:                                  ; Consignee name
-consignee_address = !@types.address                  ; Consignee address
+consignee_name = :                                  ; Consignee name
+consignee_address = @types.address                  ; Consignee address
 
 ; Carrier
 carrier_name = :                                     ; Carrier name
@@ -618,23 +618,23 @@ signature_place = :                                  ; Place of signature
 
 {@aes_filing}
 ; Required fields first
-itn = !:                                             ; Internal Transaction Number
-filing_date = !timestamp                             ; Filing timestamp
+itn = :                                             ; Internal Transaction Number
+filing_date = timestamp                             ; Filing timestamp
 
 ; Filer
-filer_id = !:                                        ; Filer ID (EIN)
+filer_id = :                                        ; Filer ID (EIN)
 filer_type = (exporter, forwarding_agent, usppi)    ; Filer type
 
 ; USPPI (US Principal Party in Interest)
-usppi_name = !:                                      ; USPPI name
-usppi_id = !:                                        ; USPPI EIN
-usppi_address = !@types.address                      ; USPPI address
+usppi_name = :                                      ; USPPI name
+usppi_id = :                                        ; USPPI EIN
+usppi_address = @types.address                      ; USPPI address
 usppi_contact = :                                    ; Contact name
 usppi_phone = *@types.phone                          ; Contact phone
 
 ; Ultimate consignee
-ultimate_consignee_name = !:                         ; Ultimate consignee name
-ultimate_consignee_country = !:(2)                   ; Ultimate consignee country
+ultimate_consignee_name = :                         ; Ultimate consignee name
+ultimate_consignee_country = :(2)                   ; Ultimate consignee country
 ultimate_consignee_address = @types.address          ; Ultimate consignee address
 
 ; Intermediate consignee
@@ -645,8 +645,8 @@ intermediate_consignee_country = :(2)                ; Intermediate consignee co
 {.transport}
 carrier_name = :                                     ; Carrier name
 carrier_id = :(4)                                    ; Carrier SCAC
-port_of_export = !:(5)                               ; US port of export (Schedule D)
-country_of_ultimate_destination = !:(2)              ; Ultimate destination country
+port_of_export = :(5)                               ; US port of export (Schedule D)
+country_of_ultimate_destination = :(2)              ; Ultimate destination country
 foreign_port_of_unlading = :                         ; Foreign port code
 method_of_transport = (air, ocean, rail, truck)     ; Method of transport
 conveyance_name = :                                  ; Vessel/flight name
@@ -658,13 +658,13 @@ export_date = date                                   ; Export date
 ; Commodity lines
 {.commodities[]}
 line_number = ##:(1..)                               ; Line number
-schedule_b_number = !:(10)                           ; Schedule B number
-description = !:                                     ; Commodity description
-quantity = !#:(0..)                                  ; Primary quantity
-unit_of_measure = !:                                 ; Primary unit
+schedule_b_number = :(10)                           ; Schedule B number
+description = :                                     ; Commodity description
+quantity = #:(0..)                                  ; Primary quantity
+unit_of_measure = :                                 ; Primary unit
 secondary_quantity = #:(0..)                         ; Secondary quantity
 secondary_unit = :                                   ; Secondary unit
-value = !#$:(0..)                                    ; Value in USD
+value = #$:(0..)                                    ; Value in USD
 export_license_number = :                            ; Export license number
 license_exception_code = :                           ; License exception code (e.g., LVS, GBS)
 eccn = :                                             ; Export Control Classification Number
@@ -690,19 +690,19 @@ bol_number = :                                       ; BOL number
 
 {@export_license}
 ; Required fields first
-license_number = !*:                                  ; License number
+license_number = *:                                  ; License number
 license_type = (
     BIS,                                             ; Bureau of Industry and Security
     DDTC,                                            ; State Dept DDTC (ITAR)
     OFAC,                                            ; Treasury OFAC
     other
 )
-issue_date = !date                                   ; Issue date
-expiration_date = !date                              ; Expiration date
+issue_date = date                                   ; Issue date
+expiration_date = date                              ; Expiration date
 
 ; Licensee
-licensee_name = !:                                   ; Licensee name
-licensee_address = !@types.address                   ; Licensee address
+licensee_name = :                                   ; Licensee name
+licensee_address = @types.address                   ; Licensee address
 
 ; Export details
 {.export}

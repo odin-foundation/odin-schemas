@@ -41,8 +41,8 @@ number = ##:(1..)                             ; Position on policy
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
 {.name}
-first = !:
-last = !:
+first = :
+last = :
 
 prefix = :
 middle = :
@@ -98,7 +98,7 @@ international_country = :(2..3)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Relationship
 ; ───────────────────────────────────────────────────────────────────────────────
-relation = !(
+relation = (
     child,
     domestic_partner,
     employee,
@@ -252,7 +252,7 @@ sequence = ##
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Violation Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-code = !(
+code = (
     ; Major violations (alcohol/drug related)
     vc-DUI,                                   ; Driving Under Influence
     vc-DWI,                                   ; Driving While Intoxicated
@@ -352,7 +352,7 @@ custom_description = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Violation Details
 ; ───────────────────────────────────────────────────────────────────────────────
-date = !date
+date = date
 conviction_date = date
 convicted = ?
 at_fault = ?
@@ -421,7 +421,7 @@ status = (active, deleted, disputed)
 id = :
 sequence = ##
 
-action_type = !(
+action_type = (
     administrative,
     cancelled,
     denied,
@@ -437,7 +437,7 @@ action_type = !(
     revoked,
     suspended
 )
-action_date = !date
+action_date = date
 reinstatement_date = date
 state_province = :(2)                         ; US state or Canadian province
 reason = :

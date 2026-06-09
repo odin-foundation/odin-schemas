@@ -45,7 +45,7 @@ changelog[0].rationale = "Commercial marine cargo coverage for international tra
 ; Classification of cargo types and commodities.
 
 {@oc_cargo_class}
-classification = !(
+classification = (
     automobiles,                              ; Vehicles and automotive
     break_bulk,                               ; Non-containerized general
     bulk_dry,                                 ; Dry bulk commodities
@@ -92,9 +92,9 @@ un_number = ::if classification = hazardous   ; UN dangerous goods number
 
 {@oc_cargo}
 ; Required fields first
-cargo_class = !@oc_cargo_class                ; Cargo classification
-description = !:                              ; Cargo description
-value = !#$:(0..)                             ; Cargo value
+cargo_class = @oc_cargo_class                ; Cargo classification
+description = :                              ; Cargo description
+value = #$:(0..)                             ; Cargo value
 
 ; Optional fields
 cargo_id = :                                  ; Internal identifier
@@ -139,8 +139,8 @@ volume_cbm = #                                ; Volume in cubic meters
 
 {@oc_voyage}
 ; Required fields first
-destination_port = !:                         ; Destination port
-origin_port = !:                              ; Origin port
+destination_port = :                         ; Destination port
+origin_port = :                              ; Origin port
 
 ; Optional fields
 destination_country = :(2..3)                 ; Destination country code
@@ -180,7 +180,7 @@ transit_type = (
 ; Carrying vessel details.
 
 {@oc_vessel}
-vessel_name = !:                              ; Vessel name
+vessel_name = :                              ; Vessel name
 imo_number = :                                ; IMO vessel number
 flag_state = :(2..3)                          ; Flag country
 vessel_type = (
@@ -212,7 +212,7 @@ over_age_vessel = ?                           ; Exceeds age warranty
 
 {@oc_coverage_terms}
 ; Required fields first
-clause_type = !(
+clause_type = (
     fpa,                                      ; Free from particular average
     icc_a,                                    ; Institute Cargo Clauses (A) - All Risk
     icc_b,                                    ; Institute Cargo Clauses (B) - Named Perils
@@ -376,9 +376,9 @@ vermin = ?                                    ; Vermin damage
 
 {@oc_shipment}
 ; Required fields first
-cargo = !@oc_cargo                            ; Cargo details
-declared_value = !#$:(0..)                    ; Declared value
-voyage = !@oc_voyage                          ; Voyage details
+cargo = @oc_cargo                            ; Cargo details
+declared_value = #$:(0..)                    ; Declared value
+voyage = @oc_voyage                          ; Voyage details
 
 ; Optional fields
 bill_of_lading = :                            ; B/L number
@@ -407,7 +407,7 @@ vessel = @oc_vessel                           ; Carrying vessel
 
 {@oc_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 additional_coverage_premium = #$:(0..)        ; Extensions premium
@@ -443,8 +443,8 @@ volume_discount = #                           ; Volume discount
 
 {@oc_claim}
 ; Required fields first
-claim_date = !date                            ; Date of claim
-claim_type = !(
+claim_date = date                            ; Date of claim
+claim_type = (
     contamination,                            ; Contamination
     damage,                                   ; Physical damage
     general_average,                          ; GA contribution
@@ -491,12 +491,12 @@ survey_report = :                             ; Survey reference
 
 {@ocean_cargo_policy}
 ; Required fields first
-coverage_terms = !@oc_coverage_terms          ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-limit_any_one_conveyance = !#$:(0..)          ; Per conveyance limit
-limit_any_one_location = !#$:(0..)            ; Per location limit
-policy_number = !:                            ; Policy number
+coverage_terms = @oc_coverage_terms          ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+limit_any_one_conveyance = #$:(0..)          ; Per conveyance limit
+limit_any_one_location = #$:(0..)            ; Per location limit
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date
@@ -514,7 +514,7 @@ countries_excluded[] = :(2..3)                ; Excluded countries
 declarations[] = @oc_shipment                 ; Shipment declarations
 exclusions = @oc_exclusions                   ; Policy exclusions
 id = :                                        ; Internal identifier
-insured_name = !:                             ; Named insured
+insured_name = :                             ; Named insured
 insured_address = @address                    ; Insured address
 loss_payee = :                                ; Loss payee if any
 policy_form = (

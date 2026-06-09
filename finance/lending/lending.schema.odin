@@ -56,8 +56,8 @@ changelog[0].rationale = "Comprehensive lending coverage across consumer, commer
 
 {@borrower}
 ; Required fields first
-borrower_id = !:                                ; Internal borrower identifier
-borrower_type = !(
+borrower_id = :                                ; Internal borrower identifier
+borrower_type = (
     corporation,                                ; C-Corp or S-Corp
     government,                                 ; Government entity
     individual,                                 ; Natural person
@@ -67,7 +67,7 @@ borrower_type = !(
     sole_proprietor,                            ; DBA/sole proprietorship
     trust                                       ; Trust entity
 )
-name = !:                                       ; Borrower legal name
+name = :                                       ; Borrower legal name
 
 ; Identification
 lei = :format lei                         ; Legal Entity Identifier
@@ -94,8 +94,8 @@ country = :(2) "US"                             ; Country of formation
 credit_scores[] = {@credit_score}               ; Credit scores (Experian, Equifax, TransUnion)
 
 {@credit_score}
-bureau = !(equifax, experian, transunion)       ; Credit bureau
-score = !##:(300..850)                          ; Credit score
+bureau = (equifax, experian, transunion)       ; Credit bureau
+score = ##:(300..850)                          ; Credit score
 model = (fico, fico_sbss, vantage)              ; Scoring model
 score_date = date                               ; Score date
 
@@ -131,9 +131,9 @@ audit_firm = ::if audited = true                ; Auditor name
 guarantors[] = @guarantor                       ; Personal/corporate guarantors
 
 {@guarantor}
-guarantor_id = !:                               ; Guarantor identifier
-guarantor_type = !(corporate, individual)       ; Guarantor type
-name = !:                                       ; Guarantor name
+guarantor_id = :                               ; Guarantor identifier
+guarantor_type = (corporate, individual)       ; Guarantor type
+name = :                                       ; Guarantor name
 relationships[] = (                             ; Relationships (owner AND officer)
     affiliate,
     officer,
@@ -162,8 +162,8 @@ liquid_assets = *#$:(0..)                       ; Liquid assets (confidential)
 
 {@facility}
 ; Required fields first
-facility_id = !:                                ; Internal facility ID
-facility_type = !(
+facility_id = :                                ; Internal facility ID
+facility_type = (
     asset_based,                                ; ABL facility
     bridge,                                     ; Bridge loan
     construction,                               ; Construction loan
@@ -176,11 +176,11 @@ facility_type = !(
     swing_line,                                 ; Swing line
     term_loan                                   ; Term loan
 )
-commitment_amount = !#$:(0..)                   ; Total commitment
-currency = !:(3) "USD"                          ; Facility currency
+commitment_amount = #$:(0..)                   ; Total commitment
+currency = :(3) "USD"                          ; Facility currency
 
 ; Borrower
-borrowers[] = !@borrower                        ; Borrowers (jointly and severally liable)
+borrowers[] = @borrower                        ; Borrowers (jointly and severally liable)
 
 ; Status
 status = (
@@ -215,7 +215,7 @@ accrued_interest = #$:(0..)                     ; Accrued interest
 ; Interest Rate Terms
 ; ---------------------------------------------------------------------------
 {.interest}
-rate_type = !(fixed, floating)                  ; Fixed or floating
+rate_type = (fixed, floating)                  ; Fixed or floating
 base_rate = (
     fed_funds,
     prime,
@@ -331,14 +331,14 @@ covenants[] = @covenant                         ; Financial covenants
 
 {@covenant}
 ; Required fields first
-covenant_id = !:                                ; Covenant identifier
-covenant_type = !(
+covenant_id = :                                ; Covenant identifier
+covenant_type = (
     affirmative,                                ; Must do something
     financial,                                  ; Financial ratio test
     negative,                                   ; Must not do something
     reporting                                   ; Reporting requirement
 )
-name = !:                                       ; Covenant name
+name = :                                       ; Covenant name
 description = :                                 ; Covenant description
 
 ; Financial covenant specifics
@@ -381,8 +381,8 @@ amendment_date = date                           ; Last amendment date
 
 {@collateral}
 ; Required fields first
-collateral_id = !:                              ; Collateral identifier
-collateral_type = !(
+collateral_id = :                              ; Collateral identifier
+collateral_type = (
     accounts_receivable,
     cash,
     deposit_accounts,
@@ -457,9 +457,9 @@ deed_of_trust = ?                               ; DOT state
 title_insurance = ?                             ; Title policy obtained
 
 {@ucc_filing}
-filing_number = !:                              ; UCC filing number
-filing_type = !(amendment, continuation, initial, termination)
-filing_date = !date                             ; Filing date
+filing_number = :                              ; UCC filing number
+filing_type = (amendment, continuation, initial, termination)
+filing_date = date                             ; Filing date
 filing_state = :(2)                             ; Filing jurisdiction
 lapse_date = date                               ; Lapse date (5 years from initial)
 
@@ -475,11 +475,11 @@ lapse_date = date                               ; Lapse date (5 years from initi
 
 ; Reg Z Disclosures
 {.reg_z}
-apr = !#.4                                      ; Annual Percentage Rate
-finance_charge = !#$:(0..)                      ; Total finance charge
-amount_financed = !#$:(0..)                     ; Amount financed
-total_of_payments = !#$:(0..)                   ; Total of payments
-payment_schedule_provided = !?                  ; Payment schedule disclosed
+apr = #.4                                      ; Annual Percentage Rate
+finance_charge = #$:(0..)                      ; Total finance charge
+amount_financed = #$:(0..)                     ; Amount financed
+total_of_payments = #$:(0..)                   ; Total of payments
+payment_schedule_provided = ?                  ; Payment schedule disclosed
 rescission_rights = ?                           ; Right to rescind (3 days)
 rescission_end_date = date:if rescission_rights = true
 
@@ -638,7 +638,7 @@ cross_collateral = ?                            ; Cross-collateralized
 = @facility                                     ; Inherit facility fields
 
 ; Syndication structure
-syndication_type = !(
+syndication_type = (
     bilateral,                                  ; Single lender
     club_deal,                                  ; Small group, direct
     syndicated                                  ; Broadly syndicated
@@ -646,7 +646,7 @@ syndication_type = !(
 
 ; Agent banks
 {.agent_banks}
-administrative_agent = !@fin.financial_institution    ; Admin agent
+administrative_agent = @fin.financial_institution    ; Admin agent
 collateral_agent = @fin.financial_institution         ; Collateral agent
 documentation_agent = @fin.financial_institution      ; Doc agent
 syndication_agent = @fin.financial_institution        ; Syndication agent
@@ -685,10 +685,10 @@ unanimous_matters[] = :                         ; Unanimous consent items
 
 {@lender_participation}
 ; Required fields first
-lender = !@fin.financial_institution            ; Participating lender
-commitment = !#$:(0..)                          ; Commitment amount
-funded = !#$:(0..)                              ; Funded amount
-share_pct = !#:(0..100)                         ; Pro-rata share %
+lender = @fin.financial_institution            ; Participating lender
+commitment = #$:(0..)                          ; Commitment amount
+funded = #$:(0..)                              ; Funded amount
+share_pct = #:(0..100)                         ; Pro-rata share %
 
 ; Roles
 roles[] = (                                     ; Roles (lead_arranger AND bookrunner)
@@ -727,7 +727,7 @@ accrued_interest = #$:(0..)                     ; Accrued interest at trade
 = @facility                                     ; Inherit facility fields
 
 ; ABL structure
-abl_type = !(
+abl_type = (
     accounts_only,                              ; AR only
     accounts_and_inventory,                     ; AR + Inventory
     full_abl                                    ; AR + Inv + Equipment
@@ -833,7 +833,7 @@ deposit_account_control = ?                     ; DACA in place
 = @facility                                     ; Inherit facility fields
 
 ; SBA program
-sba_program = !(
+sba_program = (
     community_advantage,                        ; CA program
     disaster,                                   ; SBA disaster loan
     express,                                    ; SBA Express (up to $500K)
@@ -922,10 +922,10 @@ decline_reasons[] = :                           ; Decline reasons (credit, colla
 
 {@loan_payment}
 ; Required fields first
-payment_id = !:                                 ; Payment identifier
-facility_id = !:                                ; Facility reference
-payment_date = !date                            ; Payment date
-total_amount = !#$:(0..)                        ; Total payment amount
+payment_id = :                                 ; Payment identifier
+facility_id = :                                ; Facility reference
+payment_date = date                            ; Payment date
+total_amount = #$:(0..)                        ; Total payment amount
 
 ; Allocation
 principal = #$:(0..)                            ; Principal portion
@@ -974,10 +974,10 @@ next_payment_due = date                         ; Next due date
 
 {@loan_draw}
 ; Required fields first
-draw_id = !:                                    ; Draw identifier
-facility_id = !:                                ; Facility reference
-request_date = !date                            ; Request date
-amount = !#$:(0..)                              ; Draw amount
+draw_id = :                                    ; Draw identifier
+facility_id = :                                ; Facility reference
+request_date = date                            ; Request date
+amount = #$:(0..)                              ; Draw amount
 
 ; Draw details
 draw_type = (
@@ -1018,7 +1018,7 @@ wire_reference = :                              ; Wire reference
 ; Loan-level regulatory reporting fields.
 
 {@loan_regulatory}
-facility_id = !:                                ; Facility reference
+facility_id = :                                ; Facility reference
 
 ; FFIEC Call Report
 {.call_report}

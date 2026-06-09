@@ -175,8 +175,8 @@ notes[] = @account_note                           ; Account notes
 
 {@authorized_user}
 ; Required fields
-user_id = !:                                      ; Unique user identifier
-name = !@types.person_name                        ; User name
+user_id = :                                      ; Unique user identifier
+name = @types.person_name                        ; User name
 relationship = (account_holder, authorized_representative, employee, other, spouse)
 
 ; Optional fields
@@ -197,10 +197,10 @@ pin = *:                                          ; Security PIN (confidential)
 
 {@contact_record}
 ; Required fields
-contact_id = !:                                   ; Unique contact identifier
-contact_date = !timestamp                         ; Date and time of contact
+contact_id = :                                   ; Unique contact identifier
+contact_date = timestamp                         ; Date and time of contact
 contact_method = (chat, email, in_person, phone, social_media, web_form)
-contact_reason = !:                               ; Reason for contact
+contact_reason = :                               ; Reason for contact
 
 ; Optional fields
 contact_type = (complaint, inquiry, service_request, support)
@@ -219,9 +219,9 @@ notes = :                                         ; Contact notes
 
 {@account_note}
 ; Required fields
-note_id = !:                                      ; Unique note identifier
-note_date = !timestamp                            ; Note timestamp
-note_text = !:                                    ; Note content
+note_id = :                                      ; Unique note identifier
+note_date = timestamp                            ; Note timestamp
+note_text = :                                    ; Note content
 
 ; Optional fields
 note_type = (billing, collection, credit, general, service, technical)

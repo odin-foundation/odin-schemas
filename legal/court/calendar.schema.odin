@@ -45,9 +45,9 @@ changelog[0].rationale = "Comprehensive calendar and deadline tracking"
 
 {@legal_calendar_event}
 ; Required fields first
-event_date = !date                                ; Event date
-event_type = !(appointment, call, conference, court_date, deadline, deposition, filing, hearing, meeting, other, reminder, trial)
-title = !:                                        ; Event title
+event_date = date                                ; Event date
+event_type = (appointment, call, conference, court_date, deadline, deposition, filing, hearing, meeting, other, reminder, trial)
+title = :                                        ; Event title
 
 ; Event identification
 event_id = :                                      ; Unique event identifier
@@ -144,7 +144,7 @@ completed_notes = ::if status = completed         ; Completion notes
 = @legal_calendar_event                           ; Inherits calendar event
 
 ; Court-specific fields
-court_date_type = !(arraignment, calendar_call, hearing, oral_argument, pretrial, scheduling, settlement, status, trial)
+court_date_type = (arraignment, calendar_call, hearing, oral_argument, pretrial, scheduling, settlement, status, trial)
 hearing_ref = @court_hearing                      ; Reference to hearing
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -215,8 +215,8 @@ next_court_date = date                            ; Next scheduled date
 = @legal_calendar_event                           ; Inherits calendar event
 
 ; Required fields
-deponent_name = !:                                ; Deponent name
-deposition_type = !(expert, fact_witness, party, rule_30b6)
+deponent_name = :                                ; Deponent name
+deposition_type = (expert, fact_witness, party, rule_30b6)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Deposition Details
@@ -302,7 +302,7 @@ key_testimony = :                                 ; Summary of key testimony
 = @legal_calendar_event                           ; Inherits calendar event
 
 ; Required fields
-filing_type = !(answer, appeal, brief, complaint, discovery_response, motion, notice, objection, petition, reply, response)
+filing_type = (answer, appeal, brief, complaint, discovery_response, motion, notice, objection, petition, reply, response)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Deadline Calculation
@@ -365,7 +365,7 @@ risk_level = (critical, high, normal, routine)    ; Deadline importance
 = @legal_calendar_event                           ; Inherits calendar event
 
 ; Meeting type
-meeting_type = !(case_update, initial_consultation, preparation, settlement_discussion, strategy)
+meeting_type = (case_update, initial_consultation, preparation, settlement_discussion, strategy)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Client Attendees

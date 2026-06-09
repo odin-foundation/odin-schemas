@@ -32,13 +32,13 @@ changelog[0].rationale = "Standard P&C insurance industry data patterns"
 = @person                                    ; Inherits person fields (name, ssn, license, contact)
 
 ; Required fields first
-date = !date                                 ; Exclusion date
-number = !##:(1..)                           ; Driver sequence number
+date = date                                 ; Exclusion date
+number = ##:(1..)                           ; Driver sequence number
 
 ; Override required name fields
 {.name}
-first = !:                                   ; First name (required)
-last = !:                                    ; Last name (required)
+first = :                                   ; First name (required)
+last = :                                    ; Last name (required)
 
 {@excluded_driver}
 
@@ -93,7 +93,7 @@ removed_date = date
 {@loss_history}
 id = :
 sequence = ##:(1..)
-date = !date
+date = date
 reported_date = date
 ; Source
 source = (application, clue, internal, mvr, other, prior_carrier)

@@ -41,48 +41,48 @@ changelog[0].rationale = "FX types derived from ISO 20022 fxtr messages"
 
 {@trade}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Trade identification
-trade_id = !:                                 ; Unique trade identifier
+trade_id = :                                 ; Unique trade identifier
 related_trade_id = :                          ; Related trade reference
 common_trade_id = :                           ; Common reference (both parties)
 
 ; Trade type
-trade_type = !(fxfwd, fxndf, fxopt, fxspot, fxswap)
-side = !(buy, sell)                           ; Trade side
+trade_type = (fxfwd, fxndf, fxopt, fxspot, fxswap)
+side = (buy, sell)                           ; Trade side
 
 ; Currencies and amounts
 {.traded_currency}
-currency = !:(3)                              ; Traded currency (ISO 4217)
-amount = !#$                                  ; Amount in traded currency
-direction = !(rcvd, deli)                     ; Receive or deliver
+currency = :(3)                              ; Traded currency (ISO 4217)
+amount = #$                                  ; Amount in traded currency
+direction = (rcvd, deli)                     ; Receive or deliver
 
 {@trade}
 
 {.counter_currency}
-currency = !:(3)                              ; Counter currency (ISO 4217)
-amount = !#$                                  ; Amount in counter currency
-direction = !(rcvd, deli)                     ; Receive or deliver
+currency = :(3)                              ; Counter currency (ISO 4217)
+amount = #$                                  ; Amount in counter currency
+direction = (rcvd, deli)                     ; Receive or deliver
 
 {@trade}
 
 ; Exchange rate
 {.rate}
-exchange_rate = !#.8                          ; Agreed exchange rate
+exchange_rate = #.8                          ; Agreed exchange rate
 forward_points = #.6                          ; Forward points (for forwards)
 spot_rate = #.8                               ; Underlying spot rate
 
 {@trade}
 
 ; Dates
-trade_date = !date                            ; Trade date
-value_date = !date                            ; Settlement/value date
+trade_date = date                            ; Trade date
+value_date = date                            ; Settlement/value date
 fixing_date = date                            ; Rate fixing date (NDF)
 
 ; Parties
-trading_party = !@fin.party                   ; Trading party
-counterparty = !@fin.party                    ; Counterparty
+trading_party = @fin.party                   ; Trading party
+counterparty = @fin.party                    ; Counterparty
 
 ; Settlement
 {.settlement}
@@ -109,38 +109,38 @@ settlement_amount = #$                        ; Net settlement amount
 
 {@swap}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Swap identification
-swap_id = !:                                  ; Unique swap identifier
+swap_id = :                                  ; Unique swap identifier
 
 ; Parties
-trading_party = !@fin.party                   ; Trading party
-counterparty = !@fin.party                    ; Counterparty
+trading_party = @fin.party                   ; Trading party
+counterparty = @fin.party                    ; Counterparty
 
 ; Near leg
 {.near_leg}
-trade_id = !:                                 ; Near leg trade ID
-value_date = !date                            ; Near leg value date
-exchange_rate = !#.8                          ; Near leg rate
+trade_id = :                                 ; Near leg trade ID
+value_date = date                            ; Near leg value date
+exchange_rate = #.8                          ; Near leg rate
 traded_currency = :(3)                        ; Traded currency
 traded_amount = #$                            ; Traded amount
 counter_currency = :(3)                       ; Counter currency
 counter_amount = #$                           ; Counter amount
-direction = !(buy, sell)                      ; Buy or sell traded currency
+direction = (buy, sell)                      ; Buy or sell traded currency
 
 {@swap}
 
 ; Far leg
 {.far_leg}
-trade_id = !:                                 ; Far leg trade ID
-value_date = !date                            ; Far leg value date
-exchange_rate = !#.8                          ; Far leg rate
+trade_id = :                                 ; Far leg trade ID
+value_date = date                            ; Far leg value date
+exchange_rate = #.8                          ; Far leg rate
 traded_currency = :(3)                        ; Traded currency
 traded_amount = #$                            ; Traded amount
 counter_currency = :(3)                       ; Counter currency
 counter_amount = #$                           ; Counter amount
-direction = !(buy, sell)                      ; Buy or sell traded currency
+direction = (buy, sell)                      ; Buy or sell traded currency
 forward_points = #.6                          ; Forward points
 
 {@swap}
@@ -152,37 +152,37 @@ forward_points = #.6                          ; Forward points
 
 {@option}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Option identification
-option_id = !:                                ; Unique option identifier
+option_id = :                                ; Unique option identifier
 
 ; Option type
-option_type = !(call, put)                    ; Call or put
-option_style = !(amer, euro)                  ; American or European
-side = !(buy, sell)                           ; Buy or sell option
+option_type = (call, put)                    ; Call or put
+option_style = (amer, euro)                  ; American or European
+side = (buy, sell)                           ; Buy or sell option
 
 ; Underlying currencies
-call_currency = !:(3)                         ; Call currency
-call_amount = !#$                             ; Call amount
-put_currency = !:(3)                          ; Put currency
-put_amount = !#$                              ; Put amount
+call_currency = :(3)                         ; Call currency
+call_amount = #$                             ; Call amount
+put_currency = :(3)                          ; Put currency
+put_amount = #$                              ; Put amount
 
 ; Strike
-strike_rate = !#.8                            ; Strike exchange rate
+strike_rate = #.8                            ; Strike exchange rate
 
 ; Premium
 {.premium}
-amount = !#$                                  ; Premium amount
-currency = !:(3)                              ; Premium currency
-payment_date = !date                          ; Premium payment date
-payer = !(buyer, seller)                      ; Premium payer
+amount = #$                                  ; Premium amount
+currency = :(3)                              ; Premium currency
+payment_date = date                          ; Premium payment date
+payer = (buyer, seller)                      ; Premium payer
 
 {@option}
 
 ; Dates
-trade_date = !date                            ; Trade date
-expiry_date = !date                           ; Expiry date
+trade_date = date                            ; Trade date
+expiry_date = date                           ; Expiry date
 expiry_time = time                            ; Expiry time
 delivery_date = date                          ; Delivery date (if exercised)
 
@@ -195,8 +195,8 @@ settlement_type = (cash, physical)            ; Settlement method
 {@option}
 
 ; Parties
-buyer = !@fin.party                           ; Option buyer
-seller = !@fin.party                          ; Option seller (writer)
+buyer = @fin.party                           ; Option buyer
+seller = @fin.party                          ; Option seller (writer)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; FX ORDER
@@ -205,32 +205,32 @@ seller = !@fin.party                          ; Option seller (writer)
 
 {@order}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Order identification
-order_id = !:                                 ; Unique order identifier
+order_id = :                                 ; Unique order identifier
 
 ; Order type
-order_type = !(limit, market, stop, stop_limit)
-side = !(buy, sell)                           ; Buy or sell traded currency
+order_type = (limit, market, stop, stop_limit)
+side = (buy, sell)                           ; Buy or sell traded currency
 time_in_force = (day, fok, gtc, gtd, ioc)     ; Time in force
 
 ; Currencies and amounts
-traded_currency = !:(3)                       ; Currency to buy/sell
-traded_amount = !#$                           ; Amount
-counter_currency = !:(3)                      ; Counter currency
+traded_currency = :(3)                       ; Currency to buy/sell
+traded_amount = #$                           ; Amount
+counter_currency = :(3)                      ; Counter currency
 
 ; Price
 limit_rate = #.8                              ; Limit rate (if limit order)
 stop_rate = #.8                               ; Stop rate (if stop order)
 
 ; Dates
-order_date = !date                            ; Order date
+order_date = date                            ; Order date
 expiry_date = date                            ; Order expiry date
 value_date = date                             ; Desired value date
 
 ; Parties
-ordering_party = !@fin.party                  ; Party placing order
+ordering_party = @fin.party                  ; Party placing order
 executing_party = @fin.party                  ; Executing counterparty
 
 ; Execution instructions
@@ -248,15 +248,15 @@ minimum_quantity = #$                         ; Minimum fill quantity
 
 {@trade_status}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Trade reference
-trade_id = !:                                 ; Trade identifier
+trade_id = :                                 ; Trade identifier
 
 ; Status
-status = !(aloc, canc, conf, done, matd, pcom, pend, rejc, rjct, sett, trmd, vald)
+status = (aloc, canc, conf, done, matd, pcom, pend, rejc, rjct, sett, trmd, vald)
 status_reason = :                             ; Status reason code
-status_date = !timestamp                      ; Status effective time
+status_date = timestamp                      ; Status effective time
 
 ; Status codes:
 ; aloc = Allocated

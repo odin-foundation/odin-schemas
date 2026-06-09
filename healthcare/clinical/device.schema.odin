@@ -47,7 +47,7 @@ changelog[0].rationale = "Device resource derived from FHIR R4/R5 specification"
 
 {@device}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Device.identifier
@@ -146,15 +146,15 @@ entry_type = (barcode, card, manual, rfid, self_reported, unknown)
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@device_name}
-name = !:                                     ; Device name
-type = !(manufacturer_name, model_name, other, patient_reported_name, udi_label_name, user_friendly_name)
+name = :                                     ; Device name
+type = (manufacturer_name, model_name, other, patient_reported_name, udi_label_name, user_friendly_name)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Device Specialization - FHIR: Device.specialization
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@device_specialization}
-system_type = !@fhir.codeable_concept         ; The standard that is used
+system_type = @fhir.codeable_concept         ; The standard that is used
 version = :                                   ; The version of the standard
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -164,14 +164,14 @@ version = :                                   ; The version of the standard
 {@device_version}
 type = @fhir.codeable_concept                 ; Type of version (software, firmware, hardware)
 component = @fhir.identifier                  ; Component producing version
-value = !:                                    ; Version text
+value = :                                    ; Version text
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Device Property - FHIR: Device.property
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@device_property}
-type = !@fhir.codeable_concept                ; Property type code
+type = @fhir.codeable_concept                ; Property type code
 
 ; Value - FHIR: Device.property.valueQuantity / valueCode
 value_quantities[] = @fhir.quantity           ; Property value as quantity

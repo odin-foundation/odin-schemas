@@ -39,14 +39,14 @@ changelog[0].rationale = "Structure derived from 5 USC Chapter 89 and 5 CFR Part
 ; Per 5 CFR 890.201
 
 {@plan}
-plan_code = !:                              ; OPM plan code (3 char)
-carrier_code = !:                           ; Carrier code (2 char)
-plan_year = !##:(1960..)                    ; Plan year
-plan_name = !:                              ; Plan name
+plan_code = :                              ; OPM plan code (3 char)
+carrier_code = :                           ; Carrier code (2 char)
+plan_year = ##:(1960..)                    ; Plan year
+plan_name = :                              ; Plan name
 
 ; Plan type - Per 5 CFR 890.201
 {.type}
-plan_type = !(comprehensive, fee_for_service, hdhp, hmo)
+plan_type = (comprehensive, fee_for_service, hdhp, hmo)
 option = (high, standard)                   ; Plan option
 nationwide = ?                              ; Nationwide availability
 
@@ -102,16 +102,16 @@ hsa_contribution = #$:(0..)                 ; Employer HSA contribution
 ; Per 5 CFR 890.301
 
 {@enrollment}
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee ID
-plan_code = !:                              ; Plan code
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee ID
+plan_code = :                              ; Plan code
 
 ; Enrollment type - Per 5 CFR 890.301
-enrollment_type = !(self_and_family, self_only, self_plus_one)
+enrollment_type = (self_and_family, self_only, self_plus_one)
 
 ; Employment status
 {.employment}
-employment_type = !(annuitant, employee, former_spouse, survivor, temporary, tcc)
+employment_type = (annuitant, employee, former_spouse, survivor, temporary, tcc)
 agency_code = :                             ; Agency code
 payroll_office = :                          ; Payroll office
 
@@ -125,7 +125,7 @@ plan_year = ##:(1960..)                     ; Plan year
 
 ; Enrollment event - Per 5 CFR 890.301
 {.event}
-event_type = !(initial, open_season, qle, termination, transfer)
+event_type = (initial, open_season, qle, termination, transfer)
 event_date = date                           ; Event date
 qle_type = :                                ; QLE type if applicable
 
@@ -148,8 +148,8 @@ dependents[] = @fehb_member                 ; Covered dependents
 {@enrollment}
 
 {@fehb_member}
-member_id = !:                              ; Member ID
-relationship = !(child, domestic_partner, self, spouse)
+member_id = :                              ; Member ID
+relationship = (child, domestic_partner, self, spouse)
 first_name = :                              ; First name
 last_name = :                               ; Last name
 dob = *date                                 ; Date of birth
@@ -164,10 +164,10 @@ termination_date = date                     ; Coverage end
 ; Per 5 CFR 890.301
 
 {@open_season}
-year = !##:(1960..)                         ; Open season year
-start_date = !date                          ; Start date (typically mid-November)
-end_date = !date                            ; End date (typically mid-December)
-effective_date = !date                      ; Coverage effective date (Jan 1)
+year = ##:(1960..)                         ; Open season year
+start_date = date                          ; Start date (typically mid-November)
+end_date = date                            ; End date (typically mid-December)
+effective_date = date                      ; Coverage effective date (Jan 1)
 
 ; Changes allowed
 {.changes}
@@ -184,13 +184,13 @@ enroll_new = ?true                          ; Can enroll for first time
 ; Per 5 CFR 890.301(g)
 
 {@qle}
-qle_id = !:                                 ; QLE ID
-employee_id = !:                            ; Employee ID
-event_type = !:                             ; Event type
-event_date = !date                          ; Event date
+qle_id = :                                 ; QLE ID
+employee_id = :                            ; Employee ID
+event_type = :                             ; Event type
+event_date = date                          ; Event date
 
 ; Event types - Per 5 CFR 890.301(g)
-category = !(dependent_change, employment, family, open_season, other)
+category = (dependent_change, employment, family, open_season, other)
 
 ; Specific events
 {.event}
@@ -225,9 +225,9 @@ document_received = ?                       ; Document received
 ; Per 5 CFR 890.303
 
 {@annuitant_enrollment}
-annuitant_id = !:                           ; Annuitant ID
-enrollment_id = !:                          ; Enrollment ID
-csrs_or_fers = !(csrs, fers)                ; Retirement system
+annuitant_id = :                           ; Annuitant ID
+enrollment_id = :                          ; Enrollment ID
+csrs_or_fers = (csrs, fers)                ; Retirement system
 
 ; Eligibility - Per 5 CFR 890.303
 {.eligibility}
@@ -252,13 +252,13 @@ monthly_premium = #$:(0..)                  ; Monthly premium
 ; Per 5 CFR 890.1103
 
 {@tcc}
-tcc_id = !:                                 ; TCC ID
-former_employee_id = !:                     ; Former employee
-plan_code = !:                              ; Plan code
+tcc_id = :                                 ; TCC ID
+former_employee_id = :                     ; Former employee
+plan_code = :                              ; Plan code
 
 ; TCC type - Per 5 CFR 890.1103
 {.type}
-tcc_type = !(former_employee, former_spouse, child)
+tcc_type = (former_employee, former_spouse, child)
 separation_date = date                      ; Separation date
 qualifying_event = :                        ; Qualifying event
 
@@ -286,20 +286,20 @@ administrative_charge = #$:(0..)            ; 2% administrative charge
 ; Per 5 USC 8951-8960
 
 {@fedvip}
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee ID
-plan_type = !(dental, vision)               ; Plan type
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee ID
+plan_type = (dental, vision)               ; Plan type
 
 ; Plan
 {.plan}
-plan_code = !:                              ; Plan code
+plan_code = :                              ; Plan code
 carrier_name = :                            ; Carrier name
 plan_name = :                               ; Plan name
 
 {@fedvip}
 
 ; Enrollment type
-enrollment_type = !(self_and_family, self_only, self_plus_one)
+enrollment_type = (self_and_family, self_only, self_plus_one)
 
 ; Premium
 {.premium}

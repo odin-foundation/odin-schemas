@@ -41,14 +41,14 @@ changelog[0].rationale = "Structure derived from 42 CFR Part 440 and CMS benefit
 ; Per 42 CFR Part 440 and state plan
 
 {@package}
-package_id = !:                              ; Package identifier
-state = !:(2)                                ; State
+package_id = :                              ; Package identifier
+state = :(2)                                ; State
 package_name = :                             ; Package name
-effective_date = !date                       ; Effective date
+effective_date = date                       ; Effective date
 end_date = date                              ; End date (if applicable)
 
 ; Package type - Per 42 CFR 440.305
-package_type = !(abp, benchmark, benchmark_equivalent, secretary_approved, state_plan)
+package_type = (abp, benchmark, benchmark_equivalent, secretary_approved, state_plan)
 
 ; Eligibility groups covered
 eligible_groups[] = :                        ; Eligibility groups receiving package
@@ -67,15 +67,15 @@ cost_sharing = @cost_sharing                 ; Cost sharing requirements
 ; Per 42 CFR 440.1-440.170
 
 {@service_definition}
-service_code = !:                            ; Service code
-service_name = !:                            ; Service name
-service_category = !(behavioral_health, dental, hcbs, institutional, medical, pharmacy, rehabilitative, transportation)
+service_code = :                            ; Service code
+service_name = :                            ; Service name
+service_category = (behavioral_health, dental, hcbs, institutional, medical, pharmacy, rehabilitative, transportation)
 
 ; Mandatory vs optional - Per 42 CFR 440.210-220
 mandatory = ?                                ; Mandatory service
 
 ; Coverage status
-covered = !?                                 ; Service covered in state
+covered = ?                                 ; Service covered in state
 coverage_description = :                     ; Coverage description
 
 ; Limits - Per 42 CFR 440.230
@@ -266,10 +266,10 @@ rental_vs_purchase = :                       ; Rental/purchase policy
 ; Per 42 CFR 441.300 (1915(c) waivers)
 
 {@hcbs_waiver}
-waiver_number = !:                           ; Waiver number
+waiver_number = :                           ; Waiver number
 waiver_name = :                              ; Waiver name
-state = !:(2)                                ; State
-effective_date = !date                       ; Effective date
+state = :(2)                                ; State
+effective_date = date                       ; Effective date
 expiration_date = date                       ; Expiration date
 
 ; Target population
@@ -295,7 +295,7 @@ hospital = ?                                 ; Hospital level of care
 services[] = @hcbs_service                   ; HCBS services offered
 
 {@hcbs_service}
-service_name = !:                            ; Service name
+service_name = :                            ; Service name
 service_code = :                             ; Service code
 definition = :                               ; Service definition
 unit = :                                     ; Service unit
@@ -319,8 +319,8 @@ unduplicated_count = ##:(0..)                ; Unduplicated participants
 ; Per 42 CFR 447.50-57
 
 {@cost_sharing}
-state = !:(2)                                ; State
-effective_date = !date                       ; Effective date
+state = :(2)                                ; State
+effective_date = date                       ; Effective date
 
 ; General rules - Per 42 CFR 447.52
 {.rules}

@@ -36,9 +36,9 @@ changelog[0].rationale = "Standard life/annuity insurance industry data patterns
 
 {@beneficiary}
 ; Required fields
-designation = !(contingent, primary)          ; Beneficiary level
-name = !:                                     ; Beneficiary name
-percent = !#:(0..100)                         ; Percentage of benefit
+designation = (contingent, primary)          ; Beneficiary level
+name = :                                     ; Beneficiary name
+percent = #:(0..100)                         ; Percentage of benefit
 
 ; Optional fields
 address = @types.address                      ; Mailing address
@@ -71,8 +71,8 @@ specific_amount = #$:(0..)                          ; Fixed dollar amount instea
 
 {@underwriting_class}
 ; Required fields
-classification = !(decline, preferred, preferred_plus, standard, standard_plus, substandard)  ; Risk class
-effective = !date                             ; Classification effective date
+classification = (decline, preferred, preferred_plus, standard, standard_plus, substandard)  ; Risk class
+effective = date                             ; Classification effective date
 
 ; Optional fields
 build_chart_used = :                          ; Height and weight chart reference
@@ -123,8 +123,8 @@ labs_date = date                              ; Date of lab work
 
 {@subaccount}
 ; Required fields
-fund_name = !:                                ; Fund name
-ticker = !:                                   ; Fund ticker symbol
+fund_name = :                                ; Fund name
+ticker = :                                   ; Fund ticker symbol
 
 ; Optional fields
 allocation_percent = #:(0..100)
@@ -150,7 +150,7 @@ ytd_return = #:(-100..500)
 
 {@surrender_schedule}
 ; Required fields
-effective = !date                             ; Schedule effective date
+effective = date                             ; Schedule effective date
 
 ; Optional fields
 free_withdrawal_percent = #:(0..100)
@@ -161,8 +161,8 @@ market_value_adjustment = ?                   ; MVA applies to surrenders
 ; Surrender Charge by Year
 ; ───────────────────────────────────────────────────────────────────────────────
 {@surrender_schedule.years[]}
-year = !##:(1..20)                            ; Policy/contract year
-charge_percent = !#:(0..25)                   ; Surrender charge percentage
+year = ##:(1..20)                            ; Policy/contract year
+charge_percent = #:(0..25)                   ; Surrender charge percentage
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Premium Payment
@@ -172,8 +172,8 @@ charge_percent = !#:(0..25)                   ; Surrender charge percentage
 
 {@premium_payment}
 ; Required fields
-amount = !#$:(0..)                                  ; Payment amount
-date = !date                                  ; Payment date
+amount = #$:(0..)                                  ; Payment amount
+date = date                                  ; Payment date
 
 ; Optional fields
 account_last_four = *:(4)                     ; Last 4 digits of payment account
@@ -193,8 +193,8 @@ status = (applied, pending, returned)
 
 {@policy_loan}
 ; Required fields
-amount = !#$:(0..)                                  ; Original loan amount
-date = !date                                  ; Loan date
+amount = #$:(0..)                                  ; Original loan amount
+date = date                                  ; Loan date
 
 ; Optional fields
 accrued_interest = #$:(0..)
@@ -212,9 +212,9 @@ status = (active, defaulted, paid)
 
 {@rider}
 ; Required fields
-effective = !date                             ; Rider effective date
-name = !:                                     ; Rider name
-type = !:                                     ; Rider type code
+effective = date                             ; Rider effective date
+name = :                                     ; Rider name
+type = :                                     ; Rider type code
 
 ; Optional fields
 annual_cost = #$:(0..)
@@ -235,7 +235,7 @@ waived = ?                                    ; Rider fee waived
 = @party.person
 
 ; Required fields
-role = !(annuitant, insured, joint_annuitant, joint_owner, owner, payor)  ; Party role
+role = (annuitant, insured, joint_annuitant, joint_owner, owner, payor)  ; Party role
 
 ; Optional fields
 age_at_issue = ##:(0..100)                    ; Age when policy or contract issued
@@ -276,8 +276,8 @@ rmd_satisfied = ?                             ; RMD satisfied for year
 
 {@index_strategy}
 ; Required fields
-name = !:                                     ; Strategy name
-strategy_type = !(buffer, fixed, indexed, performance_triggered)  ; Strategy type
+name = :                                     ; Strategy name
+strategy_type = (buffer, fixed, indexed, performance_triggered)  ; Strategy type
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Index Information
@@ -346,8 +346,8 @@ ytd_index_return = #:(-100..500)              ; Year-to-date index return
 segment_history[] = @segment_result           ; Completed segment history
 
 {@segment_result}
-effective = !date                             ; Segment effective date
-expiration = !date                            ; Segment expiration date
+effective = date                             ; Segment effective date
+expiration = date                            ; Segment expiration date
 cap_rate = #:(0..50)                          ; Cap rate for segment
 credited_amount = #$:(0..)                          ; Interest credited
 floor_rate = #:(-30..5)                       ; Floor rate for segment
@@ -379,10 +379,10 @@ status = (reported, documentation_requested, documentation_received, under_revie
 
 {@life_illustration}
 ; Required fields
-illustration_date = !date                     ; Date illustration generated
+illustration_date = date                     ; Date illustration generated
 policy_number = :                             ; Policy number (if in force)
-product_name = !:                             ; Product name
-version = !:                                  ; Illustration software version
+product_name = :                             ; Product name
+version = :                                  ; Illustration software version
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Illustration Assumptions
@@ -435,8 +435,8 @@ lapse_year_current = ##:(0..100)              ; Year policy lapses (current)
 
 {@life_ledger_row}
 ; Required fields
-year = !##:(1..)                              ; Policy year
-age = !##:(0..121)                            ; Attained age
+year = ##:(1..)                              ; Policy year
+age = ##:(0..121)                            ; Attained age
 
 ; Premium
 annual_premium = #$:(0..)                           ; Annual premium paid
@@ -475,10 +475,10 @@ cumulative_dividends = #$:(0..)                     ; Cumulative dividends
 
 {@annuity_illustration}
 ; Required fields
-illustration_date = !date                     ; Date illustration generated
+illustration_date = date                     ; Date illustration generated
 contract_number = :                           ; Contract number (if in force)
-product_name = !:                             ; Product name
-version = !:                                  ; Illustration software version
+product_name = :                             ; Product name
+version = :                                  ; Illustration software version
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Illustration Assumptions
@@ -555,8 +555,8 @@ surrender_charge_period_end = date            ; When surrender charges end
 
 {@annuity_ledger_row}
 ; Required fields
-year = !##:(1..50)                            ; Contract year
-age = !##:(0..121)                            ; Owner/annuitant age
+year = ##:(1..50)                            ; Contract year
+age = ##:(0..121)                            ; Owner/annuitant age
 
 ; Contributions
 annual_contribution = #$:(0..)                      ; Annual contribution

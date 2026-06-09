@@ -45,11 +45,11 @@ changelog[0].rationale = "Comprehensive listing management structure"
 
 {@listing_agreement}
 ; Required fields first
-agreement_type = !(exclusive_agency, exclusive_right_to_sell, net_listing, open)
-commencement_date = !date                         ; Agreement start date
-expiration_date = !date                           ; Agreement expiration
-list_price = !#$:(0..)                            ; Initial list price
-property_address = !@address                      ; Property address
+agreement_type = (exclusive_agency, exclusive_right_to_sell, net_listing, open)
+commencement_date = date                         ; Agreement start date
+expiration_date = date                           ; Agreement expiration
+list_price = #$:(0..)                            ; Initial list price
+property_address = @address                      ; Property address
 
 :invariant expiration_date > commencement_date    ; End must be after start
 
@@ -147,9 +147,9 @@ cancellation_fee = #$:(0..):if status = cancelled ; Cancellation fee
 
 {@property_listing}
 ; Required fields first
-list_date = !date                                 ; Date listed
-list_price = !#$:(0..)                            ; Current list price
-property_address = !@address                      ; Property address
+list_date = date                                 ; Date listed
+list_price = #$:(0..)                            ; Current list price
+property_address = @address                      ; Property address
 
 ; Listing identification
 mls_number = :                                    ; MLS listing number
@@ -259,7 +259,7 @@ bonus_conditions = ::if bonus_offered = true      ; Bonus conditions
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Listing Status
 ; ───────────────────────────────────────────────────────────────────────────────
-standard_status = !(active, active_under_contract, cancelled, closed, coming_soon, expired, hold, pending, withdrawn)
+standard_status = (active, active_under_contract, cancelled, closed, coming_soon, expired, hold, pending, withdrawn)
 status_date = date                                ; Status change date
 days_on_market = ##:(0..)                         ; Current DOM
 cumulative_dom = ##:(0..)                         ; Cumulative DOM
@@ -297,9 +297,9 @@ concessions = #$:(0..):if standard_status = closed  ; Total concessions
 
 {@showing}
 ; Required fields first
-listing_ref = !@property_listing                  ; Reference to listing
-showing_date = !date                              ; Showing date
-showing_time = !time                              ; Showing time
+listing_ref = @property_listing                  ; Reference to listing
+showing_date = date                              ; Showing date
+showing_time = time                              ; Showing time
 
 ; Showing identification
 showing_id = :                                    ; Unique showing identifier
@@ -353,10 +353,10 @@ cancellation_reason = ::if status = cancelled     ; Cancellation reason
 
 {@open_house}
 ; Required fields first
-listing_ref = !@property_listing                  ; Reference to listing
-open_house_date = !date                           ; Open house date
-start_time = !time                                ; Start time
-end_time = !time                                  ; End time
+listing_ref = @property_listing                  ; Reference to listing
+open_house_date = date                           ; Open house date
+start_time = time                                ; Start time
+end_time = time                                  ; End time
 
 ; Open house identification
 open_house_id = :                                 ; Unique open house identifier
@@ -364,7 +364,7 @@ open_house_id = :                                 ; Unique open house identifier
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Event Details
 ; ───────────────────────────────────────────────────────────────────────────────
-open_house_type = !(broker_open, public, twilight, virtual)
+open_house_type = (broker_open, public, twilight, virtual)
 hosting_agent = @re_agent                         ; Agent hosting
 refreshments = ?                                  ; Refreshments provided
 description = :                                   ; Event description

@@ -47,20 +47,20 @@ changelog[0].rationale = "Termination, resignation, offboarding, WARN Act, COBRA
 {@separation}
 = @types.audit_info
 
-separation_id = !:                               ; Unique separation identifier
-employee_id = !:                                 ; Associated employee
+separation_id = :                               ; Unique separation identifier
+employee_id = :                                 ; Associated employee
 separation_type = (death, discharge, layoff, resignation, retirement, termination)
 
 ; Dates
 notice_date = date                               ; Date notice given
-last_work_date = !date                           ; Last physical day worked
-separation_date = !date                          ; Official separation date
+last_work_date = date                           ; Last physical day worked
+separation_date = date                          ; Official separation date
 benefits_end_date = date                         ; Benefits end date
 
 ; Reason details
 reason_category = (attendance, business_closure, job_elimination, performance, policy_violation, resignation_personal, resignation_other_opportunity, retirement_age, retirement_early, voluntary)
 reason_code = :                                  ; Internal reason code
-reason_description = !:                          ; Detailed reason
+reason_description = :                          ; Detailed reason
 termination_for_cause = ?                        ; Terminated for cause
 
 ; Notice period
@@ -88,7 +88,7 @@ appeal_rights_explained = ?                      ; Appeal process explained
 progressive_discipline = ?                       ; Progressive discipline used
 {.prior_actions[]}
 action_type = (coaching, final_warning, pip, suspension, verbal_warning, written_warning)
-action_date = !date                              ; Date of action
+action_date = date                              ; Date of action
 description = :                                  ; Action description
 
 {@separation}
@@ -99,7 +99,7 @@ warn_notice_date = date:if warn_event = true     ; WARN notice date (60 days)
 affected_employees_count = ##:if warn_event = true
 
 ; Rehire eligibility
-eligible_for_rehire = !?                         ; Eligible for rehire
+eligible_for_rehire = ?                         ; Eligible for rehire
 rehire_restrictions = :                          ; Restrictions if applicable
 do_not_rehire_reason = :                         ; Reason if not eligible
 
@@ -122,16 +122,16 @@ confidential_notes = *:                          ; Confidential notes (managers 
 {@offboarding_checklist}
 = @types.audit_info
 
-checklist_id = !:                                ; Unique checklist identifier
-separation_id = !:                               ; Associated separation
-employee_id = !:                                 ; Associated employee
+checklist_id = :                                ; Unique checklist identifier
+separation_id = :                               ; Associated separation
+employee_id = :                                 ; Associated employee
 
 ; Checklist items
 {.items[]}
 :(1..)                                           ; At least one item
 item_category = (access_termination, benefits, equipment_return, final_pay, knowledge_transfer, notifications, policy_acknowledgment)
-item_description = !:                            ; Item description
-responsible_party = !:                           ; Who is responsible
+item_description = :                            ; Item description
+responsible_party = :                           ; Who is responsible
 due_date = date                                  ; Due date
 completed = ?                                    ; Item completed
 completed_date = date                            ; Completion date
@@ -172,10 +172,10 @@ completion_date = date                           ; Checklist completion date
 {@exit_interview}
 = @types.audit_info
 
-interview_id = !:                                ; Unique interview identifier
-separation_id = !:                               ; Associated separation
-employee_id = !:                                 ; Associated employee
-interview_date = !date                           ; Interview date
+interview_id = :                                ; Unique interview identifier
+separation_id = :                               ; Associated separation
+employee_id = :                                 ; Associated employee
+interview_date = date                           ; Interview date
 interview_method = (in_person, online_survey, phone, video)
 interviewer_id = :                               ; Interviewer ID
 interviewer_name = :                             ; Interviewer name
@@ -228,12 +228,12 @@ action_items = :                                 ; Action items from interview
 {@final_pay}
 = @types.audit_info
 
-final_pay_id = !:                                ; Unique final pay identifier
-separation_id = !:                               ; Associated separation
-employee_id = !:                                 ; Associated employee
+final_pay_id = :                                ; Unique final pay identifier
+separation_id = :                               ; Associated separation
+employee_id = :                                 ; Associated employee
 
-last_work_date = !date                           ; Last day worked
-final_pay_date = !date                           ; Final paycheck date
+last_work_date = date                           ; Last day worked
+final_pay_date = date                           ; Final paycheck date
 payment_method = (check, direct_deposit)        ; Payment method
 
 ; Earnings
@@ -247,7 +247,7 @@ commission = #$:(0..)                            ; Commissions earned
 expense_reimbursement = #$:(0..)                 ; Expense reimbursement
 other_earnings = #$:(0..)                        ; Other earnings
 
-gross_final_pay = !#$:(0..)                      ; Total gross final pay
+gross_final_pay = #$:(0..)                      ; Total gross final pay
 
 {@final_pay}
 
@@ -267,7 +267,7 @@ total_deductions = #$:(0..)                      ; Total deductions
 
 {@final_pay}
 
-net_final_pay = !#$                              ; Net final pay
+net_final_pay = #$                              ; Net final pay
 :invariant net_final_pay = earnings.gross_final_pay - deductions.total_deductions
 
 check_number = :                                 ; Check number if applicable
@@ -285,16 +285,16 @@ final_pay_deadline = date                        ; State-mandated deadline
 {@severance_agreement}
 = @types.audit_info
 
-agreement_id = !:                                ; Unique agreement identifier
-separation_id = !:                               ; Associated separation
-employee_id = !:                                 ; Associated employee
+agreement_id = :                                ; Unique agreement identifier
+separation_id = :                               ; Associated separation
+employee_id = :                                 ; Associated employee
 
-agreement_offered_date = !date                   ; Date offered to employee
+agreement_offered_date = date                   ; Date offered to employee
 agreement_signed_date = date                     ; Date signed by employee
 agreement_effective_date = date                  ; Effective date
 
 ; Severance payment
-severance_amount = !#$:(0..)                     ; Total severance amount
+severance_amount = #$:(0..)                     ; Total severance amount
 severance_basis = (flat_amount, weeks_of_pay)    ; How calculated
 weeks_of_pay = ##:(0..):if severance_basis = weeks_of_pay
 payment_schedule = (installments, lump_sum)      ; Payment method
@@ -320,7 +320,7 @@ equipment_duration_days = ##:(0..):if continued_use_of_equipment = true
 
 ; Agreement terms
 {.terms}
-release_of_claims = !?                           ; Releases legal claims
+release_of_claims = ?                           ; Releases legal claims
 non_disparagement = ?                            ; Non-disparagement clause
 confidentiality = ?                              ; Confidentiality clause
 non_compete = ?                                  ; Non-compete clause
@@ -357,24 +357,24 @@ agreement_status = (cancelled, executed, offered, pending, revoked)
 {@unemployment_claim}
 = @types.audit_info
 
-claim_id = !:                                    ; Unique claim identifier
-separation_id = !:                               ; Associated separation
-employee_id = !:                                 ; Associated employee (claimant)
+claim_id = :                                    ; Unique claim identifier
+separation_id = :                               ; Associated separation
+employee_id = :                                 ; Associated employee (claimant)
 
-state = !:(2)                                    ; State where claim filed
+state = :(2)                                    ; State where claim filed
 claim_number = *:                                ; State claim number (confidential)
-claim_filed_date = !date                         ; Date claim filed
+claim_filed_date = date                         ; Date claim filed
 
 ; Claim details
-benefit_year_begin = !date                       ; Benefit year start
-benefit_year_end = !date                         ; Benefit year end
+benefit_year_begin = date                       ; Benefit year start
+benefit_year_end = date                         ; Benefit year end
 weekly_benefit_amount = #$:(0..)                 ; Weekly benefit amount
 maximum_benefit_amount = #$:(0..)                ; Maximum benefit
 waiting_week_required = ?                        ; Waiting week required
 
 ; Employer notice
-employer_notice_date = !date                     ; Date employer notified
-response_due_date = !date                        ; Response due date
+employer_notice_date = date                     ; Date employer notified
+response_due_date = date                        ; Response due date
 employer_response_date = date                    ; Date employer responded
 employer_contests = ?                            ; Employer contests claim
 

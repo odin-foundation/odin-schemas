@@ -46,7 +46,7 @@ changelog[0].rationale = "Core student identity, demographics, and enrollment st
 
 {@student_identifiers}
 ; Required fields first
-student_id = !*:                                     ; Local student identifier (confidential PII)
+student_id = *:                                     ; Local student identifier (confidential PII)
 
 ; Optional fields - state and federal IDs
 state_student_id = *:                                ; State-assigned student identifier (SSID)
@@ -59,11 +59,11 @@ previous_ids[] = *:                                  ; Prior student IDs from tr
 
 {@student}
 ; Required fields first
-id = !*:                                             ; Student identifier
-name = !@person_name                                 ; Student name
+id = *:                                             ; Student identifier
+name = @person_name                                 ; Student name
 
 ; Demographics (PII)
-date_of_birth = !*date                               ; Birth date (confidential PII)
+date_of_birth = *date                               ; Birth date (confidential PII)
 gender = (female, male, non_binary)
 citizenship = (non_resident_alien, permanent_resident, refugee_asylee, us_citizen, us_national)
 
@@ -109,7 +109,7 @@ military_dependent = ?                               ; Military dependent
 foster_youth = ?                                     ; Foster care youth
 
 ; Timestamps
-created = !timestamp
+created = timestamp
 updated = timestamp
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -118,8 +118,8 @@ updated = timestamp
 
 {@enrollment_record}
 ; Required fields first
-institution_id = !:                                  ; Institution/school identifier
-enrollment_date = !date                              ; Date of enrollment
+institution_id = :                                  ; Institution/school identifier
+enrollment_date = date                              ; Date of enrollment
 status = (enrolled, graduated, not_enrolled, transferred, withdrawn)
 
 ; Optional fields
@@ -191,7 +191,7 @@ enrollment_intensity = (exclusively_full_time, exclusively_part_time, full_time_
 
 {@guardian}
 ; Required fields first
-name = !@person_name
+name = @person_name
 relationship = (adoptive_parent, foster_parent, grandparent, guardian, legal_guardian, other, parent, stepparent)
 
 ; Optional fields

@@ -37,8 +37,8 @@ changelog[0].rationale = "Coverage-centric architecture - reusable deductible pa
 
 {@deductible_standard}
 ; Required fields first
-amount = !#$                                     ; Deductible amount
-basis = !(annual, per_claim, per_item, per_occurrence)  ; Deductible application basis
+amount = #$                                     ; Deductible amount
+basis = (annual, per_claim, per_item, per_occurrence)  ; Deductible application basis
 
 ; Optional fields
 applies_to = :                                   ; What the deductible applies to
@@ -51,8 +51,8 @@ waived_for[] = :                                 ; Conditions where waived
 
 {@deductible_percentage}
 ; Required fields first
-percent = !#:(0..100)                            ; Percentage value
-percent_of = !(building_value, contents_value, coverage_a, dwelling_limit, loss_amount, replacement_cost, total_insured_value)  ; Percentage basis
+percent = #:(0..100)                            ; Percentage value
+percent_of = (building_value, contents_value, coverage_a, dwelling_limit, loss_amount, replacement_cost, total_insured_value)  ; Percentage basis
 
 ; Optional fields
 basis = (annual, per_building, per_claim, per_occurrence)  ; Deductible application basis
@@ -66,8 +66,8 @@ minimum = #$                                     ; Minimum dollar amount
 
 {@deductible_disappearing}
 ; Required fields first
-disappearance_threshold = !#$                    ; Loss amount where deductible becomes zero
-initial_amount = !#$                             ; Starting deductible amount
+disappearance_threshold = #$                    ; Loss amount where deductible becomes zero
+initial_amount = #$                             ; Starting deductible amount
 
 ; Optional fields
 formula = :                                      ; Formula description
@@ -79,7 +79,7 @@ formula = :                                      ; Formula description
 
 {@deductible_franchise}
 ; Required fields first
-threshold = !#$                                  ; Franchise threshold
+threshold = #$                                  ; Franchise threshold
 
 ; Optional fields
 basis = (per_claim, per_occurrence)              ; Deductible application basis
@@ -170,7 +170,7 @@ type = (flat, percentage)                        ; Deductible type
 
 {@deductible_aggregate}
 ; Required fields first
-amount = !#$                                     ; Total annual deductible amount
+amount = #$                                     ; Total annual deductible amount
 
 ; Optional fields
 per_claim_amount = #$                            ; Per claim amount contributing to aggregate
@@ -184,7 +184,7 @@ satisfied = #$                                   ; Amount already satisfied
 
 {@deductible_wc}
 ; Required fields first
-program_type = !(large_deductible, retrospective, small_deductible)  ; Deductible program type
+program_type = (large_deductible, retrospective, small_deductible)  ; Deductible program type
 
 ; Optional fields
 aggregate = #$                                   ; Aggregate deductible
@@ -200,7 +200,7 @@ per_claim = #$                                   ; Per claim deductible
 
 {@deductible_professional}
 ; Required fields first
-amount = !#$                                     ; Deductible amount
+amount = #$                                     ; Deductible amount
 
 ; Optional fields
 applies_to = (defense_and_indemnity, indemnity_only)  ; What the deductible applies to

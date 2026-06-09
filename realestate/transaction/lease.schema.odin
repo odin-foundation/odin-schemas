@@ -52,7 +52,7 @@ changelog[0].rationale = "Comprehensive lease structure for residential and comm
 = @person                                         ; Inherits person fields for individuals
 
 ; Tenant type (individual or business)
-tenant_type = !(business, individual)
+tenant_type = (business, individual)
 
 ; Business tenant info (if business)
 business_name = ::if tenant_type = business       ; Business legal name
@@ -87,10 +87,10 @@ monthly_income = #$:(0..):if income_verified = true
 {@residential_lease}
 ; Required fields first
 lease_type = "residential"                        ; Lease type discriminator
-property_address = !@address                      ; Property address
-commencement_date = !date                         ; Lease start date
-expiration_date = !date                           ; Lease end date
-monthly_rent = !#$:(0..)                          ; Monthly rent amount
+property_address = @address                      ; Property address
+commencement_date = date                         ; Lease start date
+expiration_date = date                           ; Lease end date
+monthly_rent = #$:(0..)                          ; Monthly rent amount
 
 :invariant expiration_date > commencement_date    ; End must be after start
 
@@ -112,7 +112,7 @@ occupants[] = :                                   ; Other authorized occupants
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
 {.term}
-term_type = !(fixed, month_to_month, week_to_week)
+term_type = (fixed, month_to_month, week_to_week)
 term_months = ##:(1..):if term_type = fixed       ; Fixed term length
 auto_renew = ?                                    ; Auto-renewal provision
 renewal_term_months = ##:(1..):if auto_renew = true
@@ -125,7 +125,7 @@ notice_of_non_renewal_days = ##:(1..)             ; Non-renewal notice required
 ; Rent
 ; ───────────────────────────────────────────────────────────────────────────────
 {.rent}
-base_rent = !#$:(0..)                             ; Base monthly rent
+base_rent = #$:(0..)                             ; Base monthly rent
 rent_due_day = ##:(1..31)                         ; Day of month rent due
 grace_period_days = ##:(0..)                      ; Grace period for late rent
 late_fee = #$:(0..)                               ; Late fee amount
@@ -258,10 +258,10 @@ termination_reason = ::if status = terminated     ; Termination reason
 {@commercial_lease}
 ; Required fields first
 lease_type = "commercial"                         ; Lease type discriminator
-property_address = !@address                      ; Property address
-commencement_date = !date                         ; Lease start date
-expiration_date = !date                           ; Lease end date
-annual_base_rent = !#$:(0..)                      ; Annual base rent
+property_address = @address                      ; Property address
+commencement_date = date                         ; Lease start date
+expiration_date = date                           ; Lease end date
+annual_base_rent = #$:(0..)                      ; Annual base rent
 
 :invariant expiration_date > commencement_date    ; End must be after start
 
@@ -322,10 +322,10 @@ option_increase_percent = #:(0..100):if option_rent_type = fixed_increase
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Rent Structure
 ; ───────────────────────────────────────────────────────────────────────────────
-lease_structure = !(absolute_net, double_net, full_service, gross, modified_gross, triple_net)
+lease_structure = (absolute_net, double_net, full_service, gross, modified_gross, triple_net)
 
 {.rent}
-base_rent_annual = !#$:(0..)                      ; Annual base rent
+base_rent_annual = #$:(0..)                      ; Annual base rent
 base_rent_monthly = #$:(0..)                      ; Monthly base rent
 base_rent_psf = #$:(0..)                          ; Rent per square foot
 rent_due_day = ##:(1..31)                         ; Day of month rent due

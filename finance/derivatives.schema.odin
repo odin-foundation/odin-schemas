@@ -41,14 +41,14 @@ changelog[0].rationale = "Derivatives types derived from ISO 20022 and public so
 
 {@product}
 ; Product identification
-product_id = !:                               ; Unique product identifier
+product_id = :                               ; Unique product identifier
 isin = :format isin             ; ISIN if available
 uti = :                                       ; Unique Transaction Identifier
 usi = :                                       ; Unique Swap Identifier
 
 ; Classification
-asset_class = !(commodity, credit, equity, foreign_exchange, interest_rate)
-product_type = !(forward, futures, option, swap, swaption)
+asset_class = (commodity, credit, equity, foreign_exchange, interest_rate)
+product_type = (forward, futures, option, swap, swaption)
 sub_type = :                                  ; Product sub-type
 
 ; Underlying
@@ -67,35 +67,35 @@ currency = :(3)                               ; Underlying currency
 
 {@trade}
 ; Trade identification
-trade_id = !:                                 ; Unique trade identifier
+trade_id = :                                 ; Unique trade identifier
 uti = :                                       ; Unique Transaction Identifier
 prior_uti = :                                 ; Prior UTI (for amendments)
 report_id = :                                 ; Reporting identifier
 
 ; Product
-product = !@product                           ; Derivative product
+product = @product                           ; Derivative product
 
 ; Parties
 {.parties}
-party1 = !@fin.party                          ; First party
-party1_side = !(buyer, payer, receiver, seller)
-party2 = !@fin.party                          ; Second party
-party2_side = !(buyer, payer, receiver, seller)
+party1 = @fin.party                          ; First party
+party1_side = (buyer, payer, receiver, seller)
+party2 = @fin.party                          ; Second party
+party2_side = (buyer, payer, receiver, seller)
 broker = @fin.party                           ; Broker (if any)
 clearing_member = @fin.party                  ; Clearing member
 
 {@trade}
 
 ; Dates
-trade_date = !date                            ; Trade execution date
-effective_date = !date                        ; Effective date
+trade_date = date                            ; Trade execution date
+effective_date = date                        ; Effective date
 termination_date = date                       ; Termination/maturity date
 settlement_date = date                        ; Settlement date
 
 ; Notional
 {.notional}
-amount = !#$                                  ; Notional amount
-currency = !:(3)                              ; Notional currency
+amount = #$                                  ; Notional amount
+currency = :(3)                              ; Notional currency
 amount_2 = #$                                 ; Second notional (cross-currency)
 currency_2 = :(3)                             ; Second currency
 
@@ -145,30 +145,30 @@ confirmation_method = (electronic, manual)    ; Confirmation method
 = @trade                                      ; Inherit trade fields
 
 ; Swap type
-swap_type = !(basis, fixed_float, fixed_fixed, float_float, ois, xccy)
+swap_type = (basis, fixed_float, fixed_fixed, float_float, ois, xccy)
 
 ; Fixed leg
 {.fixed_leg}
-rate = !#.6                                   ; Fixed rate
-day_count = !(30_360, act_360, act_365, act_act)  ; Day count convention
-payment_frequency = !(annual, monthly, quarterly, semi_annual)
-notional = !#$                                ; Leg notional
-currency = !:(3)                              ; Leg currency
-payer = !(party1, party2)                     ; Payer of fixed leg
+rate = #.6                                   ; Fixed rate
+day_count = (30_360, act_360, act_365, act_act)  ; Day count convention
+payment_frequency = (annual, monthly, quarterly, semi_annual)
+notional = #$                                ; Leg notional
+currency = :(3)                              ; Leg currency
+payer = (party1, party2)                     ; Payer of fixed leg
 
 {@interest_rate_swap}
 
 ; Floating leg
 {.floating_leg}
-index = !:                                    ; Reference rate index (e.g., SOFR)
+index = :                                    ; Reference rate index (e.g., SOFR)
 index_tenor = :                               ; Index tenor (e.g., 3M)
 spread = #.6                                  ; Spread over index
-day_count = !(30_360, act_360, act_365, act_act)
-payment_frequency = !(annual, monthly, quarterly, semi_annual)
-reset_frequency = !(daily, monthly, quarterly, semi_annual)
-notional = !#$                                ; Leg notional
-currency = !:(3)                              ; Leg currency
-payer = !(party1, party2)                     ; Payer of floating leg
+day_count = (30_360, act_360, act_365, act_act)
+payment_frequency = (annual, monthly, quarterly, semi_annual)
+reset_frequency = (daily, monthly, quarterly, semi_annual)
+notional = #$                                ; Leg notional
+currency = :(3)                              ; Leg currency
+payer = (party1, party2)                     ; Payer of floating leg
 
 {@interest_rate_swap}
 
@@ -181,11 +181,11 @@ payer = !(party1, party2)                     ; Payer of floating leg
 = @trade                                      ; Inherit trade fields
 
 ; CDS type
-cds_type = !(index, single_name, tranche)
+cds_type = (index, single_name, tranche)
 
 ; Reference entity/obligation
 {.reference}
-entity = !@fin.party                          ; Reference entity
+entity = @fin.party                          ; Reference entity
 entity_type = (corporate, sovereign)          ; Entity type
 seniority = (senior, subordinated)            ; Debt seniority
 restructuring = (cr, mm, mr, xr)              ; Restructuring type
@@ -194,17 +194,17 @@ restructuring = (cr, mm, mr, xr)              ; Restructuring type
 
 ; Premium leg
 {.premium_leg}
-spread = !#.6                                 ; CDS spread (bps)
-payment_frequency = !(annual, monthly, quarterly, semi_annual)
-day_count = !(30_360, act_360)                ; Day count convention
+spread = #.6                                 ; CDS spread (bps)
+payment_frequency = (annual, monthly, quarterly, semi_annual)
+day_count = (30_360, act_360)                ; Day count convention
 upfront_amount = #$                           ; Upfront payment
 
 {@credit_default_swap}
 
 ; Protection leg
 {.protection_leg}
-notional = !#$                                ; Protected notional
-currency = !:(3)                              ; Notional currency
+notional = #$                                ; Protected notional
+currency = :(3)                              ; Notional currency
 recovery_rate = #:(0..100)                    ; Assumed recovery rate
 
 {@credit_default_swap}
@@ -227,12 +227,12 @@ factor = #.6                                  ; Index factor
 = @trade                                      ; Inherit trade fields
 
 ; Equity type
-equity_type = !(forward, option, swap, variance_swap, volatility_swap)
+equity_type = (forward, option, swap, variance_swap, volatility_swap)
 
 ; Underlying
 {.equity_underlying}
-type = !(basket, etf, index, single_stock)
-identifier = !:                               ; Ticker/ISIN
+type = (basket, etf, index, single_stock)
+identifier = :                               ; Ticker/ISIN
 name = :                                      ; Name
 exchange = :                                  ; Exchange (MIC)
 quantity = #.6                                ; Number of shares/units
@@ -242,10 +242,10 @@ initial_price = #.6                           ; Initial price
 
 ; Option terms (if equity_type = option)
 {.option}
-option_type = !(call, put)                    ; Call or put
-option_style = !(american, bermudan, european)
-strike = !#.6                                 ; Strike price
-expiry = !date                                ; Expiry date
+option_type = (call, put)                    ; Call or put
+option_style = (american, bermudan, european)
+strike = #.6                                 ; Strike price
+expiry = date                                ; Expiry date
 settlement = (cash, physical)                 ; Settlement type
 
 {@equity_derivative}
@@ -267,11 +267,11 @@ payment_date = date                           ; Premium payment date
 = @trade                                      ; Inherit trade fields
 
 ; Commodity type
-commodity_type = !(forward, futures, option, swap)
+commodity_type = (forward, futures, option, swap)
 
 ; Commodity underlying
 {.commodity}
-type = !(agricultural, energy, industrial_metals, precious_metals)
+type = (agricultural, energy, industrial_metals, precious_metals)
 sub_type = :                                  ; Specific commodity
 grade = :                                     ; Grade/quality
 delivery_location = :                         ; Delivery point
@@ -280,8 +280,8 @@ delivery_location = :                         ; Delivery point
 
 ; Quantity
 {.quantity}
-amount = !#.6                                 ; Quantity
-unit = !:                                     ; Unit of measure (barrel, bushel, oz, etc.)
+amount = #.6                                 ; Quantity
+unit = :                                     ; Unit of measure (barrel, bushel, oz, etc.)
 
 {@commodity_derivative}
 
@@ -301,14 +301,14 @@ floating_spread = #.6                         ; Spread to index
 
 {@valuation}
 ; Reference
-trade_id = !:                                 ; Trade being valued
+trade_id = :                                 ; Trade being valued
 valuation_id = :                              ; Valuation identifier
 
 ; Valuation
 {.mark_to_market}
-value = !#$                                   ; MTM value
-currency = !:(3)                              ; Valuation currency
-date = !date                                  ; Valuation date
+value = #$                                   ; MTM value
+currency = :(3)                              ; Valuation currency
+date = date                                  ; Valuation date
 time = timestamp                              ; Valuation timestamp
 method = (dcf, market, model)                 ; Valuation method
 
@@ -339,25 +339,25 @@ pv01 = #$                                     ; Present value 1bp
 
 {@regulatory_report}
 ; Report identification
-report_id = !:                                ; Report identifier
-report_type = !(amendment, error, new, termination, valuation)
-action_type = !(correct, modi, new, term)     ; Action type
+report_id = :                                ; Report identifier
+report_type = (amendment, error, new, termination, valuation)
+action_type = (correct, modi, new, term)     ; Action type
 
 ; Trade reference
-trade = !@trade                               ; Trade being reported
-uti = !:                                      ; Unique Transaction Identifier
+trade = @trade                               ; Trade being reported
+uti = :                                      ; Unique Transaction Identifier
 
 ; Reporting entity
 {.reporter}
-entity = !@fin.party                          ; Reporting entity
-entity_type = !(dealer, non_dealer)           ; Entity type
-reporting_side = !(both, report_submitting)   ; Reporting obligation
+entity = @fin.party                          ; Reporting entity
+entity_type = (dealer, non_dealer)           ; Entity type
+reporting_side = (both, report_submitting)   ; Reporting obligation
 
 {@regulatory_report}
 
 ; Counterparty
 {.counterparty}
-entity = !@fin.party                          ; Counterparty
+entity = @fin.party                          ; Counterparty
 entity_type = :(2)                            ; Entity type code
 country = :(2)                                ; Counterparty country
 
@@ -365,7 +365,7 @@ country = :(2)                                ; Counterparty country
 
 ; Regime
 {.regime}
-jurisdiction = !(cftc, emir, hkma, jfsa, mas) ; Regulatory regime
+jurisdiction = (cftc, emir, hkma, jfsa, mas) ; Regulatory regime
 repository = :                                ; Trade repository
 submission_date = timestamp                   ; Submission timestamp
 acceptance_date = timestamp                   ; Acceptance timestamp

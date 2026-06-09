@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial entertainment coverage for event cancellati
 ; ===================================================================================
 
 {@ec_event_type}
-category = !(
+category = (
     awards_show,                              ; Awards ceremony
     charity_gala,                             ; Charity event
     concert,                                  ; Single concert
@@ -80,11 +80,11 @@ scale = (
 
 {@ec_event}
 ; Required fields first
-event_date = !date                            ; Primary event date
-event_name = !:                               ; Event name
-event_type = !@ec_event_type                  ; Event classification
-expected_attendance = !##                     ; Expected attendance
-organizer = !:                                ; Event organizer
+event_date = date                            ; Primary event date
+event_name = :                               ; Event name
+event_type = @ec_event_type                  ; Event classification
+expected_attendance = ##                     ; Expected attendance
+organizer = :                                ; Event organizer
 
 ; Optional fields
 additional_dates[] = date                     ; Multi-day events
@@ -123,7 +123,7 @@ role = :                                      ; Role/position
 
 {@ec_cancellation}
 ; Required fields first
-cancellation_limit = !#$:(0..)                ; Cancellation limit
+cancellation_limit = #$:(0..)                ; Cancellation limit
 
 ; Optional fields
 abandonment = ?                               ; Abandonment covered
@@ -231,7 +231,7 @@ random_drawing = ?:if included = true         ; Random drawing
 
 {@ec_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 cancellation_premium = #$:(0..)               ; Cancellation premium
@@ -281,8 +281,8 @@ voluntary_cancellation = ?                    ; Voluntary cancel
 
 {@ec_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     abandonment,                              ; Event abandoned
     cancellation,                             ; Full cancellation
     curtailment,                              ; Early termination
@@ -322,11 +322,11 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@event_cancel_policy}
 ; Required fields first
-cancellation = !@ec_cancellation              ; Cancellation coverage
-effective_date = !date                        ; Policy effective date
-event = !@ec_event                            ; Event details
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
+cancellation = @ec_cancellation              ; Cancellation coverage
+effective_date = date                        ; Policy effective date
+event = @ec_event                            ; Event details
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date >= effective_date

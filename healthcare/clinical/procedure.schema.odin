@@ -43,7 +43,7 @@ changelog[0].rationale = "Procedure resource derived from FHIR R4/R5 specificati
 
 {@procedure}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: Procedure.identifier
@@ -60,7 +60,7 @@ based_on[] = @fhir.reference                  ; A request for this procedure
 part_of[] = @fhir.reference                   ; Part of another procedure
 
 ; Status - FHIR: Procedure.status (required)
-status = !(completed, entered_in_error, in_progress, not_done, on_hold, preparation, stopped, unknown)
+status = (completed, entered_in_error, in_progress, not_done, on_hold, preparation, stopped, unknown)
 
 ; Status reason - FHIR: Procedure.statusReason
 status_reason = @fhir.codeable_concept        ; Reason for current status
@@ -72,7 +72,7 @@ category = @fhir.codeable_concept             ; Classification of procedure
 code = @fhir.codeable_concept                 ; Identification of the procedure (CPT, SNOMED, etc.)
 
 ; Subject - FHIR: Procedure.subject (required)
-subject = !@fhir.reference                    ; Patient on whom procedure was performed
+subject = @fhir.reference                    ; Patient on whom procedure was performed
 
 ; Encounter - FHIR: Procedure.encounter
 encounter = @fhir.reference                   ; Encounter during which procedure was performed
@@ -138,7 +138,7 @@ used_codes[] = @fhir.codeable_concept         ; Coded items used during procedur
 
 {@procedure_performer}
 function = @fhir.codeable_concept             ; Type of performance
-actor = !@fhir.reference                      ; Practitioner/Organization who performed
+actor = @fhir.reference                      ; Practitioner/Organization who performed
 on_behalf_of = @fhir.reference                ; Organization performer was acting for
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -147,5 +147,5 @@ on_behalf_of = @fhir.reference                ; Organization performer was actin
 
 {@procedure_focal_device}
 action = @fhir.codeable_concept               ; Kind of change to device
-manipulated = !@fhir.reference                ; Device that was changed
+manipulated = @fhir.reference                ; Device that was changed
 

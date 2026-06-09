@@ -47,8 +47,8 @@ changelog[0].rationale = "Comprehensive package policy coverage structure"
 id = :                                        ; Unique classification identifier
 
 ; BOP Classification
-class_code = !:                         ; BOP class code
-class_description = !:                        ; Description of the class code
+class_code = :                         ; BOP class code
+class_description = :                        ; Description of the class code
 class_group = (                              ; Business classification category
     apartment,
     condominium,
@@ -210,9 +210,9 @@ id = :                                        ; Unique liability coverage identi
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Occurrence Limits
 ; ───────────────────────────────────────────────────────────────────────────────
-each_occurrence = !##                         ; Limit per occurrence
-general_aggregate = !##                       ; General aggregate limit
-products_completed_ops_aggregate = !##        ; Products and completed operations aggregate limit
+each_occurrence = ##                         ; Limit per occurrence
+general_aggregate = ##                       ; General aggregate limit
+products_completed_ops_aggregate = ##        ; Products and completed operations aggregate limit
 personal_advertising_injury = ##              ; Personal and advertising injury limit
 damage_to_premises_rented = ##                ; Damage to rented premises limit
 medical_expense = ##                          ; Medical expense limit per person
@@ -288,13 +288,13 @@ total_liability = #$:(0..)                    ; Total liability premium
 ai_id = :                                     ; Unique additional insured identifier
 
 ; Identity - uses shared @address type (US and Canada)
-name = !:                                     ; Name of the additional insured
+name = :                                     ; Name of the additional insured
 address = @address                            ; Address of the additional insured
 
 {@bop_additional_insured}
 
 ; Endorsement Form
-endorsement_form = !(                         ; Endorsement form used for additional insured
+endorsement_form = (                         ; Endorsement form used for additional insured
     blanket_automatic,
     bp_04_02_managers_lessors,
     bp_04_05_lessor_leased_equipment,
@@ -439,7 +439,7 @@ total_optional = #$:(0..)                     ; Total optional coverages premium
 
 {@bop_endorsement}
 id = :                                        ; Unique endorsement identifier
-number = !:                 ; BP 04 XX
+number = :                 ; BP 04 XX
 title = :                                     ; Endorsement title
 edition_date = date                           ; Edition date of the endorsement form
 effective_date = date                         ; Effective date of the endorsement
@@ -456,21 +456,21 @@ premium_impact = #$                           ; Premium impact of the endorsemen
 
 {@bop_policy}
 id = :                                        ; Unique policy identifier
-number = !:                                   ; BOP policy number
+number = :                                   ; BOP policy number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date                        ; Policy effective date
+effective_date = date                        ; Policy effective date
 effective_time = time                         ; Policy effective time
-expiration_date = !date                       ; Policy expiration date
+expiration_date = date                       ; Policy expiration date
 expiration_time = time                        ; Policy expiration time
 :invariant expiration_date > effective_date
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Form Type
 ; ───────────────────────────────────────────────────────────────────────────────
-property_form = !(                            ; BOP property coverage form type
+property_form = (                            ; BOP property coverage form type
     bp_00_02_standard,                        ; Named perils
     bp_00_03_special                          ; Open perils
 )

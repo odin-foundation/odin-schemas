@@ -51,7 +51,7 @@ changelog[0].rationale = "Structures derived from DOT regulations and fleet indu
 
 ; Fleet assignment
 {.fleet}
-fleet_id = !:                                    ; Fleet identifier
+fleet_id = :                                    ; Fleet identifier
 fleet_name = :                                   ; Fleet name
 unit_number = :                                  ; Fleet unit number
 asset_number = :                                 ; Asset/equipment number
@@ -63,7 +63,7 @@ division = :                                     ; Division
 
 ; Vehicle status
 {.status}
-status = !(
+status = (
     active,                                      ; In service
     decommissioned,                              ; Removed from fleet
     maintenance,                                 ; In maintenance
@@ -80,7 +80,7 @@ estimated_return = date                          ; Estimated return date
 
 ; Acquisition
 {.acquisition}
-acquisition_type = !(lease, purchase, rental)    ; How acquired
+acquisition_type = (lease, purchase, rental)    ; How acquired
 acquisition_date = date                          ; Date acquired
 in_service_date = date                           ; Date in service
 acquisition_cost = #$:(0..)                      ; Acquisition cost
@@ -158,10 +158,10 @@ ez_pass_number = ::if ez_pass = true
 
 {@driver_assignment}
 ; Required fields first
-assignment_id = !:                               ; Assignment identifier
-driver_id = !:                                   ; Driver identifier
-vehicle_id = !:                                  ; Vehicle identifier
-assignment_type = !(permanent, pool, temporary)
+assignment_id = :                               ; Assignment identifier
+driver_id = :                                   ; Driver identifier
+vehicle_id = :                                  ; Vehicle identifier
+assignment_type = (permanent, pool, temporary)
 
 ; Driver information
 {.driver}
@@ -169,8 +169,8 @@ assignment_type = !(permanent, pool, temporary)
 
 ; Driver license override to make required
 {.license}
-license_number = !*:                             ; Driver license (required, confidential)
-license_state = !:(2)                            ; License state (required)
+license_number = *:                             ; Driver license (required, confidential)
+license_state = :(2)                            ; License state (required)
 license_class = :                                ; License class (A, B, C, CDL)
 license_expiration = date                        ; License expiration
 endorsements[] = :                               ; Endorsements (H, T, P, N, S, X)
@@ -190,7 +190,7 @@ termination_date = date                          ; Termination date
 
 ; Assignment dates
 {.dates}
-effective_date = !date                           ; Assignment start
+effective_date = date                           ; Assignment start
 end_date = date                                  ; Assignment end
 reason_ended = ::if end_date                     ; Reason assignment ended
 
@@ -238,8 +238,8 @@ safety_score = ##:(0..100)                       ; Safety score
 
 {@maintenance_schedule}
 ; Required fields first
-vehicle_id = !:                                  ; Vehicle identifier
-schedule_type = !(custom, manufacturer, mileage, time)
+vehicle_id = :                                  ; Vehicle identifier
+schedule_type = (custom, manufacturer, mileage, time)
 
 ; Service intervals
 {.intervals}
@@ -297,14 +297,14 @@ next_alert_date = date                           ; Next alert date
 
 {@maintenance_work_order}
 ; Required fields first
-work_order_id = !:                               ; Work order number
-vehicle_id = !:                                  ; Vehicle identifier
-order_date = !date                               ; Order date
-order_type = !(breakdown, pm, recall, repair, warranty)
+work_order_id = :                               ; Work order number
+vehicle_id = :                                  ; Vehicle identifier
+order_date = date                               ; Order date
+order_type = (breakdown, pm, recall, repair, warranty)
 
 ; Status
 {.status}
-status = !(cancelled, closed, completed, in_progress, open, waiting_parts)
+status = (cancelled, closed, completed, in_progress, open, waiting_parts)
 priority = (emergency, high, low, normal)        ; Priority
 requested_by = :                                 ; Requester
 requested_date = date                            ; Request date
@@ -374,9 +374,9 @@ substitute_vehicle = :                           ; Substitute vehicle ID
 
 {@work_item}
 ; Required fields first
-item_number = !##:(1..)                          ; Line item number
-service_code = !:                                ; Service code (VMRS, ATA)
-description = !:                                 ; Work description
+item_number = ##:(1..)                          ; Line item number
+service_code = :                                ; Service code (VMRS, ATA)
+description = :                                 ; Work description
 
 ; Classification
 category = (body, brakes, electrical, engine, exhaust, hvac, pm, steering, suspension, tires, transmission)
@@ -393,9 +393,9 @@ technician = :                                   ; Technician
 
 {@work_order_part}
 ; Required fields first
-part_number = !:                                 ; Part number
-description = !:                                 ; Part description
-quantity = !##:(1..)                             ; Quantity used
+part_number = :                                 ; Part number
+description = :                                 ; Part description
+quantity = ##:(1..)                             ; Quantity used
 
 ; Part details
 part_type = (aftermarket, new_oem, remanufactured, used)
@@ -416,10 +416,10 @@ under_warranty = ?                               ; Covered by warranty
 
 {@telematics_event}
 ; Required fields first
-event_id = !:                                    ; Event identifier
-vehicle_id = !:                                  ; Vehicle identifier
-event_timestamp = !timestamp                     ; Event timestamp
-event_type = !(
+event_id = :                                    ; Event identifier
+vehicle_id = :                                  ; Vehicle identifier
+event_timestamp = timestamp                     ; Event timestamp
+event_type = (
     accident,                                    ; Collision detected
     diagnostics,                                 ; Diagnostic data
     driver_behavior,                             ; Driving behavior event
@@ -509,14 +509,14 @@ mil_status = (off, on):if event_type = diagnostics
 
 {@fuel_transaction}
 ; Required fields first
-transaction_id = !:                              ; Transaction ID
-vehicle_id = !:                                  ; Vehicle identifier
-transaction_date = !date                         ; Transaction date
+transaction_id = :                              ; Transaction ID
+vehicle_id = :                                  ; Vehicle identifier
+transaction_date = date                         ; Transaction date
 transaction_time = time                          ; Transaction time
 
 ; Fuel details
 {.fuel}
-fuel_type = !(
+fuel_type = (
     bio_diesel,
     diesel,
     e85,
@@ -591,9 +591,9 @@ exception_notes = :                              ; Exception notes
 
 {@toll_transaction}
 ; Required fields first
-transaction_id = !:                              ; Transaction ID
-vehicle_id = !:                                  ; Vehicle identifier
-transaction_datetime = !timestamp                ; Transaction timestamp
+transaction_id = :                              ; Transaction ID
+vehicle_id = :                                  ; Vehicle identifier
+transaction_datetime = timestamp                ; Transaction timestamp
 
 ; Toll details
 {.toll}
@@ -639,10 +639,10 @@ hov_lane = ?                                     ; HOV lane used
 
 {@fleet_accident_report}
 ; Required fields first
-report_id = !:                                   ; Report identifier
-vehicle_id = !:                                  ; Vehicle involved
-incident_datetime = !timestamp                   ; Incident date/time
-incident_type = !(
+report_id = :                                   ; Report identifier
+vehicle_id = :                                  ; Vehicle involved
+incident_datetime = timestamp                   ; Incident date/time
+incident_type = (
     backing,
     collision_fixed_object,
     collision_moving_object,

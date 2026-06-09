@@ -50,9 +50,9 @@ changelog[0].rationale = "Investment-grade valuation structure"
 
 {@commercial_valuation}
 ; Required fields first
-effective_date = !date                               ; Valuation effective date
-indicated_value = !#$:(0..)                          ; Indicated/concluded value
-property_address = !@address                         ; Subject property address
+effective_date = date                               ; Valuation effective date
+indicated_value = #$:(0..)                          ; Indicated/concluded value
+property_address = @address                         ; Subject property address
 
 ; Valuation identification
 valuation_id = :                                     ; Unique valuation identifier
@@ -64,7 +64,7 @@ property_ref = :                                     ; Reference to commercial p
 ; Property Summary
 ; ───────────────────────────────────────────────────────────────────────────────
 {.property}
-property_type = !(healthcare, hospitality, industrial, mixed_use, multifamily, office, retail, self_storage, special_purpose)
+property_type = (healthcare, hospitality, industrial, mixed_use, multifamily, office, retail, self_storage, special_purpose)
 property_subtype = :                                 ; Detailed subtype
 year_built = ##:(1600..2100)                         ; Year built
 effective_age = ##:(0..)                             ; Effective age
@@ -113,7 +113,7 @@ tenants_expiring = ##:(0..)                          ; Number of leases expiring
 ; Income Analysis (Trailing 12 Months / Pro Forma)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.income}
-analysis_type = !(pro_forma, trailing_12, year_1)    ; Income period type
+analysis_type = (pro_forma, trailing_12, year_1)    ; Income period type
 analysis_period = :                                  ; Period description
 
 {@commercial_valuation}
@@ -151,7 +151,7 @@ effective_gross_income = #$:(0..)                    ; EGI
 ; Operating Expenses
 ; ───────────────────────────────────────────────────────────────────────────────
 {.expenses}
-analysis_type = !(actual, pro_forma, stabilized)     ; Expense period type
+analysis_type = (actual, pro_forma, stabilized)     ; Expense period type
 
 {@commercial_valuation}
 
@@ -425,8 +425,8 @@ reviewed_by = :                                      ; Reviewer name
 
 {@rent_roll}
 ; Required fields first
-as_of_date = !date                                   ; Rent roll date
-property_address = !@address                         ; Property address
+as_of_date = date                                   ; Rent roll date
+property_address = @address                         ; Property address
 
 ; Rent roll identification
 rent_roll_id = :                                     ; Unique identifier
@@ -502,9 +502,9 @@ estimated_downtime = ##:(0..)                        ; Additional estimated down
 
 {@commercial_comparable}
 ; Required fields first
-property_address = !@address                         ; Property address
-sale_date = !date                                    ; Sale date
-sale_price = !#$:(0..)                               ; Sale price
+property_address = @address                         ; Property address
+sale_date = date                                    ; Sale date
+sale_price = #$:(0..)                               ; Sale price
 
 ; Comparable identification
 comparable_id = :                                    ; Unique identifier
@@ -513,7 +513,7 @@ comparable_id = :                                    ; Unique identifier
 ; Property Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.property}
-property_type = !(healthcare, hospitality, industrial, mixed_use, multifamily, office, retail, self_storage, special_purpose)
+property_type = (healthcare, hospitality, industrial, mixed_use, multifamily, office, retail, self_storage, special_purpose)
 property_subtype = :                                 ; Property subtype
 year_built = ##:(1600..2100)                         ; Year built
 gla = ##:(0..)                                       ; Gross leasable area

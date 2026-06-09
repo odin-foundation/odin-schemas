@@ -41,27 +41,27 @@ changelog[0].rationale = "Structure derived from 45 CFR 155.405 and CMS Single S
 ; Per 45 CFR 155.405
 
 {@application}
-application_id = !:                         ; Application ID
-exchange_id = !:                            ; Exchange identifier
-exchange_type = !(ffm, sbm, sbm_fp)         ; Exchange type
+application_id = :                         ; Application ID
+exchange_id = :                            ; Exchange identifier
+exchange_type = (ffm, sbm, sbm_fp)         ; Exchange type
 ; ffm = Federally Facilitated Marketplace
 ; sbm = State-Based Marketplace
 ; sbm_fp = SBM using Federal Platform
 
 ; Application type
-application_type = !(change, new, renewal, sep)
-coverage_year = !##:(2014..)                ; Coverage year
+application_type = (change, new, renewal, sep)
+coverage_year = ##:(2014..)                ; Coverage year
 
 ; Dates
 {.dates}
-created = !date                             ; Application created
+created = date                             ; Application created
 submitted = date                            ; Application submitted
 last_modified = date                        ; Last modification
 
 {@application}
 
 ; Primary contact - Per 45 CFR 155.410(d)
-contact_name = !:                           ; Contact name
+contact_name = :                           ; Contact name
 phone = *@phone                             ; Phone
 email = *@email                             ; Email
 contact_preferences = @contact_preference   ; Contact method preferences
@@ -80,12 +80,12 @@ rep_type = (application_assister, authorized_rep, broker, navigator)
 {@application}
 
 ; Household
-household = !@marketplace.household         ; Tax household
+household = @marketplace.household         ; Tax household
 applicants[] = @application_member          ; All applicants
 
 ; Status
 status = @status_record                     ; Application status tracking
-status.status = !(approved, denied, incomplete, pending, submitted, withdrawn)
+status.status = (approved, denied, incomplete, pending, submitted, withdrawn)
 substatus = :                               ; Detailed substatus
 
 {@application}
@@ -105,8 +105,8 @@ resolution_deadline = date                  ; Resolution deadline
 ; Per 45 CFR 155.305
 
 {@application_member}
-member_id = !:                              ; Member ID on application
-applicant = !@marketplace.applicant         ; Applicant information
+member_id = :                              ; Member ID on application
+applicant = @marketplace.applicant         ; Applicant information
 
 ; Relationship - Per 45 CFR 155.305(a)
 {.relationship}
@@ -148,15 +148,15 @@ plans_to_file = ?                           ; Plans to file taxes
 ; Per 45 CFR 155.710 - SHOP for small employers
 
 {@shop_application}
-application_id = !:                         ; Application ID
-exchange_id = !:                            ; Exchange ID
+application_id = :                         ; Application ID
+exchange_id = :                            ; Exchange ID
 
 ; Employer information
 {.employer}
-employer_name = !:                          ; Employer legal name
+employer_name = :                          ; Employer legal name
 dba_name = :                                ; DBA name
-ein = !*:                                   ; Employer Identification Number
-address = !@marketplace.address             ; Business address
+ein = *:                                   ; Employer Identification Number
+address = @marketplace.address             ; Business address
 phone = *@phone                             ; Phone
 email = *@email                             ; Email
 
@@ -164,8 +164,8 @@ email = *@email                             ; Email
 
 ; Eligibility - Per 45 CFR 155.710
 {.eligibility}
-state = !:(2)                               ; Primary business state
-employee_count = !##:(1..)                  ; Full-time equivalent employees
+state = :(2)                               ; Primary business state
+employee_count = ##:(1..)                  ; Full-time equivalent employees
 fte_calculation = ##:(0..)                  ; FTE count for eligibility
 meets_small_employer = ?                    ; Meets small employer definition
 offer_to_all_fte = ?                        ; Offers to all FTEs
@@ -191,7 +191,7 @@ carriers_offered[] = :                      ; Carriers offered
 
 ; Dates
 {.dates}
-application_date = !date                    ; Application date
+application_date = date                    ; Application date
 effective_date = date                       ; Coverage effective date
 plan_year_start = date                      ; Plan year start
 plan_year_end = date                        ; Plan year end
@@ -200,7 +200,7 @@ plan_year_end = date                        ; Plan year end
 
 ; Status
 status = @status_record                     ; SHOP application status
-status.status = !(active, approved, denied, pending, terminated)
+status.status = (active, approved, denied, pending, terminated)
 
 {@shop_application}
 
@@ -210,9 +210,9 @@ status.status = !(active, approved, denied, pending, terminated)
 ; Per 45 CFR 155.715
 
 {@shop_employee}
-employee_id = !:                            ; Employee ID
-employer_id = !:                            ; Employer application ID
-applicant = !@marketplace.applicant         ; Employee information
+employee_id = :                            ; Employee ID
+employer_id = :                            ; Employer application ID
+applicant = @marketplace.applicant         ; Employee information
 
 ; Employment
 {.employment}
@@ -249,12 +249,12 @@ dependents[] = @marketplace.applicant       ; Dependent information
 ; Per 45 CFR 155.335
 
 {@renewal}
-renewal_id = !:                             ; Renewal ID
-original_application_id = !:                ; Original application
-coverage_year = !##:(2014..)                ; New coverage year
+renewal_id = :                             ; Renewal ID
+original_application_id = :                ; Original application
+coverage_year = ##:(2014..)                ; New coverage year
 
 ; Renewal type - Per 45 CFR 155.335(a)
-renewal_type = !(active, automatic, passive)
+renewal_type = (active, automatic, passive)
 ; automatic = Auto-renewed by exchange
 ; passive = Passive renewal without action
 ; active = Enrollee actively renewed
@@ -308,12 +308,12 @@ submitted = date                            ; Renewal submitted
 ; Per 45 CFR 155.330
 
 {@change_request}
-request_id = !:                             ; Request ID
-application_id = !:                         ; Application ID
-request_date = !date                        ; Request date
+request_id = :                             ; Request ID
+application_id = :                         ; Application ID
+request_date = date                        ; Request date
 
 ; Change type
-change_type = !(address, coverage, dependent, income, other)
+change_type = (address, coverage, dependent, income, other)
 change_description = :                      ; Description of change
 
 ; Prior values
@@ -347,18 +347,18 @@ new_determination = ?                       ; New eligibility determination made
 ; Per 45 CFR 155.500-555
 
 {@appeal}
-appeal_id = !:                              ; Appeal ID
-application_id = !:                         ; Associated application
-appellant_id = !:                           ; Appellant
+appeal_id = :                              ; Appeal ID
+application_id = :                         ; Associated application
+appellant_id = :                           ; Appellant
 
 ; Appeal basis
-appeal_type = !(eligibility, enrollment, other, sep)
+appeal_type = (eligibility, enrollment, other, sep)
 appealed_determination = :                  ; Determination being appealed
 appeal_reason = :                           ; Reason for appeal
 
 ; Filing - Per 45 CFR 155.505
 {.filing}
-filed_date = !date                          ; Date filed
+filed_date = date                          ; Date filed
 timely = ?                                  ; Filed within deadline
 filing_method = (mail, online, phone)       ; How filed
 expedited_requested = ?                     ; Expedited review requested
@@ -377,7 +377,7 @@ hearing_location = :                        ; Location if in-person
 
 ; Resolution - Per 45 CFR 155.545
 resolution = @status_record                 ; Appeal resolution tracking
-resolution.status = !(affirmed, dismissed, pending, reversed, withdrawn)
+resolution.status = (affirmed, dismissed, pending, reversed, withdrawn)
 implementation_date = date                  ; Date to implement decision
 
 {@appeal}

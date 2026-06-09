@@ -522,7 +522,7 @@ coverage_premium_total = #$:(0..)
 
 {@personal_auto_adjustment}
 adjustment_id = :
-type = !(credit, surcharge)
+type = (credit, surcharge)
 code = :                                    ; Adjustment code
 description = :
 amount = #$:(0..)                                 ; Positive value (credits or surcharges)

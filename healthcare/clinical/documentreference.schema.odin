@@ -47,7 +47,7 @@ changelog[0].rationale = "DocumentReference resource derived from FHIR R4/R5 spe
 
 {@document_reference}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Master identifier - FHIR: DocumentReference.masterIdentifier
@@ -57,7 +57,7 @@ master_identifier = @fhir.identifier          ; Master version specific identifi
 identifiers[] = @fhir.identifier              ; Other identifiers
 
 ; Status - FHIR: DocumentReference.status (required)
-status = !(current, entered_in_error, superseded)
+status = (current, entered_in_error, superseded)
 
 ; Doc status - FHIR: DocumentReference.docStatus
 doc_status = (amended, appended, entered_in_error, final, preliminary)
@@ -103,15 +103,15 @@ context = @document_reference_context         ; Clinical context of document
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@document_reference_relates_to}
-code = !(appends, replaces, signs, transforms)  ; Type of relationship
-target = !@fhir.reference                     ; Target of relationship
+code = (appends, replaces, signs, transforms)  ; Type of relationship
+target = @fhir.reference                     ; Target of relationship
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Document Content - FHIR: DocumentReference.content
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {@document_reference_content}
-attachment = !@fhir.attachment                ; Where to access document
+attachment = @fhir.attachment                ; Where to access document
 format = @fhir.coding                         ; Format/content rules
 
 ; ───────────────────────────────────────────────────────────────────────────────

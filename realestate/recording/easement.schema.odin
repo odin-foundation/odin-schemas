@@ -45,9 +45,9 @@ changelog[0].rationale = "Comprehensive easement and encumbrance structure"
 
 {@easement}
 ; Required fields first
-creation_date = !date                                ; Date easement created
-easement_type = !(access, aviation, conservation, drainage, flowage, light_air, party_wall, pipeline, public_access, railroad, scenic, solar, transmission, utility, view)
-servient_property = !@address                        ; Burdened property address
+creation_date = date                                ; Date easement created
+easement_type = (access, aviation, conservation, drainage, flowage, light_air, party_wall, pipeline, public_access, railroad, scenic, solar, transmission, utility, view)
+servient_property = @address                        ; Burdened property address
 
 ; Easement identification
 easement_id = :                                      ; Unique easement identifier
@@ -219,9 +219,9 @@ termination_reason = ::if status = terminated        ; Reason terminated
 
 {@restriction}
 ; Required fields first
-creation_date = !date                                ; Date created
-property_address = !@address                         ; Property address
-restriction_type = !(architectural, building, conservation, historic, land_use, maintenance, setback, subdivision, use)
+creation_date = date                                ; Date created
+property_address = @address                         ; Property address
+restriction_type = (architectural, building, conservation, historic, land_use, maintenance, setback, subdivision, use)
 
 ; Restriction identification
 restriction_id = :                                   ; Unique identifier
@@ -321,10 +321,10 @@ status_date = date                                   ; Status date
 
 {@encroachment}
 ; Required fields first
-discovery_date = !date                               ; Date discovered
-encroaching_property = !@address                     ; Encroaching property
-encroachment_type = !(building, driveway, eave, fence, foundation, landscaping, other, roof, utility, wall)
-impacted_property = !@address                        ; Impacted property
+discovery_date = date                               ; Date discovered
+encroaching_property = @address                     ; Encroaching property
+encroachment_type = (building, driveway, eave, fence, foundation, landscaping, other, roof, utility, wall)
+impacted_property = @address                        ; Impacted property
 
 ; Encroachment identification
 encroachment_id = :                                  ; Unique identifier

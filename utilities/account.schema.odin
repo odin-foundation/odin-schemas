@@ -45,12 +45,12 @@ changelog[0].rationale = "Standard utility customer account structure per NAESB 
 
 {@account}
 ; Required fields first
-account_number = !*:                                ; Unique account identifier
+account_number = *:                                ; Unique account identifier
 customer_type = (commercial, government, industrial, residential)
 status = (active, closed, inactive, pending, suspended)
 
 ; Service address (where utility is delivered)
-service_address = !@address
+service_address = @address
 
 ; Optional fields
 account_name = :                                   ; Display name for account
@@ -84,7 +84,7 @@ special_instructions = :                           ; Service or billing instruct
 
 {@account.customer}
 ; Required fields
-customer_id = !:                                   ; Master customer identifier
+customer_id = :                                   ; Master customer identifier
 
 ; Personal information (for residential)
 name = @person_name                                ; Customer name
@@ -119,7 +119,7 @@ interpreter_needed = ?                             ; Interpreter services requir
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@account.authorized_contacts[]}
-name = !@person_name                               ; Contact name
+name = @person_name                               ; Contact name
 relationship = :                                   ; Relationship to account holder
 phones[] = *@phone                                 ; Contact phone numbers
 emails[] = *@email                                 ; Contact email addresses
@@ -135,8 +135,8 @@ expiration_date = date                             ; Authorization end date
 
 {@service_location}
 ; Required fields
-location_id = !:                                   ; Unique service location identifier
-address = !@address                                ; Service delivery address
+location_id = :                                   ; Unique service location identifier
+address = @address                                ; Service delivery address
 
 ; Optional fields
 premise_type = (apartment, commercial, house, industrial, multi_family, other)
@@ -176,8 +176,8 @@ escort_required = ?                                ; Escort needed for access
 
 {@account.rate}
 ; Required fields
-rate_code = !:                                     ; Current rate schedule code
-rate_class = !:                                    ; Rate classification
+rate_code = :                                     ; Current rate schedule code
+rate_class = :                                    ; Rate classification
 
 ; Optional fields
 rate_description = :                               ; Rate schedule name
@@ -204,7 +204,7 @@ economy_rate = ?                                   ; Economy rate participant
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@account.budget_billing}
-enrolled = !?                                      ; Budget billing enrollment status
+enrolled = ?                                      ; Budget billing enrollment status
 monthly_amount = #$:(0..)                          ; Fixed monthly payment amount
 start_date = date                                  ; Budget billing start date
 review_date = date                                 ; Next review/adjustment date
@@ -221,7 +221,7 @@ reconciliation_due = #$                            ; Amount due at reconciliatio
 {@account.payment_arrangement}
 type = (deferred, extended, installment, other)   ; Arrangement type
 status = (active, completed, defaulted, pending)  ; Arrangement status
-original_amount = !#$:(0..)                        ; Total amount arranged
+original_amount = #$:(0..)                        ; Total amount arranged
 remaining_balance = #$:(0..)                       ; Remaining balance
 installment_amount = #$:(0..)                      ; Regular installment payment
 installment_count = ##:(1..)                       ; Total installments
@@ -238,7 +238,7 @@ default_date = date                                ; Date of default if applicab
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@account.deposit}
-required = !?                                      ; Deposit required flag
+required = ?                                      ; Deposit required flag
 amount = #$:(0..)                                  ; Deposit amount held
 date_collected = date                              ; Date deposit collected
 date_due = date                                    ; Date deposit due
@@ -273,7 +273,7 @@ write_off_date = date                              ; Last write-off date
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@account.assistance_programs[]}
-program_code = !:                                  ; Assistance program identifier
+program_code = :                                  ; Assistance program identifier
 program_name = :                                   ; Program description
 enrolled_date = date                               ; Enrollment date
 effective_date = date                              ; Effective start date
@@ -293,8 +293,8 @@ recertification_due = date                         ; Next recertification date
 {@account.alerts[]}
 alert_type = (billing, collections, credit, safety, service)
 severity = (critical, high, low, medium)          ; Alert severity
-message = !:                                       ; Alert message
-created = !timestamp                               ; Alert creation timestamp
+message = :                                       ; Alert message
+created = timestamp                               ; Alert creation timestamp
 expires = timestamp                                ; Alert expiration
 acknowledged = ?                                   ; Alert acknowledged flag
 acknowledged_by = :                                ; User who acknowledged
@@ -308,8 +308,8 @@ acknowledged_date = timestamp                      ; Acknowledgment timestamp
 
 {@account.history[]}
 event_type = (closure, enrollment, modification, opening, status_change)
-event_date = !timestamp                            ; Event timestamp
-description = !:                                   ; Event description
+event_date = timestamp                            ; Event timestamp
+description = :                                   ; Event description
 performed_by = :                                   ; User who performed action
 prior_value = :                                    ; Previous value if applicable
 new_value = :                                      ; New value if applicable

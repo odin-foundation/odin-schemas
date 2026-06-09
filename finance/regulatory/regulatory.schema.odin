@@ -56,8 +56,8 @@ changelog[0].rationale = "Comprehensive regulatory reporting for banking complia
 
 {@reporting_entity}
 ; Required fields first
-entity_id = !:                                  ; Entity identifier
-entity_type = !(
+entity_id = :                                  ; Entity identifier
+entity_type = (
     bank_holding_company,                       ; BHC
     community_bank,                             ; Community bank
     credit_union,                               ; Credit union
@@ -69,7 +69,7 @@ entity_type = !(
     state_member,                               ; State member bank
     state_nonmember                             ; State non-member bank
 )
-name = !:                                       ; Institution name
+name = :                                       ; Institution name
 charter_number = :                              ; Charter number
 rssd_id = :(10)                                 ; RSSD ID (Fed)
 fdic_cert = :(5)                                ; FDIC certificate number
@@ -77,7 +77,7 @@ occ_charter = :(5)                              ; OCC charter number
 lei = :format lei                         ; Legal Entity Identifier
 
 ; Regulator
-primary_regulator = !(
+primary_regulator = (
     fdic,                                       ; FDIC
     frb,                                        ; Federal Reserve
     ncua,                                       ; NCUA
@@ -106,8 +106,8 @@ domestic_only = ?                               ; Domestic reporting only
 
 {@call_report}
 ; Required fields first
-report_id = !:                                  ; Report identifier
-report_type = !(
+report_id = :                                  ; Report identifier
+report_type = (
     ffiec_031,                                  ; Large banks with foreign offices
     ffiec_041,                                  ; Banks with domestic offices only
     ffiec_051,                                  ; Small banks (eligible for reduced)
@@ -115,8 +115,8 @@ report_type = !(
     fr_y_9lp,                                   ; BHC parent only
     fr_y_9sp                                    ; Small BHC
 )
-entity = !@reporting_entity                     ; Reporting institution
-report_date = !date                             ; As-of date (quarter end)
+entity = @reporting_entity                     ; Reporting institution
+report_date = date                             ; As-of date (quarter end)
 
 ; Status
 status = (
@@ -271,16 +271,16 @@ undercapitalized = ?                            ; Undercapitalized
 
 {@stress_test}
 ; Required fields first
-test_id = !:                                    ; Test identifier
-test_type = !(
+test_id = :                                    ; Test identifier
+test_type = (
     ccar,                                       ; Fed CCAR
     dfast_company,                              ; Company-run DFAST
     dfast_supervisory,                          ; Supervisory DFAST
     internal                                    ; Internal capital stress
 )
-entity = !@reporting_entity                     ; Reporting institution
-cycle_year = !##:(2000..2100)                   ; Test cycle year
-as_of_date = !date                              ; Starting balance sheet date
+entity = @reporting_entity                     ; Reporting institution
+cycle_year = ##:(2000..2100)                   ; Test cycle year
+as_of_date = date                              ; Starting balance sheet date
 
 ; Horizons
 planning_horizon_quarters = ##:(4..13)          ; Planning horizon (quarters)
@@ -300,13 +300,13 @@ status = (
 scenarios[] = @stress_scenario                  ; Test scenarios
 
 {@stress_scenario}
-scenario_id = !:                                ; Scenario identifier
-scenario_type = !(
+scenario_id = :                                ; Scenario identifier
+scenario_type = (
     adverse,                                    ; Adverse scenario
     baseline,                                   ; Baseline/expected
     severely_adverse                            ; Severely adverse
 )
-scenario_name = !:                              ; Scenario name
+scenario_name = :                              ; Scenario name
 description = :                                 ; Scenario description
 
 ; Macroeconomic variables
@@ -332,7 +332,7 @@ quarters[] = @quarter_projection                ; Quarterly projections
 {@stress_scenario}
 
 {@quarter_projection}
-quarter = !:                                    ; Quarter (YYYY-Q#)
+quarter = :                                    ; Quarter (YYYY-Q#)
 
 ; Income statement
 net_interest_income = #$                        ; Projected NII
@@ -377,9 +377,9 @@ minimum_cet1_ratio = #.2                        ; Minimum CET1 in scenario
 
 {@capital_plan}
 ; Required fields first
-plan_id = !:                                    ; Plan identifier
-entity = !@reporting_entity                     ; Institution
-cycle_year = !##:(2000..2100)                   ; Planning cycle year
+plan_id = :                                    ; Plan identifier
+entity = @reporting_entity                     ; Institution
+cycle_year = ##:(2000..2100)                   ; Planning cycle year
 
 ; Planned capital actions
 {.distributions}
@@ -401,16 +401,16 @@ capital_buffer = #.2                            ; Management buffer
 {@capital_plan}
 
 {@planned_action}
-action_id = !:                                  ; Action identifier
-action_type = !(
+action_id = :                                  ; Action identifier
+action_type = (
     common_dividend,                            ; Common dividend
     preferred_dividend,                         ; Preferred dividend
     share_repurchase,                           ; Share buyback
     sub_debt_call,                              ; Sub debt redemption
     sub_debt_issue                              ; Sub debt issuance
 )
-quarter = !:                                    ; Planned quarter
-amount = !#$:(0..)                              ; Planned amount
+quarter = :                                    ; Planned quarter
+amount = #$:(0..)                              ; Planned amount
 shares = ##:if action_type = share_repurchase   ; Shares to repurchase
 per_share = #$:if action_type = common_dividend ; Per share amount
 
@@ -421,9 +421,9 @@ per_share = #$:if action_type = common_dividend ; Per share amount
 
 {@sar}
 ; Required fields first
-sar_id = !:                                     ; Internal SAR ID
+sar_id = :                                     ; Internal SAR ID
 bsa_id = :                                      ; FinCEN BSA ID
-filing_type = !(
+filing_type = (
     continuing,                                 ; Continuing activity
     correction,                                 ; Correction
     initial,                                    ; Initial filing
@@ -431,7 +431,7 @@ filing_type = !(
 )
 
 ; Filing institution
-filer = !@reporting_entity                      ; Filing institution
+filer = @reporting_entity                      ; Filing institution
 branch_where_occurred = :                       ; Branch location
 
 ; Status
@@ -449,8 +449,8 @@ date_received_by_fincen = date                  ; FinCEN receipt date
 ; Suspicious Activity
 ; ---------------------------------------------------------------------------
 {.activity}
-date_activity_from = !date                      ; Activity start date
-date_activity_to = !date                        ; Activity end date
+date_activity_from = date                      ; Activity start date
+date_activity_to = date                        ; Activity end date
 amount_involved = #$:(0..)                      ; Amount of suspicious activity
 activity_type[] = (
     bribery,
@@ -468,7 +468,7 @@ activity_type[] = (
     terrorist_financing,
     wire_fraud
 )
-narrative = !:                                  ; Narrative description
+narrative = :                                  ; Narrative description
 
 {@sar}
 
@@ -478,8 +478,8 @@ narrative = !:                                  ; Narrative description
 subjects[] = @sar_subject                       ; Subjects of SAR
 
 {@sar_subject}
-subject_type = !(business, individual)          ; Subject type
-name = !:                                       ; Subject name
+subject_type = (business, individual)          ; Subject type
+name = :                                       ; Subject name
 aliases[] = :                                   ; Known aliases (AKAs, DBAs)
 date_of_birth = *date                           ; DOB (individuals)
 ssn_ein = *:                                    ; SSN or EIN (confidential)
@@ -491,8 +491,8 @@ occupation = :                                  ; Occupation
 employer = :                                    ; Employer
 
 {@subject_id}
-id_type = !(drivers_license, military_id, other, passport, state_id)
-id_number = !*:                                 ; ID number
+id_type = (drivers_license, military_id, other, passport, state_id)
+id_number = *:                                 ; ID number
 id_state_country = :(2..3)                      ; ID issuing jurisdiction
 
 ; Relationship to institution
@@ -517,13 +517,13 @@ relationship_type = (
 
 {@ctr}
 ; Required fields first
-ctr_id = !:                                     ; Internal CTR ID
+ctr_id = :                                     ; Internal CTR ID
 bsa_id = :                                      ; FinCEN BSA ID
-transaction_date = !date                        ; Transaction date
-filing_type = !(correction, initial)            ; Filing type
+transaction_date = date                        ; Transaction date
+filing_type = (correction, initial)            ; Filing type
 
 ; Filing institution
-filer = !@reporting_entity                      ; Filing institution
+filer = @reporting_entity                      ; Filing institution
 branch = :                                      ; Branch where conducted
 
 ; Status
@@ -561,8 +561,8 @@ addresses[] = @address                          ; Addresses (multiple known loca
 ids[] = {@conductor_id}                         ; IDs (multiple forms presented)
 
 {@conductor_id}
-id_type = !(alien_registration, drivers_license, military_id, other, passport, state_id)
-id_number = !*:                                 ; ID number
+id_type = (alien_registration, drivers_license, military_id, other, passport, state_id)
+id_number = *:                                 ; ID number
 id_state_country = :(2..3)                      ; ID jurisdiction
 
 {@ctr}
@@ -571,12 +571,12 @@ id_state_country = :(2..3)                      ; ID jurisdiction
 customer = @ctr_customer                        ; Person/entity on whose behalf
 
 {@ctr_customer}
-customer_type = !(business, individual)         ; Customer type
-name = !:                                       ; Customer name
+customer_type = (business, individual)         ; Customer type
+name = :                                       ; Customer name
 dbas[] = :                                      ; DBA names (multiple trade names)
 date_of_birth = *date                           ; DOB (individuals)
 ssn_ein = *:                                    ; SSN or EIN
-addresses[] = !@address                         ; Customer addresses (multiple locations)
+addresses[] = @address                         ; Customer addresses (multiple locations)
 phones[] = *@phone                              ; Phones (multiple contact numbers)
 occupation = :                                  ; Occupation
 employer = :                                    ; Employer
@@ -590,19 +590,19 @@ account_numbers[] = *:                          ; Account numbers involved
 
 {@ofac_screening}
 ; Required fields first
-screening_id = !:                               ; Screening ID
-screening_type = !(
+screening_id = :                               ; Screening ID
+screening_type = (
     batch,                                      ; Batch screening
     onboarding,                                 ; New customer
     ongoing,                                    ; Periodic rescreening
     transaction                                 ; Transaction screening
 )
-screening_date = !timestamp                     ; Screening timestamp
+screening_date = timestamp                     ; Screening timestamp
 
 ; Screened entity
 {.screened}
-entity_type = !(business, individual, vessel)   ; Entity type
-name = !:                                       ; Name screened
+entity_type = (business, individual, vessel)   ; Entity type
+name = :                                       ; Name screened
 alt_names[] = :                                 ; Alternate names
 date_of_birth = *date                           ; DOB
 addresses[] = @address                          ; Addresses (multiple known locations)
@@ -630,11 +630,11 @@ clear = ?                                       ; Cleared (no matches)
 matches[] = @ofac_match                         ; Potential matches
 
 {@ofac_match}
-match_id = !:                                   ; Match identifier
-lists[] = !:                                    ; Sanctions lists (can appear on multiple)
-list_entry_id = !:                              ; List entry ID
-matched_name = !:                               ; Matched name from list
-match_score = !#:(0..100)                       ; Match score
+match_id = :                                   ; Match identifier
+lists[] = :                                    ; Sanctions lists (can appear on multiple)
+list_entry_id = :                              ; List entry ID
+matched_name = :                               ; Matched name from list
+match_score = #:(0..100)                       ; Match score
 match_type = (
     exact,                                      ; Exact match
     fuzzy,                                      ; Fuzzy match
@@ -656,7 +656,7 @@ ids[] = :                                       ; Known IDs
 
 ; Disposition
 {.disposition}
-status = !(
+status = (
     escalated,                                  ; Escalated to compliance
     false_positive,                             ; Cleared as false positive
     pending,                                    ; Pending review
@@ -676,15 +676,15 @@ action_taken = :                                ; Action taken
 
 {@cdd}
 ; Required fields first
-cdd_id = !:                                     ; CDD record ID
-customer_id = !:                                ; Customer reference
-customer_type = !(
+cdd_id = :                                     ; CDD record ID
+customer_id = :                                ; Customer reference
+customer_type = (
     business,
     government,
     individual,
     non_profit
 )
-cdd_level = !(
+cdd_level = (
     enhanced,                                   ; Enhanced due diligence
     simplified,                                 ; Simplified DD
     standard                                    ; Standard CDD
@@ -730,7 +730,7 @@ verification_status = (failed, passed, pending)
 ; Risk Assessment
 ; ---------------------------------------------------------------------------
 {.risk}
-risk_rating = !(high, low, medium)              ; Customer risk rating
+risk_rating = (high, low, medium)              ; Customer risk rating
 risk_score = ##:(0..100)                        ; Risk score
 risk_factors[] = (
     cash_intensive,
@@ -752,11 +752,11 @@ next_review_date = date                         ; Next review date
 beneficial_owners[] = @beneficial_owner         ; Beneficial owners (>25%)
 
 {@beneficial_owner}
-owner_id = !:                                   ; Owner ID
-name = !:                                       ; Owner name
-ownership_pct = !#:(25..100)                    ; Ownership percentage
-date_of_birth = !*date                          ; DOB (confidential)
-address = !@address                             ; Address
+owner_id = :                                   ; Owner ID
+name = :                                       ; Owner name
+ownership_pct = #:(25..100)                    ; Ownership percentage
+date_of_birth = *date                          ; DOB (confidential)
+address = @address                             ; Address
 ssn = *:format ssn                              ; SSN (US)
 passports[] = {@owner_passport}                 ; Passports (dual/multi-citizenship)
 ids[] = {@owner_id}                             ; IDs (multiple forms presented)
@@ -764,12 +764,12 @@ id_verified = ?                                 ; ID verified
 verification_date = date                        ; Verification date
 
 {@owner_passport}
-passport_number = !*:                           ; Passport number
-passport_country = !:(2)                        ; Passport issuing country
+passport_number = *:                           ; Passport number
+passport_country = :(2)                        ; Passport issuing country
 
 {@owner_id}
-id_type = !(drivers_license, passport, state_id)
-id_number = !*:                                 ; ID number
+id_type = (drivers_license, passport, state_id)
+id_number = *:                                 ; ID number
 id_state_country = :(2..3)                      ; ID jurisdiction
 
 ; ===================================================================================
@@ -779,21 +779,21 @@ id_state_country = :(2..3)                      ; ID jurisdiction
 
 {@hmda_lar}
 ; Required fields first
-lar_id = !:                                     ; Internal LAR ID
-lei = !:format lei                        ; Lender LEI
-uli = !:                                        ; Universal Loan Identifier
-action_taken = !##:(1..8)                       ; Action taken code
-action_date = !date                             ; Action taken date
-report_year = !##:(2018..2100)                  ; Reporting year
+lar_id = :                                     ; Internal LAR ID
+lei = :format lei                        ; Lender LEI
+uli = :                                        ; Universal Loan Identifier
+action_taken = ##:(1..8)                       ; Action taken code
+action_date = date                             ; Action taken date
+report_year = ##:(2018..2100)                  ; Reporting year
 
 ; Application/Loan Info
 {.loan}
-loan_type = !##:(1..4)                          ; Loan type code
-loan_purpose = !##:(1..32)                      ; Loan purpose code
+loan_type = ##:(1..4)                          ; Loan type code
+loan_purpose = ##:(1..32)                      ; Loan purpose code
 preapproval = ##:(1..2)                         ; Preapproval requested
 construction_method = ##:(1..2)                 ; Construction method
 occupancy_type = ##:(1..3)                      ; Occupancy type
-loan_amount = !#$:(0..)                         ; Loan amount ($000)
+loan_amount = #$:(0..)                         ; Loan amount ($000)
 combined_ltv = #:(0..999)                       ; CLTV ratio
 interest_rate = #.3                             ; Interest rate
 rate_spread = #.3                               ; Rate spread
@@ -860,17 +860,17 @@ denial_reasons[] = ##:(1..10)                   ; Denial reason codes
 
 {@cra_data}
 ; Required fields first
-cra_id = !:                                     ; CRA record ID
-entity = !@reporting_entity                     ; Reporting institution
-report_year = !##:(2000..2100)                  ; Reporting year
-loan_type = !(
+cra_id = :                                     ; CRA record ID
+entity = @reporting_entity                     ; Reporting institution
+report_year = ##:(2000..2100)                  ; Reporting year
+loan_type = (
     community_development,                      ; CD loan
     small_business,                             ; Small business loan
     small_farm                                  ; Small farm loan
 )
 
 ; Loan details
-loan_amount = !#$:(0..)                         ; Loan amount at origination
+loan_amount = #$:(0..)                         ; Loan amount at origination
 loan_amount_bucket = (
     bucket_1,                                   ; <=$100K
     bucket_2,                                   ; $100K-$250K
@@ -906,18 +906,18 @@ affiliate_id = :                                ; Affiliate ID
 
 {@fair_lending_analysis}
 ; Required fields first
-analysis_id = !:                                ; Analysis ID
-entity = !@reporting_entity                     ; Institution
-analysis_type = !(
+analysis_id = :                                ; Analysis ID
+entity = @reporting_entity                     ; Institution
+analysis_type = (
     comparative_file,                           ; Comparative file review
     focal_point,                                ; Focal point analysis
     regression,                                 ; Regression analysis
     threshold                                   ; Threshold/outlier
 )
-product = !:                                    ; Product analyzed
-analysis_date = !date                           ; Analysis date
-period_from = !date                             ; Analysis period start
-period_to = !date                               ; Analysis period end
+product = :                                    ; Product analyzed
+analysis_date = date                           ; Analysis date
+period_from = date                             ; Analysis period start
+period_to = date                               ; Analysis period end
 
 ; Scope
 {.scope}

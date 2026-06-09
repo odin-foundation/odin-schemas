@@ -345,8 +345,8 @@ entity = @entity.business:if seller_type = partnership ; Business entity if sell
 ; Individual (if applicable)
 {.individual}
 {.name}
-first = !::if seller_type = individual
-last = !::if seller_type = individual
+first = ::if seller_type = individual
+last = ::if seller_type = individual
 
 {@rwi_seller.individual}
 ownership_percentage = #:(0..100):if seller_type = individual ; Ownership percentage for individual seller

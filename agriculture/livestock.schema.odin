@@ -49,7 +49,7 @@ changelog[0].rationale = "Livestock structures derived from APHIS traceability a
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-animal_id = !:                                   ; Unique animal identifier
+animal_id = :                                   ; Unique animal identifier
 official_id = :                                  ; Official USDA tag (NUES, 840, Brite)
 farm_tag = :                                     ; Farm-specific tag/tattoo
 name = :                                         ; Animal name (if applicable)
@@ -107,7 +107,7 @@ co_owner_id = :                                  ; Co-owner ID if applicable
 ; Location & Status
 ; ───────────────────────────────────────────────────────────────────────────────
 {.location}
-current_farm_ref = !:                            ; Current farm reference
+current_farm_ref = :                            ; Current farm reference
 pen_lot = :                                      ; Pen or lot number
 pasture = :                                      ; Pasture identifier
 building = :                                     ; Building number/name
@@ -160,9 +160,9 @@ movements[] = @movement
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-herd_id = !:                                     ; Herd/group identifier
+herd_id = :                                     ; Herd/group identifier
 herd_name = :                                    ; Herd name
-farm_ref = !:                                    ; Farm reference
+farm_ref = :                                    ; Farm reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Classification
@@ -178,7 +178,7 @@ production_system = (cage_free, conventional, free_range, organic, pasture_based
 ; Inventory
 ; ───────────────────────────────────────────────────────────────────────────────
 {.inventory}
-head_count = !##:(0..)                           ; Number of animals
+head_count = ##:(0..)                           ; Number of animals
 average_weight_lbs = #:(0..)                     ; Average weight
 total_weight_lbs = #:(0..)                       ; Total group weight
 inventory_date = date                            ; Inventory count date
@@ -209,10 +209,10 @@ animals[] = @animal                              ; Individual animals in herd
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Event Details
 ; ───────────────────────────────────────────────────────────────────────────────
-event_id = !:                                    ; Health event ID
-event_date = !date                               ; Date of event
+event_id = :                                    ; Health event ID
+event_date = date                               ; Date of event
 event_type = (diagnosis, examination, surgery, test, treatment, vaccination)
-animal_id = !:                                   ; Animal ID
+animal_id = :                                   ; Animal ID
 herd_id = :                                      ; Herd ID if group treatment
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -272,8 +272,8 @@ total_cost = #$:(0..)                            ; Total cost
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Record Details
 ; ───────────────────────────────────────────────────────────────────────────────
-record_id = !:                                   ; Production record ID
-record_date = !date                              ; Date recorded
+record_id = :                                   ; Production record ID
+record_date = date                              ; Date recorded
 animal_id = :                                    ; Individual animal ID
 herd_id = :                                      ; Herd ID if group record
 production_type = (breeding, calving_kidding_lambing, dairy, egg, fiber, weight)
@@ -312,7 +312,7 @@ confirmation_date = date:if production_type = breeding
 {.birth}
 birth_date = date:if production_type = calving_kidding_lambing
 calving_ease = (assisted, caesarean, difficult, normal):if production_type = calving_kidding_lambing
-offspring_count = !##:(1..):if production_type = calving_kidding_lambing
+offspring_count = ##:(1..):if production_type = calving_kidding_lambing
 live_births = ##:(0..):if production_type = calving_kidding_lambing
 stillborn = ##:(0..):if production_type = calving_kidding_lambing
 birth_weight_lbs = #:(0..):if production_type = calving_kidding_lambing
@@ -361,8 +361,8 @@ shearing_date = date:if production_type = fiber
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Movement Details
 ; ───────────────────────────────────────────────────────────────────────────────
-movement_id = !:                                 ; Movement ID
-movement_date = !date                            ; Date of movement
+movement_id = :                                 ; Movement ID
+movement_date = date                            ; Date of movement
 movement_type = (death, purchase, received, sale, shipped, transfer)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -447,8 +447,8 @@ commission = #$:(0..)                            ; Commission/fees
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Record Details
 ; ───────────────────────────────────────────────────────────────────────────────
-record_id = !:                                   ; Feeding record ID
-record_date = !date                              ; Date recorded
+record_id = :                                   ; Feeding record ID
+record_date = date                              ; Date recorded
 herd_id = :                                      ; Herd ID
 pen_lot = :                                      ; Pen/lot identifier
 
@@ -457,8 +457,8 @@ pen_lot = :                                      ; Pen/lot identifier
 ; ───────────────────────────────────────────────────────────────────────────────
 {.feed}
 feed_type = (concentrate, forage, grain, hay, mineral, silage, supplement)
-feed_name = !:                                   ; Feed name/description
-quantity_lbs = !#:(0..)                          ; Quantity fed (pounds)
+feed_name = :                                   ; Feed name/description
+quantity_lbs = #:(0..)                          ; Quantity fed (pounds)
 quantity_tons = #:(0..)                          ; Quantity fed (tons)
 dry_matter_percent = #:(0..100)                  ; Dry matter percentage
 protein_percent = #:(0..100)                     ; Crude protein percentage

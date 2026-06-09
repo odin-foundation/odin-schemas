@@ -46,11 +46,11 @@ changelog[0].rationale = "Comprehensive deed and recording structure"
 
 {@deed}
 ; Required fields first
-deed_type = !(bargain_sale, correction, deed_in_lieu, executors, general_warranty, gift, grant, guardian, personal_representative, quitclaim, sheriffs, special_warranty, tax, trust, trustees)
-execution_date = !date                               ; Date deed signed
-grantee = !:                                         ; Grantee name(s)
-grantor = !:                                         ; Grantor name(s)
-property_address = !@address                         ; Property address
+deed_type = (bargain_sale, correction, deed_in_lieu, executors, general_warranty, gift, grant, guardian, personal_representative, quitclaim, sheriffs, special_warranty, tax, trust, trustees)
+execution_date = date                               ; Date deed signed
+grantee = :                                         ; Grantee name(s)
+grantor = :                                         ; Grantor name(s)
+property_address = @address                         ; Property address
 
 ; Deed identification
 deed_id = :                                          ; Unique deed identifier
@@ -255,8 +255,8 @@ void_reason = ::if status = void                     ; Reason voided
 
 {@deed_recording}
 ; Required fields first
-recording_date = !date                               ; Date recorded
-recording_jurisdiction = !:                          ; Recording jurisdiction
+recording_date = date                               ; Date recorded
+recording_jurisdiction = :                          ; Recording jurisdiction
 
 ; Recording identification
 recording_number = :                                 ; Document/instrument number
@@ -329,10 +329,10 @@ cure_instructions = ::if status = rejected           ; How to cure
 
 {@security_instrument}
 ; Required fields first
-execution_date = !date                               ; Date executed
-instrument_type = !(deed_of_trust, mortgage, security_deed)
-principal_amount = !#$:(0..)                         ; Loan principal
-property_address = !@address                         ; Property address
+execution_date = date                               ; Date executed
+instrument_type = (deed_of_trust, mortgage, security_deed)
+principal_amount = #$:(0..)                         ; Loan principal
+property_address = @address                         ; Property address
 
 ; Instrument identification
 instrument_id = :                                    ; Unique identifier
@@ -416,9 +416,9 @@ status_date = date                                   ; Status date
 
 {@assignment}
 ; Required fields first
-assignment_date = !date                              ; Assignment date
-assignee = !:                                        ; New beneficiary
-assignor = !:                                        ; Prior beneficiary
+assignment_date = date                              ; Assignment date
+assignee = :                                        ; New beneficiary
+assignor = :                                        ; Prior beneficiary
 
 ; Assignment identification
 assignment_id = :                                    ; Unique identifier

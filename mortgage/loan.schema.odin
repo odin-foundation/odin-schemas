@@ -41,27 +41,27 @@ changelog[0].rationale = "Loan structure derived from TRID, Fannie Mae, Freddie 
 
 {@application}
 ; Identification
-application_id = !:                           ; Unique application identifier
+application_id = :                           ; Unique application identifier
 loan_number = :                               ; Loan number (once assigned)
 
 ; Application dates
-application_date = !date                      ; Application received date
+application_date = date                      ; Application received date
 decision_date = date                          ; Underwriting decision date
 
 ; Application type
-loan_purpose = !(cash_out_refinance, construction, construction_permanent, home_improvement, purchase, rate_term_refinance)
-loan_type = !(conventional, fha, usda, va)
+loan_purpose = (cash_out_refinance, construction, construction_permanent, home_improvement, purchase, rate_term_refinance)
+loan_type = (conventional, fha, usda, va)
 
 ; Borrowers
 borrowers[] = @mtg.borrower                   ; Borrower(s)
 
 ; Property
-property = !@mtg.property                     ; Subject property
+property = @mtg.property                     ; Subject property
 
 ; Loan request
 {.request}
-amount = !#$:(0..)                            ; Requested loan amount
-term_months = !##:(1..)                       ; Requested term in months
+amount = #$:(0..)                            ; Requested loan amount
+term_months = ##:(1..)                       ; Requested term in months
 product_type = :(arm, fixed, hybrid)          ; Product type requested
 
 {@application}
@@ -122,19 +122,19 @@ ownership_interest_3_years = ?                ; Owned property in last 3 years
 
 {@terms}
 ; Loan identification
-loan_number = !:                              ; Loan number
+loan_number = :                              ; Loan number
 
 ; Principal
-loan_amount = !#$:(0..)                       ; Loan principal amount
+loan_amount = #$:(0..)                       ; Loan principal amount
 
 ; Term
-term_months = !##:(1..)                       ; Loan term in months
-amortization_type = !(fixed, arm, balloon, interest_only, negative_amortization)
+term_months = ##:(1..)                       ; Loan term in months
+amortization_type = (fixed, arm, balloon, interest_only, negative_amortization)
 
 ; Interest rate - Per TRID Section L
 {.interest_rate}
-initial_rate = !#.3:(0..100)                  ; Initial interest rate
-rate_type = !(adjustable, fixed)              ; Fixed or adjustable
+initial_rate = #.3:(0..100)                  ; Initial interest rate
+rate_type = (adjustable, fixed)              ; Fixed or adjustable
 fully_indexed_rate = #.3:(0..100)             ; Fully indexed rate (ARM)
 
 {@terms}
@@ -154,10 +154,10 @@ floor = #.3:(0..100)                          ; Interest rate floor
 
 ; Payment - Per TRID Projected Payments
 {.payment}
-principal_interest = !#$:(0..)                ; Monthly P&I
+principal_interest = #$:(0..)                ; Monthly P&I
 mortgage_insurance = #$:(0..)                 ; Monthly MI premium
 escrow = #$:(0..)                             ; Monthly escrow
-total_monthly = !#$:(0..)                     ; Total monthly payment
+total_monthly = #$:(0..)                     ; Total monthly payment
 
 {@terms}
 
@@ -254,8 +254,8 @@ cash_to_close = #$                            ; Cash to close (can be negative)
 {@closing_costs}
 
 {@fee_item}
-description = !:                              ; Fee description
-amount = !#$:(0..)                            ; Fee amount
+description = :                              ; Fee description
+amount = #$:(0..)                            ; Fee amount
 paid_by = (borrower, lender, seller, third_party)
 paid_at = (closing, outside_closing)          ; When paid
 
@@ -265,7 +265,7 @@ paid_at = (closing, outside_closing)          ; When paid
 ; Per Fannie Mae B7-1 MI requirements
 
 {@mortgage_insurance}
-required = !?                                 ; MI required
+required = ?                                 ; MI required
 type = (fha_mip, lender_paid, monthly, single_premium, split_premium, usda, va_funding_fee)
 provider = :                                  ; MI company name
 certificate_number = :                        ; MI certificate number
@@ -293,7 +293,7 @@ cancellation_date = date                      ; Projected cancellation date
 ; FHA/VA/USDA specific requirements per HUD, VA, USDA handbooks
 
 {@government_loan}
-program = !(fha, usda, va)                    ; Government program
+program = (fha, usda, va)                    ; Government program
 
 ; FHA specific - Per HUD Handbook 4000.1
 {.fha}
@@ -332,8 +332,8 @@ income_eligible = ?                           ; Household income eligible
 
 {@underwriting}
 ; Decision
-recommendation = !(approve_eligible, approve_ineligible, caution, out_of_scope, refer, refer_with_caution)
-decision_date = !timestamp                    ; Decision timestamp
+recommendation = (approve_eligible, approve_ineligible, caution, out_of_scope, refer, refer_with_caution)
+decision_date = timestamp                    ; Decision timestamp
 
 ; Automated underwriting
 {.automated}
@@ -353,9 +353,9 @@ stipulations[] = :                            ; Required stipulations
 compensating_factors[] = :                    ; Compensating factors noted
 
 {@underwriting_condition}
-code = !:                                     ; Condition code
-description = !:                              ; Condition description
-category = !(credit, employment, income, prior_to_closing, prior_to_docs, prior_to_funding, property)
+code = :                                     ; Condition code
+description = :                              ; Condition description
+category = (credit, employment, income, prior_to_closing, prior_to_docs, prior_to_funding, property)
 status = (cleared, open, waived)              ; Condition status
 cleared_date = date                           ; Date cleared
 cleared_by = :                                ; Cleared by user

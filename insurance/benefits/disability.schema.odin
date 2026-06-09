@@ -39,13 +39,13 @@ changelog[0].rationale = "Structure derived from ERISA and disability benefit re
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@std}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Type
 {.type}
-plan_type = !(fully_insured, self_funded)
+plan_type = (fully_insured, self_funded)
 voluntary = ?                               ; Voluntary vs employer-paid
 
 {@std}
@@ -112,13 +112,13 @@ rate_per_10 = #:(0..5)                      ; Rate per $10 weekly benefit
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@ltd}
-plan_id = !:                                ; Plan ID
-employer_id = !:                            ; Employer
-plan_name = !:                              ; Plan name
+plan_id = :                                ; Plan ID
+employer_id = :                            ; Employer
+plan_name = :                              ; Plan name
 
 ; Type
 {.type}
-plan_type = !(fully_insured, self_funded)
+plan_type = (fully_insured, self_funded)
 voluntary = ?                               ; Voluntary vs employer-paid
 
 {@ltd}
@@ -217,9 +217,9 @@ conversion_available = ?                    ; Conversion available
 ; State-mandated disability (CA, HI, NJ, NY, RI, PR)
 
 {@statutory_disability}
-state = !:(2)                               ; State code
-employer_id = !:                            ; Employer
-plan_year = !##:(2000..)                    ; Plan year
+state = :(2)                               ; State code
+employer_id = :                            ; Employer
+plan_year = ##:(2000..)                    ; Plan year
 
 ; State program - Per state requirements
 {.program}
@@ -268,10 +268,10 @@ pfl_benefit_percent = #:(50..90)            ; PFL benefit percent
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@disability_enrollment}
-enrollment_id = !:                          ; Enrollment ID
-employee_id = !:                            ; Employee
-plan_id = !:                                ; Plan ID
-coverage_type = !(ltd, std, statutory)
+enrollment_id = :                          ; Enrollment ID
+employee_id = :                            ; Employee
+plan_id = :                                ; Plan ID
+coverage_type = (ltd, std, statutory)
 
 ; Coverage
 {.coverage}
@@ -292,21 +292,21 @@ employer_paid = #$:(0..)                    ; Employer pays
 {@disability_enrollment}
 
 ; Status
-status = !(active, declined, terminated)
+status = (active, declined, terminated)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; DISABILITY CLAIM
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@disability_claim}
-claim_id = !:                               ; Claim ID
-enrollment_id = !:                          ; Enrollment
-employee_id = !:                            ; Employee
-claim_type = !(ltd, partial, std)
+claim_id = :                               ; Claim ID
+enrollment_id = :                          ; Enrollment
+employee_id = :                            ; Employee
+claim_type = (ltd, partial, std)
 
 ; Disability dates
 {.dates}
-disability_date = !date                     ; Date disability began
+disability_date = date                     ; Date disability began
 last_day_worked = date                      ; Last day worked
 return_to_work_date = date                  ; Actual/expected RTW
 claim_filed_date = date                     ; Claim filed date
@@ -344,7 +344,7 @@ net_benefit = #$:(0..)                      ; Net benefit payable
 
 ; Status
 {.status}
-status = !(approved, closed, denied, pending)
+status = (approved, closed, denied, pending)
 elimination_period_satisfied = ?            ; Elimination period met
 own_occupation_period = ?                   ; In own occupation period
 any_occupation_period = ?                   ; In any occupation period
@@ -373,9 +373,9 @@ transition_benefit = ?                      ; Receiving transition benefit
 ; Per 29 CFR Part 825
 
 {@fmla_leave}
-leave_id = !:                               ; Leave ID
-employee_id = !:                            ; Employee
-employer_id = !:                            ; Employer
+leave_id = :                               ; Leave ID
+employee_id = :                            ; Employee
+employer_id = :                            ; Employer
 
 ; FMLA eligibility - Per 29 CFR 825.110
 {.eligibility}
@@ -388,7 +388,7 @@ worksite_employees = ##:(0..999)            ; Employees at worksite
 
 ; Leave type - Per 29 CFR 825.112
 {.type}
-leave_reason = !(care_family, care_newborn, military_caregiver, military_exigency, own_serious_health)
+leave_reason = (care_family, care_newborn, military_caregiver, military_exigency, own_serious_health)
 family_member = (child, parent, spouse)     ; If family care
 military_member = ?                         ; Military family leave
 
@@ -424,7 +424,7 @@ recertification_due = date                  ; Recertification due date
 
 ; Status
 {.status}
-status = !(approved, completed, denied, pending)
+status = (approved, completed, denied, pending)
 denial_reason = :                           ; Denial reason
 
 {@fmla_leave}

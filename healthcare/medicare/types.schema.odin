@@ -42,19 +42,19 @@ changelog[0].rationale = "Base types derived from CMS public manuals and 42 CFR"
 = @person                                    ; Inherits person fields (name, ssn, dob, contact)
 
 ; Identification - Per 42 CFR 405.803
-mbi = !*:/^[1-9AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9][0-9][AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9][0-9][AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9][0-9][AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9]$/  ; Medicare Beneficiary Identifier
+mbi = *:/^[1-9AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9][0-9][AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9][0-9][AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9][0-9][AC-HJKMNP-RT-Y][AC-HJKMNP-RT-Y0-9]$/  ; Medicare Beneficiary Identifier
 hicn = *:                                    ; Legacy Health Insurance Claim Number (deprecated)
 
 ; Override required name fields - Per CMS-40B application
 {.name}
-first = !:                                   ; First name (required)
-last = !:                                    ; Last name (required)
+first = :                                   ; First name (required)
+last = :                                    ; Last name (required)
 
 {@beneficiary}
 
 ; Override required demographics
-date_of_birth = !*date                       ; Date of birth (required)
-gender = !(female, male)                     ; Sex per SSA records (required)
+date_of_birth = *date                       ; Date of birth (required)
+gender = (female, male)                     ; Sex per SSA records (required)
 
 ; Medicare-specific demographics
 date_of_death = *date                        ; Date of death if deceased
@@ -65,7 +65,7 @@ date_of_death = *date                        ; Date of death if deceased
 ; Per CMS Pub 100-01 Chapter 2 - Entitlement and Enrollment
 
 {@entitlement_basis}
-basis = !(age, disability, esrd, esrd_age, esrd_disability)
+basis = (age, disability, esrd, esrd_age, esrd_disability)
 
 ; Age-based (65+) - Per 42 CFR 406.10
 age_65_date = date                           ; Date reached age 65
@@ -98,8 +98,8 @@ als_diagnosis_date = date                    ; Date of ALS diagnosis
 ; Per CMS Pub 100-01 Chapter 2 and Medicare & You handbook
 
 {@medicare_premium}
-part = !(a, b, c, d)                         ; Medicare part
-year = !##:(2000..2100)                      ; Calendar year
+part = (a, b, c, d)                         ; Medicare part
+year = ##:(2000..2100)                      ; Calendar year
 
 ; Standard premium - Per annual CMS announcement
 standard_premium = #$:(0..)                  ; Standard monthly premium
@@ -140,9 +140,9 @@ account_reference = :                        ; Payment account reference
 ; Per Medicare & You handbook and 42 CFR 406, 407, 422, 423
 
 {@enrollment_period}
-type = !(aep, general, icep, iep, oep, sep)  ; Period type
-start_date = !date                           ; Period start
-end_date = !date                             ; Period end
+type = (aep, general, icep, iep, oep, sep)  ; Period type
+start_date = date                           ; Period start
+end_date = date                             ; Period end
 applicable_parts[] = :(a, b, c, d)           ; Parts available for enrollment
 
 ; Period type explanations:
@@ -163,10 +163,10 @@ sep_documentation = :                        ; Supporting documentation referenc
 ; Per CMS Pub 100-01 Chapter 2
 
 {@coverage_period}
-part = !(a, b, c, d)                         ; Medicare part
-effective_date = !date                       ; Coverage start date
+part = (a, b, c, d)                         ; Medicare part
+effective_date = date                       ; Coverage start date
 termination_date = date                      ; Coverage end date (if terminated)
-status = !(active, disenrolled, pending, terminated)
+status = (active, disenrolled, pending, terminated)
 
 ; Termination reason - Per 42 CFR 406.28, 407.60
 termination_reason = (beneficiary_request, death, employer_coverage, incarceration, loss_of_entitlement, loss_of_lawful_presence, ma_enrollment, nonpayment, other, part_d_enrollment):if status = terminated
@@ -177,7 +177,7 @@ termination_reason = (beneficiary_request, death, employer_coverage, incarcerati
 ; Per CMS Medicare Card information
 
 {@medicare_card}
-mbi = !*:                                    ; Medicare Beneficiary Identifier
+mbi = *:                                    ; Medicare Beneficiary Identifier
 {.name}
 first = :                                    ; First name as printed
 last = :                                     ; Last name as printed
@@ -223,7 +223,7 @@ coordination_period_end = date               ; End of MSP coordination period
 ; Per CMS Pub 100-18 Chapter 13 - Low Income Subsidy
 
 {@low_income_subsidy}
-eligible = !?                                ; LIS eligible
+eligible = ?                                ; LIS eligible
 level = (deemed_full, full, partial_1, partial_2, partial_3):if eligible = true
 
 ; Deemed status - Per 42 CFR 423.773
@@ -255,7 +255,7 @@ copay_catastrophic = #$:(0..)                ; Catastrophic copay
 ; Per 42 CFR 411 - Medicare Secondary Payer
 
 {@cob_record}
-payer_type = !(auto_liability, employer_group, federal_black_lung, no_fault, other_liability, tricare, va, workers_comp)
+payer_type = (auto_liability, employer_group, federal_black_lung, no_fault, other_liability, tricare, va, workers_comp)
 payer_name = :                               ; Payer name
 payer_id = :                                 ; Payer identifier
 group_number = :                             ; Group/policy number
@@ -274,8 +274,8 @@ recovery_applicable = ?                      ; CMS may recover from this payer
 ; Per CMS required notices
 
 {@medicare_notice}
-notice_type = !(abm, anoc, eob, msp_questionnaire, non_coverage, snf_notice)
-notice_date = !date                          ; Date notice issued
+notice_type = (abm, anoc, eob, msp_questionnaire, non_coverage, snf_notice)
+notice_date = date                          ; Date notice issued
 reference_number = :                         ; Notice reference number
 
 ; Notice type explanations:

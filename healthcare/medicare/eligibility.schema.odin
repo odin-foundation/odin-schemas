@@ -41,18 +41,18 @@ changelog[0].rationale = "Structure derived from CMS Pub 100-01 and 42 CFR Part 
 ; Per CMS Pub 100-01 Chapter 2 - Eligibility and Entitlement
 
 {@determination}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
-determination_date = !date                   ; Date of determination
+beneficiary = @medicare.beneficiary         ; Beneficiary information
+determination_date = date                   ; Date of determination
 
 ; Overall eligibility status
-eligible = !?                                ; Overall Medicare eligibility
+eligible = ?                                ; Overall Medicare eligibility
 eligible_parts[] = (a, b, c, d)              ; Parts eligible for
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Part A Eligibility - Per 42 CFR 406.10-406.15
 ; ───────────────────────────────────────────────────────────────────────────────
 {.part_a}
-eligible = !?                                ; Part A eligible
+eligible = ?                                ; Part A eligible
 entitlement_basis = @medicare.entitlement_basis  ; Basis for entitlement
 premium_free = ?                             ; Premium-free Part A
 earliest_effective = date                    ; Earliest effective date
@@ -82,7 +82,7 @@ government_employment = ?                    ; Federal/state employment (no FICA
 ; Part B Eligibility - Per 42 CFR 407.10
 ; ───────────────────────────────────────────────────────────────────────────────
 {.part_b}
-eligible = !?                                ; Part B eligible
+eligible = ?                                ; Part B eligible
 eligible_if_part_a = ?                       ; Eligible because Part A eligible
 us_resident = ?                              ; US resident requirement
 citizen_or_lawful = ?                        ; Citizen or lawfully present
@@ -97,7 +97,7 @@ disability_eligible = ?                      ; Disability eligible
 ; Part C (MA) Eligibility - Per 42 CFR 422.50
 ; ───────────────────────────────────────────────────────────────────────────────
 {.part_c}
-eligible = !?                                ; Part C (MA) eligible
+eligible = ?                                ; Part C (MA) eligible
 enrolled_part_a = ?                          ; Enrolled in Part A (required)
 enrolled_part_b = ?                          ; Enrolled in Part B (required)
 esrd_exception = ?                           ; ESRD exception applies
@@ -110,7 +110,7 @@ incarcerated = ?                             ; Not incarcerated (required)
 ; Part D Eligibility - Per 42 CFR 423.30
 ; ───────────────────────────────────────────────────────────────────────────────
 {.part_d}
-eligible = !?                                ; Part D eligible
+eligible = ?                                ; Part D eligible
 entitled_part_a = ?                          ; Entitled to Part A
 enrolled_part_b = ?                          ; Enrolled in Part B
 us_resident = ?                              ; US resident
@@ -128,8 +128,8 @@ creditable_coverage_type = :                 ; Type of creditable coverage
 
 {@verification}
 ; Request information
-request_date = !date                         ; Date of verification request
-verification_type = !(eligibility_only, eligibility_with_benefits)
+request_date = date                         ; Date of verification request
+verification_type = (eligibility_only, eligibility_with_benefits)
 
 ; Beneficiary identifiers
 mbi = *:                                     ; Medicare Beneficiary Identifier
@@ -196,10 +196,10 @@ hospice_npi = :                              ; Hospice provider NPI
 ; Per CMS Medicare-Medicaid coordination
 
 {@dual_eligible}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
+beneficiary = @medicare.beneficiary         ; Beneficiary information
 
 ; Dual status - Per 42 CFR 423.772
-dual_eligible = !?                           ; Medicare-Medicaid dual eligible
+dual_eligible = ?                           ; Medicare-Medicaid dual eligible
 dual_type = (fbde, other_full, partial, qmb_only, qmb_plus, slmb_only, slmb_plus):if dual_eligible = true
 
 ; Dual type definitions:
@@ -244,17 +244,17 @@ institutional_snp_eligible = ?               ; Institutional SNP eligible
 ; Per 42 CFR 406.24, 407.20, 422.62, 423.38
 
 {@sep_determination}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
-request_date = !date                         ; Date SEP requested
+beneficiary = @medicare.beneficiary         ; Beneficiary information
+request_date = date                         ; Date SEP requested
 
 ; SEP qualification
-qualifies = !?                               ; Qualifies for SEP
+qualifies = ?                               ; Qualifies for SEP
 sep_type = @medicare.enrollment_period:if qualifies = true
 
 ; Qualifying event - Per 42 CFR 422.62(b), 423.38(c)
 {.qualifying_event}
 event_type = (chronic_condition, contract_violation, disenrollment, dual_eligible_change, employer_coverage, five_star, incarceration_release, lawful_presence, medicaid_change, move, natural_disaster, other, snp_loss)
-event_date = !date                           ; Date of qualifying event
+event_date = date                           ; Date of qualifying event
 documentation_type = :                       ; Required documentation type
 documentation_received = ?                   ; Documentation received
 
@@ -295,7 +295,7 @@ service_area_change = ?                      ; Lost access to prior plan
 ; Per SSA/CMS entitlement data
 
 {@entitlement_record}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
+beneficiary = @medicare.beneficiary         ; Beneficiary information
 
 ; Current entitlement status
 {.current}
@@ -310,9 +310,9 @@ part_b_effective = date                      ; Part B effective date
 history[] = @entitlement_history_entry       ; Entitlement history entries
 
 {@entitlement_history_entry}
-part = !(a, b)                               ; Medicare part
-action = !(enrolled, terminated)             ; Action type
-effective_date = !date                       ; Action effective date
+part = (a, b)                               ; Medicare part
+action = (enrolled, terminated)             ; Action type
+effective_date = date                       ; Action effective date
 reason = :                                   ; Reason for action
 source = :                                   ; Source of entitlement/termination
 

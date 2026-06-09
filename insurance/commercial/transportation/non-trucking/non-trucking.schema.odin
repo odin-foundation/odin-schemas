@@ -41,7 +41,7 @@ changelog[0].rationale = "Coverage for owner-operators when not under dispatch"
 ; Owner-operator and independent contractor details.
 
 {@ntl_operator_type}
-operator_class = !(
+operator_class = (
     independent_contractor,                   ; IC with permanent lease
     lease_on,                                 ; Leased to one carrier
     lease_on_multiple,                        ; Multiple carrier leases
@@ -50,7 +50,7 @@ operator_class = !(
 )
 
 ; Operating status
-cdl_class = !(A, B, C)                        ; CDL class
+cdl_class = (A, B, C)                        ; CDL class
 primary_carrier = :                           ; Primary lease carrier
 secondary_carriers[] = :                      ; Other lease carriers
 
@@ -61,11 +61,11 @@ secondary_carriers[] = :                      ; Other lease carriers
 
 {@ntl_operator}
 ; Required fields first
-cdl_number = !*:                              ; CDL number
-cdl_state = !:(2)                             ; CDL state
-date_of_birth = !*date                        ; Date of birth
-name = !@person_name                          ; Operator name
-operator_type = !@ntl_operator_type           ; Operator classification
+cdl_number = *:                              ; CDL number
+cdl_state = :(2)                             ; CDL state
+date_of_birth = *date                        ; Date of birth
+name = @person_name                          ; Operator name
+operator_type = @ntl_operator_type           ; Operator classification
 
 ; Optional fields
 address = @address                            ; Mailing address
@@ -111,12 +111,12 @@ lease_expiration = date                       ; Lease end
 
 {@ntl_vehicle}
 ; Required fields first
-vehicle_type = !(
+vehicle_type = (
     bobtail,                                  ; Tractor only
     straight_truck,                           ; Straight truck
     tractor                                   ; Tractor (power unit)
 )
-vin = !*:/^[A-HJ-NPR-Z0-9]{17}$/              ; VIN
+vin = *:/^[A-HJ-NPR-Z0-9]{17}$/              ; VIN
 
 ; Optional fields
 gvwr_lbs = ##                                 ; GVWR
@@ -155,7 +155,7 @@ valuation = (
 
 {@ntl_coverage}
 ; Required fields first
-combined_single_limit = !#$:(0..)             ; CSL
+combined_single_limit = #$:(0..)             ; CSL
 
 ; Optional fields
 deductible = #$:(0..)                         ; Liability deductible
@@ -227,7 +227,7 @@ vehicle_as_premises = ?                       ; Living in vehicle
 
 {@ntl_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 liability_premium = #$:(0..)                  ; Liability premium
@@ -258,8 +258,8 @@ violation_surcharge = #                       ; Violation loading
 
 {@ntl_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     bodily_injury,                            ; BI claim
     collision,                                ; Collision
     comprehensive,                            ; Comprehensive
@@ -309,12 +309,12 @@ subrogation = #$:(0..)                        ; Subrogation
 
 {@ntl_policy}
 ; Required fields first
-coverage = !@ntl_coverage                     ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-operator = !@ntl_operator                     ; Insured operator
-policy_number = !:                            ; Policy number
-vehicle = !@ntl_vehicle                       ; Covered vehicle
+coverage = @ntl_coverage                     ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+operator = @ntl_operator                     ; Insured operator
+policy_number = :                            ; Policy number
+vehicle = @ntl_vehicle                       ; Covered vehicle
 
 ; Invariants
 :invariant expiration_date > effective_date

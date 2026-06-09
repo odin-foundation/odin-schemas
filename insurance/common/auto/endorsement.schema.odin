@@ -33,14 +33,14 @@ changelog[0].rationale = "Standard policy change and endorsement structures"
 
 {@endorsement}
 id = :
-number = !:                             ; Sequential within policy term
+number = :                             ; Sequential within policy term
 sequence = ##
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Reference
 ; ───────────────────────────────────────────────────────────────────────────────
 {.policy}
-number = !:
+number = :
 term_effective = date
 term_expiration = date
 version_before = ##               ; Policy version before this change
@@ -51,7 +51,7 @@ version_after = ##                ; Policy version after this change
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Endorsement Type
 ; ───────────────────────────────────────────────────────────────────────────────
-transaction_type = !(
+transaction_type = (
     add_additional_insured,
     add_coverage,
     add_driver,
@@ -93,9 +93,9 @@ transaction_type = !(
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Effective Dates
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-processed_date = !date
+processed_date = date
 requested_date = date
 
 ; Pro-rata calculation
@@ -141,7 +141,7 @@ internal_notes = :
 ; ───────────────────────────────────────────────────────────────────────────────
 {@endorsement.forms[]}
 :
-number = !:
+number = :
 name = :
 edition = :
 form_type = (endorsement, exclusion, notice, other, schedule)
@@ -206,7 +206,7 @@ status = (cancelled, issued, pending, processed, reversed)
 requested_by = :
 processed_by = :
 approved_by = :
-created = !timestamp
+created = timestamp
 created_by = :
 modified = timestamp
 modified_by = :
@@ -220,11 +220,11 @@ id = :
 
 ; Policy reference
 {.policy}
-number = !:
+number = :
 
 {@status_change}
 ; Status transition
-status_from = !(
+status_from = (
     active,
     application,
     cancelled,
@@ -236,7 +236,7 @@ status_from = !(
     reinstated,
     rewritten
 )
-status_to = !(
+status_to = (
     active,
     application,
     cancelled,
@@ -250,7 +250,7 @@ status_to = !(
 )
 
 ; Effective
-effective_date = !date
+effective_date = date
 effective_time = time
 
 ; Reason
@@ -305,7 +305,7 @@ offer_renewal = ?:if status_to = non_renewed
 {@status_change}
 
 ; Audit
-created = !timestamp
+created = timestamp
 created_by = :
 
 ; ═══════════════════════════════════════════════════════════════════════════════
@@ -317,11 +317,11 @@ id = :
 
 ; Policy reference
 {.policy}
-number = !:
-expiring_term_effective = !date
-expiring_term_expiration = !date
-renewal_term_effective = !date
-renewal_term_expiration = !date
+number = :
+expiring_term_effective = date
+expiring_term_expiration = date
+renewal_term_effective = date
+renewal_term_expiration = date
 
 {@renewal}
 ; Renewal type
@@ -363,7 +363,7 @@ renewal_notice_date = date
 
 {@binder}
 id = :
-number = !:
+number = :
 
 ; Policy reference
 {.policy}
@@ -373,9 +373,9 @@ quote_id = :
 {@binder}
 
 ; Binder period
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 days_in_effect = ##
 
 ; Status
@@ -404,7 +404,7 @@ vehicle_count = ##
 vehicle_descriptions[] = :
 
 ; Audit
-created = !timestamp
+created = timestamp
 created_by = :
 bound_by = :
 
@@ -415,8 +415,8 @@ bound_by = :
 {@policy_history_entry}
 id = :
 sequence = ##
-transaction_date = !timestamp
-transaction_type = !(
+transaction_date = timestamp
+transaction_type = (
     cancellation,
     claim,
     document,
@@ -448,15 +448,15 @@ policy_version = ##
 
 ; Audit
 created_by = :
-created = !timestamp
+created = timestamp
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Endorsement Form Definitions
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@endorsement_form}
-number = !:
-name = !:
+number = :
+name = :
 edition = :
 standard_form = ?
 

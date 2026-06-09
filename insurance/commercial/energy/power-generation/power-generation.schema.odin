@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial energy coverage for power plants"
 ; ===================================================================================
 
 {@pg_generation_type}
-technology = !(
+technology = (
     biomass,                                  ; Biomass power
     coal_subcritical,                         ; Subcritical coal
     coal_supercritical,                       ; Supercritical coal
@@ -86,10 +86,10 @@ operating_status = (
 
 {@pg_facility}
 ; Required fields first
-capacity_mw = !#:(0..)                        ; Nameplate capacity
-facility_name = !:                            ; Facility name
-generation_type = !@pg_generation_type        ; Technology type
-tiv = !#$:(0..)                               ; Total insured value
+capacity_mw = #:(0..)                        ; Nameplate capacity
+facility_name = :                            ; Facility name
+generation_type = @pg_generation_type        ; Technology type
+tiv = #$:(0..)                               ; Total insured value
 
 ; Optional fields
 address = @address                            ; Location
@@ -180,7 +180,7 @@ refuel_cycle_months = ##:if generation_type.technology = (nuclear_bwr, nuclear_p
 
 {@pg_property}
 ; Required fields first
-total_insured_value = !#$:(0..)               ; TIV
+total_insured_value = #$:(0..)               ; TIV
 
 ; Optional fields
 all_risk = ?                                  ; All-risk form
@@ -226,7 +226,7 @@ transformer = ?:if included = true            ; Transformer coverage
 
 {@pg_liability}
 ; Required fields first
-general_liability = !#$:(0..)                 ; GL per occurrence
+general_liability = #$:(0..)                 ; GL per occurrence
 
 ; Optional fields
 aggregate = #$:(0..)                          ; Annual aggregate
@@ -287,7 +287,7 @@ water_discharge = ?:if included = true        ; Water discharge
 
 {@pg_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 bi_premium = #$:(0..)                         ; BI premium
@@ -306,8 +306,8 @@ taxes_and_fees = #$:(0..)                     ; Taxes/fees
 
 {@pg_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     bodily_injury,                            ; BI claim
     boiler_explosion,                         ; Boiler
     business_interruption,                    ; BI loss
@@ -344,10 +344,10 @@ unit_affected = :                             ; Unit number
 
 {@power_gen_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-facilities[] = !@pg_facility                  ; Covered facilities
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+facilities[] = @pg_facility                  ; Covered facilities
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date
@@ -357,7 +357,7 @@ agency = @agency                              ; Issuing agency
 claims[] = @pg_claim                          ; Claims history
 environmental = @pg_environmental             ; Environmental coverage
 id = :                                        ; Internal identifier
-insured_name = !:                             ; Named insured
+insured_name = :                             ; Named insured
 insured_address = @address                    ; Insured address
 liability = @pg_liability                     ; Liability coverage
 machinery = @pg_machinery                     ; Machinery breakdown

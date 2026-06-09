@@ -46,8 +46,8 @@ changelog[0].rationale = "EDRM-compliant collection tracking"
 
 {@ediscovery_custodian}
 ; Required fields first
-custodian_name = !:                               ; Custodian name
-custodian_type = !(contractor, department, employee, executive, former_employee, system, third_party)
+custodian_name = :                               ; Custodian name
+custodian_type = (contractor, department, employee, executive, former_employee, system, third_party)
 
 ; Custodian identification
 custodian_id = :                                  ; Unique custodian ID
@@ -159,8 +159,8 @@ status_date = date                                ; Date of status
 
 {@ediscovery_data_source}
 ; Required fields first
-source_name = !:                                  ; Source name
-source_type = !(archive, backup, cloud_storage, database, desktop, email, file_share, instant_messaging, laptop, mobile, network_share, removable_media, server, social_media, voicemail)
+source_name = :                                  ; Source name
+source_type = (archive, backup, cloud_storage, database, desktop, email, file_share, instant_messaging, laptop, mobile, network_share, removable_media, server, social_media, voicemail)
 
 ; Source identification
 source_id = :                                     ; Unique source ID
@@ -239,9 +239,9 @@ status = (active, collected, identified, not_accessible, not_relevant, preserved
 
 {@ediscovery_hold}
 ; Required fields first
-hold_name = !:                                    ; Hold name/title
-hold_type = !(full, partial, targeted)            ; Hold type
-initiated_date = !date                            ; Hold initiation date
+hold_name = :                                    ; Hold name/title
+hold_type = (full, partial, targeted)            ; Hold type
+initiated_date = date                            ; Hold initiation date
 
 ; Hold identification
 hold_id = :                                       ; Unique hold ID
@@ -341,9 +341,9 @@ release_approved_by = ::if status = released      ; Who approved release
 
 {@ediscovery_collection}
 ; Required fields first
-collection_date = !date                           ; Collection date
-collection_name = !:                              ; Collection name
-collection_type = !(forensic, logical, targeted)  ; Collection type
+collection_date = date                           ; Collection date
+collection_name = :                              ; Collection name
+collection_type = (forensic, logical, targeted)  ; Collection type
 
 ; Collection identification
 collection_id = :                                 ; Unique collection ID

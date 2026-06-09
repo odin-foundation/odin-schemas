@@ -38,8 +38,8 @@ changelog[0].rationale = "Coverage-centric architecture - coverage as atomic uni
 
 {@coverage}
 ; Required fields first
-type_ref = !:                                    ; Reference to coverage type code
-status = !(active, declined, excluded, pending, waived)  ; Coverage status
+type_ref = :                                    ; Reference to coverage type code
+status = (active, declined, excluded, pending, waived)  ; Coverage status
 
 ; Optional fields
 code = :                                         ; Coverage code

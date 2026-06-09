@@ -39,14 +39,14 @@ changelog[0].rationale = "Structure derived from CDC NNDSS and state reporting r
 ; Per NNDSS case notification requirements
 
 {@case}
-case_id = !:                                ; Case identifier
-jurisdiction = !:(2)                        ; Reporting jurisdiction (state)
-condition_code = !:                         ; Condition code (CDC)
-report_date = !date                         ; Report date
+case_id = :                                ; Case identifier
+jurisdiction = :(2)                        ; Reporting jurisdiction (state)
+condition_code = :                         ; Condition code (CDC)
+report_date = date                         ; Report date
 
 ; Condition
 {.condition}
-condition_name = !:                         ; Condition name
+condition_name = :                         ; Condition name
 snomed_code = :                             ; SNOMED CT code
 icd10_code = :                              ; ICD-10 code
 disease_category = :                        ; Disease category
@@ -55,7 +55,7 @@ disease_category = :                        ; Disease category
 
 ; Case classification - Per CSTE definitions
 {.classification}
-case_status = !(confirmed, not_a_case, probable, suspected, unknown)
+case_status = (confirmed, not_a_case, probable, suspected, unknown)
 confirmation_method = (clinical, epidemiologic, laboratory)
 classification_date = date                  ; Date classified
 
@@ -75,7 +75,7 @@ pregnant = ?                                ; Pregnant (if applicable)
 
 ; Geography
 {.geography}
-state = !:(2)                               ; State
+state = :(2)                               ; State
 county_fips = :(5)                          ; County FIPS
 zip = :(5)                                  ; ZIP code
 country_of_residence = : "US"               ; Country
@@ -107,10 +107,10 @@ died = ?                                    ; Death
 ; Per Electronic Laboratory Reporting (ELR) standards
 
 {@lab_report}
-report_id = !:                              ; Lab report ID
+report_id = :                              ; Lab report ID
 case_id = :                                 ; Associated case ID
-patient_id = !:                             ; Patient identifier
-report_date = !date                         ; Report date
+patient_id = :                             ; Patient identifier
+report_date = date                         ; Report date
 
 ; Ordering provider
 {.ordering}
@@ -123,8 +123,8 @@ facility_clia = :                           ; Facility CLIA number
 
 ; Performing laboratory
 {.laboratory}
-lab_name = !:                               ; Laboratory name
-lab_clia = !:                               ; CLIA number
+lab_name = :                               ; Laboratory name
+lab_clia = :                               ; CLIA number
 lab_address = @address                      ; Lab address
 lab_phone = *@phone                         ; Lab phone
 
@@ -134,7 +134,7 @@ lab_phone = *@phone                         ; Lab phone
 {.specimen}
 specimen_id = :                             ; Specimen ID
 specimen_type = :                           ; Specimen type (SNOMED)
-collection_date = !date                     ; Collection date
+collection_date = date                     ; Collection date
 received_date = date                        ; Date received at lab
 specimen_source = :                         ; Anatomic source
 
@@ -142,7 +142,7 @@ specimen_source = :                         ; Anatomic source
 
 ; Test performed
 {.test}
-test_code = !:                              ; LOINC code
+test_code = :                              ; LOINC code
 test_name = :                               ; Test name
 method = :                                  ; Test method
 
@@ -174,23 +174,23 @@ antimicrobial_susceptibility = ?            ; AST performed
 ; Per eCR FHIR Implementation Guide
 
 {@eicr}
-eicr_id = !:                                ; eICR document ID
-patient_id = !:                             ; Patient ID
+eicr_id = :                                ; eICR document ID
+patient_id = :                             ; Patient ID
 encounter_id = :                            ; Encounter ID
-report_date = !date                         ; Report date
-triggering_event = !:                       ; What triggered the report
+report_date = date                         ; Report date
+triggering_event = :                       ; What triggered the report
 
 ; Triggering condition
 {.trigger}
-trigger_code = !:                           ; Trigger code (RCTC value set)
-trigger_type = !(diagnosis, lab_order, lab_result, medication, procedure)
+trigger_code = :                           ; Trigger code (RCTC value set)
+trigger_type = (diagnosis, lab_order, lab_result, medication, procedure)
 trigger_description = :                     ; Trigger description
 
 {@eicr}
 
 ; Reporting facility
 {.facility}
-facility_name = !:                          ; Facility name
+facility_name = :                          ; Facility name
 facility_id = :                             ; Facility ID
 facility_type = :                           ; Facility type
 facility_address = @address                 ; Address
@@ -252,9 +252,9 @@ result_date = date                          ; Result date
 ; Per eCR Reportability Response
 
 {@reportability_response}
-rr_id = !:                                  ; RR document ID
-eicr_id = !:                                ; Associated eICR
-response_date = !date                       ; Response date
+rr_id = :                                  ; RR document ID
+eicr_id = :                                ; Associated eICR
+response_date = date                       ; Response date
 
 ; Reportability determination
 {.determination}
@@ -297,8 +297,8 @@ result = (may_be_reportable, not_reportable, reportable)
 ; Per CDC NNDSS condition list
 
 {@condition_code}
-code = !:                                   ; CDC condition code
-name = !:                                   ; Condition name
+code = :                                   ; CDC condition code
+name = :                                   ; Condition name
 category = :                                ; Category (infectious, non-infectious)
 snomed_code = :                             ; SNOMED CT code
 icd10_codes[] = :                           ; Associated ICD-10 codes
@@ -322,14 +322,14 @@ effective_date = date                       ; Case definition effective date
 ; Per outbreak investigation standards
 
 {@outbreak}
-outbreak_id = !:                            ; Outbreak identifier
-jurisdiction = !:(2)                        ; Lead jurisdiction
-condition = !:                              ; Primary condition
-identification_date = !date                 ; Date identified
+outbreak_id = :                            ; Outbreak identifier
+jurisdiction = :(2)                        ; Lead jurisdiction
+condition = :                              ; Primary condition
+identification_date = date                 ; Date identified
 
 ; Outbreak status
 {.status}
-status = !(active, closed, monitoring)
+status = (active, closed, monitoring)
 start_date = date                           ; Estimated start
 end_date = date                             ; End date (if closed)
 duration_days = ##:(0..)                    ; Duration

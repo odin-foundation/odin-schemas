@@ -45,8 +45,8 @@ changelog[0].rationale = "Specialty coverage for parametric weather protection"
 
 {@weather_insured}
 ; Required fields first
-business_name = !:                            ; Business name
-industry = !(
+business_name = :                            ; Business name
+industry = (
     agriculture,                              ; Agriculture/farming
     aviation,                                 ; Aviation
     construction,                             ; Construction
@@ -77,7 +77,7 @@ years_in_business = ##                        ; Years operating
 
 {@weather_index}
 ; Required fields first
-index_type = !(
+index_type = (
     cdd,                                      ; Cooling degree days
     frost_days,                               ; Frost day count
     hdd,                                      ; Heating degree days
@@ -90,7 +90,7 @@ index_type = !(
     temperature_low,                          ; Minimum temperature
     wind_speed                                ; Wind speed
 )
-measurement_unit = !:                         ; Unit of measure
+measurement_unit = :                         ; Unit of measure
 
 ; Index parameters
 base_temperature = ##                         ; Base temp for HDD/CDD
@@ -113,11 +113,11 @@ station_location = @address                   ; Station location
 
 {@weather_terms}
 ; Required fields first
-contract_period_end = !date                   ; Contract end
-contract_period_start = !date                 ; Contract start
-limit = !#$:(0..)                             ; Maximum payout
-strike = !#                                   ; Strike level
-tick_size = !#$:(0..)                         ; Payment per unit
+contract_period_end = date                   ; Contract end
+contract_period_start = date                 ; Contract start
+limit = #$:(0..)                             ; Maximum payout
+strike = #                                   ; Strike level
+tick_size = #$:(0..)                         ; Payment per unit
 
 ; Contract structure
 cap = #                                       ; Cap level
@@ -146,8 +146,8 @@ payout_frequency = (
 
 {@weather_coverage}
 ; Required fields first
-index = !@weather_index                       ; Weather index
-terms = !@weather_terms                       ; Contract terms
+index = @weather_index                       ; Weather index
+terms = @weather_terms                       ; Contract terms
 
 ; Coverage structure
 aggregate_limit = #$:(0..)                    ; Aggregate payout
@@ -203,7 +203,7 @@ tick_value = #$:(0..):if included = true      ; Per unit value
 
 {@weather_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 broker_fee = #$:(0..)                         ; Broker fee
@@ -253,8 +253,8 @@ variance_from_strike = #                      ; Variance
 
 {@weather_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-index_type = !:                               ; Index triggered
+claim_date = date                            ; Claim date
+index_type = :                               ; Index triggered
 
 ; Optional fields
 actual_value = #                              ; Actual measurement
@@ -282,11 +282,11 @@ strike_value = #                              ; Strike level
 
 {@weather_policy}
 ; Required fields first
-coverage = !@weather_coverage                 ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@weather_insured                   ; Insured entity
-policy_number = !:                            ; Policy number
+coverage = @weather_coverage                 ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @weather_insured                   ; Insured entity
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

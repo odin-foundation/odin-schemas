@@ -46,8 +46,8 @@ changelog[0].rationale = "Comprehensive HOA financial structure"
 
 {@assessment_schedule}
 ; Required fields first
-effective_date = !date                               ; Effective date
-fiscal_year = !##:(2000..2100)                       ; Fiscal year
+effective_date = date                               ; Effective date
+fiscal_year = ##:(2000..2100)                       ; Fiscal year
 
 ; Schedule identification
 schedule_id = :                                      ; Unique schedule identifier
@@ -112,9 +112,9 @@ approved_by = ::if status = approved | status = active
 
 {@special_assessment}
 ; Required fields first
-assessment_name = !:                                 ; Assessment name/description
-effective_date = !date                               ; Effective date
-total_amount = !#$:(0..)                             ; Total assessment amount
+assessment_name = :                                 ; Assessment name/description
+effective_date = date                               ; Effective date
+total_amount = #$:(0..)                             ; Total assessment amount
 
 ; Assessment identification
 assessment_id = :                                    ; Unique assessment identifier
@@ -196,8 +196,8 @@ status_date = date                                   ; Status date
 
 {@owner_account}
 ; Required fields first
-owner_name = !:                                      ; Owner name
-unit_number = !:                                     ; Unit number
+owner_name = :                                      ; Owner name
+unit_number = :                                     ; Unit number
 
 ; Account identification
 account_id = :                                       ; Unique account identifier
@@ -295,9 +295,9 @@ months_delinquent = ##:(0..)                         ; Months delinquent
 
 {@delinquency}
 ; Required fields first
-delinquent_amount = !#$:(0..)                        ; Amount delinquent
-delinquent_since = !date                             ; Date became delinquent
-unit_number = !:                                     ; Unit number
+delinquent_amount = #$:(0..)                        ; Amount delinquent
+delinquent_since = date                             ; Date became delinquent
+unit_number = :                                     ; Unit number
 
 ; Delinquency identification
 delinquency_id = :                                   ; Unique identifier
@@ -382,8 +382,8 @@ resolution_amount = #$:(0..):if status = paid        ; Resolution amount
 
 {@reserve_fund}
 ; Required fields first
-current_balance = !#$:(0..)                          ; Current reserve balance
-fiscal_year = !##:(2000..2100)                       ; Fiscal year
+current_balance = #$:(0..)                          ; Current reserve balance
+fiscal_year = ##:(2000..2100)                       ; Fiscal year
 
 ; Reserve identification
 reserve_id = :                                       ; Unique identifier

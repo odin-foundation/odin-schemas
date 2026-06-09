@@ -35,7 +35,7 @@ changelog[0].rationale = "Project structures for construction operations"
 {@project}
 = @types.audit_info
 
-project_id = !:                                 ; Project identifier
+project_id = :                                 ; Project identifier
 project_number = :                              ; Project number
 project_name = :                               ; Project name
 project_type = (commercial, industrial, infrastructure, institutional, residential)
@@ -88,7 +88,7 @@ documents[] = @project_document                 ; Project documents
 ; ===================================================================================
 
 {@phase}
-phase_id = !:                                   ; Phase identifier
+phase_id = :                                   ; Phase identifier
 phase_name = :                                  ; Phase name
 phase_number = ##:(1..)                         ; Phase number
 phase_type = (construction, design, permitting, preconstruction, warranty)
@@ -111,7 +111,7 @@ description = :                                 ; Phase description
 ; ===================================================================================
 
 {@milestone}
-milestone_id = !:                               ; Milestone identifier
+milestone_id = :                               ; Milestone identifier
 milestone_name = :                              ; Milestone name
 milestone_type = (contractual, internal, owner, regulatory)
 
@@ -130,7 +130,7 @@ responsible_party = :                           ; Responsible party
 ; ===================================================================================
 
 {@project_team_member}
-member_id = !:                                  ; Member identifier
+member_id = :                                  ; Member identifier
 project_id = :                                  ; Project reference
 company_id = :                                  ; Company
 contact_id = :                                  ; Contact

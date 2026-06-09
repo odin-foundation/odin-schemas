@@ -45,8 +45,8 @@ changelog[0].rationale = "Commercial railroad coverage for grade crossings"
 
 {@gc_owner}
 ; Required fields first
-owner_name = !:                               ; Owner/operator name
-owner_type = !(
+owner_name = :                               ; Owner/operator name
+owner_type = (
     class_1,                                  ; Class I railroad
     commuter_rail,                            ; Commuter rail
     freight,                                  ; Freight railroad
@@ -75,13 +75,13 @@ total_crossings = ##                          ; Total crossings owned
 
 {@gc_crossing}
 ; Required fields first
-crossing_id = !:                              ; DOT/AAR crossing ID
-crossing_type = !(
+crossing_id = :                              ; DOT/AAR crossing ID
+crossing_type = (
     pedestrian,                               ; Pedestrian crossing
     private,                                  ; Private crossing
     public                                    ; Public crossing
 )
-protection_type = !(
+protection_type = (
     active,                                   ; Gates/signals
     none,                                     ; No protection
     passive,                                  ; Signs only
@@ -146,9 +146,9 @@ yield_signs = ?                               ; Yield signs
 
 {@gc_coverage}
 ; Required fields first
-bodily_injury = !#$:(0..)                     ; BI per occurrence
-property_damage = !#$:(0..)                   ; PD per occurrence
-aggregate = !#$:(0..)                         ; Annual aggregate
+bodily_injury = #$:(0..)                     ; BI per occurrence
+property_damage = #$:(0..)                   ; PD per occurrence
+aggregate = #$:(0..)                         ; Annual aggregate
 
 ; Optional fields
 combined_single_limit = #$:(0..)              ; CSL option
@@ -212,7 +212,7 @@ waiting_hours = ##:if included = true         ; Waiting period
 
 {@gc_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 delay_premium = #$:(0..)                      ; Delay coverage
@@ -241,8 +241,8 @@ train_factor = #                              ; Train frequency
 
 {@gc_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     auto_impact,                              ; Vehicle impact
     derailment,                               ; Derailment at crossing
     device_damage,                            ; Warning device
@@ -292,12 +292,12 @@ weather_conditions = :                        ; Weather
 
 {@gc_policy}
 ; Required fields first
-coverage = !@gc_coverage                      ; Coverage terms
-crossings[] = !@gc_crossing                   ; Covered crossings
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-owner = !@gc_owner                            ; Crossing owner
-policy_number = !:                            ; Policy number
+coverage = @gc_coverage                      ; Coverage terms
+crossings[] = @gc_crossing                   ; Covered crossings
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+owner = @gc_owner                            ; Crossing owner
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

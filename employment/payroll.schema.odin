@@ -53,19 +53,19 @@ changelog[0].rationale = "Pay period, earnings, deductions, taxes derived from I
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@pay_period}
-pay_period_id = !:                               ; Unique pay period identifier
+pay_period_id = :                               ; Unique pay period identifier
 pay_frequency = (biweekly, monthly, semi_monthly, weekly)
-period_start_date = !date                        ; Pay period start
-period_end_date = !date                          ; Pay period end
-pay_date = !date                                 ; Payment date
+period_start_date = date                        ; Pay period start
+period_end_date = date                          ; Pay period end
+pay_date = date                                 ; Payment date
 check_date = date                                ; Check/deposit date
 
 :invariant period_end_date >= period_start_date  ; End must be after start
 :invariant pay_date >= period_end_date           ; Pay date after period end
 
-year = !##:(1900..)                              ; Calendar year
-quarter = !##:(1..4)                             ; Quarter (1-4)
-period_number = !##:(1..)                        ; Period number in year
+year = ##:(1900..)                              ; Calendar year
+quarter = ##:(1..4)                             ; Quarter (1-4)
+period_number = ##:(1..)                        ; Period number in year
 
 status = (closed, open, processing)              ; Pay period status
 
@@ -76,14 +76,14 @@ status = (closed, open, processing)              ; Pay period status
 {@pay_statement}
 = @types.audit_info
 
-pay_statement_id = !:                            ; Unique statement identifier
-employee_id = !:                                 ; Associated employee
-pay_period_id = !:                               ; Associated pay period
+pay_statement_id = :                            ; Unique statement identifier
+employee_id = :                                 ; Associated employee
+pay_period_id = :                               ; Associated pay period
 
 ; Check/payment information
 check_number = :                                 ; Check number if paper check
 payment_method = (ach, check, direct_deposit, pay_card)
-payment_date = !date                             ; Payment/deposit date
+payment_date = date                             ; Payment/deposit date
 
 ; Earnings
 {.earnings}
@@ -97,7 +97,7 @@ bonus = @earnings_detail                         ; Bonuses
 commission = @earnings_detail                    ; Commissions
 other_earnings[] = @earnings_detail              ; Other earning types
 
-gross_earnings = !#$:(0..)                       ; Total gross earnings
+gross_earnings = #$:(0..)                       ; Total gross earnings
 
 {@pay_statement}
 
@@ -127,25 +127,25 @@ fsa_dependent = @deduction_detail                ; FSA Dependent Care
 garnishments[] = @garnishment_detail             ; Wage garnishments
 other_deductions[] = @deduction_detail           ; Other deduction types
 
-total_deductions = !#$:(0..)                     ; Total deductions
+total_deductions = #$:(0..)                     ; Total deductions
 
 {@pay_statement}
 
 ; Net pay
-net_pay = !#$                                    ; Net pay amount
+net_pay = #$                                    ; Net pay amount
 :invariant net_pay = earnings.gross_earnings - deductions.total_deductions
 
 ; Year-to-date totals
 {.ytd}
-gross_earnings = !#$:(0..)                       ; YTD gross earnings
-federal_income_tax = !#$:(0..)                   ; YTD federal tax
-social_security = !#$:(0..)                      ; YTD Social Security
-medicare = !#$:(0..)                             ; YTD Medicare
+gross_earnings = #$:(0..)                       ; YTD gross earnings
+federal_income_tax = #$:(0..)                   ; YTD federal tax
+social_security = #$:(0..)                      ; YTD Social Security
+medicare = #$:(0..)                             ; YTD Medicare
 state_income_tax = #$:(0..)                      ; YTD state tax
 local_income_tax = #$:(0..)                      ; YTD local tax
 retirement = #$:(0..)                            ; YTD retirement contributions
 hsa = #$:(0..)                                   ; YTD HSA contributions
-net_pay = !#$                                    ; YTD net pay
+net_pay = #$                                    ; YTD net pay
 
 {@pay_statement}
 
@@ -166,11 +166,11 @@ total_hours = #:(0..)                            ; Total hours
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@earnings_detail}
-earning_type = !:                                ; Type of earning
+earning_type = :                                ; Type of earning
 description = :                                  ; Earning description
 hours = #:(0..)                                  ; Hours if applicable
 rate = #$:(0..)                                  ; Pay rate
-amount = !#$:(0..)                               ; Earning amount
+amount = #$:(0..)                               ; Earning amount
 taxable = ?                                      ; Subject to income tax
 fica_taxable = ?                                 ; Subject to FICA tax
 futa_taxable = ?                                 ; Subject to FUTA tax
@@ -181,9 +181,9 @@ suta_taxable = ?                                 ; Subject to SUTA tax
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@deduction_detail}
-deduction_type = !:                              ; Type of deduction
+deduction_type = :                              ; Type of deduction
 description = :                                  ; Deduction description
-amount = !#$:(0..)                               ; Deduction amount
+amount = #$:(0..)                               ; Deduction amount
 pre_tax = ?                                      ; Pre-tax deduction
 employer_match = #$:(0..)                        ; Employer match amount
 jurisdiction = :                                 ; Tax jurisdiction if applicable
@@ -193,13 +193,13 @@ jurisdiction = :                                 ; Tax jurisdiction if applicabl
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@garnishment_detail}
-garnishment_id = !:                              ; Garnishment identifier
+garnishment_id = :                              ; Garnishment identifier
 garnishment_type = (bankruptcy, child_support, creditor, federal_levy, student_loan, tax_levy)
-order_number = !*:                               ; Court order number (confidential)
-issuing_authority = !:                           ; Issuing court/agency
-priority = !##:(1..)                             ; Garnishment priority (1 = highest)
+order_number = *:                               ; Court order number (confidential)
+issuing_authority = :                           ; Issuing court/agency
+priority = ##:(1..)                             ; Garnishment priority (1 = highest)
 
-amount = !#$:(0..)                               ; Amount garnished this period
+amount = #$:(0..)                               ; Amount garnished this period
 calculation_method = (fixed_amount, percentage)  ; How amount is calculated
 percentage = #:(0..100):if calculation_method = percentage
 maximum_per_period = #$:(0..)                    ; Maximum per pay period
@@ -207,8 +207,8 @@ cumulative_amount = #$:(0..)                     ; Total garnished to date
 total_obligation = #$:(0..)                      ; Total obligation amount
 remaining_balance = #$:(0..)                     ; Remaining balance
 
-order_date = !date                               ; Date order received
-start_date = !date                               ; Garnishment start date
+order_date = date                               ; Date order received
+start_date = date                               ; Garnishment start date
 end_date = date                                  ; Garnishment end date (if known)
 status = (active, completed, on_hold, pending)   ; Garnishment status
 
@@ -221,28 +221,28 @@ remittance_account = *:                          ; Account number (confidential)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@employer_taxes}
-employee_id = !:                                 ; Associated employee
-pay_period_id = !:                               ; Associated pay period
+employee_id = :                                 ; Associated employee
+pay_period_id = :                               ; Associated pay period
 
 ; Federal employer taxes
 {.federal}
-social_security_employer = !#$:(0..)             ; Employer FICA (6.2%)
-medicare_employer = !#$:(0..)                    ; Employer Medicare (1.45%)
+social_security_employer = #$:(0..)             ; Employer FICA (6.2%)
+medicare_employer = #$:(0..)                    ; Employer Medicare (1.45%)
 medicare_additional = #$:(0..)                   ; Additional Medicare (0.9% on high earners)
-futa = !#$:(0..)                                 ; Federal Unemployment Tax (FUTA)
+futa = #$:(0..)                                 ; Federal Unemployment Tax (FUTA)
 
 {@employer_taxes}
 
 ; State employer taxes
 {.state[]}
-state = !:(2)                                    ; State code
-suta = !#$:(0..)                                 ; State Unemployment Tax (SUTA/SUI)
+state = :(2)                                    ; State code
+suta = #$:(0..)                                 ; State Unemployment Tax (SUTA/SUI)
 sdi = #$:(0..)                                   ; State Disability Insurance
 other_state_taxes = #$:(0..)                     ; Other state-specific taxes
 
 {@employer_taxes}
 
-total_employer_taxes = !#$:(0..)                 ; Total employer tax liability
+total_employer_taxes = #$:(0..)                 ; Total employer tax liability
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; TAX DEPOSIT
@@ -251,27 +251,27 @@ total_employer_taxes = !#$:(0..)                 ; Total employer tax liability
 {@tax_deposit}
 = @types.audit_info
 
-deposit_id = !:                                  ; Unique deposit identifier
-deposit_date = !date                             ; Date of deposit
-deposit_period_start = !date                     ; Period start
-deposit_period_end = !date                       ; Period end
+deposit_id = :                                  ; Unique deposit identifier
+deposit_date = date                             ; Date of deposit
+deposit_period_start = date                     ; Period start
+deposit_period_end = date                       ; Period end
 tax_period = (monthly, quarterly, semi_weekly)   ; Deposit frequency
 deposit_type = (eftps, same_day_wire)            ; Deposit method
 
 ; Federal tax amounts
 {.federal}
-income_tax_withheld = !#$:(0..)                  ; Employee federal withholding
-social_security_employee = !#$:(0..)             ; Employee FICA
-social_security_employer = !#$:(0..)             ; Employer FICA
-medicare_employee = !#$:(0..)                    ; Employee Medicare
-medicare_employer = !#$:(0..)                    ; Employer Medicare
-total_federal = !#$:(0..)                        ; Total federal deposit
+income_tax_withheld = #$:(0..)                  ; Employee federal withholding
+social_security_employee = #$:(0..)             ; Employee FICA
+social_security_employer = #$:(0..)             ; Employer FICA
+medicare_employee = #$:(0..)                    ; Employee Medicare
+medicare_employer = #$:(0..)                    ; Employer Medicare
+total_federal = #$:(0..)                        ; Total federal deposit
 
 {@tax_deposit}
 
 ; State tax amounts
 {.state[]}
-state = !:(2)                                    ; State code
+state = :(2)                                    ; State code
 income_tax_withheld = #$:(0..)                   ; Employee state withholding
 suta = #$:(0..)                                  ; SUTA/SUI
 sdi = #$:(0..)                                   ; SDI
@@ -287,16 +287,16 @@ status = (cancelled, failed, pending, submitted, verified)
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@w2_data}
-employee_id = !:                                 ; Associated employee
-tax_year = !##:(1900..)                          ; Tax year
+employee_id = :                                 ; Associated employee
+tax_year = ##:(1900..)                          ; Tax year
 
 ; Box data (W-2 form)
-box_1_wages = !#$:(0..)                          ; Wages, tips, other compensation
-box_2_federal_tax = !#$:(0..)                    ; Federal income tax withheld
-box_3_ss_wages = !#$:(0..)                       ; Social Security wages
-box_4_ss_tax = !#$:(0..)                         ; Social Security tax withheld
-box_5_medicare_wages = !#$:(0..)                 ; Medicare wages and tips
-box_6_medicare_tax = !#$:(0..)                   ; Medicare tax withheld
+box_1_wages = #$:(0..)                          ; Wages, tips, other compensation
+box_2_federal_tax = #$:(0..)                    ; Federal income tax withheld
+box_3_ss_wages = #$:(0..)                       ; Social Security wages
+box_4_ss_tax = #$:(0..)                         ; Social Security tax withheld
+box_5_medicare_wages = #$:(0..)                 ; Medicare wages and tips
+box_6_medicare_tax = #$:(0..)                   ; Medicare tax withheld
 box_7_ss_tips = #$:(0..)                         ; Social Security tips
 box_8_allocated_tips = #$:(0..)                  ; Allocated tips
 box_10_dependent_care = #$:(0..)                 ; Dependent care benefits
@@ -328,12 +328,12 @@ code = (
     a, b, c, d, e, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, y, z,
     aa, bb, dd, ee, ff, gg, hh
 )                                                ; IRS Box 12 code
-amount = !#$:(0..)                               ; Amount for code
+amount = #$:(0..)                               ; Amount for code
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; W-2 BOX 14 OTHER
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@w2_box_14}
-description = !:                                 ; Description (state-specific)
-amount = !#$:(0..)                               ; Amount
+description = :                                 ; Description (state-specific)
+amount = #$:(0..)                               ; Amount

@@ -36,13 +36,13 @@ changelog[0].rationale = "Clean separation of fixed from indexed annuity product
 = @annuity.contract                           ; Inherit all base contract fields
 
 ; Set product type
-product_type = !(fixed)
+product_type = (fixed)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Interest Crediting
 ; ───────────────────────────────────────────────────────────────────────────────
 {.interest}
-crediting_method = !(compound, simple)        ; Interest crediting method
+crediting_method = (compound, simple)        ; Interest crediting method
 current_rate = #                              ; Current declared rate
 guaranteed_minimum_rate = #:(0..10)           ; Guaranteed floor rate
 initial_rate = #                              ; Initial/teaser rate
@@ -54,8 +54,8 @@ rate_renewal_date = date                      ; Next rate renewal date
 {@fixed_annuity}
 
 {@rate_period}
-effective = !date                             ; Rate effective date
-rate = !#                                     ; Interest rate
+effective = date                             ; Rate effective date
+rate = #                                     ; Interest rate
 
 expiration = date                             ; Rate expiration date
 
@@ -78,7 +78,7 @@ principal_protected = ?true                   ; Principal guaranteed (always tru
 
 ; MYGA-specific fields
 {.myga}
-guarantee_period_years = !##:(2..10)          ; Rate guarantee period
+guarantee_period_years = ##:(2..10)          ; Rate guarantee period
 
 automatic_renewal = ?                         ; Automatically renews
 guarantee_expiration = date                   ; Date guarantee period ends

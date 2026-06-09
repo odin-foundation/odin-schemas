@@ -28,9 +28,9 @@ changelog[0].rationale = "Coverage-centric architecture foundation"
 
 {@coverage_type}
 ; Required fields first
-code = !:                                        ; Coverage type code
-line_of_business = !(auto, cyber, dwelling, general_liability, homeowners, inland_marine, professional_liability, property, renters, umbrella_excess, workers_compensation)  ; Line of business
-name = !:                                        ; Coverage type name
+code = :                                        ; Coverage type code
+line_of_business = (auto, cyber, dwelling, general_liability, homeowners, inland_marine, professional_liability, property, renters, umbrella_excess, workers_compensation)  ; Line of business
+name = :                                        ; Coverage type name
 
 ; Optional fields
 description = :                                  ; Coverage type description

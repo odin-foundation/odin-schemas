@@ -39,19 +39,19 @@ changelog[0].rationale = "Structure derived from NCHS vital statistics standards
 ; Per U.S. Standard Certificate of Live Birth (2003 revision)
 
 {@birth}
-certificate_number = !:                     ; State file number
-state = !:(2)                               ; State of birth
-filing_date = !date                         ; Date filed
+certificate_number = :                     ; State file number
+state = :(2)                               ; State of birth
+filing_date = date                         ; Date filed
 
 ; Child
 {.child}
 first_name = :                              ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
+last_name = :                              ; Last name
 suffix = :                                  ; Suffix
-dob = !date                                 ; Date of birth
+dob = date                                 ; Date of birth
 time_of_birth = :                           ; Time of birth
-sex = !(female, male)                       ; Sex
+sex = (female, male)                       ; Sex
 plurality = ##:(1..10)                      ; Single, twin, etc.
 birth_order = ##:(1..10)                    ; Birth order (if multiple)
 
@@ -70,9 +70,9 @@ country = : "US"                            ; Country
 
 ; Mother
 {.mother}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-maiden_name = !:                            ; Maiden last name
+maiden_name = :                            ; Maiden last name
 current_last_name = :                       ; Current last name
 dob = *date                                 ; Date of birth
 birthplace_state = :(2)                     ; State of birth
@@ -165,19 +165,19 @@ infertility_treatment = ?                   ; Infertility treatment
 ; Per U.S. Standard Certificate of Death (2003 revision)
 
 {@death}
-certificate_number = !:                     ; State file number
-state = !:(2)                               ; State of death
-filing_date = !date                         ; Date filed
+certificate_number = :                     ; State file number
+state = :(2)                               ; State of death
+filing_date = date                         ; Date filed
 
 ; Decedent
 {.decedent}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
+last_name = :                              ; Last name
 suffix = :                                  ; Suffix
 ssn = *:                                    ; SSN
 dob = *date                                 ; Date of birth
-sex = !(female, male, unknown)              ; Sex
+sex = (female, male, unknown)              ; Sex
 race[] = :                                  ; Race
 ethnicity = (hispanic, non_hispanic, unknown)
 marital_status = (divorced, married, never_married, unknown, widowed)
@@ -202,7 +202,7 @@ inside_city_limits = ?                      ; Inside city limits
 
 ; Death information
 {.death_info}
-date_of_death = !date                       ; Date of death
+date_of_death = date                       ; Date of death
 time_of_death = :                           ; Time of death
 date_pronounced = date                      ; Date pronounced dead
 time_pronounced = :                         ; Time pronounced
@@ -211,7 +211,7 @@ time_pronounced = :                         ; Time pronounced
 
 ; Place of death
 {.place}
-place_type = !(decedent_home, er, hospice, hospital_inpatient, hospital_outpatient, nursing_home, other)
+place_type = (decedent_home, er, hospice, hospital_inpatient, hospital_outpatient, nursing_home, other)
 facility_name = :                           ; Facility name
 city = :                                    ; City
 county = :                                  ; County
@@ -222,7 +222,7 @@ country = : "US"                            ; Country
 
 ; Cause of death - Per ICD mortality coding
 {.cause}
-immediate_cause = !:                        ; Immediate cause (Part I, Line a)
+immediate_cause = :                        ; Immediate cause (Part I, Line a)
 immediate_interval = :                      ; Interval onset to death
 sequence_conditions[] = @cause_condition    ; Sequentially (Part I, b-d)
 contributing_conditions[] = :               ; Contributing causes (Part II)
@@ -231,7 +231,7 @@ contributing_conditions[] = :               ; Contributing causes (Part II)
 
 ; Manner of death
 {.manner}
-manner = !(accident, could_not_determine, homicide, natural, pending, suicide)
+manner = (accident, could_not_determine, homicide, natural, pending, suicide)
 how_injury_occurred = :                     ; How injury occurred
 injury_date = date                          ; Date of injury
 injury_time = :                             ; Time of injury
@@ -253,8 +253,8 @@ autopsy_used_in_certification = ?           ; Autopsy used in cause
 
 ; Certifier
 {.certifier}
-certifier_type = !(attending, certifying_physician, me_coroner, other)
-certifier_name = !:                         ; Certifier name
+certifier_type = (attending, certifying_physician, me_coroner, other)
+certifier_name = :                         ; Certifier name
 certifier_license = :                       ; License number
 certifier_address = @address                ; Address
 certifier_date = date                       ; Date certified
@@ -263,7 +263,7 @@ certifier_date = date                       ; Date certified
 
 ; Disposition
 {.disposition}
-method = !(burial, cremation, donation, entombment, other, removal_from_state)
+method = (burial, cremation, donation, entombment, other, removal_from_state)
 place_name = :                              ; Funeral home/crematory name
 place_city = :                              ; City
 place_state = :(2)                          ; State
@@ -291,16 +291,16 @@ icd10_code = :                              ; ICD-10 code (for coding)
 ; Per U.S. Standard Report of Fetal Death
 
 {@fetal_death}
-report_number = !:                          ; State file number
-state = !:(2)                               ; State
-filing_date = !date                         ; Date filed
+report_number = :                          ; State file number
+state = :(2)                               ; State
+filing_date = date                         ; Date filed
 
 ; Fetus
 {.fetus}
 sex = (female, male, unknown)               ; Sex
 plurality = ##:(1..10)                      ; Plurality
 birth_order = ##:(1..10)                    ; Birth order if multiple
-delivery_date = !date                       ; Date of delivery
+delivery_date = date                       ; Date of delivery
 delivery_time = :                           ; Time of delivery
 gestation_weeks = ##:(0..45)                ; Gestational age
 weight_grams = ##:(0..9000)                 ; Weight

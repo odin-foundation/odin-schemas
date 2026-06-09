@@ -53,13 +53,13 @@ dba_names[] = :                         ; Additional DBA names (extends org.dba_
 former_names[] = :                      ; Prior legal names
 
 ; Extended Business Structure (overrides org.business_type with more detail)
-business_structure = !(benefit_corporation, c_corporation, cooperative, county, estate, federal_government, foreign_corporation, general_partnership, joint_venture, limited_liability_partnership, limited_partnership, llc_multi_member, llc_single_member, municipality, nonprofit_501c3, nonprofit_501c4, nonprofit_501c6, nonprofit_other, other, professional_corporation, s_corporation, sole_proprietorship, state_government, tribal_nation, trust)
+business_structure = (benefit_corporation, c_corporation, cooperative, county, estate, federal_government, foreign_corporation, general_partnership, joint_venture, limited_liability_partnership, limited_partnership, llc_multi_member, llc_single_member, municipality, nonprofit_501c3, nonprofit_501c4, nonprofit_501c6, nonprofit_other, other, professional_corporation, s_corporation, sole_proprietorship, state_government, tribal_nation, trust)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Tax Identifiers (US and Canada)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; US Identifiers
-fein = !*:format ein                      ; US Federal Employer ID Number (EIN)
+fein = *:format ein                      ; US Federal Employer ID Number (EIN)
 fein_date_issued = date
 ssn = *:format ssn:if business_structure = sole_proprietorship  ; US SSN for sole props
 
@@ -109,7 +109,7 @@ tax_type = (gst, hst, income, pst, qst, sales, unemployment, withholding)
 ; Industry Classification
 ; ───────────────────────────────────────────────────────────────────────────────
 ; NAICS (North American Industry Classification System - 2022)
-naics_primary = !:(6)                          ; Primary 6-digit NAICS code
+naics_primary = :(6)                          ; Primary 6-digit NAICS code
 naics_primary_description = :
 
 {.naics_secondary[]}
@@ -132,7 +132,7 @@ wc_governing_class_description = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Business Description
 ; ───────────────────────────────────────────────────────────────────────────────
-business_description = !:             ; Nature of business
+business_description = :             ; Nature of business
 operations_description = :             ; Detailed operations
 products_description = :               ; Products manufactured/sold
 services_description = :               ; Services provided

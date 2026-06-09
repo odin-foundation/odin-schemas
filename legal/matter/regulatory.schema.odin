@@ -50,10 +50,10 @@ changelog[0].rationale = "Comprehensive regulatory matter tracking"
 
 {@regulatory_matter}
 ; Required fields first
-matter_name = !:                                  ; Matter name/description
-matter_type = !(adjudication, agency_action, compliance, enforcement, investigation, licensing, permit, rulemaking)
-open_date = !date                                 ; Date matter opened
-primary_agency = !:                               ; Primary regulatory agency
+matter_name = :                                  ; Matter name/description
+matter_type = (adjudication, agency_action, compliance, enforcement, investigation, licensing, permit, rulemaking)
+open_date = date                                 ; Date matter opened
+primary_agency = :                               ; Primary regulatory agency
 
 ; Matter identification
 matter_id = :                                     ; Internal matter identifier
@@ -286,8 +286,8 @@ status = @legal_matter_status                     ; Matter status
 
 {@compliance_program}
 ; Required fields first
-program_name = !:                                 ; Compliance program name
-program_type = !(aml_bsa, antitrust, data_privacy, environmental, export_control, fcpa, healthcare, labor, osha, securities)
+program_name = :                                 ; Compliance program name
+program_type = (aml_bsa, antitrust, data_privacy, environmental, export_control, fcpa, healthcare, labor, osha, securities)
 
 ; Program identification
 program_id = :                                    ; Unique program identifier
@@ -386,8 +386,8 @@ program_effectiveness = (deficient, effective, needs_improvement)
 
 {@regulatory_license}
 ; Required fields first
-license_type = !:                                 ; Type of license/permit
-issuing_agency = !:                               ; Issuing agency
+license_type = :                                 ; Type of license/permit
+issuing_agency = :                               ; Issuing agency
 
 ; License identification
 license_number = *:                                ; License number
@@ -462,8 +462,8 @@ status = (active, expired, pending, revoked, suspended)
 
 {@regulatory_comment}
 ; Required fields first
-rule_title = !:                                   ; Proposed rule title
-agency = !:                                       ; Issuing agency
+rule_title = :                                   ; Proposed rule title
+agency = :                                       ; Issuing agency
 
 ; Rulemaking identification
 docket_number = :                                 ; Docket number

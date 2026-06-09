@@ -52,8 +52,8 @@ changelog[0].rationale = "Core K-12 services including IDEA, Section 504, ELL pe
 
 {@attendance_record}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-attendance_date = !date                              ; Date of attendance record
+student_id = *:                                     ; Student identifier
+attendance_date = date                              ; Date of attendance record
 status = (absent, excused_absence, present, tardy, unexcused_absence)
 
 ; Optional fields
@@ -78,8 +78,8 @@ verified_date = date                                 ; Verification date
 
 {@attendance_summary}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-academic_year = !:                                   ; Academic year
+student_id = *:                                     ; Student identifier
+academic_year = :                                   ; Academic year
 
 ; Optional fields
 academic_term = :                                    ; Specific term
@@ -107,9 +107,9 @@ truancy_referral_date = date                         ; Truancy referral date
 
 {@discipline_incident}
 ; Required fields first
-incident_id = !:                                     ; Incident identifier
-student_id = !*:                                     ; Student identifier
-incident_date = !date                                ; Incident date
+incident_id = :                                     ; Incident identifier
+student_id = *:                                     ; Student identifier
+incident_date = date                                ; Incident date
 
 ; Optional fields
 incident_time = time                                 ; Incident time
@@ -139,8 +139,8 @@ reported_by = :                                      ; Who reported incident
 
 {@disciplinary_action}
 ; Required fields first
-incident_id = !:                                     ; Related incident
-student_id = !*:                                     ; Student identifier
+incident_id = :                                     ; Related incident
+student_id = *:                                     ; Student identifier
 action_type = (community_service, corporal_punishment, counseling, detention, expulsion, in_school_suspension, loss_of_privilege, out_of_school_suspension, parent_conference, referral, removal, warning, other)
 
 ; Optional fields
@@ -170,8 +170,8 @@ idea_services_continued = ?                          ; Special ed services durin
 
 {@special_education_referral}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-referral_date = !date                                ; Referral date
+student_id = *:                                     ; Student identifier
+referral_date = date                                ; Referral date
 
 ; Optional fields
 referral_source = (administrator, counselor, parent, physician, teacher, other)
@@ -194,10 +194,10 @@ eligible = ?                                         ; Student eligible for IDEA
 
 {@iep}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-iep_date = !date                                     ; IEP meeting date
-effective_date = !date                               ; IEP effective date
-review_date = !date                                  ; Next review date
+student_id = *:                                     ; Student identifier
+iep_date = date                                     ; IEP meeting date
+effective_date = date                               ; IEP effective date
+review_date = date                                  ; Next review date
 
 ; Optional fields
 disability_category = (autism, deaf_blindness, deafness, developmental_delay, emotional_disturbance, hearing_impairment, intellectual_disability, multiple_disabilities, orthopedic_impairment, other_health_impairment, specific_learning_disability, speech_language_impairment, traumatic_brain_injury, visual_impairment)
@@ -227,7 +227,7 @@ transition_age = ##                                  ; Age at transition plannin
 
 {@iep_team_member}
 ; Required fields first
-name = !:                                            ; Team member name
+name = :                                            ; Team member name
 role = (administrator, general_education_teacher, interpreter, parent, related_services_provider, special_education_teacher, student, other)
 
 ; Optional fields
@@ -241,8 +241,8 @@ excused = ?                                          ; Excused from meeting
 
 {@iep_goal}
 ; Required fields first
-goal_number = !:                                     ; Goal identifier
-goal_statement = !:                                  ; Measurable goal statement
+goal_number = :                                     ; Goal identifier
+goal_statement = :                                  ; Measurable goal statement
 
 ; Optional fields
 domain = (academic, behavioral, communication, daily_living, motor, social_emotional, transition, vocational)
@@ -260,7 +260,7 @@ progress_reports[] = @goal_progress                  ; Progress reports
 
 {@goal_progress}
 ; Required fields first
-reporting_date = !date                               ; Progress report date
+reporting_date = date                               ; Progress report date
 progress_level = (achieved, insufficient_progress, limited_progress, regression, satisfactory_progress)
 
 ; Optional fields
@@ -273,10 +273,10 @@ data = :                                             ; Progress data/measurement
 
 {@section_504_plan}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-plan_date = !date                                    ; Plan development date
-effective_date = !date                               ; Plan effective date
-review_date = !date                                  ; Next review date
+student_id = *:                                     ; Student identifier
+plan_date = date                                    ; Plan development date
+effective_date = date                               ; Plan effective date
+review_date = date                                  ; Next review date
 
 ; Optional fields
 disability = :                                       ; Qualifying disability
@@ -300,8 +300,8 @@ parent_participation = ?                             ; Parent participated
 
 {@accommodation}
 ; Required fields first
-accommodation_type = !:                              ; Accommodation type
-description = !:                                     ; Detailed description
+accommodation_type = :                              ; Accommodation type
+description = :                                     ; Detailed description
 
 ; Optional fields
 category = (assistive_technology, behavioral_support, classroom_modification, environmental, instructional, physical_accessibility, testing)
@@ -314,8 +314,8 @@ responsible_party = :                                ; Who implements
 
 {@ell_program}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-enrollment_date = !date                              ; ELL program enrollment date
+student_id = *:                                     ; Student identifier
+enrollment_date = date                              ; ELL program enrollment date
 
 ; Optional fields
 exit_date = date                                     ; Exit date from program
@@ -344,7 +344,7 @@ proficiency_test_score = #                           ; English proficiency score
 
 {@health_record}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
+student_id = *:                                     ; Student identifier
 
 ; Optional fields
 blood_type = (a_negative, a_positive, ab_negative, ab_positive, b_negative, b_positive, o_negative, o_positive)
@@ -370,7 +370,7 @@ exemption_type = (medical, personal, religious)
 
 {@allergy}
 ; Required fields first
-allergen = !:                                        ; Allergen name
+allergen = :                                        ; Allergen name
 
 ; Optional fields
 category = (drug, environmental, food, insect, other)
@@ -385,7 +385,7 @@ onset_date = date                                    ; Date allergy identified
 
 {@medical_condition}
 ; Required fields first
-condition = !:                                       ; Condition name
+condition = :                                       ; Condition name
 
 ; Optional fields
 diagnosis_date = date                                ; Date diagnosed
@@ -399,7 +399,7 @@ requires_monitoring = ?                              ; School monitoring require
 
 {@medication}
 ; Required fields first
-medication_name = !*:                                ; Medication name (confidential)
+medication_name = *:                                ; Medication name (confidential)
 
 ; Optional fields
 dosage = *:                                          ; Dosage (confidential)
@@ -414,8 +414,8 @@ authorization_on_file = ?                            ; Physician authorization o
 
 {@immunization}
 ; Required fields first
-vaccine_type = !:                                    ; Vaccine name
-administered_date = !date                            ; Date administered
+vaccine_type = :                                    ; Vaccine name
+administered_date = date                            ; Date administered
 
 ; Optional fields
 dose_number = ##:(1..)                               ; Dose number in series

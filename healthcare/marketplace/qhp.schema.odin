@@ -41,14 +41,14 @@ changelog[0].rationale = "Structure derived from 45 CFR Part 156 and QHP certifi
 ; Per 45 CFR 156.200
 
 {@plan}
-plan_id = !:                                ; HIOS plan ID (14 char)
-issuer_id = !:                              ; HIOS issuer ID (5 char)
-plan_year = !##:(2014..)                    ; Plan/benefit year
-state = !:(2)                               ; State
+plan_id = :                                ; HIOS plan ID (14 char)
+issuer_id = :                              ; HIOS issuer ID (5 char)
+plan_year = ##:(2014..)                    ; Plan/benefit year
+state = :(2)                               ; State
 
 ; Plan identification
 {.identification}
-marketing_name = !:                         ; Plan marketing name
+marketing_name = :                         ; Plan marketing name
 hios_product_id = :                         ; Product ID
 standard_component_id = :                   ; Standard component ID
 plan_variant = :                            ; Plan variant (CSR)
@@ -57,7 +57,7 @@ plan_variant = :                            ; Plan variant (CSR)
 
 ; Market - Per 45 CFR 156.200
 {.market}
-market = !(individual, shop)                ; Market type
+market = (individual, shop)                ; Market type
 exchange_type = (ffm, sbm, sbm_fp)          ; Exchange type
 on_exchange = ?                             ; Offered on exchange
 off_exchange = ?                            ; Offered off exchange
@@ -66,7 +66,7 @@ off_exchange = ?                            ; Offered off exchange
 
 ; Metal level - Per 45 CFR 156.140
 {.metal}
-metal_level = !(bronze, catastrophic, gold, platinum, silver)
+metal_level = (bronze, catastrophic, gold, platinum, silver)
 actuarial_value = #:(0..100)                ; Actual AV
 de_minimis_variation = #:(-2..2)            ; AV variation
 
@@ -74,14 +74,14 @@ de_minimis_variation = #:(-2..2)            ; AV variation
 
 ; Plan type
 {.type}
-plan_type = !(epo, hmo, indemnity, pos, ppo)
+plan_type = (epo, hmo, indemnity, pos, ppo)
 network_tier = :                            ; Network tier type
 referral_required = ?                       ; Referral to specialist required
 
 {@plan}
 
 ; Service area - Per 45 CFR 156.235
-service_area = !@marketplace.service_area   ; Service area
+service_area = @marketplace.service_area   ; Service area
 
 ; Certification - Per 45 CFR 156.200
 {.certification}
@@ -98,8 +98,8 @@ certification_type = (conditional, full)    ; Certification type
 ; Per 45 CFR 156.110-115 - Essential Health Benefits
 
 {@benefits}
-plan_id = !:                                ; Plan ID
-plan_year = !##:(2014..)                    ; Benefit year
+plan_id = :                                ; Plan ID
+plan_year = ##:(2014..)                    ; Benefit year
 
 ; EHB coverage - Per 45 CFR 156.110
 {.ehb}
@@ -145,7 +145,7 @@ lifetime_limit_applies = ?false             ; Lifetime limit (prohibited)
 benefits[] = @benefit_item                  ; Detailed benefit list
 
 {@benefit_item}
-benefit_name = !:                           ; Benefit name
+benefit_name = :                           ; Benefit name
 ehb_category = :                            ; EHB category
 covered = ?                                 ; Covered
 quantitative_limit = :                      ; Quantity limit
@@ -167,9 +167,9 @@ deductible_applies = ?                      ; Subject to deductible
 ; Per 45 CFR 156.122
 
 {@formulary}
-formulary_id = !:                           ; Formulary ID
-plan_id = !:                                ; Associated plan
-plan_year = !##:(2014..)                    ; Plan year
+formulary_id = :                           ; Formulary ID
+plan_id = :                                ; Associated plan
+plan_year = ##:(2014..)                    ; Plan year
 
 ; Structure
 {.structure}
@@ -186,7 +186,7 @@ tiers[] = @formulary_tier                   ; Tier definitions
 drugs[] = @formulary_drug                   ; Drugs on formulary
 
 {@formulary_tier}
-tier_number = !##:(1..6)                    ; Tier number
+tier_number = ##:(1..6)                    ; Tier number
 tier_name = :                               ; Tier name (Generic, Preferred Brand, etc.)
 
 ; Cost sharing
@@ -198,7 +198,7 @@ deductible_applies = ?                      ; Subject to deductible
 {@formulary_tier}
 
 {@formulary_drug}
-rxcui = !:                                  ; RxNorm Concept ID
+rxcui = :                                  ; RxNorm Concept ID
 drug_name = :                               ; Drug name
 tier = ##:(1..6)                            ; Tier assignment
 
@@ -217,8 +217,8 @@ specialty_drug = ?                          ; Specialty drug
 ; Per 45 CFR 156.230
 
 {@network}
-network_id = !:                             ; Network ID
-plan_id = !:                                ; Plan ID
+network_id = :                             ; Network ID
+plan_id = :                                ; Plan ID
 network_name = :                            ; Network name
 
 ; Network adequacy - Per 45 CFR 156.230
@@ -257,10 +257,10 @@ pharmacy_count = ##:(0..)                   ; Pharmacies
 ; Per 45 CFR 156.80 and 147.102
 
 {@rates}
-plan_id = !:                                ; Plan ID
-rating_area = !:                            ; Rating area
-plan_year = !##:(2014..)                    ; Plan year
-effective_date = !date                      ; Rate effective date
+plan_id = :                                ; Plan ID
+rating_area = :                            ; Rating area
+plan_year = ##:(2014..)                    ; Plan year
+effective_date = date                      ; Rate effective date
 
 ; Rate basis - Per 45 CFR 147.102
 {.basis}
@@ -307,9 +307,9 @@ tobacco_rate = #$:(0..)                     ; Tobacco rate
 ; Per 45 CFR 156.420
 
 {@csr_variant}
-plan_id = !:                                ; Standard plan ID
-variant_id = !:                             ; Variant plan ID
-csr_level = !##:(73..100)                   ; CSR level (73, 87, 94)
+plan_id = :                                ; Standard plan ID
+variant_id = :                             ; Variant plan ID
+csr_level = ##:(73..100)                   ; CSR level (73, 87, 94)
 
 ; Adjusted cost sharing - Per 45 CFR 156.420(a)
 {.cost_sharing}
@@ -334,8 +334,8 @@ income_under_300_fpl = ?                    ; For income under 300% FPL
 ; Per 45 CFR 156.155
 
 {@catastrophic_plan}
-plan_id = !:                                ; Plan ID
-plan_year = !##:(2014..)                    ; Plan year
+plan_id = :                                ; Plan ID
+plan_year = ##:(2014..)                    ; Plan year
 
 ; Eligibility - Per 45 CFR 156.155
 {.eligibility}
@@ -359,9 +359,9 @@ deductible_equals_oop = ?true               ; Deductible equals OOP max
 ; Per CMS standardized plan guidelines
 
 {@standardized_plan}
-plan_id = !:                                ; Plan ID
-standard_option = !:                        ; Standard option identifier
-plan_year = !##:(2014..)                    ; Plan year
+plan_id = :                                ; Plan ID
+standard_option = :                        ; Standard option identifier
+plan_year = ##:(2014..)                    ; Plan year
 
 ; Standardization
 {.standard}

@@ -40,7 +40,7 @@ changelog[1].change = "Renamed all types with @fhir_ prefix to avoid collision w
 {@fhir_identifier}
 use = (official, old, secondary, temp, usual)  ; Purpose of identifier
 system = :                                    ; Namespace for identifier value
-value = !:                                    ; The identifier value
+value = :                                    ; The identifier value
 period_start = date                           ; Start of validity period
 period_end = date                             ; End of validity period
 assigner = :                                  ; Organization that issued ID
@@ -84,8 +84,8 @@ period_end = date                             ; Address valid to
 ; FHIR: ContactPoint - https://hl7.org/fhir/R4/datatypes.html#ContactPoint
 
 {@fhir_contact_point}
-system = !(email, fax, other, pager, phone, sms, url)
-value = !:                                    ; Contact point value
+system = (email, fax, other, pager, phone, sms, url)
+value = :                                    ; Contact point value
 use = (home, mobile, old, temp, work)         ; Purpose of contact
 rank = ##:(1..)                               ; Preference order
 period_start = date                           ; Valid from
@@ -103,7 +103,7 @@ text = :                                      ; Plain text representation
 {@fhir_coding}
 system = :                                    ; Code system URI
 version = :                                   ; Version of code system
-code = !:                                     ; Code value
+code = :                                     ; Code value
 display = :                                   ; Human readable display
 user_selected = ?                             ; User selected this code
 
@@ -157,7 +157,7 @@ display = :                                   ; Text description of target
 author_reference = @fhir_reference            ; Individual responsible
 author_string = :                             ; Individual responsible (string)
 time = timestamp                              ; When annotation was made
-text = !:                                     ; The annotation content
+text = :                                     ; The annotation content
 
 ; ===============================================================================
 ; FHIR ATTACHMENT
@@ -189,7 +189,7 @@ currency = :(3)                               ; ISO 4217 currency code
 ; FHIR: Age (specialization of Quantity)
 
 {@fhir_age}
-value = !#:(0..)                              ; Numerical age value
+value = #:(0..)                              ; Numerical age value
 unit = :(a, d, h, min, mo, wk)                ; Unit (years, days, hours, etc.)
 system = : "http://unitsofmeasure.org"        ; UCUM system
 code = :                                      ; UCUM code
@@ -271,7 +271,7 @@ denominator = @fhir_quantity                  ; Denominator value
 ; FHIR: Duration (specialization of Quantity)
 
 {@fhir_duration}
-value = !#                                    ; Numerical value
+value = #                                    ; Numerical value
 unit = :                                      ; String unit representation
 system = : "http://unitsofmeasure.org"        ; UCUM system
 code = :                                      ; UCUM code
@@ -282,7 +282,7 @@ code = :                                      ; UCUM code
 ; FHIR: SimpleQuantity (Quantity without comparator)
 
 {@fhir_simple_quantity}
-value = !#                                    ; Numerical value
+value = #                                    ; Numerical value
 unit = :                                      ; Unit representation
 system = :                                    ; System defining units
 code = :                                      ; Coded form of unit

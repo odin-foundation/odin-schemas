@@ -52,7 +52,7 @@ pd = #$                                          ; Property damage per accident 
 
 {@limit_csl}
 ; Required fields first
-amount = !#$                                     ; Combined single limit amount
+amount = #$                                     ; Combined single limit amount
 
 ; Optional fields
 per = (accident, occurrence)                     ; Per accident or per occurrence
@@ -64,8 +64,8 @@ per = (accident, occurrence)                     ; Per accident or per occurrenc
 
 {@limit_aggregate}
 ; Required fields first
-amount = !#$                                     ; Total aggregate amount
-type = !(annual, disease, general, per_location, per_project, policy_period, products_completed_ops)  ; Aggregate limit type
+amount = #$                                     ; Total aggregate amount
+type = (annual, disease, general, per_location, per_project, policy_period, products_completed_ops)  ; Aggregate limit type
 
 ; Optional fields
 per = (location, policy, project)                ; Aggregate applies per
@@ -80,8 +80,8 @@ remaining = #$                                   ; Remaining aggregate if tracke
 
 {@limit_cgl}
 ; Required fields first
-each_occurrence = !#$                            ; Each occurrence limit
-general_aggregate = !#$                          ; General aggregate limit
+each_occurrence = #$                            ; Each occurrence limit
+general_aggregate = #$                          ; General aggregate limit
 
 ; Optional fields
 aggregate_per = (location, policy, project)      ; Aggregate applies per
@@ -97,9 +97,9 @@ products_completed_ops_aggregate = #$            ; Products completed operations
 
 {@limit_wc}
 ; Required fields first
-each_accident = !#$                              ; Bodily injury by accident limit
-disease_each_employee = !#$                      ; Bodily injury by disease per employee
-disease_policy_limit = !#$                       ; Bodily injury by disease policy limit
+each_accident = #$                              ; Bodily injury by accident limit
+disease_each_employee = #$                      ; Bodily injury by disease per employee
+disease_policy_limit = #$                       ; Bodily injury by disease policy limit
 
 ; Optional fields
 statutory = ? "true"                             ; Part One statutory coverage (no dollar limit)
@@ -110,8 +110,8 @@ statutory = ? "true"                             ; Part One statutory coverage (
 
 {@limit_umbrella}
 ; Required fields first
-aggregate = !#$                                  ; Annual aggregate limit
-each_occurrence = !#$                            ; Each occurrence limit
+aggregate = #$                                  ; Annual aggregate limit
+each_occurrence = #$                            ; Each occurrence limit
 
 ; Optional fields
 self_insured_retention = #$                      ; SIR amount
@@ -136,8 +136,8 @@ valuation = (actual_cash_value, agreed_value, functional, replacement_cost)  ; V
 
 {@limit_professional}
 ; Required fields first
-aggregate = !#$                                  ; Annual aggregate limit
-each_claim = !#$                                 ; Per claim limit
+aggregate = #$                                  ; Annual aggregate limit
+each_claim = #$                                 ; Per claim limit
 
 ; Optional fields
 deductible_applies_to_defense = ?                ; Deductible applies to defense costs
@@ -149,7 +149,7 @@ defense_within_limits = ?                        ; Defense costs erode limits
 
 {@limit_cyber}
 ; Required fields first
-aggregate = !#$                                  ; Policy aggregate limit
+aggregate = #$                                  ; Policy aggregate limit
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Sublimits
@@ -177,7 +177,7 @@ social_engineering = #$                          ; Social engineering sublimit
 = @sublimit                                      ; Use shared sublimit type
 
 ; Coverage-specific extensions
-name = !:                                        ; What this sublimit covers
+name = :                                        ; What this sublimit covers
 id = :                                           ; Sublimit identifier
 parent_coverage_ref = :                          ; Coverage this is a sublimit of
 separate_deductible = ?                          ; Has its own deductible
@@ -189,7 +189,7 @@ separate_deductible = ?                          ; Has its own deductible
 
 {@limit_shared}
 ; Required fields first
-amount = !#$                                     ; Shared limit amount
+amount = #$                                     ; Shared limit amount
 
 ; Optional fields
 allocation_method = (equal, first_come, proportional)  ; Allocation method

@@ -42,8 +42,8 @@ changelog[0].rationale = "Counsel tracking structure"
 
 {@legal_opposing_counsel}
 ; Required fields first
-attorney_name = !:                                ; Attorney name
-party_represented = !:                            ; Party they represent
+attorney_name = :                                ; Attorney name
+party_represented = :                            ; Party they represent
 
 ; Counsel identification
 counsel_id = :                                    ; Unique identifier
@@ -142,7 +142,7 @@ successor_counsel = ::if substituted = true       ; Successor counsel name
 = @legal_opposing_counsel                         ; Inherits opposing counsel fields
 
 ; Co-counsel specific fields
-co_counsel_type = !(co_counsel, local_counsel, referral, special_counsel)
+co_counsel_type = (co_counsel, local_counsel, referral, special_counsel)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Arrangement
@@ -181,9 +181,9 @@ termination_date = date                           ; Date terminated
 
 {@legal_expert_witness}
 ; Required fields first
-expert_name = !:                                  ; Expert name
-expertise_area = !:                               ; Area of expertise
-retained_by = !(defendant, plaintiff, third_party)
+expert_name = :                                  ; Expert name
+expertise_area = :                               ; Area of expertise
+retained_by = (defendant, plaintiff, third_party)
 
 ; Expert identification
 expert_id = :                                     ; Unique identifier
@@ -314,7 +314,7 @@ termination_reason = ::if status = terminated | status = withdrawn
 
 {@legal_fact_witness}
 ; Required fields first
-witness_name = !:                                 ; Witness name
+witness_name = :                                 ; Witness name
 
 ; Witness identification
 witness_id = :                                    ; Unique identifier

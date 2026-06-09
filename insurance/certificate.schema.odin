@@ -45,9 +45,9 @@ changelog[1].rationale = "Support personal auto ID cards and other personal line
 
 {@certificate_coverage_line}
 ; Required fields first
-policy_number = !:                            ; Policy number for this coverage
-effective = !date                             ; Coverage effective date
-expiration = !date                            ; Coverage expiration date
+policy_number = :                            ; Policy number for this coverage
+effective = date                             ; Coverage effective date
+expiration = date                            ; Coverage expiration date
 
 ; Optional fields
 line_id = :                                   ; Unique line identifier
@@ -245,7 +245,7 @@ deductible = ##                                                  ; Deductible am
 
 {@certificate_holder}
 ; Required fields first
-name = !:                                     ; Holder name
+name = :                                     ; Holder name
 
 ; Optional fields
 holder_id = :                                 ; Unique holder identifier
@@ -278,8 +278,8 @@ location_reference = :                                           ; Location iden
 
 {@certificate}
 ; Required fields first
-certificate_number = !:                       ; Unique certificate number
-issue_date = !date                            ; Date certificate was issued
+certificate_number = :                       ; Unique certificate number
+issue_date = date                            ; Date certificate was issued
 
 ; Optional fields
 certificate_id = :                            ; Internal certificate identifier
@@ -323,7 +323,7 @@ address = @address                                               ; Producer addr
 ; Insured (Named Insured)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.insured}
-name = !:                                                        ; Named insured
+name = :                                                        ; Named insured
 dba = :                                                          ; Doing business as
 address = @address                                               ; Insured address
 

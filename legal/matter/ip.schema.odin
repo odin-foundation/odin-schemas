@@ -50,10 +50,10 @@ changelog[0].rationale = "Comprehensive IP matter tracking"
 
 {@ip_matter}
 ; Required fields first
-ip_type = !(copyright, design_patent, patent, trade_secret, trademark, utility_patent)
-matter_name = !:                                  ; Matter name/description
-matter_type = !(enforcement, licensing, litigation, portfolio_management, prosecution)
-open_date = !date                                 ; Date matter opened
+ip_type = (copyright, design_patent, patent, trade_secret, trademark, utility_patent)
+matter_name = :                                  ; Matter name/description
+matter_type = (enforcement, licensing, litigation, portfolio_management, prosecution)
+open_date = date                                 ; Date matter opened
 
 ; Matter identification
 matter_id = :                                     ; Internal matter identifier
@@ -113,7 +113,7 @@ status = @legal_matter_status                     ; Matter status
 = @ip_matter                                      ; Inherits IP matter fields
 
 ; Required fields first
-patent_type = !(design, plant, utility)           ; Type of patent
+patent_type = (design, plant, utility)           ; Type of patent
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Application Information
@@ -284,7 +284,7 @@ prosecution_status = (abandoned, allowed, granted, pending, refused)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.mark}
 mark_text = :                                     ; Word mark text
-mark_type = !(certification, collective, service, standard_character, stylized, trademark, trade_dress)
+mark_type = (certification, collective, service, standard_character, stylized, trademark, trade_dress)
 design_description = ::if mark_type = stylized | mark_type = trade_dress
 mark_description = :                              ; Mark description
 color_claim = ?                                   ; Color claimed as feature
@@ -451,7 +451,7 @@ prosecution_status = (abandoned, expired, opposed, pending, published, registere
 ; ───────────────────────────────────────────────────────────────────────────────
 {.work}
 title = :                                         ; Work title
-work_type = !(architectural, audiovisual, choreographic, dramatic, graphic, literary, motion_picture, musical, performing_arts, pictorial, sculptural, sound_recording, software)
+work_type = (architectural, audiovisual, choreographic, dramatic, graphic, literary, motion_picture, musical, performing_arts, pictorial, sculptural, sound_recording, software)
 nature_of_work = :                                ; Nature of work description
 year_of_creation = ##:(1700..2100)                ; Year created
 year_of_publication = ##:(1700..2100)             ; Year first published
@@ -598,8 +598,8 @@ protection_status = (active, compromised, disclosed, obsolete)
 
 {@ip_license}
 ; Required fields first
-license_type = !(copyright, patent, technology, trademark, trade_secret)
-license_structure = !(exclusive, non_exclusive, sole)
+license_type = (copyright, patent, technology, trademark, trade_secret)
+license_structure = (exclusive, non_exclusive, sole)
 
 ; Matter reference
 matter_ref = @ip_matter                           ; Related IP matter

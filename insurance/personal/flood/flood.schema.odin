@@ -66,7 +66,7 @@ changelog[0].rationale = "NFIP structure derived from FEMA Flood Insurance Manua
 
 {@flood_zone}
 ; Required fields first
-zone = !(A, A1_30, A99, AE, AH, AO, AR, AR_A, AR_A1_30, AR_AE, AR_AH, AR_AO, B, C, D, V, V1_30, VE, X, X_shaded)  ; FEMA flood zone designation
+zone = (A, A1_30, A99, AE, AH, AO, AR, AR_A, AR_A1_30, AR_AE, AR_AH, AR_AO, B, C, D, V, V1_30, VE, X, X_shaded)  ; FEMA flood zone designation
 
 ; Optional fields
 base_flood_depth = #                             ; Base flood depth in feet (Zone AO)
@@ -109,8 +109,8 @@ zone_suffix = :                                  ; Zone suffix if applicable
 
 {@flood_property}
 ; Required fields first
-building_type = !(commercial, mixed_use, non_residential, other_residential, residential)  ; NFIP building type classification
-occupancy = !(condo_unit, manufactured_mobile_home, multi_family, non_residential, other, single_family, two_to_four_family)  ; NFIP occupancy type
+building_type = (commercial, mixed_use, non_residential, other_residential, residential)  ; NFIP building type classification
+occupancy = (condo_unit, manufactured_mobile_home, multi_family, non_residential, other, single_family, two_to_four_family)  ; NFIP occupancy type
 
 ; Optional fields
 address = @address                               ; Property physical address
@@ -133,11 +133,11 @@ unit_number = :                                  ; Condo/apartment unit number
 construction_type = (frame, masonry, other)      ; Basic construction category
 exterior_walls = (aluminum_vinyl_siding, brick_veneer, cmu_block, concrete, hardboard, other, stucco, wood)  ; Exterior wall material
 fire_resistive = ?                               ; Fire resistive construction
-floor_count = !##:(1..)                          ; Floors above ground
+floor_count = ##:(1..)                          ; Floors above ground
 solid_foundation_walls = ?                       ; Solid foundation walls (vs open)
-square_footage = !##:(0..)                       ; Total building square footage
+square_footage = ##:(0..)                       ; Total building square footage
 total_basement_square_footage = ##:(0..)         ; Basement/enclosure area
-year_built = !##:(1600..)                        ; Year of original construction
+year_built = ##:(1600..)                        ; Year of original construction
 
 {@flood_property}
 
@@ -146,7 +146,7 @@ year_built = !##:(1600..)                        ; Year of original construction
 ; -------------------------------------------------------------------------------
 ; Per FEMA Flood Insurance Manual and NFIP rating requirements
 {.foundation}
-foundation_type = !(basement, crawlspace, elevated_no_enclosure, elevated_with_enclosure, elevated_with_obstruction, fill, pier_post_piles, slab_on_grade, subgrade_crawlspace)  ; Foundation type
+foundation_type = (basement, crawlspace, elevated_no_enclosure, elevated_with_enclosure, elevated_with_obstruction, fill, pier_post_piles, slab_on_grade, subgrade_crawlspace)  ; Foundation type
 
 ; Enclosure details (for elevated structures)
 enclosure_below_bfe = ?                          ; Enclosed area below BFE
@@ -170,7 +170,7 @@ breakaway_wall_certification = ?:if breakaway_walls = true  ; Certified by engin
 ; -------------------------------------------------------------------------------
 {.rating_factors}
 ; Pre-FIRM / Post-FIRM
-firm_indicator = !(post_firm, pre_firm)          ; Before/after first FIRM adoption
+firm_indicator = (post_firm, pre_firm)          ; Before/after first FIRM adoption
 community_first_firm_date = date                 ; Date of community's first FIRM
 original_construction_date = date                ; Original construction date
 
@@ -220,8 +220,8 @@ sump_pump = ?                                    ; Sump pump installed
 
 {@flood_elevation_certificate}
 ; Required fields first
-building_diagram = !##:(1..9)                    ; FEMA building diagram number (1-9)
-lowest_floor_elevation = !#                      ; Lowest floor elevation (Section C2a)
+building_diagram = ##:(1..9)                    ; FEMA building diagram number (1-9)
+lowest_floor_elevation = #                      ; Lowest floor elevation (Section C2a)
 
 ; Optional fields
 attached_garage_elevation = #                    ; Attached garage floor elevation
@@ -268,8 +268,8 @@ lowest_floor_above_bfe = ?                       ; Lowest floor at or above BFE
 
 {@flood_building_coverage}
 ; Required fields first
-coverage_amount = !#$:(0..)                      ; Building coverage limit
-deductible = !#$:(0..)                           ; Building deductible
+coverage_amount = #$:(0..)                      ; Building coverage limit
+deductible = #$:(0..)                           ; Building deductible
 
 ; Optional fields
 basis = (actual_cash_value, replacement_cost)    ; Coverage basis
@@ -316,8 +316,8 @@ well_pumps = ?                                   ; Well pumps/equipment
 
 {@flood_contents_coverage}
 ; Required fields first
-coverage_amount = !#$:(0..)                      ; Contents coverage limit
-deductible = !#$:(0..)                           ; Contents deductible
+coverage_amount = #$:(0..)                      ; Contents coverage limit
+deductible = #$:(0..)                           ; Contents deductible
 
 ; Optional fields
 basis = (actual_cash_value, replacement_cost)    ; Coverage basis (residential only for RC)
@@ -346,7 +346,7 @@ jewelry_limit = #$:(0..)                         ; Jewelry per item limit
 
 {@flood_icc_coverage}
 ; Required fields first
-coverage_amount = !#$:(0..)                      ; ICC coverage limit (max $30,000 NFIP)
+coverage_amount = #$:(0..)                      ; ICC coverage limit (max $30,000 NFIP)
 
 ; Optional fields
 covered = ?                                      ; ICC coverage included
@@ -373,7 +373,7 @@ substantial_improvement = ?                      ; SI triggered
 
 {@flood_rating}
 ; Required fields first
-rating_method = !(preferred_risk, risk_rating_2, specific_rating, standard)  ; Rating method used
+rating_method = (preferred_risk, risk_rating_2, specific_rating, standard)  ; Rating method used
 
 ; Optional fields
 annual_premium = #$:(0..)                        ; Annual policy premium
@@ -454,8 +454,8 @@ levee_quality_rating = ##:(0..100)               ; Levee quality score
 
 {@flood_crs}
 ; Required fields first
-community_crs_class = !##:(1..10)                ; CRS class (1 = best, 10 = no participation)
-community_id = !:(6)                             ; NFIP community ID number
+community_crs_class = ##:(1..10)                ; CRS class (1 = best, 10 = no participation)
+community_id = :(6)                             ; NFIP community ID number
 
 ; Optional fields
 crs_discount_sfha = ##:(0..45)                   ; SFHA discount percentage
@@ -484,10 +484,10 @@ total_points = ##:(0..)                          ; Total CRS credit points
 
 {@flood_claim}
 ; Required fields first
-claim_number = !:                                ; Unique claim number
-date_of_loss = !date                             ; Date flood damage occurred
-policy_number = !:                               ; Policy number
-reported_date = !date                            ; Date claim reported
+claim_number = :                                ; Unique claim number
+date_of_loss = date                             ; Date flood damage occurred
+policy_number = :                               ; Policy number
+reported_date = date                            ; Date claim reported
 
 ; Optional fields
 adjuster_name = :                                ; Assigned adjuster name
@@ -554,8 +554,8 @@ walls_damaged = ?                                ; Walls/drywall damaged
 
 {@flood_endorsement}
 ; Required fields first
-effective_date = !date                           ; Endorsement effective date
-endorsement_number = !:                          ; Endorsement number
+effective_date = date                           ; Endorsement effective date
+endorsement_number = :                          ; Endorsement number
 
 ; Optional fields
 building_coverage_change = #$                    ; Change in building coverage
@@ -564,7 +564,7 @@ contents_coverage_change = #$                    ; Change in contents coverage
 contents_deductible_change = #$                  ; Change in contents deductible
 description = :                                  ; Endorsement description
 endorsement_id = :                               ; Unique endorsement identifier
-endorsement_type = !(address_change, cancel, coverage_decrease, coverage_increase, deductible_change, insured_change, mortgagee_change, new_elevation_certificate, reinstatement, renewal)  ; Type of endorsement
+endorsement_type = (address_change, cancel, coverage_decrease, coverage_increase, deductible_change, insured_change, mortgagee_change, new_elevation_certificate, reinstatement, renewal)  ; Type of endorsement
 expiration_date = date                           ; Endorsement expiration
 premium_change = #$                              ; Premium change amount (positive or negative)
 
@@ -577,9 +577,9 @@ premium_change = #$                              ; Premium change amount (positi
 
 {@flood_waiting_period}
 ; Required fields first
-application_date = !date                         ; Date application received
-coverage_effective_date = !date                  ; Date coverage becomes effective
-waiting_period_days = !##:(0..30)                ; Waiting period in days
+application_date = date                         ; Date application received
+coverage_effective_date = date                  ; Date coverage becomes effective
+waiting_period_days = ##:(0..30)                ; Waiting period in days
 
 ; Optional fields
 exception_applied = ?                            ; Waiting period exception
@@ -602,10 +602,10 @@ rollover_from_private = ?                        ; Rollover from private flood p
 
 {@flood_policy}
 ; Required fields first
-effective_date = !date                           ; Policy effective date
-expiration_date = !date                          ; Policy expiration date
-policy_form = !(dwelling_form, general_property, private_excess, private_primary, rcbap)  ; Policy form type
-policy_number = !:                               ; Policy number
+effective_date = date                           ; Policy effective date
+expiration_date = date                          ; Policy expiration date
+policy_form = (dwelling_form, general_property, private_excess, private_primary, rcbap)  ; Policy form type
+policy_number = :                               ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

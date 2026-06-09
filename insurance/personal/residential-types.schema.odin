@@ -80,7 +80,7 @@ musical_instruments = #$:(0..)                         ; Sublimit for musical in
 ; Personal liability common fields
 
 {@res_liability}
-liability_limit = !#$:(0..)                       ; Common: $100k, $300k, $500k
+liability_limit = #$:(0..)                       ; Common: $100k, $300k, $500k
 per_occurrence = ?                                     ; Whether limit applies per occurrence
 defense_costs = (outside_limits, within_limits)        ; How defense costs are handled
 damage_to_property_of_others = #$:(0..)               ; Sublimit for property damage to third parties
@@ -97,7 +97,7 @@ recreational_vehicles = ?                              ; Liability coverage for 
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@res_medical_payments}
-medical_payments_limit = !#$:(0..)                ; Common: $1k, $2k, $5k
+medical_payments_limit = #$:(0..)                ; Common: $1k, $2k, $5k
 per_person = ?                                         ; Whether limit applies per person
 expense_time_limit_years = ##:(0..)                    ; Years after accident expenses are covered
 no_fault_coverage = ?                                  ; Whether coverage is no-fault basis
@@ -123,9 +123,9 @@ frv_limit = #$:(0..):if fair_rental_value = true       ; Limit for fair rental v
 
 {@res_scheduled_item}
 item_id = :                                            ; Unique identifier for scheduled item
-item_type = !(bicycles, cameras, coins, collectibles, electronics, fine_arts, firearms, furs, golf_equipment, jewelry, musical_instruments, other, silverware, sports_equipment, stamps, watches)  ; Category of scheduled item
-description = !:                                       ; Detailed description of the item
-scheduled_value = !#$:(0..)                            ; Agreed value for the scheduled item
+item_type = (bicycles, cameras, coins, collectibles, electronics, fine_arts, firearms, furs, golf_equipment, jewelry, musical_instruments, other, silverware, sports_equipment, stamps, watches)  ; Category of scheduled item
+description = :                                       ; Detailed description of the item
+scheduled_value = #$:(0..)                            ; Agreed value for the scheduled item
 appraisal_date = date                                  ; Date of professional appraisal
 appraisal_value = #$:(0..)                             ; Appraised value of the item
 deductible = #$:(0..)                                  ; Deductible specific to this item
@@ -142,9 +142,9 @@ model = :                                              ; Model name or number
 
 {@res_prior_claim}
 id = :                                                 ; Unique claim identifier
-date = !date                                           ; Date claim was filed
+date = date                                           ; Date claim was filed
 loss_date = date                                       ; Date loss occurred
-type = !(fire, hail, hurricane, liability, lightning, medical_payments, other, theft, tornado, vandalism, water_damage, weather, wind)  ; Type of claim/loss
+type = (fire, hail, hurricane, liability, lightning, medical_payments, other, theft, tornado, vandalism, water_damage, weather, wind)  ; Type of claim/loss
 loss_description = :                                   ; Description of the loss
 amount_paid = #$:(0..)                                 ; Amount paid on the claim
 amount_reserved = #$:(0..)                             ; Amount reserved for future payments
@@ -160,7 +160,7 @@ at_fault = ?                                           ; Whether insured was at 
 
 {@res_endorsement}
 id = :                                                 ; Unique endorsement identifier
-number = !:                                            ; Endorsement form number
+number = :                                            ; Endorsement form number
 title = :                                              ; Endorsement title or name
 effective_date = date                                  ; Date endorsement becomes effective
 expiration_date = date                                 ; Date endorsement expires
@@ -176,8 +176,8 @@ deductible = #$:(0..)                                  ; Deductible specific to 
 {@res_mortgagee}
 mortgagee_id = :                                       ; Unique identifier for mortgagee
 sequence = ##:(1..)                               ; 1st, 2nd mortgage
-lender_name = !:                                       ; Name of lending institution
-loan_number = !:                                       ; Loan or mortgage number
+lender_name = :                                       ; Name of lending institution
+loan_number = :                                       ; Loan or mortgage number
 address = @address                                     ; Mailing address for mortgagee
 loan_type = (chattel, conventional, fha, other, usda, va)  ; Type of mortgage loan
 escrow_required = ?                                    ; Whether escrow is required
@@ -347,9 +347,9 @@ impact_resistant = ?                                   ; Whether roof is impact-
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@res_construction}
-year_built = !##:(1600..)                              ; Year building was constructed
-construction_type = !(adobe, brick, brick_on_block, brick_on_frame, brick_veneer, concrete_block, fire_resistive, frame, log, manufactured, masonry, masonry_veneer, mixed, steel_frame, stone, stucco, stucco_on_frame)  ; Type of building construction
-total_square_feet = !##:(0..)                          ; Total square footage including all areas
+year_built = ##:(1600..)                              ; Year building was constructed
+construction_type = (adobe, brick, brick_on_block, brick_on_frame, brick_veneer, concrete_block, fire_resistive, frame, log, manufactured, masonry, masonry_veneer, mixed, steel_frame, stone, stucco, stucco_on_frame)  ; Type of building construction
+total_square_feet = ##:(0..)                          ; Total square footage including all areas
 living_square_feet = ##:(0..)                          ; Finished living square footage
 story_count = #:(0..10)                                ; Number of stories/floors
 
@@ -381,7 +381,7 @@ last_appraisal_value = #$:(0..)                        ; Value from last apprais
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@res_occupancy}
-occupancy_type = !(owner_occupied, rental_dwelling, seasonal, secondary_residence, tenant_occupied, vacant)  ; Type of property occupancy
+occupancy_type = (owner_occupied, rental_dwelling, seasonal, secondary_residence, tenant_occupied, vacant)  ; Type of property occupancy
 owner_occupied = ?                                     ; Whether owner lives in property
 primary_residence = ?                                  ; Whether property is primary residence
 rental_to_others = ?                                   ; Whether property is rented to others

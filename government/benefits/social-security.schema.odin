@@ -36,16 +36,16 @@ changelog[0].rationale = "Social Security programs per SSA regulations"
 {@ssdi_application}
 = @types.audit_info
 
-application_date = !date
+application_date = date
 claim_number = :
 
 ; Applicant Information
 {.applicant}
-first_name = !:
-last_name = !:
-ssn = !*:format ssn
-date_of_birth = !*date
-address = !@address
+first_name = :
+last_name = :
+ssn = *:format ssn
+date_of_birth = *date
+address = @address
 phone = @phone
 email = @email
 marital_status = (divorced, married, never_married, widowed)
@@ -53,8 +53,8 @@ marital_status = (divorced, married, never_married, widowed)
 {@ssdi_application}
 ; Disability Information
 {.disability}
-alleged_onset_date = !date
-disability_description = !:
+alleged_onset_date = date
+disability_description = :
 still_working = ?
 last_day_worked = date
 unable_to_work_since = date
@@ -62,7 +62,7 @@ unable_to_work_since = date
 {@ssdi_application}
 ; Medical Conditions
 {.medical_conditions[]}
-condition_name = !:
+condition_name = :
 diagnosis_date = date
 treating_physician = :
 hospitalized = ?
@@ -70,9 +70,9 @@ hospitalized = ?
 {@ssdi_application}
 ; Work History
 {.work_history[]}
-employer = !:
-job_title = !:
-start_date = !date
+employer = :
+job_title = :
+start_date = date
 end_date = date
 hours_per_week = #:(0..168)
 earnings = #$:(0..)
@@ -95,18 +95,18 @@ appeal_filed = ?
 {@ssi_application}
 = @types.audit_info
 
-application_date = !date
+application_date = date
 claim_number = :
 
 ; Applicant
 {.applicant}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 ssn = *:format ssn
-date_of_birth = !*date
-address = !@address
+date_of_birth = *date
+address = @address
 phone = @phone
-citizen = !?
+citizen = ?
 living_arrangement = (alone, household, institution, nursing_home)
 
 {@ssi_application}
@@ -158,11 +158,11 @@ application_date = date
 
 ; Claimant
 {.claimant}
-first_name = !:
-last_name = !:
-ssn = !*:format ssn
-date_of_birth = !*date
-address = !@address
+first_name = :
+last_name = :
+ssn = *:format ssn
+date_of_birth = *date
+address = @address
 marital_status = (divorced, married, never_married, widowed)
 
 {@retirement_benefits}
@@ -176,22 +176,22 @@ delayed_retirement_credits = ##:(0..)
 {@retirement_benefits}
 ; Work History
 {.earnings}
-quarters_of_coverage = !##:(40..)
+quarters_of_coverage = ##:(40..)
 average_indexed_monthly_earnings = #$:(0..)
 primary_insurance_amount = #$:(0..)
 
 {@retirement_benefits}
 ; Benefit Amount
 {.benefit}
-monthly_benefit_amount = !#$:(0..)
+monthly_benefit_amount = #$:(0..)
 reduction_factor = #:(0..100)
 cost_of_living_adjustment = #:(0..100)
-payment_start_date = !date
+payment_start_date = date
 
 {@retirement_benefits}
 ; Spouse/Dependent Benefits
 {.dependents[]}
-name = !:
+name = :
 ssn = *:format ssn
 relationship = (child, ex_spouse, spouse)
 benefit_amount = #$:(0..)
@@ -216,21 +216,21 @@ application_date = date
 
 ; Deceased Worker
 {.deceased}
-first_name = !:
-last_name = !:
-ssn = !*:format ssn
+first_name = :
+last_name = :
+ssn = *:format ssn
 date_of_birth = *date
-date_of_death = !date
+date_of_death = date
 
 {@survivor_benefits}
 ; Survivor/Claimant
 {.claimant}
-first_name = !:
-last_name = !:
-ssn = !*:format ssn
-date_of_birth = !*date
+first_name = :
+last_name = :
+ssn = *:format ssn
+date_of_birth = *date
 relationship = (child, parent, spouse, surviving_divorced_spouse)
-address = !@address
+address = @address
 
 {@survivor_benefits}
 ; Benefit Eligibility
@@ -244,7 +244,7 @@ benefit_end_date = date
 {@survivor_benefits}
 ; Dependent Children
 {.children[]}
-name = !:
+name = :
 ssn = *:format ssn
 date_of_birth = *date
 disabled = ?

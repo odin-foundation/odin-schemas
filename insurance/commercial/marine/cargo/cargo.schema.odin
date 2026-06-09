@@ -45,7 +45,7 @@ changelog[0].rationale = "Commercial cargo coverage for trucking and logistics"
 ; Classification of cargo insurance policies.
 
 {@cg_policy_type}
-policy_form = !(
+policy_form = (
     annual_open,                              ; Annual open cargo policy
     motor_truck_cargo,                        ; For-hire carrier cargo
     owners_goods,                             ; Owner's goods in transit
@@ -69,7 +69,7 @@ insured_interest = (
 ; Commodity classification for cargo.
 
 {@cg_cargo_type}
-classification = !(
+classification = (
     agricultural,                             ; Farm products
     automotive,                               ; Auto parts, vehicles
     building_materials,                       ; Construction materials
@@ -138,9 +138,9 @@ nmfc_class = (
 
 {@cg_cargo}
 ; Required fields first
-cargo_type = !@cg_cargo_type                  ; Cargo classification
-description = !:                              ; Cargo description
-value = !#$:(0..)                             ; Cargo value
+cargo_type = @cg_cargo_type                  ; Cargo classification
+description = :                              ; Cargo description
+value = #$:(0..)                             ; Cargo value
 
 ; Optional fields
 cargo_id = :                                  ; Internal identifier
@@ -183,8 +183,8 @@ temperature_min_f = #:if temperature_controlled = true
 
 {@cg_transit}
 ; Required fields first
-destination = !:                              ; Destination city/state
-origin = !:                                   ; Origin city/state
+destination = :                              ; Destination city/state
+origin = :                                   ; Origin city/state
 
 ; Optional fields
 actual_arrival = timestamp                    ; Actual arrival
@@ -248,7 +248,7 @@ tractor_number = :                            ; Tractor unit
 
 {@cg_coverage}
 ; Required fields first
-coverage_form = !(
+coverage_form = (
     all_risk,                                 ; All risk coverage
     basic,                                    ; Basic named perils
     broad,                                    ; Broad named perils
@@ -395,9 +395,9 @@ precious_metals = ?                           ; Precious metals
 
 {@cg_shipment}
 ; Required fields first
-cargo = !@cg_cargo                            ; Cargo details
-declared_value = !#$:(0..)                    ; Declared value
-transit = !@cg_transit                        ; Transit info
+cargo = @cg_cargo                            ; Cargo details
+declared_value = #$:(0..)                    ; Declared value
+transit = @cg_transit                        ; Transit info
 
 ; Optional fields
 bill_of_lading = :                            ; B/L number
@@ -424,7 +424,7 @@ status = (
 
 {@cg_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 additional_premium = #$:(0..)                 ; Extensions
@@ -457,8 +457,8 @@ volume_discount = #                           ; Volume credit
 
 {@cg_claim}
 ; Required fields first
-claim_date = !date                            ; Date claim filed
-claim_type = !(
+claim_date = date                            ; Date claim filed
+claim_type = (
     concealed_damage,                         ; Hidden damage
     contamination,                            ; Contamination
     damage,                                   ; Physical damage
@@ -515,7 +515,7 @@ survey_report = :                             ; Survey reference
 
 {@cg_insured}
 ; Required fields first
-insured_name = !:                             ; Named insured
+insured_name = :                             ; Named insured
 
 ; Optional fields
 address = @address                            ; Business address
@@ -537,12 +537,12 @@ years_in_business = ##                        ; Years operating
 
 {@cargo_policy}
 ; Required fields first
-coverage = !@cg_coverage                      ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@cg_insured                        ; Named insured
-policy_number = !:                            ; Policy number
-policy_type = !@cg_policy_type                ; Policy type
+coverage = @cg_coverage                      ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @cg_insured                        ; Named insured
+policy_number = :                            ; Policy number
+policy_type = @cg_policy_type                ; Policy type
 
 ; Invariants
 :invariant expiration_date > effective_date

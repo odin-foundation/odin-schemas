@@ -45,8 +45,8 @@ changelog[0].rationale = "Warehouse facility, inventory operations, ASN, 3PL str
 
 {@warehouse}
 ; Required fields first
-warehouse_id = !:                                    ; Unique warehouse identifier
-name = !:                                            ; Warehouse name
+warehouse_id = :                                    ; Unique warehouse identifier
+name = :                                            ; Warehouse name
 type = (
     cross_dock,
     distribution_center,
@@ -57,7 +57,7 @@ type = (
 )
 
 ; Location
-address = !@types.address                            ; Physical address
+address = @types.address                            ; Physical address
 latitude = #:(-90..90)                               ; GPS latitude
 longitude = #:(-180..180)                            ; GPS longitude
 
@@ -175,7 +175,7 @@ status_date = date                                   ; Status effective date
 
 {@inventory_location}
 ; Required fields first
-location_id = !:                                     ; Location identifier
+location_id = :                                     ; Location identifier
 type = (
     bulk,
     damage,
@@ -230,8 +230,8 @@ blocked_reason = :if blocked = true                  ; Block reason
 
 {@inventory_item}
 ; Required fields first
-sku = !:                                             ; SKU identifier
-warehouse_id = !:                                    ; Warehouse identifier
+sku = :                                             ; SKU identifier
+warehouse_id = :                                    ; Warehouse identifier
 
 ; Optional fields
 description = :                                      ; Item description
@@ -244,7 +244,7 @@ best_by_date = date                                  ; Best by date
 
 ; Quantity
 {.quantity}
-on_hand = !##:(0..)                                  ; Total on hand
+on_hand = ##:(0..)                                  ; Total on hand
 available = ##:(0..)                                 ; Available quantity
 allocated = ##:(0..)                                 ; Allocated to orders
 on_hold = ##:(0..)                                   ; On hold
@@ -305,8 +305,8 @@ count_frequency = (annual, daily, monthly, quarterly, weekly)
 
 {@receipt}
 ; Required fields first
-receipt_id = !:                                      ; Receipt identifier
-receipt_date = !date                                 ; Receipt date
+receipt_id = :                                      ; Receipt identifier
+receipt_date = date                                 ; Receipt date
 receipt_type = (asn, blind, purchase_order, return, transfer)
 
 ; Optional fields
@@ -352,8 +352,8 @@ status_date = date                                   ; Status date
 
 {@pick_order}
 ; Required fields first
-pick_order_id = !:                                   ; Pick order identifier
-order_number = !:                                    ; Customer order number
+pick_order_id = :                                   ; Pick order identifier
+order_number = :                                    ; Customer order number
 priority = (high, normal, rush, standard)           ; Pick priority
 
 ; Optional fields
@@ -371,9 +371,9 @@ pick_complete = timestamp                            ; Pick complete time
 ; Lines
 {.lines[]}
 line_number = ##:(1..)                               ; Line number
-sku = !:                                             ; SKU
+sku = :                                             ; SKU
 description = :                                      ; Item description
-ordered_quantity = !##:(0..)                         ; Ordered quantity
+ordered_quantity = ##:(0..)                         ; Ordered quantity
 picked_quantity = ##:(0..)                           ; Picked quantity
 location_id = :                                      ; Pick location
 lot_number = :                                       ; Lot number
@@ -399,8 +399,8 @@ status_date = date                                   ; Status date
 
 {@shipment_order}
 ; Required fields first
-shipment_id = !:                                     ; Shipment identifier
-order_number = !:                                    ; Order number
+shipment_id = :                                     ; Shipment identifier
+order_number = :                                    ; Order number
 
 ; Optional fields
 customer_name = :                                    ; Customer name
@@ -408,8 +408,8 @@ customer_id = :                                      ; Customer identifier
 
 ; Ship to
 {.ship_to}
-name = !:                                            ; Ship to name
-address = !@types.address                            ; Ship to address
+name = :                                            ; Ship to name
+address = @types.address                            ; Ship to address
 phone = *@types.phone                                ; Ship to phone
 email = *@types.email                                ; Ship to email
 
@@ -457,9 +457,9 @@ status_date = date                                   ; Status date
 
 {@asn}
 ; Required fields first
-asn_id = !:                                          ; ASN identifier
+asn_id = :                                          ; ASN identifier
 shipment_id = :                                      ; Shipment identifier
-expected_delivery_date = !date                       ; Expected delivery date
+expected_delivery_date = date                       ; Expected delivery date
 
 ; Optional fields
 po_number = :                                        ; Purchase order number
@@ -485,10 +485,10 @@ weight_unit = (kg, lb)                               ; Weight unit
 ; ASN line items
 {.lines[]}
 line_number = ##:(1..)                               ; Line number
-sku = !:                                             ; SKU
+sku = :                                             ; SKU
 description = :                                      ; Item description
 ordered_quantity = ##:(0..)                          ; Ordered quantity
-shipped_quantity = !##:(0..)                         ; Shipped quantity
+shipped_quantity = ##:(0..)                         ; Shipped quantity
 uom = :                                              ; Unit of measure
 lot_number = :                                       ; Lot number
 serial_numbers[] = :                                 ; Serial numbers
@@ -522,8 +522,8 @@ status_date = date                                   ; Status date
 
 {@sla_metric}
 ; Required fields first
-metric_name = !:                                     ; Metric name
-target_value = !#                                    ; Target value
+metric_name = :                                     ; Metric name
+target_value = #                                    ; Target value
 measurement_unit = :                                 ; Unit of measure
 
 ; Optional fields
@@ -538,10 +538,10 @@ measurement_period = (annual, daily, monthly, quarterly, weekly)
 
 {@warehouse_agreement}
 ; Required fields first
-agreement_id = !:                                    ; Agreement identifier
-client_name = !:                                     ; Client name
-warehouse_id = !:                                    ; Warehouse identifier
-effective_date = !date                               ; Effective date
+agreement_id = :                                    ; Agreement identifier
+client_name = :                                     ; Client name
+warehouse_id = :                                    ; Warehouse identifier
+effective_date = date                               ; Effective date
 
 ; Optional fields
 expiration_date = date                               ; Expiration date

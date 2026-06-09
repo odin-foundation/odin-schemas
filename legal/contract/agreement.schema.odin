@@ -46,9 +46,9 @@ changelog[0].rationale = "Comprehensive contract lifecycle tracking"
 
 {@contract_agreement}
 ; Required fields first
-agreement_type = !(consulting, distribution, employment, franchise, joint_venture, lease, license, loan, msa, nda, partnership, purchase, saas, sales, service, settlement, subscription, supply)
-contract_name = !:                                ; Contract name/title
-effective_date = !date                            ; Effective date
+agreement_type = (consulting, distribution, employment, franchise, joint_venture, lease, license, loan, msa, nda, partnership, purchase, saas, sales, service, settlement, subscription, supply)
+contract_name = :                                ; Contract name/title
+effective_date = date                            ; Effective date
 
 ; Contract identification
 contract_id = :                                   ; Internal contract ID
@@ -261,8 +261,8 @@ breach_description = ::if status = breached       ; Breach description
 
 {@contract_clause}
 ; Required fields first
-clause_type = !(amendment, arbitration, assignment, audit, choice_of_law, confidentiality, definitions, dispute_resolution, entire_agreement, force_majeure, governing_law, indemnification, insurance, ip_ownership, limitation_of_liability, non_compete, non_disclosure, non_solicitation, notice, payment_terms, renewal, severability, survival, term, termination, waiver, warranty)
-clause_text = !:                                  ; Clause text
+clause_type = (amendment, arbitration, assignment, audit, choice_of_law, confidentiality, definitions, dispute_resolution, entire_agreement, force_majeure, governing_law, indemnification, insurance, ip_ownership, limitation_of_liability, non_compete, non_disclosure, non_solicitation, notice, payment_terms, renewal, severability, survival, term, termination, waiver, warranty)
+clause_text = :                                  ; Clause text
 
 ; Clause identification
 clause_id = :                                     ; Unique clause ID
@@ -300,9 +300,9 @@ active = ?                                        ; Clause is active
 
 {@contract_obligation}
 ; Required fields first
-description = !:                                  ; Obligation description
-obligation_type = !(compliance, delivery, financial, notification, performance, regulatory, reporting)
-responsible_party = !(both, counterparty, us)     ; Who is responsible
+description = :                                  ; Obligation description
+obligation_type = (compliance, delivery, financial, notification, performance, regulatory, reporting)
+responsible_party = (both, counterparty, us)     ; Who is responsible
 
 ; Obligation identification
 obligation_id = :                                 ; Unique obligation ID
@@ -354,8 +354,8 @@ status = (completed, in_progress, overdue, pending, waived)
 
 {@contract_milestone}
 ; Required fields first
-milestone_name = !:                               ; Milestone name
-target_date = !date                               ; Target date
+milestone_name = :                               ; Milestone name
+target_date = date                               ; Target date
 
 ; Milestone identification
 milestone_id = :                                  ; Unique milestone ID
@@ -404,8 +404,8 @@ status = (at_risk, completed, delayed, on_track, pending)
 
 {@contract_amendment}
 ; Required fields first
-amendment_date = !date                            ; Amendment date
-amendment_number = !##:(1..)                      ; Amendment number
+amendment_date = date                            ; Amendment date
+amendment_number = ##:(1..)                      ; Amendment number
 
 ; Amendment identification
 amendment_id = :                                  ; Unique amendment ID

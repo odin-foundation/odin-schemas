@@ -42,19 +42,19 @@ changelog[0].rationale = "Base types derived from CMS Medicaid guidance and 42 C
 = @person                                    ; Inherits person fields (name, ssn, dob, contact)
 
 ; Identification
-medicaid_id = !*:                            ; State Medicaid ID
-state = !:(2)                                ; State of coverage
+medicaid_id = *:                            ; State Medicaid ID
+state = :(2)                                ; State of coverage
 
 ; Override required name fields
 {.name}
-first = !:                                   ; First name (required)
-last = !:                                    ; Last name (required)
+first = :                                   ; First name (required)
+last = :                                    ; Last name (required)
 
 {@member}
 
 ; Override required demographics
-date_of_birth = !*date                       ; Date of birth (required)
-gender = !(female, male)                     ; Administrative gender (required)
+date_of_birth = *date                       ; Date of birth (required)
+gender = (female, male)                     ; Administrative gender (required)
 
 ; Medicaid-specific fields
 citizenship_status = (citizen, lawfully_present, other)  ; Citizenship/immigration status
@@ -67,8 +67,8 @@ interpreter_needed = ?                       ; Interpreter needed
 ; Per 42 CFR 435.603 - MAGI household composition
 
 {@household}
-household_id = !:                            ; Household identifier
-size = !##:(1..)                             ; Household size
+household_id = :                            ; Household identifier
+size = ##:(1..)                             ; Household size
 
 ; Members
 members[] = @household_member                ; Household members
@@ -106,9 +106,9 @@ incarcerated = ?                             ; Incarceration status
 ; Per 42 CFR 435 Subpart B-H
 
 {@eligibility_group}
-group_code = !:                              ; Eligibility group code
-group_name = !:                              ; Eligibility group name
-methodology = !(magi, non_magi)              ; Eligibility methodology
+group_code = :                              ; Eligibility group code
+group_name = :                              ; Eligibility group name
+methodology = (magi, non_magi)              ; Eligibility methodology
 
 ; MAGI groups - Per 42 CFR 435.110-119
 magi_category = (adult, child, chip, former_foster, parent, pregnant, targeted_low_income_child):if methodology = magi
@@ -130,13 +130,13 @@ resource_limit = #$:(0..)                    ; Asset/resource limit (non-MAGI)
 ; Per 42 CFR 440 - Services
 
 {@benefit_package}
-package_id = !:                              ; Benefit package identifier
+package_id = :                              ; Benefit package identifier
 package_name = :                             ; Package name
-state = !:(2)                                ; State
-effective_date = !date                       ; Effective date
+state = :(2)                                ; State
+effective_date = date                       ; Effective date
 
 ; Package type
-package_type = !(abp, benchmark, benchmark_equivalent, state_plan)
+package_type = (abp, benchmark, benchmark_equivalent, state_plan)
 ; abp = Alternative Benefit Plan (Section 1937)
 ; benchmark = Benchmark coverage
 ; benchmark_equivalent = Benchmark-equivalent
@@ -153,13 +153,13 @@ coverage_type = (comprehensive, limited, targeted)
 ; Per 42 CFR 435.916
 
 {@coverage_period}
-member_id = !:                               ; Member ID
-effective_date = !date                       ; Coverage start date
+member_id = :                               ; Member ID
+effective_date = date                       ; Coverage start date
 end_date = date                              ; Coverage end date
-status = !(active, closed, pending, suspended)
+status = (active, closed, pending, suspended)
 
 ; Eligibility group
-eligibility_group = !@eligibility_group      ; Eligibility group
+eligibility_group = @eligibility_group      ; Eligibility group
 
 ; Benefit package
 benefit_package = @benefit_package           ; Assigned benefit package
@@ -180,15 +180,15 @@ termination_date = date                      ; Termination effective date
 ; Per 42 CFR 438.54
 
 {@mco_enrollment}
-plan_id = !:                                 ; Plan identifier
+plan_id = :                                 ; Plan identifier
 plan_name = :                                ; Plan name
-plan_type = !(mco, pahp, pccm, pihp)         ; Plan type
+plan_type = (mco, pahp, pccm, pihp)         ; Plan type
 ; mco = Managed Care Organization
 ; pihp = Prepaid Inpatient Health Plan
 ; pahp = Prepaid Ambulatory Health Plan
 ; pccm = Primary Care Case Management
 
-effective_date = !date                       ; Enrollment effective date
+effective_date = date                       ; Enrollment effective date
 end_date = date                              ; Enrollment end date
 
 ; Enrollment type
@@ -206,7 +206,7 @@ pcp_npi = :                                  ; PCP NPI
 ; Per 42 CFR 435.601-603
 
 {@income}
-income_type = !(alimony, business, child_support, earned, interest_dividends, other, pension, rental, self_employment, social_security, ssi, unemployment, veterans)
+income_type = (alimony, business, child_support, earned, interest_dividends, other, pension, rental, self_employment, social_security, ssi, unemployment, veterans)
 source = :                                   ; Income source name
 frequency = (annual, biweekly, monthly, one_time, semi_monthly, weekly)
 amount = #$:(0..)                            ; Income amount
@@ -225,7 +225,7 @@ countable = ?                                ; Counted for Medicaid eligibility
 ; Per 42 CFR 435.840-845 (Non-MAGI only)
 
 {@resource}
-resource_type = !(burial_fund, cash, life_insurance, other, property, retirement_account, vehicle)
+resource_type = (burial_fund, cash, life_insurance, other, property, retirement_account, vehicle)
 description = :                              ; Resource description
 value = #$:(0..)                             ; Resource value
 countable = ?                                ; Countable for eligibility
@@ -237,8 +237,8 @@ exempt_reason = :                            ; Reason if exempt
 ; Per 42 CFR 435.948-956
 
 {@verification}
-verification_type = !(citizenship, identity, income, residency, ssn)
-status = !(not_verified, pending, verified)
+verification_type = (citizenship, identity, income, residency, ssn)
+status = (not_verified, pending, verified)
 method = (data_source, documentation, self_attestation)
 source = :                                   ; Verification source
 date = date                                  ; Verification date
@@ -251,10 +251,10 @@ document_type = :                            ; Document type if submitted
 ; Per 42 CFR 435.956(b)
 
 {@rop}
-rop_type = !(citizenship, immigration, ssn)
-start_date = !date                           ; ROP start date
-end_date = !date                             ; ROP end date (90 days)
-status = !(closed, expired, open)
+rop_type = (citizenship, immigration, ssn)
+start_date = date                           ; ROP start date
+end_date = date                             ; ROP end date (90 days)
+status = (closed, expired, open)
 documentation_received = ?                   ; Documentation received
 documentation_date = date                    ; Date received
 determination = (eligible, ineligible, pending)
@@ -265,8 +265,8 @@ determination = (eligible, ineligible, pending)
 ; Per 42 CFR Part 433 Subpart D
 
 {@tpl}
-member_id = !:                               ; Member ID
-carrier_type = !(commercial, employer, medicare, military, other)
+member_id = :                               ; Member ID
+carrier_type = (commercial, employer, medicare, military, other)
 carrier_name = :                             ; Insurance carrier name
 policy_number = :                            ; Policy number
 group_number = :                             ; Group number

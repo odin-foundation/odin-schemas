@@ -143,7 +143,7 @@ total = #$:(0..)                               ; Total liability premium
 {@cargo_coverage}
 coverage_id = :
 coverage_code = "cv-COM-CARGO"
-coverage_form = !(
+coverage_form = (
     all_risk,                                  ; Comprehensive cargo
     broad_form,                                ; All-risk
     legal_liability,                           ; Liability for carrier negligence

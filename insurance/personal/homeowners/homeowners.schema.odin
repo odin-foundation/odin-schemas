@@ -76,7 +76,7 @@ security = @res.res_security
 
 {@ho_deductible}
 ; Required fields first
-deductible_type = !(all_other_perils, earthquake, flood, hurricane, named_storm, water_damage, wind_hail)  ; Type of peril this deductible applies to
+deductible_type = (all_other_perils, earthquake, flood, hurricane, named_storm, water_damage, wind_hail)  ; Type of peril this deductible applies to
 
 ; Optional fields
 applies_to_coverage = :                      ; Coverage this deductible applies to
@@ -127,7 +127,7 @@ water_damage = ?                             ; Water damage exclusion applied
 
 {@ho_insured_location}
 ; Required fields first
-location_number = !##:(1..)                  ; Location sequence number
+location_number = ##:(1..)                  ; Location sequence number
 
 ; Optional fields
 address = @address                           ; Property physical address
@@ -143,7 +143,7 @@ longitude = #:(-180..180)                    ; GPS longitude coordinate
 
 {@ho_dwelling}
 ; Required fields first
-dwelling_type = !(condominium, cooperative, duplex, manufactured_home, mobile_home, modular_home, multi_family, row_house, single_family, townhouse, triplex)  ; Type of dwelling structure
+dwelling_type = (condominium, cooperative, duplex, manufactured_home, mobile_home, modular_home, multi_family, row_house, single_family, townhouse, triplex)  ; Type of dwelling structure
 
 ; Optional fields
 dwelling_id = :                              ; Unique dwelling identifier
@@ -182,7 +182,7 @@ roof = @res.res_roof
 ; Size and Layout
 ; ───────────────────────────────────────────────────────────────────────────────
 {.dimensions}
-total_square_feet = !##                      ; Total dwelling square footage
+total_square_feet = ##                      ; Total dwelling square footage
 bathroom_count = #                           ; Number of bathrooms (can be fractional)
 bedroom_count = ##                           ; Number of bedrooms
 finished_square_feet = ##                    ; Finished square footage
@@ -257,7 +257,7 @@ historic_registry = :if historic_home = true ; Historic registry name
 
 {@ho_other_structure}
 ; Required fields first
-structure_type = !(barn, carport, detached_garage, fence, gazebo, greenhouse, guest_house, other, pool_house, retaining_wall, shed, stable, studio, workshop)  ; Type of other structure
+structure_type = (barn, carport, detached_garage, fence, gazebo, greenhouse, guest_house, other, pool_house, retaining_wall, shed, stable, studio, workshop)  ; Type of other structure
 
 ; Optional fields
 business_use = ?                             ; Structure used for business
@@ -286,7 +286,7 @@ year_built = ##                              ; Year structure was built
 = @res.res_endorsement
 
 ; HO-specific endorsement types (alphabetical)
-endorsement_type = !(animal_liability, building_code_upgrade, business_pursuits, earthquake, equipment_breakdown, extended_replacement_cost, flood, guaranteed_replacement_cost, home_business, home_sharing, identity_theft, incidental_business, inflation_guard, mold_coverage, ordinance_law, other, personal_injury, personal_property_replacement_cost, scheduled_personal_property, service_line, sinkhole, special_computer, umbrella_increase, water_backup, watercraft, workers_compensation_residence_employees)  ; Type of endorsement
+endorsement_type = (animal_liability, building_code_upgrade, business_pursuits, earthquake, equipment_breakdown, extended_replacement_cost, flood, guaranteed_replacement_cost, home_business, home_sharing, identity_theft, incidental_business, inflation_guard, mold_coverage, ordinance_law, other, personal_injury, personal_property_replacement_cost, scheduled_personal_property, service_line, sinkhole, special_computer, umbrella_increase, water_backup, watercraft, workers_compensation_residence_employees)  ; Type of endorsement
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Homeowners Policy (Composes All Components)
@@ -294,10 +294,10 @@ endorsement_type = !(animal_liability, building_code_upgrade, business_pursuits,
 
 {@homeowners_policy}
 ; Required fields first
-effective_date = !date                       ; Policy effective date
-expiration_date = !date                      ; Policy expiration date
-policy_form = !(HO1, HO2, HO3, HO4, HO5, HO6, HO7, HO8)  ; Policy form type
-policy_number = !:                           ; Policy number
+effective_date = date                       ; Policy effective date
+expiration_date = date                      ; Policy expiration date
+policy_form = (HO1, HO2, HO3, HO4, HO5, HO6, HO7, HO8)  ; Policy form type
+policy_number = :                           ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

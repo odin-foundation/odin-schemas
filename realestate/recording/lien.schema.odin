@@ -49,10 +49,10 @@ changelog[0].rationale = "Comprehensive lien and encumbrance structure"
 
 {@lien}
 ; Required fields first
-lien_amount = !#$:(0..)                              ; Original lien amount
-lien_date = !date                                    ; Date lien arose
-lien_type = !(attachment, child_support, condominium, federal_tax, hoa, judgment, mechanics, municipal, state_tax, ucc_fixture, utility)
-property_address = !@address                         ; Property address
+lien_amount = #$:(0..)                              ; Original lien amount
+lien_date = date                                    ; Date lien arose
+lien_type = (attachment, child_support, condominium, federal_tax, hoa, judgment, mechanics, municipal, state_tax, ucc_fixture, utility)
+property_address = @address                         ; Property address
 
 ; Lien identification
 lien_id = :                                          ; Unique lien identifier
@@ -227,8 +227,8 @@ status_date = date                                   ; Status date
 
 {@lien_release}
 ; Required fields first
-release_date = !date                                 ; Release date
-release_type = !(full, partial, subordination)       ; Type of release
+release_date = date                                 ; Release date
+release_type = (full, partial, subordination)       ; Type of release
 
 ; Release identification
 release_id = :                                       ; Unique release identifier
@@ -303,8 +303,8 @@ status_date = date                                   ; Status date
 
 {@lis_pendens}
 ; Required fields first
-filing_date = !date                                  ; Date filed
-property_address = !@address                         ; Property address
+filing_date = date                                  ; Date filed
+property_address = @address                         ; Property address
 
 ; Lis pendens identification
 lp_id = :                                            ; Unique identifier

@@ -45,7 +45,7 @@ changelog[0].rationale = "Core shipment structure with tracking and POD"
 
 {@shipment_party}
 ; Required fields first
-name = !:                                            ; Party name
+name = :                                            ; Party name
 role = (
     bill_to,
     broker,
@@ -71,7 +71,7 @@ phone = *@types.phone                                ; Contact phone
 
 {@package}
 ; Required fields first
-package_id = !:                                      ; Package identifier
+package_id = :                                      ; Package identifier
 package_type = (
     bag,
     barrel,
@@ -90,7 +90,7 @@ package_type = (
     tank,
     tube
 )
-quantity = !##:(1..)                                 ; Number of packages
+quantity = ##:(1..)                                 ; Number of packages
 
 ; Optional fields
 description = :                                      ; Package description
@@ -108,7 +108,7 @@ unit = (cm, ft, in, m)                               ; Dimension unit
 
 ; Weight
 {.weight}
-gross = !#:(0..)                                     ; Gross weight including packaging
+gross = #:(0..)                                     ; Gross weight including packaging
 tare = #:(0..)                                       ; Packaging weight only
 net = #:(0..)                                        ; Net weight (gross - tare)
 unit = (kg, lb, oz, ton)                            ; Weight unit
@@ -130,7 +130,7 @@ rfid_tag = :                                         ; RFID tag identifier
 
 {@commodity}
 ; Required fields first
-description = !:                                     ; Commodity description
+description = :                                     ; Commodity description
 
 ; Optional fields
 classification = :                                   ; NMFC class, HTS code, or other
@@ -175,7 +175,7 @@ temp_unit = (C, F):if temperature_controlled = true  ; Temperature unit
 
 {@tracking_event}
 ; Required fields first
-event_code = !:                                      ; Event code
+event_code = :                                      ; Event code
 status = (
     accepted,
     arrived,
@@ -194,7 +194,7 @@ status = (
     sorted,
     tendered
 )
-timestamp = !timestamp                               ; Event timestamp
+timestamp = timestamp                               ; Event timestamp
 
 ; Optional fields
 description = :                                      ; Event description
@@ -219,8 +219,8 @@ estimated_delivery = timestamp                       ; Updated estimated deliver
 
 {@proof_of_delivery}
 ; Required fields first
-delivery_date = !date                                ; Delivery date
-delivery_time = !time                                ; Delivery time
+delivery_date = date                                ; Delivery date
+delivery_time = time                                ; Delivery time
 
 ; Optional fields
 signature_name = :                                   ; Name of person who signed
@@ -276,9 +276,9 @@ notes = :                                            ; Milestone notes
 
 {@shipment_stop}
 ; Required fields first
-sequence = !##:(1..)                                 ; Stop sequence number
+sequence = ##:(1..)                                 ; Stop sequence number
 type = (delivery, pickup)                           ; Stop type
-address = !@types.address                            ; Stop address
+address = @types.address                            ; Stop address
 
 ; Optional fields
 contact = :                                          ; Contact name at stop
@@ -303,7 +303,7 @@ special_instructions = :                             ; Special instructions
 
 {@consolidation}
 ; Required fields first
-consolidation_id = !:                                ; Consolidation identifier
+consolidation_id = :                                ; Consolidation identifier
 type = (container, pallet, trailer)                 ; Consolidation type
 
 ; Optional fields
@@ -333,7 +333,7 @@ seal_number = :if type = container                   ; Container seal number
 
 {@shipment}
 ; Required fields first
-shipment_id = !:                                     ; Unique shipment identifier
+shipment_id = :                                     ; Unique shipment identifier
 status = (
     booked,
     cancelled,
@@ -363,7 +363,7 @@ service_level = (
 mode = (air, intermodal, ocean, parcel, rail, road)
 
 ; Dates
-ship_date = !date                                    ; Ship date
+ship_date = date                                    ; Ship date
 requested_pickup_date = date                         ; Requested pickup date
 actual_pickup_date = date                            ; Actual pickup date
 estimated_delivery_date = date                       ; Estimated delivery date
@@ -371,8 +371,8 @@ requested_delivery_date = date                       ; Requested delivery date
 actual_delivery_date = date                          ; Actual delivery date
 
 ; Parties
-shipper = !@shipment_party                           ; Shipper information
-consignee = !@shipment_party                         ; Consignee information
+shipper = @shipment_party                           ; Shipper information
+consignee = @shipment_party                         ; Consignee information
 bill_to = @shipment_party                            ; Bill to party
 carrier = @shipment_party                            ; Carrier information
 broker = @shipment_party                             ; Customs broker

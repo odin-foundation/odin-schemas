@@ -45,7 +45,7 @@ changelog[0].rationale = "Personal lines coverage for valuable scheduled items"
 ; Defines categories for scheduled personal property items.
 
 {@spp_item_category}
-category = !(
+category = (
     cameras,                                  ; Camera and photography equipment
     coins,                                    ; Coin collections
     collectibles,                             ; Sports memorabilia, other collectibles
@@ -70,8 +70,8 @@ category_description = :if category = other  ; Description if other selected
 
 {@spp_appraisal}
 ; Required fields first
-appraised_value = !#$:(0..)                   ; Appraised item value
-appraisal_date = !date                        ; Date of appraisal
+appraised_value = #$:(0..)                   ; Appraised item value
+appraisal_date = date                        ; Date of appraisal
 
 ; Optional fields
 appraiser_address = @address                  ; Appraiser business address
@@ -108,10 +108,10 @@ notes = :                                     ; Additional appraisal notes
 
 {@spp_scheduled_item}
 ; Required fields first
-category = !@spp_item_category                ; Item category classification
-description = !:                              ; Detailed item description
-item_number = !##:(1..)                       ; Sequential item number
-scheduled_amount = !#$:(0..)                  ; Scheduled (insured) value
+category = @spp_item_category                ; Item category classification
+description = :                              ; Detailed item description
+item_number = ##:(1..)                       ; Sequential item number
+scheduled_amount = #$:(0..)                  ; Scheduled (insured) value
 
 ; Optional fields
 acquisition_cost = #$:(0..)                   ; Original purchase price
@@ -215,7 +215,7 @@ vintage_range = :if category.category = wine     ; Range of vintages
 
 {@spp_coverage_options}
 ; Required fields first
-valuation_method = !(
+valuation_method = (
     actual_cash_value,                        ; Depreciated value
     agreed_value,                             ; Pre-agreed amount
     functional_replacement,                   ; Similar function item
@@ -279,8 +279,8 @@ unattended_vehicle = ?                        ; Left in unattended vehicle
 
 {@spp_endorsement}
 ; Required fields first
-effective_date = !date                        ; Endorsement effective date
-endorsement_number = !:                       ; Endorsement identifier
+effective_date = date                        ; Endorsement effective date
+endorsement_number = :                       ; Endorsement identifier
 
 ; Optional fields
 category_affected = @spp_item_category        ; Category this affects
@@ -306,7 +306,7 @@ premium_change = #$                           ; Premium impact (+/-)
 
 {@spp_premium}
 ; Required fields first
-total_annual_premium = !#$:(0..)              ; Total annual premium
+total_annual_premium = #$:(0..)              ; Total annual premium
 
 ; Optional fields
 category_premiums[] = @spp_category_premium   ; Premium by category
@@ -329,8 +329,8 @@ total_value = #$:(0..)                        ; Total scheduled value
 
 {@spp_prior_claim}
 ; Required fields first
-claim_date = !date                            ; Date of loss
-claim_type = !(
+claim_date = date                            ; Date of loss
+claim_type = (
     breakage,                                 ; Accidental breakage
     damage,                                   ; Physical damage
     fire,                                     ; Fire damage
@@ -356,7 +356,7 @@ recovery_amount = #$:(0..):if recovered = true
 
 {@spp_named_insured}
 ; Required fields first
-name = !@person_name                          ; Insured name
+name = @person_name                          ; Insured name
 
 ; Optional fields
 address = @address                            ; Mailing address
@@ -383,10 +383,10 @@ relationship = (
 
 {@scheduled_property_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
-scheduled_items[] = !@spp_scheduled_item      ; Scheduled items (at least one)
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
+scheduled_items[] = @spp_scheduled_item      ; Scheduled items (at least one)
 
 ; Invariants
 :invariant expiration_date > effective_date

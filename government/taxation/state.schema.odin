@@ -37,16 +37,16 @@ changelog[0].rationale = "State-level tax return structures"
 {@state_income_tax}
 = @types.audit_info
 
-tax_year = !##:(2020..)
-states[] = !:(2)                                     ; State codes (multi-state filers)
+tax_year = ##:(2020..)
+states[] = :(2)                                     ; State codes (multi-state filers)
 filing_status = (head_of_household, married_filing_jointly, married_filing_separately, single)
 amended_return = ?
 
 ; Taxpayer Information
 {.taxpayer}
-first_name = !:
-last_name = !:
-ssn = !*:format ssn
+first_name = :
+last_name = :
+ssn = *:format ssn
 date_of_birth = *date
 
 {@state_income_tax}
@@ -58,12 +58,12 @@ ssn = *:format ssn:if filing_status = married_filing_jointly
 date_of_birth = *date
 
 {@state_income_tax}
-addresses[] = !@address                              ; Addresses (primary, during year)
+addresses[] = @address                              ; Addresses (primary, during year)
 
 ; Dependents
 {.dependents[]}
-name = !:
-ssn = !*:format ssn
+name = :
+ssn = *:format ssn
 relationship = :
 months_in_home = ##:(0..12)
 
@@ -76,7 +76,7 @@ amount = #$                                          ; Amount from this source
 
 {@state_income_tax}
 {.income}
-federal_adjusted_gross_income = !#$
+federal_adjusted_gross_income = #$
 total_state_income = #$
 
 {@state_income_tax}
@@ -89,7 +89,7 @@ other_additions[] = {@state_adjustment}              ; Other additions (multiple
 total_additions = #$:(0..)
 
 {@state_adjustment}
-description = !:                                     ; Adjustment description
+description = :                                     ; Adjustment description
 amount = #$                                          ; Adjustment amount
 
 {@state_income_tax}
@@ -104,7 +104,7 @@ total_subtractions = #$:(0..)
 
 {@state_income_tax}
 ; State Adjusted Gross Income
-state_adjusted_gross_income = !#$
+state_adjusted_gross_income = #$
 
 ; Deductions
 deduction_type = (itemized, standard)
@@ -120,11 +120,11 @@ dependent_exemption_amount = #$:(0..)
 total_exemptions = #$:(0..)
 
 ; Taxable Income
-state_taxable_income = !#$
+state_taxable_income = #$
 
 ; Tax Computation
 {.tax}
-state_income_tax = !#$:(0..)
+state_income_tax = #$:(0..)
 use_tax = #$:(0..)
 other_taxes[] = @state_adjustment                    ; Other taxes (multiple items)
 total_tax = #$:(0..)
@@ -178,18 +178,18 @@ amount = #$:(0..)                                    ; Amount to deposit
 = @types.audit_info
 
 quarter = (Q1, Q2, Q3, Q4)
-tax_year = !##:(2020..)
-state = !:(2)
+tax_year = ##:(2020..)
+state = :(2)
 
 ; Employer Information
-employer_name = !:
-state_id_number = !:
+employer_name = :
+state_id_number = :
 federal_ein = :format ein
 address = @address
 
 ; Withholding Summary
 total_wages_paid = #$:(0..)
-state_income_tax_withheld = !#$:(0..)
+state_income_tax_withheld = #$:(0..)
 number_employees = ##:(0..)
 
 ; Payments Made
@@ -204,19 +204,19 @@ overpayment = #$
 {@sales_use_tax}
 = @types.audit_info
 
-filing_period = !date
-state = !:(2)
-permit_number = !:
+filing_period = date
+state = :(2)
+permit_number = :
 
 ; Business Information
-business_names[] = !:                                ; Legal names (name changes, multiple locations)
+business_names[] = :                                ; Legal names (name changes, multiple locations)
 dbas[] = :                                           ; DBAs (multiple trade names)
 address = @address
 business_types[] = :                                 ; Business types (multiple categories)
 
 ; Sales
 {.sales}
-gross_receipts = !#$:(0..)
+gross_receipts = #$:(0..)
 exempt_sales[] = {@exempt_sale}                      ; Exempt sales by category
 taxable_sales = #$:(0..)
 sales_tax_collected = #$:(0..)
@@ -235,7 +235,7 @@ use_tax_due = #$:(0..)
 
 {@sales_use_tax}
 ; Total Tax Due
-total_tax_due = !#$:(0..)
+total_tax_due = #$:(0..)
 
 ; Credits and Adjustments
 {.credits}
@@ -265,15 +265,15 @@ total_amount_due = #$
 {@property_tax_assessment}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 state = :(2)
 county = :
 municipality = :
-parcel_number = !:
+parcel_number = :
 
 ; Property Information
 {.property}
-address = !@address
+address = @address
 property_type = (agricultural, commercial, industrial, residential, vacant_land)
 legal_descriptions[] = :                             ; Legal descriptions (multiple parcels)
 lot_size_acres = #:(0..)
@@ -283,18 +283,18 @@ year_built = ##:(1700..2100)
 {@property_tax_assessment}
 ; Owner Information (multiple owners for joint ownership)
 {.owners[]}
-name = !:                                            ; Owner name
+name = :                                            ; Owner name
 mailing_address = @address                           ; Owner address
 ownership_percentage = #:(0..100)                    ; Ownership percentage
 
 {@property_tax_assessment}
 ; Assessment Values
 {.assessment}
-land_value = !#$:(0..)
+land_value = #$:(0..)
 improvement_value = #$:(0..)
-total_assessed_value = !#$:(0..)
+total_assessed_value = #$:(0..)
 assessment_ratio = #:(0..100)
-taxable_value = !#$:(0..)
+taxable_value = #$:(0..)
 
 {@property_tax_assessment}
 ; Exemptions
@@ -311,17 +311,17 @@ total_exemptions = #$:(0..)
 {.tax}
 net_taxable_value = #$:(0..)
 {.jurisdictions[]}
-jurisdiction_name = !:
-mill_rate = !#:(0..)
-tax_amount = !#$:(0..)
+jurisdiction_name = :
+mill_rate = #:(0..)
+tax_amount = #$:(0..)
 {@property_tax_assessment}
-total_property_tax = !#$:(0..)
+total_property_tax = #$:(0..)
 
 ; Due Dates and Payments
 {.installments[]}
 installment_number = ##:(1..12)
-due_date = !date
-amount_due = !#$:(0..)
+due_date = date
+amount_due = #$:(0..)
 amount_paid = #$:(0..)
 payment_date = date
 

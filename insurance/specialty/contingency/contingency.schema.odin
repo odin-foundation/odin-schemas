@@ -45,8 +45,8 @@ changelog[0].rationale = "Specialty coverage for contingent financial exposures"
 
 {@contingent_insured}
 ; Required fields first
-insured_name = !:                             ; Entity name
-insured_type = !(
+insured_name = :                             ; Entity name
+insured_type = (
     advertiser,                               ; Advertiser
     broadcaster,                              ; Broadcaster
     charity,                                  ; Charity/nonprofit
@@ -75,8 +75,8 @@ insured_id = :                                ; Internal identifier
 
 {@contingent_event}
 ; Required fields first
-event_description = !:                        ; Event description
-event_type = !(
+event_description = :                        ; Event description
+event_type = (
     award_ceremony,                           ; Award show
     bonus_program,                            ; Bonus/incentive
     contest,                                  ; Contest/competition
@@ -91,7 +91,7 @@ event_type = !(
     sports_performance,                       ; Sports achievement
     weather                                   ; Weather contingency
 )
-maximum_exposure = !#$:(0..)                  ; Maximum financial exposure
+maximum_exposure = #$:(0..)                  ; Maximum financial exposure
 
 ; Optional fields
 contingency_date = date                       ; Event/trigger date
@@ -108,7 +108,7 @@ verification_method = :                       ; How verified
 
 {@contingent_coverage}
 ; Required fields first
-coverage_type = !(
+coverage_type = (
     cancellation,                             ; Cancellation/postponement
     death_disgrace,                           ; Death/disgrace
     incentive,                                ; Incentive program
@@ -118,7 +118,7 @@ coverage_type = !(
     prize,                                    ; Prize indemnity
     weather                                   ; Weather contingency
 )
-limit = !#$:(0..)                             ; Coverage limit
+limit = #$:(0..)                             ; Coverage limit
 
 ; Optional fields
 aggregate = #$:(0..)                          ; Aggregate limit
@@ -188,7 +188,7 @@ program_description = ::if included = true    ; Program details
 
 {@contingent_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 minimum_premium = #$:(0..)                    ; Minimum premium
@@ -217,8 +217,8 @@ term_factor = #                               ; Coverage term
 
 {@contingent_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     cancellation,                             ; Event cancelled
     death,                                    ; Death
     disability,                               ; Disability
@@ -256,12 +256,12 @@ verification_complete = ?                     ; Verified
 
 {@contingency_policy}
 ; Required fields first
-coverage = !@contingent_coverage              ; Coverage terms
-effective_date = !date                        ; Policy effective date
-event = !@contingent_event                    ; Contingent event
-expiration_date = !date                       ; Policy expiration date
-insured = !@contingent_insured                ; Insured entity
-policy_number = !:                            ; Policy number
+coverage = @contingent_coverage              ; Coverage terms
+effective_date = date                        ; Policy effective date
+event = @contingent_event                    ; Contingent event
+expiration_date = date                       ; Policy expiration date
+insured = @contingent_insured                ; Insured entity
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date >= effective_date

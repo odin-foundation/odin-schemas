@@ -49,7 +49,7 @@ changelog[0].rationale = "Structure derived from CMS forms and 42 CFR Parts 406,
 ; Per 42 CFR Part 406 - Hospital Insurance
 
 {@part_a_enrollment}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
+beneficiary = @medicare.beneficiary         ; Beneficiary information
 
 ; Enrollment period
 period = @enrollment_period                  ; Enrollment period with status
@@ -71,7 +71,7 @@ penalty_percent = #:(0..100)                 ; Late enrollment penalty percentag
 {@part_a_enrollment}
 
 ; Entitlement basis - Per 42 CFR 406.10-406.15
-entitlement = !@medicare.entitlement_basis   ; Basis for entitlement
+entitlement = @medicare.entitlement_basis   ; Basis for entitlement
 
 ; Enrollment period - Per 42 CFR 406.21
 enrollment_period = @medicare.enrollment_period  ; Period used for enrollment
@@ -93,7 +93,7 @@ denial_reason = :                            ; Reason if denied
 ; Per 42 CFR Part 407 - Supplementary Medical Insurance and CMS-40B
 
 {@part_b_enrollment}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
+beneficiary = @medicare.beneficiary         ; Beneficiary information
 
 ; Enrollment period
 period = @enrollment_period                  ; Enrollment period with status
@@ -161,7 +161,7 @@ decline_reason = (employer_coverage, other, va_coverage)
 ; Per 42 CFR Part 422 and CMS Pub 100-16 Chapter 2
 
 {@part_c_enrollment}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
+beneficiary = @medicare.beneficiary         ; Beneficiary information
 
 ; Enrollment period
 period = @enrollment_period                  ; Enrollment period with status
@@ -227,7 +227,7 @@ notice_date = date                           ; Date disenrollment notice sent
 ; Per 42 CFR Part 423 and CMS Pub 100-18
 
 {@part_d_enrollment}
-beneficiary = !@medicare.beneficiary         ; Beneficiary information
+beneficiary = @medicare.beneficiary         ; Beneficiary information
 
 ; Enrollment period
 period = @enrollment_period                  ; Enrollment period with status
@@ -307,15 +307,15 @@ involuntary = ?                              ; Involuntary disenrollment
 ; Per CMS enrollment transaction requirements
 
 {@enrollment_transaction}
-transaction_id = !:                          ; Unique transaction identifier
-transaction_type = !(disenrollment, enrollment, reenrollment)
-transaction_date = !date                     ; Date transaction submitted
+transaction_id = :                          ; Unique transaction identifier
+transaction_type = (disenrollment, enrollment, reenrollment)
+transaction_date = date                     ; Date transaction submitted
 
 ; Parts affected
-parts[] = !(a, b, c, d)                      ; Medicare parts in transaction
+parts[] = (a, b, c, d)                      ; Medicare parts in transaction
 
 ; Status
-status = !(accepted, pending, rejected)
+status = (accepted, pending, rejected)
 status_date = date                           ; Date of status
 rejection_reason = :                         ; Reason if rejected
 

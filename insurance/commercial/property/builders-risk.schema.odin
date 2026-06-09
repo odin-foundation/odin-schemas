@@ -47,7 +47,7 @@ changelog[0].rationale = "Comprehensive construction coverage structure"
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Project Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-project_name = !:
+project_name = :
 
 id = :
 project_number = :
@@ -68,7 +68,7 @@ longitude = #:(-180..180)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Project Type
 ; ───────────────────────────────────────────────────────────────────────────────
-project_type = !(
+project_type = (
     addition,
     civil_works,
     demolition_and_rebuild,
@@ -108,7 +108,7 @@ total_square_footage = ##
 ; Construction Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.construction}
-type = !(
+type = (
     fire_resistive,
     frame,
     joisted_masonry,
@@ -127,7 +127,7 @@ roof_type = (dome, flat, other, pitched)
 ; Project Values
 ; ───────────────────────────────────────────────────────────────────────────────
 {.values}
-total_project_value = !#$
+total_project_value = #$
 hard_costs = #$                          ; Construction and materials costs
 soft_costs = #$                          ; Fees, permits, financing costs
 land_value = #$                          ; Land value for reference
@@ -140,7 +140,7 @@ existing_structure_value = #$:if project_type != new_construction
 ; ───────────────────────────────────────────────────────────────────────────────
 {.schedule}
 ground_breaking_date = date
-estimated_completion_date = !date
+estimated_completion_date = date
 substantial_completion_date = date
 final_completion_date = date
 occupancy_date = date
@@ -152,7 +152,7 @@ duration_months = ##
 ; Project Parties
 ; ───────────────────────────────────────────────────────────────────────────────
 {.owner}
-name = !:
+name = :
 type = (corporation, governmental, individual, llc, partnership, trust)
 
 {@br_project}
@@ -192,7 +192,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Form
 ; ───────────────────────────────────────────────────────────────────────────────
-policy_form = !(
+policy_form = (
     installation_floater,
     master_reporting,                         ; Multiple projects
     renovation,
@@ -200,14 +200,14 @@ policy_form = !(
 )
 
 ; Causes of Loss
-causes_of_loss = !(basic, broad, special)     ; Special = All Risk
+causes_of_loss = (basic, broad, special)     ; Special = All Risk
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Limits
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Building Under Construction
 {.building}
-limit = !#$
+limit = #$
 coinsurance = ##:(80, 90, 100)
 valuation = (actual_cash_value, completed_value, replacement_cost)
 deductible = ##
@@ -354,14 +354,14 @@ coverage_after_occupancy_days = ##:(0, 30, 60, 90):if occupancy.partial_occupanc
 
 {@br_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 

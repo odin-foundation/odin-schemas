@@ -45,8 +45,8 @@ changelog[0].rationale = "Commercial railroad coverage for contractors"
 
 {@rpl_contractor}
 ; Required fields first
-contractor_name = !:                          ; Contractor name
-contractor_type = !(
+contractor_name = :                          ; Contractor name
+contractor_type = (
     communications,                           ; Telecom/fiber
     construction,                             ; General construction
     engineering,                              ; Engineering firm
@@ -73,8 +73,8 @@ railroad_experience_years = ##                ; RR experience
 
 {@rpl_railroad}
 ; Required fields first
-railroad_name = !:                            ; Railroad name
-railroad_type = !(
+railroad_name = :                            ; Railroad name
+railroad_type = (
     class_1,                                  ; Class I railroad
     class_2,                                  ; Class II regional
     class_3,                                  ; Class III short line
@@ -99,8 +99,8 @@ track_miles = ##                              ; Track miles operated
 
 {@rpl_project}
 ; Required fields first
-project_description = !:                      ; Project description
-project_type = !(
+project_description = :                      ; Project description
+project_type = (
     bridge_construction,                      ; Bridge work
     drainage,                                 ; Drainage work
     fiber_optic,                              ; Fiber installation
@@ -137,9 +137,9 @@ work_within_feet_of_track = ##                ; Distance from track
 
 {@rpl_coverage}
 ; Required fields first
-bodily_injury = !#$:(0..)                     ; BI per occurrence
-property_damage = !#$:(0..)                   ; PD per occurrence
-aggregate = !#$:(0..)                         ; Annual aggregate
+bodily_injury = #$:(0..)                     ; BI per occurrence
+property_damage = #$:(0..)                   ; PD per occurrence
+aggregate = #$:(0..)                         ; Annual aggregate
 
 ; Optional fields
 deductible = #$:(0..)                         ; Deductible
@@ -189,7 +189,7 @@ waiting_hours = ##:if included = true         ; Waiting period
 
 {@rpl_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 delay_premium = #$:(0..)                      ; Delay coverage
@@ -217,8 +217,8 @@ proximity_factor = #                          ; Distance from track
 
 {@rpl_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     bodily_injury,                            ; BI claim
     bridge_damage,                            ; Bridge damage
     delay,                                    ; Delay claim
@@ -261,12 +261,12 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@rpl_policy}
 ; Required fields first
-contractor = !@rpl_contractor                 ; Named insured
-coverage = !@rpl_coverage                     ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
-project = !@rpl_project                       ; Project details
+contractor = @rpl_contractor                 ; Named insured
+coverage = @rpl_coverage                     ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
+project = @rpl_project                       ; Project details
 
 ; Invariants
 :invariant expiration_date > effective_date

@@ -41,15 +41,15 @@ changelog[0].rationale = "Government procurement per FAR regulations"
 {@rfp}
 = @types.audit_info
 
-solicitation_number = !:
+solicitation_number = :
 solicitation_type = (ifb, rfp, rfq)
-issue_date = !date
-response_due_date = !date
+issue_date = date
+response_due_date = date
 response_due_time = time
 
 ; Issuing Agency
 {.agency}
-name = !:
+name = :
 contracting_officer = :
 address = @types.address
 phone = *@types.phone
@@ -58,8 +58,8 @@ email = *@types.email
 {@rfp}
 ; Project Description
 {.project}
-title = !:
-description = !:
+title = :
+description = :
 scope_of_work = :
 period_of_performance_start = date
 period_of_performance_end = date
@@ -89,7 +89,7 @@ technical_weight = #:(0..100)
 cost_weight = #:(0..100)
 past_performance_weight = #:(0..100)
 {.factors[]}
-factor_name = !:
+factor_name = :
 weight = #:(0..100)
 description = :
 
@@ -122,21 +122,21 @@ description = :
 {@bid_response}
 = @types.audit_info
 
-solicitation_number = !:
-submission_date = !date
+solicitation_number = :
+submission_date = date
 
 ; Bidder/Offeror Information
 {.bidder}
-legal_name = !:
+legal_name = :
 dba = :
 duns_number = :(9)
 uei = :(12)
 cage_code = :(5)
 tax_id = *:format ein
-address = !@types.address
-point_of_contact = !:
-phone = !*@types.phone
-email = !*@types.email
+address = @types.address
+point_of_contact = :
+phone = *@types.phone
+email = *@types.email
 
 {@bid_response}
 ; Small Business Status
@@ -157,15 +157,15 @@ methodology = :
 staffing_plan = :
 project_schedule = :
 {.key_personnel[]}
-name = !:
-role = !:
+name = :
+role = :
 qualifications = :
 resume_attached = ?
 
 {@bid_response}
 ; Past Performance
 {.past_performance[]}
-client_name = !:
+client_name = :
 contract_number = :
 contract_value = #$:(0..)
 period_of_performance_start = date
@@ -177,9 +177,9 @@ reference_phone = *@types.phone
 {@bid_response}
 ; Cost/Price Proposal
 {.cost}
-total_proposed_cost = !#$:(0..)
+total_proposed_cost = #$:(0..)
 {.cost_breakdown[]}
-line_item = !:
+line_item = :
 description = :
 quantity = ##:(0..)
 unit_price = #$:(0..)
@@ -188,7 +188,7 @@ total_price = #$:(0..)
 {@bid_response}
 ; Certifications and Representations
 {.certifications}
-authorized_to_bind = !?
+authorized_to_bind = ?
 conflict_of_interest = ?
 debarred_or_suspended = ?
 tax_delinquency = ?
@@ -206,14 +206,14 @@ signature_date = date
 {@contract_award}
 = @types.audit_info
 
-contract_number = !:
+contract_number = :
 solicitation_number = :
-award_date = !date
+award_date = date
 
 ; Awarding Agency
 {.agency}
-name = !:
-contracting_officer = !:
+name = :
+contracting_officer = :
 address = @types.address
 phone = *@types.phone
 email = *@types.email
@@ -221,17 +221,17 @@ email = *@types.email
 {@contract_award}
 ; Awardee (Contractor)
 {.contractor}
-legal_name = !:
+legal_name = :
 dba = :
 duns_number = :(9)
-uei = !:(12)
+uei = :(12)
 cage_code = :(5)
-address = !@types.address
+address = @types.address
 
 {@contract_award}
 ; Contract Details
 {.contract}
-title = !:
+title = :
 description = :
 contract_type = (cost_plus, firm_fixed_price, time_and_materials)
 naics_code = ##:(100000..999999)
@@ -240,8 +240,8 @@ socioeconomic_category = :
 
 {@contract_award}
 ; Period of Performance
-period_start = !date
-period_end = !date
+period_start = date
+period_end = date
 base_period_end = date
 {.option_periods[]}
 option_number = ##:(1..)
@@ -252,14 +252,14 @@ value = #$:(0..)
 {@contract_award}
 ; Contract Value
 {.financial}
-base_period_value = !#$:(0..)
+base_period_value = #$:(0..)
 total_option_value = #$:(0..)
-total_contract_value = !#$:(0..)
+total_contract_value = #$:(0..)
 obligated_amount = #$:(0..)
 
 {@contract_award}
 ; Place of Performance
-place_of_performance = !@types.address
+place_of_performance = @types.address
 principal_place_of_performance_state = :(2)
 principal_place_of_performance_country = :(2..3)
 
@@ -289,16 +289,16 @@ signature_date = date
 {@sam_registration}
 = @types.audit_info
 
-uei = !:(12)
+uei = :(12)
 registration_date = date
 expiration_date = date
 activation_date = date
 
 ; Entity Information
 {.entity}
-legal_business_name = !:
+legal_business_name = :
 dba_name = :
-physical_address = !@types.address
+physical_address = @types.address
 mailing_address = @types.address
 business_start_date = date
 fiscal_year_end_date = date
@@ -330,18 +330,18 @@ incorporation_country = :(2..3)
 duns_number = :(9)
 cage_code = :(5)
 ncage_code = :(5)
-tin = !*:format ein
+tin = *:format ein
 tin_type = (ein, ssn)
 
 {@sam_registration}
 ; Points of Contact
 {.primary_poc}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 title = :
 address = @types.address
-phone = !*@types.phone
-email = !*@types.email
+phone = *@types.phone
+email = *@types.email
 
 {@sam_registration}
 {.alternate_poc}
@@ -367,7 +367,7 @@ minority_owned_business = ?
 {@sam_registration}
 ; NAICS Codes
 {.naics_codes[]}
-naics_code = !##:(100000..999999)
+naics_code = ##:(100000..999999)
 small_business_indicator = ?
 exception_to_size_standard = ?
 
@@ -384,9 +384,9 @@ remittance_address = @types.address
 {@sam_registration}
 ; Representations and Certifications
 {.certifications}
-debarred_suspended = !?
-federal_tax_delinquent = !?
-unpaid_federal_tax_assessment = !?
+debarred_suspended = ?
+federal_tax_delinquent = ?
+unpaid_federal_tax_assessment = ?
 felony_conviction = ?
 tax_exempt_status = ?
 

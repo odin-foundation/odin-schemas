@@ -63,9 +63,9 @@ changelog[0].rationale = "Federal student aid programs per FSA Handbook and Titl
 
 {@fafsa}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-award_year = !:                                      ; Award year (e.g., 2025-2026)
-submission_date = !date                              ; FAFSA submission date
+student_id = *:                                     ; Student identifier
+award_year = :                                      ; Award year (e.g., 2025-2026)
+submission_date = date                              ; FAFSA submission date
 
 ; Optional fields
 transaction_number = *:                              ; FAFSA transaction number
@@ -73,8 +73,8 @@ application_receipt_date = date                      ; Date application received
 processed_date = date                                ; Date processed
 
 ; Student information
-student_ssn = !*:format ssn                         ; Student SSN (required, PII)
-student_date_of_birth = !*date                       ; Student DOB (required, PII)
+student_ssn = *:format ssn                         ; Student SSN (required, PII)
+student_date_of_birth = *date                       ; Student DOB (required, PII)
 student_marital_status = (married, separated, single, unmarried_and_both_parents_living_together, unmarried_and_both_parents_not_living_together, widowed)
 
 ; Dependency status
@@ -119,10 +119,10 @@ verification_tracking_flag = :
 
 {@isir}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-award_year = !:                                      ; Award year
-transaction_number = !*:                             ; ISIR transaction number
-processed_date = !date                               ; Processing date
+student_id = *:                                     ; Student identifier
+award_year = :                                      ; Award year
+transaction_number = *:                             ; ISIR transaction number
+processed_date = date                               ; Processing date
 
 ; Optional fields
 isir_type = (correction, initial, renewal)
@@ -161,7 +161,7 @@ professional_judgment = ?                            ; Professional judgment app
 
 {@cost_of_attendance}
 ; Required fields first
-award_year = !:                                      ; Award year
+award_year = :                                      ; Award year
 enrollment_status = (full_time, half_time, less_than_half_time, three_quarter_time)
 
 ; Optional fields
@@ -183,7 +183,7 @@ study_abroad = #$:(0..)                              ; Study abroad costs
 computer_costs = #$:(0..)                            ; Computer costs (first year)
 
 ; Total COA
-total_coa = !#$:(0..)                                ; Total cost of attendance
+total_coa = #$:(0..)                                ; Total cost of attendance
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; NEED ANALYSIS
@@ -191,8 +191,8 @@ total_coa = !#$:(0..)                                ; Total cost of attendance
 
 {@need_analysis}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-award_year = !:                                      ; Award year
+student_id = *:                                     ; Student identifier
+award_year = :                                      ; Award year
 
 ; Optional fields
 cost_of_attendance = #$:(0..)                        ; Total COA
@@ -216,9 +216,9 @@ tuition_waivers = #$:(0..)                           ; Tuition waivers
 
 {@award_package}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-award_year = !:                                      ; Award year
-packaging_date = !date                               ; Date package created
+student_id = *:                                     ; Student identifier
+award_year = :                                      ; Award year
+packaging_date = date                               ; Date package created
 
 ; Optional fields
 revised_date = date                                  ; Last revision date
@@ -253,8 +253,8 @@ confirmed_date = date                                ; Date student confirmed
 
 {@financial_aid_award}
 ; Required fields first
-award_id = !:                                        ; Award identifier
-fund_source = !:                                     ; Fund source code
+award_id = :                                        ; Award identifier
+fund_source = :                                     ; Fund source code
 award_type = (grant, loan, scholarship, work_study)
 
 ; Optional fields
@@ -297,10 +297,10 @@ status_date = date                                   ; Status change date
 
 {@disbursement}
 ; Required fields first
-award_id = !:                                        ; Award identifier
-student_id = !*:                                     ; Student identifier
-disbursement_date = !date                            ; Disbursement date
-amount = !#$:(0..)                                   ; Disbursement amount
+award_id = :                                        ; Award identifier
+student_id = *:                                     ; Student identifier
+disbursement_date = date                            ; Disbursement date
+amount = #$:(0..)                                   ; Disbursement amount
 
 ; Optional fields
 disbursement_number = ##:(1..)                       ; Disbursement sequence
@@ -334,8 +334,8 @@ return_reason = :                                    ; Reason for return
 
 {@sap_status}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-evaluation_date = !date                              ; Evaluation date
+student_id = *:                                     ; Student identifier
+evaluation_date = date                              ; Evaluation date
 status = (meeting, not_meeting, probation, warning)
 
 ; Optional fields
@@ -377,9 +377,9 @@ suspension_reason = :                                ; Reason for suspension if 
 
 {@verification}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-award_year = !:                                      ; Award year
-tracking_group = !:                                  ; Verification tracking group
+student_id = *:                                     ; Student identifier
+award_year = :                                      ; Award year
+tracking_group = :                                  ; Verification tracking group
 
 ; Optional fields
 selected_date = date                                 ; Date selected for verification

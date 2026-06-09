@@ -60,12 +60,12 @@ changelog[0].rationale = "Comprehensive personal umbrella bridging all personal 
 = @person                                           ; Inherits person fields (name, dob, contact)
 
 ; Required fields first
-relationship = !(child, dependent, domestic_partner, grandchild, insured, other, other_relative, parent, sibling, spouse)
+relationship = (child, dependent, domestic_partner, grandchild, insured, other, other_relative, parent, sibling, spouse)
 
 ; Override required name fields
 {.name}
-first = !:                                          ; First name (required)
-last = !:                                           ; Last name (required)
+first = :                                          ; First name (required)
+last = :                                           ; Last name (required)
 
 {@umbrella_insured_person}
 
@@ -92,21 +92,21 @@ sequence = ##:(1..)                                 ; Sequence number
 
 {@umbrella_underlying_auto}
 ; Required fields first
-carrier_name = !:                                   ; Auto insurance carrier name
-policy_number = !:                                  ; Auto policy number
+carrier_name = :                                   ; Auto insurance carrier name
+policy_number = :                                  ; Auto policy number
 
 ; Term
-effective_date = !date                              ; Auto policy effective date
-expiration_date = !date                             ; Auto policy expiration date
+effective_date = date                              ; Auto policy effective date
+expiration_date = date                             ; Auto policy expiration date
 
 :invariant expiration_date > effective_date
 
 ; Liability limits (split limit structure)
 {.liability_limits}
 ; Per person/per accident/property damage structure (e.g., 250/500/100)
-bodily_injury_per_person = !#$:(0..)                ; BI limit per person
-bodily_injury_per_accident = !#$:(0..)              ; BI limit per accident
-property_damage = !#$:(0..)                         ; PD limit per accident
+bodily_injury_per_person = #$:(0..)                ; BI limit per person
+bodily_injury_per_accident = #$:(0..)              ; BI limit per accident
+property_damage = #$:(0..)                         ; PD limit per accident
 
 {@umbrella_underlying_auto}
 
@@ -129,7 +129,7 @@ vehicle_count = ##:(0..)                            ; Number of vehicles on poli
 vehicle_types[] = (antique_classic, commercial_use, leased, motorcycle, owned, recreational)
 
 ; Status
-status = !(active, cancelled, expired, pending)     ; Policy status
+status = (active, cancelled, expired, pending)     ; Policy status
 meets_minimum = ?                                   ; Meets umbrella minimum requirements
 minimum_gap = #$:(0..)                              ; Gap below required minimum
 
@@ -144,13 +144,13 @@ sequence = ##:(1..)                                 ; Sequence number
 
 {@umbrella_underlying_homeowners}
 ; Required fields first
-carrier_name = !:                                   ; Homeowners carrier name
-policy_form = !(HO1, HO2, HO3, HO4, HO5, HO6, HO7, HO8)  ; Policy form
-policy_number = !:                                  ; Homeowners policy number
+carrier_name = :                                   ; Homeowners carrier name
+policy_form = (HO1, HO2, HO3, HO4, HO5, HO6, HO7, HO8)  ; Policy form
+policy_number = :                                  ; Homeowners policy number
 
 ; Term
-effective_date = !date                              ; Policy effective date
-expiration_date = !date                             ; Policy expiration date
+effective_date = date                              ; Policy effective date
+expiration_date = date                             ; Policy expiration date
 
 :invariant expiration_date > effective_date
 
@@ -165,7 +165,7 @@ postal_code = :                                     ; ZIP/postal code
 
 ; Liability limits (Coverage E and F)
 {.liability_limits}
-personal_liability = !#$:(0..)                      ; Coverage E - Personal Liability
+personal_liability = #$:(0..)                      ; Coverage E - Personal Liability
 medical_payments = #$:(0..)                         ; Coverage F - Medical Payments to Others
 
 {@umbrella_underlying_homeowners}
@@ -188,7 +188,7 @@ exotic_animals = ?                                  ; Exotic or dangerous animal
 horses = ##:(0..)                                   ; Number of horses
 
 ; Status
-status = !(active, cancelled, expired, pending)     ; Policy status
+status = (active, cancelled, expired, pending)     ; Policy status
 meets_minimum = ?                                   ; Meets umbrella minimum requirements
 minimum_gap = #$:(0..)                              ; Gap below required minimum
 
@@ -203,12 +203,12 @@ sequence = ##:(1..)                                 ; Sequence number
 
 {@umbrella_underlying_watercraft}
 ; Required fields first
-carrier_name = !:                                   ; Watercraft carrier name
-policy_number = !:                                  ; Watercraft policy number
+carrier_name = :                                   ; Watercraft carrier name
+policy_number = :                                  ; Watercraft policy number
 
 ; Term
-effective_date = !date                              ; Policy effective date
-expiration_date = !date                             ; Policy expiration date
+effective_date = date                              ; Policy effective date
+expiration_date = date                             ; Policy expiration date
 
 :invariant expiration_date > effective_date
 
@@ -235,7 +235,7 @@ year = ##:(1900..2100)                              ; Model year
 {@umbrella_underlying_watercraft}
 
 ; Status
-status = !(active, cancelled, expired, pending)     ; Policy status
+status = (active, cancelled, expired, pending)     ; Policy status
 meets_minimum = ?                                   ; Meets umbrella minimum requirements
 minimum_gap = #$:(0..)                              ; Gap below required minimum
 
@@ -250,13 +250,13 @@ sequence = ##:(1..)                                 ; Sequence number
 
 {@umbrella_underlying_rv}
 ; Required fields first
-carrier_name = !:                                   ; RV carrier name
-policy_number = !:                                  ; RV policy number
-rv_type = !(atv, dirt_bike, golf_cart, motorhome, motorcycle, snowmobile, travel_trailer, utv)
+carrier_name = :                                   ; RV carrier name
+policy_number = :                                  ; RV policy number
+rv_type = (atv, dirt_bike, golf_cart, motorhome, motorcycle, snowmobile, travel_trailer, utv)
 
 ; Term
-effective_date = !date                              ; Policy effective date
-expiration_date = !date                             ; Policy expiration date
+effective_date = date                              ; Policy effective date
+expiration_date = date                             ; Policy expiration date
 
 :invariant expiration_date > effective_date
 
@@ -279,7 +279,7 @@ year = ##:(1900..2100)                              ; Model year
 {@umbrella_underlying_rv}
 
 ; Status
-status = !(active, cancelled, expired, pending)     ; Policy status
+status = (active, cancelled, expired, pending)     ; Policy status
 meets_minimum = ?                                   ; Meets umbrella minimum requirements
 minimum_gap = #$:(0..)                              ; Gap below required minimum
 
@@ -472,13 +472,13 @@ rental_property_business = ?                        ; Rental property as busines
 
 {@umbrella_coverage}
 ; Coverage type
-coverage_type = !(excess_follow_form, excess_specific, true_umbrella)
+coverage_type = (excess_follow_form, excess_specific, true_umbrella)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Limits
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Occurrence limit (typically $1M-$10M in $1M increments)
-each_occurrence = !#$:(0..)                         ; Per occurrence limit
+each_occurrence = #$:(0..)                         ; Per occurrence limit
 aggregate = #$:(0..)                                ; Annual aggregate (if applicable)
 aggregate_applies = ?                               ; Aggregate limit applies
 
@@ -626,12 +626,12 @@ um_uim_premium = #$:(0..)                           ; UM/UIM premium if elected
 
 {@umbrella_claim}
 ; Required fields first
-claim_number = !:                                   ; Unique claim number
-date_of_loss = !date                                ; Date loss occurred
-date_reported = !timestamp                          ; Date claim reported
+claim_number = :                                   ; Unique claim number
+date_of_loss = date                                ; Date loss occurred
+date_reported = timestamp                          ; Date claim reported
 
 ; Status (workflow order)
-status = !(
+status = (
     reported,
     coverage_review,
     monitoring,
@@ -735,9 +735,9 @@ id = :                                              ; Unique claim identifier
 
 {@umbrella_endorsement}
 ; Required fields first
-effective_date = !date                              ; Endorsement effective date
-endorsement_number = !:                             ; Endorsement form number
-endorsement_type = !(
+effective_date = date                              ; Endorsement effective date
+endorsement_number = :                             ; Endorsement form number
+endorsement_type = (
     additional_insured,
     coverage_extension,
     coverage_restriction,
@@ -799,16 +799,16 @@ sequence = ##:(1..)                                 ; Endorsement sequence numbe
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-number = !:                                         ; Policy number
-state_province = !:(2)                              ; Primary state/province
-status = !(active, application, bound, cancelled, expired, non_renewed, pending, quote, reinstated)
+number = :                                         ; Policy number
+state_province = :(2)                              ; Primary state/province
+status = (active, application, bound, cancelled, expired, non_renewed, pending, quote, reinstated)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.term}
-effective = !date                                   ; Policy effective date
-expiration = !date                                  ; Policy expiration date
+effective = date                                   ; Policy effective date
+expiration = date                                  ; Policy expiration date
 effective_time = time                               ; Effective time if not midnight
 expiration_time = time                              ; Expiration time if not midnight
 months = ##:(1..36)                                 ; Term length in months
@@ -854,7 +854,7 @@ status_reason = :                                   ; Reason for status change
 ; ───────────────────────────────────────────────────────────────────────────────
 bound_date = date                                   ; Date policy bound
 cancelled_date = date                               ; Date policy cancelled
-created = !timestamp                                ; Record creation timestamp
+created = timestamp                                ; Record creation timestamp
 created_by = :                                      ; User who created record
 expired_date = date                                 ; Date policy expired
 issued_date = date                                  ; Date policy issued

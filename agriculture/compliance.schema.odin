@@ -60,12 +60,12 @@ changelog[0].rationale = "Compliance structures derived from FSA, USDA NOP, FDA 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Program Details
 ; ───────────────────────────────────────────────────────────────────────────────
-enrollment_id = !:                               ; Enrollment ID
+enrollment_id = :                               ; Enrollment ID
 program_type = (arc_county, arc_individual, crp, csp, eqip, plc)
-program_year = !##:(2014..2100)                  ; Program year
-farm_number = !:                                 ; FSA farm number
-state_code = !:(2)                               ; State code
-county_code = !:(3)                              ; County code
+program_year = ##:(2014..2100)                  ; Program year
+farm_number = :                                 ; FSA farm number
+state_code = :(2)                               ; State code
+county_code = :(3)                              ; County code
 enrollment_date = date                           ; Date enrolled
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -132,13 +132,13 @@ fiscal_year = ##:(2000..2100)                    ; Fiscal year
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Certification Details
 ; ───────────────────────────────────────────────────────────────────────────────
-certification_id = !:                            ; Certification ID
-operation_name = !:                              ; Operation name
-certifier = !:                                   ; Certifying agent name
-certifier_number = !:                            ; Certifying agent USDA number
+certification_id = :                            ; Certification ID
+operation_name = :                              ; Operation name
+certifier = :                                   ; Certifying agent name
+certifier_number = :                            ; Certifying agent USDA number
 certification_date = date                        ; Initial certification date
-certificate_issue_date = !date                   ; Current certificate issue date
-certificate_expiration = !date                   ; Certificate expiration date
+certificate_issue_date = date                   ; Current certificate issue date
+certificate_expiration = date                   ; Certificate expiration date
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Scope of Certification
@@ -169,7 +169,7 @@ contamination_prevention = :                     ; Contamination prevention meas
 ; Inspections
 ; ───────────────────────────────────────────────────────────────────────────────
 {.inspections[]}
-inspection_date = !date                          ; Inspection date
+inspection_date = date                          ; Inspection date
 inspector_name = :                               ; Inspector name
 inspection_type = (annual, initial, renewal, spot_check, surveillance, unannounced)
 findings = :                                     ; Inspection findings
@@ -196,18 +196,18 @@ total_fees = #$:(0..)                            ; Total fees
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Field Information
 ; ───────────────────────────────────────────────────────────────────────────────
-field_ref = !:                                   ; Field reference
+field_ref = :                                   ; Field reference
 field_name = :                                   ; Field name
-acres = !#:(0..)                                 ; Field acres
+acres = #:(0..)                                 ; Field acres
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; History (3-year requirement)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.history[]}
 :(3..)                                           ; Minimum 3 years history
-year = !##:(1900..2100)                          ; Crop year
-crop = !:                                        ; Crop grown
-prohibited_substances_used = !?                  ; Prohibited substances used
+year = ##:(1900..2100)                          ; Crop year
+crop = :                                        ; Crop grown
+prohibited_substances_used = ?                  ; Prohibited substances used
 substances_applied[] = :                         ; Substances applied
 last_prohibited_date = date                      ; Last prohibited substance date
 
@@ -229,7 +229,7 @@ eligible_for_certification = date                ; Eligible date (36 months)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Input Details
 ; ───────────────────────────────────────────────────────────────────────────────
-input_name = !:                                  ; Input/product name
+input_name = :                                  ; Input/product name
 manufacturer = :                                 ; Manufacturer
 input_type = (fertilizer, pest_management, seed, soil_amendment)
 omri_listed = ?                                  ; OMRI listed
@@ -246,9 +246,9 @@ prohibited_in = :                                ; Prohibited in (e.g., "organic
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Program Details
 ; ───────────────────────────────────────────────────────────────────────────────
-compliance_id = !:                               ; Compliance record ID
+compliance_id = :                               ; Compliance record ID
 compliance_type = (cafo_permit, manure_management, nutrient_management, pesticide_recordkeeping, water_quality)
-farm_ref = !:                                    ; Farm reference
+farm_ref = :                                    ; Farm reference
 compliance_year = ##:(2000..2100)                ; Compliance year
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -309,9 +309,9 @@ violations[] = :if compliance_type = water_quality
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Program Details
 ; ───────────────────────────────────────────────────────────────────────────────
-program_id = !:                                  ; Program ID
+program_id = :                                  ; Program ID
 program_type = (fsma_psr, gap, harmonized_gap, primus_gfs)
-operation_name = !:                              ; Operation name
+operation_name = :                              ; Operation name
 farm_ref = :                                     ; Farm reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -382,9 +382,9 @@ corrective_actions[] = :                         ; Corrective actions required
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Application Details
 ; ───────────────────────────────────────────────────────────────────────────────
-application_id = !:                              ; H-2A application ID
+application_id = :                              ; H-2A application ID
 case_number = :                                  ; DOL case number
-employer_name = !:                               ; Employer legal name
+employer_name = :                               ; Employer legal name
 fein = *:                                        ; Federal EIN (confidential)
 farm_labor_contractor = ?                        ; Using FLC
 
@@ -392,11 +392,11 @@ farm_labor_contractor = ?                        ; Using FLC
 ; Job Opportunity
 ; ───────────────────────────────────────────────────────────────────────────────
 {.job}
-job_title = !:                                   ; Job title
-job_duties = !:                                  ; Job duties description
-worker_count = !##:(1..)                         ; Workers requested
-begin_date = !date                               ; Employment begin date
-end_date = !date                                 ; Employment end date
+job_title = :                                   ; Job title
+job_duties = :                                  ; Job duties description
+worker_count = ##:(1..)                         ; Workers requested
+begin_date = date                               ; Employment begin date
+end_date = date                                 ; Employment end date
 work_location = @types.address                   ; Primary work location
 additional_locations[] = @types.address          ; Additional work locations
 
@@ -406,8 +406,8 @@ additional_locations[] = @types.address          ; Additional work locations
 ; Wages & Benefits
 ; ───────────────────────────────────────────────────────────────────────────────
 {.compensation}
-aewr = !#$:(0..)                                 ; Adverse Effect Wage Rate
-offered_wage = !#$:(0..)                         ; Offered wage rate
+aewr = #$:(0..)                                 ; Adverse Effect Wage Rate
+offered_wage = #$:(0..)                         ; Offered wage rate
 wage_basis = (hourly, piece_rate)
 piece_rate_description = :if wage_basis = piece_rate
 guarantee_hours = ##:(0..)                       ; Three-fourths guarantee hours
@@ -463,12 +463,12 @@ inspector_name = :                               ; Inspector name
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Training Records
 ; ───────────────────────────────────────────────────────────────────────────────
-training_id = !:                                 ; Training record ID
-worker_name = !:                                 ; Worker name
+training_id = :                                 ; Training record ID
+worker_name = :                                 ; Worker name
 worker_id = :                                    ; Worker ID
-training_date = !date                            ; Training completion date
-trainer_name = !:                                ; Trainer name
-trainer_qualified = !?                           ; EPA-qualified trainer
+training_date = date                            ; Training completion date
+trainer_name = :                                ; Trainer name
+trainer_qualified = ?                           ; EPA-qualified trainer
 training_type = (handler, worker)
 training_language = :                            ; Training language
 certificate_issued = ?                           ; Training certificate issued
@@ -491,10 +491,10 @@ decontamination_supplies = ?                     ; Decontamination supplies prov
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Audit Details
 ; ───────────────────────────────────────────────────────────────────────────────
-audit_id = !:                                    ; Audit ID
-audit_date = !date                               ; Audit date
+audit_id = :                                    ; Audit ID
+audit_date = date                               ; Audit date
 audit_type = (customer, government, internal, third_party)
-auditor_name = !:                                ; Lead auditor
+auditor_name = :                                ; Lead auditor
 auditor_company = :                              ; Auditing company
 standard = :                                     ; Standard audited against
 

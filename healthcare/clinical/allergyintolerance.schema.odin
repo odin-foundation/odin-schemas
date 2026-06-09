@@ -42,7 +42,7 @@ changelog[0].rationale = "AllergyIntolerance resource derived from FHIR R4/R5 sp
 
 {@allergy_intolerance}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: AllergyIntolerance.identifier
@@ -67,7 +67,7 @@ criticality = (high, low, unable_to_assess)   ; Potential for clinical harm
 code = @fhir.codeable_concept                 ; Code identifying the allergy/intolerance
 
 ; Patient - FHIR: AllergyIntolerance.patient (required)
-patient = !@fhir.reference                    ; Who has the allergy/intolerance
+patient = @fhir.reference                    ; Who has the allergy/intolerance
 
 ; Encounter - FHIR: AllergyIntolerance.encounter
 encounter = @fhir.reference                   ; Encounter when identified
@@ -106,7 +106,7 @@ reactions[] = @allergy_reaction               ; Adverse reactions
 substance = @fhir.codeable_concept            ; Specific substance that triggered reaction
 
 ; Manifestations - FHIR: AllergyIntolerance.reaction.manifestation (required)
-manifestations[] = !@fhir.codeable_concept    ; Clinical symptoms/signs observed
+manifestations[] = @fhir.codeable_concept    ; Clinical symptoms/signs observed
 
 ; Description - FHIR: AllergyIntolerance.reaction.description
 description = :                               ; Description of reaction event

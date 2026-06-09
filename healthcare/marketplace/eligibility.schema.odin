@@ -41,10 +41,10 @@ changelog[0].rationale = "Structure derived from 45 CFR 155.305-310 and IRC 36B"
 ; Per 45 CFR 155.305
 
 {@determination}
-determination_id = !:                       ; Determination ID
-application_id = !:                         ; Application ID
-applicant_id = !:                           ; Applicant ID
-determination_date = !date                  ; Date of determination
+determination_id = :                       ; Determination ID
+application_id = :                         ; Application ID
+applicant_id = :                           ; Applicant ID
+determination_date = date                  ; Date of determination
 
 ; QHP eligibility - Per 45 CFR 155.305(a)
 {.qhp}
@@ -85,7 +85,7 @@ redetermination_date = date                 ; Next redetermination
 ; Per 45 CFR 155.305(a)
 
 {@qhp_eligibility}
-applicant_id = !:                           ; Applicant
+applicant_id = :                           ; Applicant
 
 ; Requirements - Per 45 CFR 155.305(a)
 {.requirements}
@@ -116,8 +116,8 @@ ineligibility_reasons[] = :                 ; Reasons if ineligible
 ; Per 45 CFR 155.305(f) and IRC 36B
 
 {@aptc_determination}
-household_id = !:                           ; Tax household
-tax_year = !##:(2014..)                     ; Coverage/tax year
+household_id = :                           ; Tax household
+tax_year = ##:(2014..)                     ; Coverage/tax year
 
 ; Eligibility criteria - Per 45 CFR 155.305(f)
 {.criteria}
@@ -171,8 +171,8 @@ second_lowest_silver = #$:(0..)             ; SLCSP benchmark premium
 ; Per 45 CFR 155.305(g) and 156.420
 
 {@csr_determination}
-applicant_id = !:                           ; Applicant
-household_id = !:                           ; Household
+applicant_id = :                           ; Applicant
+household_id = :                           ; Household
 
 ; Eligibility - Per 45 CFR 155.305(g)
 {.eligibility}
@@ -213,8 +213,8 @@ zero_cost_sharing = ?                       ; Zero cost sharing plan
 ; Per 45 CFR 155.305(f)(1)(ii)(B)
 
 {@employer_affordability}
-applicant_id = !:                           ; Applicant
-determination_year = !##:(2014..)           ; Year
+applicant_id = :                           ; Applicant
+determination_year = ##:(2014..)           ; Year
 
 ; Employer coverage
 {.coverage}
@@ -256,8 +256,8 @@ employer_coverage_bars_aptc = ?             ; Employer coverage bars APTC
 ; Per 45 CFR 155.315
 
 {@verification_status}
-application_id = !:                         ; Application ID
-verification_date = !date                   ; Status date
+application_id = :                         ; Application ID
+verification_date = date                   ; Status date
 
 ; Verification items
 verifications[] = @marketplace.verification ; All verification items
@@ -295,13 +295,13 @@ incarceration_verified = ?                  ; Incarceration verified
 ; Per 45 CFR 155.330 and 155.335
 
 {@redetermination}
-redetermination_id = !:                     ; Redetermination ID
-original_determination_id = !:              ; Prior determination
-applicant_id = !:                           ; Applicant
-redetermination_date = !date                ; Date
+redetermination_id = :                     ; Redetermination ID
+original_determination_id = :              ; Prior determination
+applicant_id = :                           ; Applicant
+redetermination_date = date                ; Date
 
 ; Trigger - Per 45 CFR 155.330
-trigger = !(annual_renewal, change_report, new_information, periodic)
+trigger = (annual_renewal, change_report, new_information, periodic)
 
 ; Change analysis
 {.changes}
@@ -342,8 +342,8 @@ prospective = ?                             ; Prospective (future) change
 ; Per HHS Poverty Guidelines
 
 {@fpl_guidelines}
-year = !##:(2014..)                         ; Year
-state_type = !(alaska, continental, hawaii) ; State type
+year = ##:(2014..)                         ; Year
+state_type = (alaska, continental, hawaii) ; State type
 
 ; FPL amounts by household size
 base_amount = #$:(0..)                      ; Base amount (1 person)

@@ -48,7 +48,7 @@ changelog[0].rationale = "FMCSA driver qualification requirements for commercial
 ; CDL (Commercial Driver's License)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.cdl}
-class = !(A, B, C)                             ; A=combination, B=heavy single, C=small vehicle
+class = (A, B, C)                             ; A=combination, B=heavy single, C=small vehicle
 expiration = date                              ; CDL expiration date
 hazmat_expiration = date                       ; Hazmat endorsement expiration
 number = :                                     ; CDL license number
@@ -300,7 +300,7 @@ cargo_types[] = (
 
 {@commercial_driver.employment_history[]}
 employer_sequence = ##:(1..)                   ; Employment history sequence number
-employer_name = !:                             ; Employer company name
+employer_name = :                             ; Employer company name
 
 ; Employer Address - uses shared @address type
 employer_address = @address                    ; Employer location
@@ -310,7 +310,7 @@ employer_phone = *@phone                       ; Employer phone number (confiden
 employer_dot_number = :                        ; Employer DOT number (7-8 digits)
 
 position_held = :
-effective = !date
+effective = date
 expiration = date
 months_employed = ##
 reason_for_leaving = :

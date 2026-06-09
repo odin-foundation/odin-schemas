@@ -50,7 +50,7 @@ changelog[0].rationale = "Device structure derived from GSMA IMEI/SIM standards 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Device Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-device_id = !:                                    ; Unique device identifier
+device_id = :                                    ; Unique device identifier
 imei = *:/^\d{15}$/                               ; IMEI (GSM/LTE/5G) - confidential
 meid = *:/^[0-9A-F]{14}$/                         ; MEID (CDMA) - confidential
 serial_number = *:                                ; Manufacturer serial number
@@ -58,8 +58,8 @@ serial_number = *:                                ; Manufacturer serial number
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Device Details
 ; ───────────────────────────────────────────────────────────────────────────────
-manufacturer = !:                                 ; Device manufacturer
-model = !:                                        ; Device model name
+manufacturer = :                                 ; Device manufacturer
+model = :                                        ; Device model name
 model_number = :                                  ; Model number/SKU
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -165,8 +165,8 @@ unlock_code = *:                                  ; Unlock code (confidential)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; SIM Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-sim_id = !:                                       ; Unique SIM identifier
-iccid = !*:/^\d{19,20}$/                          ; Integrated Circuit Card ID (confidential)
+sim_id = :                                       ; Unique SIM identifier
+iccid = *:/^\d{19,20}$/                          ; Integrated Circuit Card ID (confidential)
 imsi = *:/^\d{14,15}$/                            ; International Mobile Subscriber Identity (confidential)
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -186,7 +186,7 @@ deactivation_date = date                          ; SIM deactivation date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Network Assignment
 ; ───────────────────────────────────────────────────────────────────────────────
-network_operator = !:                             ; Network operator name
+network_operator = :                             ; Network operator name
 mcc = :/^\d{3}$/                                  ; Mobile Country Code
 mnc = :/^\d{2,3}$/                                ; Mobile Network Code
 
@@ -229,16 +229,16 @@ subscription_ref = :                              ; Associated subscription refe
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Equipment Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-equipment_id = !:                                 ; Unique equipment identifier
-serial_number = !*:                               ; Serial number (confidential)
+equipment_id = :                                 ; Unique equipment identifier
+serial_number = *:                               ; Serial number (confidential)
 mac_address = *:                                  ; MAC address (confidential)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Equipment Type
 ; ───────────────────────────────────────────────────────────────────────────────
 equipment_type = (gateway, modem, ont, router, set_top_box, voip_adapter)
-manufacturer = !:                                 ; Equipment manufacturer
-model = !:                                        ; Equipment model
+manufacturer = :                                 ; Equipment manufacturer
+model = :                                        ; Equipment model
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Equipment Status
@@ -307,19 +307,19 @@ subscription_ref = :                              ; Associated subscription
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Financing Identification (Required)
 ; ───────────────────────────────────────────────────────────────────────────────
-financing_id = !:                                 ; Unique financing identifier
-device_ref = !:                                   ; Device reference
+financing_id = :                                 ; Unique financing identifier
+device_ref = :                                   ; Device reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Financing Terms
 ; ───────────────────────────────────────────────────────────────────────────────
 {.terms}
-total_price = !#$:(0..)                           ; Total device price
+total_price = #$:(0..)                           ; Total device price
 down_payment = #$:(0..)                           ; Down payment amount
-financed_amount = !#$:(0..)                       ; Amount financed
-monthly_payment = !#$:(0..)                       ; Monthly payment
-payment_count = !##:(0..)                         ; Number of payments
-term_months = !##:(0..)                           ; Term length in months
+financed_amount = #$:(0..)                       ; Amount financed
+monthly_payment = #$:(0..)                       ; Monthly payment
+payment_count = ##:(0..)                         ; Number of payments
+term_months = ##:(0..)                           ; Term length in months
 interest_rate = #:(0..100)                        ; Annual interest rate percentage
 apr = #:(0..100)                                  ; APR percentage
 
@@ -335,7 +335,7 @@ status_date = date                                ; Status change date
 ; Payment Tracking
 ; ───────────────────────────────────────────────────────────────────────────────
 {.payment_tracking}
-start_date = !date                                ; First payment date
+start_date = date                                ; First payment date
 payments_made = ##:(0..)                          ; Number of payments made
 payments_remaining = ##:(0..)                     ; Payments remaining
 amount_paid = #$:(0..)                            ; Total amount paid
@@ -378,14 +378,14 @@ device_blacklisted = ?                            ; Device blacklisted from netw
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Upgrade Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-upgrade_id = !:                                   ; Unique upgrade identifier
-upgrade_date = !date                              ; Upgrade transaction date
+upgrade_id = :                                   ; Unique upgrade identifier
+upgrade_date = date                              ; Upgrade transaction date
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Old and New Devices
 ; ───────────────────────────────────────────────────────────────────────────────
-old_device_ref = !:                               ; Old device reference
-new_device_ref = !:                               ; New device reference
+old_device_ref = :                               ; Old device reference
+new_device_ref = :                               ; New device reference
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Upgrade Details

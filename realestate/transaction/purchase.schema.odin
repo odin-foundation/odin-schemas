@@ -47,9 +47,9 @@ changelog[0].rationale = "Comprehensive transaction structure from listing to cl
 
 {@purchase_offer}
 ; Required fields first
-offer_date = !date                                ; Date offer submitted
-offer_price = !#$:(0..)                           ; Offered purchase price
-property_address = !@address                      ; Property address
+offer_date = date                                ; Date offer submitted
+offer_price = #$:(0..)                           ; Offered purchase price
+property_address = @address                      ; Property address
 
 ; Offer identification
 offer_id = :                                      ; Unique offer identifier
@@ -73,9 +73,9 @@ earnest_money_due = date                          ; Earnest money due date
 additional_deposit = #$:(0..)                     ; Additional deposit amount
 additional_deposit_due = date                     ; Additional deposit due date
 down_payment = #$:(0..)                           ; Down payment amount
-closing_date = !date                              ; Proposed closing date
+closing_date = date                              ; Proposed closing date
 possession_date = date                            ; Possession date if different
-offer_expiration = !timestamp                     ; Offer expiration time
+offer_expiration = timestamp                     ; Offer expiration time
 
 {@purchase_offer}
 
@@ -83,7 +83,7 @@ offer_expiration = !timestamp                     ; Offer expiration time
 ; Financing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.financing}
-type = !(assumption, cash, conventional, fha, other, seller_finance, usda, va)
+type = (assumption, cash, conventional, fha, other, seller_finance, usda, va)
 loan_amount = #$:(0..):if type != cash            ; Loan amount
 interest_rate = #:(0..100):if type != cash        ; Maximum acceptable rate
 loan_term_years = ##:(1..50):if type != cash      ; Loan term
@@ -154,9 +154,9 @@ counter_offer_ref = @purchase_offer:if status = countered  ; Reference to counte
 
 {@purchase_contract}
 ; Required fields first
-contract_date = !date                             ; Contract execution date
-purchase_price = !#$:(0..)                        ; Agreed purchase price
-property_address = !@address                      ; Property address
+contract_date = date                             ; Contract execution date
+purchase_price = #$:(0..)                        ; Agreed purchase price
+property_address = @address                      ; Property address
 
 ; Contract identification
 contract_id = :                                   ; Unique contract identifier
@@ -181,7 +181,7 @@ buyer_broker = @re_company                        ; Buyer's brokerage
 ; Financial Terms
 ; ───────────────────────────────────────────────────────────────────────────────
 {.financial}
-earnest_money = !#$:(0..)                         ; Earnest money deposit
+earnest_money = #$:(0..)                         ; Earnest money deposit
 earnest_money_holder = :                          ; Who holds earnest money
 earnest_money_received_date = date                ; Date earnest money received
 additional_deposit = #$:(0..)                     ; Additional deposit
@@ -196,7 +196,7 @@ estimated_closing_costs = #$:(0..)                ; Estimated buyer closing cost
 ; Financing
 ; ───────────────────────────────────────────────────────────────────────────────
 {.financing}
-type = !(assumption, cash, conventional, fha, other, seller_finance, usda, va)
+type = (assumption, cash, conventional, fha, other, seller_finance, usda, va)
 lender = :                                        ; Lender name
 loan_officer = :                                  ; Loan officer name
 loan_officer_phone = *@phone                      ; Loan officer phone
@@ -214,13 +214,13 @@ mortgage_application_ref = @mtg.application       ; Bridge to mortgage applicati
 ; Key Dates
 ; ───────────────────────────────────────────────────────────────────────────────
 {.dates}
-effective_date = !date                            ; Contract effective date
+effective_date = date                            ; Contract effective date
 inspection_deadline = date                        ; Inspection period deadline
 inspection_resolution = date                      ; Inspection resolution deadline
 appraisal_deadline = date                         ; Appraisal deadline
 financing_deadline = date                         ; Financing contingency deadline
 title_deadline = date                             ; Title objection deadline
-closing_date = !date                              ; Scheduled closing date
+closing_date = date                              ; Scheduled closing date
 possession_date = date                            ; Possession transfer date
 
 {@purchase_contract}
@@ -267,7 +267,7 @@ title_commitment_ref = @title_commitment          ; Bridge to title commitment
 ; Inspections
 ; ───────────────────────────────────────────────────────────────────────────────
 {.inspections[]}
-inspection_type = !(appraisal, chimney, environmental, general, hvac, mold, other, pest, pool, radon, roof, septic, sewer, structural, well)
+inspection_type = (appraisal, chimney, environmental, general, hvac, mold, other, pest, pool, radon, roof, septic, sewer, structural, well)
 inspector = :                                     ; Inspector name
 inspection_company = :                            ; Inspection company
 inspection_date = date                            ; Date of inspection
@@ -296,7 +296,7 @@ other_changes = :                                 ; Other changes
 ; Addenda
 ; ───────────────────────────────────────────────────────────────────────────────
 {.addenda[]}
-addendum_type = !(as_is, condominium, fha_va, financing, home_warranty, hoa, inspection, lead_paint, mold, other, property_disclosure, seller_disclosure, short_sale)
+addendum_type = (as_is, condominium, fha_va, financing, home_warranty, hoa, inspection, lead_paint, mold, other, property_disclosure, seller_disclosure, short_sale)
 addendum_date = date                              ; Date of addendum
 attached = ?                                      ; Addendum attached
 
@@ -318,7 +318,7 @@ other = #$                                        ; Other prorations
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Contract Status
 ; ───────────────────────────────────────────────────────────────────────────────
-status = !(active, cancelled, closed, contingent, pending, terminated)
+status = (active, cancelled, closed, contingent, pending, terminated)
 status_date = date                                ; Status change date
 cancellation_reason = ::if status = cancelled     ; Reason for cancellation
 termination_reason = ::if status = terminated     ; Reason for termination
@@ -330,8 +330,8 @@ termination_reason = ::if status = terminated     ; Reason for termination
 
 {@purchase_closing}
 ; Required fields first
-closing_date = !date                              ; Actual closing date
-contract_ref = !@purchase_contract                ; Reference to purchase contract
+closing_date = date                              ; Actual closing date
+contract_ref = @purchase_contract                ; Reference to purchase contract
 
 ; Closing identification
 closing_id = :                                    ; Unique closing identifier
@@ -364,7 +364,7 @@ revised_cd_date = date:if revised_cd = true       ; Revised CD date
 ; Final Amounts
 ; ───────────────────────────────────────────────────────────────────────────────
 {.final_amounts}
-sale_price = !#$:(0..)                            ; Final sale price
+sale_price = #$:(0..)                            ; Final sale price
 loan_amount = #$:(0..)                            ; Loan amount funded
 earnest_money_credit = #$:(0..)                   ; Earnest money applied
 down_payment = #$:(0..)                           ; Down payment

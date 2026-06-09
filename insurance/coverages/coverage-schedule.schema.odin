@@ -42,7 +42,7 @@ changelog[0].rationale = "Coverage-centric architecture - schedules group covera
 schedule_id = :                                   ; Unique identifier
 schedule_number = ##:(1..)                        ; Sequence on policy
 
-schedule_type = !(
+schedule_type = (
     auto_commercial,
     auto_personal,
     bop,
@@ -65,8 +65,8 @@ policy_number = :                                 ; Policy number
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Schedule Dates
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
-expiration_date = !date
+effective_date = date
+expiration_date = date
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; The Actual Coverages
@@ -104,7 +104,7 @@ last = :if party_type = person
 legal_name = :if party_type = organization
 
 ; Interest type
-interest_type = !(
+interest_type = (
     additional_insured,
     blanket_additional_insured,
     certificate_holder,

@@ -52,7 +52,7 @@ changelog[1].rationale = "Comprehensive excess liability coverage structure"
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-type = !(
+type = (
     aircraft_liability,
     cgl,                                      ; Commercial General Liability
     commercial_auto,
@@ -65,10 +65,10 @@ type = !(
     professional_liability,
     watercraft_liability
 )
-carrier_name = !:
-policy_number = !:
-effective_date = !date
-expiration_date = !date
+carrier_name = :
+policy_number = :
+effective_date = date
+expiration_date = date
 
 id = :
 sequence = ##
@@ -149,7 +149,7 @@ coverage_id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Type
 ; ───────────────────────────────────────────────────────────────────────────────
-type = !(
+type = (
     bumbershoot,                              ; Maritime umbrella
     excess_follow_form,                       ; Follow form only
     excess_specific,                          ; Scheduled coverage only
@@ -159,8 +159,8 @@ type = !(
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Limits (commercial-specific extensions beyond @umbrella_coverage.umbrella_limits)
 ; ───────────────────────────────────────────────────────────────────────────────
-each_occurrence = !#$
-aggregate = !#$
+each_occurrence = #$
+aggregate = #$
 aggregate_type = (annual, per_location, per_project, policy)
 
 ; Product-completed operations aggregate (if separate)
@@ -240,7 +240,7 @@ punitive_damages = ?
 
 {@umbrella_endorsement}
 id = :
-number = !:
+number = :
 title = :
 effective_date = date
 
@@ -256,21 +256,21 @@ premium_impact = #$
 
 {@umbrella_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Layer Position
 ; ───────────────────────────────────────────────────────────────────────────────
-layer_position = !(
+layer_position = (
     fifth_or_higher_excess,
     first_umbrella,                           ; Directly over primary
     fourth_excess,

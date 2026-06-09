@@ -49,17 +49,17 @@ changelog[0].rationale = "Crop structures derived from NASS, RMA, EPA, and NRCS 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-planting_id = !:                                 ; Unique planting identifier
-crop_year = !##:(1900..2100)                     ; Crop year
-field_ref = !:                                   ; Reference to field
+planting_id = :                                 ; Unique planting identifier
+crop_year = ##:(1900..2100)                     ; Crop year
+field_ref = :                                   ; Reference to field
 farm_ref = :                                     ; Reference to farm operation
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Crop Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.crop}
-crop_code = !:                                   ; NASS crop code
-crop_name = !:                                   ; Common crop name
+crop_code = :                                   ; NASS crop code
+crop_name = :                                   ; Common crop name
 commodity_type = (field_crop, fruit, grain, oilseed, pulse, specialty, vegetable)
 variety = :                                      ; Variety or cultivar name
 hybrid = ?                                       ; Hybrid variety
@@ -73,7 +73,7 @@ trait_package = :                                ; Seed trait package (e.g. Roun
 ; Planting Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.planting}
-planting_date = !date                            ; Actual planting date
+planting_date = date                            ; Actual planting date
 intended_planting_date = date                    ; Intended planting date
 final_planting_date = date                       ; Final planting date per insurance
 late_planting_period_end = date                  ; Late planting period end
@@ -106,7 +106,7 @@ total_seed_cost = #$:(0..)                       ; Total seed cost
 ; Acreage
 ; ───────────────────────────────────────────────────────────────────────────────
 {.acreage}
-planted_acres = !#:(0..)                         ; Planted acres
+planted_acres = #:(0..)                         ; Planted acres
 prevented_plant_acres = #:(0..)                  ; Prevented plant acres
 failed_acres = #:(0..)                           ; Failed acres
 insured_acres = #:(0..)                          ; Insured acres
@@ -151,16 +151,16 @@ harvest = @harvest
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Application Details
 ; ───────────────────────────────────────────────────────────────────────────────
-application_id = !:                              ; Application record ID
-application_date = !date                         ; Date applied
+application_id = :                              ; Application record ID
+application_date = date                         ; Date applied
 application_method = (broadcast, banded, deep_placement, foliar, side_dress, starter)
-acres_treated = !#:(0..)                         ; Acres treated
+acres_treated = #:(0..)                         ; Acres treated
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Product Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.product}
-product_name = !:                                ; Fertilizer product name
+product_name = :                                ; Fertilizer product name
 manufacturer = :                                 ; Manufacturer
 product_type = (composted_manure, dry, liquid, manure, organic, synthetic)
 nutrient_analysis = :                            ; N-P-K analysis (e.g., "10-10-10")
@@ -175,7 +175,7 @@ sulfur_percent = #:(0..100)                      ; Sulfur percentage
 ; Application Rate
 ; ───────────────────────────────────────────────────────────────────────────────
 {.rate}
-rate_per_acre = !#:(0..)                         ; Application rate per acre
+rate_per_acre = #:(0..)                         ; Application rate per acre
 rate_unit = (gal_acre, lbs_acre, tons_acre)
 total_quantity = #:(0..)                         ; Total quantity applied
 quantity_unit = :(gal, lbs, tons)
@@ -208,24 +208,24 @@ company = :                                      ; Application company
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Application Details
 ; ───────────────────────────────────────────────────────────────────────────────
-application_id = !:                              ; Application record ID
-application_date = !date                         ; Date applied
+application_id = :                              ; Application record ID
+application_date = date                         ; Date applied
 application_time = time                          ; Time applied
 application_method = (aerial, banded, broadcast, chemigation, in_furrow, seed_treatment, soil_incorporated, spray)
-acres_treated = !#:(0..)                         ; Acres treated
+acres_treated = #:(0..)                         ; Acres treated
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Product Information (EPA Required)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.product}
-product_name = !:                                ; Product name
-epa_registration_number = !:                     ; EPA registration number
-active_ingredient = !:                           ; Active ingredient(s)
+product_name = :                                ; Product name
+epa_registration_number = :                     ; EPA registration number
+active_ingredient = :                           ; Active ingredient(s)
 formulation = :                                  ; Formulation type
-rei_hours = !##:(0..)                            ; Restricted Entry Interval (hours)
+rei_hours = ##:(0..)                            ; Restricted Entry Interval (hours)
 phi_days = ##:(0..)                              ; Pre-Harvest Interval (days)
 pesticide_type = (fungicide, herbicide, insecticide, nematicide, other)
-target_pest = !:                                 ; Target pest or weed
+target_pest = :                                 ; Target pest or weed
 
 {@pesticide_application}
 
@@ -233,7 +233,7 @@ target_pest = !:                                 ; Target pest or weed
 ; Application Rate
 ; ───────────────────────────────────────────────────────────────────────────────
 {.rate}
-rate_per_acre = !#:(0..)                         ; Application rate per acre
+rate_per_acre = #:(0..)                         ; Application rate per acre
 rate_unit = (fl_oz_acre, gal_acre, lbs_acre, oz_acre, pints_acre)
 total_quantity = #:(0..)                         ; Total quantity applied
 quantity_unit = :
@@ -256,9 +256,9 @@ soil_condition = (dry, moist, wet)
 ; Applicator (EPA Required)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.applicator}
-applicator_name = !:                             ; Certified applicator name
-license_number = !*:                              ; Applicator license number
-license_state = !:(2)                            ; License state
+applicator_name = :                             ; Certified applicator name
+license_number = *:                              ; Applicator license number
+license_state = :(2)                            ; License state
 company = :                                      ; Application company
 operator_name = :                                ; Equipment operator if different
 
@@ -280,9 +280,9 @@ total_cost = #$:(0..)                            ; Total cost
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Event Details
 ; ───────────────────────────────────────────────────────────────────────────────
-event_id = !:                                    ; Irrigation event ID
-event_date = !date                               ; Date irrigated
-acres_irrigated = !#:(0..)                       ; Acres irrigated
+event_id = :                                    ; Irrigation event ID
+event_date = date                               ; Date irrigated
+acres_irrigated = #:(0..)                       ; Acres irrigated
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Application
@@ -313,9 +313,9 @@ total_cost = #$:(0..)                            ; Total irrigation cost
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Stage Information
 ; ───────────────────────────────────────────────────────────────────────────────
-observation_date = !date                         ; Date observed
+observation_date = date                         ; Date observed
 stage_code = :                                   ; Growth stage code (Zadoks, Feekes, etc.)
-stage_name = !:                                  ; Stage name (e.g., "V6", "Flowering", "Dough")
+stage_name = :                                  ; Stage name (e.g., "V6", "Flowering", "Dough")
 stage_description = :                            ; Stage description
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -351,7 +351,7 @@ weed_pressure = (heavy, light, moderate, none)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Harvest Timing
 ; ───────────────────────────────────────────────────────────────────────────────
-harvest_start_date = !date                       ; Harvest start date
+harvest_start_date = date                       ; Harvest start date
 harvest_end_date = date                          ; Harvest end date
 harvest_method = (combine, custom_harvester, hand_harvest, mechanical_harvester)
 
@@ -359,8 +359,8 @@ harvest_method = (combine, custom_harvester, hand_harvest, mechanical_harvester)
 ; Acreage & Yield
 ; ───────────────────────────────────────────────────────────────────────────────
 {.production}
-harvested_acres = !#:(0..)                       ; Acres harvested
-total_production = !#:(0..)                      ; Total production quantity
+harvested_acres = #:(0..)                       ; Acres harvested
+total_production = #:(0..)                      ; Total production quantity
 production_unit = (bales, bushels, cwt, lbs, tons)
 yield_per_acre = #:(0..)                         ; Yield per acre
 moisture_percent = #:(0..100)                    ; Moisture percentage at harvest
@@ -431,9 +431,9 @@ total_harvest_cost = #$:(0..)                    ; Total harvest cost
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Information
 ; ───────────────────────────────────────────────────────────────────────────────
-policy_number = !:                               ; Crop insurance policy number
-crop_year = !##:(1900..2100)                     ; Crop year
-insurance_company = !:                           ; Insurance provider
+policy_number = :                               ; Crop insurance policy number
+crop_year = ##:(1900..2100)                     ; Crop year
+insurance_company = :                           ; Insurance provider
 agent_name = :                                   ; Agent name
 agent_code = :                                   ; Agent code
 
@@ -442,7 +442,7 @@ agent_code = :                                   ; Agent code
 ; ───────────────────────────────────────────────────────────────────────────────
 {.coverage}
 insurance_plan = (area_risk_protection, catastrophic, group_risk, revenue_protection, whole_farm_revenue, yield_protection)
-coverage_level = !#:(0..100)                     ; Coverage level percentage
+coverage_level = #:(0..100)                     ; Coverage level percentage
 unit_structure = (basic, enterprise, optional, whole_farm)
 practice = (conventional, irrigated, organic, prevented_plant)
 type_code = :                                    ; Crop type code
@@ -453,9 +453,9 @@ type_code = :                                    ; Crop type code
 ; Insured Crop
 ; ───────────────────────────────────────────────────────────────────────────────
 {.insured_crop}
-crop_code = !:                                   ; RMA crop code
-crop_name = !:                                   ; Crop name
-insured_acres = !#:(0..)                         ; Insured acres
+crop_code = :                                   ; RMA crop code
+crop_name = :                                   ; Crop name
+insured_acres = #:(0..)                         ; Insured acres
 intended_acres = #:(0..)                         ; Intended acres
 prevented_plant_acres = #:(0..)                  ; Prevented plant acres
 aph_yield = #:(0..)                              ; Approved APH yield
@@ -469,7 +469,7 @@ guarantee_per_acre = #$:(0..)                    ; Guarantee per acre
 ; Premium
 ; ───────────────────────────────────────────────────────────────────────────────
 {.premium}
-total_premium = !#$:(0..)                        ; Total premium
+total_premium = #$:(0..)                        ; Total premium
 producer_premium = #$:(0..)                      ; Producer premium (after subsidy)
 subsidy = #$:(0..)                               ; Federal subsidy amount
 subsidy_percent = #:(0..100)                     ; Subsidy percentage

@@ -45,8 +45,8 @@ changelog[0].rationale = "Commercial railroad equipment coverage"
 
 {@rs_owner}
 ; Required fields first
-owner_name = !:                               ; Owner name
-owner_type = !(
+owner_name = :                               ; Owner name
+owner_type = (
     car_leasing,                              ; Car leasing company
     class_1,                                  ; Class I railroad
     industrial,                               ; Industrial shipper
@@ -72,7 +72,7 @@ scac = :(2..4)                                ; SCAC code
 
 {@rs_equipment}
 ; Required fields first
-equipment_type = !(
+equipment_type = (
     autorack,                                 ; Auto carrier
     boxcar,                                   ; Boxcar
     caboose,                                  ; Caboose
@@ -90,7 +90,7 @@ equipment_type = !(
     refrigerator,                             ; Reefer car
     tank_car                                  ; Tank car
 )
-insured_value = !#$:(0..)                     ; Equipment value
+insured_value = #$:(0..)                     ; Equipment value
 
 ; Optional fields
 aar_car_type = :                              ; AAR car type code
@@ -123,7 +123,7 @@ umler_registered = ?                          ; UMLER registered
 
 {@rs_coverage}
 ; Required fields first
-physical_damage_limit = !#$:(0..)             ; PD limit
+physical_damage_limit = #$:(0..)             ; PD limit
 
 ; Valuation
 valuation = (
@@ -217,7 +217,7 @@ passenger_cars = ##                           ; Passenger car count
 
 {@rs_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 breakdown_premium = #$:(0..)                  ; Breakdown coverage
@@ -251,8 +251,8 @@ maintenance_factor = #                        ; Maintenance quality
 
 {@rs_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     bearing_failure,                          ; Bearing failure
     collision,                                ; Collision
     contamination,                            ; Contamination
@@ -298,12 +298,12 @@ total_loss = ?                                ; Total loss
 
 {@rolling_stock_policy}
 ; Required fields first
-coverage = !@rs_coverage                      ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-fleet = !@rs_fleet                            ; Fleet schedule
-owner = !@rs_owner                            ; Equipment owner
-policy_number = !:                            ; Policy number
+coverage = @rs_coverage                      ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+fleet = @rs_fleet                            ; Fleet schedule
+owner = @rs_owner                            ; Equipment owner
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

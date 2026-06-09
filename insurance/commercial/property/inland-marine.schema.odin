@@ -48,7 +48,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Form
 ; ───────────────────────────────────────────────────────────────────────────────
-coverage_form = !(
+coverage_form = (
     blanket,                                  ; All equipment
     combination,                              ; Scheduled + blanket for smaller items
     scheduled                                 ; Listed equipment
@@ -95,13 +95,13 @@ borrowed_equipment = ?
 ; ───────────────────────────────────────────────────────────────────────────────
 {.scheduled_items[]}
 item_number = ##
-description = !:
+description = :
 manufacturer = :
 model = :
 year = ##:(1900..2100)
 serial_number = :
 vin = *:/^[A-HJ-NPR-Z0-9]{17}$/
-limit = !#$
+limit = #$
 deductible = ##
 owned_leased_rented = (leased, owned, rented)
 lessor = ::if owned_leased_rented != owned
@@ -147,7 +147,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Type
 ; ───────────────────────────────────────────────────────────────────────────────
-type = !(
+type = (
     annual_transit,                           ; Annual policy
     motor_truck_cargo,                        ; For-hire truckers
     owners_goods,                             ; Shipper's interest
@@ -319,14 +319,14 @@ premium = #$
 
 {@im_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 

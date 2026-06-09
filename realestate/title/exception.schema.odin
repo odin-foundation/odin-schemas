@@ -41,8 +41,8 @@ changelog[0].rationale = "Comprehensive exception management structure"
 
 {@standard_exception}
 ; Required fields first
-exception_category = !(boundary_survey, defects_created_after, easements_not_shown, encroachments, general_taxes, liens_not_shown, mechanics_liens, mining_claims, mineral_reservations, parties_in_possession, restrictions, rights_of_way, shortages_in_area, special_assessments, unrecorded_matters, water_rights)
-exception_number = !##:(1..)                         ; Standard exception number
+exception_category = (boundary_survey, defects_created_after, easements_not_shown, encroachments, general_taxes, liens_not_shown, mechanics_liens, mining_claims, mineral_reservations, parties_in_possession, restrictions, rights_of_way, shortages_in_area, special_assessments, unrecorded_matters, water_rights)
+exception_number = ##:(1..)                         ; Standard exception number
 
 ; Exception identification
 exception_id = :                                     ; Unique exception identifier
@@ -115,8 +115,8 @@ status_date = date                                   ; Status date
 
 {@exception_clearance}
 ; Required fields first
-exception_description = !:                           ; Exception to be cleared
-requested_date = !date                               ; Date clearance requested
+exception_description = :                           ; Exception to be cleared
+requested_date = date                               ; Date clearance requested
 
 ; Clearance identification
 clearance_id = :                                     ; Unique clearance identifier
@@ -139,7 +139,7 @@ schedule = (b1, b2):if exception_type = commitment_exception | exception_type = 
 ; Clearance Method
 ; ───────────────────────────────────────────────────────────────────────────────
 {.method}
-clearance_type = !(affidavit, document_recording, endorsement, indemnity, payoff, release, subordination, underwriter_approval, waiver)
+clearance_type = (affidavit, document_recording, endorsement, indemnity, payoff, release, subordination, underwriter_approval, waiver)
 document_required = :                                ; Document required
 document_description = :                             ; Document description
 payoff_required = ?                                  ; Payoff required
@@ -218,9 +218,9 @@ waiver_reason = ::if status = waived                 ; Waiver reason
 
 {@title_affidavit}
 ; Required fields first
-affiant_name = !:                                    ; Affiant name
-affidavit_date = !date                               ; Affidavit date
-affidavit_type = !(chain_of_title, debts_liens, gap, heirship, identity, marital, mechanics_lien, name_variance, no_liens, possession, seller, survey)
+affiant_name = :                                    ; Affiant name
+affidavit_date = date                               ; Affidavit date
+affidavit_type = (chain_of_title, debts_liens, gap, heirship, identity, marital, mechanics_lien, name_variance, no_liens, possession, seller, survey)
 
 ; Affidavit identification
 affidavit_id = :                                     ; Unique affidavit identifier
@@ -324,9 +324,9 @@ rejection_reason = ::if status = rejected            ; Rejection reason
 
 {@title_indemnity}
 ; Required fields first
-indemnitor = !:                                      ; Indemnitor name
-indemnitee = !:                                      ; Indemnitee (usually underwriter)
-indemnity_date = !date                               ; Agreement date
+indemnitor = :                                      ; Indemnitor name
+indemnitee = :                                      ; Indemnitee (usually underwriter)
+indemnity_date = date                               ; Agreement date
 
 ; Indemnity identification
 indemnity_id = :                                     ; Unique indemnity identifier

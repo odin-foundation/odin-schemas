@@ -52,13 +52,13 @@ changelog[0].rationale = "Standard DER and renewable structures per IEEE 1547 an
 = @types.audit_info
 
 ; Required fields first
-system_id = !:                                     ; Unique system identifier
-account_number = !*:                                ; Associated account
+system_id = :                                     ; Unique system identifier
+account_number = *:                                ; Associated account
 installation_type = (commercial, industrial, residential)
 system_status = (active, decommissioned, inactive, pending, under_construction)
 
 ; System specifications
-rated_capacity_kw = !#:(0..)                       ; System rated capacity in kW DC
+rated_capacity_kw = #:(0..)                       ; System rated capacity in kW DC
 module_count = ##:(1..)                            ; Number of solar modules
 module_manufacturer = :                            ; Panel manufacturer
 module_model = :                                   ; Panel model
@@ -67,7 +67,7 @@ module_technology = (monocrystalline, polycrystalline, thin_film)
 
 ; Inverter information
 {.inverters[]}
-inverter_id = !:                                   ; Inverter identifier
+inverter_id = :                                   ; Inverter identifier
 manufacturer = :                                   ; Inverter manufacturer
 model = :                                          ; Inverter model
 rated_capacity_kw = #:(0..)                        ; Inverter rating in kW AC
@@ -92,7 +92,7 @@ tilt_degrees = #:(0..90)                           ; Panel tilt angle
 ; Interconnection
 interconnection_agreement = :                      ; Agreement number
 interconnection_date = date                        ; Interconnection date
-net_metering = !?                                  ; Net metering enrolled
+net_metering = ?                                  ; Net metering enrolled
 net_metering_rate = :                              ; Rate schedule for NEM
 export_limit_kw = #:(0..)                          ; Export limit if applicable
 bidirectional_meter = ?                            ; Bi-directional metering
@@ -141,20 +141,20 @@ maintenance_provider = :                           ; Service provider
 = @types.audit_info
 
 ; Required fields first
-system_id = !:                                     ; Unique system identifier
-account_number = !*:                                ; Associated account
+system_id = :                                     ; Unique system identifier
+account_number = *:                                ; Associated account
 system_status = (active, decommissioned, inactive, pending, standby)
 
 ; System specifications
-rated_capacity_kwh = !#:(0..)                      ; Energy capacity in kWh
-rated_power_kw = !#:(0..)                          ; Power rating in kW
+rated_capacity_kwh = #:(0..)                      ; Energy capacity in kWh
+rated_power_kw = #:(0..)                          ; Power rating in kW
 usable_capacity_kwh = #:(0..)                      ; Usable capacity
 chemistry = (flow_battery, lead_acid, lithium_ion, nickel, other)
 chemistry_details = :                              ; Specific chemistry variant
 
 ; Battery modules
 {.modules[]}
-module_id = !:                                     ; Module identifier
+module_id = :                                     ; Module identifier
 manufacturer = :                                   ; Battery manufacturer
 model = :                                          ; Battery model
 capacity_kwh = #:(0..)                             ; Module capacity
@@ -182,7 +182,7 @@ cycle_life_rating = ##:(0..)                       ; Rated cycle life
 
 ; Interconnection
 interconnection_agreement = :                      ; Agreement number
-grid_connected = !?                                ; Grid connection status
+grid_connected = ?                                ; Grid connection status
 islanding_capable = ?                              ; Can operate off-grid
 backup_capable = ?                                 ; Backup power capability
 
@@ -219,8 +219,8 @@ throughput_warranty_kwh = #:(0..)                  ; Throughput guarantee
 = @types.audit_info
 
 ; Required fields first
-charger_id = !:                                    ; Unique charger identifier
-account_number = !*:                                ; Associated account
+charger_id = :                                    ; Unique charger identifier
+account_number = *:                                ; Associated account
 charger_level = (level_1, level_2, level_3_dcfc)  ; Charging level
 status = (active, available, charging, faulted, inactive, offline)
 
@@ -292,13 +292,13 @@ warranty_expiration = date                         ; Warranty end date
 = @types.audit_info
 
 ; Required fields first
-der_id = !:                                        ; Unique DER identifier
-account_number = !*:                                ; Associated account
+der_id = :                                        ; Unique DER identifier
+account_number = *:                                ; Associated account
 resource_type = (battery_storage, ev_charger, generator, solar, wind)
 status = (active, decommissioned, inactive, pending, testing)
 
 ; Capacity
-rated_capacity_kw = !#:(0..)                       ; Rated capacity in kW
+rated_capacity_kw = #:(0..)                       ; Rated capacity in kW
 rated_capacity_kva = #:(0..)                       ; Rated capacity in kVA
 energy_capacity_kwh = #:(0..)                      ; Energy capacity (storage)
 
@@ -352,13 +352,13 @@ aggregation_agreement = :                          ; Agreement reference
 
 {@net_metering}
 ; Required fields first
-agreement_number = !:                              ; Agreement identifier
-account_number = !*:                                ; Account number
+agreement_number = :                              ; Agreement identifier
+account_number = *:                                ; Account number
 system_id = :                                      ; Associated DER system
 status = (active, cancelled, expired, pending)
 
 ; Agreement terms
-effective_date = !date                             ; Agreement start
+effective_date = date                             ; Agreement start
 expiration_date = date                             ; Agreement end
 rate_schedule = :                                  ; NEM rate schedule
 program_type = (net_billing, net_metering, nem_2, nem_3)
@@ -371,7 +371,7 @@ technology_type = (battery, solar, wind)           ; Technology
 ; Metering
 production_meter = :                               ; Production meter
 net_meter = :                                      ; Net meter number
-bidirectional = !?                                 ; Bi-directional metering
+bidirectional = ?                                 ; Bi-directional metering
 
 ; Compensation
 {.compensation}
@@ -395,9 +395,9 @@ true_up_payment = #$                               ; True-up amount
 
 {@demand_response}
 ; Required fields first
-program_id = !:                                    ; Program identifier
-program_name = !:                                  ; Program name
-account_number = !*:                                ; Account number
+program_id = :                                    ; Program identifier
+program_name = :                                  ; Program name
+account_number = *:                                ; Account number
 enrollment_status = (active, cancelled, enrolled, pending, suspended)
 
 ; Program details
@@ -433,11 +433,11 @@ total_incentives_earned = #$:(0..)                 ; Total earned to date
 {@demand_response}
 ; Event history
 {.events[]}
-event_id = !:                                      ; Event identifier
-event_date = !date                                 ; Event date
+event_id = :                                      ; Event identifier
+event_date = date                                 ; Event date
 notification_time = timestamp                      ; Notification timestamp
-start_time = !timestamp                            ; Event start
-end_time = !timestamp                              ; Event end
+start_time = timestamp                            ; Event start
+end_time = timestamp                              ; Event end
 duration_hours = #:(0..)                           ; Event duration
 target_reduction_kw = #:(0..)                      ; Reduction target
 actual_reduction_kw = #:(0..)                      ; Actual reduction
@@ -463,10 +463,10 @@ total_kwh_reduced = #:(0..)                        ; Lifetime reduction
 
 {@renewable_incentive}
 ; Required fields first
-incentive_id = !:                                  ; Incentive identifier
-account_number = !*:                                ; Account number
+incentive_id = :                                  ; Incentive identifier
+account_number = *:                                ; Account number
 system_id = :                                      ; Associated system
-program_name = !:                                  ; Program name
+program_name = :                                  ; Program name
 incentive_type = (capacity_based, grant, performance_based, rebate, tax_credit)
 
 ; Application
@@ -496,8 +496,8 @@ certification_date = date                          ; Certification date
 {@renewable_incentive}
 ; Payments
 {.payments[]}
-payment_date = !date                               ; Payment date
-payment_amount = !#$:(0..)                         ; Payment amount
+payment_date = date                               ; Payment date
+payment_amount = #$:(0..)                         ; Payment amount
 period_start = date                                ; Period start
 period_end = date                                  ; Period end
 production_kwh = #:(0..)                           ; Production basis

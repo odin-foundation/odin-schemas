@@ -58,10 +58,10 @@ changelog[0].rationale = "Comprehensive credentials including degrees, certifica
 
 {@degree}
 ; Required fields first
-credential_id = !:                                   ; Credential identifier
-recipient_id = !*:                                   ; Recipient identifier (PII)
-degree_type = !:                                     ; Degree type
-conferral_date = !date                               ; Degree conferred date
+credential_id = :                                   ; Credential identifier
+recipient_id = *:                                   ; Recipient identifier (PII)
+degree_type = :                                     ; Degree type
+conferral_date = date                               ; Degree conferred date
 
 ; Optional fields
 degree_title = :                                     ; Full degree title
@@ -108,10 +108,10 @@ blockchain_verified = ?                              ; Blockchain verification
 
 {@certificate}
 ; Required fields first
-credential_id = !:                                   ; Credential identifier
-recipient_id = !*:                                   ; Recipient identifier (PII)
-certificate_name = !:                                ; Certificate name
-issue_date = !date                                   ; Issue date
+credential_id = :                                   ; Credential identifier
+recipient_id = *:                                   ; Recipient identifier (PII)
+certificate_name = :                                ; Certificate name
+issue_date = date                                   ; Issue date
 
 ; Optional fields
 certificate_type = (academic, industry, occupational, professional, training)
@@ -162,11 +162,11 @@ digital_credential_url = :                           ; Digital credential URL
 
 {@professional_license}
 ; Required fields first
-license_id = !:                                      ; License identifier
-licensee_id = !*:                                    ; Licensee identifier (PII)
-license_number = !*:                                 ; License number (PII)
-license_type = !:                                    ; License type
-issue_date = !date                                   ; Issue date
+license_id = :                                      ; License identifier
+licensee_id = *:                                    ; Licensee identifier (PII)
+license_number = *:                                 ; License number (PII)
+license_type = :                                    ; License type
+issue_date = date                                   ; Issue date
 
 ; Optional fields
 profession = :                                       ; Licensed profession
@@ -213,10 +213,10 @@ last_verified_date = date
 
 {@digital_badge}
 ; Required fields first
-badge_id = !:                                        ; Badge identifier
-recipient_id = !*:                                   ; Recipient identifier (PII)
-badge_name = !:                                      ; Badge name
-issue_date = !date                                   ; Issue date
+badge_id = :                                        ; Badge identifier
+recipient_id = *:                                   ; Recipient identifier (PII)
+badge_name = :                                      ; Badge name
+issue_date = date                                   ; Issue date
 
 ; Optional fields
 badge_description = :                                ; Badge description
@@ -272,9 +272,9 @@ revocation_reason = :
 
 {@continuing_education}
 ; Required fields first
-activity_id = !:                                     ; Activity identifier
-participant_id = !*:                                 ; Participant identifier (PII)
-completion_date = !date                              ; Completion date
+activity_id = :                                     ; Activity identifier
+participant_id = *:                                 ; Participant identifier (PII)
+completion_date = date                              ; Completion date
 
 ; Optional fields
 activity_title = :                                   ; Activity title
@@ -314,7 +314,7 @@ verification_code = :                                ; Verification code
 
 {@credential_wallet}
 ; Required fields first
-holder_id = !*:                                      ; Credential holder ID (PII)
+holder_id = *:                                      ; Credential holder ID (PII)
 
 ; Optional fields
 wallet_created = timestamp                           ; Wallet creation date

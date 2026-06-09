@@ -316,9 +316,9 @@ borrower_type = (
 )
 
 {.name}
-first = !:                                        ; First name (required)
+first = :                                        ; First name (required)
 middle = :                                        ; Middle name or initial
-last = !:                                         ; Last name (required)
+last = :                                         ; Last name (required)
 suffix = :                                        ; Name suffix (Jr., Sr., III, etc.)
 
 ssn = *:format ssn                               ; Confidential

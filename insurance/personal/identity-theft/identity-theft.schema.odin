@@ -45,7 +45,7 @@ changelog[0].rationale = "Personal lines coverage for identity theft and cyber p
 ; Classification of identity theft incidents.
 
 {@idt_event_type}
-event_category = !(
+event_category = (
     account_takeover,                         ; Existing account compromise
     credit_fraud,                             ; New credit opened fraudulently
     criminal_identity,                        ; Identity used in crimes
@@ -71,8 +71,8 @@ event_description = :                         ; Additional details
 
 {@idt_covered_person}
 ; Required fields first
-name = !@person_name                          ; Person's name
-relationship = !(
+name = @person_name                          ; Person's name
+relationship = (
     child,                                    ; Minor child
     dependent,                                ; Other dependent
     domestic_partner,                         ; Domestic partner
@@ -96,7 +96,7 @@ ssn_last_four = *:(4)                         ; Last 4 of SSN (PII)
 
 {@idt_monitoring_service}
 ; Required fields first
-service_type = !(
+service_type = (
     credit_bureau_monitoring,                 ; Bureau monitoring
     credit_freeze_management,                 ; Freeze/thaw management
     credit_lock_service,                      ; Credit lock service
@@ -125,7 +125,7 @@ reports_per_year = ##                         ; Annual reports available
 
 {@idt_restoration_service}
 ; Required fields first
-service_category = !(
+service_category = (
     affidavit_assistance,                     ; Fraud affidavit help
     case_management,                          ; Dedicated case manager
     credit_bureau_liaison,                    ; Bureau dispute assistance
@@ -157,7 +157,7 @@ response_time_hours = ##                      ; Guaranteed response time
 
 {@idt_coverage_limits}
 ; Required fields first
-aggregate_limit = !#$:(0..)                   ; Maximum total coverage
+aggregate_limit = #$:(0..)                   ; Maximum total coverage
 
 ; Optional fields
 attorney_fees_limit = #$:(0..)                ; Legal defense limit
@@ -221,8 +221,8 @@ romance_scams = ?                             ; Romance fraud
 
 {@idt_event}
 ; Required fields first
-date_discovered = !date                       ; Date incident discovered
-event_type = !@idt_event_type                 ; Type of incident
+date_discovered = date                       ; Date incident discovered
+event_type = @idt_event_type                 ; Type of incident
 
 ; Optional fields
 accounts_affected[] = :                       ; Affected account names
@@ -312,7 +312,7 @@ payment_method = (ach, check, wire)           ; Payment method
 
 {@idt_premium}
 ; Required fields first
-annual_premium = !#$:(0..)                    ; Annual premium amount
+annual_premium = #$:(0..)                    ; Annual premium amount
 
 ; Optional fields
 child_premium = #$:(0..):if family_coverage = true
@@ -331,8 +331,8 @@ taxes_and_fees = #$:(0..)                     ; State taxes/fees
 
 {@idt_endorsement}
 ; Required fields first
-effective_date = !date                        ; Effective date
-endorsement_type = !(
+effective_date = date                        ; Effective date
+endorsement_type = (
     child_protection,                         ; Child identity coverage
     cyber_extortion,                          ; Ransomware coverage
     elderly_parent,                           ; Parent coverage
@@ -356,11 +356,11 @@ expiration_date = date                        ; Expiration if temporary
 
 {@identity_theft_policy}
 ; Required fields first
-coverage_limits = !@idt_coverage_limits       ; Coverage limits
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
-primary_insured = !@idt_covered_person        ; Primary insured
+coverage_limits = @idt_coverage_limits       ; Coverage limits
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
+primary_insured = @idt_covered_person        ; Primary insured
 
 ; Invariants
 :invariant expiration_date > effective_date

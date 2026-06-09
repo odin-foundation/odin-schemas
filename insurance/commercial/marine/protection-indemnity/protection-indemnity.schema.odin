@@ -45,7 +45,7 @@ changelog[0].rationale = "Commercial marine P&I coverage for vessel operators"
 ; Type of P&I club entry (coverage type).
 
 {@pi_entry_type}
-entry_class = !(
+entry_class = (
     bareboat_charterers,                      ; Bareboat charterers P&I
     cargo_interests,                          ; Cargo owner's P&I
     charterers,                               ; Time/voyage charterers
@@ -74,9 +74,9 @@ premium_basis = (
 
 {@pi_vessel}
 ; Required fields first
-gross_tonnage = !##                           ; Gross tonnage
-imo_number = !:                               ; IMO number
-vessel_name = !:                              ; Vessel name
+gross_tonnage = ##                           ; Gross tonnage
+imo_number = :                               ; IMO number
+vessel_name = :                              ; Vessel name
 
 ; Optional fields
 beam_meters = #                               ; Beam
@@ -152,7 +152,7 @@ towing_operations = ?                         ; Towing services
 
 {@pi_coverage}
 ; Required fields first
-limit = !#$:(0..)                             ; Per incident limit
+limit = #$:(0..)                             ; Per incident limit
 
 ; Optional fields
 aggregate_limit = #$:(0..)                    ; Annual aggregate
@@ -349,7 +349,7 @@ punitive_damages = ?                          ; Punitive damages
 
 {@pi_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium/calls
+total_premium = #$:(0..)                     ; Total premium/calls
 
 ; Optional fields
 additional_calls = #$:(0..)                   ; Additional calls
@@ -383,7 +383,7 @@ type_factor = #                               ; Vessel type factor
 
 {@pi_claim}
 ; Required fields first
-claim_category = !(
+claim_category = (
     cargo,                                    ; Cargo claims
     collision,                                ; Collision claims
     contractual,                              ; Contractual liability
@@ -395,8 +395,8 @@ claim_category = !(
     wreck,                                    ; Wreck removal
     other                                     ; Other claims
 )
-claim_date = !date                            ; Date of claim
-incident_date = !date                         ; Date of incident
+claim_date = date                            ; Date of claim
+incident_date = date                         ; Date of incident
 
 ; Optional fields
 amount_claimed = #$:(0..)                     ; Amount claimed
@@ -461,12 +461,12 @@ third_party_vessel = :                        ; Other vessel if applicable
 
 {@pi_entry}
 ; Required fields first
-coverage = !@pi_coverage                      ; Coverage terms
-effective_date = !date                        ; Entry effective date
-entry_type = !@pi_entry_type                  ; Type of entry
-expiration_date = !date                       ; Entry noon date
-policy_year = !##:(2000..2100)                ; Policy year
-vessel = !@pi_vessel                          ; Entered vessel
+coverage = @pi_coverage                      ; Coverage terms
+effective_date = date                        ; Entry effective date
+entry_type = @pi_entry_type                  ; Type of entry
+expiration_date = date                       ; Entry noon date
+policy_year = ##:(2000..2100)                ; Policy year
+vessel = @pi_vessel                          ; Entered vessel
 
 ; Invariants
 :invariant expiration_date > effective_date
@@ -489,7 +489,7 @@ entry_status = (
 exclusions = @pi_exclusions                   ; Exclusions
 id = :                                        ; Internal identifier
 loss_record[] = :                             ; Loss record references
-member_name = !:                              ; Member name
+member_name = :                              ; Member name
 member_address = @address                     ; Member address
 mortgagee = :                                 ; Mortgagee if any
 omnibus_rule = ?                              ; Omnibus coverage

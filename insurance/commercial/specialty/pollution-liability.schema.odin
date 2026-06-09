@@ -50,7 +50,7 @@ site_number = ##
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Site Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-site_name = !:
+site_name = :
 
 ; Site Address - uses shared @address type (US and Canada)
 address = @address
@@ -63,7 +63,7 @@ acreage = #
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Site Classification
 ; ───────────────────────────────────────────────────────────────────────────────
-site_type = !(
+site_type = (
     agricultural,
     brownfield,
     commercial,
@@ -87,7 +87,7 @@ site_type = !(
 ; Current Operations
 ; ───────────────────────────────────────────────────────────────────────────────
 {.operations}
-description = !:
+description = :
 naics_code = :(6)
 sic_code = :(4)
 hazardous_materials_used[] = :
@@ -177,7 +177,7 @@ coverage_id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Coverage Type
 ; ───────────────────────────────────────────────────────────────────────────────
-coverage_type = !(
+coverage_type = (
     contractors_pollution,                    ; CPL
     environmental_impairment,                 ; Combined EIL
     products_pollution,
@@ -322,21 +322,21 @@ legionella_limit = #$:if additional.legionella = true
 
 {@pollution_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Form
 ; ───────────────────────────────────────────────────────────────────────────────
-policy_form = !(claims_made, occurrence)
+policy_form = (claims_made, occurrence)
 
 ; Claims-Made Dates
 retroactive_date = date:if policy_form = claims_made

@@ -60,14 +60,14 @@ domicile_country = :(2..3) "US"
 
 {@program}
 id = :
-name = !:
+name = :
 code = :
 
 ; Parent carrier reference
 carrier_ref = :
 
 ; Program details
-line_of_business = !(auto, commercial, health, home, life, other)
+line_of_business = (auto, commercial, health, home, life, other)
 product_type = :
 state_province = :(2)
 country = :(2..3) "US"

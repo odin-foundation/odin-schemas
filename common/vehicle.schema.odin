@@ -42,10 +42,10 @@ changelog[0].rationale = "Shared vehicle types for automotive and insurance doma
 
 {@vehicle_identification}
 ; Required fields first
-vin = !*:format vin                              ; ISO 3779 VIN (17 alphanumeric, excludes I, O, Q)
-year = !##:(1900..2100)                          ; Model year
-make = !:                                        ; Manufacturer brand name
-model = !:                                       ; Model name
+vin = *:format vin                              ; ISO 3779 VIN (17 alphanumeric, excludes I, O, Q)
+year = ##:(1900..2100)                          ; Model year
+make = :                                        ; Manufacturer brand name
+model = :                                       ; Model name
 
 ; Optional identification
 body_type = :                                    ; Body style description
@@ -61,7 +61,7 @@ color_interior = :                               ; Interior color
 
 {@vin_decode}
 ; Required fields first
-vin = !*:format vin                               ; Full VIN
+vin = *:format vin                               ; Full VIN
 
 ; World Manufacturer Identifier (positions 1-3)
 {.wmi}
@@ -153,7 +153,7 @@ compression_ratio = :                            ; Compression ratio
 
 {@ev_spec}
 ; Propulsion type
-propulsion = !(bev, fcev, hev, mhev, phev)       ; BEV=Battery, HEV=Hybrid, PHEV=Plug-in, FCEV=Fuel Cell, MHEV=Mild
+propulsion = (bev, fcev, hev, mhev, phev)       ; BEV=Battery, HEV=Hybrid, PHEV=Plug-in, FCEV=Fuel Cell, MHEV=Mild
 
 ; Battery pack
 {.battery}
@@ -197,7 +197,7 @@ combined_mpge = ##:(0..)                         ; MPGe equivalent
 ; Transmission specifications.
 
 {@transmission_spec}
-type = !(automatic, cvt, dual_clutch, manual)    ; Transmission type
+type = (automatic, cvt, dual_clutch, manual)    ; Transmission type
 speeds = ##:(1..12)                              ; Number of forward gears
 manufacturer = :                                 ; Transmission manufacturer
 model = :                                        ; Transmission model/code
@@ -267,9 +267,9 @@ doors = ##:(0..8)                                ; Number of doors
 
 {@odometer_reading}
 ; Required fields first
-reading = !##:(0..)                              ; Odometer reading
-reading_date = !date                             ; Date of reading
-reading_type = !(actual, discrepancy, exempt, not_actual)
+reading = ##:(0..)                              ; Odometer reading
+reading_date = date                             ; Date of reading
+reading_type = (actual, discrepancy, exempt, not_actual)
 
 ; Source and validation
 source = (dealer, dmv, inspection, owner, service)
@@ -310,7 +310,7 @@ condition = (excellent, fair, good, poor, rough)
 mileage_at_valuation = ##:(0..)                  ; Mileage at time of valuation
 
 {@valuation_source}
-source = !(black_book, cargurus, edmunds, jd_power, kbb, nada, other)
+source = (black_book, cargurus, edmunds, jd_power, kbb, nada, other)
 valuation_date = date                            ; Date of valuation from this source
 value = #$:(0..)                                 ; Value from this source
 
@@ -394,8 +394,8 @@ kill_switch = ?                                  ; Hidden kill switch
 ; since vehicles commonly have multiple plates (front/rear, dealer/permanent, multi-state).
 
 {@license_plate}
-plate_number = !:                                ; License plate number
-state_province = !:(2)                           ; Issuing state/province
+plate_number = :                                ; License plate number
+state_province = :(2)                           ; Issuing state/province
 country = :(2..3) "US"                           ; Issuing country
 plate_type = (antique, commercial, disabled, farm, fleet, government, personalized, standard, temporary)
 position = (front, rear, single)                 ; Plate position on vehicle
@@ -409,7 +409,7 @@ expiration_date = date                           ; Plate expiration
 ; Universal vehicle status enumeration.
 
 {@vehicle_status}
-status = !(
+status = (
     active,                                      ; Active/operational
     damaged,                                     ; Damaged, needs repair
     disposed,                                    ; Disposed/scrapped

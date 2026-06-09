@@ -61,8 +61,8 @@ npn = :
 
 ; Override required name fields
 {.name}
-first = !:                                    ; First name (required)
-last = !:                                     ; Last name (required)
+first = :                                    ; First name (required)
+last = :                                     ; Last name (required)
 
 {@producer}
 
@@ -94,8 +94,8 @@ code = :
 
 ; Override required name fields
 {.name}
-first = !:                                    ; First name (required)
-last = !:                                     ; Last name (required)
+first = :                                    ; First name (required)
+last = :                                     ; Last name (required)
 
 {@csr}
 

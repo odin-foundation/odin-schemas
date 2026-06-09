@@ -36,15 +36,15 @@ changelog[0].rationale = "Professional license and certification tracking"
 {@professional_license}
 = @types.audit_info
 
-license_type = !:                                    ; MD, RN, CPA, Attorney, Engineer, etc.
-profession = !:
-state = !:(2)
-license_number = !*:
+license_type = :                                    ; MD, RN, CPA, Attorney, Engineer, etc.
+profession = :
+state = :(2)
+license_number = *:
 
 ; Licensee Information
 {.licensee}
-first_name = !:
-last_name = !:
+first_name = :
+last_name = :
 middle_name = :
 ssn = *:format ssn
 date_of_birth = *date
@@ -56,25 +56,25 @@ email = @email
 ; License Status
 {.status}
 current_status = (active, expired, inactive, probation, revoked, suspended)
-issue_date = !date
+issue_date = date
 effective_date = date
-expiration_date = !date
+expiration_date = date
 renewal_date = date
 status_date = date
 
 {@professional_license}
 ; Education and Training
 {.education[]}
-degree = !:
-institution = !:
+degree = :
+institution = :
 graduation_date = date
 major = :
 
 {@professional_license}
 ; Board Certification
 {.certifications[]}
-certification_name = !:
-certifying_body = !:
+certification_name = :
+certifying_body = :
 issue_date = date
 expiration_date = date
 certification_number = :
@@ -121,25 +121,25 @@ late_renewal_penalty = #$:(0..)
 {@license_renewal}
 = @types.audit_info
 
-license_number = !*:
-renewal_period_end = !date
+license_number = *:
+renewal_period_end = date
 renewal_date = date
 
 ; Continuing Education Compliance
 ce_hours_required = ##:(0..)
 ce_hours_completed = ##:(0..)
-ce_compliant = !?
+ce_compliant = ?
 
 {.ce_courses[]}
-course_title = !:
-provider = !:
-completion_date = !date
-hours_earned = !#:(0..)
+course_title = :
+provider = :
+completion_date = date
+hours_earned = #:(0..)
 course_number = :
 
 {@license_renewal}
 ; Practice Attestations
-practicing_profession = !?
+practicing_profession = ?
 practice_address = @address
 malpractice_insurance = ?
 insurance_carrier = :if malpractice_insurance = true
@@ -155,7 +155,7 @@ explanation = :
 
 {@license_renewal}
 ; Renewal Fee
-renewal_fee = !#$:(0..)
+renewal_fee = #$:(0..)
 late_fee = #$:(0..)
 total_fee = #$:(0..)
 
@@ -170,16 +170,16 @@ signature_date = date
 {@continuing_education_course}
 = @types.audit_info
 
-course_title = !:
+course_title = :
 course_number = :
-provider_name = !:
+provider_name = :
 provider_number = :
 approved_by = :
 
 ; Course Details
 {.course}
 subject_area = :
-credit_hours = !#:(0..)
+credit_hours = #:(0..)
 course_level = (advanced, basic, intermediate)
 delivery_method = (correspondence, in_person, online, self_study, webinar)
 start_date = date
@@ -189,8 +189,8 @@ completion_date = date
 {@continuing_education_course}
 ; Participant
 {.participant}
-name = !:
-license_number = !*:
+name = :
+license_number = *:
 profession = :
 
 {@continuing_education_course}

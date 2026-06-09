@@ -45,9 +45,9 @@ changelog[0].rationale = "Specialty coverage for product recall exposures"
 
 {@recall_insured}
 ; Required fields first
-annual_revenue = !#$:(0..)                    ; Annual revenue
-business_name = !:                            ; Company name
-industry = !(
+annual_revenue = #$:(0..)                    ; Annual revenue
+business_name = :                            ; Company name
+industry = (
     automotive,                               ; Automotive/parts
     chemicals,                                ; Chemicals
     consumer_goods,                           ; Consumer products
@@ -88,8 +88,8 @@ traceability_system = ?                       ; Traceability
 
 {@recall_product}
 ; Required fields first
-product_category = !:                         ; Product category
-product_name = !:                             ; Product name/line
+product_category = :                         ; Product category
+product_name = :                             ; Product name/line
 annual_sales = #$:(0..)                       ; Annual product sales
 
 ; Optional fields
@@ -112,8 +112,8 @@ units_produced = ##                           ; Annual units
 
 {@recall_coverage}
 ; Required fields first
-aggregate_limit = !#$:(0..)                   ; Annual aggregate
-each_recall_limit = !#$:(0..)                 ; Per recall limit
+aggregate_limit = #$:(0..)                   ; Annual aggregate
+each_recall_limit = #$:(0..)                 ; Per recall limit
 
 ; Optional fields
 deductible = #$:(0..)                         ; Deductible
@@ -195,7 +195,7 @@ supplier_defect = ?:if included = true        ; Supplier caused
 
 {@recall_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 bi_premium = #$:(0..)                         ; BI premium
@@ -228,8 +228,8 @@ traceability_factor = #                       ; Traceability credit
 
 {@recall_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     allergen,                                 ; Allergen issue
     bacterial,                                ; Bacterial contamination
     chemical,                                 ; Chemical contamination
@@ -241,7 +241,7 @@ claim_type = !(
     viral,                                    ; Viral contamination
     other                                     ; Other
 )
-recall_trigger = !(
+recall_trigger = (
     complaint,                                ; Consumer complaint
     government,                               ; Government order
     internal,                                 ; Internal discovery
@@ -279,11 +279,11 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@recall_policy}
 ; Required fields first
-coverage = !@recall_coverage                  ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-insured = !@recall_insured                    ; Insured company
-policy_number = !:                            ; Policy number
+coverage = @recall_coverage                  ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+insured = @recall_insured                    ; Insured company
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

@@ -51,7 +51,7 @@ workforce_id = :                                       ; Unique identifier for w
 ; ───────────────────────────────────────────────────────────────────────────────
 
 {.employees}
-total = !##                                            ; Total number of employees
+total = ##                                            ; Total number of employees
 full_time = ##                                         ; Number of full-time employees
 part_time = ##                                         ; Number of part-time employees
 temporary = ##                                         ; Number of temporary employees
@@ -209,8 +209,8 @@ coverage_id = :                                        ; Unique identifier for c
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Limits
 ; ───────────────────────────────────────────────────────────────────────────────
-limit_each_claim = !##                                 ; Coverage limit per claim
-limit_aggregate = !##                                  ; Aggregate coverage limit for policy period
+limit_each_claim = ##                                 ; Coverage limit per claim
+limit_aggregate = ##                                  ; Aggregate coverage limit for policy period
 defense_within_limits = ?true                 ; Duty to defend erodes limits
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -400,7 +400,7 @@ pending_internal_complaints = ##                       ; Number of pending inter
 
 {@epli_endorsement}
 id = :                                                 ; Unique identifier for endorsement
-number = !:                                            ; Endorsement number
+number = :                                            ; Endorsement number
 title = :                                              ; Endorsement title
 effective_date = date                                  ; Effective date of endorsement
 
@@ -430,14 +430,14 @@ premium_impact = #$                                    ; Premium impact of endor
 
 {@epli_policy}
 id = :                                                 ; Unique identifier for policy
-number = !:                                            ; Policy number
+number = :                                            ; Policy number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date                                 ; Policy effective date
+effective_date = date                                 ; Policy effective date
 effective_time = time                                  ; Policy effective time
-expiration_date = !date                                ; Policy expiration date
+expiration_date = date                                ; Policy expiration date
 expiration_time = time                                 ; Policy expiration time
 :invariant expiration_date > effective_date
 
@@ -454,7 +454,7 @@ type = (
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Claims-Made Dates
 ; ───────────────────────────────────────────────────────────────────────────────
-retroactive_date = !date                               ; Retroactive date for claims-made coverage
+retroactive_date = date                               ; Retroactive date for claims-made coverage
 continuity_date = date                                 ; Continuity date from prior policy
 pending_prior_date = date                              ; Date for pending and prior litigation
 

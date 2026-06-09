@@ -54,14 +54,14 @@ changelog[0].rationale = "Core employee fields derived from FLSA, EEOC, IRS, and
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-employee_id = !:                                 ; Unique employee identifier
+employee_id = :                                 ; Unique employee identifier
 employee_number = :                              ; Employee number (may differ from ID)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Personal Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.personal}
-name = !@types.person_name                       ; Employee full name
+name = @types.person_name                       ; Employee full name
 identifiers = @types.person_identifiers          ; SSN, SIN, driver license
 demographics = @types.demographics               ; DOB, gender, marital status
 preferred_name = :                               ; Name employee prefers to use
@@ -86,9 +86,9 @@ work_phone = @types.phone                        ; Company phone/extension
 ; ───────────────────────────────────────────────────────────────────────────────
 {.emergency_contacts[]}
 :(1..)                                           ; At least one required
-name = !:                                        ; Emergency contact name
-relationship = !:                                ; Relationship to employee
-phone = !*@types.phone                           ; Primary phone (confidential)
+name = :                                        ; Emergency contact name
+relationship = :                                ; Relationship to employee
+phone = *@types.phone                           ; Primary phone (confidential)
 alternate_phone = *@types.phone                  ; Alternate phone (confidential)
 primary = ?                                      ; Primary emergency contact
 
@@ -98,7 +98,7 @@ primary = ?                                      ; Primary emergency contact
 ; Employment Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.employment}
-hire_date = !date                                ; Original hire date
+hire_date = date                                ; Original hire date
 adjusted_hire_date = date                        ; Adjusted for service credit
 rehire_date = date                               ; Most recent rehire if applicable
 probation_end_date = date                        ; End of probationary period
@@ -107,7 +107,7 @@ termination_date = date                          ; Employment end date
 expected_return_date = date                      ; Return from leave date
 
 employment_type = (full_time, part_time, seasonal, temporary)
-status = !@employment_status                     ; Current employment status
+status = @employment_status                     ; Current employment status
 
 {@employee}
 
@@ -115,7 +115,7 @@ status = !@employment_status                     ; Current employment status
 ; Position & Classification
 ; ───────────────────────────────────────────────────────────────────────────────
 {.position}
-current_position = !@position                    ; Current position details
+current_position = @position                    ; Current position details
 position_history[] = @position                   ; Historical positions
 
 {@employee}
@@ -125,7 +125,7 @@ position_history[] = @position                   ; Historical positions
 ; ───────────────────────────────────────────────────────────────────────────────
 {.compensation}
 flsa_classification = (exempt, non_exempt)      ; FLSA classification
-pay_rate = !#$:(0..)                             ; Current pay rate
+pay_rate = #$:(0..)                             ; Current pay rate
 pay_basis = (annual, biweekly, daily, hourly, monthly, weekly)
 pay_frequency = (biweekly, monthly, semi_monthly, weekly)
 pay_grade = :                                    ; Pay grade or level
@@ -170,18 +170,18 @@ local_withholding[] = @local_tax_withholding     ; Local withholding certificate
 ; ───────────────────────────────────────────────────────────────────────────────
 {.work_authorization}
 citizenship_status = (citizen, lawful_permanent_resident, non_citizen_national, work_authorized_alien)
-i9_completed_date = !date                        ; Date I-9 Section 1 completed
-i9_verified_date = !date                         ; Date employer verified (Section 2)
-i9_verified_by = !:                              ; Name of person who verified
+i9_completed_date = date                        ; Date I-9 Section 1 completed
+i9_verified_date = date                         ; Date employer verified (Section 2)
+i9_verified_by = :                              ; Name of person who verified
 i9_reverification_date = date                    ; Next reverification date if needed
 work_authorization_expiration = date             ; Authorization expiration
 
 ; Document verification (List A, List B, or List C)
 {.i9_documents[]}
 list = (list_a, list_b, list_c)                 ; USCIS document list
-document_type = !:                               ; Document type/title
-issuing_authority = !:                           ; Issuing organization
-document_number = !*:                            ; Document number (confidential)
+document_type = :                               ; Document type/title
+issuing_authority = :                           ; Issuing organization
+document_number = *:                            ; Document number (confidential)
 expiration_date = date                           ; Document expiration
 
 {@employee}
@@ -215,7 +215,7 @@ notes = :                                        ; General employee notes
 
 {@employment_status}
 status = (active, leave_of_absence, retired, suspended, terminated)
-status_date = !date                              ; Date of status change
+status_date = date                              ; Date of status change
 effective_date = date                            ; When status takes effect
 reason = :                                       ; Reason for status
 changed_by = :                                   ; Who changed the status
@@ -236,15 +236,15 @@ final_work_date = date:if status = terminated
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@position}
-position_id = !:                                 ; Position identifier
-position_title = !:                              ; Job title
+position_id = :                                 ; Position identifier
+position_title = :                              ; Job title
 job_code = :                                     ; Job classification code
-department = !:                                  ; Department name
+department = :                                  ; Department name
 division = :                                     ; Division or business unit
 location = :                                     ; Work location
 cost_center = :                                  ; Cost center code
 reports_to_employee_id = :                       ; Manager employee ID
-position_start_date = !date                      ; Date in this position
+position_start_date = date                      ; Date in this position
 position_end_date = date                         ; Date left this position
 fte = #:(0..1)                                   ; Full-time equivalent (0.0 to 1.0)
 
@@ -253,8 +253,8 @@ fte = #:(0..1)                                   ; Full-time equivalent (0.0 to 
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@state_tax_withholding}
-state = !:(2)                                    ; State code
-filing_status = !:                               ; State-specific filing status
+state = :(2)                                    ; State code
+filing_status = :                               ; State-specific filing status
 allowances = ##                                  ; State withholding allowances
 exemptions = ##                                  ; Number of exemptions
 additional_withholding = #$                      ; Additional withholding amount
@@ -266,7 +266,7 @@ form_date = date                                 ; Date state form received
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@local_tax_withholding}
-locality = !:                                    ; Local jurisdiction name
+locality = :                                    ; Local jurisdiction name
 locality_code = :                                ; Local jurisdiction code
 filing_status = :                                ; Local filing status
 allowances = ##                                  ; Local withholding allowances

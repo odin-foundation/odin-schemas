@@ -49,8 +49,8 @@ changelog[0].rationale = "Comprehensive carrier types with regulatory compliance
 
 {@carrier_base}
 ; Required fields first
-carrier_id = !:                                      ; Unique carrier identifier
-name = !:                                            ; Legal business name
+carrier_id = :                                      ; Unique carrier identifier
+name = :                                            ; Legal business name
 type = (air, motor, ocean, parcel, rail)            ; Carrier type
 
 ; Optional fields
@@ -74,7 +74,7 @@ status_date = date                                   ; Status effective date
 
 {@motor_carrier_authority}
 ; Required fields first
-dot_number = !:                                      ; USDOT number
+dot_number = :                                      ; USDOT number
 mc_number = :                                        ; MC (Motor Carrier) number
 
 ; Optional fields
@@ -139,7 +139,7 @@ authority_revoked = date                             ; Authority revoked date
 
 {@motor_carrier_insurance}
 ; Required fields first
-required_amount = !#$:(0..)                          ; Required insurance amount
+required_amount = #$:(0..)                          ; Required insurance amount
 
 ; Optional fields
 on_file = ?                                          ; Insurance on file with FMCSA
@@ -247,10 +247,10 @@ tsa_certified = ?                                    ; TSA certified
 
 {@lane}
 ; Required fields first
-origin_city = !:                                     ; Origin city
-origin_state = !:(2)                                 ; Origin state/province
-destination_city = !:                                ; Destination city
-destination_state = !:(2)                            ; Destination state/province
+origin_city = :                                     ; Origin city
+origin_state = :(2)                                 ; Origin state/province
+destination_city = :                                ; Destination city
+destination_state = :(2)                            ; Destination state/province
 
 ; Optional fields
 origin_postal = :                                    ; Origin postal code
@@ -329,7 +329,7 @@ states_served[] = :(2)                               ; States served
 
 {@vessel}
 ; Required fields first
-vessel_name = !:                                     ; Vessel name
+vessel_name = :                                     ; Vessel name
 imo_number = :(7)                                    ; IMO number
 
 ; Optional fields
@@ -365,7 +365,7 @@ service_speed_knots = #:(0..)                        ; Service speed in knots
 
 {@ocean_service}
 ; Required fields first
-service_name = !:                                    ; Service name/route code
+service_name = :                                    ; Service name/route code
 
 ; Optional fields
 service_type = (direct, feeder, relay, transshipment)
@@ -433,8 +433,8 @@ container_types[] = (
 
 {@aircraft}
 ; Required fields first
-registration = !:                                    ; Aircraft registration number
-aircraft_type = !:                                   ; Aircraft model
+registration = :                                    ; Aircraft registration number
+aircraft_type = :                                   ; Aircraft model
 
 ; Optional fields
 manufacturer = :                                     ; Manufacturer
@@ -451,9 +451,9 @@ uld_positions = ##:(0..)                             ; ULD positions available
 
 {@air_schedule}
 ; Required fields first
-flight_number = !:                                   ; Flight number
-origin_airport = !:(3)                               ; Origin airport code (IATA)
-destination_airport = !:(3)                          ; Destination airport code
+flight_number = :                                   ; Flight number
+origin_airport = :(3)                               ; Origin airport code (IATA)
+destination_airport = :(3)                          ; Destination airport code
 
 ; Optional fields
 departure_day = (friday, monday, saturday, sunday, thursday, tuesday, wednesday)
@@ -513,9 +513,9 @@ uld_types[] = (
 
 {@parcel_zone}
 ; Required fields first
-origin_postal = !:                                   ; Origin postal code
-destination_postal = !:                              ; Destination postal code
-zone = !:                                            ; Zone identifier
+origin_postal = :                                   ; Origin postal code
+destination_postal = :                              ; Destination postal code
+zone = :                                            ; Zone identifier
 
 ; Optional fields
 transit_days = ##:(0..)                              ; Transit days for zone

@@ -43,30 +43,30 @@ changelog[0].rationale = "Structure derived from CMS-1500 form layout and instru
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Claim Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-claim_id = !:                                 ; Unique claim identifier
+claim_id = :                                 ; Unique claim identifier
 original_claim_id = :                         ; Original claim (for adjustments)
-claim_frequency = !(adjustment, original, replacement, void)
+claim_frequency = (adjustment, original, replacement, void)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Payer Information (CMS-1500 Items 1-4, 9, 11)
 ; ───────────────────────────────────────────────────────────────────────────────
-payer = !@claims.payer                        ; Primary payer
+payer = @claims.payer                        ; Primary payer
 secondary_payer = @claims.payer               ; Secondary payer (if applicable)
 
 ; Insurance type (Item 1)
-insurance_type = !(champus, champva, feca, group_health, medicaid, medicare, other)
+insurance_type = (champus, champva, feca, group_health, medicaid, medicare, other)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Subscriber/Insured Information (CMS-1500 Items 1a, 4, 7, 11)
 ; ───────────────────────────────────────────────────────────────────────────────
-subscriber = !@claims.subscriber              ; Subscriber (insured person)
+subscriber = @claims.subscriber              ; Subscriber (insured person)
 subscriber_employer = :                       ; Subscriber employer (Item 11b)
 subscriber_insurance_plan = :                 ; Insurance plan name (Item 11c)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Patient Information (CMS-1500 Items 2, 3, 5, 6, 8)
 ; ───────────────────────────────────────────────────────────────────────────────
-patient = !@claims.subscriber                 ; Patient (may differ from subscriber)
+patient = @claims.subscriber                 ; Patient (may differ from subscriber)
 
 ; Patient condition (Items 10a-c)
 {.condition}
@@ -120,7 +120,7 @@ service_lines[] = @claims.service_line        ; Service line items
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Billing Provider (CMS-1500 Items 25, 32, 33)
 ; ───────────────────────────────────────────────────────────────────────────────
-billing_provider = !@claims.provider          ; Billing provider/supplier
+billing_provider = @claims.provider          ; Billing provider/supplier
 service_facility = @claims.provider           ; Service facility (if different)
 accept_assignment = ?                         ; Accept assignment (Item 27)
 
@@ -128,7 +128,7 @@ accept_assignment = ?                         ; Accept assignment (Item 27)
 ; Charges and Payment (CMS-1500 Items 28, 29)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.totals}
-total_charges = !#$:(0..)                     ; Total charges (Item 28)
+total_charges = #$:(0..)                     ; Total charges (Item 28)
 amount_paid = #$:(0..)                        ; Amount paid by other payer (Item 29)
 balance_due = #$:(0..)                        ; Balance due
 
@@ -163,15 +163,15 @@ status_history[] = @claims.claim_status       ; Status history
 
 {@remittance}
 ; Remittance identification
-remittance_id = !:                            ; Unique remittance identifier
+remittance_id = :                            ; Unique remittance identifier
 check_number = :                              ; Check/EFT number
-remittance_date = !date                       ; Remittance date
+remittance_date = date                       ; Remittance date
 
 ; Payer
-payer = !@claims.payer                        ; Payer issuing remittance
+payer = @claims.payer                        ; Payer issuing remittance
 
 ; Provider (payee)
-payee = !@claims.provider                     ; Provider receiving payment
+payee = @claims.provider                     ; Provider receiving payment
 
 ; Totals
 {.totals}
@@ -188,9 +188,9 @@ total_other_adjustments = #$:(0..)            ; Total other adjustments
 claim_payments[] = @claim_payment             ; Individual claim payments
 
 {@claim_payment}
-claim_id = !:                                 ; Original claim ID
-patient = !@claims.subscriber                 ; Patient
-claim_status = !(denied, paid, primary_forwarded)
+claim_id = :                                 ; Original claim ID
+patient = @claims.subscriber                 ; Patient
+claim_status = (denied, paid, primary_forwarded)
 claim_filing_indicator = :                    ; Claim filing indicator
 
 ; Amounts
@@ -209,7 +209,7 @@ adjustments[] = @claims.adjustment            ; Claim-level adjustments
 service_line_payments[] = @service_line_payment  ; Line-level payments
 
 {@service_line_payment}
-line_number = !##:(1..)                       ; Service line number
+line_number = ##:(1..)                       ; Service line number
 procedure = @claims.procedure                 ; Procedure code
 service_date = date                           ; Date of service
 

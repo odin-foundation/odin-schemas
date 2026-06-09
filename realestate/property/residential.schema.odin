@@ -49,8 +49,8 @@ changelog[0].rationale = "Comprehensive property structure for residential trans
 
 {@residential_property}
 ; Required fields first
-address = !@address                               ; Property physical address
-property_type = !(condominium, cooperative, manufactured, multi_family, pud, single_family_attached, single_family_detached)
+address = @address                               ; Property physical address
+property_type = (condominium, cooperative, manufactured, multi_family, pud, single_family_attached, single_family_detached)
 
 ; Property identification
 property_id = :                                   ; Unique property identifier
@@ -307,7 +307,7 @@ gross_rental_income = #$:(0..):if property_type = multi_family  ; Monthly gross 
 vacancy_rate = #:(0..100):if property_type = multi_family  ; Current vacancy rate
 
 {@residential_property.multifamily.units[]}
-unit_number = !:                                  ; Unit identifier
+unit_number = :                                  ; Unit identifier
 bedrooms = ##:(0..)                               ; Bedrooms in unit
 bathrooms = #:(0..)                               ; Bathrooms in unit
 sqft = ##:(0..)                                   ; Unit square feet

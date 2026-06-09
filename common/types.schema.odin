@@ -27,10 +27,10 @@ changelog[1].change = "Added shared types: @coverage_limit, @status_record, @lic
 
 {@address}
 ; Required fields first
-line1 = !:                                       ; Primary street address
-city = !:                                        ; City or municipality name
-state_province = !:(2)                           ; US state or CA province code (ISO 3166-2)
-postal_code = !:                                 ; ZIP/ZIP+4 (US) or postal code (CA)
+line1 = :                                       ; Primary street address
+city = :                                        ; City or municipality name
+state_province = :(2)                           ; US state or CA province code (ISO 3166-2)
+postal_code = :                                 ; ZIP/ZIP+4 (US) or postal code (CA)
 
 ; Optional fields
 country = :(2..3) "US"                           ; ISO 3166 country code
@@ -59,8 +59,8 @@ type = (billing, both, garaging, mailing, physical)  ; Address purpose
 
 {@phone}
 ; Required fields first
-number = !:format phone                          ; Phone number (format validated)
-type = !(cell, fax, home, main, other, work)     ; Phone line type
+number = :format phone                          ; Phone number (format validated)
+type = (cell, fax, home, main, other, work)     ; Phone line type
 
 ; Optional fields
 extension = :                                    ; Extension for business lines
@@ -73,8 +73,8 @@ primary = ?                                      ; Primary contact number flag
 
 {@email}
 ; Required fields first
-address = !:format email                         ; Email address (format validated)
-type = !(other, personal, work)                  ; Email account type
+address = :format email                         ; Email address (format validated)
+type = (other, personal, work)                  ; Email account type
 
 ; Optional fields
 primary = ?                                      ; Primary email flag
@@ -86,7 +86,7 @@ primary = ?                                      ; Primary email flag
 
 {@money}
 ; Required fields first
-amount = !#$                                     ; Currency amount
+amount = #$                                     ; Currency amount
 
 ; Optional fields
 currency = :(3) "USD"                            ; ISO 4217 currency code
@@ -98,8 +98,8 @@ currency = :(3) "USD"                            ; ISO 4217 currency code
 
 {@person_name}
 ; Required fields first
-first = !:                                       ; First/given name
-last = !:                                        ; Last/family name
+first = :                                       ; First/given name
+last = :                                        ; Last/family name
 
 ; Optional fields
 full = :computed                                 ; Full name (derived from first + last)
@@ -127,8 +127,8 @@ passports[] = {@passport}                        ; Passports (dual/multi-citizen
 tax_id = *:                                      ; EIN (US), BN (CA), or SSN/SIN
 
 {@drivers_license}
-number = !*:                                     ; Driver license number (confidential)
-state_province = !:(2)                           ; US state or CA province of issuance
+number = *:                                     ; Driver license number (confidential)
+state_province = :(2)                           ; US state or CA province of issuance
 issued = date                                    ; Issue date
 expiration = date                                ; Expiration date
 class = :                                        ; License class (A, B, C, CDL, etc.)
@@ -136,8 +136,8 @@ class = :                                        ; License class (A, B, C, CDL, 
 {@person_identifiers}
 
 {@passport}
-number = !*:                                     ; Passport number (confidential)
-country = !:(2..3)                               ; Country of passport issuance
+number = *:                                     ; Passport number (confidential)
+country = :(2..3)                               ; Country of passport issuance
 issued = date                                    ; Issue date
 expiration = date                                ; Expiration date
 
@@ -150,7 +150,7 @@ expiration = date                                ; Expiration date
 
 {@demographics}
 ; Required fields first
-date_of_birth = !*date                           ; Birth date (confidential PII)
+date_of_birth = *date                           ; Birth date (confidential PII)
 
 ; Optional fields
 gender = (female, male, non_binary)
@@ -163,8 +163,8 @@ marital_status = (common_law, divorced, domestic_partner, married, single, widow
 
 {@date_range}
 ; Required fields first
-start = !date:immutable                          ; Range start date (immutable once set)
-end = !date:immutable                            ; Range end date (immutable once set)
+start = date:immutable                          ; Range start date (immutable once set)
+end = date:immutable                            ; Range end date (immutable once set)
 
 :invariant end >= start                          ; End must be after start
 
@@ -175,8 +175,8 @@ end = !date:immutable                            ; Range end date (immutable onc
 
 {@effective_period}
 ; Required fields first
-effective = !date                                ; Coverage start date
-expiration = !date                               ; Coverage end date
+effective = date                                ; Coverage start date
+expiration = date                               ; Coverage end date
 
 ; Optional fields
 effective_time = time                            ; Start time if not midnight
@@ -191,8 +191,8 @@ expiration_time = time                           ; End time if not midnight
 
 {@identifier}
 ; Required fields first
-type = !:                                        ; Identifier type name
-value = !:                                       ; Identifier value
+type = :                                        ; Identifier type name
+value = :                                       ; Identifier value
 
 ; Optional fields
 expiration = date                                ; Expiration date if applicable
@@ -206,7 +206,7 @@ issuer = :                                       ; Issuing authority
 
 {@reference_id}
 ; Required fields first
-id = !:                                          ; Reference identifier value
+id = :                                          ; Reference identifier value
 
 ; Optional fields
 system = :                                       ; Source system name
@@ -219,7 +219,7 @@ type = :                                         ; Reference type classification
 
 {@timestamps}
 ; Required fields first
-created = !timestamp                             ; Record creation timestamp
+created = timestamp                             ; Record creation timestamp
 
 ; Optional fields
 modified = timestamp                             ; Last modification timestamp
@@ -231,7 +231,7 @@ modified = timestamp                             ; Last modification timestamp
 
 {@audit_info}
 ; Required fields first
-created = !timestamp                             ; Record creation timestamp
+created = timestamp                             ; Record creation timestamp
 
 ; Optional fields
 created_by = :                                   ; User who created record
@@ -257,7 +257,7 @@ phones[] = *@phone                               ; Phone numbers (multiple)
 
 {@document_reference}
 ; Required fields first
-document_id = !:                                 ; Document identifier
+document_id = :                                 ; Document identifier
 
 ; Optional fields
 document_type = :                                ; Type/category of document
@@ -275,7 +275,7 @@ description = :                                  ; Document description
 
 {@coverage_limit}
 ; Required fields first
-amount = !#$:(0..)                               ; Limit amount
+amount = #$:(0..)                               ; Limit amount
 
 ; Optional fields
 type = (aggregate, combined_single, occurrence, per_accident, per_claim, per_person, split)
@@ -290,7 +290,7 @@ description = :                                  ; Limit description
 
 {@deductible}
 ; Required fields first
-amount = !#$:(0..)                               ; Deductible amount
+amount = #$:(0..)                               ; Deductible amount
 
 ; Optional fields
 type = (aggregate, disappearing, flat, percentage, split, straight)
@@ -306,7 +306,7 @@ waiver_reason = :                                ; Reason for waiver
 
 {@premium_detail}
 ; Required fields first
-amount = !#$:(0..)                               ; Premium amount
+amount = #$:(0..)                               ; Premium amount
 
 ; Optional fields
 basis = (annual, monthly, quarterly, semi_annual)
@@ -322,7 +322,7 @@ fully_earned = ?                                 ; Fully earned at inception
 
 {@sublimit}
 ; Required fields first
-amount = !#$:(0..)                               ; Sublimit amount
+amount = #$:(0..)                               ; Sublimit amount
 
 ; Optional fields
 applies_to = :                                   ; What sublimit covers
@@ -337,7 +337,7 @@ remaining = #$:(0..)                             ; Remaining sublimit amount
 
 {@status_record}
 ; Required fields first
-status = !:                                      ; Status value (domain-specific enum)
+status = :                                      ; Status value (domain-specific enum)
 
 ; Optional fields
 status_date = date                               ; Date of status change
@@ -353,7 +353,7 @@ changed_by = :                                   ; Who changed the status
 
 {@license_credential}
 ; Required fields first
-number = !*:                                     ; License/credential number (confidential)
+number = *:                                     ; License/credential number (confidential)
 
 ; Optional fields
 type = :                                         ; License type
@@ -371,7 +371,7 @@ issuing_authority = :                            ; Issuing organization
 
 {@rating_classification}
 ; Required fields first
-class_code = !:                                  ; Classification code
+class_code = :                                  ; Classification code
 
 ; Optional fields
 class_description = :                            ; Class description
@@ -405,7 +405,7 @@ best_time_to_call = :                            ; Best time to contact
 
 {@loss_occurrence}
 ; Required fields first
-date = !date                                     ; Date of loss
+date = date                                     ; Date of loss
 
 ; Optional fields
 reported_date = date                             ; Date loss was reported
@@ -423,7 +423,7 @@ reported_method = (agent, email, online, phone)  ; How loss was reported
 
 {@underwriting_decision}
 ; Required fields first
-status = !(accepted, declined, pending, referred, withdrawn)
+status = (accepted, declined, pending, referred, withdrawn)
 
 ; Optional fields
 decision_date = date                             ; Date of decision
@@ -442,8 +442,8 @@ referral_reason = :                              ; Why referred to underwriter
 
 {@enrollment_period}
 ; Required fields first
-effective = !date                                ; Period start date
-expiration = !date                               ; Period end date
+effective = date                                ; Period start date
+expiration = date                               ; Period end date
 
 ; Optional fields
 status = (active, cancelled, expired, pending, terminated)
@@ -460,7 +460,7 @@ termination_code = :                             ; Standardized termination code
 
 {@territory}
 ; Required fields first
-code = !:                                        ; Territory code
+code = :                                        ; Territory code
 
 ; Optional fields
 description = :                                  ; Territory description
@@ -476,7 +476,7 @@ protection_class = ##:(1..10)                    ; Fire protection class
 
 {@payment}
 ; Required fields first
-amount = !#$:(0..)                               ; Payment amount
+amount = #$:(0..)                               ; Payment amount
 
 ; Optional fields
 date = date                                      ; Payment date
@@ -493,8 +493,8 @@ confirmation = :                                 ; Confirmation number
 
 {@base_account}
 ; Required fields first
-account_id = !:                                  ; Unique account identifier
-account_number = !*:                             ; Account number (confidential)
+account_id = :                                  ; Unique account identifier
+account_number = *:                             ; Account number (confidential)
 
 ; Optional fields
 account_name = :                                 ; Account name
@@ -527,7 +527,7 @@ primary = ?                                      ; Primary contact flag
 = @audit_info
 
 ; Required fields first
-equipment_id = !:                                ; Unique equipment identifier
+equipment_id = :                                ; Unique equipment identifier
 
 ; Optional identification
 equipment_name = :                               ; Equipment name/description
@@ -535,7 +535,7 @@ equipment_type = :                               ; Equipment type/category
 serial_numbers[] = {@equipment_serial}           ; Serial numbers (multiple: manufacturer, asset tag, fleet)
 
 {@equipment_serial}
-number = !*:                                     ; Serial/ID number (confidential)
+number = *:                                     ; Serial/ID number (confidential)
 type = (asset_tag, fleet_number, manufacturer, registration, vin)  ; Type of identifier
 
 {@base_equipment}
@@ -566,8 +566,8 @@ next_maintenance = date                          ; Next scheduled maintenance
 
 {@base_maintenance}
 ; Required fields first
-maintenance_id = !:                              ; Unique maintenance record ID
-equipment_ref = !:                               ; Reference to equipment
+maintenance_id = :                              ; Unique maintenance record ID
+equipment_ref = :                               ; Reference to equipment
 
 ; Maintenance details
 maintenance_type = (breakdown, calibration, inspection, overhaul, preventive, repair)
@@ -597,8 +597,8 @@ next_due = date                                  ; Next maintenance due
 
 {@base_lot}
 ; Required fields first
-lot_id = !:                                      ; Unique lot/batch identifier
-lot_number = !:                                  ; Lot/batch number
+lot_id = :                                      ; Unique lot/batch identifier
+lot_number = :                                  ; Lot/batch number
 
 ; Optional fields
 product_ref = :                                  ; Product reference
@@ -627,8 +627,8 @@ hold_reason = :                                  ; Reason for hold/quarantine
 
 {@base_outage}
 ; Required fields first
-outage_id = !:                                   ; Unique outage identifier
-start_time = !timestamp                          ; Outage start time
+outage_id = :                                   ; Unique outage identifier
+start_time = timestamp                          ; Outage start time
 
 ; Optional fields
 end_time = timestamp                             ; Outage end time (null if ongoing)
@@ -659,8 +659,8 @@ restored_time = timestamp                        ; Service restoration time
 
 {@base_work_order}
 ; Required fields first
-work_order_id = !:                               ; Unique work order identifier
-work_order_number = !:                           ; Work order number
+work_order_id = :                               ; Unique work order identifier
+work_order_number = :                           ; Work order number
 
 ; Optional fields
 work_order_type = :                              ; Type of work order
@@ -684,14 +684,14 @@ instructions[] = :                               ; Work instructions (multiple s
 notes[] = {@work_note}                           ; Notes/comments (multiple)
 
 {@work_assignment}
-assigned_to = !:                                 ; Technician/team name or ID
+assigned_to = :                                 ; Technician/team name or ID
 role = :                                         ; Assignment role (primary, secondary, specialist)
 assigned_date = date                             ; Date of assignment
 
 {@base_work_order}
 
 {@work_note}
-note = !:                                        ; Note content
+note = :                                        ; Note content
 author = :                                       ; Note author
 timestamp = timestamp                            ; When note was added
 
@@ -713,7 +713,7 @@ actual_cost = #$:(0..)                           ; Actual cost
 
 {@base_product}
 ; Required fields first
-product_id = !:                                  ; Unique product identifier
+product_id = :                                  ; Unique product identifier
 
 ; Identification
 sku = :                                          ; Stock keeping unit
@@ -733,7 +733,7 @@ categories[] = {@product_category}               ; Product categories (multiple)
 product_type = :                                 ; Product type
 
 {@product_category}
-category = !:                                    ; Category name
+category = :                                    ; Category name
 subcategory = :                                  ; Subcategory name
 primary = ?                                      ; Primary category flag
 
@@ -758,8 +758,8 @@ dimension_unit = (cm, in, m)                     ; Dimension unit
 
 {@base_course}
 ; Required fields first
-course_id = !:                                   ; Unique course identifier
-course_code = !:                                 ; Course code
+course_id = :                                   ; Unique course identifier
+course_code = :                                 ; Course code
 
 ; Description
 course_name = :                                  ; Course name/title

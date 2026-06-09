@@ -41,7 +41,7 @@ carrier_id = :
 ; DOT Registration
 {.dot}
 last_update = date
-number = !:                                    ; USDOT number (7-8 digits)
+number = :                                    ; USDOT number (7-8 digits)
 registration_date = date
 status = (active, inactive, not_authorized, out_of_service)
 
@@ -56,7 +56,7 @@ type = (FF, MC, MX)                            ; MC=carrier, MX=broker, FF=freig
 {@motor_carrier}
 
 ; Carrier Classification (per FMCSA)
-carrier_type = !(
+carrier_type = (
     exempt_for_hire,                           ; Exempt for-hire
     federal_government,                        ; Federal government
     for_hire_passenger,                        ; For-hire passenger carrier
@@ -74,7 +74,7 @@ authorized_states[] = :(2)                     ; States authorized to operate
 operation_type = (both, interstate, intrastate)
 
 ; Entity Type
-business_name = !:
+business_name = :
 dba_name = :
 ein = *:(9)                                    ; Employer Identification Number (confidential)
 entity_type = (corporation, llc, other, partnership, sole_proprietor)
@@ -100,7 +100,7 @@ same_as_principal = ?                          ; Mailing same as principal addre
 
 {@fmcsa_filing}
 filing_id = :
-filing_type = !(
+filing_type = (
     BMC_34,                                    ; Motor Carrier Cargo Insurance
     BMC_83,                                    ; Motor Carrier Surety Bond (cargo)
     BMC_84,                                    ; Broker Surety Bond
@@ -111,7 +111,7 @@ filing_type = !(
     MCS_82,                                    ; Motor Carrier Surety Bond
     MCS_90                                     ; Motor Carrier Endorsement
 )
-effective_date = !date
+effective_date = date
 
 ; Filing Details
 acceptance_date = date
@@ -225,7 +225,7 @@ zone_id = :
 zone_name = :
 
 ; Radius Classification
-radius_type = !(
+radius_type = (
     intermediate,                              ; 50-200 miles
     local,                                     ; < 50 miles from terminal
     long_haul,                                 ; > 500 miles
@@ -252,7 +252,7 @@ zone_factor = #:(0..10)
 {@commodity}
 commodity_id = :
 sequence = ##:(1..)
-commodity_class = !(
+commodity_class = (
     agricultural_equipment,
     beverages,
     building_materials,

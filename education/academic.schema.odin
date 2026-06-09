@@ -51,8 +51,8 @@ changelog[0].rationale = "Core academic records including courses, grades, trans
 
 {@course}
 ; Required fields first
-course_code = !:                                     ; Course identifier/number
-title = !:                                           ; Course title
+course_code = :                                     ; Course identifier/number
+title = :                                           ; Course title
 
 ; Optional fields
 description = :                                      ; Course description
@@ -97,9 +97,9 @@ max_repeats = ##:(0..)                               ; Maximum repeat count
 
 {@course_section}
 ; Required fields first
-section_id = !:                                      ; Section identifier
-course_code = !:                                     ; Course code (reference)
-academic_term = !:                                   ; Term/semester
+section_id = :                                      ; Section identifier
+course_code = :                                     ; Course code (reference)
+academic_term = :                                   ; Term/semester
 
 ; Optional fields
 section_number = :                                   ; Section number
@@ -158,9 +158,9 @@ room = :                                             ; Room number
 
 {@course_enrollment}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-section_id = !:                                      ; Section identifier
-enrollment_date = !date                              ; Date enrolled
+student_id = *:                                     ; Student identifier
+section_id = :                                      ; Section identifier
+enrollment_date = date                              ; Date enrolled
 
 ; Optional fields
 status = (add, audit, complete, drop, enrolled, incomplete, in_progress, withdrawn)
@@ -187,9 +187,9 @@ credits_attempted = #:(0..)                          ; Credits attempted
 
 {@grade}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-course_code = !:                                     ; Course code
-academic_term = !:                                   ; Term/semester
+student_id = *:                                     ; Student identifier
+course_code = :                                     ; Course code
+academic_term = :                                   ; Term/semester
 
 ; Optional fields
 section_id = :                                       ; Section identifier
@@ -225,7 +225,7 @@ effective_date = date                                ; Date grade effective
 
 {@gpa_summary}
 ; Required fields first
-gpa = !#:(0..4)                                      ; Grade point average
+gpa = #:(0..4)                                      ; Grade point average
 
 ; Optional fields
 gpa_unweighted = #:(0..4)                            ; Unweighted GPA
@@ -245,8 +245,8 @@ calculation_date = date                              ; Date calculated
 
 {@transcript}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-issue_date = !date                                   ; Transcript issue date
+student_id = *:                                     ; Student identifier
+issue_date = date                                   ; Transcript issue date
 status = (final, interim, official, unofficial)
 
 ; Optional fields
@@ -287,8 +287,8 @@ verification_code = :                                ; Verification code
 
 {@degree_requirements}
 ; Required fields first
-degree_type = !:                                     ; Degree type
-program = !:                                         ; Program/major
+degree_type = :                                     ; Degree type
+program = :                                         ; Program/major
 
 ; Optional fields
 catalog_year = :                                     ; Catalog year for requirements
@@ -316,9 +316,9 @@ internship_required = ?                              ; Internship required
 
 {@degree_conferral}
 ; Required fields first
-student_id = !*:                                     ; Student identifier
-degree_type = !:                                     ; Degree type
-conferral_date = !date                               ; Degree awarded date
+student_id = *:                                     ; Student identifier
+degree_type = :                                     ; Degree type
+conferral_date = date                               ; Degree awarded date
 
 ; Optional fields
 degree_title = :                                     ; Degree title
@@ -348,8 +348,8 @@ completion_date = date                               ; Degree requirements compl
 
 {@academic_honor}
 ; Required fields first
-honor_type = !:                                      ; Honor/award type
-title = !:                                           ; Honor title
+honor_type = :                                      ; Honor/award type
+title = :                                           ; Honor title
 
 ; Optional fields
 description = :                                      ; Honor description

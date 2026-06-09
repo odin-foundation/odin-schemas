@@ -42,15 +42,15 @@ changelog[0].rationale = "Corporate, partnership, S-corp, nonprofit, and estate/
 {@form_1120}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 calendar_year = ?
 fiscal_year_begin = date:if calendar_year = false
 fiscal_year_end = date:if calendar_year = false
 
 ; Corporation Information
-corporation_name = !:
-ein = !:format ein
-business_address = !@address
+corporation_name = :
+ein = :format ein
+business_address = @address
 date_incorporated = date
 business_activity_codes[] = ##:(100000..999999)       ; NAICS codes (multi-segment operations)
 total_assets = #$:(0..)
@@ -97,8 +97,8 @@ total_deductions = #$:(0..)
 
 {@form_1120}
 ; Tax Computation
-taxable_income = !#$
-income_tax = !#$:(0..)
+taxable_income = #$
+income_tax = #$:(0..)
 alternative_minimum_tax = #$
 base_erosion_minimum_tax = #$
 total_tax = #$:(0..)
@@ -111,8 +111,8 @@ credit_prior_year_minimum_tax = #$:(0..)
 total_credits = #$:(0..)
 
 {@foreign_tax_credit}
-country = !:(2..3)                                   ; Country code
-amount = !#$:(0..)                                   ; Credit amount
+country = :(2..3)                                   ; Country code
+amount = #$:(0..)                                   ; Credit amount
 
 {@form_1120}
 
@@ -124,12 +124,12 @@ withholdings[] = {@withholding_payment}             ; Multiple withholding sourc
 total_payments = #$:(0..)
 
 {@tax_payment}
-date = !date                                         ; Payment date
-amount = !#$:(0..)                                   ; Payment amount
+date = date                                         ; Payment date
+amount = #$:(0..)                                   ; Payment amount
 
 {@withholding_payment}
 payer = :                                            ; Withholding agent
-amount = !#$:(0..)                                   ; Withheld amount
+amount = #$:(0..)                                   ; Withheld amount
 
 {@form_1120}
 
@@ -147,20 +147,20 @@ amount_owed = #$
 {@form_1120s}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 calendar_year = ?
 fiscal_year_begin = date:if calendar_year = false
 fiscal_year_end = date:if calendar_year = false
 
 ; S Corporation Information
-corporation_name = !:
-ein = !:format ein
-business_address = !@address
+corporation_name = :
+ein = :format ein
+business_address = @address
 date_incorporated = date
 s_election_effective_date = date
 business_activity_codes[] = ##:(100000..999999)      ; NAICS codes (multi-segment operations)
 total_assets = #$:(0..)
-number_shareholders = !##:(1..100)
+number_shareholders = ##:(1..100)
 
 ; Income
 {.income}
@@ -192,7 +192,7 @@ total_deductions = #$:(0..)
 
 {@form_1120s}
 ; Ordinary Business Income
-ordinary_business_income_loss = !#$
+ordinary_business_income_loss = #$
 
 ; Tax and Payments
 {.tax}
@@ -202,8 +202,8 @@ tax_deposits[] = {@tax_deposit}                      ; Tax deposits (multiple pe
 total_tax = #$
 
 {@tax_deposit}
-date = !date                                         ; Deposit date
-amount = !#$:(0..)                                   ; Deposit amount
+date = date                                         ; Deposit date
+amount = #$:(0..)                                   ; Deposit amount
 
 {@form_1120s}
 
@@ -220,18 +220,18 @@ amount_owed = #$
 {@form_1065}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 calendar_year = ?
 fiscal_year_begin = date:if calendar_year = false
 fiscal_year_end = date:if calendar_year = false
 
 ; Partnership Information
-partnership_name = !:
-ein = !:format ein
-business_address = !@address
+partnership_name = :
+ein = :format ein
+business_address = @address
 business_activity_codes[] = ##:(100000..999999)      ; NAICS codes (multi-segment operations)
-number_partners = !##:(2..)
-domestic_partnership = !?
+number_partners = ##:(2..)
+domestic_partnership = ?
 
 ; Accounting Method
 accounting_method = (accrual, cash, other)
@@ -255,9 +255,9 @@ salaries_wages = #$:(0..)
 guaranteed_payments[] = {@guaranteed_payment}        ; Payments to partners
 
 {@guaranteed_payment}
-partner_name = !:                                    ; Partner name
-partner_ein_ssn = !*:                                ; Partner TIN
-amount = !#$:(0..)                                   ; Payment amount
+partner_name = :                                    ; Partner name
+partner_ein_ssn = *:                                ; Partner TIN
+amount = #$:(0..)                                   ; Payment amount
 type = (capital, services)                           ; Payment type
 
 {@form_1065}
@@ -275,7 +275,7 @@ total_deductions = #$:(0..)
 
 {@form_1065}
 ; Ordinary Business Income
-ordinary_business_income_loss = !#$
+ordinary_business_income_loss = #$
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; SCHEDULE K-1 - Partner's/Shareholder's Share of Income, Deductions, Credits
@@ -284,29 +284,29 @@ ordinary_business_income_loss = !#$
 {@schedule_k1}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 entity_type = (form_1065_partnership, form_1120s_s_corp, form_1041_estate_trust)
 final_k1 = ?
 amended_k1 = ?
 
 ; Entity Information
-entity_name = !:
-entity_ein = !:format ein
+entity_name = :
+entity_ein = :format ein
 entity_address = @address
 
 ; Partner/Shareholder/Beneficiary Information
 {.recipient}
-name = !:
-ssn_ein = !*:                                        ; SSN or EIN
+name = :
+ssn_ein = *:                                        ; SSN or EIN
 address = @address
 domestic = ?
 ownership_changes[] = {@k1_ownership}                ; Ownership history (mid-year changes)
 
 {@k1_ownership}
-effective_date = !date                               ; Date of change
-profit_share = !#:(0..100)                           ; Profit percentage
-loss_share = !#:(0..100)                             ; Loss percentage
-capital_share = !#:(0..100)                          ; Capital percentage
+effective_date = date                               ; Date of change
+profit_share = #:(0..100)                           ; Profit percentage
+loss_share = #:(0..100)                             ; Loss percentage
+capital_share = #:(0..100)                          ; Capital percentage
 
 {@schedule_k1}
 
@@ -359,7 +359,7 @@ net_earnings_loss_from_self_employment = #$
 foreign_activities[] = {@k1_foreign}                 ; Foreign income by country
 
 {@k1_foreign}
-country = !:                                         ; Country name
+country = :                                         ; Country name
 gross_income = #$                                    ; Gross income
 taxes_paid = #$:(0..)                                ; Taxes paid
 trading_gross_receipts = #$                          ; Trading receipts
@@ -397,16 +397,16 @@ excess_business_loss_limitation = ?
 {@form_990}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 calendar_year = ?
 fiscal_year_begin = date:if calendar_year = false
 fiscal_year_end = date:if calendar_year = false
 
 ; Organization Information
-organization_name = !:
+organization_name = :
 doing_business_as[] = :                              ; DBAs (multiple trade names)
-ein = !:format ein
-address = !@address
+ein = :format ein
+address = @address
 websites[] = :                                       ; Websites (multiple domains)
 phones[] = :                                         ; Phone numbers (main, programs, donations)
 group_return = ?
@@ -414,17 +414,17 @@ group_exemption_number = ##:if group_return = true
 
 ; Tax-Exempt Status
 {.tax_exempt}
-section_501c = !##:(1..29)                           ; 501(c)(3), etc.
+section_501c = ##:(1..29)                           ; 501(c)(3), etc.
 other_sections[] = :                                 ; Other exemption sections
 private_foundation = ?
 
 {@form_990}
 ; Mission and Activities
-mission_statements[] = !:                            ; Mission descriptions (multiple programs)
+mission_statements[] = :                            ; Mission descriptions (multiple programs)
 program_service_accomplishments[] = {@program_accomplishment}  ; Form 990 Part III
 
 {@program_accomplishment}
-description = !:                                     ; Program description
+description = :                                     ; Program description
 expenses = #$:(0..)                                  ; Program expenses
 grants = #$:(0..)                                    ; Grants paid
 revenue = #$:(0..)                                   ; Revenue generated
@@ -490,8 +490,8 @@ contemporaneous_documentation = ?
 {@form_990}
 ; Officers, Directors, Trustees
 {.officers[]}
-name = !:
-titles[] = !:                                        ; Titles (CEO, Board Chair, etc.)
+name = :
+titles[] = :                                        ; Titles (CEO, Board Chair, etc.)
 average_hours_per_week = #:(0..168)
 compensation = #$
 other_compensation = #$
@@ -508,14 +508,14 @@ investment_income_percentage = #:(0..100)
 {@form_1041}
 = @types.audit_info
 
-tax_year = !##:(2020..)
+tax_year = ##:(2020..)
 calendar_year = ?
 fiscal_year_begin = date:if calendar_year = false
 fiscal_year_end = date:if calendar_year = false
 
 ; Estate or Trust Information
-name = !:
-ein = !:format ein
+name = :
+ein = :format ein
 address = @address
 entity_type = (bankruptcy_estate, complex_trust, decedent_estate, grantor_trust, qualified_disability_trust, simple_trust)
 date_entity_created = date
@@ -573,6 +573,6 @@ amount_owed = #$
 
 ; Beneficiaries
 {.beneficiaries[]}
-name = !:
-ssn_ein = !*:
+name = :
+ssn_ein = *:
 domestic = ?

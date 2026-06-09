@@ -223,7 +223,7 @@ hazard_group = (A, B, C, D, E, F, G)           ; Hazard group
 exposure_basis_description = :if exposure_basis = other
 
 ; Exposure Amount - extends @rating_classification.exposure
-estimated_exposure = !#$:(0..)
+estimated_exposure = #$:(0..)
 actual_exposure = #$:(0..)                     ; From audit
 exposure_period = date_range
 
@@ -250,13 +250,13 @@ products_completed_ops_premium = #$:(0..)
 ai_id = :
 
 ; Identity - uses shared @address type (US and Canada)
-name = !:
+name = :
 address = @address
 
 {@cgl_additional_insured}
 
 ; Endorsement Form
-endorsement_form = !(
+endorsement_form = (
     blanket_automatic,
     custom,
     designated_person_organization,
@@ -309,7 +309,7 @@ expiration_date = date
 
 {@cgl_endorsement}
 id = :
-number = !:                        ; Endorsement identifier
+number = :                        ; Endorsement identifier
 title = :
 edition_date = date
 effective_date = date
@@ -401,12 +401,12 @@ cyber_incidents = ?
 
 {@cgl_policy}
 id = :
-number = !:
+number = :
 
 ; Term
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 
@@ -414,7 +414,7 @@ expiration_time = time
 named_insured = @entity.business
 
 ; Coverage (uses new coverage architecture)
-coverage = !@cgl_commercial_coverage
+coverage = @cgl_commercial_coverage
 
 ; Classifications by Location
 classifications[] = @cgl_classification

@@ -47,20 +47,20 @@ changelog[0].rationale = "MedicationRequest resource derived from FHIR R4/R5 spe
 
 {@medication_request}
 ; Resource metadata
-id = !:                                       ; Logical id of resource
+id = :                                       ; Logical id of resource
 meta = @fhir.meta                             ; Resource metadata
 
 ; Identifiers - FHIR: MedicationRequest.identifier
 identifiers[] = @fhir.identifier              ; External identifiers
 
 ; Status - FHIR: MedicationRequest.status (required)
-status = !(active, cancelled, completed, draft, entered_in_error, on_hold, stopped, unknown)
+status = (active, cancelled, completed, draft, entered_in_error, on_hold, stopped, unknown)
 
 ; Status reason - FHIR: MedicationRequest.statusReason
 status_reason = @fhir.codeable_concept        ; Reason for current status
 
 ; Intent - FHIR: MedicationRequest.intent (required)
-intent = !(filler_order, instance_order, option, order, original_order, plan, proposal, reflex_order)
+intent = (filler_order, instance_order, option, order, original_order, plan, proposal, reflex_order)
 
 ; Category - FHIR: MedicationRequest.category
 categories[] = @fhir.codeable_concept         ; Type of medication usage (inpatient, outpatient, community)
@@ -80,7 +80,7 @@ medication_codeable_concept = @fhir.codeable_concept  ; Medication code (RxNorm,
 medication_reference = @fhir.reference        ; Reference to Medication resource
 
 ; Subject - FHIR: MedicationRequest.subject (required)
-subject = !@fhir.reference                    ; Patient for whom medication is requested
+subject = @fhir.reference                    ; Patient for whom medication is requested
 
 ; Encounter - FHIR: MedicationRequest.encounter
 encounter = @fhir.reference                   ; Encounter context

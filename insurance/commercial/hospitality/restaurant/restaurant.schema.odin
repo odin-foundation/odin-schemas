@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial hospitality coverage for food service opera
 ; ===================================================================================
 
 {@rest_classification}
-restaurant_type = !(
+restaurant_type = (
     bakery,                                   ; Bakery/pastry shop
     bar_grill,                                ; Bar and grill
     buffet,                                   ; Buffet restaurant
@@ -95,9 +95,9 @@ service_style = (
 
 {@rest_establishment}
 ; Required fields first
-annual_gross_sales = !#$:(0..)                ; Annual revenue
-business_name = !:                            ; Legal name
-classification = !@rest_classification        ; Restaurant type
+annual_gross_sales = #$:(0..)                ; Annual revenue
+business_name = :                            ; Legal name
+classification = @rest_classification        ; Restaurant type
 
 ; Optional fields
 address = @address                            ; Physical location
@@ -150,8 +150,8 @@ wok = ?                                       ; Wok cooking
 
 {@rest_property}
 ; Required fields first
-building_limit = !#$:(0..)                    ; Building coverage
-contents_limit = !#$:(0..)                    ; Contents/equipment
+building_limit = #$:(0..)                    ; Building coverage
+contents_limit = #$:(0..)                    ; Contents/equipment
 
 ; Optional fields
 all_risk = ?                                  ; All-risk form
@@ -201,7 +201,7 @@ power_failure = ?:if included = true          ; Power outage
 
 {@rest_liability}
 ; Required fields first
-general_liability = !#$:(0..)                 ; GL per occurrence
+general_liability = #$:(0..)                 ; GL per occurrence
 
 ; Optional fields
 aggregate = #$:(0..)                          ; Annual aggregate
@@ -253,7 +253,7 @@ robbery = #$:(0..):if included = true         ; Robbery
 
 {@rest_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 bi_premium = #$:(0..)                         ; BI premium
@@ -287,8 +287,8 @@ type_factor = #                               ; Restaurant type
 
 {@rest_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     assault,                                  ; Assault on premises
     auto_delivery,                            ; Delivery auto
     bodily_injury,                            ; Customer injury
@@ -336,11 +336,11 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@restaurant_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-establishment = !@rest_establishment          ; Restaurant details
-expiration_date = !date                       ; Policy expiration date
-liability = !@rest_liability                  ; Liability coverage
-policy_number = !:                            ; Policy number
+effective_date = date                        ; Policy effective date
+establishment = @rest_establishment          ; Restaurant details
+expiration_date = date                       ; Policy expiration date
+liability = @rest_liability                  ; Liability coverage
+policy_number = :                            ; Policy number
 
 ; Invariants
 :invariant expiration_date > effective_date

@@ -110,7 +110,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Legal Identity
 ; ───────────────────────────────────────────────────────────────────────────────
-legal_name = !:
+legal_name = :
 dba_names[] = :
 former_names[] = :
 
@@ -235,7 +235,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Owner Identity
 ; ───────────────────────────────────────────────────────────────────────────────
-legal_name = !:
+legal_name = :
 owner_type = (
     corporation,
     llc,
@@ -286,7 +286,7 @@ sic_primary = :(4)
 
 {@captive_cell}
 id = :
-cell_name = !:
+cell_name = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Cell Structure
@@ -513,7 +513,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Manager Identity
 ; ───────────────────────────────────────────────────────────────────────────────
-company_name = !:
+company_name = :
 dba_name = :
 manager_type = (
     captive_management_company,
@@ -577,7 +577,7 @@ contact_ref = :                               ; Primary contact reference
 
 {@captive_program}
 id = :
-program_name = !:
+program_name = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Program Period
@@ -759,7 +759,7 @@ id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; RRG Identity
 ; ───────────────────────────────────────────────────────────────────────────────
-group_name = !:
+group_name = :
 chartering_state = :(2)                       ; State of charter/domicile
 chartering_date = date
 naic_rrg_code = :
@@ -957,7 +957,7 @@ sao_scope_limitations = :
 
 {@captive_service_provider}
 id = :
-provider_name = !:
+provider_name = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Provider Role

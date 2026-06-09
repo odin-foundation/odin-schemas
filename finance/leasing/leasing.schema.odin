@@ -52,15 +52,15 @@ changelog[0].rationale = "Comprehensive leasing coverage for equipment, vehicle,
 
 {@lessor}
 ; Required fields first
-lessor_id = !:                                  ; Lessor identifier
-lessor_type = !(
+lessor_id = :                                  ; Lessor identifier
+lessor_type = (
     bank,                                       ; Bank leasing division
     captive,                                    ; Manufacturer captive (e.g., Cat Financial)
     independent,                                ; Independent leasing company
     manufacturer,                               ; Direct manufacturer leasing
     rental                                      ; Short-term rental company
 )
-name = !:                                       ; Lessor legal name
+name = :                                       ; Lessor legal name
 
 ; Identification
 lei = :/^[A-Z0-9]{20}$/                         ; Legal Entity Identifier
@@ -87,8 +87,8 @@ credit_limit = #$:(0..)                         ; Maximum transaction size
 
 {@lessee}
 ; Required fields first
-lessee_id = !:                                  ; Lessee identifier
-lessee_type = !(
+lessee_id = :                                  ; Lessee identifier
+lessee_type = (
     corporation,                                ; C-Corp or S-Corp
     government,                                 ; Government entity
     individual,                                 ; Natural person
@@ -97,7 +97,7 @@ lessee_type = !(
     partnership,                                ; Partnership
     sole_proprietor                             ; Sole proprietor
 )
-name = !:                                       ; Lessee legal name
+name = :                                       ; Lessee legal name
 
 ; Identification
 tax_id = *:                                     ; EIN or SSN (confidential)
@@ -128,9 +128,9 @@ approval_limit = #$:(0..)                       ; Approved credit limit
 guarantors[] = @lease_guarantor                 ; Personal/corporate guarantors
 
 {@lease_guarantor}
-guarantor_id = !:                               ; Guarantor identifier
-guarantor_type = !(corporate, individual)       ; Guarantor type
-name = !:                                       ; Guarantor name
+guarantor_id = :                               ; Guarantor identifier
+guarantor_type = (corporate, individual)       ; Guarantor type
+name = :                                       ; Guarantor name
 relationship = (affiliate, officer, owner, parent, spouse)
 ownership_pct = #:(0..100)                      ; Ownership percentage
 guarantee_type = (full, limited, partial)       ; Guarantee coverage
@@ -143,8 +143,8 @@ net_worth = *#$                                 ; Net worth (confidential)
 
 {@leased_asset}
 ; Required fields first
-asset_id = !:                                   ; Asset identifier
-asset_category = !(
+asset_id = :                                   ; Asset identifier
+asset_category = (
     aircraft,                                   ; Aircraft
     construction,                               ; Construction equipment
     data_center,                                ; Data center equipment
@@ -162,7 +162,7 @@ asset_category = !(
     truck_trailer,                              ; Trucks and trailers
     vehicle                                     ; Vehicles
 )
-description = !:                                ; Asset description
+description = :                                ; Asset description
 
 ; Identification
 manufacturer = :                                ; Manufacturer name
@@ -265,8 +265,8 @@ upgrade_rights = ?:if asset_category = software
 
 {@lease}
 ; Required fields first
-lease_id = !:                                   ; Lease identifier
-lease_type = !(
+lease_id = :                                   ; Lease identifier
+lease_type = (
     capital,                                    ; Capital/finance lease (pre-ASC 842)
     direct_finance,                             ; Direct financing lease (lessor)
     finance,                                    ; Finance lease (ASC 842)
@@ -276,7 +276,7 @@ lease_type = !(
     sale_leaseback,                             ; Sale-leaseback
     sales_type                                  ; Sales-type lease (lessor)
 )
-lease_structure = !(
+lease_structure = (
     clo,                                        ; Closed-end lease
     fmv,                                        ; FMV lease
     hire_purchase,                              ; Hire purchase (UK)
@@ -287,11 +287,11 @@ lease_structure = !(
 )
 
 ; Parties
-lessor = !@lessor                               ; Lessor
-lessee = !@lessee                               ; Lessee
+lessor = @lessor                               ; Lessor
+lessee = @lessee                               ; Lessee
 
 ; Assets
-assets[] = !@leased_asset                       ; Leased assets
+assets[] = @leased_asset                       ; Leased assets
 
 ; Status
 status = (
@@ -313,8 +313,8 @@ status = (
 ; Term
 ; ---------------------------------------------------------------------------
 {.term}
-commencement_date = !date                       ; Lease commencement
-termination_date = !date                        ; Scheduled termination
+commencement_date = date                       ; Lease commencement
+termination_date = date                        ; Scheduled termination
 term_months = ##:(1..)                          ; Original term (months)
 remaining_months = ##:(0..)                     ; Remaining months
 renewal_options = ##:(0..)                      ; Renewal option terms (months)
@@ -324,8 +324,8 @@ extension_months = ##:(0..)                     ; Extension term
 {@lease}
 
 {@renewal_option}
-option_number = !##:(1..)                       ; Option sequence
-term_months = !##:(1..)                         ; Renewal term
+option_number = ##:(1..)                       ; Option sequence
+term_months = ##:(1..)                         ; Renewal term
 rate_adjustment = #                             ; Rate adjustment %
 notice_days = ##                                ; Notice required
 reasonably_certain = ?                          ; Reasonably certain to exercise
@@ -353,13 +353,13 @@ net_investment = #$:(0..)                       ; Net investment in lease
 ; Payment Terms
 ; ---------------------------------------------------------------------------
 {.payment}
-payment_frequency = !(
+payment_frequency = (
     annual,
     monthly,
     quarterly,
     semi_annual
 )
-payment_timing = !(advance, arrears)            ; Advance or arrears
+payment_timing = (advance, arrears)            ; Advance or arrears
 base_rent = #$:(0..)                            ; Base rent payment
 first_payment_date = date                       ; First payment date
 payment_day = ##:(1..31)                        ; Payment due day
@@ -446,12 +446,12 @@ return_conditions = :                           ; Return condition specs
 
 {@lease_accounting}
 ; Required fields first
-lease_id = !:                                   ; Lease reference
-accounting_standard = !(asc_842, ifrs_16)       ; Applicable standard
+lease_id = :                                   ; Lease reference
+accounting_standard = (asc_842, ifrs_16)       ; Applicable standard
 
 ; Classification (Lessee)
 {.lessee_classification}
-classification = !(finance, operating)          ; ASC 842 classification
+classification = (finance, operating)          ; ASC 842 classification
 classification_date = date                      ; Classification date
 
 ; ASC 842 Classification Criteria (finance if any is true)
@@ -550,7 +550,7 @@ residual_asset = #$:(0..)                       ; Unguaranteed residual
 = @lease                                        ; Inherit base lease
 
 ; Equipment financing type
-equipment_type = !(
+equipment_type = (
     construction,
     data_center,
     industrial,
@@ -576,10 +576,10 @@ progress_milestones[] = @progress_milestone     ; Payment milestones
 {@equipment_lease}
 
 {@progress_milestone}
-milestone_id = !:                               ; Milestone identifier
-description = !:                                ; Milestone description
-target_date = !date                             ; Target date
-payment_amount = !#$:(0..)                      ; Payment amount
+milestone_id = :                               ; Milestone identifier
+description = :                                ; Milestone description
+target_date = date                             ; Target date
+payment_amount = #$:(0..)                      ; Payment amount
 payment_percentage = #:(0..100)                 ; % of total
 status = (approved, completed, pending)         ; Status
 completion_date = date                          ; Actual completion
@@ -606,7 +606,7 @@ acceptance_date = date                          ; Lessee acceptance
 = @lease                                        ; Inherit base lease
 
 ; Vehicle lease type
-vehicle_lease_type = !(
+vehicle_lease_type = (
     commercial,                                 ; Commercial vehicles
     consumer,                                   ; Consumer auto lease
     fleet,                                      ; Fleet lease
@@ -655,7 +655,7 @@ substitute_vehicle = ?                          ; Sub vehicle program
 = @lease                                        ; Inherit base lease
 
 ; Property type
-property_category = !(
+property_category = (
     flex,
     industrial,
     mixed_use,
@@ -741,7 +741,7 @@ co_tenancy = ?:if property_category = retail     ; Co-tenancy clause
 = @lease                                        ; Inherit base lease
 
 ; Technology category
-tech_category = !(
+tech_category = (
     cloud_infrastructure,
     data_center,
     desktop_laptop,
@@ -809,14 +809,14 @@ chain_of_custody = ?                            ; Chain of custody docs
 
 {@sale_leaseback}
 ; Required fields first
-transaction_id = !:                             ; Transaction identifier
-seller_lessee = !@lessee                        ; Seller-lessee
-buyer_lessor = !@lessor                         ; Buyer-lessor
+transaction_id = :                             ; Transaction identifier
+seller_lessee = @lessee                        ; Seller-lessee
+buyer_lessor = @lessor                         ; Buyer-lessor
 
 ; Sale component
 {.sale}
-sale_date = !date                               ; Sale date
-sale_price = !#$:(0..)                          ; Sale price
+sale_date = date                               ; Sale date
+sale_price = #$:(0..)                          ; Sale price
 fair_value = #$:(0..)                           ; Fair value at sale
 book_value = #$:(0..)                           ; Seller book value
 gain_on_sale = #$                               ; Gain (can be negative)
@@ -854,10 +854,10 @@ gain_recognition = (
 
 {@lease_payment}
 ; Required fields first
-payment_id = !:                                 ; Payment identifier
-lease_id = !:                                   ; Lease reference
-payment_date = !date                            ; Payment date
-total_amount = !#$:(0..)                        ; Total payment
+payment_id = :                                 ; Payment identifier
+lease_id = :                                   ; Lease reference
+payment_date = date                            ; Payment date
+total_amount = #$:(0..)                        ; Total payment
 
 ; Payment allocation
 base_rent = #$:(0..)                            ; Base rent portion
@@ -895,12 +895,12 @@ effective_date = date                           ; Value date
 
 {@lease_termination}
 ; Required fields first
-termination_id = !:                             ; Termination identifier
-lease_id = !:                                   ; Lease reference
-termination_date = !date                        ; Effective termination date
+termination_id = :                             ; Termination identifier
+lease_id = :                                   ; Lease reference
+termination_date = date                        ; Effective termination date
 
 ; Reason
-termination_reason = !(
+termination_reason = (
     borrower_request,                           ; Lessee request
     casualty_loss,                              ; Total loss
     default,                                    ; Lessee default

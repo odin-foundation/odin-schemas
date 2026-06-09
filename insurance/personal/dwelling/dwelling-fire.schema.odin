@@ -51,9 +51,9 @@ changelog[0].rationale = "Coverage-centric architecture - dwelling fire policy c
 coverage_type_ref = "DP_DWELLING"
 
 ; Dwelling limit
-dwelling_limit = !#$:(0..)
+dwelling_limit = #$:(0..)
 
-dwelling_loss_settlement = !(
+dwelling_loss_settlement = (
     actual_cash_value,
     functional_replacement,
     replacement_cost
@@ -128,10 +128,10 @@ medical_payments_included = ?
 = @res.res_named_insured
 
 ; DP-specific: owner type (entity vs individual)
-owner_type = !(corporation, estate, individual, joint_owners, llc, partnership, trust)
+owner_type = (corporation, estate, individual, joint_owners, llc, partnership, trust)
 
 ; Entity owner fields
-entity_name = !::if owner_type != individual
+entity_name = ::if owner_type != individual
 ein = ::if owner_type != individual
 
 ; Multiple owners
@@ -158,7 +158,7 @@ longitude = #:(-180..180)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Occupancy (Key for Dwelling Fire)
 ; ───────────────────────────────────────────────────────────────────────────────
-occupancy_type = !(
+occupancy_type = (
     owner_occupied_not_primary,                  ; Secondary home, vacation home
     seasonal,                                    ; Occupied only part of year
     tenant_occupied,                             ; Rented to tenants (landlord policy)
@@ -184,7 +184,7 @@ months_occupied = ##:(0..12):if seasonal = true
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Dwelling Type
 ; ───────────────────────────────────────────────────────────────────────────────
-dwelling_type = !(
+dwelling_type = (
     condominium,
     duplex,
     fourplex,
@@ -246,7 +246,7 @@ valuation = @res.res_valuation
 = @res.res_endorsement
 
 ; DP-specific endorsement types
-endorsement_type = !(broad_theft, building_code_upgrade, earthquake, extended_coverage, fair_rental_value, flood, inflation_guard, liability, loss_of_rents, other, replacement_cost_contents, replacement_cost_dwelling, vandalism_malicious_mischief, water_backup)
+endorsement_type = (broad_theft, building_code_upgrade, earthquake, extended_coverage, fair_rental_value, flood, inflation_guard, liability, loss_of_rents, other, replacement_cost_contents, replacement_cost_dwelling, vandalism_malicious_mischief, water_backup)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Dwelling Fire Policy
@@ -254,12 +254,12 @@ endorsement_type = !(broad_theft, building_code_upgrade, earthquake, extended_co
 
 {@dwelling_policy}
 id = :
-number = !:
+number = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Form
 ; ───────────────────────────────────────────────────────────────────────────────
-policy_form = !(
+policy_form = (
     DP1,                                         ; Basic Dwelling Form
     DP2,                                         ; Broad Dwelling Form
     DP3                                          ; Special Dwelling Form
@@ -273,9 +273,9 @@ contents_coverage_type = (named_perils, none)
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Policy Term
 ; ───────────────────────────────────────────────────────────────────────────────
-effective_date = !date
+effective_date = date
 effective_time = time
-expiration_date = !date
+expiration_date = date
 expiration_time = time
 :invariant expiration_date > effective_date
 

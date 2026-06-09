@@ -53,7 +53,7 @@ authority_id = :
 ; USDOT Number
 ; ───────────────────────────────────────────────────────────────────────────────
 {.usdot}
-number = !:                                    ; USDOT number (7-8 digits)
+number = :                                    ; USDOT number (7-8 digits)
 registration_date = date                       ; Registration date
 status = (active, inactive, not_authorized, out_of_service)  ; Current status
 last_update = date                             ; Last update date
@@ -78,7 +78,7 @@ revocation_reason = ::if status = revoked
 ; Authority Type
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Common and contract authority merged since 2007
-authority_type = !(
+authority_type = (
     broker,                                    ; Property broker
     common_carrier,                            ; For-hire carrier (property or passenger)
     contract_carrier,                          ; Contract carrier (legacy - now same as common)
@@ -89,7 +89,7 @@ authority_type = !(
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Interstate vs Intrastate
 ; ───────────────────────────────────────────────────────────────────────────────
-operation_classification = !(both, interstate, intrastate)  ; Operating classification
+operation_classification = (both, interstate, intrastate)  ; Operating classification
 interstate = ?                                 ; Has interstate authority
 intrastate = ?                                 ; Has intrastate authority
 base_state = :(2)                              ; Primary state of operation
@@ -191,7 +191,7 @@ safety_improvement_plan_required = ?
 
 {@boc3_filing}
 filing_id = :
-filing_status = !(expired, filed, invalid, not_filed, pending)
+filing_status = (expired, filed, invalid, not_filed, pending)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Filing Status
@@ -224,8 +224,8 @@ annual_fee = #$:(0..)                         ; Annual service fee
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Must have agent in each state where carrier operates
 {.state_agents[]}
-state = !:(2)                                  ; US state code
-agent_name = !:                                ; Agent name
+state = :(2)                                  ; US state code
+agent_name = :                                ; Agent name
 agent_address = @address                       ; Agent address (cannot be PO Box)
 agent_phone = *@phone                          ; Agent phone (confidential)
 designation_date = date                        ; Designation date
@@ -307,7 +307,7 @@ insurer_ref = :                                ; Insurance carrier reference
 ; Coverage Limits
 ; ───────────────────────────────────────────────────────────────────────────────
 {.limits}
-policy_limit = !#$:(0..)                       ; Policy limit
+policy_limit = #$:(0..)                       ; Policy limit
 each_occurrence = #$:(0..)                     ; Each occurrence limit
 aggregate = #$:(0..)                           ; Aggregate limit
 meets_minimum = ?                              ; Meets FMCSA minimum
@@ -321,7 +321,7 @@ meets_minimum = ?                              ; Meets FMCSA minimum
 
 {@hazmat_compliance}
 compliance_id = :
-hazmat = !?                                    ; Authorized to haul hazmat
+hazmat = ?                                    ; Authorized to haul hazmat
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Hazmat Authority
@@ -398,11 +398,11 @@ class_9_miscellaneous = ?
 ; Specific Materials Hauled
 ; ───────────────────────────────────────────────────────────────────────────────
 {.materials[]}
-un_na_number = !:                              ; UN/NA identification number (4-5 digits)
-proper_shipping_name = !:
-hazard_class = !:                              ; Primary class (1-3 chars)
+un_na_number = :                              ; UN/NA identification number (4-5 digits)
+proper_shipping_name = :
+hazard_class = :                              ; Primary class (1-3 chars)
 packing_group = (I, II, III)                   ; I=great danger, II=medium, III=minor
-placard_required = !?
+placard_required = ?
 reportable_quantity = ?                        ; RQ threshold material
 quantity_hauled = :                            ; Typical quantity description
 
@@ -477,8 +477,8 @@ corrective_actions_required = ?                ; Corrective actions required
 
 {@ucr_registration}
 registration_id = :
-registration_year = !##:(2020..2030)
-registration_status = !(expired, not_registered, pending, registered)
+registration_year = ##:(2020..2030)
+registration_status = (expired, not_registered, pending, registered)
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Registration Year
@@ -489,15 +489,15 @@ confirmation_number = ::if registration_status = registered
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Base State
 ; ───────────────────────────────────────────────────────────────────────────────
-base_state = !:(2)                             ; State where UCR filed
+base_state = :(2)                             ; State where UCR filed
 base_state_account = :                         ; UCR account number
 
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Fleet Size & Fee Bracket
 ; ───────────────────────────────────────────────────────────────────────────────
 {.fleet}
-vehicle_count = !##                            ; Total power units (no trailers)
-fee_bracket = !(
+vehicle_count = ##                            ; Total power units (no trailers)
+fee_bracket = (
     bracket_0_2,                               ; 0-2 vehicles
     bracket_1001_plus,                         ; 1001+ vehicles
     bracket_101_1000,                          ; 101-1000 vehicles
@@ -512,7 +512,7 @@ fee_bracket = !(
 ; Fee Payment (2025 rates)
 ; ───────────────────────────────────────────────────────────────────────────────
 {.payment}
-fee_amount = !#$:(0..)                         ; Fee amount
+fee_amount = #$:(0..)                         ; Fee amount
 payment_date = date                            ; Payment date
 payment_method = (ach, check, credit_card)     ; Payment method
 payment_reference = :                          ; Payment reference number
@@ -555,7 +555,7 @@ form_number = ::if bmc34_filing.filing_status = filed
 ; Coverage Details
 ; ───────────────────────────────────────────────────────────────────────────────
 {.coverage}
-coverage_limit = !#$:(0..)                     ; Coverage limit
+coverage_limit = #$:(0..)                     ; Coverage limit
 per_occurrence_limit = #$:(0..)                ; Per occurrence limit
 aggregate_limit = #$:(0..)                     ; Aggregate limit
 deductible = #$:(0..)                          ; Deductible amount
@@ -587,9 +587,9 @@ excluded_items[] = :
 ; Policy Information
 ; ───────────────────────────────────────────────────────────────────────────────
 {.policy}
-policy_number = !:
-effective_date = !date
-expiration_date = !date
+policy_number = :
+effective_date = date
+expiration_date = date
 insurer_ref = :                               ; Reference to carrier.schema.odin
 cancellation_date = date
 cancellation_reason = :
@@ -608,8 +608,8 @@ responsibility_id = :
 ; Minimum Financial Responsibility Requirements
 ; ───────────────────────────────────────────────────────────────────────────────
 {.requirements}
-carrier_type = !(broker, for_hire_passenger, for_hire_property, private_hazmat)
-minimum_required = !#$:(0..)                   ; Minimum required amount
+carrier_type = (broker, for_hire_passenger, for_hire_property, private_hazmat)
+minimum_required = #$:(0..)                   ; Minimum required amount
 
 ; For-hire property: $750k minimum
 property_minimum = #$:(0..) "750000":if requirements.carrier_type = for_hire_property
@@ -658,7 +658,7 @@ insurer_name = :if bmc32_cargo.filed = true    ; Insurer name
 ; Evidence of Insurance
 ; ───────────────────────────────────────────────────────────────────────────────
 {.evidence}
-insurance_on_file = !?                         ; Insurance on file
+insurance_on_file = ?                         ; Insurance on file
 form_type = (BMC_91, BMC_91X, MCS_90)          ; Form type
 filing_date = date                             ; Filing date
 filing_accepted = ?                            ; Filing accepted
@@ -671,7 +671,7 @@ rejection_reason = :                           ; Rejection reason if filing reje
 ; Compliance Status
 ; ───────────────────────────────────────────────────────────────────────────────
 {.compliance}
-meets_minimum = !?                             ; Meets minimum requirements
+meets_minimum = ?                             ; Meets minimum requirements
 deficiencies[] = :                             ; List of compliance deficiencies
 corrective_action_required = ?                 ; Corrective action required
 corrective_action_deadline = date              ; Corrective action deadline

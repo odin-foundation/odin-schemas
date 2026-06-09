@@ -41,18 +41,18 @@ changelog[0].rationale = "Vital records per NVSS and state requirements"
 {@birth_certificate}
 = @types.audit_info
 
-certificate_number = !:
+certificate_number = :
 file_number = :
-state_of_birth = !:(2)
+state_of_birth = :(2)
 county_of_birth = :
 city_of_birth = :
 
 ; Child Information
 {.child}
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
-date_of_birth = !*date
+last_name = :
+date_of_birth = *date
 time_of_birth = time
 sex = (female, male, unknown)
 plurality = (quadruplet, quintuplet, single, triplet, twin)
@@ -68,7 +68,7 @@ birth_place_type = (birthing_center, home, hospital, other)
 {@birth_certificate}
 ; Mother Information
 {.mother}
-first_name = !:
+first_name = :
 middle_name = :
 maiden_name = :
 married_name = :
@@ -117,9 +117,9 @@ hispanic_origin = ?
 {@birth_certificate}
 ; Certification
 {.certifier}
-certifier_name = !:
-certifier_title = !:
-certification_date = !date
+certifier_name = :
+certifier_title = :
+certification_date = date
 
 {@birth_certificate}
 ; Registrar
@@ -143,20 +143,20 @@ amended_by = :
 {@death_certificate}
 = @types.audit_info
 
-certificate_number = !:
+certificate_number = :
 file_number = :
-state_of_death = !:(2)
+state_of_death = :(2)
 county_of_death = :
 
 ; Decedent Information
 {.decedent}
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 suffix = :
 sex = (female, male, unknown)
-date_of_birth = !*date
-date_of_death = !*date
+date_of_birth = *date
+date_of_death = *date
 time_of_death = time
 age_at_death = ##:(0..)
 ssn = *:format ssn
@@ -182,12 +182,12 @@ inside_city_limits = ?
 
 {@death_certificate}
 ; Residence
-residence_address = !@address
+residence_address = @address
 residence_inside_city_limits = ?
 
 ; Cause of Death
 {.cause_of_death}
-immediate_cause = !:
+immediate_cause = :
 due_to_a = :
 due_to_b = :
 due_to_c = :
@@ -212,9 +212,9 @@ transportation_injury = ?:if injury_occurred = true
 ; Certifier
 {.certifier}
 certifier_type = (coroner, medical_examiner, other, physician, pronouncing_physician)
-certifier_name = !:
+certifier_name = :
 certifier_license_number = :
-certification_date = !date
+certification_date = date
 
 {@death_certificate}
 ; Disposition
@@ -237,14 +237,14 @@ registration_date = date
 {@marriage_certificate}
 = @types.audit_info
 
-certificate_number = !:
+certificate_number = :
 file_number = :
-state_of_marriage = !:(2)
+state_of_marriage = :(2)
 county_of_marriage = :
 
 ; Marriage Information
 {.marriage}
-marriage_date = !date
+marriage_date = date
 marriage_location = @address
 ceremony_type = (civil, religious)
 officiant_name = :
@@ -253,9 +253,9 @@ officiant_title = :
 {@marriage_certificate}
 ; Party A
 {.party_a}
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 suffix = :
 prior_marital_status = (divorced, never_married, widowed)
 date_of_birth = *date
@@ -273,9 +273,9 @@ hispanic_origin = ?
 {@marriage_certificate}
 ; Party B
 {.party_b}
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 suffix = :
 prior_marital_status = (divorced, never_married, widowed)
 date_of_birth = *date
@@ -315,15 +315,15 @@ registration_date = date
 {@divorce_decree}
 = @types.audit_info
 
-case_number = !:
+case_number = :
 file_number = :
-state_of_divorce = !:(2)
+state_of_divorce = :(2)
 county_of_divorce = :
-court_name = !:
+court_name = :
 
 ; Divorce Information
 {.divorce}
-decree_date = !date
+decree_date = date
 marriage_date = date
 duration_of_marriage_years = ##:(0..)
 date_of_separation = date
@@ -331,9 +331,9 @@ date_of_separation = date
 {@divorce_decree}
 ; Petitioner
 {.petitioner}
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 maiden_name = :
 date_of_birth = *date
 ssn = *:format ssn
@@ -342,9 +342,9 @@ address = @address
 {@divorce_decree}
 ; Respondent
 {.respondent}
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 maiden_name = :
 date_of_birth = *date
 ssn = *:format ssn
@@ -378,29 +378,29 @@ decree_effective_date = date
 {@adoption_decree}
 = @types.audit_info
 
-case_number = !:
-state = !:(2)
+case_number = :
+state = :(2)
 county = :
-court_name = !:
-decree_date = !date
+court_name = :
+decree_date = date
 
 ; Adopted Child
 {.child}
-adopted_first_name = !:
+adopted_first_name = :
 adopted_middle_name = :
-adopted_last_name = !:
+adopted_last_name = :
 birth_first_name = :
 birth_middle_name = :
 birth_last_name = :
-date_of_birth = !*date
+date_of_birth = *date
 sex = (female, male)
 
 {@adoption_decree}
 ; Adoptive Parents
 {.adoptive_parents[]}
-first_name = !:
+first_name = :
 middle_name = :
-last_name = !:
+last_name = :
 relationship = (adoptive_father, adoptive_mother, adoptive_parent)
 address = @address
 
@@ -433,27 +433,27 @@ records_sealed = ?
 {@name_change_petition}
 = @types.audit_info
 
-case_number = !:
-state = !:(2)
+case_number = :
+state = :(2)
 county = :
-court_name = !:
+court_name = :
 filing_date = date
 
 ; Petitioner
 {.petitioner}
-current_first_name = !:
+current_first_name = :
 current_middle_name = :
-current_last_name = !:
-proposed_first_name = !:
+current_last_name = :
+proposed_first_name = :
 proposed_middle_name = :
-proposed_last_name = !:
+proposed_last_name = :
 date_of_birth = *date
 ssn = *:format ssn
-address = !@address
+address = @address
 
 {@name_change_petition}
 ; Reason for Change
-reason = !:
+reason = :
 
 ; Minor Child (if applicable)
 {.minor_child}

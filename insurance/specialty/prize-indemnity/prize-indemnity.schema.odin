@@ -45,8 +45,8 @@ changelog[0].rationale = "Specialty coverage for promotional prize obligations"
 
 {@prize_sponsor}
 ; Required fields first
-sponsor_name = !:                             ; Sponsor/promoter name
-sponsor_type = !(
+sponsor_name = :                             ; Sponsor/promoter name
+sponsor_type = (
     advertiser,                               ; Advertising agency
     brand,                                    ; Brand/manufacturer
     casino,                                   ; Casino/gaming
@@ -75,8 +75,8 @@ years_in_business = ##                        ; Years operating
 
 {@prize_contest}
 ; Required fields first
-contest_name = !:                             ; Contest name
-contest_type = !(
+contest_name = :                             ; Contest name
+contest_type = (
     basketball_shot,                          ; Half-court shot
     dice_roll,                                ; Dice roll
     drawing,                                  ; Random drawing
@@ -91,7 +91,7 @@ contest_type = !(
     spin_wheel,                               ; Wheel spin
     sweepstakes                               ; Sweepstakes
 )
-grand_prize_value = !#$:(0..)                 ; Grand prize value
+grand_prize_value = #$:(0..)                 ; Grand prize value
 
 ; Optional fields
 bonus_prizes[] = #$:(0..)                     ; Bonus prize values
@@ -152,7 +152,7 @@ winning_numbers = ##:if contest_type = dice_roll
 
 {@prize_coverage}
 ; Required fields first
-grand_prize_limit = !#$:(0..)                 ; Grand prize indemnity
+grand_prize_limit = #$:(0..)                 ; Grand prize indemnity
 
 ; Optional fields
 aggregate_limit = #$:(0..)                    ; Total aggregate
@@ -178,7 +178,7 @@ verification_period_days = ##                 ; Verification period
 
 {@prize_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 bonus_premium = #$:(0..)                      ; Bonus coverage
@@ -205,14 +205,14 @@ prize_factor = #                              ; Prize value
 
 {@prize_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-prize_type = !(
+claim_date = date                            ; Claim date
+prize_type = (
     bonus,                                    ; Bonus prize
     grand_prize,                              ; Grand prize
     progressive,                              ; Progressive jackpot
     secondary                                 ; Secondary prize
 )
-winner_name = !*:                             ; Winner name
+winner_name = *:                             ; Winner name
 
 ; Optional fields
 amount_claimed = #$:(0..)                     ; Amount claimed
@@ -241,12 +241,12 @@ witness_count = ##                            ; Witnesses
 
 {@prize_policy}
 ; Required fields first
-contest = !@prize_contest                     ; Contest details
-coverage = !@prize_coverage                   ; Coverage terms
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-policy_number = !:                            ; Policy number
-sponsor = !@prize_sponsor                     ; Sponsor details
+contest = @prize_contest                     ; Contest details
+coverage = @prize_coverage                   ; Coverage terms
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+policy_number = :                            ; Policy number
+sponsor = @prize_sponsor                     ; Sponsor details
 
 ; Invariants
 :invariant expiration_date >= effective_date

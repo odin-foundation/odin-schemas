@@ -46,9 +46,9 @@ changelog[0].rationale = "Comprehensive title search structure"
 
 {@title_search}
 ; Required fields first
-effective_date = !date                               ; Search effective date
-property_address = !@address                         ; Property address
-search_type = !(bring_down, current_owner, full, judgment_lien, two_owner)
+effective_date = date                               ; Search effective date
+property_address = @address                         ; Property address
+search_type = (bring_down, current_owner, full, judgment_lien, two_owner)
 
 ; Search identification
 search_id = :                                        ; Unique search identifier
@@ -271,8 +271,8 @@ completion_date = date:if status = completed         ; Completion date
 
 {@name_search}
 ; Required fields first
-search_date = !date                                  ; Search date
-search_name = !:                                     ; Name searched
+search_date = date                                  ; Search date
+search_name = :                                     ; Name searched
 
 ; Search identification
 search_id = :                                        ; Unique search identifier

@@ -38,7 +38,7 @@ changelog[0].rationale = "Foundation types for all commercial insurance lines"
 ; ═══════════════════════════════════════════════════════════════════════════════
 
 {@business_structure}
-structure_type = !(c_corporation, cooperative, county, estate, federal_government, foreign_corporation, general_partnership, joint_venture, limited_liability_partnership, limited_partnership, llc_multi_member, llc_single_member, municipality, nonprofit_501c3, nonprofit_501c4, nonprofit_501c6, nonprofit_other, other, professional_corporation, s_corporation, sole_proprietorship, state_government, tribal_nation, trust)
+structure_type = (c_corporation, cooperative, county, estate, federal_government, foreign_corporation, general_partnership, joint_venture, limited_liability_partnership, limited_partnership, llc_multi_member, llc_single_member, municipality, nonprofit_501c3, nonprofit_501c4, nonprofit_501c6, nonprofit_other, other, professional_corporation, s_corporation, sole_proprietorship, state_government, tribal_nation, trust)
 
 ; ═══════════════════════════════════════════════════════════════════════════════
 ; Industry Classification
@@ -71,12 +71,12 @@ gl_class_description = :
 = @person                                    ; Inherits person fields (name, ssn, dob, contact)
 
 ; Required fields first
-title = !:                                   ; Officer title
+title = :                                   ; Officer title
 
 ; Override required name fields
 {.name}
-first = !:                                   ; First name (required)
-last = !:                                    ; Last name (required)
+first = :                                   ; First name (required)
+last = :                                    ; Last name (required)
 
 {@officer}
 
@@ -101,13 +101,13 @@ voting_percentage = #:(0..100)               ; Voting rights percentage
 shareholder_id = :
 
 ; Identity (person or entity)
-shareholder_type = !(entity, individual)
+shareholder_type = (entity, individual)
 
 ; If individual
 {.individual}
 {.name}
-first = !:if shareholder_type = individual
-last = !:if shareholder_type = individual
+first = :if shareholder_type = individual
+last = :if shareholder_type = individual
 
 {.individual}
 ssn = *:format ssn:if shareholder_type = individual  ; US SSN
@@ -142,7 +142,7 @@ disposition_date = date
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Relationship to Primary Entity
 ; ───────────────────────────────────────────────────────────────────────────────
-relationship_type = !(
+relationship_type = (
     affiliate,
     joint_venture,
     parent,
@@ -283,7 +283,7 @@ variance = #$:(-999999999999..999999999999)
 
 {@subcontractor}
 ; Required fields first
-company_name = !:                            ; Subcontractor company name
+company_name = :                            ; Subcontractor company name
 
 ; Optional fields
 additional_insured_status = ?                ; Named as additional insured

@@ -41,17 +41,17 @@ changelog[0].rationale = "Payment types derived from ISO 20022 pain/pacs message
 
 {@credit_transfer}
 ; Message header (required)
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Payment information (required)
-payment_info_id = !:                          ; Payment information identifier
-payment_method = !(chk, trf, trd)             ; Payment method (check, transfer, draft)
-requested_execution_date = !date              ; Requested execution date
+payment_info_id = :                          ; Payment information identifier
+payment_method = (chk, trf, trd)             ; Payment method (check, transfer, draft)
+requested_execution_date = date              ; Requested execution date
 
 ; Debtor (payer) information
-debtors[] = !@fin.party                       ; Debtors (multiple legal entities)
-debtor_accounts[] = !@fin.account             ; Debtor accounts (multi-account funding)
-debtor_agent = !@fin.financial_institution    ; Debtor's bank
+debtors[] = @fin.party                       ; Debtors (multiple legal entities)
+debtor_accounts[] = @fin.account             ; Debtor accounts (multi-account funding)
+debtor_agent = @fin.financial_institution    ; Debtor's bank
 
 ; Charge bearer
 charge_bearer = (cred, debt, shar, slev)      ; Who pays charges
@@ -64,12 +64,12 @@ transactions[] = @credit_transfer_transaction ; Credit transfer instructions
 ; ───────────────────────────────────────────────────────────────────────────────
 {@credit_transfer_transaction}
 ; Required fields
-instruction_id = !:                           ; Unique instruction identifier
-end_to_end_id = !:                            ; End-to-end identifier
-amount = !@fin.amount                         ; Instructed amount
+instruction_id = :                           ; Unique instruction identifier
+end_to_end_id = :                            ; End-to-end identifier
+amount = @fin.amount                         ; Instructed amount
 
 ; Creditor (payee) information
-creditor = !@fin.party                        ; Creditor party
+creditor = @fin.party                        ; Creditor party
 creditor_account = @fin.account               ; Creditor account
 creditor_agent = @fin.financial_institution   ; Creditor's bank
 
@@ -77,7 +77,7 @@ creditor_agent = @fin.financial_institution   ; Creditor's bank
 intermediary_agents[] = {@intermediary_agent}
 
 {@intermediary_agent}
-agent = !@fin.financial_institution           ; Intermediary bank
+agent = @fin.financial_institution           ; Intermediary bank
 account = @fin.account                        ; Intermediary account
 sequence = ##:(1..)                           ; Order in correspondent chain
 
@@ -109,24 +109,24 @@ priority = (high, norm)                       ; Processing priority
 
 {@direct_debit}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Payment information
-payment_info_id = !:                          ; Payment information identifier
-payment_method = !: "dd"                      ; Direct debit method
-requested_collection_date = !date             ; Requested collection date
+payment_info_id = :                          ; Payment information identifier
+payment_method = : "dd"                      ; Direct debit method
+requested_collection_date = date             ; Requested collection date
 
 ; Creditor (collector) information
-creditors[] = !@fin.party                     ; Creditors (multiple collectors)
-creditor_accounts[] = !@fin.account           ; Creditor accounts (multi-account collection)
-creditor_agent = !@fin.financial_institution  ; Creditor's bank
+creditors[] = @fin.party                     ; Creditors (multiple collectors)
+creditor_accounts[] = @fin.account           ; Creditor accounts (multi-account collection)
+creditor_agent = @fin.financial_institution  ; Creditor's bank
 creditor_scheme_id = :                        ; Creditor scheme identifier
 
 ; Charge bearer
 charge_bearer = (cred, debt, shar, slev)      ; Who pays charges
 
 ; Direct debit type
-sequence_type = !(fnal, frst, ooff, rcur)     ; Sequence type (final, first, one-off, recurring)
+sequence_type = (fnal, frst, ooff, rcur)     ; Sequence type (final, first, one-off, recurring)
 local_instrument = :                          ; Local instrument code (CORE, B2B, etc.)
 
 ; Transactions
@@ -137,19 +137,19 @@ transactions[] = @direct_debit_transaction    ; Direct debit instructions
 ; ───────────────────────────────────────────────────────────────────────────────
 {@direct_debit_transaction}
 ; Required fields
-instruction_id = !:                           ; Unique instruction identifier
-end_to_end_id = !:                            ; End-to-end identifier
-amount = !@fin.amount                         ; Instructed amount
+instruction_id = :                           ; Unique instruction identifier
+end_to_end_id = :                            ; End-to-end identifier
+amount = @fin.amount                         ; Instructed amount
 
 ; Debtor (payer) information
-debtors[] = !@fin.party                       ; Debtors (joint account holders)
-debtor_account = !@fin.account                ; Debtor account
+debtors[] = @fin.party                       ; Debtors (joint account holders)
+debtor_account = @fin.account                ; Debtor account
 debtor_agent = @fin.financial_institution     ; Debtor's bank
 
 ; Mandate information
 {.mandate}
-id = !:                                       ; Mandate identifier
-date_of_signature = !date                     ; Date mandate signed
+id = :                                       ; Mandate identifier
+date_of_signature = date                     ; Date mandate signed
 amendment_indicator = ?                       ; Mandate has been amended
 final_collection_date = date                  ; Final collection date
 frequency = (adho, dail, inda, mian, mnth, qurt, semi, week, year)
@@ -170,11 +170,11 @@ remittance_infos[] = @fin.remittance_info     ; Payment details (multiple invoic
 
 {@payment_status}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Original message reference
 {.original}
-message_id = !:                               ; Original message identifier
+message_id = :                               ; Original message identifier
 message_name = :                              ; Original message type
 created = timestamp                           ; Original creation date
 
@@ -190,9 +190,9 @@ transaction_statuses[] = @transaction_status_detail  ; Per-transaction status
 ; Transaction Status Detail
 ; ───────────────────────────────────────────────────────────────────────────────
 {@transaction_status_detail}
-original_instruction_id = !:                  ; Original instruction ID
-original_end_to_end_id = !:                   ; Original E2E ID
-status = !@fin.transaction_status             ; Transaction status
+original_instruction_id = :                  ; Original instruction ID
+original_end_to_end_id = :                   ; Original E2E ID
+status = @fin.transaction_status             ; Transaction status
 original_amount = @fin.amount                 ; Original instructed amount
 
 ; Reason information
@@ -209,23 +209,23 @@ charges[] = @fin.charges                      ; Charges applied
 
 {@payment_return}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Original transaction reference
 {.original}
-message_id = !:                               ; Original message identifier
-instruction_id = !:                           ; Original instruction ID
-end_to_end_id = !:                            ; Original E2E ID
+message_id = :                               ; Original message identifier
+instruction_id = :                           ; Original instruction ID
+end_to_end_id = :                            ; Original E2E ID
 interbank_settlement_date = date              ; Original settlement date
 
 {@payment_return}
 
 ; Return reason
-return_reason_codes[] = !:                    ; Return reason codes (multiple contributing reasons)
+return_reason_codes[] = :                    ; Return reason codes (multiple contributing reasons)
 return_reason_info = :                        ; Additional return information
 
 ; Returned amount
-returned_amount = !@fin.amount                ; Amount being returned
+returned_amount = @fin.amount                ; Amount being returned
 original_amount = @fin.amount                 ; Original transaction amount
 
 ; Parties
@@ -241,19 +241,19 @@ charges[] = @fin.charges                      ; Return charges
 
 {@cancellation_request}
 ; Message header
-header = !@fin.message_header                 ; Group header
+header = @fin.message_header                 ; Group header
 
 ; Assigner/Assignee
-assigner = !@fin.party                        ; Party requesting cancellation
-assignee = !@fin.party                        ; Party to process cancellation
+assigner = @fin.party                        ; Party requesting cancellation
+assignee = @fin.party                        ; Party to process cancellation
 
 ; Case identification
-case_id = !:                                  ; Case identifier
+case_id = :                                  ; Case identifier
 case_creator = :                              ; Case creator
 
 ; Original transaction
 {.original}
-message_id = !:                               ; Original message ID
+message_id = :                               ; Original message ID
 instruction_id = :                            ; Original instruction ID
 end_to_end_id = :                             ; Original E2E ID
 amount = @fin.amount                          ; Original amount
@@ -261,7 +261,7 @@ amount = @fin.amount                          ; Original amount
 {@cancellation_request}
 
 ; Cancellation reason
-cancellation_reasons[] = !(cust, dupl, frad, tech, upay)  ; Reason codes (multiple contributing factors)
+cancellation_reasons[] = (cust, dupl, frad, tech, upay)  ; Reason codes (multiple contributing factors)
 additional_info = :                           ; Additional information
 
 ; cust = Customer request

@@ -44,7 +44,7 @@ changelog[0].rationale = "Commercial entertainment coverage for production compa
 ; ===================================================================================
 
 {@fp_production_type}
-category = !(
+category = (
     commercial,                               ; Commercials/ads
     corporate,                                ; Corporate video
     documentary,                              ; Documentary
@@ -82,10 +82,10 @@ union_status = (
 
 {@fp_production}
 ; Required fields first
-budget = !#$:(0..)                            ; Total production budget
-production_company = !:                       ; Production company name
-production_title = !:                         ; Working title
-production_type = !@fp_production_type        ; Production classification
+budget = #$:(0..)                            ; Total production budget
+production_company = :                       ; Production company name
+production_title = :                         ; Working title
+production_type = @fp_production_type        ; Production classification
 
 ; Optional fields
 above_the_line = #$:(0..)                     ; Above-line budget
@@ -237,8 +237,8 @@ waiting_period_days = ##:if included = true   ; Time deductible
 
 {@fp_liability}
 ; Required fields first
-each_occurrence = !#$:(0..)                   ; Per occurrence limit
-general_aggregate = !#$:(0..)                 ; Aggregate limit
+each_occurrence = #$:(0..)                   ; Per occurrence limit
+general_aggregate = #$:(0..)                 ; Aggregate limit
 
 ; Optional fields
 aircraft_liability = ?                        ; Aircraft liability
@@ -285,7 +285,7 @@ trademark = ?:if included = true              ; Trademark
 
 {@fp_premium}
 ; Required fields first
-total_premium = !#$:(0..)                     ; Total premium
+total_premium = #$:(0..)                     ; Total premium
 
 ; Optional fields
 cast_premium = #$:(0..)                       ; Cast premium
@@ -318,8 +318,8 @@ union_factor = #                              ; Union status
 
 {@fp_claim}
 ; Required fields first
-claim_date = !date                            ; Claim date
-claim_type = !(
+claim_date = date                            ; Claim date
+claim_type = (
     cast_injury,                              ; Cast injury
     cast_illness,                             ; Cast illness
     copyright,                                ; Copyright claim
@@ -364,11 +364,11 @@ reserve = #$:(0..)                            ; Reserve amount
 
 {@film_policy}
 ; Required fields first
-effective_date = !date                        ; Policy effective date
-expiration_date = !date                       ; Policy expiration date
-liability = !@fp_liability                    ; General liability
-policy_number = !:                            ; Policy number
-production = !@fp_production                  ; Production details
+effective_date = date                        ; Policy effective date
+expiration_date = date                       ; Policy expiration date
+liability = @fp_liability                    ; General liability
+policy_number = :                            ; Policy number
+production = @fp_production                  ; Production details
 
 ; Invariants
 :invariant expiration_date > effective_date

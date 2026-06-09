@@ -39,15 +39,15 @@ changelog[0].rationale = "Structure derived from 10 USC Chapter 55 and 32 CFR Pa
 ; Per 32 CFR 199.3
 
 {@beneficiary}
-beneficiary_id = !:                         ; Beneficiary ID
-dod_id = !:                                 ; DoD ID number (EDIPI)
+beneficiary_id = :                         ; Beneficiary ID
+dod_id = :                                 ; DoD ID number (EDIPI)
 
 ; Demographics
 {.demographics}
-first_name = !:                             ; First name
+first_name = :                             ; First name
 middle_name = :                             ; Middle name
-last_name = !:                              ; Last name
-dob = !*date                                ; Date of birth
+last_name = :                              ; Last name
+dob = *date                                ; Date of birth
 gender = (female, male)                     ; Gender
 ssn = *:                                    ; SSN
 
@@ -56,14 +56,14 @@ ssn = *:                                    ; SSN
 ; Sponsor relationship
 {.sponsor}
 sponsor_id = :                              ; Sponsor's DoD ID
-relationship = !(child, former_spouse, parent, self, spouse, widow_widower)
+relationship = (child, former_spouse, parent, self, spouse, widow_widower)
 sponsor = ?                                 ; Sponsor
 
 {@beneficiary}
 
 ; Eligibility category - Per 32 CFR 199.3(b)
 {.eligibility}
-category = !(adr_dependent, adr_member, guard_reserve, retiree, retiree_dependent, survivor, tamp, trr)
+category = (adr_dependent, adr_member, guard_reserve, retiree, retiree_dependent, survivor, tamp, trr)
 ; adr = Active Duty Regular
 ; tamp = Transitional Assistance Management Program
 ; trr = TRICARE Reserve Retired
@@ -88,8 +88,8 @@ deers_termination_date = date               ; DEERS termination date
 ; Per 32 CFR 199.17
 
 {@plan}
-plan_type = !(prime, prime_remote, select, tricare_for_life, us_family, young_adult)
-plan_year = !##:(1995..)                    ; Plan year
+plan_type = (prime, prime_remote, select, tricare_for_life, us_family, young_adult)
+plan_year = ##:(1995..)                    ; Plan year
 region = (east, overseas, west)             ; TRICARE region
 
 ; Plan details - Per 32 CFR 199.17
@@ -127,9 +127,9 @@ survivor = ?                                ; For survivors
 ; Per 32 CFR 199.17
 
 {@enrollment}
-enrollment_id = !:                          ; Enrollment ID
-beneficiary_id = !:                         ; Beneficiary ID
-plan_type = !:                              ; Plan type
+enrollment_id = :                          ; Enrollment ID
+beneficiary_id = :                         ; Beneficiary ID
+plan_type = :                              ; Plan type
 
 ; Enrollment status
 enrollment_status = @enrollment_period      ; Enrollment period with status
@@ -138,7 +138,7 @@ enrollment_status = @enrollment_period      ; Enrollment period with status
 
 ; Region
 {.region}
-region = !(east, overseas, west)            ; TRICARE region
+region = (east, overseas, west)            ; TRICARE region
 region_contractor = :                       ; Regional contractor
 mtf_enrolled = ?                            ; Enrolled at MTF
 
@@ -168,7 +168,7 @@ payment_method = (allotment, direct)        ; Payment method
 ; Per 10 USC 1086(d)
 
 {@tricare_for_life}
-beneficiary_id = !:                         ; Beneficiary ID
+beneficiary_id = :                         ; Beneficiary ID
 
 ; Eligibility - Per 10 USC 1086(d)
 {.eligibility}
@@ -202,8 +202,8 @@ secondary_payer = : "tricare"               ; TRICARE is secondary
 ; Per 10 USC 1076d
 
 {@reserve_select}
-beneficiary_id = !:                         ; Beneficiary ID
-enrollment_id = !:                          ; Enrollment ID
+beneficiary_id = :                         ; Beneficiary ID
+enrollment_id = :                          ; Enrollment ID
 
 ; Eligibility - Per 10 USC 1076d
 {.eligibility}
@@ -234,8 +234,8 @@ government_share = #$:(0..)                 ; Government share (72%)
 ; Per 10 USC 1110b
 
 {@young_adult}
-beneficiary_id = !:                         ; Beneficiary ID
-sponsor_id = !:                             ; Sponsor ID
+beneficiary_id = :                         ; Beneficiary ID
+sponsor_id = :                             ; Sponsor ID
 
 ; Eligibility - Per 10 USC 1110b
 {.eligibility}
@@ -265,9 +265,9 @@ enrollee_pays = ?true                       ; Enrollee pays full premium
 ; Per 32 CFR 199.4
 
 {@authorization}
-auth_id = !:                                ; Authorization ID
-beneficiary_id = !:                         ; Beneficiary ID
-request_date = !date                        ; Request date
+auth_id = :                                ; Authorization ID
+beneficiary_id = :                         ; Beneficiary ID
+request_date = date                        ; Request date
 
 ; Service requested
 {.service}
@@ -305,13 +305,13 @@ denial_reason = :                           ; Denial reason
 ; Per 32 CFR 199.7
 
 {@claim}
-claim_id = !:                               ; Claim ID
-beneficiary_id = !:                         ; Beneficiary ID
-claim_type = !(dental, institutional, pharmacy, professional)
+claim_id = :                               ; Claim ID
+beneficiary_id = :                         ; Beneficiary ID
+claim_type = (dental, institutional, pharmacy, professional)
 
 ; Service dates
 {.dates}
-service_date = !date                        ; Date of service
+service_date = date                        ; Date of service
 service_end_date = date                     ; Service end date (if range)
 received_date = date                        ; Claim received date
 
@@ -338,7 +338,7 @@ beneficiary_liability = #$:(0..)            ; Beneficiary pays
 
 ; Status
 {.status}
-status = !(denied, paid, pending, rejected)
+status = (denied, paid, pending, rejected)
 processed_date = date                       ; Date processed
 payment_date = date                         ; Payment date
 denial_reason = :                           ; Denial reason
@@ -351,8 +351,8 @@ denial_reason = :                           ; Denial reason
 ; Per 32 CFR 199.6
 
 {@mtf}
-mtf_id = !:                                 ; MTF identifier (DMIS ID)
-name = !:                                   ; MTF name
+mtf_id = :                                 ; MTF identifier (DMIS ID)
+name = :                                   ; MTF name
 
 ; Location
 installation = :                            ; Military installation

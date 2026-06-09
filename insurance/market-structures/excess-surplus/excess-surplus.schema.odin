@@ -70,7 +70,7 @@ insurer_id = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Identification
 ; ───────────────────────────────────────────────────────────────────────────────
-name = !:
+name = :
 legal_name = :
 naic_code = :(5..6)
 naic_alien_id = :                          ; Alien identification number for non-US insurers
@@ -181,15 +181,15 @@ entity_type = (corporation, individual, llc, partnership)
 ; Individual broker
 {.individual}
 name_prefix = ::if entity_type = individual
-name_first = !::if entity_type = individual
+name_first = ::if entity_type = individual
 name_middle = ::if entity_type = individual
-name_last = !::if entity_type = individual
+name_last = ::if entity_type = individual
 name_suffix = ::if entity_type = individual
 
 {@es_surplus_lines_broker}
 
 ; Business entity
-business_name = !::if entity_type != individual
+business_name = ::if entity_type != individual
 dba_name = :
 
 ; ───────────────────────────────────────────────────────────────────────────────
@@ -740,7 +740,7 @@ transaction_id = :
 ; Policy Reference
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Reference to the underlying coverage policy
-policy_number = !:
+policy_number = :
 effective_date = date
 expiration_date = date
 :invariant expiration_date > effective_date
@@ -779,7 +779,7 @@ underlying_coverage_ref = :
 ; ───────────────────────────────────────────────────────────────────────────────
 ; Insured Information
 ; ───────────────────────────────────────────────────────────────────────────────
-named_insured = !:
+named_insured = :
 named_insured_entity = @entity.business
 
 ; Additional named insureds

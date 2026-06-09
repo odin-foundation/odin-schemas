@@ -46,10 +46,10 @@ changelog[0].rationale = "Comprehensive escrow holdback structure"
 
 {@escrow_holdback}
 ; Required fields first
-establishment_date = !date                           ; Date holdback established
-holdback_amount = !#$:(0..)                          ; Total holdback amount
-holdback_type = !(completion, construction, dispute, lien_payoff, repair, seller_proceeds, tax, warranty)
-property_address = !@address                         ; Property address
+establishment_date = date                           ; Date holdback established
+holdback_amount = #$:(0..)                          ; Total holdback amount
+holdback_type = (completion, construction, dispute, lien_payoff, repair, seller_proceeds, tax, warranty)
+property_address = @address                         ; Property address
 
 ; Holdback identification
 holdback_id = :                                      ; Unique holdback identifier
@@ -87,7 +87,7 @@ interest_beneficiary = ::if interest_bearing = true  ; Who receives interest
 ; Release Conditions
 ; ───────────────────────────────────────────────────────────────────────────────
 {.release_conditions}
-release_type = !(completion_certification, document_recording, full_satisfaction, lien_release, mutual_consent, time_based)
+release_type = (completion_certification, document_recording, full_satisfaction, lien_release, mutual_consent, time_based)
 expiration_date = date                               ; Holdback expiration date
 automatic_release = ?                                ; Automatic release at expiration
 release_authorization = (escrow_holder, lender, mutual, single_party)
@@ -211,9 +211,9 @@ cancellation_reason = ::if status = cancelled        ; Cancellation reason
 
 {@holdback_release}
 ; Required fields first
-release_amount = !#$:(0..)                           ; Amount being released
-release_date = !date                                 ; Release date
-release_type = !(final, partial)                     ; Release type
+release_amount = #$:(0..)                           ; Amount being released
+release_date = date                                 ; Release date
+release_type = (final, partial)                     ; Release type
 
 ; Release identification
 release_id = :                                       ; Unique release identifier
@@ -272,8 +272,8 @@ status_date = date                                   ; Status date
 
 {@escrow_account}
 ; Required fields first
-account_type = !(loan_escrow, pmi, property_tax, reserve)
-property_address = !@address                         ; Property address
+account_type = (loan_escrow, pmi, property_tax, reserve)
+property_address = @address                         ; Property address
 
 ; Account identification
 account_id = :                                       ; Unique account identifier
