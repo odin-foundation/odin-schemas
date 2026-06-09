@@ -1,6 +1,6 @@
 {
   "name": "@odin-foundation/schemas",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ODIN Schema Library — production-ready schemas for insurance, healthcare, finance, legal, real estate, government, and more. Each schema is derived from authoritative industry sources with full provenance.",
   "type": "module",
   "main": "./index.js",
